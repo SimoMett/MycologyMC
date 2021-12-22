@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology;
 
+import com.mettsmirnov.mycology.items.ModItemGroup;
 import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -16,6 +17,7 @@ public class MycologyMod
 {
     public static final String MODID = "mycologymod";
     public static final Logger MOD_LOGGER= LogManager.getLogger();
+    public static final ModItemGroup MOD_ITEM_GROUP = new ModItemGroup(MODID);
 
     public MycologyMod()
     {
