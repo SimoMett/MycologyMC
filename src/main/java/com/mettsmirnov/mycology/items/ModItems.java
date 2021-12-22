@@ -11,6 +11,6 @@ public class ModItems
 {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MycologyMod.MODID);
 
-    //public static final RegistryObject
+    public static final RegistryObject<ColoredFungusItem> COLORED_CRIMSON_FUNGUS = ITEMS.register("colored_crimson_fungus", ColoredFungusItem::createColoredCrimson);
     //all the items below..
 }
