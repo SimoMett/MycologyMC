@@ -26,6 +26,10 @@ public class ColoredFungusItem extends Item
     {
         return new ColoredFungusItem();
     }
+    public static ColoredFungusItem createColoredWarped()
+    {
+        return new ColoredFungusItem();
+    }
 
     public ColoredFungusItem()
     {

@@ -25,6 +25,6 @@ public class FungusItemColorer implements ItemColor {
     @SubscribeEvent
     public static void registerColorsEvent(ColorHandlerEvent.Item evt)
     {
-        evt.getItemColors().register(new FungusItemColorer(), ModItems.COLORED_CRIMSON_FUNGUS.get());
+        evt.getItemColors().register(new FungusItemColorer(), ModItems.COLORED_CRIMSON_FUNGUS.get(),ModItems.COLORED_WARPED_FUNGUS.get());
     }
 }
