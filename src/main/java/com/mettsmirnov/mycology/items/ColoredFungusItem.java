@@ -41,6 +41,12 @@ public class ColoredFungusItem extends Item
             return new ListTag();
     }
 
+    //FIXME foil effect is too much
+    /*@Override
+    public boolean isFoil(ItemStack p_41453_) {
+        return super.isFoil(p_41453_);
+    }*/
+
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack itemStack, @Nullable Level p_41422_, List<Component> tooltip, TooltipFlag p_41424_) {

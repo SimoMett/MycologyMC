@@ -14,8 +14,8 @@ public class FungusItemColorer implements ItemColor {
         Color color;
         switch (tintIndex) {
             case 0 -> color = new Color(0, 148, 0);
-            case 1 -> color = new Color(179, 83, 0);
-            case 2 -> color = new Color(252, 230, 0);
+            case 1 -> color = new Color(136, 88, 38);
+            case 2 -> color = new Color(169, 164, 17);
             case 3 -> color = Color.WHITE;
             default -> color = Color.WHITE;
         }
