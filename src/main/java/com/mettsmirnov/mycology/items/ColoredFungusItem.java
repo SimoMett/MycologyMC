@@ -13,6 +13,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.List;
 
 public class ColoredFungusItem extends Item

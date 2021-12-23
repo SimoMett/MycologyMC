@@ -10,22 +10,20 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Mod(MycologyMod.MODID)
 public class MycologyMod
 {
     public static final String MODID = "mycologymod";
-    public static final Logger MOD_LOGGER= LogManager.getLogger();
     public static final ModItemGroup MOD_ITEM_GROUP = new ModItemGroup(MODID);
 
     public MycologyMod()
     {
         IEventBus evtBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.ITEMS.register(evtBus);
+        evtBus.register(FungusItemColorer.class);
+
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(FungusItemColorer.class);
     }
 
     //private void enqueueIMC(final InterModEnqueueEvent event)
