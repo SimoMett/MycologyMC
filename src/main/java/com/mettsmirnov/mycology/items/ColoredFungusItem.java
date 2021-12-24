@@ -5,6 +5,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -12,15 +13,13 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
+import org.jline.utils.Log;
 
 import java.awt.*;
 import java.util.List;
 
 public class ColoredFungusItem extends Item
 {
-    public static final String TAG_COLORS = "Colors";
-
-    public CompoundTag tags;
 
     public static ColoredFungusItem createColoredCrimson()
     {
@@ -34,15 +33,6 @@ public class ColoredFungusItem extends Item
     public ColoredFungusItem()
     {
         super(new Properties().tab(MycologyMod.MOD_ITEM_GROUP));
-    }
-
-    public static ListTag getTagColors(ItemStack itemStack)
-    {
-        CompoundTag compoundTag = itemStack.getTag();
-        if(compoundTag!=null)
-            return compoundTag.getList(TAG_COLORS,0);
-        else
-            return new ListTag();
     }
 
     //FIXME foil effect is too much
