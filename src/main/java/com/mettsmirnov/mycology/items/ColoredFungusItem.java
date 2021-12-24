@@ -37,8 +37,10 @@ public class ColoredFungusItem extends Item
 
     //FIXME foil effect is too much
     /*@Override
-    public boolean isFoil(ItemStack p_41453_) {
-        return super.isFoil(p_41453_);
+    @OnlyIn(Dist.CLIENT)
+    public boolean isFoil(ItemStack p_41453_)
+    {
+        return true;
     }*/
 
     @Override
@@ -52,5 +54,7 @@ public class ColoredFungusItem extends Item
         super.appendHoverText(itemStack, p_41422_, tooltip, p_41424_);
         tooltip.add(new TextComponent("\u00a77Some info here pls"));
     }
+
+
 
 }
