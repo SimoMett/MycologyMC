@@ -42,6 +42,11 @@ public class ColoredFungusItem extends Item
     }*/
 
     @Override
+    public Component getName(ItemStack p_41458_) {
+        return new TextComponent("Alea Fungus");
+    }
+
+    @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack itemStack, @Nullable Level p_41422_, List<Component> tooltip, TooltipFlag p_41424_) {
         super.appendHoverText(itemStack, p_41422_, tooltip, p_41424_);
