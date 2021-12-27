@@ -5,18 +5,14 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jline.utils.Log;
 
-import java.awt.*;
 import java.util.List;
 
 public class ColoredFungusItem extends Item
@@ -44,13 +40,15 @@ public class ColoredFungusItem extends Item
         return itemStack.isEnchanted();
     }*/
 
-    @Override
+    //FIXME
+    //Forestry uses capability. Why shouldn't I?
+    /*@Override
     public ItemStack getDefaultInstance()
     {
         ItemStack itemStack = super.getDefaultInstance();
         itemStack.getOrCreateTag().putString("species","test");
         return itemStack;
-    }
+    }*/
 
     @Override
     public Component getName(ItemStack p_41458_) {
