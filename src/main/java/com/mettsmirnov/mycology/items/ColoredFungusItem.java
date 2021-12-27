@@ -12,6 +12,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jline.utils.Log;
 
@@ -38,10 +39,18 @@ public class ColoredFungusItem extends Item
     //FIXME foil effect is too much
     /*@Override
     @OnlyIn(Dist.CLIENT)
-    public boolean isFoil(ItemStack p_41453_)
+    public boolean isFoil(ItemStack itemStack)
     {
-        return true;
+        return itemStack.isEnchanted();
     }*/
+
+    @Override
+    public ItemStack getDefaultInstance()
+    {
+        ItemStack itemStack = super.getDefaultInstance();
+        itemStack.getOrCreateTag().putString("species","test");
+        return itemStack;
+    }
 
     @Override
     public Component getName(ItemStack p_41458_) {
@@ -54,7 +63,4 @@ public class ColoredFungusItem extends Item
         super.appendHoverText(itemStack, p_41422_, tooltip, p_41424_);
         tooltip.add(new TextComponent("\u00a77Some info here pls"));
     }
-
-
-
 }
