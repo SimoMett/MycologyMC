@@ -11,6 +11,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public class ColoredFungusItem extends Item
         return new ColoredFungusItem();
     }
 
+
+
     public ColoredFungusItem()
     {
         super(new Properties().tab(MycologyMod.MOD_ITEM_GROUP));
@@ -40,15 +43,12 @@ public class ColoredFungusItem extends Item
         return itemStack.isEnchanted();
     }*/
 
-    //FIXME
     //Forestry uses capability. Why shouldn't I?
-    /*@Override
-    public ItemStack getDefaultInstance()
-    {
-        ItemStack itemStack = super.getDefaultInstance();
-        itemStack.getOrCreateTag().putString("species","test");
-        return itemStack;
-    }*/
+    @Nullable
+    @Override
+    public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
+        return super.initCapabilities(stack, nbt);
+    }
 
     @Override
     public Component getName(ItemStack p_41458_) {
