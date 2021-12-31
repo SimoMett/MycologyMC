@@ -12,12 +12,6 @@ public class ModCapabilitiesHandler
     public static final ResourceLocation GENOMA_CAPABILITY_RES = new ResourceLocation(MycologyMod.MODID,"fungus_genoma");
 
     @SubscribeEvent
-    public void registerCapability(RegisterCapabilitiesEvent evt)
-    {
-        evt.register(IFungusData.class);
-    }
-
-    @SubscribeEvent
     //TODO
     public void attachCapability(AttachCapabilitiesEvent<ItemStack> evt)
     {
