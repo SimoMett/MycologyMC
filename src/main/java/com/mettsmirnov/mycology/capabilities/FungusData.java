@@ -2,13 +2,16 @@ package com.mettsmirnov.mycology.capabilities;
 
 import net.minecraft.nbt.CompoundTag;
 
+import java.awt.*;
+
 public class FungusData implements IFungusData
 {
-
+    private String dominantSpecies="test";
+    private int[] colors;
 
     @Override
     public int[] getColors() {
-        return new int[4];
+        return colors;
     }
 
     enum GeneType
@@ -20,7 +23,7 @@ public class FungusData implements IFungusData
     //dominant genes
     @Override
     public String getDominantSpecies() {
-        return null;
+        return dominantSpecies;
     }
 
     @Override
@@ -112,14 +115,16 @@ public class FungusData implements IFungusData
     @Override
     public CompoundTag serializeNBT()
     {
-
-        return new CompoundTag();
+        CompoundTag tag = new CompoundTag();
+        tag.putString("species","dominant:recessive");
+        tag.putIntArray("color",new int[]{-1,-1, Color.RED.hashCode(),-1});
+        return tag;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt)
     {
-
+        colors=nbt.getIntArray("color");
     }
 
 }

@@ -1,8 +1,11 @@
 package com.mettsmirnov.mycology.items;
 
+import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
+import com.mettsmirnov.mycology.capabilities.IFungusData;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,16 +23,24 @@ public class FungusItemColorer implements ItemColor
         final int OVERLAY_DETAILS2=3;
         //
 
-        Color color;
-        switch (tintIndex) {
-            case OVERLAY_STELUM ->  color = new Color(217, 140, 122);
-            case OVERLAY_HEAD -> color = new Color(213, 146, 79);
-            case OVERLAY_DETAILS -> color = new Color(229, 225, 59);
-            case OVERLAY_DETAILS2 -> color = new Color(236, 233, 125);
-
-            default -> color = Color.WHITE;
+        LazyOptional<IFungusData> optional = itemStack.getCapability(FungusDataCapability.INSTANCE);
+        if(optional.isPresent() && optional.resolve().isPresent())
+        {
+            return optional.resolve().get().getColors()[tintIndex];
         }
-        return color.hashCode();
+        else
+        {
+            Color color;
+            switch (tintIndex) {
+                case OVERLAY_STELUM ->  color = new Color(217, 140, 122);
+                case OVERLAY_HEAD -> color = new Color(213, 146, 79);
+                case OVERLAY_DETAILS -> color = new Color(229, 225, 59);
+                case OVERLAY_DETAILS2 -> color = new Color(236, 233, 125);
+
+                default -> color = Color.WHITE;
+            }
+            return color.hashCode();
+        }
     }
 
     @SubscribeEvent

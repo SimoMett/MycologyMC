@@ -18,7 +18,7 @@ public class ModItemGroup extends CreativeModeTab
         return Items.CRIMSON_FUNGUS.getDefaultInstance();
     }
 
-    @Override
+    /*@Override
     public void fillItemList(NonNullList<ItemStack> itemStacks)
     {
         CompoundTag testTag = new CompoundTag();
@@ -27,5 +27,5 @@ public class ModItemGroup extends CreativeModeTab
         e.setTag(testTag);
         itemStacks.add(e);
         super.fillItemList(itemStacks);
-    }
+    }*/
 }
