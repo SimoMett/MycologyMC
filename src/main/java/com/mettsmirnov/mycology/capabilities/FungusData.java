@@ -7,7 +7,7 @@ import java.awt.*;
 public class FungusData implements IFungusData
 {
     private String dominantSpecies="test";
-    private int[] colors;
+    private int[] colors = new int[]{-1,-1,-1,-1};
 
     @Override
     public int[] getColors() {
