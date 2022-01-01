@@ -1,9 +1,8 @@
 package com.mettsmirnov.mycology.capabilities;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.util.INBTSerializable;
 
-public class FungusData implements IFungusData, INBTSerializable<CompoundTag>
+public class FungusData implements IFungusData
 {
     @Override
     public int[] getColors() {
@@ -11,12 +10,15 @@ public class FungusData implements IFungusData, INBTSerializable<CompoundTag>
     }
 
     @Override
-    public CompoundTag serializeNBT() {
-        return null;
+    public CompoundTag serializeNBT()
+    {
+
+        return new CompoundTag();
     }
 
     @Override
-    public void deserializeNBT(CompoundTag nbt) {
+    public void deserializeNBT(CompoundTag nbt)
+    {
 
     }
 

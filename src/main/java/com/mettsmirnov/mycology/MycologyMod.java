@@ -1,5 +1,8 @@
 package com.mettsmirnov.mycology;
 
+import com.mettsmirnov.mycology.capabilities.FungusDataAttacher;
+import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
+import com.mettsmirnov.mycology.capabilities.ModCapabilitiesHandler;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItemGroup;
 import com.mettsmirnov.mycology.items.ModItems;
@@ -22,8 +25,10 @@ public class MycologyMod
         IEventBus evtBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.ITEMS.register(evtBus);
         evtBus.register(FungusItemColorer.class);
+        ModCapabilitiesHandler.registerCapabilities(evtBus);
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(FungusDataAttacher.class);
     }
 
     //private void enqueueIMC(final InterModEnqueueEvent event)
