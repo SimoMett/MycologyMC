@@ -24,23 +24,7 @@ public class FungusItemColorer implements ItemColor
         //
 
         LazyOptional<IFungusData> optional = itemStack.getCapability(FungusDataCapability.INSTANCE);
-        if(optional.isPresent() && optional.resolve().isPresent())
-        {
-            return optional.resolve().get().getColors()[tintIndex];
-        }
-        else
-        {
-            Color color;
-            switch (tintIndex) {
-                case OVERLAY_STELUM ->  color = new Color(217, 140, 122);
-                case OVERLAY_HEAD -> color = new Color(213, 146, 79);
-                case OVERLAY_DETAILS -> color = new Color(229, 225, 59);
-                case OVERLAY_DETAILS2 -> color = new Color(236, 233, 125);
-
-                default -> color = Color.WHITE;
-            }
-            return color.hashCode();
-        }
+        return optional.resolve().get().getColors()[tintIndex];
     }
 
     @SubscribeEvent
