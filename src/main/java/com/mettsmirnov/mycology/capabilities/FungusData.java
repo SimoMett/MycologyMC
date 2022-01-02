@@ -2,13 +2,15 @@ package com.mettsmirnov.mycology.capabilities;
 
 import net.minecraft.nbt.CompoundTag;
 
-import java.awt.*;
+import java.util.Random;
 
 public class FungusData implements IFungusData
 {
-    private String dominantSpecies="test";
-    private int[] colors = new int[]{-1,-1,-1,-1};
+    //data
+    private String dominantSpecies="dominant:recessive";
+    private int[] colors = new int[]{new Random().nextInt(),new Random().nextInt(),new Random().nextInt(),new Random().nextInt()};
 
+    //
     @Override
     public int[] getColors() {
         return colors;
@@ -117,7 +119,7 @@ public class FungusData implements IFungusData
     {
         CompoundTag tag = new CompoundTag();
         tag.putString("species","dominant:recessive");
-        tag.putIntArray("color",new int[]{-1,-1, Color.RED.hashCode(),-1});
+        tag.putIntArray("color",colors);
         return tag;
     }
 
