@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology.capabilities;
 
+import com.mettsmirnov.mycology.myutils.StringDecomposition;
 import net.minecraft.nbt.CompoundTag;
 
 import java.util.Random;
@@ -24,17 +25,18 @@ public class FungusData implements IFungusData
 
     //dominant genes
     @Override
-    public String getDominantSpecies() {
-        return dominantSpecies;
+    public String getDominantSpecies()
+    {
+        return StringDecomposition.decompose(dominantSpecies,':')[0];
     }
 
     @Override
-    public String getDominantSpreadingSpeed() {
+    public String getDominantSpreadingChance() {
         return null;
     }
 
     @Override
-    public String getDominantRainBoostSpeed() {
+    public String getDominantRainSpreadingBoost() {
         return null;
     }
 
@@ -70,17 +72,18 @@ public class FungusData implements IFungusData
 
     //recessive genes
     @Override
-    public String getRecessiveSpecies() {
+    public String getRecessiveSpecies()
+    {
+        return StringDecomposition.decompose(dominantSpecies,':')[1];
+    }
+
+    @Override
+    public String getRecessiveSpreadingChance() {
         return null;
     }
 
     @Override
-    public String getRecessiveSpreadingSpeed() {
-        return null;
-    }
-
-    @Override
-    public String getRecessiveRainBoostSpeed() {
+    public String getRecessiveRainSpreadingBoost() {
         return null;
     }
 

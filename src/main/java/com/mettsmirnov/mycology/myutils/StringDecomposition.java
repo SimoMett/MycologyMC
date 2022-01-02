@@ -1,3 +1,5 @@
+package com.mettsmirnov.mycology.myutils;
+
 public class StringDecomposition
 {
     public static String[] decompose(String string, char character)

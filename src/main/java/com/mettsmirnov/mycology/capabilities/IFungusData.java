@@ -9,8 +9,8 @@ public interface IFungusData extends INBTSerializable<CompoundTag>
 
     //dominant genes
     public String getDominantSpecies();
-    public String getDominantSpreadingSpeed();
-    public String getDominantRainBoostSpeed();
+    public String getDominantSpreadingChance();
+    public String getDominantRainSpreadingBoost();
     public String getDominantLightRequirements();
     public String getDominantTerrainRequirement();
     public String getDominantHumidityRequirements();
@@ -20,8 +20,8 @@ public interface IFungusData extends INBTSerializable<CompoundTag>
 
     //recessive genes
     public String getRecessiveSpecies();
-    public String getRecessiveSpreadingSpeed();
-    public String getRecessiveRainBoostSpeed();
+    public String getRecessiveSpreadingChance();
+    public String getRecessiveRainSpreadingBoost();
     public String getRecessiveLightRequirements();
     public String getRecessiveTerrainRequirement();
     public String getRecessiveHumidityRequirements();
