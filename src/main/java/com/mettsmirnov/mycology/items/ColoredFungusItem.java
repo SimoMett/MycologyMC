@@ -1,10 +1,13 @@
 package com.mettsmirnov.mycology.items;
 
 import com.mettsmirnov.mycology.MycologyMod;
+import com.mettsmirnov.mycology.blocks.ColoredFungusBlock;
+import com.mettsmirnov.mycology.blocks.ModBlocks;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -16,9 +19,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ColoredFungusItem extends Item
+public class ColoredFungusItem extends BlockItem
 {
-
     public static ColoredFungusItem createColoredCrimson()
     {
         return new ColoredFungusItem();
@@ -28,11 +30,9 @@ public class ColoredFungusItem extends Item
         return new ColoredFungusItem();
     }
 
-
-
     public ColoredFungusItem()
     {
-        super(new Properties().tab(MycologyMod.MOD_ITEM_GROUP));
+        super(ModBlocks.COLORED_CRIMSON_FUNGUS.get(),new Properties().tab(MycologyMod.MOD_ITEM_GROUP));
     }
 
     //FIXME foil effect is too much
