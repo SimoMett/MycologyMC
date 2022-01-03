@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "mycologymod:block/colored_crimson_fungus"
+    "cross": "mycologymod:block/crimson_fungus_stelum"
   }
 }
