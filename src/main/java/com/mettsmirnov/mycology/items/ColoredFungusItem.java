@@ -35,14 +35,6 @@ public class ColoredFungusItem extends BlockItem
         super(ModBlocks.COLORED_CRIMSON_FUNGUS.get(),new Properties().tab(MycologyMod.MOD_ITEM_GROUP));
     }
 
-    //FIXME foil effect is too much
-    /*@Override
-    @OnlyIn(Dist.CLIENT)
-    public boolean isFoil(ItemStack itemStack)
-    {
-        return itemStack.isEnchanted();
-    }*/
-
     //Forestry uses capability. Why shouldn't I?
     @Nullable
     @Override
