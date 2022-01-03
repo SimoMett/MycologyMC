@@ -1,18 +1,14 @@
 package com.mettsmirnov.mycology.capabilities;
 
-import com.mettsmirnov.mycology.myutils.StringDecomposition;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.animal.Panda;
-import oshi.util.tuples.Pair;
 
 import java.util.HashMap;
 import java.util.Random;
 
 public class FungusData implements IFungusData
 {
-    String[] dictionary = new String[]{
+    private static final String[] traitsDictionary = new String[]{
             "species",
-            "color",
             "spreading",
             "spreadboost",
             "light",
@@ -24,52 +20,63 @@ public class FungusData implements IFungusData
     };
 
     //data
-    private final HashMap<Pair<String, GeneType>,Object> dataMap=new HashMap<>();
+    private final HashMap<String,Object> dominantTraits=new HashMap<>();
+    private final HashMap<String, Object> recessiveTraits=new HashMap<>();
     private int[] colors = new int[]{new Random().nextInt(),new Random().nextInt(),new Random().nextInt(),new Random().nextInt()};
 
     public FungusData()
     {
-        for (String s : dictionary)
+        for (String trait : traitsDictionary)
         {
-            dataMap.put(new Pair<>(s,GeneType.DOMINANT),"");
+            dominantTraits.put(trait,"none");
+            recessiveTraits.put(trait,"none");
         }
 
-        /*dataMap.put("species","dominant:recessive");
-        dataMap.put("spreading", new Integer[]{25, 25});
-        dataMap.put("spreadboost", new Float[]{1f,1f});
-        dataMap.put("light",new Integer[]{15,15});
-        dataMap.put("terrain",":");
-        dataMap.put("humidity",":");
-        dataMap.put("temp",":");
-        dataMap.put("area",new int[]{1,1});
-        dataMap.put("effect",":");*/
+        //template
+        /*dataMap.put("species","dominant");
+        dataMap.put("spreading", 25);
+        dataMap.put("spreadboost", 1f);
+        dataMap.put("light",15);
+        dataMap.put("terrain","terrain");
+        dataMap.put("humidity","humidity");
+        dataMap.put("temp","temp");
+        dataMap.put("area",1);
+        dataMap.put("effect","none");*/
     }
 
     @Override
     public Object getField(String key, GeneType type)
     {
-        if(!dataMap.containsKey(key))
-        {
+        return type==GeneType.DOMINANT? dominantTraits.get(key) : recessiveTraits.get(key);
+    }
 
-        }
-        return null;
+    public int[] getColors()
+    {
+        return colors;
     }
 
     //nbt
+    //TODO
     @Override
     public CompoundTag serializeNBT()
     {
         CompoundTag tag = new CompoundTag();
-        tag.putString("species","dominant:recessive");
+        tag.putString("species",compose((String) dominantTraits.get("species"), (String) recessiveTraits.get("species")));
         tag.putIntArray("color",colors);
         return tag;
     }
 
+    //TODO
     @Override
     public void deserializeNBT(CompoundTag nbt)
     {
         colors=nbt.getIntArray("color");
     }
 
+    private static String compose(String str1, String str2)
+    {
+        String result=str1+":"+str2;
+        return result;
+    }
 
 }
