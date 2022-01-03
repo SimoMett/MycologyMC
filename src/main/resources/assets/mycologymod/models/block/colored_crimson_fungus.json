@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "mycologymod:block/colored_crimson_fungus"
+  }
+}
