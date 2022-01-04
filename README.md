@@ -4,3 +4,4 @@
 - [X] Color the mushrooms based on the NBT/data stored
 - [X] Ability to plant mushrooms
 - [ ] Edit mushroom spreading mechanic and implement breading
+- [ ] Add natural generation in the world
