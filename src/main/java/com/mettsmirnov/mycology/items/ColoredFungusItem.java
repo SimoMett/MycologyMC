@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -23,16 +24,16 @@ public class ColoredFungusItem extends BlockItem
 {
     public static ColoredFungusItem createColoredCrimson()
     {
-        return new ColoredFungusItem();
+        return new ColoredFungusItem(ModBlocks.COLORED_CRIMSON_FUNGUS.get());
     }
     public static ColoredFungusItem createColoredWarped()
     {
-        return new ColoredFungusItem();
+        return new ColoredFungusItem(ModBlocks.COLORED_WARPED_FUNGUS.get());
     }
 
-    public ColoredFungusItem()
+    public ColoredFungusItem(Block block)
     {
-        super(ModBlocks.COLORED_CRIMSON_FUNGUS.get(),new Properties().tab(MycologyMod.MOD_ITEM_GROUP));
+        super(block, new Properties().tab(MycologyMod.MOD_ITEM_GROUP));
     }
 
     //Forestry uses capability. Why shouldn't I?

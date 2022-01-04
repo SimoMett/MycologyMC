@@ -13,4 +13,5 @@ public class ModBlocks
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MycologyMod.MODID);
 
     public static final RegistryObject<Block> COLORED_CRIMSON_FUNGUS = BLOCKS.register("colored_crimson_fungus",ColoredFungusBlock::new);
+    public static final RegistryObject<Block> COLORED_WARPED_FUNGUS = BLOCKS.register("colored_warped_fungus",ColoredFungusBlock::new);
 }
