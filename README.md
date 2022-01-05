@@ -7,7 +7,7 @@
 - [ ] Edit mushroom spreading mechanic and implement breeding
 - [ ] Add natural generation in the world
 
-###Other notes
+### Other notes
 - Currently for each fungus type (Crimson and Warped) I need different tile entities containing the same data.
 Maybe I can instantiate a single item, Eg:
 ```COLORED_FUNGUS -> COLORED_CRIMSON_FUNGUS``` and give different textures (using BlockStates)
