@@ -41,8 +41,6 @@ public class MycologyMod
 
     private void clientSetup(FMLClientSetupEvent event)
     {
-        Log.info("TEST CLIENT SETUP");
-
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.COLORED_CRIMSON_FUNGUS.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.COLORED_WARPED_FUNGUS.get(), RenderType.cutout());
     }
