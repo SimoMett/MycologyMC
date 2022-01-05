@@ -4,6 +4,7 @@ import com.mettsmirnov.mycology.blocks.FungusBlockColorer;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataAttacher;
 import com.mettsmirnov.mycology.capabilities.ModCapabilitiesHandler;
+import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItemGroup;
 import com.mettsmirnov.mycology.items.ModItems;
@@ -33,6 +34,7 @@ public class MycologyMod
 
         ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
+        ModEntities.ENTITIES.register(evtBus);
         evtBus.register(FungusItemColorer.class);
         evtBus.register(FungusBlockColorer.class);
         ModCapabilitiesHandler.registerCapabilities(evtBus);

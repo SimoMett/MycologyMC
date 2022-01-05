@@ -1,4 +1,4 @@
-package com.mettsmirnov.mycology.blocks;
+package com.mettsmirnov.mycology.entities;
 
 import com.mettsmirnov.mycology.capabilities.FungusData;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
@@ -14,8 +14,8 @@ public class ColoredFungusBlockEntity extends BlockEntity
 {
     private final IFungusData fungusData = new FungusData();
 
-    public ColoredFungusBlockEntity(BlockEntityType<?> p_155228_, BlockPos p_155229_, BlockState p_155230_)
+    public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        super(p_155228_, p_155229_, p_155230_);
+        super(ModEntities.COLORED_CRIMSON_FUNGUS.get(), blockPos, blockState);
     }
 }

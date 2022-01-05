@@ -2,12 +2,14 @@ package com.mettsmirnov.mycology.blocks;
 
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
+import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.util.LazyOptional;
@@ -20,17 +22,24 @@ import java.util.Random;
 public class FungusBlockColorer implements BlockColor
 {
     @Override
-    public int getColor(BlockState blockState, @Nullable BlockAndTintGetter p_92568_, @Nullable BlockPos blockPos, int tintIndex)
+    public int getColor(BlockState blockState, @Nullable BlockAndTintGetter blockAndTint, @Nullable BlockPos blockPos, int tintIndex)
     {
         //overlay indexes
-        final int OVERLAY_STELUM=0;
+        /*final int OVERLAY_STELUM=0;
         final int OVERLAY_HEAD=1;
         final int OVERLAY_DETAILS=2;
-        final int OVERLAY_DETAILS2=3;
-        //
+        final int OVERLAY_DETAILS2=3;*/
 
-        //LazyOptional<IFungusData> optional;
-        //return optional.resolve().get().getColors()[tintIndex];
+        BlockEntity blockEntity = blockAndTint.getBlockEntity(blockPos);
+        if(blockEntity != null)
+        {
+            LazyOptional<IFungusData> optional = blockEntity.getCapability(FungusDataCapability.INSTANCE);
+            if(optional.isPresent())
+            {
+                int[] array = optional.resolve().get().getColors();
+                return array[tintIndex];
+            }
+        }
         return -1;
     }
 

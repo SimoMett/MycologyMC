@@ -2,6 +2,7 @@ package com.mettsmirnov.mycology.capabilities;
 
 import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.blocks.ColoredFungusBlock;
+import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.items.ColoredFungusItem;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -59,9 +60,9 @@ public class FungusDataAttacher
     }
 
     @SubscribeEvent
-    public static void onAttachToBlockState(AttachCapabilitiesEvent<BlockEntity> evt)
+    public static void onAttachToBlockEntity(AttachCapabilitiesEvent<BlockEntity> evt)
     {
-        if(evt.getObject().getBlockState().getBlock() instanceof ColoredFungusBlock)
+        if(evt.getObject() instanceof ColoredFungusBlockEntity)
         {
             final FungusDataProvider provider = new FungusDataProvider();
             evt.addCapability(FungusDataProvider.IDENTIFIER, provider);
