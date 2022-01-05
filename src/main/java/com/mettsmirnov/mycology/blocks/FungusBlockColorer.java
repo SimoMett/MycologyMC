@@ -1,12 +1,16 @@
 package com.mettsmirnov.mycology.blocks;
 
+import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
+import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,7 +19,6 @@ import java.util.Random;
 
 public class FungusBlockColorer implements BlockColor
 {
-
     @Override
     public int getColor(BlockState blockState, @Nullable BlockAndTintGetter p_92568_, @Nullable BlockPos blockPos, int tintIndex)
     {
@@ -26,8 +29,9 @@ public class FungusBlockColorer implements BlockColor
         final int OVERLAY_DETAILS2=3;
         //
 
-        Random random = new Random();
-        return 0xFF000000 | random.nextInt(0xFFFFFF);
+        //LazyOptional<IFungusData> optional;
+        //return optional.resolve().get().getColors()[tintIndex];
+        return -1;
     }
 
     @SubscribeEvent
