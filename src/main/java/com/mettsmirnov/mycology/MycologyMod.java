@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology;
 
+import com.mettsmirnov.mycology.blocks.FungusBlockColorer;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataAttacher;
 import com.mettsmirnov.mycology.capabilities.ModCapabilitiesHandler;
@@ -33,6 +34,7 @@ public class MycologyMod
         ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
         evtBus.register(FungusItemColorer.class);
+        evtBus.register(FungusBlockColorer.class);
         ModCapabilitiesHandler.registerCapabilities(evtBus);
 
         MinecraftForge.EVENT_BUS.register(this);
