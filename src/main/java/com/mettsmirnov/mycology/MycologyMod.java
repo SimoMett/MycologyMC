@@ -4,7 +4,6 @@ import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataAttacher;
 import com.mettsmirnov.mycology.capabilities.ModCapabilitiesHandler;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
-import com.mettsmirnov.mycology.items.ModBlockItems;
 import com.mettsmirnov.mycology.items.ModItemGroup;
 import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -32,7 +31,6 @@ public class MycologyMod
         evtBus.addListener(this::clientSetup);
 
         ModItems.ITEMS.register(evtBus);
-        ModBlockItems.BLOCK_ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
         evtBus.register(FungusItemColorer.class);
         ModCapabilitiesHandler.registerCapabilities(evtBus);
