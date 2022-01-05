@@ -1,6 +1,8 @@
 # **TODO list**
 - [ ] Get the NBT tags working (maybe with capabilities?)
 - [X] Make a data model to be stored in each mushroom (species, temperature, humidity, soil type, effects, ecc...) (Almost done)
+- [ ] Make some species using datapacks (creativity required)
+- [ ] Ah yes, datapack support
 - [X] Color the mushrooms based on the NBT/data stored
 - [X] Ability to plant mushrooms
 - [ ] Implement capabilities for the mushroom blocks
