@@ -2,6 +2,7 @@ package com.mettsmirnov.mycology.capabilities;
 
 import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.blocks.ColoredFungusBlock;
+import com.mettsmirnov.mycology.data.FungusTraits;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.items.ColoredFungusItem;
 import net.minecraft.core.Direction;
@@ -24,12 +25,19 @@ public class FungusDataAttacher
     {
         public static final ResourceLocation IDENTIFIER = new ResourceLocation(MycologyMod.MODID,"fungus_data");
 
-        private final IFungusData backend = new FungusData();//FIXME
-        private final LazyOptional<IFungusData> optionalData = LazyOptional.of(()->backend);
+        private final IFungusData backend;//FIXME
+        private final LazyOptional<IFungusData> optionalData;
+
+        public FungusDataProvider()
+        {
+            backend = new FungusData();
+            optionalData = LazyOptional.of(()->backend);
+        }
 
         @NotNull
         @Override
-        public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side)
+        {
             return FungusDataCapability.INSTANCE.orEmpty(cap,this.optionalData);
         }
 

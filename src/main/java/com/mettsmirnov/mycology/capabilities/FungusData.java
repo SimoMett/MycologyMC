@@ -2,6 +2,7 @@ package com.mettsmirnov.mycology.capabilities;
 
 import com.mettsmirnov.mycology.data.FungusTraits;
 import net.minecraft.nbt.CompoundTag;
+import org.jline.utils.Log;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -17,19 +18,6 @@ public class FungusData implements IFungusData
     private final HashMap<String, Object> recessiveTraits=new HashMap<>();
     private int[] colors = new int[]{new Random().nextInt(),new Random().nextInt(),new Random().nextInt(),new Random().nextInt()};
 
-    public FungusData(FungusTraits dominant, FungusTraits recessive) throws IllegalAccessException
-    {
-        for(Field f : FungusTraits.class.getDeclaredFields())
-        {
-            if (!Modifier.isStatic(f.getModifiers()))
-            {
-                dominantTraits.put(f.getName(),f.get(dominant));
-                recessiveTraits.put(f.getName(),f.get(recessive));
-            }
-        }
-    }
-
-    @Deprecated
     public FungusData()
     {
         for (String trait : traitsDictionary)
@@ -47,6 +35,26 @@ public class FungusData implements IFungusData
         dataMap.put("temp",0);
         dataMap.put("area",1);
         dataMap.put("effect","none");*/
+    }
+
+    public void loadFrom(FungusTraits dominant, FungusTraits recessive)
+    {
+        try
+        {
+            for (Field f : FungusTraits.class.getDeclaredFields())
+            {
+                if (!Modifier.isStatic(f.getModifiers()))
+                {
+                    dominantTraits.put(f.getName(), f.get(dominant));
+                    recessiveTraits.put(f.getName(), f.get(recessive));
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Log.error("FungusData has incomplete HashMaps!");
+            e.printStackTrace();
+        }
     }
 
     @Override
