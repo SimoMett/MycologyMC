@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
-    private final IFungusData fungusData = new FungusData();//FIXME
+    private final IFungusData fungusData = new FungusData();
 
     public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
@@ -21,12 +21,15 @@ public class ColoredFungusBlockEntity extends BlockEntity
     }
 
     @Override
-    public void load(CompoundTag tag) {
+    public void load(CompoundTag tag)
+    {
+        fungusData.deserializeNBT(tag);
         super.load(tag);
     }
 
     @Override
-    public CompoundTag save(CompoundTag tag) {
+    public CompoundTag save(CompoundTag tag)
+    {
         return super.save(tag);
     }
 }

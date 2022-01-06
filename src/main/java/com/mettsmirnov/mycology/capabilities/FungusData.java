@@ -52,7 +52,7 @@ public class FungusData implements IFungusData
         }
         catch (Exception e)
         {
-            Log.error("FungusData has incomplete HashMaps!");
+            Log.error("Error during fungus traits loading");
             e.printStackTrace();
         }
     }
@@ -70,6 +70,7 @@ public class FungusData implements IFungusData
 
     //nbt
     //TODO
+    //this method is responsible of the creation of a NBT tag to be used when the world saves
     @Override
     public CompoundTag serializeNBT()
     {
@@ -80,6 +81,7 @@ public class FungusData implements IFungusData
     }
 
     //TODO
+    //this method is responsible of loading all the data from the NBT when the world loads
     @Override
     public void deserializeNBT(CompoundTag nbt)
     {
