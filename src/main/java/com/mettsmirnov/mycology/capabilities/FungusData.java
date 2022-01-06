@@ -1,29 +1,35 @@
 package com.mettsmirnov.mycology.capabilities;
 
+import com.mettsmirnov.mycology.data.FungusTraits;
 import net.minecraft.nbt.CompoundTag;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Random;
 
+import static com.mettsmirnov.mycology.data.FungusTraits.traitsDictionary;
+
 public class FungusData implements IFungusData
 {
-    private static final String[] traitsDictionary = new String[]{
-            "species",
-            "spreading",
-            "spreadboost",
-            "light",
-            "terrain",
-            "humidity",
-            "temp",
-            "area",
-            "effect"
-    };
-
     //data
     private final HashMap<String,Object> dominantTraits=new HashMap<>();
     private final HashMap<String, Object> recessiveTraits=new HashMap<>();
     private int[] colors = new int[]{new Random().nextInt(),new Random().nextInt(),new Random().nextInt(),new Random().nextInt()};
 
+    public FungusData(FungusTraits dominant, FungusTraits recessive) throws IllegalAccessException
+    {
+        for(Field f : FungusTraits.class.getDeclaredFields())
+        {
+            if (!Modifier.isStatic(f.getModifiers()))
+            {
+                dominantTraits.put(f.getName(),f.get(dominant));
+                recessiveTraits.put(f.getName(),f.get(recessive));
+            }
+        }
+    }
+
+    @Deprecated
     public FungusData()
     {
         for (String trait : traitsDictionary)
@@ -31,7 +37,6 @@ public class FungusData implements IFungusData
             dominantTraits.put(trait,"none");
             recessiveTraits.put(trait,"none");
         }
-
         //template
         /*dataMap.put("species","dominant");
         dataMap.put("spreading", 25);
@@ -39,7 +44,7 @@ public class FungusData implements IFungusData
         dataMap.put("light",15);
         dataMap.put("terrain","terrain");
         dataMap.put("humidity","humidity");
-        dataMap.put("temp","temp");
+        dataMap.put("temp",0);
         dataMap.put("area",1);
         dataMap.put("effect","none");*/
     }

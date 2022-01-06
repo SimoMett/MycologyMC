@@ -24,7 +24,7 @@ public class FungusDataAttacher
     {
         public static final ResourceLocation IDENTIFIER = new ResourceLocation(MycologyMod.MODID,"fungus_data");
 
-        private final IFungusData backend = new FungusData();
+        private final IFungusData backend = new FungusData();//FIXME
         private final LazyOptional<IFungusData> optionalData = LazyOptional.of(()->backend);
 
         @NotNull
