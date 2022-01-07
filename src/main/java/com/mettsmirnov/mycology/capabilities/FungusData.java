@@ -2,7 +2,9 @@ package com.mettsmirnov.mycology.capabilities;
 
 import com.mettsmirnov.mycology.data.FungusTraits;
 import com.mettsmirnov.mycology.myutils.FloatComposition;
+import com.mettsmirnov.mycology.myutils.StringDecomposition;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import org.jline.utils.Log;
 
 import java.lang.reflect.Field;
@@ -11,6 +13,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import static com.mettsmirnov.mycology.data.FungusTraits.traitsDictionary;
+import static com.mettsmirnov.mycology.myutils.StringDecomposition.compose;
 
 public class FungusData implements IFungusData
 {
@@ -70,7 +73,7 @@ public class FungusData implements IFungusData
     }
 
     //nbt
-    //this method is responsible of the creation of a NBT tag to be used when the world saves
+    //this method is responsible for the creation of a NBT tag to be used when the world saves
     //need testing
     @Override
     public CompoundTag serializeNBT()
@@ -86,7 +89,7 @@ public class FungusData implements IFungusData
             {
                 tag.putIntArray(trait,new int[]{(Integer) dominantTraits.get(trait), (Integer) recessiveTraits.get(trait)});
             }
-            if(dominantTraits.get(trait) instanceof Float)
+            else if(dominantTraits.get(trait) instanceof Float)
             {
                 long compositeFloat = FloatComposition.compose((Float)dominantTraits.get(trait),(Float)recessiveTraits.get(trait));
                 tag.putLong(trait,compositeFloat);
@@ -96,18 +99,31 @@ public class FungusData implements IFungusData
         return tag;
     }
 
-    //TODO
-    //this method is responsible of loading all the data from the NBT when the world loads
+    //this method is responsible for loading all the data from the NBT when the world loads
+    //need testing
     @Override
-    public void deserializeNBT(CompoundTag nbt)
+    public void deserializeNBT(CompoundTag tag)
     {
-        colors=nbt.getIntArray("color");
+        for(String key : tag.getAllKeys())
+        {
+            if(tag.getTagType(key) == Tag.TAG_STRING)
+            {
+                String[] strs = StringDecomposition.decompose(tag.getString(key),':');
+                dominantTraits.put(key,strs[0]);
+                recessiveTraits.put(key,strs[1]);
+            }
+            else if(tag.getTagType(key) == Tag.TAG_INT_ARRAY)
+            {
+                dominantTraits.put(key,tag.getIntArray(key)[0]);
+                recessiveTraits.put(key,tag.getIntArray(key)[1]);
+            }
+            else if(tag.getTagType(key) == Tag.TAG_LONG)
+            {
+                float[] floats = FloatComposition.decompose(tag.getLong(key));
+                dominantTraits.put(key,floats[0]);
+                recessiveTraits.put(key,floats[1]);
+            }
+        }
+        colors=tag.getIntArray("color");
     }
-
-    private static String compose(String str1, String str2)
-    {
-        String result=str1+":"+str2;
-        return result;
-    }
-
 }

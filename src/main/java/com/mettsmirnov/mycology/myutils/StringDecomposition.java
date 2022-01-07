@@ -2,6 +2,11 @@ package com.mettsmirnov.mycology.myutils;
 
 public class StringDecomposition
 {
+    public static String compose(String str1, String str2)
+    {
+        return str1+":"+str2;
+    }
+
     public static String[] decompose(String string, char character)
     {
         String[] stringArray = new String[2];
