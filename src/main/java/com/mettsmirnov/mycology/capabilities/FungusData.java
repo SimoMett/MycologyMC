@@ -20,7 +20,7 @@ public class FungusData implements IFungusData
     //data
     private final HashMap<String,Object> dominantTraits=new HashMap<>();
     private final HashMap<String, Object> recessiveTraits=new HashMap<>();
-    private int[] colors = new int[]{new Random().nextInt(),new Random().nextInt(),new Random().nextInt(),new Random().nextInt()};
+    private int[] colors = new int[]{-1,-1,-1,-1};
 
     public FungusData()
     {
@@ -124,6 +124,9 @@ public class FungusData implements IFungusData
                 recessiveTraits.put(key,floats[1]);
             }
         }
-        colors=tag.getIntArray("color");
+        colors[0]=tag.getIntArray("color")[0];//FIXME this throws exceptions sometimes :/
+        colors[1]=tag.getIntArray("color")[1];
+        colors[2]=tag.getIntArray("color")[2];
+        colors[3]=tag.getIntArray("color")[3];
     }
 }

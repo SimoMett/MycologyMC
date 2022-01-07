@@ -21,6 +21,11 @@ public class ColoredFungusBlockEntity extends BlockEntity
     }
 
     @Override
+    public void onLoad() {
+        super.onLoad();
+    }
+
+    @Override
     public void load(CompoundTag tag)
     {
         fungusData.deserializeNBT(tag);
@@ -30,6 +35,21 @@ public class ColoredFungusBlockEntity extends BlockEntity
     @Override
     public CompoundTag save(CompoundTag tag)
     {
-        return super.save(tag);
+        super.save(tag);
+        tag.merge(fungusData.serializeNBT());
+        return tag;
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag)
+    {
+        load(tag);
+        super.handleUpdateTag(tag);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag()
+    {
+        return save(super.getUpdateTag());
     }
 }
