@@ -1,3 +1,4 @@
+import com.mettsmirnov.mycology.myutils.FloatComposition;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,18 +8,14 @@ public class FloatCompositionTest
     @Test
     public void floatCompositionTest()
     {
-        float A = -1.5f;
-        float B = 29.4f;
+        float A = -29F;
+        float B = -6F;
 
-        long bitsOfA = (long) Float.floatToIntBits(A) <<32;
-        int bitsOfB = Float.floatToIntBits(B);
+        long compositeFloat = FloatComposition.compose(A,B);
 
-        long compositeFloat = bitsOfA | bitsOfB;
+        float[] floats = FloatComposition.decompose(compositeFloat);
 
-        float decomposedA = Float.intBitsToFloat((int)(compositeFloat >> 32));
-        float decomposedB = Float.intBitsToFloat((int)(compositeFloat));
-
-        assertEquals(-1.5f,decomposedA);
-        assertEquals(29.4f,decomposedB);
+        assertEquals(A,floats[0]);
+        assertEquals(B,floats[1]);
     }
 }
