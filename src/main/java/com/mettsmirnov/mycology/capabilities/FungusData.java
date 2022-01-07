@@ -1,6 +1,7 @@
 package com.mettsmirnov.mycology.capabilities;
 
 import com.mettsmirnov.mycology.data.FungusTraits;
+import com.mettsmirnov.mycology.myutils.FloatComposition;
 import net.minecraft.nbt.CompoundTag;
 import org.jline.utils.Log;
 
@@ -31,7 +32,7 @@ public class FungusData implements IFungusData
         dataMap.put("spreadboost", 1f);
         dataMap.put("light",15);
         dataMap.put("terrain","terrain");
-        dataMap.put("humidity","humidity");
+        dataMap.put("humidity",0);
         dataMap.put("temp",0);
         dataMap.put("area",1);
         dataMap.put("effect","none");*/
@@ -69,13 +70,28 @@ public class FungusData implements IFungusData
     }
 
     //nbt
-    //TODO
     //this method is responsible of the creation of a NBT tag to be used when the world saves
+    //need testing
     @Override
     public CompoundTag serializeNBT()
     {
         CompoundTag tag = new CompoundTag();
-        tag.putString("species",compose((String) dominantTraits.get("species"), (String) recessiveTraits.get("species")));
+        for(String trait : traitsDictionary)
+        {
+            if(dominantTraits.get(trait) instanceof String)
+            {
+                tag.putString(trait,compose((String) dominantTraits.get(trait), (String) recessiveTraits.get(trait)));
+            }
+            else if(dominantTraits.get(trait) instanceof Integer)
+            {
+                tag.putIntArray(trait,new int[]{(Integer) dominantTraits.get(trait), (Integer) recessiveTraits.get(trait)});
+            }
+            if(dominantTraits.get(trait) instanceof Float)
+            {
+                long compositeFloat = FloatComposition.compose((Float)dominantTraits.get(trait),(Float)recessiveTraits.get(trait));
+                tag.putLong(trait,compositeFloat);
+            }
+        }
         tag.putIntArray("color",colors);
         return tag;
     }
