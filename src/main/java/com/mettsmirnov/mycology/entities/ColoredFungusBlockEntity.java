@@ -2,10 +2,17 @@ package com.mettsmirnov.mycology.entities;
 
 import com.mettsmirnov.mycology.capabilities.FungusData;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
@@ -51,4 +58,21 @@ public class ColoredFungusBlockEntity extends BlockEntity
         load(tag);
         super.handleUpdateTag(tag);
     }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket()
+    {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt)
+    {
+        super.onDataPacket(net, pkt);
+    }
+    /*READ PLEASE (UPDATE)
+    * Now the synchronization thing is almost working, but it still requires a block update
+    * to match the colors between client and server
+    */
 }
