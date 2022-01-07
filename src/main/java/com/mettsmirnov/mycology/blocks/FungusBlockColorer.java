@@ -30,6 +30,8 @@ public class FungusBlockColorer implements BlockColor
         final int OVERLAY_DETAILS=2;
         final int OVERLAY_DETAILS2=3;*/
 
+        assert blockAndTint != null;
+        assert blockPos != null;
         BlockEntity blockEntity = blockAndTint.getBlockEntity(blockPos);
         if(blockEntity != null)
         {

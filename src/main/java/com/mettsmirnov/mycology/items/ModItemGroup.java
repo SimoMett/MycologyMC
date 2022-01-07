@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology.items;
 
+import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.CreativeModeTab;
@@ -18,14 +19,15 @@ public class ModItemGroup extends CreativeModeTab
         return Items.CRIMSON_FUNGUS.getDefaultInstance();
     }
 
-    /*@Override
+    @Override
     public void fillItemList(NonNullList<ItemStack> itemStacks)
     {
-        CompoundTag testTag = new CompoundTag();
-        testTag.putString("species","Alea");
         ItemStack e = new ItemStack(ModItems.COLORED_CRIMSON_FUNGUS.get());
-        e.setTag(testTag);
-        itemStacks.add(e);
+        if(e.getCapability(FungusDataCapability.INSTANCE).isPresent())
+        {
+            //e.getCapability(FungusDataCapability.INSTANCE).resolve().get().
+        }
+        //itemStacks.add(e);
         super.fillItemList(itemStacks);
-    }*/
+    }
 }

@@ -11,8 +11,10 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -53,5 +55,14 @@ public class ColoredFungusItem extends BlockItem
     public void appendHoverText(ItemStack itemStack, @Nullable Level p_41422_, List<Component> tooltip, TooltipFlag p_41424_) {
         super.appendHoverText(itemStack, p_41422_, tooltip, p_41424_);
         tooltip.add(new TextComponent("\u00a77Some info here pls"));
+    }
+
+    @Nullable
+    @Override
+    protected BlockState getPlacementState(BlockPlaceContext context) {
+        BlockState blockState = super.getPlacementState(context);
+
+
+        return blockState;
     }
 }
