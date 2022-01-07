@@ -4,10 +4,12 @@ public class FloatComposition
 {
     public static long compose(float a, float b)
     {
-        long bitsOfA = (long)Float.floatToIntBits(a) << 32;
-        int bitsOfB = Float.floatToIntBits(b);
+        long bitsOfA = Float.floatToRawIntBits(a);
+        long bitsOfB = Float.floatToRawIntBits(b);
 
-        return bitsOfA + bitsOfB;
+        bitsOfA = bitsOfA<<32;
+        bitsOfB = bitsOfB & 0xffffffffL;
+        return bitsOfA | bitsOfB;
     }
 
     public static float[] decompose(long bits)

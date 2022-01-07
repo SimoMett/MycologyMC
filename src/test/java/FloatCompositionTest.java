@@ -8,8 +8,8 @@ public class FloatCompositionTest
     @Test
     public void floatCompositionTest()
     {
-        float A = -29F;
-        float B = -6F;
+        float A = -29f;
+        float B = 1.5f;
 
         long compositeFloat = FloatComposition.compose(A,B);
 
