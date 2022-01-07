@@ -20,7 +20,7 @@ public class FungusData implements IFungusData
     //data
     private final HashMap<String,Object> dominantTraits=new HashMap<>();
     private final HashMap<String, Object> recessiveTraits=new HashMap<>();
-    private int[] colors = new int[]{-1,-1,-1,-1};
+    private int[] colors = new int[]{-1,new Random().nextInt(),-1,-1};
 
     public FungusData()
     {
@@ -74,7 +74,6 @@ public class FungusData implements IFungusData
 
     //nbt
     //this method is responsible for the creation of a NBT tag to be used when the world saves
-    //need testing
     @Override
     public CompoundTag serializeNBT()
     {
@@ -124,7 +123,8 @@ public class FungusData implements IFungusData
                 recessiveTraits.put(key,floats[1]);
             }
         }
-        colors[0]=tag.getIntArray("color")[0];//FIXME this throws exceptions sometimes :/
+        //I wrote in this way only for debugging purposes
+        colors[0]=tag.getIntArray("color")[0];
         colors[1]=tag.getIntArray("color")[1];
         colors[2]=tag.getIntArray("color")[2];
         colors[3]=tag.getIntArray("color")[3];
