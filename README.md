@@ -10,7 +10,7 @@
 - [ ] Implement capabilities for the mushroom blocks
 - [ ] Edit mushroom spreading mechanic and implement breeding
 - [ ] Add natural generation in the world
-- [ ] Implement fungus spore's area effect
+- [ ] Implement fungus spores' area effect
 
 ### Other notes
 - ~~Currently for each fungus type (Crimson and Warped) I need different tile entities containing the same data.
