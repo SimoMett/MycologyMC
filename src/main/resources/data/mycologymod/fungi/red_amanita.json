@@ -1,0 +1,20 @@
+{
+	"species": "Red Amanita",
+	"type": "colored_crimson_fungus",
+	"colors": [16777164, 16724736, 15921906, 15921906],
+	"spreading": 25,
+	"spreadboost": 1.0,
+	"light": 15,
+	"terrain": "grass",
+	"humidity": 0.8,
+	"temperature": 0.25,
+	"area": 3,
+	"effect": "none",
+	"uses": {
+		"putIn": "brewingStand+furnace",
+		"potionId": "poison",
+		"potionLevel": 1,
+		"cookedItem": "minecraft:red_mushroom",
+		"itemAmounts": 1
+	}
+}
