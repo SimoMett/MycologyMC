@@ -11,7 +11,7 @@
 	"area": 3,
 	"effect": "none",
 	"uses": {
-		"putIn": "brewingStand+furnace",
+		"putIn": ["brewing_stand","furnace"],
 		"potionId": "poison",
 		"potionLevel": 1,
 		"cookedItem": "minecraft:red_mushroom",
