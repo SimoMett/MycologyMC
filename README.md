@@ -1,4 +1,6 @@
-# **TODO list**
+[![Java CI with Gradle](https://github.com/DonSimonetti/MycologyMC/actions/workflows/gradle.yml/badge.svg)](https://github.com/DonSimonetti/MycologyMC/actions/workflows/gradle.yml)
+
+# TODO list
 - [ ] Get the NBT tags working (maybe with capabilities?)
 - [X] Make a data model to be stored in each mushroom (species, temperature, humidity, soil type, effects, ecc...)
 - [ ] Make some species using datapacks (creativity required)
@@ -15,3 +17,6 @@
 Maybe I can instantiate a single item, Eg:
 ```COLORED_CRIMSON_FUNGUS -> COLORED_FUNGUS```, and give different textures (using BlockStates).~~
 Fixed in this [commit](https://github.com/DonSimonetti/MycologyMC/commit/c1f09c75a4cf0db633ca6b8aed460779044bc5ed).
+
+# Mycology
+[final readme here]
