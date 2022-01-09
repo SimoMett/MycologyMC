@@ -42,11 +42,12 @@ public class MycologyMod
         evtBus.register(FungusItemColorer.class);
         evtBus.register(FungusBlockColorer.class);
         ModCapabilitiesHandler.registerCapabilities(evtBus);
-        ModBrewingRecipes.register();
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(FungusDataAttacher.class);
         MinecraftForge.EVENT_BUS.addListener(this::reloadListener);
+
+        ModBrewingRecipes.register(evtBus);
     }
 
     private void clientSetup(FMLClientSetupEvent event)
