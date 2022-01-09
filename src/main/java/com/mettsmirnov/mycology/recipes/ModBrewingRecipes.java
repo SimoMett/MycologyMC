@@ -16,7 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModBrewingRecipes
 {
-    public static void register(IEventBus evtBus)
+    public static void register()
     {
         //I think I can add all the potions from here:
         //BrewingRecipeRegistry.addRecipe(input, ingredient, output);
