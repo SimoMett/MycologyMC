@@ -18,9 +18,7 @@ import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jline.utils.Log;
 
@@ -35,6 +33,7 @@ public class MycologyMod
         IEventBus evtBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         evtBus.addListener(this::clientSetup);
+        evtBus.addListener(this::onPostLoad);
 
         ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
@@ -47,7 +46,7 @@ public class MycologyMod
         MinecraftForge.EVENT_BUS.register(FungusDataAttacher.class);
         MinecraftForge.EVENT_BUS.addListener(this::reloadListener);
 
-        ModBrewingRecipes.register(evtBus);
+
     }
 
     private void clientSetup(FMLClientSetupEvent event)
@@ -59,6 +58,11 @@ public class MycologyMod
     private void reloadListener(AddReloadListenerEvent evt)
     {
         evt.addListener(FungusSpeciesLoader.INSTANCE);
+    }
+
+    private void onPostLoad(FMLLoadCompleteEvent event)
+    {
+        ModBrewingRecipes.register();
     }
     //private void enqueueIMC(final InterModEnqueueEvent event)
     //private void processIMC(final InterModProcessEvent event)
