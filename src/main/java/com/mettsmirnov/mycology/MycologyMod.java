@@ -9,13 +9,18 @@ import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItemGroup;
 import com.mettsmirnov.mycology.items.ModItems;
+import com.mettsmirnov.mycology.recipes.ModBrewingRecipes;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jline.utils.Log;
 
@@ -37,6 +42,7 @@ public class MycologyMod
         evtBus.register(FungusItemColorer.class);
         evtBus.register(FungusBlockColorer.class);
         ModCapabilitiesHandler.registerCapabilities(evtBus);
+        ModBrewingRecipes.register();
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(FungusDataAttacher.class);
