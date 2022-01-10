@@ -33,7 +33,6 @@ public class MycologyMod
         IEventBus evtBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         evtBus.addListener(this::clientSetup);
-        evtBus.addListener(this::reloadListener);//this way?
 
         ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
@@ -44,7 +43,7 @@ public class MycologyMod
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(FungusDataAttacher.class);
-        MinecraftForge.EVENT_BUS.addListener(this::reloadListener);//or this way?
+        MinecraftForge.EVENT_BUS.addListener(this::reloadListener);
     }
 
     private void clientSetup(FMLClientSetupEvent event)
