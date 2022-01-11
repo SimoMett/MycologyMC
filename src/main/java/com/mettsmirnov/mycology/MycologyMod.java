@@ -4,7 +4,7 @@ import com.mettsmirnov.mycology.blocks.FungusBlockColorer;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataAttacher;
 import com.mettsmirnov.mycology.capabilities.ModCapabilitiesHandler;
-import com.mettsmirnov.mycology.data.ModJsonResourceReloadListener;
+import com.mettsmirnov.mycology.data.FungusSpeciesLoader;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItemGroup;
@@ -14,11 +14,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jline.utils.Log;
 
@@ -55,7 +52,7 @@ public class MycologyMod
     private void reloadListener(AddReloadListenerEvent evt)
     {
         Log.info("EVENT FIRED");
-        evt.addListener(ModJsonResourceReloadListener.INSTANCE);
+        evt.addListener(FungusSpeciesLoader.INSTANCE);
     }
     //private void enqueueIMC(final InterModEnqueueEvent event)
     //private void processIMC(final InterModProcessEvent event)

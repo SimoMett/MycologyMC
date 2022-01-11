@@ -1,6 +1,7 @@
 package com.mettsmirnov.mycology.data;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.mettsmirnov.mycology.MycologyMod;
 import net.minecraft.resources.ResourceLocation;
@@ -10,12 +11,13 @@ import net.minecraft.util.profiling.ProfilerFiller;
 
 import java.util.Map;
 
-public class ModJsonResourceReloadListener extends SimpleJsonResourceReloadListener
+public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
 {
-    public static ModJsonResourceReloadListener INSTANCE = new ModJsonResourceReloadListener();
-    public ModJsonResourceReloadListener()
+    public static FungusSpeciesLoader INSTANCE = new FungusSpeciesLoader();
+    private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().create();
+    public FungusSpeciesLoader()
     {
-        super(new Gson(), "data/"+ MycologyMod.MODID);
+        super(GSON, "species");
     }
 
     @Override
