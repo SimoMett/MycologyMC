@@ -51,7 +51,6 @@ public class MycologyMod
 
     private void reloadListener(AddReloadListenerEvent evt)
     {
-        Log.info("EVENT FIRED");
         evt.addListener(FungusSpeciesLoader.INSTANCE);
     }
     //private void enqueueIMC(final InterModEnqueueEvent event)
