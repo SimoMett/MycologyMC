@@ -10,22 +10,23 @@ import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 import org.jline.utils.Log;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
 {
-    public static FungusSpeciesLoader INSTANCE = new FungusSpeciesLoader();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
-    public FungusSpeciesLoader()
+    public static final FungusSpeciesLoader INSTANCE = new FungusSpeciesLoader();
+
+    private FungusSpeciesLoader()
     {
-        super(GSON, "species");
+        super(GSON, "fungi");
     }
 
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> map, ResourceManager resourceManager, ProfilerFiller p_10795_)
     {
-
         Log.info("REACHED");
     }
 }
