@@ -7,8 +7,8 @@ public class FungusTraits
     public Float spreadboost;
     public Integer light;
     public String terrain;
-    public Integer humidity;
-    public Integer temp;
+    public Float humidity;
+    public Float temp;
     public Integer area;
     public String effect;
 
