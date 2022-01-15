@@ -72,6 +72,12 @@ public class FungusData implements IFungusData
         return colors;
     }
 
+    @Override
+    public void setColors(int[] colors)
+    {
+        this.colors = colors;
+    }
+
     //nbt
     //this method is responsible for the creation of a NBT tag to be used when the world saves
     @Override

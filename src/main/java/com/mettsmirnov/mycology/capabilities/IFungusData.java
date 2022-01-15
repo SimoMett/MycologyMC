@@ -13,4 +13,5 @@ public interface IFungusData extends INBTSerializable<CompoundTag>
 
     public Object getField(String key, GeneType type);
     public int[] getColors();
+    public void setColors(int [] colors);
 }
