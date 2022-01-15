@@ -1,7 +1,7 @@
 {
-	"species": "Red amanita",
-	"type": "colored_crimson_fungus",
-	"colors": [16777164, 16724736, 15921906, 15921906],
+	"species": "Green lactarius",
+	"type": "colored_warped_fungus",
+	"colors": [-641754945, 395771475, 1217990927, 1173684947],
 	"spreading": 25,
 	"spreadboost": 1.0,
 	"light": 15,
