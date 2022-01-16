@@ -5,6 +5,7 @@ import com.mettsmirnov.mycology.blocks.ColoredFungusBlock;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
+import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
@@ -58,14 +59,26 @@ public class ColoredFungusItem extends BlockItem
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack itemStack, @Nullable Level p_41422_, List<Component> tooltip, TooltipFlag p_41424_) {
         super.appendHoverText(itemStack, p_41422_, tooltip, p_41424_);
-        tooltip.add(new TextComponent("\u00a77Some info here pls"));
+        //tooltip.add(new TextComponent("\u00a77Some info here pls"));
     }
 
     @Nullable
     @Override
     protected BlockState getPlacementState(BlockPlaceContext context) {
+
         BlockState blockState = super.getPlacementState(context);
 
         return blockState;
+    }
+
+    @Override
+    protected boolean placeBlock(BlockPlaceContext context, BlockState blockState)
+    {
+        boolean result = super.placeBlock(context, blockState);
+        ColoredFungusBlockEntity entity = (ColoredFungusBlockEntity)context.getLevel().getBlockEntity(context.getClickedPos());
+        //TODO check for null entity
+        //TODO load all data
+        entity.getCapability(FungusDataCapability.INSTANCE).resolve().get().setColors(context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().getColors());
+        return result;
     }
 }

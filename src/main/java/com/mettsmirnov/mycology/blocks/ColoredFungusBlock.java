@@ -34,7 +34,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
+    {
         return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
     }
 }
