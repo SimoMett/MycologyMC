@@ -44,9 +44,6 @@ public class MycologyMod
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(FungusDataAttacher.class);
-        MinecraftForge.EVENT_BUS.addListener(this::reloadListener);
-
-
     }
 
     private void clientSetup(FMLClientSetupEvent event)
