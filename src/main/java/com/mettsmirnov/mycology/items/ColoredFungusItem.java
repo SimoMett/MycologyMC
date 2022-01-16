@@ -3,6 +3,8 @@ package com.mettsmirnov.mycology.items;
 import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.blocks.ColoredFungusBlock;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
+import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
+import com.mettsmirnov.mycology.capabilities.IFungusData;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
@@ -35,7 +37,7 @@ public class ColoredFungusItem extends BlockItem
 
     public ColoredFungusItem(Block block)
     {
-        super(block, new Properties().tab(MycologyMod.MOD_ITEM_GROUP));
+        super(block, new Properties());
     }
 
     //Forestry uses capability. Why shouldn't I?
@@ -46,8 +48,10 @@ public class ColoredFungusItem extends BlockItem
     }
 
     @Override
-    public Component getName(ItemStack p_41458_) {
-        return new TextComponent("Alea Fungus");
+    public Component getName(ItemStack itemStack)
+    {
+        TextComponent textComponent = new TextComponent((String) itemStack.getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("species", IFungusData.GeneType.DOMINANT));
+        return textComponent;
     }
 
     @Override
@@ -61,7 +65,6 @@ public class ColoredFungusItem extends BlockItem
     @Override
     protected BlockState getPlacementState(BlockPlaceContext context) {
         BlockState blockState = super.getPlacementState(context);
-
 
         return blockState;
     }

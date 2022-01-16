@@ -4,15 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mettsmirnov.mycology.MycologyMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraftforge.fml.LogicalSide;
-import org.jline.utils.Log;
 
-import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.Map;
 
@@ -39,7 +35,6 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
 
     private void loadFungusSpecies(JsonObject obj)
     {
-        //TODO load mechanic
         FungusTraits defaultTraits = new FungusTraits();
         defaultTraits.species=obj.get("species").getAsString();
         defaultTraits.spreading=obj.get("spreading").getAsInt();
@@ -56,10 +51,9 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
             colors[i]=obj.get("colors").getAsJsonArray().get(i).getAsInt();
 
         String fungusType = obj.get("type").getAsString();
-
         JsonObject fungusUses = obj.get("uses").getAsJsonObject();
 
-        FungusSpeciesList.INSTANCE.put(defaultTraits,colors,fungusType/*, fungusUses*/);//TODO add fungusUses
+        FungusSpeciesHandler.INSTANCE.put(defaultTraits,colors,fungusType, fungusUses);
     }
 
 }

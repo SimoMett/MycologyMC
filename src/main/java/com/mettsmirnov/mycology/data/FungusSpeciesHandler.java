@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology.data;
 
+import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.network.chat.TextComponent;
@@ -9,19 +10,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class FungusSpeciesList //TODO add uses structure
+public class FungusSpeciesHandler //TODO add fungusUses structure
 {
     private List<FungusSpecies> list = new ArrayList<>();
 
-    public static FungusSpeciesList INSTANCE = new FungusSpeciesList();
+    public static FungusSpeciesHandler INSTANCE = new FungusSpeciesHandler();
 
-    public void put(FungusTraits defaultTraits, int[] colors, String fungusType)
+    public void put(FungusTraits defaultTraits, int[] colors, String fungusType, JsonObject fungusUses)
     {
+        //TODO add recipes from fungusUses
         FungusSpecies species = new FungusSpecies(defaultTraits,colors,fungusType);
         list.add(species);
     }
 
-    public Collection<ItemStack> getCollection()//TODO
+    public Collection<ItemStack> getCollection()
     {
         Collection<ItemStack> collection = new ArrayList<ItemStack>();
 
@@ -33,8 +35,7 @@ public class FungusSpeciesList //TODO add uses structure
             else
                 e = new ItemStack(ModItems.COLORED_WARPED_FUNGUS.get());
             e.getCapability(FungusDataCapability.INSTANCE).resolve().get().setColors(species.colors);
-            e.setHoverName(new TextComponent(species.defaultTraits.species));
-            //TODO load other stuff
+            e.getCapability(FungusDataCapability.INSTANCE).resolve().get().loadFrom(species.defaultTraits, species.defaultTraits);
             collection.add(e);
         }
 
