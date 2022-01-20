@@ -49,7 +49,8 @@ public class ColoredFungusBlockEntity extends BlockEntity
     @Override
     public CompoundTag getUpdateTag()
     {
-        return save(new CompoundTag());
+        //TODO testing
+        return new CompoundTag();
     }
 
     @Override
