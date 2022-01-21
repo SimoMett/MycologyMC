@@ -25,3 +25,4 @@ Fungi might have one of these effects:
 | Learning | Experience boost | None |
 | Knowledge | Knowledge | None |
 | Sporing | None | Slowly convert nearby dirt and grass blocks in mycelium |
+| Dyeing | None | Nearby sheeps randomly change color |
