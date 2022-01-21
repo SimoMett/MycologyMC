@@ -22,3 +22,5 @@ Fungi might have one of these effects:
 | Teleporting | Teleporting | None |
 | Lightful | Slow falling | None |
 | Good chance | Luck | None |
+| Learning | Experience boost | None |
+| Knowledge | Knowledge | None |
