@@ -24,3 +24,4 @@ Fungi might have one of these effects:
 | Good chance | Luck | None |
 | Learning | Experience boost | None |
 | Knowledge | Knowledge | None |
+| Sporing | None | Slowly convert nearby dirt and grass blocks in mycelium |
