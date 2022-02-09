@@ -64,8 +64,8 @@ public class ColoredFungusItem extends BlockItem
 
     @Nullable
     @Override
-    protected BlockState getPlacementState(BlockPlaceContext context) {
-
+    protected BlockState getPlacementState(BlockPlaceContext context)
+    {
         BlockState blockState = super.getPlacementState(context);
 
         return blockState;
@@ -76,9 +76,9 @@ public class ColoredFungusItem extends BlockItem
     {
         boolean result = super.placeBlock(context, blockState);
         ColoredFungusBlockEntity entity = (ColoredFungusBlockEntity)context.getLevel().getBlockEntity(context.getClickedPos());
-        //TODO check for null entity
-        //TODO load all data
-        entity.getCapability(FungusDataCapability.INSTANCE).resolve().get().setColors(context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().getColors());
+        //TODO check for null entity (maybe?)
+        CompoundTag tags = context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().serializeNBT();
+        entity.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
         return result;
     }
 }
