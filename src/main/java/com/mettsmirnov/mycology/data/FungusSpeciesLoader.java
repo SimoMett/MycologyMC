@@ -26,6 +26,7 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> map, ResourceManager resourceManager, ProfilerFiller p_10795_)
     {
+        FungusSpeciesHandler.INSTANCE.clearList();
         Collection<JsonElement> collection = map.values();
         for(JsonElement e : collection)
         {

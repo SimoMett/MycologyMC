@@ -23,6 +23,11 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
         list.add(species);
     }
 
+    public void clearList()
+    {
+        list.clear();
+    }
+
     public Collection<ItemStack> getCollection()
     {
         Collection<ItemStack> collection = new ArrayList<ItemStack>();
