@@ -1,4 +1,4 @@
-package com.mettsmirnov.mycology.recipes;
+package com.mettsmirnov.mycology.recipes.brewing;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.brewing.IBrewingRecipe;

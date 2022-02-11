@@ -1,4 +1,4 @@
-package com.mettsmirnov.mycology.recipes;
+package com.mettsmirnov.mycology.recipes.brewing;
 
 import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.items.ModItems;

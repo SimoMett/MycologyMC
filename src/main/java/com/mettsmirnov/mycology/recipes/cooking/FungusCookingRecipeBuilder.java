@@ -1,4 +1,4 @@
-package com.mettsmirnov.mycology.recipes;
+package com.mettsmirnov.mycology.recipes.cooking;
 
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 
