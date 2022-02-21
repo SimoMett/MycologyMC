@@ -9,6 +9,7 @@ import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItemGroup;
 import com.mettsmirnov.mycology.items.ModItems;
+import com.mettsmirnov.mycology.recipes.brewing.FungusBrewingRecipeLoader;
 import com.mettsmirnov.mycology.recipes.brewing.ModBrewingRecipes;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -53,6 +54,7 @@ public class MycologyMod
     private void reloadListener(AddReloadListenerEvent evt)
     {
         evt.addListener(FungusSpeciesLoader.INSTANCE);
+        evt.addListener(FungusBrewingRecipeLoader.INSTANCE);
     }
 
     private void onPostLoad(FMLLoadCompleteEvent event)

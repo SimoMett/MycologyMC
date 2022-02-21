@@ -6,6 +6,17 @@ import net.minecraftforge.common.brewing.VanillaBrewingRecipe;
 
 public class FungusBrewingRecipe extends VanillaBrewingRecipe
 {
+    String species;//FIXME should be private (testing only)
+    private String resultPotion;
+    private int potionLevel;
+
+    public FungusBrewingRecipe(String species, String resultPotion, int level)
+    {
+        this.species=species;
+        this.resultPotion=resultPotion;
+        potionLevel=level;
+    }
+
     @Override
     public boolean isInput(ItemStack input)
     {

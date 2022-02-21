@@ -30,7 +30,7 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
 
     public Collection<ItemStack> getCollection()
     {
-        Collection<ItemStack> collection = new ArrayList<ItemStack>();
+        Collection<ItemStack> collection = new ArrayList<>();
 
         for(FungusSpecies species : list)
         {

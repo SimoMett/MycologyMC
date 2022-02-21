@@ -13,16 +13,26 @@ import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jline.utils.Log;
 
 public class ModBrewingRecipes
 {
     public static void register()
     {
         //I think I can add all the potions from here:
-        //BrewingRecipeRegistry.addRecipe(input, ingredient, output);
-        Ingredient input = Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER));
-        Ingredient ingredient = Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS.get());
-        ItemStack output = PotionUtils.setPotion(new ItemStack(Items.POTION),Potions.STRONG_POISON);
-        BrewingRecipeRegistry.addRecipe(input, ingredient, output);
+
+        //FIXME register() is called before FungusBrewingRecipeLoader can read the jsons
+
+        FungusBrewingRecipe poppedRecipe = null;
+        do
+        {
+            poppedRecipe=FungusBrewingRecipeLoader.INSTANCE.popFromQueue();
+            if(poppedRecipe!=null)
+            {
+                BrewingRecipeRegistry.addRecipe(poppedRecipe);
+                Log.info(poppedRecipe.species);
+            }
+        }
+        while (poppedRecipe!=null);
     }
 }
