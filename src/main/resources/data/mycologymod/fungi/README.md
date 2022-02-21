@@ -9,6 +9,6 @@ Let's analyse red_amanita.json:
 - ```"light": 15``` is the light level required to spread.
 - ```"terrain": "grass"``` specifies the terrain requirement. If left blank then the mushroom can spread only on mycelium.
 - ```"humidity": 0.8, "temperature": 0.25``` are respectively the rainfall and temperature of the biome required to spread.
-- ```"area": 3``` is the radius in blocks of the effect application. In this example the effect is applied to each entity in a 7x7 area centered in the mushroom.
+- ```"area": 3``` is the radius in blocks of the effect application. In this example the ```"effect"``` is applied to each entity in a 7x7 area centered in the mushroom.
 ###### And now the fun part
 - ```"uses"``` specifies what you can do with the mushroom item. In this example you can put it in a **brewing stand** or in a **furnace**. With the brewing stand you get a **level 1 poison potion**. With the furnace you get one **red mushroom**.
