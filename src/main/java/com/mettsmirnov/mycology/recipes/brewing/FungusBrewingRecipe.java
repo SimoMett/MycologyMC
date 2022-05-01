@@ -1,9 +1,17 @@
 package com.mettsmirnov.mycology.recipes.brewing;
 
 import com.mettsmirnov.mycology.items.ModItems;
+import com.mojang.blaze3d.shaders.Effect;
+import net.minecraft.client.renderer.EffectInstance;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.PotionItem;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.common.brewing.IBrewingRecipe;
 import net.minecraftforge.common.brewing.VanillaBrewingRecipe;
 
@@ -29,7 +37,11 @@ public class FungusBrewingRecipe extends VanillaBrewingRecipe
     @Override
     public ItemStack getOutput(ItemStack input, ItemStack ingredient)
     {
-        ItemStack result = super.getOutput(input, ingredient);
-        return new ItemStack(Items.ANDESITE,potionLevel);
+        //ItemStack superResult = super.getOutput(input, ingredient);
+        ItemStack result = new ItemStack(Items.POTION);
+        MobEffectInstance mobEffectInstance = new MobEffectInstance(MobEffects.POISON,potionLevel);
+        Potion potion = new Potion(resultPotion, mobEffectInstance);
+        PotionUtils.setPotion(result, potion);
+        return result;
     }
 }
