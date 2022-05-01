@@ -31,7 +31,6 @@ public class MycologyMod
         IEventBus evtBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         evtBus.addListener(this::clientSetup);
-        evtBus.addListener(this::onPostLoad);
 
         ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
@@ -55,11 +54,6 @@ public class MycologyMod
     {
         evt.addListener(FungusSpeciesLoader.INSTANCE);
         evt.addListener(FungusBrewingRecipeLoader.INSTANCE);
-    }
-
-    private void onPostLoad(FMLLoadCompleteEvent event)
-    {
-        ModBrewingRecipes.register();
     }
     //private void enqueueIMC(final InterModEnqueueEvent event)
     //private void processIMC(final InterModProcessEvent event)

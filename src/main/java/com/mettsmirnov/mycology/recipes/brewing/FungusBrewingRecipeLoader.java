@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import org.jline.utils.Log;
 
 import java.util.*;
@@ -37,10 +38,27 @@ public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener
             FungusBrewingRecipe recipe = new FungusBrewingRecipe(species,resultPotion,level);
             recipeQueue.push(recipe);
         }
+
+        register();
     }
 
     public FungusBrewingRecipe popFromQueue()
     {
         return recipeQueue.empty()? null : recipeQueue.pop();
+    }
+
+    public void register()
+    {
+        FungusBrewingRecipe poppedRecipe = null;
+        do
+        {
+            poppedRecipe=popFromQueue();
+            if(poppedRecipe!=null)
+            {
+                BrewingRecipeRegistry.addRecipe(poppedRecipe);
+                Log.info(poppedRecipe.species);
+            }
+        }
+        while (poppedRecipe!=null);
     }
 }
