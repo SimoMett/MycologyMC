@@ -34,13 +34,6 @@ public class ColoredFungusBlockEntity extends BlockEntity
         CompoundTag capTag = tag.getCompound("ForgeCaps").getCompound(MycologyMod.MODID+":fungus_data");
         //fungusData.deserializeNBT(capTag);
         super.load(tag);
-    }
-    @Override
-    public CompoundTag save(CompoundTag tag)
-    {
-        super.save(tag);
-        //tag.merge(fungusData.serializeNBT());
-        return tag;
     }*/
 
     //Although is lacking synchronization when the client first plant the mushroom. The colors are mismatched until the world reloads or there's some chunk updates...
@@ -49,7 +42,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
     @Override
     public CompoundTag getUpdateTag()
     {
-        return save(new CompoundTag());
+        return saveWithFullMetadata();
     }
 
     @Override
