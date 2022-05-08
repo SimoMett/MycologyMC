@@ -21,13 +21,11 @@ public class FungusBrewingRecipe implements IBrewingRecipe
 {
     String species;//FIXME should be private (testing only)
     private String resultPotion;
-    private int potionLevel;
 
-    public FungusBrewingRecipe(String species, String resultPotion, int level)
+    public FungusBrewingRecipe(String species, String resultPotion)
     {
         this.species=species;
         this.resultPotion=resultPotion;
-        potionLevel=level;
     }
 
     public boolean isInput(ItemStack stack)
@@ -49,7 +47,6 @@ public class FungusBrewingRecipe implements IBrewingRecipe
 
     public ItemStack getOutput(ItemStack input, ItemStack ingredient)
     {
-        //TODO add potionLevel to the result
         if (!input.isEmpty() && !ingredient.isEmpty() && isIngredient(ingredient) && isInput(input))
         {
             ItemStack result = new ItemStack(Items.POTION);

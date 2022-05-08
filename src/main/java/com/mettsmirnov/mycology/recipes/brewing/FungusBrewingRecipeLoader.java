@@ -33,12 +33,10 @@ public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener
         {
             String species = e.getAsJsonObject().get("species").getAsString();
             String resultPotion = e.getAsJsonObject().get("result").getAsString();
-            int level = e.getAsJsonObject().get("level").getAsInt();
 
-            FungusBrewingRecipe recipe = new FungusBrewingRecipe(species,resultPotion,level);
+            FungusBrewingRecipe recipe = new FungusBrewingRecipe(species,resultPotion);
             recipeQueue.push(recipe);
         }
-
         register();
     }
 
