@@ -1,5 +1,7 @@
 package com.mettsmirnov.mycology.recipes.brewing;
 
+import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
+import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.items.ModItems;
 import com.mojang.blaze3d.shaders.Effect;
 import net.minecraft.client.renderer.EffectInstance;
@@ -16,6 +18,8 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.common.brewing.IBrewingRecipe;
 import net.minecraftforge.common.brewing.VanillaBrewingRecipe;
+
+import java.util.Objects;
 
 public class FungusBrewingRecipe implements IBrewingRecipe
 {
@@ -41,8 +45,12 @@ public class FungusBrewingRecipe implements IBrewingRecipe
 
     public boolean isIngredient(ItemStack ingredient)
     {
-        //TODO use species instead of any COLORED_CRIMSON_FUNGUS
-        return ingredient.is(ModItems.COLORED_CRIMSON_FUNGUS.get());
+        if (ingredient.is(ModItems.COLORED_CRIMSON_FUNGUS.get()))
+        {
+            String species = (String)ingredient.getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("species", IFungusData.GeneType.DOMINANT);
+            return species.equals(this.species);
+        }
+        return false;
     }
 
     public ItemStack getOutput(ItemStack input, ItemStack ingredient)
