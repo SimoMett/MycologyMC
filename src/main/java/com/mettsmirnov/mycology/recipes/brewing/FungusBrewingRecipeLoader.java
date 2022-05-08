@@ -54,7 +54,6 @@ public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener
             if(poppedRecipe!=null)
             {
                 BrewingRecipeRegistry.addRecipe(poppedRecipe);
-                Log.info(poppedRecipe.species);
             }
         }
         while (poppedRecipe!=null);
