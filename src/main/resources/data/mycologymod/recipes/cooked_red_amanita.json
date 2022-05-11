@@ -1,0 +1,9 @@
+{
+	"type":"mycologymod:fungus_cooking",
+	"ingredient": {
+		"species":"Red amanita"
+	},
+	"experience": 0.0,
+	"cookingtime": 200,
+	"result":"minecraft:baked_potato"
+} 
