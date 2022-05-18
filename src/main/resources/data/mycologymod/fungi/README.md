@@ -3,7 +3,7 @@ Let's analyse red_amanita.json:
 
 - ```"species": "Red Amanita"``` specifies the name to be displayed by the itemstack.
 - ```"type": "colored_crimson_fungus"``` specifies the texture template to use.
-- ```"colors": [16777164, 16724736, 15921906, 15921906]``` is the color palette for the texture overlays
+- ```"colors": [16777164, 16724736, 15921906, 15921906]``` is the color palette for the texture overlays respectively for stelum, head, details and details2 in ARGB format
 - ```"spreading": 25``` is the expected frequency of spreading, i.e. when a random tick occurs the probability of spreading is 1/25.
 - ```"spreadboost": 1.0``` is a multiplier for the spreading probability. The new probability will be **(1/spreading)spreadboost**.
 - ```"light": 15``` is the light level required to spread.
