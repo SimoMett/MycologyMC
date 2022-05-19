@@ -9,12 +9,5 @@
 	"humidity": 0.8,
 	"temperature": 0.25,
 	"area": 3,
-	"effect": "none",
-	"uses": {
-		"putIn": ["brewing_stand","furnace"],
-		"potionId": "poison",
-		"potionLevel": 1,
-		"cookedItem": "minecraft:red_mushroom",
-		"itemAmounts": 1
-	}
+	"effect": "none"
 }
