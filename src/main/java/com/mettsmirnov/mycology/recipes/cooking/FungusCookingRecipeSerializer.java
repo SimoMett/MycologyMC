@@ -21,7 +21,7 @@ import org.jline.utils.Log;
 public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCookingRecipe>
 {
     @Override
-    public FungusCookingRecipe fromJson(ResourceLocation p_44103_, JsonObject jsonObject) //TODO need testing
+    public FungusCookingRecipe fromJson(ResourceLocation id, JsonObject jsonObject) //TODO need testing
     {
         FungusCookingRecipe result = null;
         if(jsonObject.get("type").getAsString().equals(MycologyMod.MODID+":fungus_cooking"))
@@ -32,7 +32,7 @@ public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCoo
             float experience = jsonObject.get("experience").getAsFloat();
             int cookingTime = jsonObject.get("cookingtime").getAsInt();
             ItemStack outputItemStack = ShapedRecipe.itemStackFromJson(jsonObject.get("result").getAsJsonObject());
-            result = new FungusCookingRecipe(speciesIngredient, outputItemStack, experience, cookingTime);
+            result = new FungusCookingRecipe(id, speciesIngredient, outputItemStack, experience, cookingTime);
         }
         return result;
     }
