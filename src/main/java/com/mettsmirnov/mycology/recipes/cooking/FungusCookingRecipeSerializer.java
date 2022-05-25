@@ -8,17 +8,20 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.crafting.ShieldDecorationRecipe;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.extensions.IForgeRecipeSerializer;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jline.utils.Log;
 
 public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCookingRecipe>
 {
     @Override
-    public FungusCookingRecipe fromJson(ResourceLocation p_44103_, JsonObject jsonObject) //TODO
+    public FungusCookingRecipe fromJson(ResourceLocation p_44103_, JsonObject jsonObject) //TODO need testing
     {
         FungusCookingRecipe result = null;
         if(jsonObject.get("type").getAsString().equals(MycologyMod.MODID+":fungus_cooking"))
@@ -26,9 +29,9 @@ public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCoo
             String speciesIngredient = jsonObject.get("ingredient").getAsJsonObject().get("species").getAsString();
 
             //Just for testing purposes
-            float experience = 1.0f;
-            int cookingTime = 200;
-            ItemStack outputItemStack = new ItemStack(Items.MUSHROOM_STEW);
+            float experience = jsonObject.get("experience").getAsFloat();
+            int cookingTime = jsonObject.get("cookingtime").getAsInt();
+            ItemStack outputItemStack = ShapedRecipe.itemStackFromJson(jsonObject.get("result").getAsJsonObject());
             result = new FungusCookingRecipe(speciesIngredient, outputItemStack, experience, cookingTime);
         }
         return result;
