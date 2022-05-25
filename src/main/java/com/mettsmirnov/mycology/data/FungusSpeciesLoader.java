@@ -52,9 +52,8 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
             colors[i]=obj.get("colors").getAsJsonArray().get(i).getAsInt();
 
         String fungusType = obj.get("type").getAsString();
-        JsonObject fungusUses = obj.get("uses").getAsJsonObject();
 
-        FungusSpeciesHandler.INSTANCE.put(defaultTraits,colors,fungusType, fungusUses);
+        FungusSpeciesHandler.INSTANCE.put(defaultTraits,colors,fungusType);
     }
 
 }
