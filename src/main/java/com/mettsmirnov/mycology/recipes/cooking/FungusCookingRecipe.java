@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 public class FungusCookingRecipe extends AbstractCookingRecipe
 {
     public static ResourceLocation TYPE_ID = new ResourceLocation(MycologyMod.MODID, "fungus_cooking");
-    public String speciesIngredient;
+    private final String speciesIngredient;
 
     private final ResourceLocation id;
 
