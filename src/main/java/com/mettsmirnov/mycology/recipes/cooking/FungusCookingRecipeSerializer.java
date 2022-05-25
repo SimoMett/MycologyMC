@@ -2,8 +2,10 @@ package com.mettsmirnov.mycology.recipes.cooking;
 
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
+import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -14,6 +16,7 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.extensions.IForgeRecipeSerializer;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jline.utils.Log;
@@ -31,8 +34,8 @@ public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCoo
             //Just for testing purposes
             float experience = jsonObject.get("experience").getAsFloat();
             int cookingTime = jsonObject.get("cookingtime").getAsInt();
-            ItemStack outputItemStack = ShapedRecipe.itemStackFromJson(jsonObject.get("result").getAsJsonObject());
-            result = new FungusCookingRecipe(id, speciesIngredient, outputItemStack, experience, cookingTime);
+            ResourceLocation itemId = new ResourceLocation(jsonObject.get("result").getAsString());
+            result = new FungusCookingRecipe(id, speciesIngredient, new ItemStack(ForgeRegistries.ITEMS.getValue(itemId)), experience, cookingTime);
         }
         return result;
     }

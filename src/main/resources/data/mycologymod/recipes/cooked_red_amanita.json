@@ -3,7 +3,7 @@
 	"ingredient": {
 		"species":"Red amanita"
 	},
+	"result":"minecraft:baked_potato",
 	"experience": 0.0,
-	"cookingtime": 200,
-	"result":"minecraft:baked_potato"
+	"cookingtime": 200
 } 
