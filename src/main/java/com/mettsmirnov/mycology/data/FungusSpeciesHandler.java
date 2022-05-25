@@ -16,7 +16,7 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
 
     public static FungusSpeciesHandler INSTANCE = new FungusSpeciesHandler();
 
-    public void put(FungusTraits defaultTraits, int[] colors, String fungusType, JsonObject fungusUses)
+    public void put(FungusTraits defaultTraits, int[] colors, String fungusType)
     {
         //TODO add recipes from fungusUses
         FungusSpecies species = new FungusSpecies(defaultTraits,colors,fungusType);
