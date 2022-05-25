@@ -11,7 +11,7 @@
 - [ ] Edit mushroom spreading mechanic and implement breeding
 - [ ] Add natural generation in the world
 - [ ] Implement fungus spores' area effect
-- [ ] Implement crafting mechanics
+- [X] Implement crafting mechanics
 
 ### Other notes
 - ~~Currently for each fungus type (Crimson and Warped) I need different tile entities containing the same data.
