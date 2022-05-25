@@ -19,10 +19,6 @@ public class ModBrewingRecipes
 {
     public static void register()
     {
-        //I think I can add all the potions from here:
-
-        //FIXME register() is called before FungusBrewingRecipeLoader can read the jsons
-
         FungusBrewingRecipe poppedRecipe = null;
         do
         {
