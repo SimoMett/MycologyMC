@@ -18,6 +18,6 @@ public class DataGenerators
         DataGenerator dataGentor = evt.getGenerator();
         ExistingFileHelper existingFileHelper = evt.getExistingFileHelper();
 
-        dataGentor.addProvider(new SpeciesGenerator(dataGentor));
+        dataGentor.addProvider(new SpeciesProvider(dataGentor));
     }
 }
