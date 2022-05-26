@@ -3,14 +3,12 @@ package com.mettsmirnov.mycology.datagen;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
-import net.minecraft.data.recipes.RecipeProvider;
+import org.jline.utils.Log;
 
-import java.io.IOException;
-
-public class SpeciesGenerator implements DataProvider
+public class SpeciesProvider implements DataProvider
 {
     private DataGenerator generator;
-    public SpeciesGenerator(DataGenerator generator)
+    public SpeciesProvider(DataGenerator generator)
     {
         this.generator = generator;
     }
@@ -18,10 +16,8 @@ public class SpeciesGenerator implements DataProvider
     @Override
     public void run(HashCache p_123925_)
     {
-
+        Log.info("reached");
     }
-
-
 
     @Override
     public String getName()
