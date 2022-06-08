@@ -2,10 +2,7 @@ package com.mettsmirnov.mycology.datagen;
 
 import com.google.common.primitives.UnsignedInteger;
 import com.google.common.primitives.UnsignedInts;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
@@ -31,11 +28,11 @@ public class SpeciesProvider implements DataProvider
     {
         createSpecies("amanita", "rubra",
                 "colored_crimson_fungus",
-                new Color[]{
-                        new Color(16777164),
-                        new Color(16724736),
-                        new Color(15921906),
-                        new Color(15921906)
+                new int[]{
+                        16777164,
+                        16724736,
+                        15921906,
+                        15921906
                 },
                 25,
                 1.0f,
@@ -61,17 +58,22 @@ public class SpeciesProvider implements DataProvider
         }
     }
 
-    private static void createSpecies(String genusName, String speciesName, String type, @Nonnull Color[] colors, float spreading,
-                                      float spreadBoost, int light, String terrain, float humidity, float temperature,
-                                      int area, String effect, @Nullable FungusSpawn spawnType)
+    //ugly code: too many parameters. I'll find a solution one day
+    private static void createSpecies(String genusName, String speciesName, String type, @Nonnull int[] colors,
+                                      float spreading, float spreadBoost, int light, String terrain, float humidity,
+                                      float temperature, int area, String effect, @Nullable FungusSpawn spawnType)
     {
         String name = genusName.substring(0,1).toUpperCase() + genusName.substring(1) + " " + speciesName.toLowerCase();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("species",name);
         jsonObject.addProperty("type",type);
-        //TODO save colors array in jsonObject
-        //UnsignedInteger[] colorsAsInt = {colors[0].hashCode(),colors[1].hashCode(),colors[2].hashCode(),colors[3].hashCode()};
-        //jsonObject.addProperty("colors", Arrays.toString(colorsAsInt));
+        UnsignedInteger[] colorsAsInt = new UnsignedInteger[] {
+                UnsignedInteger.valueOf(colors[0]),
+                UnsignedInteger.valueOf(colors[1]),
+                UnsignedInteger.valueOf(colors[2]),
+                UnsignedInteger.valueOf(colors[3])
+        };
+        jsonObject.addProperty("colors", Arrays.toString(colorsAsInt));
         jsonObject.addProperty("spreading",spreading);
         jsonObject.addProperty("spreadboost",spreadBoost);
         jsonObject.addProperty("light",light);
