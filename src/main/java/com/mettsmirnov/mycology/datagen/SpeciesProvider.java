@@ -29,7 +29,7 @@ public class SpeciesProvider implements DataProvider
     @Override
     public void run(HashCache p_123925_)
     {
-        createSpecies("Red amanita",
+        createSpecies("amanita", "rubra",
                 "colored_crimson_fungus",
                 new Color[]{
                         new Color(16777164),
@@ -61,10 +61,11 @@ public class SpeciesProvider implements DataProvider
         }
     }
 
-    private static void createSpecies(String name, String type, @Nonnull Color[] colors, float spreading,
+    private static void createSpecies(String genusName, String speciesName, String type, @Nonnull Color[] colors, float spreading,
                                       float spreadBoost, int light, String terrain, float humidity, float temperature,
                                       int area, String effect, @Nullable FungusSpawn spawnType)
     {
+        String name = genusName.substring(0,1).toUpperCase() + genusName.substring(1) + " " + speciesName.toLowerCase();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("species",name);
         jsonObject.addProperty("type",type);
