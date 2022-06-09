@@ -74,13 +74,12 @@ public class SpeciesProvider implements DataProvider
         JsonObject fungusJson = new JsonObject();
         fungusJson.addProperty("species",name);
         fungusJson.addProperty("type",type);
-        UnsignedInteger[] colorsAsInt = new UnsignedInteger[] {
-                UnsignedInteger.valueOf(colors[0]),
-                UnsignedInteger.valueOf(colors[1]),
-                UnsignedInteger.valueOf(colors[2]),
-                UnsignedInteger.valueOf(colors[3])
-        };
-        fungusJson.addProperty("colors", Arrays.toString(colorsAsInt));
+        JsonArray jsonColors = new JsonArray();
+        jsonColors.add(colors[0]);
+        jsonColors.add(colors[1]);
+        jsonColors.add(colors[2]);
+        jsonColors.add(colors[3]);
+        fungusJson.add("colors", jsonColors);
         fungusJson.addProperty("spreading",spreading);
         fungusJson.addProperty("spreadboost",spreadBoost);
         fungusJson.addProperty("light",light);
