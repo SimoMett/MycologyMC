@@ -1,22 +1,23 @@
 package com.mettsmirnov.mycology.datagen;
 
 import com.google.common.primitives.UnsignedInteger;
-import com.google.common.primitives.UnsignedInts;
 import com.google.gson.*;
+import com.mettsmirnov.mycology.MycologyMod;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
+import net.minecraft.server.packs.PackType;
 import org.jline.utils.Log;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.json.JsonObjectBuilder;
-import java.awt.*;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Arrays;
 
 public class SpeciesProvider implements DataProvider
 {
+
     private final DataGenerator generator;
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
     public SpeciesProvider(DataGenerator generator)
@@ -27,8 +28,7 @@ public class SpeciesProvider implements DataProvider
     @Override
     public void run(HashCache hashCache)
     {
-        Path path = this.generator.getOutputFolder();
-
+        //TODO refactoring
         createSpecies("amanita", "rubra",
                 "colored_crimson_fungus",
                 new int[]{
@@ -46,6 +46,7 @@ public class SpeciesProvider implements DataProvider
                 3,
                 "none",
                 new FungusSpawn("",0.5f),
+                generator,
                 hashCache
         );
     }
@@ -63,38 +64,50 @@ public class SpeciesProvider implements DataProvider
     }
 
     //ugly code: too many parameters. I'll find a solution one day
+    //TODO refactoring
     private static void createSpecies(String genusName, String speciesName, String type, @Nonnull int[] colors,
                                       float spreading, float spreadBoost, int light, String terrain, float humidity,
                                       float temperature, int area, String effect, @Nullable FungusSpawn spawnType,
-                                      HashCache hashCache)
+                                      DataGenerator generator, HashCache hashCache)
     {
         String name = genusName.substring(0,1).toUpperCase() + genusName.substring(1) + " " + speciesName.toLowerCase();
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("species",name);
-        jsonObject.addProperty("type",type);
+        JsonObject fungusJson = new JsonObject();
+        fungusJson.addProperty("species",name);
+        fungusJson.addProperty("type",type);
         UnsignedInteger[] colorsAsInt = new UnsignedInteger[] {
                 UnsignedInteger.valueOf(colors[0]),
                 UnsignedInteger.valueOf(colors[1]),
                 UnsignedInteger.valueOf(colors[2]),
                 UnsignedInteger.valueOf(colors[3])
         };
-        jsonObject.addProperty("colors", Arrays.toString(colorsAsInt));
-        jsonObject.addProperty("spreading",spreading);
-        jsonObject.addProperty("spreadboost",spreadBoost);
-        jsonObject.addProperty("light",light);
-        jsonObject.addProperty("terrain",terrain);
-        jsonObject.addProperty("humidity",humidity);
-        jsonObject.addProperty("temperature",temperature);
-        jsonObject.addProperty("area",area);
-        jsonObject.addProperty("effect",effect);
+        fungusJson.addProperty("colors", Arrays.toString(colorsAsInt));
+        fungusJson.addProperty("spreading",spreading);
+        fungusJson.addProperty("spreadboost",spreadBoost);
+        fungusJson.addProperty("light",light);
+        fungusJson.addProperty("terrain",terrain);
+        fungusJson.addProperty("humidity",humidity);
+        fungusJson.addProperty("temperature",temperature);
+        fungusJson.addProperty("area",area);
+        fungusJson.addProperty("effect",effect);
         if(spawnType!=null)
         {
-            //TODO need testing
             JsonObject spawnJson = new JsonObject();
             spawnJson.addProperty("biomes", spawnType.biomes);
             spawnJson.addProperty("chance",spawnType.chance);
-            jsonObject.add("spawn", spawnJson);
+            fungusJson.add("spawn", spawnJson);
         }
+
+        Path path = generator.getOutputFolder();
+        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", genusName.toLowerCase() + "_" + speciesName.toLowerCase() + ".json"));
+        try
+        {
+            DataProvider.save(GSON,hashCache,fungusJson,jsonLocation);
+        }
+        catch (IOException e)
+        {
+            Log.error(e);
+        }
+
     }
 
     @Override
