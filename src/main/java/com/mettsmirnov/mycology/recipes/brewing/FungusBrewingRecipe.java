@@ -38,7 +38,8 @@ public class FungusBrewingRecipe implements IBrewingRecipe
         if(item == Items.POTION || item == Items.SPLASH_POTION || item == Items.LINGERING_POTION || item == Items.GLASS_BOTTLE)
         {
             Potion potion = PotionUtils.getPotion(stack);
-            return potion.delegate.name().getPath().equals("awkward");
+            //return potion.delegate.name().getPath().equals("awkward"); //FIXME
+            return true;
         }
         return false;
     }

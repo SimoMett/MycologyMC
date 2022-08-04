@@ -3,6 +3,7 @@ package com.mettsmirnov.mycology.datagen;
 import com.google.common.primitives.UnsignedInteger;
 import com.google.gson.*;
 import com.mettsmirnov.mycology.MycologyMod;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
@@ -26,7 +27,7 @@ public class SpeciesProvider implements DataProvider
     }
 
     @Override
-    public void run(HashCache hashCache)
+    public void run(CachedOutput hashCache)
     {
         //TODO refactoring
         createSpecies("amanita", "rubra",
@@ -68,7 +69,7 @@ public class SpeciesProvider implements DataProvider
     private static void createSpecies(String genusName, String speciesName, String type, @Nonnull int[] colors,
                                       float spreading, float spreadBoost, int light, String terrain, float humidity,
                                       float temperature, int area, String effect, @Nullable FungusSpawn spawnType,
-                                      DataGenerator generator, HashCache hashCache)
+                                      DataGenerator generator, CachedOutput hashCache)
     {
         String name = genusName.substring(0,1).toUpperCase() + genusName.substring(1) + " " + speciesName.toLowerCase();
         JsonObject fungusJson = new JsonObject();
@@ -100,7 +101,7 @@ public class SpeciesProvider implements DataProvider
         Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", genusName.toLowerCase() + "_" + speciesName.toLowerCase() + ".json"));
         try
         {
-            DataProvider.save(GSON,hashCache,fungusJson,jsonLocation);
+            DataProvider.saveStable(hashCache,fungusJson,jsonLocation);
         }
         catch (IOException e)
         {

@@ -53,7 +53,7 @@ public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCoo
 
     }
 
-    @Override
+    /*@Override
     public RecipeSerializer<?> setRegistryName(ResourceLocation name)
     {
         return null;
@@ -70,5 +70,5 @@ public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCoo
     public Class<RecipeSerializer<?>> getRegistryType()
     {
         return null;
-    }
+    }*/
 }
