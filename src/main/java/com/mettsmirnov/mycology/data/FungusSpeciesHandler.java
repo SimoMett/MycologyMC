@@ -3,7 +3,6 @@ package com.mettsmirnov.mycology.data;
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.items.ModItems;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;

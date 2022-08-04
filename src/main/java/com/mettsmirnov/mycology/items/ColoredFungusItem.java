@@ -1,17 +1,14 @@
 package com.mettsmirnov.mycology.items;
 
-import com.mettsmirnov.mycology.MycologyMod;
-import com.mettsmirnov.mycology.blocks.ColoredFungusBlock;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.ComponentContents;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -23,6 +20,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.List;
 
 public class ColoredFungusItem extends BlockItem
@@ -51,7 +49,9 @@ public class ColoredFungusItem extends BlockItem
     @Override
     public Component getName(ItemStack itemStack)
     {
-        TextComponent textComponent = new TextComponent((String) itemStack.getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("species", IFungusData.GeneType.DOMINANT));
+        //TODO need testing
+        String name = (String) itemStack.getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("species", IFungusData.GeneType.DOMINANT);
+        Component textComponent = MutableComponent.create(ComponentContents.EMPTY).append(name);
         return textComponent;
     }
 

@@ -30,8 +30,6 @@ public class MycologyMod
     {
         IEventBus evtBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        evtBus.addListener(this::clientSetup);
-
         ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
         ModEntities.ENTITIES.register(evtBus);
@@ -43,12 +41,6 @@ public class MycologyMod
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(FungusDataAttacher.class);
         MinecraftForge.EVENT_BUS.addListener(this::reloadListener);
-    }
-
-    private void clientSetup(FMLClientSetupEvent event)
-    {
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.COLORED_CRIMSON_FUNGUS.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.COLORED_WARPED_FUNGUS.get(), RenderType.cutout());
     }
 
     private void reloadListener(AddReloadListenerEvent evt)

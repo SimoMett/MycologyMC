@@ -4,7 +4,7 @@ import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
@@ -28,8 +28,8 @@ public class FungusItemColorer implements ItemColor
     }
 
     @SubscribeEvent
-    public static void registerColorsEvent(ColorHandlerEvent.Item evt)
+    public static void registerColorsEvent(RegisterColorHandlersEvent.Item evt)
     {
-        evt.getItemColors().register(new FungusItemColorer(), ModItems.COLORED_CRIMSON_FUNGUS.get(), ModItems.COLORED_WARPED_FUNGUS.get());
+        evt.register(new FungusItemColorer(), ModItems.COLORED_CRIMSON_FUNGUS.get(), ModItems.COLORED_WARPED_FUNGUS.get());
     }
 }

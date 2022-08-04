@@ -79,5 +79,6 @@
         "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#layer3", "tintindex": 3 }
       }
     }
-  ]
+  ],
+  "render_type": "cutout"
 }
