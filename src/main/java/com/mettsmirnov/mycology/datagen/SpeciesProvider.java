@@ -1,12 +1,10 @@
 package com.mettsmirnov.mycology.datagen;
 
-import com.google.common.primitives.UnsignedInteger;
 import com.google.gson.*;
 import com.mettsmirnov.mycology.MycologyMod;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import net.minecraft.data.HashCache;
 import net.minecraft.server.packs.PackType;
 import org.jline.utils.Log;
 
@@ -14,13 +12,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Arrays;
 
 public class SpeciesProvider implements DataProvider
 {
-
     private final DataGenerator generator;
-    private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
     public SpeciesProvider(DataGenerator generator)
     {
         this.generator = generator;
@@ -76,10 +71,8 @@ public class SpeciesProvider implements DataProvider
         fungusJson.addProperty("species",name);
         fungusJson.addProperty("type",type);
         JsonArray jsonColors = new JsonArray();
-        jsonColors.add(colors[0]);
-        jsonColors.add(colors[1]);
-        jsonColors.add(colors[2]);
-        jsonColors.add(colors[3]);
+        for(int i = 0; i<4; i++)
+            jsonColors.add(colors[i]);
         fungusJson.add("colors", jsonColors);
         fungusJson.addProperty("spreading",spreading);
         fungusJson.addProperty("spreadboost",spreadBoost);
