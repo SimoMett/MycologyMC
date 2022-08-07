@@ -5,7 +5,7 @@
 	"spreading": 25,
 	"spreadboost": 1.0,
 	"light": 15,
-	"terrain": "grass",
+	"terrain": "mycologymod:grass",
 	"humidity": 0.8,
 	"temperature": 0.25,
 	"area": 3,
