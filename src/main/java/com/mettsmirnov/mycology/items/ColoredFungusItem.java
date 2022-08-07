@@ -1,24 +1,31 @@
 package com.mettsmirnov.mycology.items;
 
+import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.jetbrains.annotations.Nullable;
+import org.jline.utils.Log;
 
 import java.awt.*;
 import java.util.List;
@@ -80,5 +87,16 @@ public class ColoredFungusItem extends BlockItem
         CompoundTag tags = context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().serializeNBT();
         entity.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
         return result;
+    }
+
+    @Override
+    protected boolean canPlace(BlockPlaceContext context, BlockState blockState)
+    {
+        boolean canBePlaced = super.canPlace(context,blockState);
+        String terrainTag = (String) context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("terrain", IFungusData.GeneType.DOMINANT);
+        BlockPos clickedPos = context.getClickedPos();
+        BlockState belowBlock = context.getLevel().getBlockState(clickedPos.below());
+        boolean areRequirementsSat = belowBlock.getTags().toList().contains(BlockTags.create(new ResourceLocation(terrainTag)));
+        return canBePlaced && areRequirementsSat;
     }
 }
