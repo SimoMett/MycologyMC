@@ -80,7 +80,7 @@ public class FungusData implements IFungusData
 
     //nbt
     //this method is responsible for the creation of a NBT tag to be used when the world saves
-    private final char decompCharacter = ':';
+    private final char decompCharacter = ';';
     @Override
     public CompoundTag serializeNBT()
     {
