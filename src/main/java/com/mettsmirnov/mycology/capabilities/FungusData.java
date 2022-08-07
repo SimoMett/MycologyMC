@@ -80,6 +80,7 @@ public class FungusData implements IFungusData
 
     //nbt
     //this method is responsible for the creation of a NBT tag to be used when the world saves
+    private final char decompCharacter = ':';
     @Override
     public CompoundTag serializeNBT()
     {
@@ -88,7 +89,7 @@ public class FungusData implements IFungusData
         {
             if(dominantTraits.get(trait) instanceof String)
             {
-                tag.putString(trait,compose((String) dominantTraits.get(trait), (String) recessiveTraits.get(trait)));
+                tag.putString(trait,compose((String) dominantTraits.get(trait), (String) recessiveTraits.get(trait),decompCharacter));
             }
             else if(dominantTraits.get(trait) instanceof Integer)
             {
@@ -113,7 +114,7 @@ public class FungusData implements IFungusData
         {
             if(tag.getTagType(key) == Tag.TAG_STRING)
             {
-                String[] strs = StringDecomposition.decompose(tag.getString(key),':');
+                String[] strs = StringDecomposition.decompose(tag.getString(key),decompCharacter);
                 dominantTraits.put(key,strs[0]);
                 recessiveTraits.put(key,strs[1]);
             }

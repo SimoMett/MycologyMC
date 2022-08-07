@@ -2,9 +2,9 @@ package com.mettsmirnov.mycology.myutils;
 
 public class StringDecomposition
 {
-    public static String compose(String str1, String str2)
+    public static String compose(String str1, String str2, char decompChar)
     {
-        return str1+":"+str2;
+        return str1+decompChar+str2;
     }
 
     public static String[] decompose(String string, char character)
