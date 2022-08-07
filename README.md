@@ -1,7 +1,7 @@
 [![Java CI with Gradle](https://github.com/DonSimonetti/MycologyMC/actions/workflows/gradle.yml/badge.svg)](https://github.com/DonSimonetti/MycologyMC/actions/workflows/gradle.yml)
 
 # TODO list
-- [ ] Get the NBT tags working (maybe with capabilities?)
+- [X] Get the NBT tags working
 - [X] Make a data model to be stored in each mushroom (species, temperature, humidity, soil type, effects, ecc...)
 - [X] Make some species using jsons (just for testing purposes)
 - [ ] Ah yes, datapack support
