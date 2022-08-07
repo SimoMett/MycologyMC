@@ -2,20 +2,13 @@ package com.mettsmirnov.mycology.blocks;
 
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
-import com.mettsmirnov.mycology.capabilities.ModCapabilitiesHandler;
 import com.mettsmirnov.mycology.entities.ModEntities;
-import com.mettsmirnov.mycology.items.ColoredFungusItem;
-import com.mettsmirnov.mycology.items.ModItemGroup;
-import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,7 +19,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import org.jline.utils.Log;
 
-import java.awt.*;
 import java.util.Optional;
 
 public class ColoredFungusBlock extends BushBlock implements EntityBlock

@@ -2,11 +2,9 @@ package com.mettsmirnov.mycology.entities;
 
 import com.mettsmirnov.mycology.capabilities.FungusData;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -36,8 +34,6 @@ public class ColoredFungusBlockEntity extends BlockEntity
         super.load(tag);
     }*/
 
-    //Although is lacking synchronization when the client first plant the mushroom. The colors are mismatched until the world reloads or there's some chunk updates...
-    //so.. FIXME
     //Server-Client synchronization
     @Override
     public CompoundTag getUpdateTag()
@@ -64,8 +60,4 @@ public class ColoredFungusBlockEntity extends BlockEntity
     {
         super.onDataPacket(net, pkt);
     }
-    /*READ PLEASE (UPDATE)
-    * Now the synchronization thing is almost working, but it still requires a block update
-    * to match the colors between client and server
-    */
 }
