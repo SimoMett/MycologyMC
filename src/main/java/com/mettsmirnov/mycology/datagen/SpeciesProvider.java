@@ -36,7 +36,7 @@ public class SpeciesProvider implements DataProvider
                 25,
                 1.0f,
                 15,
-                "grass",
+                "mycologymod:grass",
                 0.8f,
                 0.25f,
                 3,
