@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModFeatures
 {
-    public static final DeferredRegister<Feature<?>> MOD_FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MycologyMod.MODID);
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MycologyMod.MODID);
 
-    public static final RegistryObject<Feature<SimpleBlockConfiguration>> MUSHROOMS = MOD_FEATURES.register("mycology_mushrooms",RandomFungusFeature::new);
+    public static final RegistryObject<Feature<SimpleBlockConfiguration>> MUSHROOMS = FEATURES.register("mycology_mushrooms",RandomFungusFeature::new);
 }

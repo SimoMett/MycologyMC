@@ -11,6 +11,7 @@ import com.mettsmirnov.mycology.items.ModItemGroup;
 import com.mettsmirnov.mycology.items.ModItems;
 import com.mettsmirnov.mycology.recipes.brewing.FungusBrewingRecipeLoader;
 import com.mettsmirnov.mycology.recipes.cooking.ModCookingRecipes;
+import com.mettsmirnov.mycology.world.features.ModFeatures;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,6 +38,7 @@ public class MycologyMod
         evtBus.register(FungusBlockColorer.class);
         ModCapabilitiesHandler.registerCapabilities(evtBus);
         ModCookingRecipes.RECIPES.register(evtBus);
+        ModFeatures.FEATURES.register(evtBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(FungusDataAttacher.class);
