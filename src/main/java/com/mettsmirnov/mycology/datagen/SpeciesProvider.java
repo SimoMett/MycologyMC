@@ -27,12 +27,7 @@ public class SpeciesProvider implements DataProvider
         //TODO refactoring
         createSpecies("amanita", "rubra",
                 "colored_crimson_fungus",
-                new int[]{
-                        16777164,
-                        16724736,
-                        15921906,
-                        15921906
-                },
+                new int[]{ 16777164, 16724736, 15921906, 15921906 },
                 25,
                 1.0f,
                 15,
@@ -40,7 +35,7 @@ public class SpeciesProvider implements DataProvider
                 new BiomeSpecs(0.8f, 0.25f),
                 3,
                 "none",
-                new FungusSpawn("",0.5f),
+                FungusSpawn.DEFAULT_SPAWN,
                 generator,
                 hashCache
         );
@@ -48,6 +43,8 @@ public class SpeciesProvider implements DataProvider
 
     private static class FungusSpawn
     {
+        public static FungusSpawn DEFAULT_SPAWN = new FungusSpawn("",0.5f);
+
         public String biomes;
         public float chance;
 
