@@ -37,8 +37,7 @@ public class SpeciesProvider implements DataProvider
                 1.0f,
                 15,
                 "mycologymod:grass",
-                0.8f,
-                0.25f,
+                new BiomeSpecs(0.8f, 0.25f),
                 3,
                 "none",
                 new FungusSpawn("",0.5f),
@@ -59,11 +58,23 @@ public class SpeciesProvider implements DataProvider
         }
     }
 
+    private static class BiomeSpecs
+    {
+        public float humidity;
+        public float temperature;
+
+        public BiomeSpecs(float humidity, float temperature)
+        {
+            this.humidity = humidity;
+            this.temperature = temperature;
+        }
+    }
+
     //ugly code: too many parameters. I'll find a solution one day
     //TODO refactoring
     private static void createSpecies(String genusName, String speciesName, String type, @Nonnull int[] colors,
-                                      float spreading, float spreadBoost, int light, String terrain, float humidity,
-                                      float temperature, int area, String effect, @Nullable FungusSpawn spawnType,
+                                      float spreading, float spreadBoost, int light, String terrain,
+                                      BiomeSpecs biomeSpecs, int area, String effect, @Nullable FungusSpawn spawnType,
                                       DataGenerator generator, CachedOutput hashCache)
     {
         String name = genusName.substring(0,1).toUpperCase() + genusName.substring(1) + " " + speciesName.toLowerCase();
@@ -78,8 +89,8 @@ public class SpeciesProvider implements DataProvider
         fungusJson.addProperty("spreadboost",spreadBoost);
         fungusJson.addProperty("light",light);
         fungusJson.addProperty("terrain",terrain);
-        fungusJson.addProperty("humidity",humidity);
-        fungusJson.addProperty("temperature",temperature);
+        fungusJson.addProperty("humidity",biomeSpecs.humidity);
+        fungusJson.addProperty("temperature",biomeSpecs.temperature);
         fungusJson.addProperty("area",area);
         fungusJson.addProperty("effect",effect);
         if(spawnType!=null)
