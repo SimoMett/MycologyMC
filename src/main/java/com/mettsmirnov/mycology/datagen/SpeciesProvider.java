@@ -10,6 +10,7 @@ import org.jline.utils.Log;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.awt.geom.Area;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -33,17 +34,29 @@ public class SpeciesProvider implements DataProvider
                 15,
                 "mycologymod:grass",
                 new BiomeSpecs(0.8f, 0.25f),
-                3,
-                "none",
+                AreaEffect.NO_EFFECT,
                 FungusSpawn.DEFAULT_SPAWN,
                 generator,
                 hashCache
         );
     }
 
+    private static class AreaEffect
+    {
+        public static final AreaEffect NO_EFFECT = new AreaEffect(3, "none");
+        public int areaRadius;
+        public String effect;
+
+        public AreaEffect(int areaRadius, String effect)
+        {
+            this.areaRadius = areaRadius;
+            this.effect = effect;
+        }
+    }
+
     private static class FungusSpawn
     {
-        public static FungusSpawn DEFAULT_SPAWN = new FungusSpawn("",0.5f);
+        public static final FungusSpawn DEFAULT_SPAWN = new FungusSpawn("",0.5f);
 
         public String biomes;
         public float chance;
@@ -71,7 +84,7 @@ public class SpeciesProvider implements DataProvider
     //TODO refactoring
     private static void createSpecies(String genusName, String speciesName, String type, @Nonnull int[] colors,
                                       float spreading, float spreadBoost, int light, String terrain,
-                                      BiomeSpecs biomeSpecs, int area, String effect, @Nullable FungusSpawn spawnType,
+                                      BiomeSpecs biomeSpecs, AreaEffect areaEffect, @Nullable FungusSpawn spawnType,
                                       DataGenerator generator, CachedOutput hashCache)
     {
         String name = genusName.substring(0,1).toUpperCase() + genusName.substring(1) + " " + speciesName.toLowerCase();
@@ -88,8 +101,8 @@ public class SpeciesProvider implements DataProvider
         fungusJson.addProperty("terrain",terrain);
         fungusJson.addProperty("humidity",biomeSpecs.humidity);
         fungusJson.addProperty("temperature",biomeSpecs.temperature);
-        fungusJson.addProperty("area",area);
-        fungusJson.addProperty("effect",effect);
+        fungusJson.addProperty("area",areaEffect.areaRadius);
+        fungusJson.addProperty("effect",areaEffect.effect);
         if(spawnType!=null)
         {
             JsonObject spawnJson = new JsonObject();
