@@ -130,10 +130,7 @@ public class FungusData implements IFungusData
                 recessiveTraits.put(key,floats[1]);
             }
         }
-        //I wrote in this way only for debugging purposes
-        colors[0]=tag.getIntArray("color")[0];
-        colors[1]=tag.getIntArray("color")[1];
-        colors[2]=tag.getIntArray("color")[2];
-        colors[3]=tag.getIntArray("color")[3];
+        for (int i=0; i<4; i++)
+            colors[i]=tag.getIntArray("color")[i];
     }
 }
