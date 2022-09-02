@@ -26,7 +26,21 @@ public class SpeciesProvider implements DataProvider
     public void run(CachedOutput hashCache)
     {
         //TODO refactoring
-        createSpecies("amanita", "rubra",
+        createSpecies("Amanita rubra",
+                "colored_crimson_fungus",
+                new int[]{ 16777164, 16724736, 15921906, 15921906 },
+                25,
+                1.0f,
+                15,
+                "mycologymod:grass",
+                new BiomeSpecs(0.8f, 0.25f),
+                AreaEffect.NO_EFFECT,
+                FungusSpawn.DEFAULT_SPAWN,
+                generator,
+                hashCache
+        );
+
+        createSpecies("Noble boletus squisitus",
                 "colored_crimson_fungus",
                 new int[]{ 16777164, 16724736, 15921906, 15921906 },
                 25,
@@ -82,14 +96,12 @@ public class SpeciesProvider implements DataProvider
 
     //ugly code: too many parameters. I'll find a solution one day
     //TODO refactoring
-    private static void createSpecies(String genusName, String speciesName, String type, @Nonnull int[] colors,
-                                      float spreading, float spreadBoost, int light, String terrain,
-                                      BiomeSpecs biomeSpecs, AreaEffect areaEffect, @Nullable FungusSpawn spawnType,
-                                      DataGenerator generator, CachedOutput hashCache)
+    private static void createSpecies(String speciesName, String type, @Nonnull int[] colors, float spreading, float spreadBoost,
+                                      int light, String terrain, BiomeSpecs biomeSpecs, AreaEffect areaEffect,
+                                      @Nullable FungusSpawn spawnType, DataGenerator generator, CachedOutput hashCache)
     {
-        String name = genusName.substring(0,1).toUpperCase() + genusName.substring(1) + " " + speciesName.toLowerCase();
         JsonObject fungusJson = new JsonObject();
-        fungusJson.addProperty("species",name);
+        fungusJson.addProperty("species",speciesName);
         fungusJson.addProperty("type",type);
         JsonArray jsonColors = new JsonArray();
         for(int i = 0; i<4; i++)
@@ -112,7 +124,8 @@ public class SpeciesProvider implements DataProvider
         }
 
         Path path = generator.getOutputFolder();
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", genusName.toLowerCase() + "_" + speciesName.toLowerCase() + ".json"));
+        String jsonFileName = speciesName.toLowerCase().replace(' ', '_')+".json";
+        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", jsonFileName));
         try
         {
             DataProvider.saveStable(hashCache,fungusJson,jsonLocation);
