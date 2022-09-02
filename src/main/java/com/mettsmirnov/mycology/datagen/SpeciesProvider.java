@@ -109,6 +109,7 @@ public class SpeciesProvider implements DataProvider
                                       int light, String terrain, BiomeSpecs biomeSpecs, AreaEffect areaEffect,
                                       @Nullable FungusSpawn spawnType, DataGenerator generator, CachedOutput hashCache)
     {
+        //IMPORTANT TODO: sanitize speciesName string
         JsonObject fungusJson = new JsonObject();
         fungusJson.addProperty("species",speciesName);
         fungusJson.addProperty("type",type);
