@@ -84,7 +84,15 @@ public class SpeciesProvider implements DataProvider
 
     private static class BiomeSpecs
     {
+        public static final BiomeSpecs JUNGLE = new BiomeSpecs(0.9f, 0.95f);
+        public static final BiomeSpecs MUSHROOM_FIELDS = new BiomeSpecs(1f, 0.9f);
+        public static final BiomeSpecs PLAINS = new BiomeSpecs(0.4f, 0.8f);
+        public static final BiomeSpecs SWAMP = new BiomeSpecs(0.9f, 0.8f);
+        public static final BiomeSpecs FOREST = new BiomeSpecs(0.8f, 0.7f);
+        public static final BiomeSpecs LUSH_CAVES = new BiomeSpecs(0.5f, 0.5f);
         public static final BiomeSpecs TAIGA = new BiomeSpecs(0.8f, 0.25f);
+        public static final BiomeSpecs SNOWY_PLAINS = new BiomeSpecs(0.5f, 0f);
+        public static final BiomeSpecs SNOWY_TAIGA = new BiomeSpecs(0.4f, -0.5f);
         public float humidity;
         public float temperature;
 
