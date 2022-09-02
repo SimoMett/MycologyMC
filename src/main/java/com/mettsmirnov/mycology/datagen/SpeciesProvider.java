@@ -33,7 +33,7 @@ public class SpeciesProvider implements DataProvider
                 1.0f,
                 15,
                 "mycologymod:grass",
-                new BiomeSpecs(0.8f, 0.25f),
+                BiomeSpecs.TAIGA,
                 AreaEffect.NO_EFFECT,
                 FungusSpawn.DEFAULT_SPAWN,
                 generator,
@@ -47,7 +47,7 @@ public class SpeciesProvider implements DataProvider
                 1.0f,
                 15,
                 "mycologymod:grass",
-                new BiomeSpecs(0.8f, 0.25f),
+                BiomeSpecs.TAIGA,
                 AreaEffect.NO_EFFECT,
                 FungusSpawn.DEFAULT_SPAWN,
                 generator,
@@ -84,6 +84,7 @@ public class SpeciesProvider implements DataProvider
 
     private static class BiomeSpecs
     {
+        public static final BiomeSpecs TAIGA = new BiomeSpecs(0.8f, 0.25f);
         public float humidity;
         public float temperature;
 
