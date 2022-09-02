@@ -42,7 +42,7 @@ public class SpeciesProvider implements DataProvider
 
         createSpecies("Noble boletus squisitus",
                 "colored_crimson_fungus",
-                new int[]{ 16777164, 16724736, 15921906, 15921906 },
+                new int[]{ 0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd },
                 25,
                 1.0f,
                 15,
