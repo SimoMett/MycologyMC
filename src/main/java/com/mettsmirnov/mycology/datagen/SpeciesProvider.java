@@ -39,6 +39,7 @@ public class SpeciesProvider implements DataProvider
                 hashCache
         );
 
+        //FIXME
         createSpecies("Noble boletus squisitus",
                 "colored_crimson_fungus",
                 new int[]{ 0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd },
@@ -52,6 +53,20 @@ public class SpeciesProvider implements DataProvider
                 generator,
                 hashCache
         );
+
+        //FIXME
+        createSpecies("Russula lazula",
+                "colored_warped_fungus",
+                new int[]{0xffffcc, 0x81726d, 0x183679, 0x2653b9},
+                25,
+                1.0f,
+                15,
+                "mycologymod:grass",
+                BiomesSpecs.FOREST,
+                AreaEffect.NO_EFFECT,
+                FungusSpawn.DEFAULT_SPAWN,
+                generator,
+                hashCache);
     }
 
     private static class AreaEffect
