@@ -10,7 +10,6 @@ import org.jline.utils.Log;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.awt.geom.Area;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -33,7 +32,7 @@ public class SpeciesProvider implements DataProvider
                 1.0f,
                 15,
                 "mycologymod:grass",
-                BiomeSpecs.TAIGA,
+                BiomesSpecs.TAIGA,
                 AreaEffect.NO_EFFECT,
                 FungusSpawn.DEFAULT_SPAWN,
                 generator,
@@ -47,7 +46,7 @@ public class SpeciesProvider implements DataProvider
                 1.0f,
                 15,
                 "mycologymod:grass",
-                BiomeSpecs.TAIGA,
+                BiomesSpecs.TAIGA,
                 AreaEffect.NO_EFFECT,
                 FungusSpawn.DEFAULT_SPAWN,
                 generator,
@@ -82,21 +81,21 @@ public class SpeciesProvider implements DataProvider
         }
     }
 
-    private static class BiomeSpecs
+    private static class BiomesSpecs
     {
-        public static final BiomeSpecs JUNGLE = new BiomeSpecs(0.9f, 0.95f);
-        public static final BiomeSpecs MUSHROOM_FIELDS = new BiomeSpecs(1f, 0.9f);
-        public static final BiomeSpecs PLAINS = new BiomeSpecs(0.4f, 0.8f);
-        public static final BiomeSpecs SWAMP = new BiomeSpecs(0.9f, 0.8f);
-        public static final BiomeSpecs FOREST = new BiomeSpecs(0.8f, 0.7f);
-        public static final BiomeSpecs LUSH_CAVES = new BiomeSpecs(0.5f, 0.5f);
-        public static final BiomeSpecs TAIGA = new BiomeSpecs(0.8f, 0.25f);
-        public static final BiomeSpecs SNOWY_PLAINS = new BiomeSpecs(0.5f, 0f);
-        public static final BiomeSpecs SNOWY_TAIGA = new BiomeSpecs(0.4f, -0.5f);
+        public static final BiomesSpecs JUNGLE = new BiomesSpecs(0.9f, 0.95f);
+        public static final BiomesSpecs MUSHROOM_FIELDS = new BiomesSpecs(1f, 0.9f);
+        public static final BiomesSpecs PLAINS = new BiomesSpecs(0.4f, 0.8f);
+        public static final BiomesSpecs SWAMP = new BiomesSpecs(0.9f, 0.8f);
+        public static final BiomesSpecs FOREST = new BiomesSpecs(0.8f, 0.7f);
+        public static final BiomesSpecs LUSH_CAVES = new BiomesSpecs(0.5f, 0.5f);
+        public static final BiomesSpecs TAIGA = new BiomesSpecs(0.8f, 0.25f);
+        public static final BiomesSpecs SNOWY_PLAINS = new BiomesSpecs(0.5f, 0f);
+        public static final BiomesSpecs SNOWY_TAIGA = new BiomesSpecs(0.4f, -0.5f);
         public float humidity;
         public float temperature;
 
-        public BiomeSpecs(float humidity, float temperature)
+        public BiomesSpecs(float humidity, float temperature)
         {
             this.humidity = humidity;
             this.temperature = temperature;
@@ -106,7 +105,7 @@ public class SpeciesProvider implements DataProvider
     //ugly code: too many parameters. I'll find a solution one day
     //TODO refactoring
     private static void createSpecies(String speciesName, String type, @Nonnull int[] colors, float spreading, float spreadBoost,
-                                      int light, String terrain, BiomeSpecs biomeSpecs, AreaEffect areaEffect,
+                                      int light, String terrain, BiomesSpecs biomesSpecs, AreaEffect areaEffect,
                                       @Nullable FungusSpawn spawnType, DataGenerator generator, CachedOutput hashCache)
     {
         //IMPORTANT TODO: sanitize speciesName string
@@ -121,8 +120,8 @@ public class SpeciesProvider implements DataProvider
         fungusJson.addProperty("spreadboost",spreadBoost);
         fungusJson.addProperty("light",light);
         fungusJson.addProperty("terrain",terrain);
-        fungusJson.addProperty("humidity",biomeSpecs.humidity);
-        fungusJson.addProperty("temperature",biomeSpecs.temperature);
+        fungusJson.addProperty("humidity",biomesSpecs.humidity);
+        fungusJson.addProperty("temperature",biomesSpecs.temperature);
         fungusJson.addProperty("area",areaEffect.areaRadius);
         fungusJson.addProperty("effect",areaEffect.effect);
         if(spawnType!=null)
