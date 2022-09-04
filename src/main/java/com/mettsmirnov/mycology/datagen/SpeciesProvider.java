@@ -39,6 +39,18 @@ public class SpeciesProvider implements DataProvider
                 hashCache
         );
 
+        createSpecies("Boletus salubrium",
+                "colored_crimson_fungus",
+                new int[]{96564928, -1231718516, 751835909, -1044800857},
+                25,
+                1.0f,
+                15,
+                "mycologymod:grass",
+                BiomesSpecs.TAIGA,
+                AreaEffect.NO_EFFECT,
+                FungusSpawn.DEFAULT_SPAWN,
+                generator,hashCache);
+
         //FIXME
         createSpecies("Noble boletus squisitus",
                 "colored_crimson_fungus",
