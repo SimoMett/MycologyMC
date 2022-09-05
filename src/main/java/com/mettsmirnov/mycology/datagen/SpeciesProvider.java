@@ -79,6 +79,12 @@ public class SpeciesProvider implements DataProvider
                 FungusSpawn.DEFAULT_SPAWN,
                 generator,
                 hashCache);
+
+        createSpeciesDefault("Amanita cuprea",
+                "colored_warped_fungus",
+                new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068},
+                generator,
+                hashCache);
     }
 
     private static class AreaEffect
