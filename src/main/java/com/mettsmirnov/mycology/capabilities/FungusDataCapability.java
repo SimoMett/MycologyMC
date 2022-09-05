@@ -10,11 +10,5 @@ public class FungusDataCapability
 {
     public static final Capability<IFungusData> INSTANCE = CapabilityManager.get(new CapabilityToken<>(){});
 
-    @SubscribeEvent
-    public static void onRegisterCapability(RegisterCapabilitiesEvent evt)
-    {
-        evt.register(IFungusData.class);
-    }
-
     private FungusDataCapability(){}
 }
