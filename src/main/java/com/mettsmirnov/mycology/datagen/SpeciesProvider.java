@@ -24,7 +24,6 @@ public class SpeciesProvider implements DataProvider
     @Override
     public void run(CachedOutput hashCache)
     {
-        //TODO refactoring
         createSpecies("Amanita rubra",
                 "colored_crimson_fungus",
                 new int[]{ 16777164, 16724736, 15921906, 15921906 },
@@ -66,6 +65,7 @@ public class SpeciesProvider implements DataProvider
                 hashCache
         );
 
+        //      Mineral fungi
         //FIXME
         createSpecies("Russula lazula",
                 "colored_warped_fungus",
@@ -171,6 +171,13 @@ public class SpeciesProvider implements DataProvider
             Log.error(e);
         }
 
+    }
+
+    public static void createSpeciesDefault(String speciesName, String type, @Nonnull int[] colors, DataGenerator gentor,
+                                            CachedOutput hashCache)
+    {
+        createSpecies(speciesName, type, colors,25,1.0f, 15, "mycologymod:grass",
+                BiomesSpecs.FOREST, AreaEffect.NO_EFFECT, FungusSpawn.DEFAULT_SPAWN, gentor, hashCache);
     }
 
     @Override
