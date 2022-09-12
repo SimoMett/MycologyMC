@@ -1,6 +1,7 @@
 {
   "ambientocclusion": false,
   "textures": {
+    "particle": "block/dirt",
     "layer0": "mycologymod:item/warped_fungus_stelum",
     "layer1": "mycologymod:item/warped_fungus_head",
     "layer2": "mycologymod:item/warped_fungus_details",
