@@ -1,6 +1,8 @@
 package com.mettsmirnov.mycology.world.features;
 
 import com.mettsmirnov.mycology.MycologyMod;
+import net.minecraft.core.Registry;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,4 +14,7 @@ public class ModFeatures
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MycologyMod.MODID);
 
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> MUSHROOMS = FEATURES.register("mycology_mushrooms",RandomFungusFeature::new);
+
+    public static final DeferredRegister<ConfiguredFeature<?,?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY,MycologyMod.MODID);
+    //public static final RegistryObject<ConfiguredFeature<?,?>> CONFIGURED_MUSHROOMS = CONFIGURED_FEATURES.register("patch_mushrooms",)
 }
