@@ -24,19 +24,17 @@ public class SpeciesProvider implements DataProvider
     @Override
     public void run(CachedOutput hashCache)
     {
-        createSpecies("Amanita rubra",
-                "colored_crimson_fungus",
-                new int[]{ 16777164, 16724736, 15921906, 15921906 },
-                25,
-                1.0f,
-                15,
-                "mycologymod:grass",
-                BiomesSpecs.TAIGA,
-                AreaEffect.NO_EFFECT,
-                FungusSpawn.DEFAULT_SPAWN,
-                generator,
-                hashCache
-        );
+        SpeciesBuilder.getInstance().createSpecies("Amanita rubra")
+                .type("colored_crimson_fungus")
+                .colors(new int[]{ 16777164, 16724736, 15921906, 15921906 })
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain("mycologymod:grass")
+                .biomesSpecs(BiomesSpecs.TAIGA)
+                .areaEffect(AreaEffect.NO_EFFECT)
+                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .build(generator,hashCache);
 
         createSpecies("Boletus salubrium",
                 "colored_crimson_fungus",
@@ -87,7 +85,7 @@ public class SpeciesProvider implements DataProvider
                 hashCache);
     }
 
-    private static class AreaEffect
+    public static class AreaEffect
     {
         public static final AreaEffect NO_EFFECT = new AreaEffect(3, "none");
         public int areaRadius;
@@ -100,7 +98,7 @@ public class SpeciesProvider implements DataProvider
         }
     }
 
-    private static class FungusSpawn
+    public static class FungusSpawn
     {
         public static final FungusSpawn DEFAULT_SPAWN = new FungusSpawn("",0.5f);
 
@@ -114,7 +112,7 @@ public class SpeciesProvider implements DataProvider
         }
     }
 
-    private static class BiomesSpecs
+    public static class BiomesSpecs
     {
         public static final BiomesSpecs JUNGLE = new BiomesSpecs(0.9f, 0.95f);
         public static final BiomesSpecs MUSHROOM_FIELDS = new BiomesSpecs(1f, 0.9f);
