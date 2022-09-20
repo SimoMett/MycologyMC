@@ -13,6 +13,14 @@ import java.nio.file.Path;
 
 public class SpeciesBuilder
 {
+    private SpeciesBuilder(){}
+    private static final SpeciesBuilder builderInstance = new SpeciesBuilder();
+
+    public static SpeciesBuilder getInstance()
+    {
+        return builderInstance;
+    }
+
     //Traits
     private String speciesName;
     private String type;
@@ -26,9 +34,10 @@ public class SpeciesBuilder
     private SpeciesProvider.FungusSpawn spawnType;
 
     //Methods chaining
-    public SpeciesBuilder(String speciesName)
+    public SpeciesBuilder createSpecies(String speciesName)
     {
         this.speciesName = speciesName;
+        return this;
     }
 
     public SpeciesBuilder type(String type)
