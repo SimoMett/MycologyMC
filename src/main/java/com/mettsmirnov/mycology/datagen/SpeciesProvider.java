@@ -36,47 +36,44 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .build(generator,hashCache);
 
-        createSpecies("Boletus salubrium",
-                "colored_crimson_fungus",
-                new int[]{96564928, -1231718516, 751835909, -1044800857},
-                25,
-                1.0f,
-                15,
-                "mycologymod:grass",
-                BiomesSpecs.TAIGA,
-                AreaEffect.NO_EFFECT,
-                FungusSpawn.DEFAULT_SPAWN,
-                generator,hashCache);
+        SpeciesBuilder.getInstance().createSpecies("Boletus salubrium")
+                .type("colored_crimson_fungus")
+                .colors(new int[]{96564928, -1231718516, 751835909, -1044800857})
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain("mycologymod:grass")
+                .biomesSpecs(BiomesSpecs.TAIGA)
+                .areaEffect(AreaEffect.NO_EFFECT)
+                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .build(generator,hashCache);
 
         //FIXME
-        createSpecies("Noble boletus squisitus",
-                "colored_crimson_fungus",
-                new int[]{ 0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd },
-                25,
-                1.0f,
-                15,
-                "mycologymod:grass",
-                BiomesSpecs.TAIGA,
-                AreaEffect.NO_EFFECT,
-                FungusSpawn.DEFAULT_SPAWN,
-                generator,
-                hashCache
-        );
+        SpeciesBuilder.getInstance().createSpecies("Noble boletus squisitus")
+                .type("colored_crimson_fungus")
+                .colors(new int[]{ 0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd })
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain("mycologymod:grass")
+                .biomesSpecs(BiomesSpecs.TAIGA)
+                .areaEffect(AreaEffect.NO_EFFECT)
+                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .build(generator, hashCache);
 
         //      Mineral fungi
         //FIXME
-        createSpecies("Russula lazula",
-                "colored_warped_fungus",
-                new int[]{0xffffcc, 0x81726d, 0x183679, 0x2653b9},
-                25,
-                1.0f,
-                15,
-                "mycologymod:grass",
-                BiomesSpecs.FOREST,
-                AreaEffect.NO_EFFECT,
-                FungusSpawn.DEFAULT_SPAWN,
-                generator,
-                hashCache);
+        SpeciesBuilder.getInstance().createSpecies("Russula lazula")
+                .type("colored_warped_fungus")
+                .colors(new int[]{0xffffcc, 0x81726d, 0x183679, 0x2653b9})
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain("mycologymod:grass")
+                .biomesSpecs(BiomesSpecs.FOREST)
+                .areaEffect(AreaEffect.NO_EFFECT)
+                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .build(generator, hashCache);
 
         createSpeciesDefault("Amanita cuprea",
                 "colored_warped_fungus",
@@ -133,55 +130,20 @@ public class SpeciesProvider implements DataProvider
         }
     }
 
-    //ugly code: too many parameters. I'll find a solution one day
-    //TODO refactoring
-    private static void createSpecies(String speciesName, String type, @Nonnull int[] colors, float spreading, float spreadBoost,
-                                      int light, String terrain, BiomesSpecs biomesSpecs, AreaEffect areaEffect,
-                                      @Nullable FungusSpawn spawnType, DataGenerator generator, CachedOutput hashCache)
-    {
-        //IMPORTANT TODO: sanitize speciesName string
-        JsonObject fungusJson = new JsonObject();
-        fungusJson.addProperty("species",speciesName);
-        fungusJson.addProperty("type",type);
-        JsonArray jsonColors = new JsonArray();
-        for(int i = 0; i<4; i++)
-            jsonColors.add(colors[i]);
-        fungusJson.add("colors", jsonColors);
-        fungusJson.addProperty("spreading",spreading);
-        fungusJson.addProperty("spreadboost",spreadBoost);
-        fungusJson.addProperty("light",light);
-        fungusJson.addProperty("terrain",terrain);
-        fungusJson.addProperty("humidity",biomesSpecs.humidity);
-        fungusJson.addProperty("temperature",biomesSpecs.temperature);
-        fungusJson.addProperty("area",areaEffect.areaRadius);
-        fungusJson.addProperty("effect",areaEffect.effect);
-        if(spawnType!=null)
-        {
-            JsonObject spawnJson = new JsonObject();
-            spawnJson.addProperty("biomes", spawnType.biomes);
-            spawnJson.addProperty("chance",spawnType.chance);
-            fungusJson.add("spawn", spawnJson);
-        }
-
-        Path path = generator.getOutputFolder();
-        String jsonFileName = speciesName.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", jsonFileName));
-        try
-        {
-            DataProvider.saveStable(hashCache,fungusJson,jsonLocation);
-        }
-        catch (IOException e)
-        {
-            Log.error(e);
-        }
-
-    }
-
     public static void createSpeciesDefault(String speciesName, String type, @Nonnull int[] colors, DataGenerator gentor,
                                             CachedOutput hashCache)
     {
-        createSpecies(speciesName, type, colors,25,1.0f, 15, "mycologymod:grass",
-                BiomesSpecs.FOREST, AreaEffect.NO_EFFECT, FungusSpawn.DEFAULT_SPAWN, gentor, hashCache);
+        SpeciesBuilder.getInstance().createSpecies(speciesName)
+                .type(type)
+                .colors(colors)
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain("mycologymod:grass")
+                .biomesSpecs(BiomesSpecs.FOREST)
+                .areaEffect(AreaEffect.NO_EFFECT)
+                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .build(gentor, hashCache);
     }
 
     @Override
