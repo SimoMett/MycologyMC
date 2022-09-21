@@ -40,6 +40,19 @@ public class SpeciesBuilder
         return this;
     }
 
+    public SpeciesBuilder createDefaultSpecies(String speciesName)
+    {
+        this.speciesName = speciesName;
+        this.spreading = 25;
+        this.spreadBoost = 1.0f;
+        this.light = 15;
+        this.terrain = "mycologymod:grass";
+        this.biomesSpecs = SpeciesProvider.BiomesSpecs.FOREST;
+        this.areaEffect = SpeciesProvider.AreaEffect.NO_EFFECT;
+        this.spawnType = SpeciesProvider.FungusSpawn.DEFAULT_SPAWN;
+        return this;
+    }
+
     public SpeciesBuilder type(String type)
     {
         this.type = type;

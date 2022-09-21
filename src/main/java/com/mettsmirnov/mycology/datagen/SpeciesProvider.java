@@ -15,6 +15,8 @@ import java.nio.file.Path;
 
 public class SpeciesProvider implements DataProvider
 {
+    private static final String CRIMSON_TYPE = "colored_crimson_fungus";
+    private static final String WARPED_TYPE = "colored_warped_fungus";
     private final DataGenerator generator;
     public SpeciesProvider(DataGenerator generator)
     {
@@ -24,8 +26,9 @@ public class SpeciesProvider implements DataProvider
     @Override
     public void run(CachedOutput hashCache)
     {
+        //FIXME all the fungi need some work
         SpeciesBuilder.getInstance().createSpecies("Amanita rubra")
-                .type("colored_crimson_fungus")
+                .type(CRIMSON_TYPE)
                 .colors(new int[]{ 16777164, 16724736, 15921906, 15921906 })
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -37,7 +40,7 @@ public class SpeciesProvider implements DataProvider
                 .build(generator,hashCache);
 
         SpeciesBuilder.getInstance().createSpecies("Boletus salubrium")
-                .type("colored_crimson_fungus")
+                .type(CRIMSON_TYPE)
                 .colors(new int[]{96564928, -1231718516, 751835909, -1044800857})
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -48,9 +51,8 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .build(generator,hashCache);
 
-        //FIXME
         SpeciesBuilder.getInstance().createSpecies("Noble boletus squisitus")
-                .type("colored_crimson_fungus")
+                .type(CRIMSON_TYPE)
                 .colors(new int[]{ 0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd })
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -61,10 +63,11 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .build(generator, hashCache);
 
-        //      Mineral fungi
-        //FIXME
+/////////////////////////////
+//      Mineral fungi      //
+/////////////////////////////
         SpeciesBuilder.getInstance().createSpecies("Russula lazula")
-                .type("colored_warped_fungus")
+                .type(WARPED_TYPE)
                 .colors(new int[]{0xffffcc, 0x81726d, 0x183679, 0x2653b9})
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -75,11 +78,10 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .build(generator, hashCache);
 
-        createSpeciesDefault("Amanita cuprea",
-                "colored_warped_fungus",
-                new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068},
-                generator,
-                hashCache);
+        SpeciesBuilder.getInstance().createDefaultSpecies("Amanita cuprea")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068})
+                .build(generator, hashCache);
     }
 
     public static class AreaEffect
