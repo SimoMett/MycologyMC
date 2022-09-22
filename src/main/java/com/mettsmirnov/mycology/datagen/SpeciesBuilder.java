@@ -2,6 +2,9 @@ package com.mettsmirnov.mycology.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
+import com.mettsmirnov.mycology.datagen.common.AreaEffect;
+import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
+import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -29,9 +32,9 @@ public class SpeciesBuilder
     private float spreadBoost;
     private int light;
     private String terrain;
-    private SpeciesProvider.BiomesSpecs biomesSpecs;
-    private SpeciesProvider.AreaEffect areaEffect;
-    private SpeciesProvider.FungusSpawn spawnType;
+    private BiomesSpecs biomesSpecs;
+    private AreaEffect areaEffect;
+    private FungusSpawn spawnType;
 
     //Methods chaining
     public SpeciesBuilder createSpecies(String speciesName)
@@ -47,9 +50,9 @@ public class SpeciesBuilder
         this.spreadBoost = 1.0f;
         this.light = 15;
         this.terrain = "mycologymod:grass";
-        this.biomesSpecs = SpeciesProvider.BiomesSpecs.FOREST;
-        this.areaEffect = SpeciesProvider.AreaEffect.NO_EFFECT;
-        this.spawnType = SpeciesProvider.FungusSpawn.DEFAULT_SPAWN;
+        this.biomesSpecs = BiomesSpecs.FOREST;
+        this.areaEffect = AreaEffect.NO_EFFECT;
+        this.spawnType = FungusSpawn.DEFAULT_SPAWN;
         return this;
     }
 
@@ -89,19 +92,19 @@ public class SpeciesBuilder
         return this;
     }
 
-    public SpeciesBuilder biomesSpecs(SpeciesProvider.BiomesSpecs biomesSpecs)
+    public SpeciesBuilder biomesSpecs(BiomesSpecs biomesSpecs)
     {
         this.biomesSpecs = biomesSpecs;
         return this;
     }
 
-    public SpeciesBuilder areaEffect(SpeciesProvider.AreaEffect areaEffect)
+    public SpeciesBuilder areaEffect(AreaEffect areaEffect)
     {
         this.areaEffect = areaEffect;
         return this;
     }
 
-    public SpeciesBuilder spawnType(SpeciesProvider.FungusSpawn spawnType)
+    public SpeciesBuilder spawnType(FungusSpawn spawnType)
     {
         this.spawnType = spawnType;
         return this;

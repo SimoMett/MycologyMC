@@ -1,17 +1,13 @@
 package com.mettsmirnov.mycology.datagen;
 
-import com.google.gson.*;
-import com.mettsmirnov.mycology.MycologyMod;
+import com.mettsmirnov.mycology.datagen.common.AreaEffect;
+import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
+import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import net.minecraft.server.packs.PackType;
-import org.jline.utils.Log;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.io.IOException;
-import java.nio.file.Path;
 
 public class SpeciesProvider implements DataProvider
 {
@@ -82,54 +78,6 @@ public class SpeciesProvider implements DataProvider
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068})
                 .build(generator, hashCache);
-    }
-
-    public static class AreaEffect
-    {
-        public static final AreaEffect NO_EFFECT = new AreaEffect(3, "none");
-        public int areaRadius;
-        public String effect;
-
-        public AreaEffect(int areaRadius, String effect)
-        {
-            this.areaRadius = areaRadius;
-            this.effect = effect;
-        }
-    }
-
-    public static class FungusSpawn
-    {
-        public static final FungusSpawn DEFAULT_SPAWN = new FungusSpawn("",0.5f);
-
-        public String biomes;
-        public float chance;
-
-        public FungusSpawn(String biomes, float chance)
-        {
-            this.biomes = biomes;
-            this.chance = chance;
-        }
-    }
-
-    public static class BiomesSpecs
-    {
-        public static final BiomesSpecs JUNGLE = new BiomesSpecs(0.9f, 0.95f);
-        public static final BiomesSpecs MUSHROOM_FIELDS = new BiomesSpecs(1f, 0.9f);
-        public static final BiomesSpecs PLAINS = new BiomesSpecs(0.4f, 0.8f);
-        public static final BiomesSpecs SWAMP = new BiomesSpecs(0.9f, 0.8f);
-        public static final BiomesSpecs FOREST = new BiomesSpecs(0.8f, 0.7f);
-        public static final BiomesSpecs LUSH_CAVES = new BiomesSpecs(0.5f, 0.5f);
-        public static final BiomesSpecs TAIGA = new BiomesSpecs(0.8f, 0.25f);
-        public static final BiomesSpecs SNOWY_PLAINS = new BiomesSpecs(0.5f, 0f);
-        public static final BiomesSpecs SNOWY_TAIGA = new BiomesSpecs(0.4f, -0.5f);
-        public float humidity;
-        public float temperature;
-
-        public BiomesSpecs(float humidity, float temperature)
-        {
-            this.humidity = humidity;
-            this.temperature = temperature;
-        }
     }
 
     public static void createSpeciesDefault(String speciesName, String type, @Nonnull int[] colors, DataGenerator gentor,
