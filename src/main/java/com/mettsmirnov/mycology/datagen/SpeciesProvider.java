@@ -7,7 +7,7 @@ import net.minecraft.data.DataProvider;
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
 
-public class SpeciesProvider implements DataProvider
+public class SpeciesProvider implements DataProvider//TODO FIXME
 {
     private static final String CRIMSON_TYPE = "colored_crimson_fungus";
     private static final String WARPED_TYPE = "colored_warped_fungus";
