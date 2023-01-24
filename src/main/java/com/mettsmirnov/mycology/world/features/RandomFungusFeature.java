@@ -1,21 +1,24 @@
 package com.mettsmirnov.mycology.world.features;
 
+import com.mettsmirnov.mycology.world.features.configs.MyTestFeatureConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import org.jline.utils.Log;
 
 public class RandomFungusFeature extends Feature<SimpleBlockConfiguration>
 {
 
-    public RandomFungusFeature()
+    public RandomFungusFeature(Codec<SimpleBlockConfiguration> configurationCodec)
     {
-        super(SimpleBlockConfiguration.CODEC);
+        super(configurationCodec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> p_159749_)
+    public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> context)
     {
+        Log.debug("PLACING");
         return false;
     }
 }
