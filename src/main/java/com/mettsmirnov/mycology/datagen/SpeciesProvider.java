@@ -1,17 +1,11 @@
 package com.mettsmirnov.mycology.datagen;
 
-import com.google.gson.*;
-import com.mettsmirnov.mycology.MycologyMod;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import net.minecraft.server.packs.PackType;
-import org.jline.utils.Log;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.io.IOException;
-import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
 public class SpeciesProvider implements DataProvider
 {
@@ -24,7 +18,7 @@ public class SpeciesProvider implements DataProvider
     }
 
     @Override
-    public void run(CachedOutput hashCache)
+    public CompletableFuture<?> run(CachedOutput hashCache)
     {
         //FIXME all the fungi need some work
         SpeciesBuilder.getInstance().createSpecies("Amanita rubra")
@@ -82,6 +76,7 @@ public class SpeciesProvider implements DataProvider
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068})
                 .build(generator, hashCache);
+        return null;
     }
 
     public static class AreaEffect

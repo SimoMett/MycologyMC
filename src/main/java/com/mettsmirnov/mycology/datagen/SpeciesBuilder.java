@@ -133,17 +133,11 @@ public class SpeciesBuilder
             fungusJson.add("spawn", spawnJson);
         }
 
-        Path path = generator.getOutputFolder();
+        Path path = generator.getPackOutput().getOutputFolder();
         String jsonFileName = speciesName.toLowerCase().replace(' ', '_')+".json";
         Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", jsonFileName));
-        try
-        {
-            DataProvider.saveStable(hashCache,fungusJson,jsonLocation);
-        }
-        catch (IOException e)
-        {
-            Log.error(e);
-        }
+
+        DataProvider.saveStable(hashCache,fungusJson,jsonLocation);
     }
 
 }

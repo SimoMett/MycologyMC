@@ -42,8 +42,20 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
             e.getCapability(FungusDataCapability.INSTANCE).resolve().get().loadFrom(species.defaultTraits, species.defaultTraits);
             collection.add(e);
         }
-
         return collection;
+    }
+
+    public ItemStack getCreativeTabItemstack()
+    {
+        FungusSpecies species = list.get(1);
+        ItemStack e;
+        if(species.fungusType.equals("colored_crimson_fungus"))
+            e = new ItemStack(ModItems.COLORED_CRIMSON_FUNGUS.get());
+        else
+            e = new ItemStack(ModItems.COLORED_WARPED_FUNGUS.get());
+        e.getCapability(FungusDataCapability.INSTANCE).resolve().get().setColors(species.colors);
+        e.getCapability(FungusDataCapability.INSTANCE).resolve().get().loadFrom(species.defaultTraits, species.defaultTraits);
+        return e;
     }
 
     private static class FungusSpecies

@@ -7,25 +7,20 @@ import com.mettsmirnov.mycology.capabilities.ModCapabilitiesHandler;
 import com.mettsmirnov.mycology.data.FungusSpeciesLoader;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
-import com.mettsmirnov.mycology.items.ModItemGroup;
 import com.mettsmirnov.mycology.items.ModItems;
 import com.mettsmirnov.mycology.recipes.brewing.FungusBrewingRecipeLoader;
 import com.mettsmirnov.mycology.recipes.cooking.ModCookingRecipes;
 import com.mettsmirnov.mycology.world.features.ModFeatures;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(MycologyMod.MODID)
 public class MycologyMod
 {
     public static final String MODID = "mycologymod";
-    public static final ModItemGroup MOD_ITEM_GROUP = new ModItemGroup(MODID);
 
     public MycologyMod()
     {

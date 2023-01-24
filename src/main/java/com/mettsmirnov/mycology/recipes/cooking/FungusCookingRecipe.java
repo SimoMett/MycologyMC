@@ -20,7 +20,7 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
 
     public FungusCookingRecipe(ResourceLocation id, String speciesIngredient, ItemStack result, float exp, int cookingTime)
     {
-        super(RecipeType.SMELTING, TYPE_ID, "fungus_cooking", Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS.get()), result, exp, cookingTime);
+        super(RecipeType.SMELTING, TYPE_ID, "fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS.get()), result, exp, cookingTime);
         this.speciesIngredient = speciesIngredient;
         this.id = id;
     }
