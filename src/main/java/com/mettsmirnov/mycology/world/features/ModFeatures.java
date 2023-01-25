@@ -2,7 +2,6 @@ package com.mettsmirnov.mycology.world.features;
 
 import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
-import com.mettsmirnov.mycology.world.features.configs.MyTestFeatureConfiguration;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
