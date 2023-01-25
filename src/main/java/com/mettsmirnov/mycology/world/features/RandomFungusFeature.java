@@ -1,6 +1,5 @@
 package com.mettsmirnov.mycology.world.features;
 
-import com.mettsmirnov.mycology.world.features.configs.MyTestFeatureConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
