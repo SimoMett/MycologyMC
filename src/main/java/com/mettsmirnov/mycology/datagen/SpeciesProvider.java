@@ -82,22 +82,6 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         return null;
     }
 
-    public static void createSpeciesDefault(String speciesName, String type, @Nonnull int[] colors, DataGenerator gentor,
-                                            CachedOutput hashCache)
-    {
-        SpeciesBuilder.getInstance().createSpecies(speciesName)
-                .type(type)
-                .colors(colors)
-                .spreading(25)
-                .spreadBoost(1.0f)
-                .light(15)
-                .terrain("mycologymod:grass")
-                .biomesSpecs(BiomesSpecs.FOREST)
-                .areaEffect(AreaEffect.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT_SPAWN)
-                .build(gentor, hashCache);
-    }
-
     @Override
     public String getName()
     {
