@@ -7,7 +7,8 @@ import com.mettsmirnov.mycology.datagen.common.AreaEffect;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 
-import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class SpeciesProvider implements DataProvider//TODO FIXME
@@ -24,6 +25,8 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
     public CompletableFuture<?> run(CachedOutput hashCache)
     {
         //FIXME all the fungi need some work
+        List<CompletableFuture<?>> list = new ArrayList<>();
+
         SpeciesBuilder.getInstance().createSpecies("Amanita rubra")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{ 16777164, 16724736, 15921906, 15921906 })
@@ -34,7 +37,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(AreaEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
-                .build(generator,hashCache);
+                .buildAndAddToList(generator,hashCache, list);
 
         SpeciesBuilder.getInstance().createSpecies("Boletus salubrium")
                 .type(CRIMSON_TYPE)
@@ -46,7 +49,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(AreaEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
-                .build(generator,hashCache);
+                .buildAndAddToList(generator,hashCache, list);
 
         SpeciesBuilder.getInstance().createSpecies("Noble boletus squisitus")
                 .type(CRIMSON_TYPE)
@@ -58,7 +61,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(AreaEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
-                .build(generator, hashCache);
+                .buildAndAddToList(generator, hashCache, list);
 
 /////////////////////////////
 //      Mineral fungi      //
@@ -73,13 +76,14 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .areaEffect(AreaEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
-                .build(generator, hashCache);
+                .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Amanita cuprea")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068})
-                .build(generator, hashCache);
-        return null;
+                .buildAndAddToList(generator, hashCache, list);
+
+        return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 
     @Override

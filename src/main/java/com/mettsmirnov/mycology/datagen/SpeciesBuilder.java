@@ -9,10 +9,10 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.server.packs.PackType;
-import org.jline.utils.Log;
 
-import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class SpeciesBuilder
 {
@@ -110,7 +110,7 @@ public class SpeciesBuilder
         return this;
     }
 
-    public void build(DataGenerator generator, CachedOutput hashCache)
+    public void buildAndAddToList(DataGenerator generator, CachedOutput hashCache, List<CompletableFuture<?>> list)
     {
         //IMPORTANT TODO: sanitize speciesName string
         JsonObject fungusJson = new JsonObject();
@@ -140,7 +140,7 @@ public class SpeciesBuilder
         String jsonFileName = speciesName.toLowerCase().replace(' ', '_')+".json";
         Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", jsonFileName));
 
-        DataProvider.saveStable(hashCache,fungusJson,jsonLocation);
+        list.add(DataProvider.saveStable(hashCache,fungusJson,jsonLocation));
     }
 
 }
