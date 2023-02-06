@@ -4,7 +4,7 @@ public class Effect
 {
     public static final Effect NO_EFFECT = new Effect(3, "none");
     public static final Effect POISON_EFFECT = new Effect("poison");
-    public static final Effect DRUNKNESS_EFFECT = new Effect("drunkness");
+    public static final Effect DRUNK_EFFECT = new Effect("drunkenness");
     public static final Effect FATIGUE_EFFECT = new Effect("fatigue");
     public static final Effect HEALING_EFFECT = new Effect("healing");
     public static final Effect STRENGTH_EFFECT = new Effect("strengthening");
