@@ -3,7 +3,7 @@ Fungi might have one of these effects:
 | Name | Effect on the player | Effect on the area |
 | --- | --- | --- |
 | Poison | Poison and Nausea | None |
-| Drunkenness | Drunkness | None |
+| Drunkenness | Drunkenness | None |
 | Fatigue | Slowness and mining fatigue | None |
 | Healing | Regeneration | None |
 | Strengthening | Strength | None |
