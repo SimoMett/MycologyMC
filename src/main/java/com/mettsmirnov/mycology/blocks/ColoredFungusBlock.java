@@ -2,14 +2,18 @@ package com.mettsmirnov.mycology.blocks;
 
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
+import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -52,5 +56,16 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         CompoundTag tags = fungusData.get().serializeNBT();
         stack.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
         return stack;
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
+        return level.isClientSide()? null : ($0, pos, $1, blockEntity) ->{
+            if(blockEntity instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
+            {
+                coloredFungusBlockEntity.tick();
+            }
+        };
     }
 }

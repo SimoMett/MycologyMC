@@ -8,9 +8,11 @@ import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
+import org.jline.utils.Log;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
@@ -59,5 +61,13 @@ public class ColoredFungusBlockEntity extends BlockEntity
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt)
     {
         super.onDataPacket(net, pkt);
+    }
+
+    public void tick()
+    {
+        Level level = this.getLevel();
+        BlockPos pos = this.getBlockPos();
+        BlockState blockState = this.getBlockState();
+        Log.info("Fungi tick");
     }
 }
