@@ -8,11 +8,16 @@ import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 import org.jline.utils.Log;
+
+import java.util.List;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
@@ -65,9 +70,26 @@ public class ColoredFungusBlockEntity extends BlockEntity
 
     public void tick()
     {
+        /*TODO
+        * find first all entities inside a boxArea that is bigger then testRadius
+        * then for each entity check if distance is less then testRadius
+        * */
+        float testRadius = 3f;
         Level level = this.getLevel();
         BlockPos pos = this.getBlockPos();
         BlockState blockState = this.getBlockState();
-        Log.info("Fungi tick");
+        AABB boxArea = new AABB(
+                pos.getX() - (testRadius+1),
+                pos.getY() - (testRadius+1),
+                pos.getZ() - (testRadius+1),
+                pos.getX() + testRadius,
+                pos.getY() + testRadius,
+                pos.getZ() + testRadius
+        );
+        List<LivingEntity> entityList = level.getEntitiesOfClass(LivingEntity.class, boxArea);
+        for(LivingEntity entity : entityList)
+        {
+            Log.info(entity.distanceToSqr(pos.getCenter()));
+        }
     }
 }
