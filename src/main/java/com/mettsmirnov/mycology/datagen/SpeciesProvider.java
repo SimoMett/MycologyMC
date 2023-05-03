@@ -47,7 +47,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .light(15)
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
-                .areaEffect(FungusEffect.NO_EFFECT)
+                .areaEffect(FungusEffect.HEALING_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator,hashCache, list);
 
