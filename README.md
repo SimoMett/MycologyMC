@@ -11,7 +11,7 @@
 - [ ] Implement capabilities for the mushroom blocks
 - [ ] Edit mushroom spreading mechanic and implement breeding
 - [ ] Add natural generation in the world
-- [ ] Implement fungus spores' area effect
+- [X] Implement fungus spores' area effect
 - [X] Implement crafting mechanics
 
 ### Other notes
