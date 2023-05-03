@@ -15,6 +15,7 @@ public class MobEffectInstanceProvider
     private static final Map<String, MobEffect> mobEffectMap = new HashMap<>();
     static
     {
+        //Vanilla effects
         mobEffectMap.put("speed", MobEffects.MOVEMENT_SPEED);
         mobEffectMap.put("slowness", MobEffects.MOVEMENT_SLOWDOWN);
         mobEffectMap.put("haste",MobEffects.DIG_SPEED);

@@ -23,6 +23,7 @@ import org.jline.utils.Log;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.Objects;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
@@ -58,18 +59,21 @@ public class ColoredFungusBlockEntity extends BlockEntity
             return;
         //
 
-        int areaRadius = (Integer) fungusData.getField(FungusDataModel.AREA, IFungusData.GeneType.DOMINANT);
-        List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
         String fungusEffect = (String) fungusData.getField(FungusDataModel.EFFECT, IFungusData.GeneType.DOMINANT);
-
-        for(LivingEntity entity : entityList)
+        if(!Objects.equals(fungusEffect, "none"))
         {
-            if(entity.distanceToSqr(pos.getCenter()) < areaRadius)
+            int areaRadius = (Integer) fungusData.getField(FungusDataModel.AREA, IFungusData.GeneType.DOMINANT);
+            List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
+
+            for (LivingEntity entity : entityList)
             {
-                if(Duration.between(lastInstant,Instant.now()).getSeconds() > 1f)
+                if (entity.distanceToSqr(pos.getCenter()) < areaRadius)
                 {
-                    applyEffectToEntity(entity,fungusEffect);
-                    lastInstant = Instant.now();
+                    if (Duration.between(lastInstant, Instant.now()).getSeconds() > 1)
+                    {
+                        applyEffectToEntity(entity, fungusEffect);
+                        lastInstant = Instant.now();
+                    }
                 }
             }
         }
