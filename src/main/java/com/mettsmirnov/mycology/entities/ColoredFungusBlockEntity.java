@@ -121,10 +121,4 @@ public class ColoredFungusBlockEntity extends BlockEntity
     {
         return ClientboundBlockEntityDataPacket.create(this);
     }
-
-    @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt)
-    {
-        super.onDataPacket(net, pkt);
-    }
 }
