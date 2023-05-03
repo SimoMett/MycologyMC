@@ -2,7 +2,7 @@ package com.mettsmirnov.mycology.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
-import com.mettsmirnov.mycology.datagen.common.Effect;
+import com.mettsmirnov.mycology.effects.FungusEffect;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import net.minecraft.data.CachedOutput;
@@ -33,7 +33,7 @@ public class SpeciesBuilder
     private int light;
     private String terrain;
     private BiomesSpecs biomesSpecs;
-    private Effect areaEffect;
+    private FungusEffect areaEffect;
     private FungusSpawn spawnType;
 
     //Methods chaining
@@ -51,7 +51,7 @@ public class SpeciesBuilder
         this.light = 15;
         this.terrain = "mycologymod:grass";
         this.biomesSpecs = BiomesSpecs.FOREST;
-        this.areaEffect = Effect.NO_EFFECT;
+        this.areaEffect = FungusEffect.NO_EFFECT;
         this.spawnType = FungusSpawn.DEFAULT_SPAWN;
         return this;
     }
@@ -98,7 +98,7 @@ public class SpeciesBuilder
         return this;
     }
 
-    public SpeciesBuilder areaEffect(Effect areaEffect)
+    public SpeciesBuilder areaEffect(FungusEffect areaEffect)
     {
         this.areaEffect = areaEffect;
         return this;

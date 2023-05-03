@@ -3,7 +3,7 @@ package com.mettsmirnov.mycology.datagen;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import com.mettsmirnov.mycology.datagen.common.Effect;
+import com.mettsmirnov.mycology.effects.FungusEffect;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 
@@ -35,7 +35,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .light(15)
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
-                .areaEffect(Effect.NO_EFFECT)
+                .areaEffect(FungusEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator,hashCache, list);
 
@@ -47,7 +47,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .light(15)
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
-                .areaEffect(Effect.NO_EFFECT)
+                .areaEffect(FungusEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator,hashCache, list);
 
@@ -59,7 +59,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .light(15)
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
-                .areaEffect(Effect.NO_EFFECT)
+                .areaEffect(FungusEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator, hashCache, list);
 
@@ -89,7 +89,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .light(15)
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.FOREST)
-                .areaEffect(Effect.NO_EFFECT)
+                .areaEffect(FungusEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator, hashCache, list);
 
