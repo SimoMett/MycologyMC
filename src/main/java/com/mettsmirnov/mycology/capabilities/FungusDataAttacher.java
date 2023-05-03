@@ -1,8 +1,6 @@
 package com.mettsmirnov.mycology.capabilities;
 
 import com.mettsmirnov.mycology.MycologyMod;
-import com.mettsmirnov.mycology.blocks.ColoredFungusBlock;
-import com.mettsmirnov.mycology.data.FungusTraits;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.items.ColoredFungusItem;
 import net.minecraft.core.Direction;
@@ -10,7 +8,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
@@ -30,7 +27,7 @@ public class FungusDataAttacher
 
         public FungusDataProvider()
         {
-            backend = new FungusData();
+            backend = new FungusDataModel();
             optionalData = LazyOptional.of(()->backend);
         }
 

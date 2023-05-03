@@ -1,7 +1,7 @@
 package com.mettsmirnov.mycology.recipes.cooking;
 
 import com.mettsmirnov.mycology.MycologyMod;
-import com.mettsmirnov.mycology.capabilities.FungusData;
+import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.items.ModItems;
@@ -31,7 +31,7 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
         ItemStack input = container.getItem(0);
         if(input.getCapability(FungusDataCapability.INSTANCE).resolve().isEmpty())
             return false;
-        FungusData inputCapability = (FungusData) input.getCapability(FungusDataCapability.INSTANCE).resolve().get();
+        FungusDataModel inputCapability = (FungusDataModel) input.getCapability(FungusDataCapability.INSTANCE).resolve().get();
         String inputSpecies = (String) inputCapability.getField("species", IFungusData.GeneType.DOMINANT);
         return inputSpecies.equals(speciesIngredient);
     }

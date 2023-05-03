@@ -15,14 +15,25 @@ import java.util.Random;
 import static com.mettsmirnov.mycology.data.FungusTraits.traitsDictionary;
 import static com.mettsmirnov.mycology.myutils.StringDecomposition.compose;
 
-public class FungusData implements IFungusData
+public class FungusDataModel implements IFungusData
 {
     //data
+    public static final String
+        SPECIES = "species",
+        SPREADING = "spreading",
+        SPREAD_BOOST = "spreadboost",
+        LIGHT = "light",
+        TERRAIN = "terrain",
+        HUMIDITY = "humidity",
+        TEMP= "temp",
+        AREA = "area",
+        EFFECT = "effect";
+
     private final HashMap<String,Object> dominantTraits=new HashMap<>();
     private final HashMap<String, Object> recessiveTraits=new HashMap<>();
     private int[] colors = new int[]{-1,new Random().nextInt(),-1,-1};
 
-    public FungusData()
+    public FungusDataModel()
     {
         for (String trait : traitsDictionary)
         {
