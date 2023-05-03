@@ -3,6 +3,7 @@ package com.mettsmirnov.mycology.entities;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
+import com.mettsmirnov.mycology.effects.MobEffectInstanceProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
@@ -76,9 +77,8 @@ public class ColoredFungusBlockEntity extends BlockEntity
 
     private void applyEffectToEntity(LivingEntity entity, String effectString)
     {
-        //TODO convert effectString to actual MobEffectInstance
         final int numOfTicks = 100; //this value is hardcoded and should not be configurable.
-        entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,numOfTicks));
+        entity.addEffect(new MobEffectInstance(MobEffectInstanceProvider.getMobEffectByName(effectString),numOfTicks));
     }
 
     private List<LivingEntity> getEntityListInAreaRadius(int radius)
