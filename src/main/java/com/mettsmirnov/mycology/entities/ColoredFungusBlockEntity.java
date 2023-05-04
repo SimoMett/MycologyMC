@@ -102,19 +102,6 @@ public class ColoredFungusBlockEntity extends BlockEntity
     }
 
     //Server-Client synchronization
-    @Override
-    public CompoundTag getUpdateTag()
-    {
-        return saveWithFullMetadata();
-    }
-
-    @Override
-    public void handleUpdateTag(CompoundTag tag)
-    {
-        load(tag);
-        super.handleUpdateTag(tag);
-    }
-
     @Nullable
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket()
@@ -123,8 +110,19 @@ public class ColoredFungusBlockEntity extends BlockEntity
     }
 
     @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt)
+    public void setChanged()
     {
-        super.onDataPacket(net, pkt);
+        super.setChanged();
+        if (this.level != null) {
+
+            BlockState blockState = this.getBlockState();
+            (this.level).sendBlockUpdated(this.getBlockPos(), blockState, blockState, 3);
+        }
+    }
+
+    @Override
+    public CompoundTag getUpdateTag()
+    {
+        return super.getUpdateTag();
     }
 }
