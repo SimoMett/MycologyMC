@@ -1,13 +1,11 @@
 package com.mettsmirnov.mycology.capabilities;
 
 import com.mettsmirnov.mycology.MycologyMod;
-import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
-import com.mettsmirnov.mycology.items.ColoredFungusItem;
+import com.mettsmirnov.mycology.items.ColoredFungusBlockItem;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
@@ -57,21 +55,10 @@ public class FungusDataAttacher
     @SubscribeEvent
     public static void onAttachToItemStack(AttachCapabilitiesEvent<ItemStack> evt)
     {
-        if(evt.getObject().getItem() instanceof ColoredFungusItem)
+        if(evt.getObject().getItem() instanceof ColoredFungusBlockItem)
         {
             final FungusDataProvider provider = new FungusDataProvider();
             evt.addCapability(FungusDataProvider.IDENTIFIER, provider);
         }
     }
-
-    @SubscribeEvent
-    public static void onAttachToBlockEntity(AttachCapabilitiesEvent<BlockEntity> evt)
-    {
-        if(evt.getObject() instanceof ColoredFungusBlockEntity)
-        {
-            final FungusDataProvider provider = new FungusDataProvider();
-            evt.addCapability(FungusDataProvider.IDENTIFIER, provider);
-        }
-    }
-
 }

@@ -1,7 +1,7 @@
 package com.mettsmirnov.mycology.blocks;
 
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
-import com.mettsmirnov.mycology.capabilities.IFungusData;
+import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import net.minecraft.core.BlockPos;
@@ -52,8 +52,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player)
     {
         ItemStack stack = super.getCloneItemStack(state, target, world, pos, player);
-        Optional<IFungusData> fungusData = world.getBlockEntity(pos).getCapability(FungusDataCapability.INSTANCE).resolve();
-        CompoundTag tags = fungusData.get().serializeNBT();
+        FungusDataModel fungusData = ((ColoredFungusBlockEntity) world.getBlockEntity(pos)).getFungusData();
+        CompoundTag tags = fungusData.serializeNBT();
         stack.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
         return stack;
     }

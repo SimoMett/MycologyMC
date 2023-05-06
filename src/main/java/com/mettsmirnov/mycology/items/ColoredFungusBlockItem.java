@@ -1,6 +1,5 @@
 package com.mettsmirnov.mycology.items;
 
-import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
@@ -12,36 +11,32 @@ import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import org.jetbrains.annotations.Nullable;
-import org.jline.utils.Log;
 
-import java.awt.*;
 import java.util.List;
 
-public class ColoredFungusItem extends BlockItem
+public class ColoredFungusBlockItem extends BlockItem
 {
-    public static ColoredFungusItem createColoredCrimson()
+    public static ColoredFungusBlockItem createColoredCrimson()
     {
-        return new ColoredFungusItem(ModBlocks.COLORED_CRIMSON_FUNGUS.get());
+        return new ColoredFungusBlockItem(ModBlocks.COLORED_CRIMSON_FUNGUS.get());
     }
-    public static ColoredFungusItem createColoredWarped()
+    public static ColoredFungusBlockItem createColoredWarped()
     {
-        return new ColoredFungusItem(ModBlocks.COLORED_WARPED_FUNGUS.get());
+        return new ColoredFungusBlockItem(ModBlocks.COLORED_WARPED_FUNGUS.get());
     }
 
-    public ColoredFungusItem(Block block)
+    public ColoredFungusBlockItem(Block block)
     {
         super(block, new Properties());
     }
@@ -83,9 +78,10 @@ public class ColoredFungusItem extends BlockItem
     {
         boolean result = super.placeBlock(context, blockState);
         ColoredFungusBlockEntity entity = (ColoredFungusBlockEntity)context.getLevel().getBlockEntity(context.getClickedPos());
-        //TODO check for null entity (maybe?)
+
         CompoundTag tags = context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().serializeNBT();
-        entity.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
+        //entity.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
+        entity.handleUpdateTag(tags);
         return result;
     }
 

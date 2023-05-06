@@ -1,18 +1,13 @@
 package com.mettsmirnov.mycology.blocks;
 
-import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
-import com.mettsmirnov.mycology.capabilities.IFungusData;
+import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
-import com.mettsmirnov.mycology.items.FungusItemColorer;
-import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,14 +28,11 @@ public class FungusBlockColorer implements BlockColor
         assert blockAndTint != null;
         assert blockPos != null;
         BlockEntity blockEntity = blockAndTint.getBlockEntity(blockPos);
-        if(blockEntity != null)
+        if(blockEntity instanceof ColoredFungusBlockEntity)
         {
-            LazyOptional<IFungusData> optional = blockEntity.getCapability(FungusDataCapability.INSTANCE);
-            if(optional.isPresent())
-            {
-                int[] array = optional.resolve().get().getColors();
-                return array[tintIndex];
-            }
+            FungusDataModel fungusData = ((ColoredFungusBlockEntity) blockEntity).getFungusData();
+            int[] array = fungusData.getColors();
+            return array[tintIndex];
         }
         return -1;
     }

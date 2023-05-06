@@ -1,7 +1,6 @@
 package com.mettsmirnov.mycology.items;
 
 import com.mettsmirnov.mycology.MycologyMod;
-import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -11,7 +10,7 @@ public class ModItems
 {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MycologyMod.MODID);
 
-    public static final RegistryObject<ColoredFungusItem> COLORED_CRIMSON_FUNGUS = ITEMS.register("colored_crimson_fungus", ColoredFungusItem::createColoredCrimson);
-    public static final RegistryObject<ColoredFungusItem> COLORED_WARPED_FUNGUS = ITEMS.register("colored_warped_fungus", ColoredFungusItem::createColoredWarped);
+    public static final RegistryObject<ColoredFungusBlockItem> COLORED_CRIMSON_FUNGUS = ITEMS.register("colored_crimson_fungus", ColoredFungusBlockItem::createColoredCrimson);
+    public static final RegistryObject<ColoredFungusBlockItem> COLORED_WARPED_FUNGUS = ITEMS.register("colored_warped_fungus", ColoredFungusBlockItem::createColoredWarped);
     //all the items below..
 }

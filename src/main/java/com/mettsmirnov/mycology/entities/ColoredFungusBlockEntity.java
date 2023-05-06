@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
-    private final IFungusData fungusDataModel = new FungusDataModel();
+    private final FungusDataModel fungusDataModel = new FungusDataModel();
 
     public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
@@ -38,21 +38,28 @@ public class ColoredFungusBlockEntity extends BlockEntity
     /*
     * According to my understanding, there's no need to override the load and save method
     * because the capability seems to already loading and saving data itself.
-    *
+    */
     @Override
     public void load(CompoundTag tag)
     {
-        CompoundTag capTag = tag.getCompound("ForgeCaps").getCompound(MycologyMod.MODID+":fungus_data");
-        fungusData.deserializeNBT(capTag);
         super.load(tag);
-    }*/
+        fungusDataModel.deserializeNBT(tag);
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag)
+    {
+        super.saveAdditional(tag);
+        tag.merge(fungusDataModel.serializeNBT());
+    }
 
     private static Instant lastInstant = Instant.now();
     public void tick()
     {
         Level world = this.getLevel();
         BlockPos pos = this.getBlockPos();
-        IFungusData fungusData = world.getBlockEntity(pos).getCapability(FungusDataCapability.INSTANCE).resolve().get();
+        //IFungusData fungusData = world.getBlockEntity(pos).getCapability(FungusDataCapability.INSTANCE).resolve().get();
+        IFungusData fungusData = fungusDataModel;
 
         // FIXME check when this occurs
         if(fungusData.getField(FungusDataModel.AREA, IFungusData.GeneType.DOMINANT)=="none")
@@ -101,6 +108,11 @@ public class ColoredFungusBlockEntity extends BlockEntity
         return level.getEntitiesOfClass(LivingEntity.class, boxArea);
     }
 
+    public final FungusDataModel getFungusData()
+    {
+        return fungusDataModel;
+    }
+
     //Server-Client synchronization
     @Nullable
     @Override
@@ -124,5 +136,12 @@ public class ColoredFungusBlockEntity extends BlockEntity
     public CompoundTag getUpdateTag()
     {
         return super.getUpdateTag();
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag)
+    {
+        super.handleUpdateTag(tag);
+        fungusDataModel.deserializeNBT(tag);
     }
 }
