@@ -34,11 +34,6 @@ public class ColoredFungusBlockEntity extends BlockEntity
         super(ModEntities.COLORED_FUNGUS.get(), blockPos, blockState);
     }
 
-    //READ PLEASE
-    /*
-    * According to my understanding, there's no need to override the load and save method
-    * because the capability seems to already loading and saving data itself.
-    */
     @Override
     public void load(CompoundTag tag)
     {
@@ -49,8 +44,8 @@ public class ColoredFungusBlockEntity extends BlockEntity
     @Override
     protected void saveAdditional(CompoundTag tag)
     {
-        super.saveAdditional(tag);
         tag.merge(fungusDataModel.serializeNBT());
+        super.saveAdditional(tag);
     }
 
     private static Instant lastInstant = Instant.now();
@@ -58,7 +53,6 @@ public class ColoredFungusBlockEntity extends BlockEntity
     {
         Level world = this.getLevel();
         BlockPos pos = this.getBlockPos();
-        //IFungusData fungusData = world.getBlockEntity(pos).getCapability(FungusDataCapability.INSTANCE).resolve().get();
         IFungusData fungusData = fungusDataModel;
 
         // FIXME check when this occurs
@@ -135,13 +129,17 @@ public class ColoredFungusBlockEntity extends BlockEntity
     @Override
     public CompoundTag getUpdateTag()
     {
-        return super.getUpdateTag();
+        CompoundTag tag = super.getUpdateTag();
+        tag.merge(fungusDataModel.serializeNBT());
+        return tag;
     }
 
+    //this method automatically calls load(tag). Hence, no need to override
+    /*
     @Override
-    public void handleUpdateTag(CompoundTag tag)
-    {
+    public void handleUpdateTag(CompoundTag tag){
         super.handleUpdateTag(tag);
         fungusDataModel.deserializeNBT(tag);
     }
+    */
 }

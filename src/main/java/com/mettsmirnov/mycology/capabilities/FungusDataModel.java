@@ -121,7 +121,7 @@ public class FungusDataModel implements IFungusData
     @Override
     public void deserializeNBT(CompoundTag tag)
     {
-        for(String key : tag.getAllKeys())
+        for(String key : traitsDictionary)
         {
             if(tag.getTagType(key) == Tag.TAG_STRING)
             {
