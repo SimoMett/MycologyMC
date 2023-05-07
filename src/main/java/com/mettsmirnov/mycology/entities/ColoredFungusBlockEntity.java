@@ -1,17 +1,14 @@
 package com.mettsmirnov.mycology.entities;
 
-import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.effects.MobEffectInstanceProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -23,7 +20,6 @@ import org.jline.utils.Log;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
-import java.util.Objects;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
@@ -51,17 +47,11 @@ public class ColoredFungusBlockEntity extends BlockEntity
     private static Instant lastInstant = Instant.now();
     public void tick()
     {
-        Level world = this.getLevel();
         BlockPos pos = this.getBlockPos();
         IFungusData fungusData = fungusDataModel;
 
-        // FIXME check when this occurs
-        if(fungusData.getField(FungusDataModel.AREA, IFungusData.GeneType.DOMINANT)=="none")
-            return;
-        //
-
         String fungusEffect = (String) fungusData.getField(FungusDataModel.EFFECT, IFungusData.GeneType.DOMINANT);
-        if(!Objects.equals(fungusEffect, "none"))
+        if(!fungusEffect.equals("none"))
         {
             int areaRadius = (Integer) fungusData.getField(FungusDataModel.AREA, IFungusData.GeneType.DOMINANT);
             List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
@@ -133,13 +123,4 @@ public class ColoredFungusBlockEntity extends BlockEntity
         tag.merge(fungusDataModel.serializeNBT());
         return tag;
     }
-
-    //this method automatically calls load(tag). Hence, no need to override
-    /*
-    @Override
-    public void handleUpdateTag(CompoundTag tag){
-        super.handleUpdateTag(tag);
-        fungusDataModel.deserializeNBT(tag);
-    }
-    */
 }
