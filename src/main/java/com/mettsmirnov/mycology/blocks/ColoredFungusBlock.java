@@ -85,10 +85,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         BlockPos originalPos = pos;
 
         //code copied from MushroomBlock.randomTick
-        //TODO refactoring
+        //TODO use nbt data instead of magic numbers
         if (rand.nextInt(25) == 0) {
             int i = 5;
 
+            //check if the block is surrounded
             for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4))) {
                 if (level.getBlockState(blockpos).is(this)) {
                     --i;
@@ -97,6 +98,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                     }
                 }
             }
+            //
 
             BlockPos blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
 
@@ -108,20 +110,24 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
                 blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
             }
-        //
+
+            //mushroom spreading procedure
             if (level.isEmptyBlock(blockpos1) && blockState.canSurvive(level, blockpos1))
             {
-                ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(originalPos));
-                if(blockEntity != null)
+                ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(originalPos));
+                if(originBlockEntity != null)
                 {
-                    FungusDataModel fungusData = blockEntity.getFungusData();
-
                     level.setBlock(blockpos1, blockState, 2);
-                    //FIXME
-                    ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) newBlockEntity(blockpos1, blockState);
-                    blockEntity.load(fungusData.serializeNBT());
+                    FungusDataModel fungusData = originBlockEntity.getFungusData();
+                    ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockpos1));
+                    if(newBlockEntity != null)
+                    {
+                        newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
+                    }
+
                 }
             }
+            //
         }
     }
 }
