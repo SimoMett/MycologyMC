@@ -93,7 +93,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         {
             int i = 5;
 
-            //check if the block is surrounded
+            //check if there are 'i' mushroom in area
+            //if it is the case then prevent spreading
             for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4))) {
                 if (level.getBlockState(blockpos).is(this)) {
                     --i;
