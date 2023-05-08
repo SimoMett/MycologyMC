@@ -2,6 +2,7 @@ package com.mettsmirnov.mycology.blocks;
 
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
+import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import net.minecraft.core.BlockPos;
@@ -75,18 +76,21 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos pos)
     {
         //TODO proper implementation
-        return true;
+        return level.getBlockState(pos.below()).getBlock() == Blocks.GRASS_BLOCK;
     }
 
     @Override
     public void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)
     {
-        super.randomTick(blockState, level, pos, rand);
         BlockPos originalPos = pos;
+        ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(originalPos));
+        FungusDataModel fungusData = originBlockEntity.getFungusData();
 
         //code copied from MushroomBlock.randomTick
         //TODO use nbt data instead of magic numbers
-        if (rand.nextInt(25) == 0) {
+        int spreading = (int)fungusData.getField(FungusDataModel.SPREADING, IFungusData.GeneType.DOMINANT);//TODO implement spreadboost
+        if (rand.nextInt(spreading) == 0)
+        {
             int i = 5;
 
             //check if the block is surrounded
@@ -114,17 +118,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             //mushroom spreading procedure
             if (level.isEmptyBlock(blockpos1) && blockState.canSurvive(level, blockpos1))
             {
-                ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(originalPos));
-                if(originBlockEntity != null)
+                level.setBlock(blockpos1, blockState, 2);
+                ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockpos1));
+                if(newBlockEntity != null)
                 {
-                    level.setBlock(blockpos1, blockState, 2);
-                    FungusDataModel fungusData = originBlockEntity.getFungusData();
-                    ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockpos1));
-                    if(newBlockEntity != null)
-                    {
-                        newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
-                    }
-
+                    newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
                 }
             }
             //
