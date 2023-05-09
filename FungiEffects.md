@@ -1,6 +1,6 @@
 Fungi might have one of these effects:
 
-| Name | Effect on the player | Effect on the area |
+| Name | Effect on living entities | Effect on the area |
 | --- | --- | --- |
 | Poison | Poison and Nausea | None |
 | Drunkenness | Drunkenness | None |
@@ -27,3 +27,4 @@ Fungi might have one of these effects:
 | Knowledge | Knowledge | None |
 | Sporing | None | Slowly convert nearby dirt and grass blocks in mycelium |
 | Dyeing | None | Nearby sheeps randomly change color |
+| Fertilizing | None | Bonemeals nearby crops |
