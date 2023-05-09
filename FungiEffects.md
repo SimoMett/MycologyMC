@@ -1,6 +1,6 @@
 Fungi might have one of these effects:
 
-| Name | Effect on the player | Effect on the area |
+| Name | Effect on living entities | Effect on the area |
 | --- | --- | --- |
 | Poison | Poison and Nausea | None |
 | Drunkenness | Drunkenness | None |
