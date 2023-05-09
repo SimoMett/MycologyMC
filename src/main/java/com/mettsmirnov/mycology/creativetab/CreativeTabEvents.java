@@ -21,7 +21,7 @@ public class CreativeTabEvents
         event.registerCreativeModeTab(new ResourceLocation(MycologyMod.MODID), builder ->
                 builder.title(Component.translatable("itemGroup." + MycologyMod.MODID))
                         .icon(() -> FungusSpeciesHandler.INSTANCE.getCreativeTabItemstack())
-                        .displayItems((enabledFlags, populator, hasPermissions) -> {
+                        .displayItems((enabledFlags, populator) -> {
                             populator.acceptAll(FungusSpeciesHandler.INSTANCE.getCollection());
                         })
         );
