@@ -8,7 +8,8 @@
 - [X] Color the mushrooms based on the NBT/data stored
 - [X] Ability to plant mushrooms
 - [ ] A LOT of species
-- [ ] Edit mushroom spreading mechanic and implement breeding
+- [ ] Edit mushroom spreading mechanic (partial)
+- [ ] Implement breeding
 - [ ] Add natural generation in the world
 - [X] Implement fungus spores' area effect
 - [X] Implement crafting mechanics
