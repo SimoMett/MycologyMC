@@ -81,6 +81,31 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
 /////////////////////////////
 //      Mineral fungi      //
 /////////////////////////////
+        SpeciesBuilder.getInstance().createDefaultSpecies("COAL_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("EMERALD_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("GLOWSTONE_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("Galerina aurata")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("Bolbitius silex")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
         SpeciesBuilder.getInstance().createSpecies("Russula lazula")
                 .type(WARPED_TYPE)
                 .colors(new int[]{0xffffcc, 0x81726d, 0x183679, 0x2653b9})
@@ -93,10 +118,51 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator, hashCache, list);
 
+        SpeciesBuilder.getInstance().createDefaultSpecies("REDSTONE_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
         SpeciesBuilder.getInstance().createDefaultSpecies("Amanita cuprea")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068})
                 .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("IRON_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("DIAMOND_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("EXPERIENCE_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0x87CFEC, 0x2F94F9, 0x398D4C, 0xB4DF57})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("BLAZE_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("NETHERITE_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("WITHER_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createDefaultSpecies("ENDER_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .buildAndAddToList(generator, hashCache, list);
+
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
