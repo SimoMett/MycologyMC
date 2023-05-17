@@ -7,7 +7,7 @@
 - [ ] Ah yes, datapack support
 - [X] Color the mushrooms based on the NBT/data stored
 - [X] Ability to plant mushrooms
-- [ ] A LOT of species
+- [ ] A LOT of species. [This fantastic tool](https://github.com/SimoMett/mushroom_renderer) can help ;)
 - [ ] Edit mushroom spreading mechanic (partial)
 - [ ] Implement breeding
 - [ ] Add natural generation in the world
