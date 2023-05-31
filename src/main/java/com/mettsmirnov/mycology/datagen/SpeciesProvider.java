@@ -97,8 +97,8 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Galerina aurata")
-                .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .type(WARPED_TYPE)
+                .colors(new int[]{0xeed484, 0xffc21a, 0xffc96c, 0xfff59f})
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Bolbitius silex")
