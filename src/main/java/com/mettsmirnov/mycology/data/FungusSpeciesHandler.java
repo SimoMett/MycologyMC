@@ -1,6 +1,5 @@
 package com.mettsmirnov.mycology.data;
 
-import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.world.item.ItemStack;
@@ -8,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public class FungusSpeciesHandler //TODO add fungusUses structure
 {
@@ -45,9 +45,18 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
         return collection;
     }
 
-    public ItemStack getCreativeTabItemstack()
+    public ItemStack getCreativeTabIcon()
     {
         FungusSpecies species = list.get(1);
+        for(FungusSpecies _species : list)
+        {
+            if(Objects.equals(_species.defaultTraits.species, "Boletus salubrium"))
+            {
+                species = _species;
+                break;
+            }
+        }
+
         ItemStack e;
         if(species.fungusType.equals("colored_crimson_fungus"))
             e = new ItemStack(ModItems.COLORED_CRIMSON_FUNGUS.get());
