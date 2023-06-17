@@ -97,8 +97,8 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Galerina aurata")
-                .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .type(WARPED_TYPE)
+                .colors(new int[]{0xeed484, 0xffc21a, 0xffc96c, 0xfff59f})
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Bolbitius silex")
@@ -158,9 +158,16 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .colors(new int[]{0, 0, 0, 0})
                 .buildAndAddToList(generator, hashCache, list);
 
+        SpeciesBuilder.getInstance().createDefaultSpecies("END_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0xe7f1b1, 0x3e0588, 0xa058ae, 0x490a61})
+                .terrain("mycologymod:endstone")
+                .buildAndAddToList(generator, hashCache, list);
+
         SpeciesBuilder.getInstance().createDefaultSpecies("ENDER_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors(new int[]{0x87cfec, 0x06d192, 0x69d0af, 0x068054})
+                .terrain("mycologymod:endstone")
                 .buildAndAddToList(generator, hashCache, list);
 
 

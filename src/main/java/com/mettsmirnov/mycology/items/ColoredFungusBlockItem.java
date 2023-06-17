@@ -89,10 +89,10 @@ public class ColoredFungusBlockItem extends BlockItem
     protected boolean canPlace(BlockPlaceContext context, BlockState blockState)
     {
         boolean canBePlaced = super.canPlace(context,blockState);
-        String terrainTag = (String) context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("terrain", IFungusData.GeneType.DOMINANT);
+        String terrainString = (String) context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("terrain", IFungusData.GeneType.DOMINANT);
         BlockPos clickedPos = context.getClickedPos();
         BlockState belowBlock = context.getLevel().getBlockState(clickedPos.below());
-        boolean areRequirementsSat = belowBlock.getTags().toList().contains(BlockTags.create(new ResourceLocation(terrainTag)));
+        boolean areRequirementsSat = belowBlock.is(BlockTags.create(new ResourceLocation(terrainString)));
         return canBePlaced && areRequirementsSat;
     }
 }

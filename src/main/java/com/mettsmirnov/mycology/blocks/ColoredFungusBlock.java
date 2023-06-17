@@ -76,7 +76,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos pos)
     {
         //TODO proper implementation
-        return level.getBlockState(pos.below()).getBlock() == Blocks.GRASS_BLOCK;
+        return !level.getBlockState(pos.below()).isAir();
     }
 
     @Override
@@ -92,7 +92,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         if (rand.nextInt(spreading) == 0)
         {
             //check if there are 'i' mushroom in area
-            //if it is the case then prevent spreading
+            //if it does then prevent spreading
             int i = 5;
             for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4))) {
                 if (level.getBlockState(blockpos).is(this)) {
