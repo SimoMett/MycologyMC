@@ -93,7 +93,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
 
         SpeciesBuilder.getInstance().createDefaultSpecies("GLOWSTONE_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors(new int[]{0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd})
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Galerina aurata")
