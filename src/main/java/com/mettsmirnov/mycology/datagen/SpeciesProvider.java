@@ -84,26 +84,31 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("COAL_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:stone")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("EMERALD_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:stone")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("GLOWSTONE_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd})
+                .terrain("mycologymod:nether")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Galerina aurata")
                 .type(WARPED_TYPE)
                 .colors(new int[]{0xeed484, 0xffc21a, 0xffc96c, 0xfff59f})
+                .terrain("mycologymod:stone")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Bolbitius silex")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:stone")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createSpecies("Russula lazula")
@@ -112,7 +117,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
-                .terrain("mycologymod:grass")
+                .terrain("mycologymod:stone")
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .areaEffect(FungusEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
@@ -121,6 +126,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("REDSTONE_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:stone")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Amanita cuprea")
@@ -129,7 +135,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("IRON_FUNGUS")
-                .type(CRIMSON_TYPE)
+                .type(WARPED_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
                 .buildAndAddToList(generator, hashCache, list);
 
@@ -151,11 +157,13 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("NETHERITE_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:nether")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("WITHER_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:nether")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("END_FUNGUS")
