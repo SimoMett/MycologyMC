@@ -155,6 +155,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("BLAZE_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:nether_bricks")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("NETHERITE_FUNGUS")
