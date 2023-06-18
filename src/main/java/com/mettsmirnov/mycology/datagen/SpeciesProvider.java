@@ -90,7 +90,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("EMERALD_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
-                .terrain("mycologymod:stone")
+                .terrain("minecraft:emerald_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("GLOWSTONE_FUNGUS")
