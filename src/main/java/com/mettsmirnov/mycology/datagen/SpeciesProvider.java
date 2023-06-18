@@ -57,7 +57,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
-                .terrain("mycologymod:grass")
+                .terrain("mycologymod:podzol")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
@@ -132,16 +132,19 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("Amanita cuprea")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068})
+                .terrain("mycologymod:stone")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("IRON_FUNGUS")
                 .type(WARPED_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:stone")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("DIAMOND_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:stone")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("EXPERIENCE_FUNGUS")
