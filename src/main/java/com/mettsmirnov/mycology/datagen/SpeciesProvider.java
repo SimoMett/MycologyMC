@@ -67,6 +67,8 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
 /////////////////////////////
 //      Edible fungi       //
 /////////////////////////////
+        SpeciesBuilder.getInstance().createProtoSpecies("SUGAR_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
 
 /////////////////////////////
 //      Toxic fungi        //
