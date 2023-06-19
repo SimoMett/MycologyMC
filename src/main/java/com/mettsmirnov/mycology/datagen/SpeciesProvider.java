@@ -93,27 +93,33 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("CLAY_FUNGUS")
+                .terrain("mycologymod:clay")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("TERRACOTTA_FUNGUS")
+                .terrain("minecraft:terracotta")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("SNOW_FUNGUS")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("SOULSAND_FUNGUS")
+                .terrain("mycologymod:soul_sand")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("PRISMARINE_FUNGUS")
+                .terrain("mycologymod:prismarine")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("PURPUR_SUSTAINED_FUNGUS")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("MAGMABLOCK_SUSTAINED_FUNGUS")
+                .terrain("mycologymod:magma_block")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("BONEBLOCK_SUSTAINED_FUNGUS")
+                .terrain("mycologymod:bone_block")
                 .buildAndAddToList(generator, hashCache, list);
 
 
