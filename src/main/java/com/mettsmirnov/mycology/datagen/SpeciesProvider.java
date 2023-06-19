@@ -190,6 +190,10 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .terrain("minecraft:iron_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
+        SpeciesBuilder.getInstance().createProtoSpecies("AMETHYST_FUNGUS")
+                .terrain("mycologymod:amethyst")
+                .buildAndAddToList(generator, hashCache, list);
+
         SpeciesBuilder.getInstance().createDefaultSpecies("DIAMOND_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
