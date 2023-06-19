@@ -77,6 +77,10 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
 /////////////////////////////
 //     Materials fungi     //
 /////////////////////////////
+        SpeciesBuilder.getInstance().createProtoSpecies("WOOD_FUNGUS")
+                .terrain("minecraft:logs")
+                .buildAndAddToList(generator, hashCache, list);
+
         SpeciesBuilder.getInstance().createProtoSpecies("GRANITE_FUNGUS")
                 .buildAndAddToList(generator, hashCache, list);
 
