@@ -16,6 +16,9 @@ import java.util.concurrent.CompletableFuture;
 
 public class SpeciesBuilder
 {
+    public static final String CRIMSON_TYPE = "colored_crimson_fungus";
+    public static final String WARPED_TYPE = "colored_warped_fungus";
+
     private SpeciesBuilder(){}
     private static final SpeciesBuilder builderInstance = new SpeciesBuilder();
 
@@ -54,6 +57,13 @@ public class SpeciesBuilder
         this.areaEffect = FungusEffect.NO_EFFECT;
         this.spawnType = FungusSpawn.DEFAULT_SPAWN;
         return this;
+    }
+
+    public SpeciesBuilder createProtoSpecies(String speciesName)
+    {
+        return createDefaultSpecies(speciesName)
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0});
     }
 
     public SpeciesBuilder type(String type)

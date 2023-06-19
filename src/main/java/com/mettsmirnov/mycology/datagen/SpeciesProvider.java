@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import static com.mettsmirnov.mycology.datagen.SpeciesBuilder.CRIMSON_TYPE;
+import static com.mettsmirnov.mycology.datagen.SpeciesBuilder.WARPED_TYPE;
+
 public class SpeciesProvider implements DataProvider//TODO FIXME
 {
-    private static final String CRIMSON_TYPE = "colored_crimson_fungus";
-    private static final String WARPED_TYPE = "colored_warped_fungus";
     private final DataGenerator generator;
     public SpeciesProvider(DataGenerator generator)
     {
@@ -77,6 +78,12 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         "
 
          */
+        SpeciesBuilder.getInstance().createProtoSpecies("Amanita phalloides")
+                .buildAndAddToList(generator, hashCache, list);
+
+/////////////////////////////
+//     Materials fungi     //
+/////////////////////////////
 
 /////////////////////////////
 //      Mineral fungi      //
