@@ -77,6 +77,45 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
 /////////////////////////////
 //     Materials fungi     //
 /////////////////////////////
+        SpeciesBuilder.getInstance().createProtoSpecies("GRANITE_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("DIORITE_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("ANDESITE_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("OBSIDIAN_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("BASALT_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("CLAY_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("TERRACOTTA_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("SNOW_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("SOULSAND_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("PRISMARINE_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("PURPUR_SUSTAINED_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("MAGMABLOCK_SUSTAINED_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("BONEBLOCK_SUSTAINED_FUNGUS")
+                .buildAndAddToList(generator, hashCache, list);
+
 
 /////////////////////////////
 //      Mineral fungi      //
