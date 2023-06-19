@@ -71,13 +71,6 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
 /////////////////////////////
 //      Toxic fungi        //
 /////////////////////////////
-
-        /*
-
-        "Amanita phalloides"
-        "
-
-         */
         SpeciesBuilder.getInstance().createProtoSpecies("Amanita phalloides")
                 .buildAndAddToList(generator, hashCache, list);
 
@@ -91,7 +84,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("COAL_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
-                .terrain("mycologymod:stone")
+                .terrain("minecraft:coal_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("EMERALD_FUNGUS")
@@ -109,13 +102,13 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("Galerina aurata")
                 .type(WARPED_TYPE)
                 .colors(new int[]{0xeed484, 0xffc21a, 0xffc96c, 0xfff59f})
-                .terrain("mycologymod:stone")
+                .terrain("minecraft:gold_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createDefaultSpecies("Bolbitius silex")
+        SpeciesBuilder.getInstance().createDefaultSpecies("Bolbitius silex") //Quartz
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
-                .terrain("mycologymod:stone")
+                .terrain("mycologymod:quartz_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createSpecies("Russula lazula")
@@ -124,7 +117,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
-                .terrain("mycologymod:stone")
+                .terrain("minecraft:lapis_ores")
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .areaEffect(FungusEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
@@ -133,25 +126,25 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("REDSTONE_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
-                .terrain("mycologymod:stone")
+                .terrain("minecraft:redstone_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Amanita cuprea")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068})
-                .terrain("mycologymod:stone")
+                .terrain("minecraft:copper_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("IRON_FUNGUS")
                 .type(WARPED_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
-                .terrain("mycologymod:stone")
+                .terrain("minecraft:iron_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("DIAMOND_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
-                .terrain("mycologymod:stone")
+                .terrain("minecraft:diamond_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("EXPERIENCE_FUNGUS")
@@ -168,7 +161,7 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
         SpeciesBuilder.getInstance().createDefaultSpecies("NETHERITE_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
-                .terrain("mycologymod:nether")
+                .terrain("mycologymod:netherite")
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("WITHER_FUNGUS")
