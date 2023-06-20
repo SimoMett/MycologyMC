@@ -10,6 +10,7 @@ public class FungusGeni
     public static String LACTARIUS = "Lactarius"; //(pennenciole, commestibili o velenosi)
     public static String RUSSULA = "Russula";//(rossola, commestibile o neutro)
     public static String SUILLUS = "Suillus"; //(Pinaroli, commestibili)
+    public static String POLYPORUS = "Polyporus"; //(Polipori, funghi legnosi)
 
     //Crimson fungus style
     public static String AGARICUS = "Agaricus"; //(Champignon, prataioli)

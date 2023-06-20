@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 import static com.mettsmirnov.mycology.datagen.SpeciesBuilder.CRIMSON_TYPE;
 import static com.mettsmirnov.mycology.datagen.SpeciesBuilder.WARPED_TYPE;
 
-public class SpeciesProvider implements DataProvider//TODO FIXME
+public class SpeciesProvider implements DataProvider//TODO
 {
     private final DataGenerator generator;
     public SpeciesProvider(DataGenerator generator)
@@ -52,6 +52,13 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator,hashCache, list);
 
+/////////////////////////////
+//      Edible fungi       //
+/////////////////////////////
+        //Sugar fungus
+        SpeciesBuilder.getInstance().createProtoSpecies("Laccaria dulcis") //oppure "Amanita dulcis"
+                .buildAndAddToList(generator, hashCache, list);
+
         SpeciesBuilder.getInstance().createSpecies("Noble boletus squisitus")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{ 0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd })
@@ -65,21 +72,21 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .buildAndAddToList(generator, hashCache, list);
 
 /////////////////////////////
-//      Edible fungi       //
-/////////////////////////////
-        SpeciesBuilder.getInstance().createProtoSpecies("SUGAR_FUNGUS")
-                .buildAndAddToList(generator, hashCache, list);
-
-/////////////////////////////
 //      Toxic fungi        //
 /////////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("Amanita phalloides")
                 .buildAndAddToList(generator, hashCache, list);
 
+        SpeciesBuilder.getInstance().createDefaultSpecies("WITHER_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{0, 0, 0, 0})
+                .terrain("mycologymod:nether")
+                .buildAndAddToList(generator, hashCache, list);
+
 /////////////////////////////
 //     Materials fungi     //
 /////////////////////////////
-        SpeciesBuilder.getInstance().createProtoSpecies("WOOD_FUNGUS")
+        SpeciesBuilder.getInstance().createProtoSpecies("Polyporus ligneus")
                 .terrain("minecraft:logs")
                 .buildAndAddToList(generator, hashCache, list);
 
@@ -219,19 +226,13 @@ public class SpeciesProvider implements DataProvider//TODO FIXME
                 .terrain("mycologymod:netherite")
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createDefaultSpecies("WITHER_FUNGUS")
-                .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
-                .terrain("mycologymod:nether")
-                .buildAndAddToList(generator, hashCache, list);
-
         SpeciesBuilder.getInstance().createDefaultSpecies("END_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0xe7f1b1, 0x3e0588, 0xa058ae, 0x490a61})
                 .terrain("mycologymod:endstone")
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createDefaultSpecies("ENDER_FUNGUS")
+        SpeciesBuilder.getInstance().createDefaultSpecies("Tricholomopsis evanescens")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0x87cfec, 0x06d192, 0x69d0af, 0x068054})
                 .terrain("mycologymod:endstone")
