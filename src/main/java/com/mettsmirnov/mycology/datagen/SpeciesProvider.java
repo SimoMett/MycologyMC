@@ -77,7 +77,8 @@ public class SpeciesProvider implements DataProvider//TODO
         SpeciesBuilder.getInstance().createProtoSpecies("Amanita phalloides")
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createDefaultSpecies("WITHER_FUNGUS")
+        //Wither fungus
+        SpeciesBuilder.getInstance().createDefaultSpecies("Sarcosphaera arescens")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
                 .terrain("mycologymod:nether")
