@@ -50,7 +50,7 @@ public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCoo
     @Override
     public void toNetwork(FriendlyByteBuf p_44101_, FungusCookingRecipe p_44102_)
     {
-
+        //TODO?
     }
 
     /*@Override
