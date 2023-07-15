@@ -13,7 +13,7 @@ import net.minecraftforge.common.brewing.IBrewingRecipe;
 
 public class FungusBrewingRecipe implements IBrewingRecipe
 {
-    String species;//FIXME should be private (testing only)
+    private String species;
     private String resultPotion;
 
     public FungusBrewingRecipe(String species, String resultPotion)
