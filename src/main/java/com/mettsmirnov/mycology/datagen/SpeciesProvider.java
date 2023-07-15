@@ -42,10 +42,6 @@ public class SpeciesProvider implements DataProvider//TODO
         /////////////////////////////
         //      Colors fungi       //
         /////////////////////////////
-        SpeciesBuilder.getInstance().createProtoSpecies("WHITE_FUNGUS")
-                .colors4(0xffffff,0xffffff,0xffffff,0xffffff)
-                .buildAndAddToList(generator, hashCache, list);
-
         SpeciesBuilder.getInstance().createSpecies("Amanita rubra")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{ 16777164, 16724736, 15921906, 15921906 })
@@ -58,24 +54,16 @@ public class SpeciesProvider implements DataProvider//TODO
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator,hashCache, list);
 
-        SpeciesBuilder.getInstance().createProtoSpecies("YELLOW_FUNGUS")
-                .colors4(0xfff620,0xfff620,0xfff620,0xfff620)
-                .buildAndAddToList(generator, hashCache, list);
-
         SpeciesBuilder.getInstance().createProtoSpecies("ORANGE_FUNGUS")
                 .colors4(0xff8701,0xff8701,0xff8701,0xff8701)
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createProtoSpecies("BLUE_FUNGUS")
-                .colors1(0x1c1bff)
+        SpeciesBuilder.getInstance().createProtoSpecies("YELLOW_FUNGUS")
+                .colors4(0xfff620,0xfff620,0xfff620,0xfff620)
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createProtoSpecies("PINK_FUNGUS")
-                .colors1(0xff94c1)
-                .buildAndAddToList(generator, hashCache, list);
-
-        SpeciesBuilder.getInstance().createProtoSpecies("BLACK_FUNGUS")
-                .colors1(0x282828)
+        SpeciesBuilder.getInstance().createProtoSpecies("LIME_FUNGUS")
+                .colors1(0x67ff32)
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createSpecies("GREEN_lactarius")
@@ -90,6 +78,18 @@ public class SpeciesProvider implements DataProvider//TODO
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator,hashCache, list);
 
+        SpeciesBuilder.getInstance().createProtoSpecies("CYAN_FUNGUS")
+                .colors1(0x198185)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("LIGHTBLUE_FUNGUS")
+                .colors1(0x41d3ff)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("BLUE_FUNGUS")
+                .colors1(0x1c1bff)
+                .buildAndAddToList(generator, hashCache, list);
+
         SpeciesBuilder.getInstance().createSpecies("VIOLET_ovulus")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{ 782911739, 11014979, 950157081, 1944126959 })
@@ -102,8 +102,32 @@ public class SpeciesProvider implements DataProvider//TODO
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator,hashCache, list);
 
+        SpeciesBuilder.getInstance().createProtoSpecies("MAGENTA_FUNGUS")
+                .colors1(0xff44de)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("PINK_FUNGUS")
+                .colors1(0xff94c1)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("BROWN_FUNGUS")
+                .colors1(0x89501e)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("BLACK_FUNGUS")
+                .colors1(0x202020)
+                .buildAndAddToList(generator, hashCache, list);
+
         SpeciesBuilder.getInstance().createProtoSpecies("GREY_FUNGUS")
                 .colors1(0x535353)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("LIGHTGREY_FUNGUS")
+                .colors1(0x999999)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("WHITE_FUNGUS")
+                .colors4(0xffffff,0xffffff,0xffffff,0xffffff)
                 .buildAndAddToList(generator, hashCache, list);
 
         /////////////////////////////
