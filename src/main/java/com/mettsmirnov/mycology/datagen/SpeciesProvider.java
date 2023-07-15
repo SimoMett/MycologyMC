@@ -28,6 +28,24 @@ public class SpeciesProvider implements DataProvider//TODO
         //FIXME all the fungi need some work
         List<CompletableFuture<?>> list = new ArrayList<>();
 
+        SpeciesBuilder.getInstance().createSpecies("Boletus salubrium")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{96564928, -1231718516, 751835909, -1044800857})
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain("mycologymod:grass")
+                .biomesSpecs(BiomesSpecs.TAIGA)
+                .areaEffect(FungusEffect.HEALING_EFFECT)
+                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .buildAndAddToList(generator,hashCache, list);
+        /////////////////////////////
+        //      Colors fungi       //
+        /////////////////////////////
+        SpeciesBuilder.getInstance().createProtoSpecies("WHITE_FUNGUS")
+                .colors4(0xffffff,0xffffff,0xffffff,0xffffff)
+                .buildAndAddToList(generator, hashCache, list);
+
         SpeciesBuilder.getInstance().createSpecies("Amanita rubra")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{ 16777164, 16724736, 15921906, 15921906 })
@@ -40,21 +58,57 @@ public class SpeciesProvider implements DataProvider//TODO
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator,hashCache, list);
 
-        SpeciesBuilder.getInstance().createSpecies("Boletus salubrium")
-                .type(CRIMSON_TYPE)
-                .colors(new int[]{96564928, -1231718516, 751835909, -1044800857})
+        SpeciesBuilder.getInstance().createProtoSpecies("YELLOW_FUNGUS")
+                .colors4(0xfff620,0xfff620,0xfff620,0xfff620)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("ORANGE_FUNGUS")
+                .colors4(0xff8701,0xff8701,0xff8701,0xff8701)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("BLUE_FUNGUS")
+                .colors1(0x1c1bff)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("PINK_FUNGUS")
+                .colors1(0xff94c1)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("BLACK_FUNGUS")
+                .colors1(0x282828)
+                .buildAndAddToList(generator, hashCache, list);
+
+        SpeciesBuilder.getInstance().createSpecies("GREEN_lactarius")
+                .type(WARPED_TYPE)
+                .colors(new int[]{ -641754945, 395771475, 1217990927, 1173684947 })
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
-                .areaEffect(FungusEffect.HEALING_EFFECT)
+                .areaEffect(FungusEffect.NO_EFFECT)
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator,hashCache, list);
 
-/////////////////////////////
-//      Edible fungi       //
-/////////////////////////////
+        SpeciesBuilder.getInstance().createSpecies("VIOLET_ovulus")
+                .type(CRIMSON_TYPE)
+                .colors(new int[]{ 782911739, 11014979, 950157081, 1944126959 })
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain("mycologymod:grass")
+                .biomesSpecs(BiomesSpecs.TAIGA)
+                .areaEffect(FungusEffect.NO_EFFECT)
+                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .buildAndAddToList(generator,hashCache, list);
+
+        SpeciesBuilder.getInstance().createProtoSpecies("GREY_FUNGUS")
+                .colors1(0x535353)
+                .buildAndAddToList(generator, hashCache, list);
+
+        /////////////////////////////
+        //      Edible fungi       //
+        /////////////////////////////
         //Sugar fungus
         SpeciesBuilder.getInstance().createProtoSpecies("Laccaria dulcis") //oppure "Amanita dulcis"
                 .buildAndAddToList(generator, hashCache, list);
@@ -71,9 +125,9 @@ public class SpeciesProvider implements DataProvider//TODO
                 .spawnType(FungusSpawn.DEFAULT_SPAWN)
                 .buildAndAddToList(generator, hashCache, list);
 
-/////////////////////////////
-//      Toxic fungi        //
-/////////////////////////////
+        /////////////////////////////
+        //      Toxic fungi        //
+        /////////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("Amanita phalloides")
                 .buildAndAddToList(generator, hashCache, list);
 
@@ -84,9 +138,9 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:nether")
                 .buildAndAddToList(generator, hashCache, list);
 
-/////////////////////////////
-//     Materials fungi     //
-/////////////////////////////
+        /////////////////////////////
+        //     Materials fungi     //
+        /////////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("Polyporus ligneus")
                 .terrain("minecraft:logs")
                 .buildAndAddToList(generator, hashCache, list);
@@ -137,9 +191,9 @@ public class SpeciesProvider implements DataProvider//TODO
                 .buildAndAddToList(generator, hashCache, list);
 
 
-/////////////////////////////
-//      Mineral fungi      //
-/////////////////////////////
+        /////////////////////////////
+        //      Mineral fungi      //
+        /////////////////////////////
         SpeciesBuilder.getInstance().createDefaultSpecies("COAL_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})

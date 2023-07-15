@@ -78,6 +78,18 @@ public class SpeciesBuilder
         return this;
     }
 
+    public SpeciesBuilder colors4(int color1, int color2, int color3, int color4)
+    {
+        this.colors = new int[]{color1, color2, color3, color4};
+        return this;
+    }
+
+    public SpeciesBuilder colors1(int color)
+    {
+        this.colors = new int[]{color, color, color, color};
+        return this;
+    }
+
     public SpeciesBuilder spreading(int spreading)
     {
         this.spreading = spreading;
