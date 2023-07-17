@@ -4,6 +4,7 @@ import com.mettsmirnov.mycology.blocks.FungusBlockColorer;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataAttacher;
 import com.mettsmirnov.mycology.capabilities.ModCapabilitiesHandler;
+import com.mettsmirnov.mycology.creativetab.ModCreativeTabs;
 import com.mettsmirnov.mycology.data.FungusSpeciesLoader;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
@@ -28,6 +29,7 @@ public class MycologyMod
         IEventBus evtBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.ITEMS.register(evtBus);
+        ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
         ModEntities.ENTITIES.register(evtBus);
         evtBus.register(FungusItemColorer.class);
