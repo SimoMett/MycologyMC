@@ -1,4 +1,4 @@
-import com.mettsmirnov.mycology.data.FungusTraits;
+import com.mettsmirnov.mycology.data.genetics.FungusTraits;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;

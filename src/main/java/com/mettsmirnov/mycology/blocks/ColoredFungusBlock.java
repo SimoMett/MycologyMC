@@ -91,7 +91,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         int spreading = (int)fungusData.getField(FungusDataModel.SPREADING, IFungusData.GeneType.DOMINANT);//TODO implement spreadboost
         if (rand.nextInt(spreading) == 0)
         {
-            //check if there are 'i' mushroom in area
+            //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
             int i = 5;
             for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4))) {
@@ -102,8 +102,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                     }
                 }
             }
-            //
 
+            //find a random position for the new block (launching 4 tries)
             BlockPos blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
 
             for(int k = 0; k < 4; ++k) {
@@ -125,7 +125,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                     newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
                 }
             }
-            //
         }
     }
 }

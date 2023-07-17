@@ -1,6 +1,6 @@
 package com.mettsmirnov.mycology.capabilities;
 
-import com.mettsmirnov.mycology.data.FungusTraits;
+import com.mettsmirnov.mycology.data.genetics.FungusTraits;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 import net.minecraftforge.common.util.INBTSerializable;
