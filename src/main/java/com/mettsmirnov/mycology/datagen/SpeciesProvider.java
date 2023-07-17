@@ -44,7 +44,7 @@ public class SpeciesProvider implements DataProvider//TODO
         /////////////////////////////
         SpeciesBuilder.getInstance().createSpecies("Amanita rubra")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{ 16777164, 16724736, 15921906, 15921906 })
+                .colors4(0xFFFFCC, 0xFF3300, 0xF2F2F2, 0xF2F2F2)
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -153,6 +153,7 @@ public class SpeciesProvider implements DataProvider//TODO
         //      Toxic fungi        //
         /////////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("Amanita phalloides")
+                .colors4(0xffdb94, 0xc71c12, 0xe8e8e8, 0xF2F2F2)
                 .buildAndAddToList(generator, hashCache, list);
 
         //Wither fungus
