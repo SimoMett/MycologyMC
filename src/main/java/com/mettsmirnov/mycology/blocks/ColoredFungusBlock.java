@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -33,10 +32,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
     public ColoredFungusBlock()
     {
-        super(BlockBehaviour.Properties.of(Material.PLANT)
-                .sound(SoundType.GRASS)
-                .noCollission()
-                .randomTicks());
+        super(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM));
     }
 
     @Override //deprecated
