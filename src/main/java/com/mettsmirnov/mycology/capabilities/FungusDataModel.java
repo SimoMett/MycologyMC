@@ -1,6 +1,6 @@
 package com.mettsmirnov.mycology.capabilities;
 
-import com.mettsmirnov.mycology.data.FungusTraits;
+import com.mettsmirnov.mycology.data.genetics.FungusTraits;
 import com.mettsmirnov.mycology.myutils.FloatComposition;
 import com.mettsmirnov.mycology.myutils.StringDecomposition;
 import net.minecraft.nbt.CompoundTag;
@@ -12,7 +12,7 @@ import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Random;
 
-import static com.mettsmirnov.mycology.data.FungusTraits.traitsDictionary;
+import static com.mettsmirnov.mycology.data.genetics.FungusTraits.traitsDictionary;
 import static com.mettsmirnov.mycology.myutils.StringDecomposition.compose;
 
 public class FungusDataModel implements IFungusData
