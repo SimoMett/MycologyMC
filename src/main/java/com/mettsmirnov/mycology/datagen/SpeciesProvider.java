@@ -314,6 +314,7 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Tricholomopsis evanescens")
                 .type(CRIMSON_TYPE)
+                .setRecessive()
                 .colors(new int[]{0x87cfec, 0x06d192, 0x69d0af, 0x068054})
                 .terrain("mycologymod:endstone")
                 .buildAndAddToList(generator, hashCache, list);
