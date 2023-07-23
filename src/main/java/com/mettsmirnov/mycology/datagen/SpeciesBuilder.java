@@ -74,14 +74,16 @@ public class SpeciesBuilder
         return this;
     }
 
-    public void setDominant()
+    public SpeciesBuilder setDominant()
     {
         this.isDominant = true;
+        return this;
     }
 
-    public void setRecessive()
+    public SpeciesBuilder setRecessive()
     {
         this.isDominant = false;
+        return this;
     }
 
     public SpeciesBuilder colors(int[] colors)
