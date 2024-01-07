@@ -66,7 +66,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .colors1(0x67ff32)
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createSpecies("GREEN_lactarius")
+        SpeciesBuilder.getInstance().createSpecies("Lactarius viridis")
                 .type(WARPED_TYPE)
                 .colors(new int[]{ -641754945, 395771475, 1217990927, 1173684947 })
                 .spreading(25)
