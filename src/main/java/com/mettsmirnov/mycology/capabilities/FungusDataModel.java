@@ -50,6 +50,10 @@ public class FungusDataModel implements IFungusData
         dataMap.put("temp",0);
         dataMap.put("area",1);
         dataMap.put("effect","none");*/
+
+        //FIXME this is patching crash when spawning fungus feature in the world
+        dominantTraits.put("spreading", 25);
+        recessiveTraits.put("spreading", 25);
     }
 
     public void loadFrom(FungusTraits dominant, FungusTraits recessive)
