@@ -6,6 +6,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 
+import java.util.Random;
+
 public class RandomFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
 {
     //FIXME command "/place feature" doesn't work
@@ -18,7 +20,12 @@ public class RandomFungusFeatureConfiguration extends Feature<SimpleBlockConfigu
     public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> placeContext)
     {
         BlockPos origin = placeContext.origin();
-        placeContext.level().setBlock(origin, ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState(), 0); //WTF is the third parameter??
+        Random coin = new Random();
+        boolean shouldSpawnCrimson = (coin.nextInt() % 2) == 1;
+        if(shouldSpawnCrimson)
+            placeContext.level().setBlock(origin, ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState(), 0); //WTF is the third parameter??
+        else
+            placeContext.level().setBlock(origin, ModBlocks.COLORED_WARPED_FUNGUS.get().defaultBlockState(), 0);
         return true;
     }
 }
