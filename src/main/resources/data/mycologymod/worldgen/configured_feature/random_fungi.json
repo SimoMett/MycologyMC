@@ -1,5 +1,5 @@
 {
-  "type": "mycologymod:simple_crimson",
+  "type": "mycologymod:simple_fungus",
   "config": {
     "to_place": {
       "type": "minecraft:simple_state_provider",
