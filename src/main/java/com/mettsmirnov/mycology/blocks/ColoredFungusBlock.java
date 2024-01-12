@@ -39,7 +39,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 .randomTicks());
     }
 
-    @Override
+    @Override //deprecated
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         return SHAPE;
     }
@@ -79,7 +79,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         return !level.getBlockState(pos.below()).isAir();
     }
 
-    @Override
+    @Override //deprecated
     public void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)
     {
         BlockPos originalPos = pos;
