@@ -22,6 +22,11 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
         list.add(species);
     }
 
+    public ArrayList<FungusSpecies> getSpeciesList()
+    {
+        return new ArrayList<FungusSpecies>(list);
+    }
+
     public void clearList()
     {
         list.clear();
@@ -67,7 +72,7 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
         return e;
     }
 
-    private static class FungusSpecies
+    public static class FungusSpecies
     {
         public FungusTraits defaultTraits;
         public int [] colors;
