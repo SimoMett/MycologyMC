@@ -1,0 +1,11 @@
+{
+  "type": "mycologymod:simple_crimson",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:crimson_fungus"
+      }
+    }
+  }
+}

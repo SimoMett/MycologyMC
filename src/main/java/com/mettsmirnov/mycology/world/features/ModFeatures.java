@@ -27,18 +27,6 @@ import java.util.function.Supplier;
 public class ModFeatures
 {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MycologyMod.MODID);
-    //public static final DeferredRegister<ConfiguredFeature<?,?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY,MycologyMod.MODID);
 
-    //public static final RegistryObject<Feature<SimpleBlockConfiguration>> MUSHROOMS = FEATURES.register("mycology_mushrooms",() -> new RandomFungusFeature(SimpleBlockConfiguration.CODEC));
-    //public static final RegistryObject<ConfiguredFeature<?,?>> CONFIGURED_MUSHROOMS = CONFIGURED_FEATURES.register("patch_mushrooms", TestConfiguredFeature::new);
-
-    //public static final RegistryObject<ConfiguredFeature<RandomPatchConfiguration, ?>> TEST_FEAT = CONFIGURED_FEATURES.register("test_feature", );
-    /*public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> TEST_FEAT =
-            FeatureUtils.register("test_feat", Feature.FLOWER,
-                    new RandomPatchConfiguration(32, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
-                    new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.COLORED_CRIMSON_FUNGUS.get())))));
-
-    public static final Holder<PlacedFeature> PLACED_TEST_FEAT = PlacementUtils.register("test_placed",
-            TEST_FEAT, RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP);
-*/
+    public static final RegistryObject<RandomFungusFeatureConfiguration> CONFIGURED_CRIMSON = FEATURES.register("simple_crimson", RandomFungusFeatureConfiguration::new);
 }
