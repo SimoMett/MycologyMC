@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "features": "mycologymod:test_my_feature",
-  "biomes": "#minecraft:is_overworld",
-  "step": "vegetal_decoration"
-}
