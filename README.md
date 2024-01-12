@@ -10,7 +10,7 @@
 - [ ] A LOT of species. [This fantastic tool](https://github.com/SimoMett/mushroom_renderer) can help ;)
 - [ ] Edit mushroom spreading mechanic (partial)
 - [ ] Implement breeding
-- [ ] Add natural generation in the world (partial)
+- [X] Add natural generation in the world (to be polished)
 - [X] Implement fungus spores' area effect
 - [X] Implement crafting mechanics
 
