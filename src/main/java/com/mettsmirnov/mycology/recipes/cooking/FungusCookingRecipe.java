@@ -5,6 +5,9 @@ import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.items.ModItems;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
@@ -14,20 +17,31 @@ import net.minecraft.world.level.Level;
 public class FungusCookingRecipe extends AbstractCookingRecipe
 {
     public static ResourceLocation TYPE_ID = new ResourceLocation(MycologyMod.MODID, "fungus_cooking");
+
+    public static final Codec<FungusCookingRecipe> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            Codec.STRING.fieldOf("ingredient").forGetter(FungusCookingRecipe::getSpeciesIngredient),
+            ItemStack.CODEC.fieldOf("result").forGetter( recipe -> recipe.result),
+            Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(FungusCookingRecipe::getExperience),
+            Codec.INT.fieldOf("cookingtime").orElse(200).forGetter(FungusCookingRecipe::getCookingTime))
+        .apply(instance, FungusCookingRecipe::new));
     private final String speciesIngredient;
 
-    private final ResourceLocation id;
 
-    public FungusCookingRecipe(ResourceLocation id, String speciesIngredient, ItemStack result, float exp, int cookingTime)
+    public FungusCookingRecipe(String speciesIngredient, ItemStack result, float exp, int cookingTime)
     {
         super(RecipeType.SMELTING, "fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS.get()), result, exp, cookingTime);
         this.speciesIngredient = speciesIngredient;
-        this.id = id;
     }
 
     public String getSpeciesIngredient()
     {
         return speciesIngredient;
+    }
+
+    @Override
+    public ItemStack getResultItem(RegistryAccess p_266851_)
+    {
+        return super.getResultItem(p_266851_);
     }
 
     @Override
@@ -46,12 +60,5 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     {
         return ModCookingRecipes.FUNGUS_COOKING_RECIPE_SERIALIZER.get();
     }
-
-    @Override
-    public ResourceLocation getId()
-    {
-        return id;
-    }
-
 
 }
