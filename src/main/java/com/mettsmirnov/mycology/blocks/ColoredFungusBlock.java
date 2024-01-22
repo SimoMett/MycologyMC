@@ -26,6 +26,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import org.jline.utils.Log;
 
+import java.util.Random;
+
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
 {
     protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
@@ -99,9 +101,10 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 }
             }
 
-            //find a random position for the new block (launching 4 tries)
+            // find a random position for the new block
             BlockPos blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
 
+            // 4 tries
             for(int k = 0; k < 4; ++k) {
                 if (level.isEmptyBlock(blockpos1) && blockState.canSurvive(level, blockpos1))
                 {
@@ -111,14 +114,43 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
             }
 
-            //mushroom spreading procedure
-            if (level.isEmptyBlock(blockpos1) && blockState.canSurvive(level, blockpos1))
+            //mushroom spreading (and breeding) procedure
+            if (level.isEmptyBlock(blockpos1))
             {
-                level.setBlock(blockpos1, blockState, 2);
-                ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockpos1));
-                if(newBlockEntity != null)
+                Random dice = new Random();
+                int BREEDING_CHANCE = 2;
+                boolean crossBreeding = dice.nextInt(BREEDING_CHANCE) == 0; //FIXME adjust BREEDING_CHANCE
+
+                if (crossBreeding)
                 {
-                    newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
+                    // TODO check if cross-breeding is possibile
+                    // i.e. check if there are any different fungi nearby (by nearby I mean the dominant "area" trait)
+                    // then precalculate the dominant genotype
+                    // if the environment requisites for the fungus are matched (using "blockState.canSurvive")
+                    //      then place it
+                    blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
+                    level.setBlock(blockpos1, blockState, 2);
+                    /*if (blockState.canSurvive(level, blockpos1))
+                    {
+                        level.setBlock(blockpos1, blockState, 2);
+                        ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockpos1));
+                        if (newBlockEntity != null)
+                        {
+                            newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
+                        }
+                    }*/
+                }
+                else
+                {
+                    if (blockState.canSurvive(level, blockpos1))
+                    {
+                        level.setBlock(blockpos1, blockState, 2);
+                        ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockpos1));
+                        if (newBlockEntity != null)
+                        {
+                            newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
+                        }
+                    }
                 }
             }
         }
