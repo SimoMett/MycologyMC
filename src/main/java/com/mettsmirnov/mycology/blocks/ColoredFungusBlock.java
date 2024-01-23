@@ -20,12 +20,14 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import org.jline.utils.Log;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
@@ -123,8 +125,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
                 if (crossBreeding)
                 {
-                    // TODO check if cross-breeding is possibile
-                    // i.e. check if there are any different fungi nearby (by nearby I mean the dominant "area" trait)
+                    // TODO check if cross-breeding is possibile, i.e.
+                    // check if there are any different fungi nearby (by 'nearby' I mean the dominant "area" trait)
+                    int radius = 3; //TODO retrieve the correct number for each species
+                    ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, radius);
+
                     // then precalculate the dominant genotype
                     // if the environment requisites for the fungus are matched (using "blockState.canSurvive")
                     //      then place it
@@ -154,5 +159,26 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 }
             }
         }
+    }
+
+    private static ArrayList<ColoredFungusBlockEntity> getFungiInArea(ServerLevel level, BlockPos blockpos1, int radius)
+    {
+        AABB boxArea = new AABB(
+                blockpos1.getX() - (radius +1),
+                blockpos1.getY() - (radius +1),
+                blockpos1.getZ() - (radius +1),
+                blockpos1.getX() + radius,
+                blockpos1.getY() + radius,
+                blockpos1.getZ() + radius
+        );
+        ArrayList<ColoredFungusBlockEntity> fungusBlockEntities = new ArrayList<>();
+        List<BlockPos> blocks = BlockPos.betweenClosedStream(boxArea).toList();
+        List<BlockState> blockStatesList = level.getBlockStates(boxArea).toList();
+        for(BlockPos blockPos : blocks)
+        {
+            Log.info(blockPos.toShortString());
+        }
+
+        return fungusBlockEntities;
     }
 }
