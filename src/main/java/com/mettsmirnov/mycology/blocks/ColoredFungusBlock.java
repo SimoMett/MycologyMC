@@ -27,7 +27,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import org.jline.utils.Log;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
@@ -161,24 +160,20 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         }
     }
 
-    private static ArrayList<ColoredFungusBlockEntity> getFungiInArea(ServerLevel level, BlockPos blockpos1, int radius)
+    private static ArrayList<ColoredFungusBlockEntity> getFungiInArea(ServerLevel level, BlockPos pos, int radius)
     {
         AABB boxArea = new AABB(
-                blockpos1.getX() - (radius +1),
-                blockpos1.getY() - (radius +1),
-                blockpos1.getZ() - (radius +1),
-                blockpos1.getX() + radius,
-                blockpos1.getY() + radius,
-                blockpos1.getZ() + radius
+                pos.getX() - (radius +1),
+                pos.getY() - (radius +1),
+                pos.getZ() - (radius +1),
+                pos.getX() + radius,
+                pos.getY() + radius,
+                pos.getZ() + radius
         );
         ArrayList<ColoredFungusBlockEntity> fungusBlockEntities = new ArrayList<>();
-        List<BlockPos> blocks = BlockPos.betweenClosedStream(boxArea).toList();
-        List<BlockState> blockStatesList = level.getBlockStates(boxArea).toList();
-        for(BlockPos blockPos : blocks)
-        {
-            Log.info(blockPos.toShortString());
-        }
-
+        BlockPos.betweenClosedStream(boxArea)
+                .filter(blockPos -> level.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity)
+                .forEach(blockPos -> fungusBlockEntities.add((ColoredFungusBlockEntity) level.getBlockEntity(blockPos)));
         return fungusBlockEntities;
     }
 }
