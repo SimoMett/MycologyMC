@@ -6,6 +6,7 @@ public class Breeding
 {
     public static FungusDataModel crossBreed(FungusDataModel species1, FungusDataModel species2)
     {
-        return null;
+        //TODO implementation
+        return new FungusDataModel();
     }
 }

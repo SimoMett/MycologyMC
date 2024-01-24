@@ -131,24 +131,30 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                     ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, radius);
                     if (!nearbyFungi.isEmpty())
                     {
+                        // precalculate the genotype
                         ColoredFungusBlockEntity randomBlockEntity = nearbyFungi.get(new Random().nextInt(nearbyFungi.size()));
-                        // then precalculate the genotype
                         FungusDataModel offspringDataModel = Breeding.crossBreed(randomBlockEntity.getFungusData(), thisFungusData);
 
                         // if the environment requisites for the fungus are matched (using "blockState.canSurvive")
-                        //      then place it
-                        // otherwise proceed with normal spreading
                         blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
-                        level.setBlock(blockpos1, blockState, 2);
-                        /*if (blockState.canSurvive(level, blockpos1))
+                        int light = 15;
+                        float temperature = 1f;
+                        float humidity = 1f;
+
+                        if (offspringDataModel.matchesEnvironment(light, temperature, humidity) && blockState.canSurvive(level, blockpos1))
                         {
+                            // then place it
                             level.setBlock(blockpos1, blockState, 2);
                             ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockpos1));
                             if (newBlockEntity != null)
                             {
-                                newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
+                                newBlockEntity.getFungusData().deserializeNBT(offspringDataModel.serializeNBT());
                             }
-                        }*/
+                        }
+                        else
+                        {
+                            // otherwise proceed with normal spreading
+                        }
                     }
                 }
                 else

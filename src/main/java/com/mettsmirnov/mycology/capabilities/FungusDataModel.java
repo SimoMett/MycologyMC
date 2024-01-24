@@ -93,6 +93,13 @@ public class FungusDataModel implements IFungusData
         this.colors = colors;
     }
 
+    public boolean matchesEnvironment(Integer light, Float temperature, Float humidity)
+    {
+        return light < (Integer)dominantTraits.get(LIGHT) // let's say for now that mushroom prefer sporing in darker areas
+                && dominantTraits.get(TEMP).equals(temperature)
+                && dominantTraits.get(HUMIDITY).equals(humidity);
+    }
+
     //nbt
     //this method is responsible for the creation of a NBT tag to be used when the world saves
     private final char decompCharacter = ';'; //DON'T YOU DARE CHANGE IT AGAIN
