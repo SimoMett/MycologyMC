@@ -5,6 +5,7 @@ import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
+import com.mettsmirnov.mycology.genetics.Breeding;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -83,11 +84,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     {
         BlockPos originalPos = pos;
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(originalPos));
-        FungusDataModel fungusData = originBlockEntity.getFungusData();
+        FungusDataModel thisFungusData = originBlockEntity.getFungusData();
 
         //code copied from MushroomBlock.randomTick
         //TODO use nbt data instead of magic numbers
-        int spreading = (int)fungusData.getField(FungusDataModel.SPREADING, IFungusData.GeneType.DOMINANT);//TODO implement spreadboost
+        int spreading = (int)thisFungusData.getField(FungusDataModel.SPREADING, IFungusData.GeneType.DOMINANT);//TODO implement spreadboost
         if (rand.nextInt(spreading) == 0)
         {
             //check if there are 'i' mushrooms in area
@@ -128,21 +129,27 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                     // check if there are any different fungi nearby (by 'nearby' I mean the dominant "area" trait)
                     int radius = 3; //TODO retrieve the correct number for each species
                     ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, radius);
-
-                    // then precalculate the dominant genotype
-                    // if the environment requisites for the fungus are matched (using "blockState.canSurvive")
-                    //      then place it
-                    blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
-                    level.setBlock(blockpos1, blockState, 2);
-                    /*if (blockState.canSurvive(level, blockpos1))
+                    if (!nearbyFungi.isEmpty())
                     {
+                        ColoredFungusBlockEntity randomBlockEntity = nearbyFungi.get(new Random().nextInt(nearbyFungi.size()));
+                        // then precalculate the genotype
+                        FungusDataModel offspringDataModel = Breeding.crossBreed(randomBlockEntity.getFungusData(), thisFungusData);
+
+                        // if the environment requisites for the fungus are matched (using "blockState.canSurvive")
+                        //      then place it
+                        // otherwise proceed with normal spreading
+                        blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
                         level.setBlock(blockpos1, blockState, 2);
-                        ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockpos1));
-                        if (newBlockEntity != null)
+                        /*if (blockState.canSurvive(level, blockpos1))
                         {
-                            newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
-                        }
-                    }*/
+                            level.setBlock(blockpos1, blockState, 2);
+                            ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockpos1));
+                            if (newBlockEntity != null)
+                            {
+                                newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
+                            }
+                        }*/
+                    }
                 }
                 else
                 {
@@ -152,7 +159,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                         ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockpos1));
                         if (newBlockEntity != null)
                         {
-                            newBlockEntity.getFungusData().deserializeNBT(fungusData.serializeNBT());
+                            newBlockEntity.getFungusData().deserializeNBT(thisFungusData.serializeNBT());
                         }
                     }
                 }
