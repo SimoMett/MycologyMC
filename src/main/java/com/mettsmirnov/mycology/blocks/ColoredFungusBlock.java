@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -75,6 +76,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos pos)
     {
+        //FIXME originBlockEntity is in fact null
+        /*ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(pos));
+        assert originBlockEntity != null;
+        FungusDataModel thisFungusData = originBlockEntity.getFungusData();
+        String terrain = thisFungusData.getField(FungusDataModel.TERRAIN, IFungusData.GeneType.DOMINANT).toString();*/
         //TODO proper implementation
         return !level.getBlockState(pos.below()).isAir();
     }
@@ -127,21 +133,28 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 {
                     // TODO check if cross-breeding is possibile, i.e.
                     // check if there are any different fungi nearby (by 'nearby' I mean the dominant "area" trait)
-                    int radius = 3; //TODO retrieve the correct number for each species
+                    int radius = (Integer)thisFungusData.getField(FungusDataModel.AREA);
                     ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, radius);
+
                     if (!nearbyFungi.isEmpty())
                     {
                         // precalculate the genotype
                         ColoredFungusBlockEntity randomBlockEntity = nearbyFungi.get(new Random().nextInt(nearbyFungi.size()));
                         FungusDataModel offspringDataModel = Breeding.crossBreed(randomBlockEntity.getFungusData(), thisFungusData);
 
-                        // if the environment requisites for the fungus are matched (using "blockState.canSurvive")
-                        blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
-                        int light = 15;
-                        float temperature = 1f;
-                        float humidity = 1f;
+                        // if the environment requisites for the fungus are matched
+                        blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();//TODO how to get the correct type of fungus?
 
-                        if (offspringDataModel.matchesEnvironment(light, temperature, humidity) && blockState.canSurvive(level, blockpos1))
+                        int light = level.getBrightness(LightLayer.SKY, blockpos1);
+                        //LightLayer.SKY is the light level of a block due to other blocks obstructing skylight. 0 is in complete darkness, 15 is in plain air.
+                        //LightLayer.BLOCK is the light level of a block due to other sources of light (Glowstone, torches..).
+                        float temperature = level.getBiome(blockpos1).get().getBaseTemperature();
+                        Log.info("Temperature: ", temperature, ", ", level.getBiome(blockpos1).get().getModifiedClimateSettings().temperature());
+                        // getBaseTemperature() or getModifiedClimateSettings().temperature() ?
+                        // they seems to be the same...
+                        float humidity = level.getBiome(blockpos1).get().getModifiedClimateSettings().downfall();
+
+                        /*if (offspringDataModel.matchesEnvironment(light, temperature, humidity) && blockState.canSurvive(level, blockpos1))
                         {
                             // then place it
                             level.setBlock(blockpos1, blockState, 2);
@@ -154,11 +167,22 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                         else
                         {
                             // otherwise proceed with normal spreading
-                        }
+                            //TODO refactor duplicate code
+                            if (blockState.canSurvive(level, blockpos1))
+                            {
+                                level.setBlock(blockpos1, blockState, 2);
+                                ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockpos1));
+                                if (newBlockEntity != null)
+                                {
+                                    newBlockEntity.getFungusData().deserializeNBT(thisFungusData.serializeNBT());
+                                }
+                            }
+                        }*/
                     }
                 }
                 else
                 {
+                    //TODO refactor duplicate code
                     if (blockState.canSurvive(level, blockpos1))
                     {
                         level.setBlock(blockpos1, blockState, 2);
