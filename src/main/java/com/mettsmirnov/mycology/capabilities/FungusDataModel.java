@@ -29,31 +29,36 @@ public class FungusDataModel implements IFungusData
         AREA = "area",
         EFFECT = "effect";
 
-    private final HashMap<String,Object> dominantTraits=new HashMap<>();
-    private final HashMap<String, Object> recessiveTraits=new HashMap<>();
+    private final HashMap<String,Object> dominantTraits;
+    private final HashMap<String, Object> recessiveTraits;
     private int[] colors = new int[]{-1,new Random().nextInt(),-1,-1};
 
     public FungusDataModel()
     {
-        for (String trait : traitsDictionary)
-        {
-            dominantTraits.put(trait,"none");
-            recessiveTraits.put(trait,"none");
-        }
-        //template
-        /*dataMap.put("species","dominant");
-        dataMap.put("spreading", 25);
-        dataMap.put("spreadboost", 1f);
-        dataMap.put("light",15);
-        dataMap.put("terrain","terrain");
-        dataMap.put("humidity",0);
-        dataMap.put("temp",0);
-        dataMap.put("area",1);
-        dataMap.put("effect","none");*/
-
-        //FIXME this is patching crash when spawning fungus feature in the world
+        dominantTraits=new HashMap<>();
+        dominantTraits.put("species","none");
+        dominantTraits.put("isDominant", true); //maybe useless
         dominantTraits.put("spreading", 25);
+        dominantTraits.put("spreadboost", 1f);
+        dominantTraits.put("light", 15);
+        dominantTraits.put("terrain","grass");
+        dominantTraits.put("humidity", 0);
+        dominantTraits.put("temp", 0);
+        dominantTraits.put("area", 1);
+        dominantTraits.put("effect", "none");
+
+        //TODO refactor: replace recessiveTraits initialization with a deep copy of dominantTraits
+        recessiveTraits = new HashMap<>();
+        recessiveTraits.put("species","none");
+        recessiveTraits.put("isDominant", true); //maybe useless
         recessiveTraits.put("spreading", 25);
+        recessiveTraits.put("spreadboost", 1f);
+        recessiveTraits.put("light", 15);
+        recessiveTraits.put("terrain","grass");
+        recessiveTraits.put("humidity", 0);
+        recessiveTraits.put("temp", 0);
+        recessiveTraits.put("area", 1);
+        recessiveTraits.put("effect", "none");
     }
 
     public void loadFrom(FungusTraits dominant, FungusTraits recessive)
@@ -82,6 +87,11 @@ public class FungusDataModel implements IFungusData
         return type==GeneType.DOMINANT? dominantTraits.get(key) : recessiveTraits.get(key);
     }
 
+    public Object getField(String key)
+    {
+        return dominantTraits.get(key);
+    }
+
     public int[] getColors()
     {
         return colors;
@@ -95,9 +105,10 @@ public class FungusDataModel implements IFungusData
 
     public boolean matchesEnvironment(Integer light, Float temperature, Float humidity)
     {
-        return light < (Integer)dominantTraits.get(LIGHT) // let's say for now that mushroom prefer sporing in darker areas
+        /* light < (Integer)dominantTraits.get(LIGHT) // let's say for now that mushroom prefer sporing in darker areas
                 && dominantTraits.get(TEMP).equals(temperature)
-                && dominantTraits.get(HUMIDITY).equals(humidity);
+                && dominantTraits.get(HUMIDITY).equals(humidity);*/
+        return true;//FIXME
     }
 
     //nbt
