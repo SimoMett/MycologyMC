@@ -1,4 +1,4 @@
-package com.mettsmirnov.mycology.data.genetics;
+package com.mettsmirnov.mycology.genetics;
 
 public class FungusTraits
 {
