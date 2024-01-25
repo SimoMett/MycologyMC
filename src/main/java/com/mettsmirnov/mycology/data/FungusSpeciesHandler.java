@@ -20,6 +20,11 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
         speciesHashMap.put(defaultTraits.species, species);
     }
 
+    public FungusSpecies get(String speciesName)
+    {
+        return speciesHashMap.get(speciesName);
+    }
+
     public ArrayList<FungusSpecies> getSpeciesList()
     {
         return new ArrayList<>(speciesHashMap.values());

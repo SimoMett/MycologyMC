@@ -1,6 +1,7 @@
 package com.mettsmirnov.mycology.capabilities;
 
 import com.mettsmirnov.mycology.MycologyMod;
+import com.mettsmirnov.mycology.data.FungusSpeciesHandler;
 import com.mettsmirnov.mycology.genetics.FungusTraits;
 import com.mettsmirnov.mycology.myutils.FloatComposition;
 import com.mettsmirnov.mycology.myutils.StringDecomposition;
@@ -136,7 +137,6 @@ public class FungusDataModel implements IFungusData
                 tag.putLong(trait,compositeFloat);
             }
         }
-        tag.putIntArray("color",colors);
         return tag;
     }
 
@@ -166,6 +166,6 @@ public class FungusDataModel implements IFungusData
             }
         }
         for (int i=0; i<4; i++)
-            colors[i]=tag.getIntArray("color")[i];
+            colors[i]=FungusSpeciesHandler.INSTANCE.get((String) dominantTraits.get(SPECIES)).colors[i];
     }
 }
