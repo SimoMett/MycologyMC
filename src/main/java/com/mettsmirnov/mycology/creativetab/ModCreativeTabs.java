@@ -15,7 +15,7 @@ public class ModCreativeTabs
     public static final RegistryObject<CreativeModeTab> MAIN_CREATIVE_TAB = CREATIVE_TABS.register("", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup." + MycologyMod.MODID))
             .icon(() -> FungusSpeciesHandler.INSTANCE.getCreativeTabIcon())
-            .displayItems((enabledFlags, populator) -> populator.acceptAll(FungusSpeciesHandler.INSTANCE.getCollection()))
+            .displayItems((enabledFlags, populator) -> populator.acceptAll(FungusSpeciesHandler.INSTANCE.getAllSpeciesCollection()))
             .build()
     );
 }

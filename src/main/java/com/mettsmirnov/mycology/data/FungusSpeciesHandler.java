@@ -5,14 +5,11 @@ import com.mettsmirnov.mycology.genetics.FungusTraits;
 import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class FungusSpeciesHandler //TODO add fungusUses structure
 {
-    private List<FungusSpecies> list = new ArrayList<>();
+    private HashMap<String, FungusSpecies> speciesHashMap = new HashMap<>();
 
     public static FungusSpeciesHandler INSTANCE = new FungusSpeciesHandler();
 
@@ -20,24 +17,24 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
     {
         //TODO add recipes from fungusUses
         FungusSpecies species = new FungusSpecies(defaultTraits,colors,fungusType);
-        list.add(species);
+        speciesHashMap.put(defaultTraits.species, species);
     }
 
     public ArrayList<FungusSpecies> getSpeciesList()
     {
-        return new ArrayList<FungusSpecies>(list);
+        return new ArrayList<>(speciesHashMap.values());
     }
 
     public void clearList()
     {
-        list.clear();
+        speciesHashMap.clear();
     }
 
-    public Collection<ItemStack> getCollection()
+    public Collection<ItemStack> getAllSpeciesCollection()
     {
         Collection<ItemStack> collection = new ArrayList<>();
 
-        for(FungusSpecies species : list)
+        for(FungusSpecies species : speciesHashMap.values())
         {
             ItemStack e;
             if(species.fungusType.equals("colored_crimson_fungus"))
@@ -53,15 +50,7 @@ public class FungusSpeciesHandler //TODO add fungusUses structure
 
     public ItemStack getCreativeTabIcon()
     {
-        FungusSpecies species = list.get(1);
-        for(FungusSpecies _species : list)
-        {
-            if(Objects.equals(_species.defaultTraits.species, "Boletus salubrium"))
-            {
-                species = _species;
-                break;
-            }
-        }
+        FungusSpecies species = speciesHashMap.get("Boletus salubrium");
 
         ItemStack e;
         if(species.fungusType.equals("colored_crimson_fungus"))
