@@ -35,7 +35,8 @@ public class FungusDataModel implements IFungusData
 
     private final HashMap<String,Object> dominantTraits;
     private final HashMap<String, Object> recessiveTraits;
-    private int[] colors = new int[]{-1,new Random().nextInt(),-1,-1};
+    private int[] colors; //TODO remove colors member.
+    //colors should not be part of the genoma. The color scheme should be defined by the dominant trait of species. And so should be the type of fungus (crimson/warped).
 
     public FungusDataModel()
     {
@@ -45,24 +46,15 @@ public class FungusDataModel implements IFungusData
         dominantTraits.put("spreading", 25);
         dominantTraits.put("spreadboost", 1f);
         dominantTraits.put("light", 15);
-        dominantTraits.put("terrain",MycologyMod.MODID+"grass");
+        dominantTraits.put("terrain",MycologyMod.MODID+":grass");
         dominantTraits.put("humidity", 0);
         dominantTraits.put("temp", 0);
         dominantTraits.put("area", 1);
         dominantTraits.put("effect", "none");
 
-        //TODO refactor: replace recessiveTraits initialization with a deep copy of dominantTraits
-        recessiveTraits = new HashMap<>();
-        recessiveTraits.put("species","none");
-        recessiveTraits.put("isDominant", true); //maybe useless
-        recessiveTraits.put("spreading", 25);
-        recessiveTraits.put("spreadboost", 1f);
-        recessiveTraits.put("light", 15);
-        recessiveTraits.put("terrain",MycologyMod.MODID+"grass");
-        recessiveTraits.put("humidity", 0);
-        recessiveTraits.put("temp", 0);
-        recessiveTraits.put("area", 1);
-        recessiveTraits.put("effect", "none");
+        recessiveTraits = new HashMap<>(dominantTraits);
+
+        colors = new int[]{-1,new Random().nextInt(),-1,-1};
     }
 
     public void loadFrom(FungusTraits dominant, FungusTraits recessive)
