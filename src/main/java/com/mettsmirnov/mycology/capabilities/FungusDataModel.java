@@ -1,10 +1,13 @@
 package com.mettsmirnov.mycology.capabilities;
 
+import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.genetics.FungusTraits;
 import com.mettsmirnov.mycology.myutils.FloatComposition;
 import com.mettsmirnov.mycology.myutils.StringDecomposition;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jline.utils.Log;
 
@@ -42,7 +45,7 @@ public class FungusDataModel implements IFungusData
         dominantTraits.put("spreading", 25);
         dominantTraits.put("spreadboost", 1f);
         dominantTraits.put("light", 15);
-        dominantTraits.put("terrain","grass");
+        dominantTraits.put("terrain",MycologyMod.MODID+"grass");
         dominantTraits.put("humidity", 0);
         dominantTraits.put("temp", 0);
         dominantTraits.put("area", 1);
@@ -55,7 +58,7 @@ public class FungusDataModel implements IFungusData
         recessiveTraits.put("spreading", 25);
         recessiveTraits.put("spreadboost", 1f);
         recessiveTraits.put("light", 15);
-        recessiveTraits.put("terrain","grass");
+        recessiveTraits.put("terrain",MycologyMod.MODID+"grass");
         recessiveTraits.put("humidity", 0);
         recessiveTraits.put("temp", 0);
         recessiveTraits.put("area", 1);
@@ -114,8 +117,8 @@ public class FungusDataModel implements IFungusData
 
     public boolean matchesTerrain(BlockState terrainBlock)
     {
-        Log.info("matchesTerrain( ", terrainBlock.getBlock().toString(), " )");
-        return true;//FIXME
+        String terrainTag = (String) dominantTraits.get(TERRAIN);
+        return terrainBlock.is(BlockTags.create(new ResourceLocation(terrainTag)));
     }
 
     //nbt

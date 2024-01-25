@@ -76,12 +76,13 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos pos)
     {
-        //FIXME originBlockEntity is in fact null
-        /*ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(pos));
-        assert originBlockEntity != null;
-        FungusDataModel thisFungusData = originBlockEntity.getFungusData();
-        String terrain = thisFungusData.getField(FungusDataModel.TERRAIN, IFungusData.GeneType.DOMINANT).toString();*/
         //TODO proper implementation
+        ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(pos));
+        if(originBlockEntity != null)//FIXME originBlockEntity is in fact null
+        {
+            FungusDataModel thisFungusData = originBlockEntity.getFungusData();
+            String terrain = thisFungusData.getField(FungusDataModel.TERRAIN, IFungusData.GeneType.DOMINANT).toString();
+        }
         return !level.getBlockState(pos.below()).isAir();
     }
 
@@ -131,7 +132,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
                 if (crossBreeding)
                 {
-                    // TODO check if cross-breeding is possibile, i.e.
                     // check if there are any different fungi nearby (by 'nearby' I mean the dominant "area" trait)
                     int radius = (Integer)thisFungusData.getField(FungusDataModel.AREA);
                     ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, radius);
@@ -148,13 +148,15 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                         int light = level.getBrightness(LightLayer.SKY, blockpos1);
                         //LightLayer.SKY is the light level of a block due to other blocks obstructing skylight. 0 is in complete darkness, 15 is in plain air.
                         //LightLayer.BLOCK is the light level of a block due to other sources of light (Glowstone, torches..).
-                        float temperature = level.getBiome(blockpos1).get().getBaseTemperature();
-                        Log.info("Temperature: ", temperature, ", ", level.getBiome(blockpos1).get().getModifiedClimateSettings().temperature());
+
+                        float temperature = level.getBiome(blockpos1).get().getModifiedClimateSettings().temperature();
                         // getBaseTemperature() or getModifiedClimateSettings().temperature() ?
                         // they seems to be the same...
+
                         float humidity = level.getBiome(blockpos1).get().getModifiedClimateSettings().downfall();
 
-                        /*if (offspringDataModel.matchesEnvironment(light, temperature, humidity) && blockState.canSurvive(level, blockpos1))
+                        if (offspringDataModel.matchesEnvironment(light, temperature, humidity)
+                                && offspringDataModel.matchesTerrain(level.getBlockState(blockpos1.below())))
                         {
                             // then place it
                             level.setBlock(blockpos1, blockState, 2);
@@ -177,7 +179,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                                     newBlockEntity.getFungusData().deserializeNBT(thisFungusData.serializeNBT());
                                 }
                             }
-                        }*/
+                        }
                     }
                 }
                 else
