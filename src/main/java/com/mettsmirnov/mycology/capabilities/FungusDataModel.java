@@ -5,6 +5,7 @@ import com.mettsmirnov.mycology.myutils.FloatComposition;
 import com.mettsmirnov.mycology.myutils.StringDecomposition;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.world.level.block.Block;
 import org.jline.utils.Log;
 
 import java.lang.reflect.Field;
@@ -108,6 +109,12 @@ public class FungusDataModel implements IFungusData
         /* light < (Integer)dominantTraits.get(LIGHT) // let's say for now that mushroom prefer sporing in darker areas
                 && dominantTraits.get(TEMP).equals(temperature)
                 && dominantTraits.get(HUMIDITY).equals(humidity);*/
+        return true;//FIXME
+    }
+
+    public boolean matchesTerrain(Block terrainBlock)
+    {
+        Log.info("matchesTerrain( ", terrainBlock.toString(), " )");
         return true;//FIXME
     }
 
