@@ -5,7 +5,7 @@ import com.mettsmirnov.mycology.myutils.FloatComposition;
 import com.mettsmirnov.mycology.myutils.StringDecomposition;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jline.utils.Log;
 
 import java.lang.reflect.Field;
@@ -112,9 +112,9 @@ public class FungusDataModel implements IFungusData
         return true;//FIXME
     }
 
-    public boolean matchesTerrain(Block terrainBlock)
+    public boolean matchesTerrain(BlockState terrainBlock)
     {
-        Log.info("matchesTerrain( ", terrainBlock.toString(), " )");
+        Log.info("matchesTerrain( ", terrainBlock.getBlock().toString(), " )");
         return true;//FIXME
     }
 
