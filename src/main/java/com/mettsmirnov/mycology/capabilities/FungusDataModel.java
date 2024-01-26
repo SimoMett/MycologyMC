@@ -147,25 +147,30 @@ public class FungusDataModel implements IFungusData
     {
         for(String key : traitsDictionary)
         {
-            if(tag.getTagType(key) == Tag.TAG_STRING)
+            switch (tag.getTagType(key))
             {
-                String[] strs = StringDecomposition.decompose(tag.getString(key),decompCharacter);
-                dominantTraits.put(key,strs[0]);
-                recessiveTraits.put(key,strs[1]);
-            }
-            else if(tag.getTagType(key) == Tag.TAG_INT_ARRAY)
-            {
-                dominantTraits.put(key,tag.getIntArray(key)[0]);
-                recessiveTraits.put(key,tag.getIntArray(key)[1]);
-            }
-            else if(tag.getTagType(key) == Tag.TAG_LONG)
-            {
-                float[] floats = FloatComposition.decompose(tag.getLong(key));
-                dominantTraits.put(key,floats[0]);
-                recessiveTraits.put(key,floats[1]);
+                case Tag.TAG_STRING:
+                {
+                    String[] strs = StringDecomposition.decompose(tag.getString(key), decompCharacter);
+                    dominantTraits.put(key, strs[0]);
+                    recessiveTraits.put(key, strs[1]);
+                    break;
+                }
+                case Tag.TAG_INT_ARRAY:
+                {
+                    dominantTraits.put(key, tag.getIntArray(key)[0]);
+                    recessiveTraits.put(key, tag.getIntArray(key)[1]);
+                    break;
+                }
+                case Tag.TAG_LONG:
+                {
+                    float[] floats = FloatComposition.decompose(tag.getLong(key));
+                    dominantTraits.put(key, floats[0]);
+                    recessiveTraits.put(key, floats[1]);
+                    break;
+                }
             }
         }
-        for (int i=0; i<4; i++)
-            colors[i]=FungusSpeciesHandler.INSTANCE.get((String) dominantTraits.get(SPECIES)).colors[i];
+        colors = FungusSpeciesHandler.INSTANCE.get((String) dominantTraits.get(SPECIES)).colors.clone();
     }
 }
