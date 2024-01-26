@@ -19,5 +19,6 @@ public class DataGenerators
         ExistingFileHelper existingFileHelper = evt.getExistingFileHelper();
 
         dataGentor.addProvider(true, new SpeciesProvider(dataGentor));
+        dataGentor.addProvider(true, new MutationsProvider(dataGentor));
     }
 }
