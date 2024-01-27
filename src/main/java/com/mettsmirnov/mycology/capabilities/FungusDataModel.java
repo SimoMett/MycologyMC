@@ -3,7 +3,6 @@ package com.mettsmirnov.mycology.capabilities;
 import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.data.FungusSpeciesList;
 import com.mettsmirnov.mycology.genetics.FungusTraits;
-import com.mettsmirnov.mycology.myutils.FloatComposition;
 import com.mettsmirnov.mycology.myutils.StringDecomposition;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -134,7 +133,7 @@ public class FungusDataModel implements IFungusData
 
     //nbt
     //this method is responsible for the creation of a NBT tag to be used when the world saves
-    private final char decompCharacter = ';'; //DON'T YOU DARE CHANGE IT AGAIN
+    private static final char decompCharacter = ';'; //DON'T YOU DARE CHANGE IT AGAIN
     @Override
     public CompoundTag serializeNBT()
     {
@@ -151,8 +150,10 @@ public class FungusDataModel implements IFungusData
             }
             else if(dominantTraits.get(trait) instanceof Float)
             {
-                long compositeFloat = FloatComposition.compose((Float)dominantTraits.get(trait),(Float)recessiveTraits.get(trait));
-                tag.putLong(trait,compositeFloat);
+                CompoundTag compositeFloat = new CompoundTag();
+                compositeFloat.putFloat("dominant", (Float)dominantTraits.get(trait));
+                compositeFloat.putFloat("recessive", (Float)recessiveTraits.get(trait));
+                tag.put(trait,compositeFloat);
             }
         }
         return tag;
@@ -180,11 +181,10 @@ public class FungusDataModel implements IFungusData
                     recessiveTraits.put(key, tag.getIntArray(key)[1]);
                     break;
                 }
-                case Tag.TAG_LONG:
+                case Tag.TAG_COMPOUND:
                 {
-                    float[] floats = FloatComposition.decompose(tag.getLong(key));
-                    dominantTraits.put(key, floats[0]);
-                    recessiveTraits.put(key, floats[1]);
+                    dominantTraits.put(key, tag.getFloat("dominant"));
+                    recessiveTraits.put(key, tag.getFloat("recessive"));
                     break;
                 }
             }
