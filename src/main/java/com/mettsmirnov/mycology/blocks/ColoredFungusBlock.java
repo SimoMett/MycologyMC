@@ -105,8 +105,10 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
             int i = 5;
-            for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4))) {
-                if (level.getBlockState(blockpos).is(this)) {
+            for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4)))
+            {
+                if (level.getBlockState(blockpos).is(this))
+                {
                     --i;
                     if (i <= 0) {
                         return;
@@ -118,7 +120,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             BlockPos blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
 
             // 4 tries
-            for(int k = 0; k < 4; ++k) {
+            for(int k = 0; k < 4; ++k)
+            {
                 if (level.isEmptyBlock(blockpos1) && blockState.canSurvive(level, blockpos1))
                 {
                     pos = blockpos1;
@@ -160,13 +163,13 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                         blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
                     else
                         blockState = ModBlocks.COLORED_WARPED_FUNGUS.get().defaultBlockState();
-                    if (offspringDataModel.matchesEnvironment(light, temperature, humidity)
-                            && offspringDataModel.matchesTerrain(level.getBlockState(blockpos1.below())))
+
+                    if (offspringDataModel.matchesEnvironmentAndTerrain(light, temperature, humidity, level.getBlockState(blockpos1.below())))
                     {
                         // ... then place it
                         placeFungusBlock(blockState, level, blockpos1, offspringDataModel);
+                        return;
                     }
-                    return;
                 }
 
                 //otherwise proceed with normal spreading

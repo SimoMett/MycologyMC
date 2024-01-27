@@ -114,6 +114,11 @@ public class FungusDataModel implements IFungusData
         return terrainBlock.is(BlockTags.create(new ResourceLocation(terrainTag)));
     }
 
+    public final boolean matchesEnvironmentAndTerrain(Integer light, Float temperature, Float humidity, BlockState terrainBlock)
+    {
+        return matchesEnvironment(light, temperature, humidity) && matchesTerrain(terrainBlock);
+    }
+
     //nbt
     //this method is responsible for the creation of a NBT tag to be used when the world saves
     private final char decompCharacter = ';'; //DON'T YOU DARE CHANGE IT AGAIN
