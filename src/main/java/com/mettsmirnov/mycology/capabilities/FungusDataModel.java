@@ -78,6 +78,19 @@ public class FungusDataModel implements IFungusData
         }
     }
 
+    public void loadFrom(FungusSpeciesList.FungusSpecies species)
+    {
+        loadFrom(species.defaultTraits, species.defaultTraits);
+    }
+
+    public void setField(String key, GeneType type, Object val)
+    {
+        if (type==GeneType.DOMINANT)
+            dominantTraits.replace(key, val);
+        else
+            recessiveTraits.replace(key, val);
+    }
+
     @Override
     public Object getField(String key, GeneType type)
     {

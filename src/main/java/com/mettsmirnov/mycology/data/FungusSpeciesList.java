@@ -7,7 +7,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.*;
 
-public class FungusSpeciesList //TODO add fungusUses structure
+public class FungusSpeciesList
 {
     private HashMap<String, FungusSpecies> speciesHashMap = new HashMap<>();
 
@@ -15,7 +15,6 @@ public class FungusSpeciesList //TODO add fungusUses structure
 
     public void put(FungusTraits defaultTraits, int[] colors, String fungusType)
     {
-        //TODO add recipes from fungusUses
         FungusSpecies species = new FungusSpecies(defaultTraits,colors,fungusType);
         speciesHashMap.put(defaultTraits.species, species);
     }

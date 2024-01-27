@@ -1,5 +1,7 @@
 package com.mettsmirnov.mycology.genetics;
 
+//I'm convinced this is a horrible class
+
 public class FungusTraits
 {
     public String species;
