@@ -1,7 +1,7 @@
 package com.mettsmirnov.mycology.capabilities;
 
 import com.mettsmirnov.mycology.MycologyMod;
-import com.mettsmirnov.mycology.data.FungusSpeciesHandler;
+import com.mettsmirnov.mycology.data.FungusSpeciesList;
 import com.mettsmirnov.mycology.genetics.FungusTraits;
 import com.mettsmirnov.mycology.myutils.FloatComposition;
 import com.mettsmirnov.mycology.myutils.StringDecomposition;
@@ -176,6 +176,6 @@ public class FungusDataModel implements IFungusData
                 }
             }
         }
-        colors = FungusSpeciesHandler.INSTANCE.get((String) dominantTraits.get(SPECIES)).colors.clone();
+        colors = FungusSpeciesList.INSTANCE.get((String) dominantTraits.get(SPECIES)).colors.clone();
     }
 }

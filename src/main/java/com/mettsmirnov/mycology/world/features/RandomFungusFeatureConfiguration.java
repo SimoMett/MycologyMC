@@ -1,7 +1,7 @@
 package com.mettsmirnov.mycology.world.features;
 
 import com.mettsmirnov.mycology.blocks.ModBlocks;
-import com.mettsmirnov.mycology.data.FungusSpeciesHandler;
+import com.mettsmirnov.mycology.data.FungusSpeciesList;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -25,7 +25,7 @@ public class RandomFungusFeatureConfiguration extends Feature<SimpleBlockConfigu
     @Override
     public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> placeContext)
     {
-        ArrayList<FungusSpeciesHandler.FungusSpecies> speciesList = FungusSpeciesHandler.INSTANCE.getSpeciesList();
+        ArrayList<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         if(!speciesList.isEmpty())
         {
             BlockPos origin = placeContext.origin();
@@ -36,8 +36,8 @@ public class RandomFungusFeatureConfiguration extends Feature<SimpleBlockConfigu
 
             //get random species
             Random random = new Random();
-            FungusSpeciesHandler.FungusSpecies randomSpecies = speciesList
-                    .get(random.nextInt(FungusSpeciesHandler.INSTANCE.getSpeciesList().size()));
+            FungusSpeciesList.FungusSpecies randomSpecies = speciesList
+                    .get(random.nextInt(FungusSpeciesList.INSTANCE.getSpeciesList().size()));
 
             //spawn fungus with the correct type
             if (randomSpecies.fungusType.equals("colored_crimson_fungus")) //FIXME I don't like this plain string, it's better to use a const

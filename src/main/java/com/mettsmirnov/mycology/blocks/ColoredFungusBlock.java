@@ -3,7 +3,7 @@ package com.mettsmirnov.mycology.blocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
-import com.mettsmirnov.mycology.data.FungusSpeciesHandler;
+import com.mettsmirnov.mycology.data.FungusSpeciesList;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.genetics.Breeding;
@@ -28,7 +28,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import org.jline.utils.Log;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
@@ -158,7 +158,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
                     float humidity = level.getBiome(blockpos1).get().getModifiedClimateSettings().downfall();
 
-                    String fungusType = FungusSpeciesHandler.INSTANCE.get((String) offspringDataModel.getField(FungusDataModel.SPECIES)).fungusType;
+                    String fungusType = FungusSpeciesList.INSTANCE.get((String) offspringDataModel.getField(FungusDataModel.SPECIES)).fungusType;
                     if (Objects.equals(fungusType, CRIMSON_TYPE))
                         blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
                     else

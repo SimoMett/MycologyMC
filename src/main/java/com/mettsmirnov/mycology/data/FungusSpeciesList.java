@@ -7,11 +7,11 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.*;
 
-public class FungusSpeciesHandler //TODO add fungusUses structure
+public class FungusSpeciesList //TODO add fungusUses structure
 {
     private HashMap<String, FungusSpecies> speciesHashMap = new HashMap<>();
 
-    public static FungusSpeciesHandler INSTANCE = new FungusSpeciesHandler();
+    public static FungusSpeciesList INSTANCE = new FungusSpeciesList();
 
     public void put(FungusTraits defaultTraits, int[] colors, String fungusType)
     {
