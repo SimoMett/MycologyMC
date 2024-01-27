@@ -9,11 +9,13 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.server.packs.PackType;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
 public class MutationsProvider implements DataProvider
 {
     private final DataGenerator generator;
+    private final ArrayList<CompletableFuture<?>> list = new ArrayList<>();
     public MutationsProvider(DataGenerator dataGenerator)
     {
         this.generator = dataGenerator;
@@ -22,8 +24,16 @@ public class MutationsProvider implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput)
     {
-        addMutation("WHITE_FUNGUS", "Green lactarius", "LIME_FUNGUS", cachedOutput);
-        return CompletableFuture.allOf();
+        addMutation("WHITE_FUNGUS", "Lactarius viridis", "LIME_FUNGUS", cachedOutput);
+        addMutation("WHITE_FUNGUS", "GREY_FUNGUS", "LIGHTGREY_FUNGUS", cachedOutput);
+        addMutation("WHITE_FUNGUS", "BLACK_FUNGUS", "GREY_FUNGUS", cachedOutput);
+        addMutation("WHITE_FUNGUS", "BLUE_FUNGUS", "LIGHTBLUE_FUNGUS", cachedOutput);
+        addMutation("WHITE_FUNGUS", "Amanita rubra", "PINK_FUNGUS", cachedOutput);
+        addMutation("BLUE_FUNGUS", "Amanita rubra", "VIOLET_ovulus", cachedOutput);
+        addMutation("BLUE_FUNGUS", "Lactarius viridis", "CYAN_FUNGUS", cachedOutput);
+        addMutation("VIOLET_ovulus", "VIOLET_ovulus", "MAGENTA_FUNGUS", cachedOutput);
+        addMutation("Amanita rubra", "YELLOW_FUNGUS", "ORANGE_FUNGUS", cachedOutput);
+        return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 
     private void addMutation(String species1, String species2, String result, CachedOutput cache)
@@ -37,7 +47,7 @@ public class MutationsProvider implements DataProvider
         String jsonFileName = result.toLowerCase().replace(' ', '_')+".json";
         Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi_breeding", jsonFileName));
 
-        DataProvider.saveStable(cache, mutationJson, jsonLocation);
+        list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }
 
     @Override
