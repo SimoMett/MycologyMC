@@ -1,6 +1,5 @@
 package com.mettsmirnov.mycology.datagen;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
 import net.minecraft.data.CachedOutput;
@@ -9,6 +8,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.server.packs.PackType;
 
 import java.nio.file.Path;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
@@ -53,11 +53,12 @@ public class MutationsProvider implements DataProvider
 
     private void addMutation2(String species1, String species2, String result, float chance, CachedOutput cache)
     {
+        if (chance > 1f || chance <= 0f)
+            throw new InvalidParameterException("Invalid 'chance' parameter");
         JsonObject mutationJson = new JsonObject();
         mutationJson.addProperty("species1", species1);
         mutationJson.addProperty("species2", species2);
         mutationJson.addProperty("result", result);
-        assert chance <= 1f;
         mutationJson.addProperty("chance", chance);
 
         Path path = generator.getPackOutput().getOutputFolder();
