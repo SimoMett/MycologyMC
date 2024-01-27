@@ -30,7 +30,7 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createSpecies("Boletus salubrium")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{96564928, -1231718516, 751835909, -1044800857})
+                .colors(new int[]{ 0xC176C0, 0x95778C, 0xD01B05, 0xB99AA7})
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -55,11 +55,11 @@ public class SpeciesProvider implements DataProvider//TODO
                 .buildAndAddToList(generator,hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("ORANGE_FUNGUS")
-                .colors4(0xff8701,0xff8701,0xff8701,0xff8701)
+                .colors1(0xff8701)
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("YELLOW_FUNGUS")
-                .colors4(0xfff620,0xfff620,0xfff620,0xfff620)
+                .colors1(0xfff620)
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("LIME_FUNGUS")
@@ -68,7 +68,7 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createSpecies("Lactarius viridis")
                 .type(WARPED_TYPE)
-                .colors(new int[]{ -641754945, 395771475, 1217990927, 1173684947 })
+                .colors(new int[]{ 0xBF98BF, 0x96FE53, 0x99110F, 0xF502D3 })
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -92,7 +92,7 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createSpecies("VIOLET_ovulus")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{ 782911739, 11014979, 950157081, 1944126959 })
+                .colors(new int[]{ 0xAA48FB, 0xA81343, 0x38A23F19, 0x73E105EF })
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -127,7 +127,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("WHITE_FUNGUS")
-                .colors4(0xffffff,0xffffff,0xffffff,0xffffff)
+                .colors1(0xffffff)
                 .buildAndAddToList(generator, hashCache, list);
 
         /////////////////////////////
@@ -269,7 +269,7 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Amanita cuprea")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x208068})
+                .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x20a387})
                 .terrain("minecraft:copper_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
