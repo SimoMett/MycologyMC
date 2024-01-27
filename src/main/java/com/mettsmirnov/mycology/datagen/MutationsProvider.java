@@ -42,6 +42,23 @@ public class MutationsProvider implements DataProvider
         mutationJson.addProperty("species1", species1);
         mutationJson.addProperty("species2", species2);
         mutationJson.addProperty("result", result);
+        mutationJson.addProperty("chance", 0.60f);
+
+        Path path = generator.getPackOutput().getOutputFolder();
+        String jsonFileName = result.toLowerCase().replace(' ', '_')+".json";
+        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi_breeding", jsonFileName));
+
+        list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
+    }
+
+    private void addMutation2(String species1, String species2, String result, float chance, CachedOutput cache)
+    {
+        JsonObject mutationJson = new JsonObject();
+        mutationJson.addProperty("species1", species1);
+        mutationJson.addProperty("species2", species2);
+        mutationJson.addProperty("result", result);
+        assert chance <= 1f;
+        mutationJson.addProperty("chance", chance);
 
         Path path = generator.getPackOutput().getOutputFolder();
         String jsonFileName = result.toLowerCase().replace(' ', '_')+".json";
