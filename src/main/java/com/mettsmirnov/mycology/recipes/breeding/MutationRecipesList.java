@@ -11,4 +11,9 @@ public class MutationRecipesList
     {
         recipes.add(recipe);
     }
+
+    public static ArrayList<MutationRecipe> getList()
+    {
+        return new ArrayList<>(recipes);
+    }
 }

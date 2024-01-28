@@ -13,4 +13,12 @@ public class MutationRecipe
         this.resultSpecies = resultSpecies;
         this.chance = chance;
     }
+
+    public String getSpecies1() {
+        return species1;
+    }
+
+    public String getSpecies2() {
+        return species2;
+    }
 }
