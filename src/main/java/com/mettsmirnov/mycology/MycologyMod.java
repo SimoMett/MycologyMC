@@ -9,7 +9,7 @@ import com.mettsmirnov.mycology.data.FungusSpeciesLoader;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItems;
-import com.mettsmirnov.mycology.recipes.breeding.FungusBreedingRecipeLoader;
+import com.mettsmirnov.mycology.recipes.breeding.MutationRecipeLoader;
 import com.mettsmirnov.mycology.recipes.brewing.FungusBrewingRecipeLoader;
 import com.mettsmirnov.mycology.world.features.ModFeatures;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,7 +46,7 @@ public class MycologyMod
     {
         evt.addListener(FungusSpeciesLoader.INSTANCE);
         evt.addListener(FungusBrewingRecipeLoader.INSTANCE);
-        evt.addListener(FungusBreedingRecipeLoader.INSTANCE);
+        evt.addListener(MutationRecipeLoader.INSTANCE);
     }
     //private void enqueueIMC(final InterModEnqueueEvent event)
     //private void processIMC(final InterModProcessEvent event)

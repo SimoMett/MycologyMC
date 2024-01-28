@@ -46,7 +46,7 @@ public class MutationsProvider implements DataProvider
 
         Path path = generator.getPackOutput().getOutputFolder();
         String jsonFileName = result.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi_breeding", jsonFileName));
+        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "mutations", jsonFileName));
 
         list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }
@@ -63,7 +63,7 @@ public class MutationsProvider implements DataProvider
 
         Path path = generator.getPackOutput().getOutputFolder();
         String jsonFileName = result.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi_breeding", jsonFileName));
+        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "mutations", jsonFileName));
 
         list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }
