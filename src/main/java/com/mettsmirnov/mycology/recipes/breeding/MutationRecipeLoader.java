@@ -37,6 +37,7 @@ public class FungusBreedingRecipeLoader extends SimpleJsonResourceReloadListener
             String species1 = e.getAsJsonObject().get("species1").getAsString();
             String species2 = e.getAsJsonObject().get("species2").getAsString();
             String resultSpecies = e.getAsJsonObject().get("result").getAsString();
+            float chance = e.getAsJsonObject().get("chance").getAsFloat();
 
             FungusBreedingRecipe recipe = new FungusBreedingRecipe(species1, species2, resultSpecies);
             recipeQueue.push(recipe);
