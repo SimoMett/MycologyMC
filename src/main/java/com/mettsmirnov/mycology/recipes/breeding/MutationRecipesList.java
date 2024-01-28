@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MutationRecipesList
 {
-    private static List<MutationRecipe> recipes = new ArrayList<MutationRecipe>();
+    private static final List<MutationRecipe> recipes = new ArrayList<>();
 
     public static void addRecipe(MutationRecipe recipe)
     {
