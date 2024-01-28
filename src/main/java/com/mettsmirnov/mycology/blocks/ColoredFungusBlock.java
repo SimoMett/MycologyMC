@@ -79,19 +79,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         };
     }
 
-    @Override
-    public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos pos)
-    {
-        //TODO proper implementation
-        ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(pos));
-        if(originBlockEntity != null)//FIXME originBlockEntity is in fact null
-        {
-            FungusDataModel thisFungusData = originBlockEntity.getFungusData();
-            String terrain = thisFungusData.getField(FungusDataModel.TERRAIN, IFungusData.GeneType.DOMINANT).toString();
-        }
-        return !level.getBlockState(pos.below()).isAir();
-    }
-
     @Override //deprecated
     public void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)
     {
