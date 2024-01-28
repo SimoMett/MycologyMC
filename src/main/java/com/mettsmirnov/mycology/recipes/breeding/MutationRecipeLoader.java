@@ -10,15 +10,12 @@ import net.minecraft.util.profiling.ProfilerFiller;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Stack;
 
 public class MutationRecipeLoader extends SimpleJsonResourceReloadListener
 {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     public static final MutationRecipeLoader INSTANCE = new MutationRecipeLoader();
-
-    private Stack<MutationRecipe> recipeQueue = new Stack<>();
 
     private MutationRecipeLoader()
     {
@@ -37,27 +34,7 @@ public class MutationRecipeLoader extends SimpleJsonResourceReloadListener
             float chance = e.getAsJsonObject().get("chance").getAsFloat();
 
             MutationRecipe recipe = new MutationRecipe(species1, species2, resultSpecies, chance);
-            recipeQueue.push(recipe);
+            MutationRecipesList.addRecipe(recipe);
         }
-        register();
-    }
-
-    public MutationRecipe popFromQueue()
-    {
-        return recipeQueue.empty()? null : recipeQueue.pop();
-    }
-
-    public void register()
-    {
-        MutationRecipe poppedRecipe = null;
-        do
-        {
-            poppedRecipe=popFromQueue();
-            if(poppedRecipe!=null)
-            {
-                MutationRecipesList.addRecipe(poppedRecipe);
-            }
-        }
-        while (poppedRecipe!=null);
     }
 }
