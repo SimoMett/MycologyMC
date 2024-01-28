@@ -12,6 +12,8 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
+import static com.mettsmirnov.mycology.constants.Constants.DEFAULT_MUTATION_CHANCE;
+
 public class MutationsProvider implements DataProvider
 {
     private final DataGenerator generator;
@@ -42,7 +44,7 @@ public class MutationsProvider implements DataProvider
         mutationJson.addProperty("species1", species1);
         mutationJson.addProperty("species2", species2);
         mutationJson.addProperty("result", result);
-        mutationJson.addProperty("chance", 0.60f);
+        mutationJson.addProperty("chance", DEFAULT_MUTATION_CHANCE);
 
         Path path = generator.getPackOutput().getOutputFolder();
         String jsonFileName = result.toLowerCase().replace(' ', '_')+".json";

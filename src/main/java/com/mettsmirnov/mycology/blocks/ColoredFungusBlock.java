@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
+import static com.mettsmirnov.mycology.constants.Constants.BREEDING_CHANCE;
+import static com.mettsmirnov.mycology.constants.Constants.MAX_MUSHROOMS_IN_AREA;
 import static com.mettsmirnov.mycology.datagen.SpeciesBuilder.CRIMSON_TYPE;
 
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
@@ -104,7 +106,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         {
             //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
-            int i = 5;
+            int i = MAX_MUSHROOMS_IN_AREA;
             for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4)))
             {
                 if (level.getBlockState(blockpos).is(this))
@@ -134,7 +136,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             if (level.isEmptyBlock(blockpos1))
             {
                 Random dice = new Random();
-                int BREEDING_CHANCE = 2;
                 boolean crossBreeding = dice.nextInt(BREEDING_CHANCE) == 0; //FIXME adjust BREEDING_CHANCE
 
                 // check if there are any different fungi nearby (by 'nearby' I mean the dominant "area" trait)
@@ -181,7 +182,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
     private static void placeFungusBlock(BlockState blockState, ServerLevel level, BlockPos pos, FungusDataModel dataModel)
     {
-        level.setBlock(pos, blockState, 2);
+        level.setBlock(pos, blockState, 2); //wtf is this '2'?
         ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(pos));
         if (newBlockEntity != null)
         {
