@@ -14,11 +14,18 @@ public class MutationRecipe
         this.chance = chance;
     }
 
-    public String getSpecies1() {
+    public String getSpecies1()
+    {
         return species1;
     }
 
-    public String getSpecies2() {
+    public String getSpecies2()
+    {
         return species2;
+    }
+
+    public String getResultSpecies()
+    {
+        return resultSpecies;
     }
 }
