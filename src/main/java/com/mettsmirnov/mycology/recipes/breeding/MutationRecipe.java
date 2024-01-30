@@ -28,4 +28,9 @@ public class MutationRecipe
     {
         return resultSpecies;
     }
+
+    public float getChance()
+    {
+        return chance;
+    }
 }

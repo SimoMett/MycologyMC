@@ -24,24 +24,24 @@ public class Breeding
                             || (m.getSpecies1().equals(species2.getField(FungusDataModel.SPECIES)) && m.getSpecies2().equals(species1.getField(FungusDataModel.SPECIES))))
                 .toList();
 
-        if (mutations.isEmpty())
+        if (!mutations.isEmpty())
         {
-            //normal crossbreeding
-            for(String trait : traitsDictionary)
+            int randomRecipeId = random.nextInt(mutations.size());
+            MutationRecipe mutationRecipe = mutations.get(randomRecipeId);
+            boolean performMutation = random.nextFloat(0f, 1f) < mutationRecipe.getChance();
+            if (performMutation)
             {
-                Object o = random.nextBoolean() ? species1.getField(trait) : species1.getField(trait, IFungusData.GeneType.RECESSIVE);
-                offspring.setField(trait, IFungusData.GeneType.DOMINANT, o);
-                Object p = random.nextBoolean() ? species2.getField(trait) : species2.getField(trait, IFungusData.GeneType.RECESSIVE);
-                offspring.setField(trait, IFungusData.GeneType.RECESSIVE, p);
+                offspring = new FungusDataModel();
+                offspring.loadFrom(FungusSpeciesList.INSTANCE.get(mutationRecipe.getResultSpecies()));
             }
         }
-        else
+        //otherwise normal crossbreeding
+        for(String trait : traitsDictionary)
         {
-            //pick one (or the only one) mutation and create FungusDataModel of it
-            //TODO create a probability distribution with the 'chance' parameter of each mutation recipe
-            MutationRecipe mutationRecipe = mutations.get(random.nextInt(mutations.size()));
-            offspring = new FungusDataModel();
-            offspring.loadFrom(FungusSpeciesList.INSTANCE.get(mutationRecipe.getResultSpecies()));
+            Object o = random.nextBoolean() ? species1.getField(trait) : species1.getField(trait, IFungusData.GeneType.RECESSIVE);
+            offspring.setField(trait, IFungusData.GeneType.DOMINANT, o);
+            Object p = random.nextBoolean() ? species2.getField(trait) : species2.getField(trait, IFungusData.GeneType.RECESSIVE);
+            offspring.setField(trait, IFungusData.GeneType.RECESSIVE, p);
         }
         return offspring;
     }
