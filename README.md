@@ -9,11 +9,11 @@
 - [X] Ability to plant mushrooms
 - [ ] A LOT of species. [This fantastic tool](https://github.com/SimoMett/mushroom_renderer) can help ;)
 - [ ] Edit mushroom spreading mechanic (partial)
-- [ ] Implement Pseudo-Mendel genetic model
-- [ ] Implement breeding
+- [X] Implement Pseudo-Mendel genetic model
+- [X] Implement breeding
 - [X] Add natural generation in the world (to be polished)
 - [X] Implement fungus spores' area effect
-- [X] Implement crafting mechanics
+- [ ] Implement crafting mechanics (cooking recipes need to be remade)
 
 ### Other notes
 
