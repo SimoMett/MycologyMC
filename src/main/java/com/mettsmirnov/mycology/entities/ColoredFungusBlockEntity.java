@@ -55,7 +55,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
         {
             int areaRadius = (Integer) fungusData.getField(FungusDataModel.AREA, IFungusData.GeneType.DOMINANT);
             List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
-
+            //TODO check if the fungus effect is an area effect or not.
             for (LivingEntity entity : entityList)
             {
                 if (entity.distanceToSqr(pos.getCenter()) < areaRadius)
