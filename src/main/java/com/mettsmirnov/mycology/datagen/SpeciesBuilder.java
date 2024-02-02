@@ -62,6 +62,7 @@ public class SpeciesBuilder
         return this;
     }
 
+    @Deprecated(forRemoval = true)
     public SpeciesBuilder createProtoSpecies(String speciesName)
     {
         return createDefaultSpecies(speciesName)

@@ -163,6 +163,10 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:nether")
                 .buildAndAddToList(generator, hashCache, list);
 
+        SpeciesBuilder.getInstance().createProtoSpecies("POISON_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.POISON_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+
         /////////////////////////////
         //     Materials fungi     //
         /////////////////////////////
