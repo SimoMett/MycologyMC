@@ -12,6 +12,7 @@ public class SingleEffect implements IFungusEffect
 
     private MobEffect mobEffect;
 
+    @Deprecated(forRemoval = true)
     public SingleEffect(String effectName)
     {
         this.effectName = effectName;
@@ -22,6 +23,7 @@ public class SingleEffect implements IFungusEffect
     {
         this.effectName = effectName;
         this.mobEffect = mobEffect;
+        FungusEffects.registerFungusEffect(effectName, this);
     }
 
     public String getEffectName()
