@@ -5,6 +5,7 @@ import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.effects.FungusEffect;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
+import com.mettsmirnov.mycology.effects.FungusEffects;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -56,7 +57,7 @@ public class SpeciesBuilder
         this.light = 15;
         this.terrain = "mycologymod:grass";
         this.biomesSpecs = BiomesSpecs.FOREST;
-        this.areaEffect = FungusEffect.NO_EFFECT;
+        this.areaEffect = FungusEffects.NO_EFFECT;
         this.spawnType = FungusSpawn.DEFAULT_SPAWN;
         return this;
     }
