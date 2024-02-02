@@ -4,6 +4,7 @@ import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.data.FungusSpeciesList;
+import com.mettsmirnov.mycology.effects.FungusEffects;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.genetics.Breeding;
@@ -169,8 +170,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         if(!fungusEffect.equals("none"))
         {
             int areaRadius = (Integer) thisFungusData.getField(FungusDataModel.AREA);
-
-
+            FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
         }
     }
 

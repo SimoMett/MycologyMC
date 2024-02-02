@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.LevelAccessor;
 import org.apache.commons.lang3.function.TriConsumer;
 
 public class SingleEffect implements IFungusEffect
@@ -12,7 +12,7 @@ public class SingleEffect implements IFungusEffect
     private final String effectName;
 
     private MobEffect mobEffect;
-    private final TriConsumer<LevelReader, BlockPos, Integer> consumer;
+    private final TriConsumer<LevelAccessor, BlockPos, Integer> consumer;
 
     @Deprecated(forRemoval = true)
     public SingleEffect(String effectName, MobEffect mobEffect)
@@ -23,7 +23,7 @@ public class SingleEffect implements IFungusEffect
         FungusEffects.registerFungusEffect(effectName, this);
     }
 
-    public SingleEffect(String effectName, MobEffect mobEffect, TriConsumer<LevelReader, BlockPos, Integer> consumer)
+    public SingleEffect(String effectName, MobEffect mobEffect, TriConsumer<LevelAccessor, BlockPos, Integer> consumer)
     {
         this.effectName = effectName;
         this.mobEffect = mobEffect;
@@ -42,7 +42,7 @@ public class SingleEffect implements IFungusEffect
             entity.addEffect(new MobEffectInstance(mobEffect, numOfTicks));
     }
 
-    public void applyEffectToLevel(LevelReader level, BlockPos origin, int radius)
+    public void applyEffectToLevel(LevelAccessor level, BlockPos origin, int radius)
     {
         consumer.accept(level, origin, radius);
     }

@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.LevelAccessor;
 
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class MultipleEffect implements IFungusEffect
     }
 
     @Override
-    public void applyEffectToLevel(LevelReader level, BlockPos origin, int radius)
+    public void applyEffectToLevel(LevelAccessor level, BlockPos origin, int radius)
     {
 
     }
