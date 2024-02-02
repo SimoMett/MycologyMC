@@ -327,6 +327,7 @@ public class SpeciesProvider implements DataProvider//TODO
         /////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("DEV_FUNGUS")
                 .areaEffect(FungusEffects.DEV_TEST_EFFECT)
+                .areaRadius(1)
                 .buildAndAddToList(generator, hashCache, list);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
