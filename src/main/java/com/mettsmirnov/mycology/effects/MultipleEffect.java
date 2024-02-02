@@ -12,16 +12,19 @@ public class MultipleEffect implements IFungusEffect
 {
     private final String effectName;
     private final List<MobEffect> mobEffects;
+    //FIXME the fact that I need to register the fungus in the constructor for each subclass is annoying
     public MultipleEffect(String effectName)
     {
         this.effectName = effectName;
         this.mobEffects = null;
+        FungusEffects.registerFungusEffect(effectName, this);
     }
 
     public MultipleEffect(String effectName, List<MobEffect> mobEffectList)
     {
         this.effectName = effectName;
         this.mobEffects = mobEffectList;
+        FungusEffects.registerFungusEffect(effectName, this);
     }
 
     @Override
