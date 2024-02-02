@@ -2,7 +2,7 @@ package com.mettsmirnov.mycology.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
-import com.mettsmirnov.mycology.effects.FungusEffect;
+import com.mettsmirnov.mycology.effects.SingleEffect;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.effects.FungusEffects;
@@ -38,7 +38,7 @@ public class SpeciesBuilder
     private int light;
     private String terrain;
     private BiomesSpecs biomesSpecs;
-    private FungusEffect areaEffect;
+    private SingleEffect areaEffect;//TODO replace SingleEffect
     private FungusSpawn spawnType;
 
     //Methods chaining
@@ -135,7 +135,7 @@ public class SpeciesBuilder
         return this;
     }
 
-    public SpeciesBuilder areaEffect(FungusEffect areaEffect)
+    public SpeciesBuilder areaEffect(SingleEffect areaEffect) //TODO replace SingleEffect
     {
         this.areaEffect = areaEffect;
         return this;
@@ -164,8 +164,8 @@ public class SpeciesBuilder
         fungusJson.addProperty("terrain",terrain);
         fungusJson.addProperty("humidity",biomesSpecs.humidity);
         fungusJson.addProperty("temperature",biomesSpecs.temperature);
-        fungusJson.addProperty("area",areaEffect.getAreaRadius());
-        fungusJson.addProperty("effect",areaEffect.getEffect());
+        fungusJson.addProperty("area",3);
+        fungusJson.addProperty("effect",areaEffect.getEffectName());
         if(spawnType!=null)
         {
             JsonObject spawnJson = new JsonObject();

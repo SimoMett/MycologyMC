@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+@Deprecated(forRemoval = true)
 public class MobEffectInstanceProvider
 {
     private static final Map<String, MobEffect> mobEffectMap = new HashMap<>();
@@ -47,9 +48,5 @@ public class MobEffectInstanceProvider
         mobEffectMap.put("bad_omen", MobEffects.BAD_OMEN);
         mobEffectMap.put("hero_of_the_village", MobEffects.HERO_OF_THE_VILLAGE);
         mobEffectMap.put("darkness", MobEffects.DARKNESS);
-    }
-    public static MobEffect getMobEffectByName(String name)
-    {
-        return mobEffectMap.getOrDefault(name, MobEffects.CONFUSION);
     }
 }

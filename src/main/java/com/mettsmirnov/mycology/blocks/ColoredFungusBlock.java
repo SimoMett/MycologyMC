@@ -15,7 +15,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -164,6 +163,14 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 if (blockState.canSurvive(level, blockpos1))
                     placeFungusBlock(blockState, level, blockpos1, thisFungusData);
             }
+        }
+        //TODO implement here area effect
+        String fungusEffect = (String) thisFungusData.getField(FungusDataModel.EFFECT);
+        if(!fungusEffect.equals("none"))
+        {
+            int areaRadius = (Integer) thisFungusData.getField(FungusDataModel.AREA);
+
+
         }
     }
 

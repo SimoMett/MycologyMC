@@ -1,21 +1,18 @@
 package com.mettsmirnov.mycology.entities;
 
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
-import com.mettsmirnov.mycology.capabilities.IFungusData;
-import com.mettsmirnov.mycology.effects.MobEffectInstanceProvider;
+import com.mettsmirnov.mycology.effects.FungusEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
-import org.jline.utils.Log;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -48,32 +45,25 @@ public class ColoredFungusBlockEntity extends BlockEntity
     public void tick()
     {
         BlockPos pos = this.getBlockPos();
-        IFungusData fungusData = fungusDataModel;
+        FungusDataModel fungusData = fungusDataModel;
 
-        String fungusEffect = (String) fungusData.getField(FungusDataModel.EFFECT, IFungusData.GeneType.DOMINANT);
+        String fungusEffect = (String) fungusData.getField(FungusDataModel.EFFECT);
         if(!fungusEffect.equals("none"))
         {
-            int areaRadius = (Integer) fungusData.getField(FungusDataModel.AREA, IFungusData.GeneType.DOMINANT);
+            int areaRadius = (Integer) fungusData.getField(FungusDataModel.AREA);
             List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
-            //TODO check if the fungus effect is an area effect or not.
             for (LivingEntity entity : entityList)
             {
                 if (entity.distanceToSqr(pos.getCenter()) < areaRadius)
                 {
                     if (Duration.between(lastInstant, Instant.now()).getSeconds() > 1)
                     {
-                        applyEffectToEntity(entity, fungusEffect);
+                        FungusEffects.getEffectByName(fungusEffect).applyEffectToEntity(entity);
                         lastInstant = Instant.now();
                     }
                 }
             }
         }
-    }
-
-    private void applyEffectToEntity(LivingEntity entity, String effectString)
-    {
-        final int numOfTicks = 100; //this value is hardcoded and should not be configurable.
-        entity.addEffect(new MobEffectInstance(MobEffectInstanceProvider.getMobEffectByName(effectString),numOfTicks));
     }
 
     private List<LivingEntity> getEntityListInAreaRadius(int radius)
