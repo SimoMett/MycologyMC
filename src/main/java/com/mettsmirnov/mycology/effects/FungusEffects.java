@@ -3,13 +3,14 @@ package com.mettsmirnov.mycology.effects;
 import net.minecraft.world.effect.MobEffects;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class FungusEffects
 {
     public static final SingleEffect NO_EFFECT = new SingleEffect("none");
-    public static final SingleEffect POISON_EFFECT = new SingleEffect("poison");
+    public static final MultipleEffect POISON_EFFECT = new MultipleEffect("poison", List.of(MobEffects.POISON, MobEffects.CONFUSION));
     public static final SingleEffect DRUNK_EFFECT = new SingleEffect("drunkenness");
-    public static final SingleEffect FATIGUE_EFFECT = new SingleEffect("mining_fatigue");
+    public static final MultipleEffect FATIGUE_EFFECT = new MultipleEffect("mining_fatigue", List.of(MobEffects.MOVEMENT_SLOWDOWN, MobEffects.DIG_SLOWDOWN));
     public static final SingleEffect HEALING_EFFECT = new SingleEffect("regeneration", MobEffects.REGENERATION);
     public static final SingleEffect STRENGTH_EFFECT = new SingleEffect("strengthening", MobEffects.DAMAGE_BOOST);
     public static final SingleEffect ANESTHETIC_EFFECT = new SingleEffect("anesthetic");
