@@ -7,6 +7,8 @@ import java.util.List;
 
 public class FungusEffects
 {
+    private static final HashMap<String, IFungusEffect> effectsHashMap = new HashMap<>();
+
     public static final SingleEffect NO_EFFECT = new SingleEffect("none");
     public static final MultipleEffect POISON_EFFECT = new MultipleEffect("poison", List.of(MobEffects.POISON, MobEffects.CONFUSION));
     public static final SingleEffect DRUNK_EFFECT = new SingleEffect("drunkenness");
@@ -34,8 +36,6 @@ public class FungusEffects
     public static final SingleEffect SPORING_EFFECT = new SingleEffect("sporing");
     public static final SingleEffect DYEING_EFFECT = new SingleEffect("dyeing");
     public static final SingleEffect FERTILIZING_EFFECT = new SingleEffect("fertilizing");
-
-    private static final HashMap<String, IFungusEffect> effectsHashMap = new HashMap<>();
 
     public static IFungusEffect getEffectByName(String effectName)
     {
