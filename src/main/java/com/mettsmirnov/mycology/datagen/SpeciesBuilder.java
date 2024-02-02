@@ -2,7 +2,7 @@ package com.mettsmirnov.mycology.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
-import com.mettsmirnov.mycology.effects.SingleEffect;
+import com.mettsmirnov.mycology.effects.IFungusEffect;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.effects.FungusEffects;
@@ -38,7 +38,7 @@ public class SpeciesBuilder
     private int light;
     private String terrain;
     private BiomesSpecs biomesSpecs;
-    private SingleEffect areaEffect;//TODO replace SingleEffect
+    private IFungusEffect areaEffect;
     private FungusSpawn spawnType;
 
     //Methods chaining
@@ -135,7 +135,7 @@ public class SpeciesBuilder
         return this;
     }
 
-    public SpeciesBuilder areaEffect(SingleEffect areaEffect) //TODO replace SingleEffect
+    public SpeciesBuilder areaEffect(IFungusEffect areaEffect)
     {
         this.areaEffect = areaEffect;
         return this;
