@@ -1,6 +1,9 @@
 package com.mettsmirnov.mycology.effects;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.AABB;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +42,19 @@ public class FungusEffects
     public static final SingleEffect FERTILIZING_EFFECT = new SingleEffect("fertilizing", null);
 
     //dev
-    public static final SingleEffect DEV_TEST_EFFECT = new SingleEffect("testing", null);
+    public static final SingleEffect DEV_TEST_EFFECT = new SingleEffect("testing", null, (level, pos, radius) -> {
+        AABB box = new AABB(
+                pos.getX() - radius,
+                pos.getY() - radius,
+                pos.getZ() - radius,
+                pos.getX() + radius,
+                pos.getY() + radius,
+                pos.getZ() + radius
+        );
+        BlockPos.betweenClosedStream(box).forEach( p -> {
+            level.setBlock(p, Blocks.DIAMOND_BLOCK.defaultBlockState(), 2);
+        });
+    });
 
     public static IFungusEffect getEffectByName(String effectName)
     {
