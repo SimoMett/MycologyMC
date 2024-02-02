@@ -25,6 +25,12 @@ public class MultipleEffect implements IFungusEffect
     }
 
     @Override
+    public String getEffectName()
+    {
+        return effectName;
+    }
+
+    @Override
     public void applyEffectToEntity(LivingEntity entity)
     {
         if (mobEffects != null)

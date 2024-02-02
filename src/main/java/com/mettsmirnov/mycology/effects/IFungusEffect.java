@@ -7,7 +7,8 @@ import net.minecraft.world.level.LevelReader;
 public interface IFungusEffect
 {
     final int numOfTicks = 100; //this value is hardcoded and should not be configurable.
-    void applyEffectToEntity(LivingEntity entity);
 
+    String getEffectName();
+    void applyEffectToEntity(LivingEntity entity);
     void applyEffectToLevel(LevelReader level, BlockPos origin, int radius);
 }
