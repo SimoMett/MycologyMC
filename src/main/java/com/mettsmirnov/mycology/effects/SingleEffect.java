@@ -10,7 +10,6 @@ public class SingleEffect implements IFungusEffect
 {
     private final String effectName;
 
-
     private MobEffect mobEffect;
 
     public SingleEffect(String effectName)
@@ -33,10 +32,7 @@ public class SingleEffect implements IFungusEffect
     public void applyEffectToEntity(LivingEntity entity)
     {
         if (mobEffect != null)
-        {
-            final int numOfTicks = 100; //this value is hardcoded and should not be configurable.
             entity.addEffect(new MobEffectInstance(mobEffect, numOfTicks));
-        }
     }
 
     public void applyEffectToLevel(LevelReader level, BlockPos origin, int radius)
