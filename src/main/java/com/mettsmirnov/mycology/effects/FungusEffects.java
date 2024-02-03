@@ -2,11 +2,14 @@ package com.mettsmirnov.mycology.effects;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class FungusEffects
 {
@@ -38,7 +41,20 @@ public class FungusEffects
     public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", null);
     public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", null);
     public static final SingleEffect SPORING_EFFECT = new SingleEffect("sporing", null);
-    public static final SingleEffect DYEING_EFFECT = new SingleEffect("dyeing", null);
+    public static final SingleEffect DYEING_EFFECT = new SingleEffect("dyeing", null, (level, pos, radius) -> {
+        AABB box = new AABB(
+                pos.getX() - radius,
+                pos.getY() - radius,
+                pos.getZ() - radius,
+                pos.getX() + radius,
+                pos.getY() + radius,
+                pos.getZ() + radius
+        );
+        level.getEntitiesOfClass(Sheep.class, box).forEach( sheep -> {
+            sheep.setColor(DyeColor.byId(new Random().nextInt(16)));
+        });
+
+    });
     public static final SingleEffect FERTILIZING_EFFECT = new SingleEffect("fertilizing", null);
 
     //dev
