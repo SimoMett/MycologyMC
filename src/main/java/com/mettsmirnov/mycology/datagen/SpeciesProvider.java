@@ -322,8 +322,13 @@ public class SpeciesProvider implements DataProvider//TODO
                 .colors(new int[]{0x87cfec, 0x06d192, 0x69d0af, 0x068054})
                 .terrain("mycologymod:endstone")
                 .buildAndAddToList(generator, hashCache, list);
-
-
+        /////////////////////////
+        //      DEV fungi      //
+        /////////////////////////
+        SpeciesBuilder.getInstance().createProtoSpecies("DEV_FUNGUS")
+                .areaEffect(FungusEffects.DEV_TEST_EFFECT)
+                .areaRadius(1)
+                .buildAndAddToList(generator, hashCache, list);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 

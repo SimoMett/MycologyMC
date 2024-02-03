@@ -38,6 +38,7 @@ public class SpeciesBuilder
     private int light;
     private String terrain;
     private BiomesSpecs biomesSpecs;
+    private int areaRadius = 3;
     private IFungusEffect areaEffect;
     private FungusSpawn spawnType;
 
@@ -136,6 +137,12 @@ public class SpeciesBuilder
         return this;
     }
 
+    public SpeciesBuilder areaRadius(int areaRadius)
+    {
+        this.areaRadius = areaRadius;
+        return this;
+    }
+
     public SpeciesBuilder areaEffect(IFungusEffect areaEffect)
     {
         this.areaEffect = areaEffect;
@@ -165,7 +172,7 @@ public class SpeciesBuilder
         fungusJson.addProperty("terrain",terrain);
         fungusJson.addProperty("humidity",biomesSpecs.humidity);
         fungusJson.addProperty("temperature",biomesSpecs.temperature);
-        fungusJson.addProperty("area",3);
+        fungusJson.addProperty("area",areaRadius);
         fungusJson.addProperty("effect",areaEffect.getEffectName());
         if(spawnType!=null)
         {
