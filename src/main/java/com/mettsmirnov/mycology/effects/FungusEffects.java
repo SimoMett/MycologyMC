@@ -6,6 +6,7 @@ import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -39,7 +40,21 @@ public class FungusEffects
     public static final SingleEffect GOODCHANCE_EFFECT = new SingleEffect("goodchance", MobEffects.LUCK);
     public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", null);
     public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", null);
-    public static final SingleEffect SPORING_EFFECT = new SingleEffect("sporing", null);
+    public static final SingleEffect SPORING_EFFECT = new SingleEffect("sporing", null, (level, pos, box) -> {
+        final List<BlockPos> pList = new ArrayList<>();
+        BlockPos.betweenClosedStream(box).forEach( p -> {
+            pList.add(new BlockPos(p));
+        });
+        List <BlockPos> pList2 = pList.stream()
+                .filter(p -> p.distSqr(pos) < box.getSize()/2.0f)
+                .filter(p -> level.getBlockState(p).is(Blocks.GRASS_BLOCK))
+                .toList();
+        if (!pList2.isEmpty())
+        {
+            BlockPos randomPos = pList2.get(new Random().nextInt(pList2.size()));
+            level.setBlock(randomPos, Blocks.MYCELIUM.defaultBlockState(), 2);
+        }
+    });
     public static final SingleEffect DYEING_EFFECT = new SingleEffect("dyeing", null, (level, pos, box) -> {
         level.getEntitiesOfClass(Sheep.class, box).forEach( sheep -> {
             sheep.setColor(DyeColor.byId(new Random().nextInt(16)));
