@@ -5,6 +5,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
 import org.apache.commons.lang3.function.TriConsumer;
 
 public class SingleEffect implements IFungusEffect
@@ -12,7 +13,7 @@ public class SingleEffect implements IFungusEffect
     private final String effectName;
 
     private MobEffect mobEffect;
-    private final TriConsumer<LevelAccessor, BlockPos, Integer> consumer;
+    private final TriConsumer<LevelAccessor, BlockPos, AABB> consumer;
 
     public SingleEffect(String effectName)
     {
@@ -24,7 +25,7 @@ public class SingleEffect implements IFungusEffect
         this(effectName, mobEffect, null);
     }
 
-    public SingleEffect(String effectName, MobEffect mobEffect, TriConsumer<LevelAccessor, BlockPos, Integer> consumer)
+    public SingleEffect(String effectName, MobEffect mobEffect, TriConsumer<LevelAccessor, BlockPos, AABB> consumer)
     {
         this.effectName = effectName;
         this.mobEffect = mobEffect;
@@ -46,6 +47,16 @@ public class SingleEffect implements IFungusEffect
     public void applyEffectToLevel(LevelAccessor level, BlockPos origin, int radius)
     {
         if (consumer != null)
-            consumer.accept(level, origin, radius);
+        {
+            AABB box = new AABB(
+                    origin.getX() - radius,
+                    origin.getY() - radius,
+                    origin.getZ() - radius,
+                    origin.getX() + radius,
+                    origin.getY() + radius,
+                    origin.getZ() + radius
+            );
+            consumer.accept(level, origin, box);
+        }
     }
 }
