@@ -14,13 +14,14 @@ public class SingleEffect implements IFungusEffect
     private MobEffect mobEffect;
     private final TriConsumer<LevelAccessor, BlockPos, Integer> consumer;
 
-    @Deprecated(forRemoval = true)
+    public SingleEffect(String effectName)
+    {
+        this(effectName, null, null);
+    }
+
     public SingleEffect(String effectName, MobEffect mobEffect)
     {
-        this.effectName = effectName;
-        this.mobEffect = mobEffect;
-        this.consumer = null;
-        FungusEffects.registerFungusEffect(effectName, this);
+        this(effectName, mobEffect, null);
     }
 
     public SingleEffect(String effectName, MobEffect mobEffect, TriConsumer<LevelAccessor, BlockPos, Integer> consumer)
