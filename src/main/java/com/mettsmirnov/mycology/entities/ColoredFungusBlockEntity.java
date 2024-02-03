@@ -48,19 +48,16 @@ public class ColoredFungusBlockEntity extends BlockEntity
         FungusDataModel fungusData = fungusDataModel;
 
         String fungusEffect = (String) fungusData.getField(FungusDataModel.EFFECT);
-        if(!fungusEffect.equals("none"))
+        int areaRadius = (Integer) fungusData.getField(FungusDataModel.AREA);
+        List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
+        for (LivingEntity entity : entityList)
         {
-            int areaRadius = (Integer) fungusData.getField(FungusDataModel.AREA);
-            List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
-            for (LivingEntity entity : entityList)
+            if (entity.distanceToSqr(pos.getCenter()) < areaRadius)
             {
-                if (entity.distanceToSqr(pos.getCenter()) < areaRadius)
+                if (Duration.between(lastInstant, Instant.now()).getSeconds() > 1)
                 {
-                    if (Duration.between(lastInstant, Instant.now()).getSeconds() > 1)
-                    {
-                        FungusEffects.getEffectByName(fungusEffect).applyEffectToEntity(entity);
-                        lastInstant = Instant.now();
-                    }
+                    FungusEffects.getEffectByName(fungusEffect).applyEffectToEntity(entity);
+                    lastInstant = Instant.now();
                 }
             }
         }
