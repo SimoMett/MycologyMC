@@ -32,7 +32,6 @@ public class RandomFungusFeatureConfiguration extends Feature<SimpleBlockConfigu
             String biomeName = placeContext.level().registryAccess().registryOrThrow(Registries.BIOME).getKey(placeContext.level().getBiome(origin).get()).toString();
             float biomeTemp = placeContext.level().getBiome(origin).get().getModifiedClimateSettings().temperature();
             float biomeDownfall = placeContext.level().getBiome(origin).get().getModifiedClimateSettings().downfall();
-            Log.info(biomeName, ": ", biomeTemp, ", ", biomeDownfall);
 
             //get random species
             Random random = new Random();
