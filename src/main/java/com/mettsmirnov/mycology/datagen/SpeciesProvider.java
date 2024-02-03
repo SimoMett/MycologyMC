@@ -161,6 +161,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
                 .terrain("mycologymod:nether")
+                .areaEffect(FungusEffects.WITHERING_EFFECT)
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("POISON_EFFECT_FUNGUS")
@@ -321,6 +322,79 @@ public class SpeciesProvider implements DataProvider//TODO
                 .setRecessive()
                 .colors(new int[]{0x87cfec, 0x06d192, 0x69d0af, 0x068054})
                 .terrain("mycologymod:endstone")
+                .buildAndAddToList(generator, hashCache, list);
+        /////////////////////////////////
+        //    Special effects fungi    //
+        /////////////////////////////////
+        //TODO be rearranged
+        SpeciesBuilder.getInstance().createProtoSpecies("DRUNK_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.DRUNK_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("FATIGUE_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.FATIGUE_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("STRENGTH_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.STRENGTH_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("ANESTHETIC_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.ANESTHETIC_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("ILLUCINATING_FUNGUS")
+                .areaEffect(FungusEffects.ILLUCINATING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("HALLUCINATING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.HALLUCINATING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("RADIOACTIVE_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.RADIOACTIVE_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("BLINDING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.BLINDING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("PHANTOM_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.PHANTOM_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("NIGHTLY_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.NIGHTLY_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("SENSING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.SENSING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("SHINING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.SHINING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("SCHIZO_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.SCHIZO_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("SPARKLING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.SPARKLING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("RAPTING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.RAPTING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("TELEPORTING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.TELEPORTING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("LIGHTFUL_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.LIGHTFUL_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("GOODCHANCE_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.GOODCHANCE_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("LEARNING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.LEARNING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("KNOWLEDGE_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.KNOWLEDGE_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("SPORING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.SPORING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("DYEING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.DYEING_EFFECT)
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("FERTILIZING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .buildAndAddToList(generator, hashCache, list);
         /////////////////////////
         //      DEV fungi      //
