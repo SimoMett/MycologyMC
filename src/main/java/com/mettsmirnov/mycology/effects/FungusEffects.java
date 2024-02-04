@@ -1,15 +1,10 @@
 package com.mettsmirnov.mycology.effects;
 
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.animal.Sheep;
-import net.minecraft.world.entity.vehicle.Minecart;
-import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
@@ -82,9 +77,9 @@ public class FungusEffects
             BlockPos randomPos = pList2.get(new Random().nextInt(pList2.size()));
             BonemealableBlock block = (BonemealableBlock) level.getBlockState(randomPos).getBlock();
             block.performBonemeal(level, RandomSource.create(), randomPos, level.getBlockState(randomPos));
-            //Particles are working with this patch, but I'm not sure about the quality of this code.
-            if (Minecraft.getInstance().player != null)
-                BoneMealItem.addGrowthParticles(Minecraft.getInstance().player.clientLevel, randomPos, 0);
+            /*
+            if (Minecraft.getInstance().player != null) //it's broken
+                BoneMealItem.addGrowthParticles(Minecraft.getInstance().player.clientLevel, randomPos, 0);*/
         }
     });
 
