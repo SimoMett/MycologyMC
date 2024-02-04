@@ -14,6 +14,7 @@
 - [X] Add natural generation in the world (to be polished)
 - [X] Implement fungus spores' area effect
 - [ ] Implement crafting mechanics (cooking recipes need to be remade)
+- [ ] Emitting particles
 
 ### Other notes
 
