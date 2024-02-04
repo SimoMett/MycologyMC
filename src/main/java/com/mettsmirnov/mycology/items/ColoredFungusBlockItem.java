@@ -17,6 +17,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -92,7 +93,7 @@ public class ColoredFungusBlockItem extends BlockItem
         String terrainString = (String) context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("terrain", IFungusData.GeneType.DOMINANT);
         BlockPos clickedPos = context.getClickedPos();
         BlockState belowBlock = context.getLevel().getBlockState(clickedPos.below());
-        boolean areRequirementsSat = belowBlock.is(BlockTags.create(new ResourceLocation(terrainString)));
+        boolean areRequirementsSat = belowBlock.is(BlockTags.create(new ResourceLocation(terrainString))) || belowBlock.is(Blocks.MYCELIUM);
         return canBePlaced && areRequirementsSat;
     }
 }
