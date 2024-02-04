@@ -1,10 +1,10 @@
 package com.mettsmirnov.mycology.effects;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.LevelAccessor;
 
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class MultipleEffect implements IFungusEffect
     }
 
     @Override
-    public void applyEffectToLevel(LevelAccessor level, BlockPos origin, int radius)
+    public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
     {
 
     }

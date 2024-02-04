@@ -71,15 +71,15 @@ public class FungusEffects
             pList.add(new BlockPos(p));
         });
         List <BlockPos> pList2 = pList.stream()
-                .filter(p -> p.distSqr(pos) < box.getSize()/2.0f)
+                //.filter(p -> p.distSqr(pos) < box.getSize()/2.0f)
                 .filter(p -> level.getBlockState(p).is(BlockTags.CROPS))
                 .toList();
         if (!pList2.isEmpty())
         {
             BlockPos randomPos = pList2.get(new Random().nextInt(pList2.size()));
             BonemealableBlock block = (BonemealableBlock) level.getBlockState(randomPos).getBlock();
-            block.performBonemeal( (ServerLevel) level, RandomSource.create(), randomPos, level.getBlockState(randomPos));
-            BoneMealItem.addGrowthParticles(level, randomPos, 14);//I'm not sure if this is working
+            block.performBonemeal(level, RandomSource.create(), randomPos, level.getBlockState(randomPos));
+            BoneMealItem.addGrowthParticles(level, randomPos, 100);//This is not working because it's a ServerLevel
         }
     });
 

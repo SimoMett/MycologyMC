@@ -1,10 +1,10 @@
 package com.mettsmirnov.mycology.effects;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import org.apache.commons.lang3.function.TriConsumer;
 
@@ -13,7 +13,7 @@ public class SingleEffect implements IFungusEffect
     private final String effectName;
 
     private MobEffect mobEffect;
-    private final TriConsumer<LevelAccessor, BlockPos, AABB> consumer;
+    private final TriConsumer<ServerLevel, BlockPos, AABB> consumer;
 
     public SingleEffect(String effectName)
     {
@@ -25,7 +25,7 @@ public class SingleEffect implements IFungusEffect
         this(effectName, mobEffect, null);
     }
 
-    public SingleEffect(String effectName, MobEffect mobEffect, TriConsumer<LevelAccessor, BlockPos, AABB> consumer)
+    public SingleEffect(String effectName, MobEffect mobEffect, TriConsumer<ServerLevel, BlockPos, AABB> consumer)
     {
         this.effectName = effectName;
         this.mobEffect = mobEffect;
@@ -44,7 +44,7 @@ public class SingleEffect implements IFungusEffect
             entity.addEffect(new MobEffectInstance(mobEffect, numOfTicks));
     }
 
-    public void applyEffectToLevel(LevelAccessor level, BlockPos origin, int radius)
+    public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
     {
         if (consumer != null)
         {
