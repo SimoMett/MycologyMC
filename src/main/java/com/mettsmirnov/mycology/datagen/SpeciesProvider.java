@@ -394,6 +394,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .areaEffect(FungusEffects.DYEING_EFFECT)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("FERTILIZING_EFFECT_FUNGUS")
+                .colors4(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .buildAndAddToList(generator, hashCache, list);
         /////////////////////////
