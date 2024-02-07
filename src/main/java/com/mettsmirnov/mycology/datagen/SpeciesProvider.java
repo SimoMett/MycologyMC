@@ -37,7 +37,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.HEALING_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .spawnType(FungusSpawn.DEFAULT)
                 .buildAndAddToList(generator,hashCache, list);
         /////////////////////////////
         //      Colors fungi       //
@@ -51,7 +51,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .spawnType(FungusSpawn.DARK_FOREST)
                 .buildAndAddToList(generator,hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("ORANGE_FUNGUS")
@@ -75,7 +75,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .spawnType(FungusSpawn.DEFAULT)
                 .buildAndAddToList(generator,hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("CYAN_FUNGUS")
@@ -99,7 +99,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .spawnType(FungusSpawn.DEFAULT)
                 .buildAndAddToList(generator,hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("MAGENTA_FUNGUS")
@@ -146,7 +146,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:podzol")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .spawnType(FungusSpawn.DEFAULT)
                 .buildAndAddToList(generator, hashCache, list);
 
         /////////////////////////////
@@ -263,7 +263,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("minecraft:lapis_ores")
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT_SPAWN)
+                .spawnType(FungusSpawn.DEFAULT)
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("REDSTONE_FUNGUS")
@@ -401,6 +401,7 @@ public class SpeciesProvider implements DataProvider//TODO
         //      DEV fungi      //
         /////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("DEV_FUNGUS")
+                .colors4(0x5567E5, 0x9F55B5, 0xBF5DAF, 0xD32BD9)
                 .areaEffect(FungusEffects.DEV_TEST_EFFECT)
                 .areaRadius(1)
                 .buildAndAddToList(generator, hashCache, list);
