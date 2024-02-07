@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.genetics.FungusTraits;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -55,7 +56,10 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
 
         String fungusType = obj.get("type").getAsString();
 
-        FungusSpeciesList.INSTANCE.put(defaultTraits,colors,fungusType);
+        String spawnBiomes = obj.getAsJsonObject("spawn").get("biomes").getAsString();
+        float spawnChance = obj.getAsJsonObject("spawn").get("chance").getAsFloat();
+
+        FungusSpeciesList.INSTANCE.put(defaultTraits,colors,fungusType, new FungusSpawn(spawnBiomes, spawnChance));
     }
 
 }

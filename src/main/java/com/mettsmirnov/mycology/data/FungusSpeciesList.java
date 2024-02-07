@@ -1,6 +1,7 @@
 package com.mettsmirnov.mycology.data;
 
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
+import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.genetics.FungusTraits;
 import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.world.item.ItemStack;
@@ -13,9 +14,9 @@ public class FungusSpeciesList
 
     public static FungusSpeciesList INSTANCE = new FungusSpeciesList();
 
-    public void put(FungusTraits defaultTraits, int[] colors, String fungusType)
+    public void put(FungusTraits defaultTraits, int[] colors, String fungusType, FungusSpawn spawnType)
     {
-        FungusSpecies species = new FungusSpecies(defaultTraits,colors,fungusType);
+        FungusSpecies species = new FungusSpecies(defaultTraits,colors,fungusType, spawnType);
         speciesHashMap.put(defaultTraits.species, species);
     }
 
@@ -71,12 +72,14 @@ public class FungusSpeciesList
         public FungusTraits defaultTraits;
         public int [] colors;
         public String fungusType;
+        public final FungusSpawn spawnType;
 
-        public FungusSpecies(FungusTraits traits, int [] cols, String type)
+        public FungusSpecies(FungusTraits traits, int [] cols, String type, FungusSpawn spawnType)
         {
             defaultTraits = traits;
             colors = cols;
             fungusType = type;
+            this.spawnType = spawnType;
         }
     }
 }
