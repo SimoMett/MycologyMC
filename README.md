@@ -15,7 +15,7 @@
 ## Natural world generation
 - [X] Add natural generation in the world (to be polished)
 - [ ] Make some mushroom spawn only in certain biomes (consistently with their environment requirements)
-
+- [ ] Assign one or two species for each biome (except the arid ones)
 ### Other notes
 
 # Mycology
