@@ -2,6 +2,7 @@ package com.mettsmirnov.mycology.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
+import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.effects.IFungusEffect;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
@@ -17,8 +18,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class SpeciesBuilder
 {
-    public static final String CRIMSON_TYPE = "colored_crimson_fungus";
-    public static final String WARPED_TYPE = "colored_warped_fungus";
+    public static final String CRIMSON_TYPE = ModBlocks.COLORED_CRIMSON_STRING;
+    public static final String WARPED_TYPE = ModBlocks.COLORED_WARPED_STRING;
 
     private SpeciesBuilder(){}
     private static final SpeciesBuilder builderInstance = new SpeciesBuilder();
@@ -174,14 +175,13 @@ public class SpeciesBuilder
         fungusJson.addProperty("temperature",biomesSpecs.temperature);
         fungusJson.addProperty("area",areaRadius);
         fungusJson.addProperty("effect",areaEffect.getEffectName());
+        JsonObject spawnJson = new JsonObject();
         if(spawnType!=null)
         {
-            JsonObject spawnJson = new JsonObject();
             spawnJson.addProperty("biomes", spawnType.biomes);
             spawnJson.addProperty("chance",spawnType.chance);
-            fungusJson.add("spawn", spawnJson);
         }
-
+        fungusJson.add("spawn", spawnJson);
         Path path = generator.getPackOutput().getOutputFolder();
         String jsonFileName = speciesName.toLowerCase().replace(' ', '_')+".json";
         Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", jsonFileName));

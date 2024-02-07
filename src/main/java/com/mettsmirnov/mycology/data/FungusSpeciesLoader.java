@@ -56,10 +56,16 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
 
         String fungusType = obj.get("type").getAsString();
 
-        String spawnBiomes = obj.getAsJsonObject("spawn").get("biomes").getAsString();
-        float spawnChance = obj.getAsJsonObject("spawn").get("chance").getAsFloat();
+        FungusSpawn spawnType = null;
+        JsonObject spawnRoot = obj.getAsJsonObject("spawn");
+        if(!spawnRoot.isEmpty())
+        {
+            String spawnBiomes = obj.getAsJsonObject("spawn").get("biomes").getAsString();
+            float spawnChance = obj.getAsJsonObject("spawn").get("chance").getAsFloat();
+            spawnType = new FungusSpawn(spawnBiomes, spawnChance);
+        }
 
-        FungusSpeciesList.INSTANCE.put(defaultTraits,colors,fungusType, new FungusSpawn(spawnBiomes, spawnChance));
+        FungusSpeciesList.INSTANCE.put(defaultTraits,colors,fungusType, spawnType);
     }
 
 }
