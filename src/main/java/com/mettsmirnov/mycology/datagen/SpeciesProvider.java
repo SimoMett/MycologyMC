@@ -37,7 +37,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.HEALING_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT)
+                .spawnType(FungusSpawn.ANY_BIOME)
                 .buildAndAddToList(generator,hashCache, list);
         /////////////////////////////
         //      Colors fungi       //
@@ -75,7 +75,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT)
+                .spawnType(FungusSpawn.ANY_BIOME)
                 .buildAndAddToList(generator,hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("CYAN_FUNGUS")
@@ -99,7 +99,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT)
+                .spawnType(FungusSpawn.ANY_BIOME)
                 .buildAndAddToList(generator,hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("MAGENTA_FUNGUS")
@@ -146,7 +146,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:podzol")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT)
+                .spawnType(FungusSpawn.ANY_BIOME)
                 .buildAndAddToList(generator, hashCache, list);
 
         /////////////////////////////
@@ -264,7 +264,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("minecraft:lapis_ores")
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.DEFAULT)
+                .spawnType(FungusSpawn.ANY_BIOME)
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createDefaultSpecies("REDSTONE_FUNGUS")
