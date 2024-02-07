@@ -41,7 +41,7 @@ public class SpeciesBuilder
     private BiomesSpecs biomesSpecs;
     private int areaRadius = 3;
     private IFungusEffect areaEffect;
-    private FungusSpawn spawnType;
+    private FungusSpawn spawnInfo;
 
     //Methods chaining
     public SpeciesBuilder createSpecies(String speciesName)
@@ -60,7 +60,7 @@ public class SpeciesBuilder
         this.terrain = "mycologymod:grass";
         this.biomesSpecs = BiomesSpecs.FOREST;
         this.areaEffect = FungusEffects.NO_EFFECT;
-        this.spawnType = FungusSpawn.NO_SPAWN;
+        this.spawnInfo = FungusSpawn.NO_SPAWN;
         return this;
     }
 
@@ -152,7 +152,7 @@ public class SpeciesBuilder
 
     public SpeciesBuilder spawnType(FungusSpawn spawnType)
     {
-        this.spawnType = spawnType;
+        this.spawnInfo = spawnType;
         return this;
     }
 
@@ -176,10 +176,10 @@ public class SpeciesBuilder
         fungusJson.addProperty("area",areaRadius);
         fungusJson.addProperty("effect",areaEffect.getEffectName());
         JsonObject spawnJson = new JsonObject();
-        if(spawnType!=null)
+        if(spawnInfo !=null)
         {
-            spawnJson.addProperty("biomes", spawnType.biomes);
-            spawnJson.addProperty("chance",spawnType.chance);
+            spawnJson.addProperty("biomes", spawnInfo.biomes);
+            spawnJson.addProperty("chance", spawnInfo.chance);
         }
         fungusJson.add("spawn", spawnJson);
         Path path = generator.getPackOutput().getOutputFolder();

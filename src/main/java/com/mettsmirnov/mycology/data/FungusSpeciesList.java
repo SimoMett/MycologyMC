@@ -72,14 +72,14 @@ public class FungusSpeciesList
         public FungusTraits defaultTraits;
         public int [] colors;
         public String fungusType;
-        public final FungusSpawn spawnType;
+        public final FungusSpawn spawnInfo;
 
-        public FungusSpecies(FungusTraits traits, int [] cols, String type, FungusSpawn spawnType)
+        public FungusSpecies(FungusTraits traits, int [] cols, String type, FungusSpawn spawnInfo)
         {
             defaultTraits = traits;
             colors = cols;
             fungusType = type;
-            this.spawnType = spawnType;
+            this.spawnInfo = spawnInfo;
         }
     }
 }

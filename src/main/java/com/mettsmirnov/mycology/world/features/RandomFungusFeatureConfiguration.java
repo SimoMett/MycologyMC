@@ -28,7 +28,7 @@ public class RandomFungusFeatureConfiguration extends Feature<SimpleBlockConfigu
         List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         BlockPos origin = placeContext.origin();
         String biomeName = placeContext.level().registryAccess().registryOrThrow(Registries.BIOME).getKey(placeContext.level().getBiome(origin).get()).toString();
-        speciesList = speciesList.stream().filter(s -> s.spawnType != null && s.spawnType.biomes.contains(biomeName)).toList();
+        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && s.spawnInfo.biomes.contains(biomeName)).toList();
         if(!speciesList.isEmpty())
         {
             float biomeTemp = placeContext.level().getBiome(origin).get().getModifiedClimateSettings().temperature();
@@ -38,7 +38,7 @@ public class RandomFungusFeatureConfiguration extends Feature<SimpleBlockConfigu
             Random random = new Random();
             FungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
 
-            if (random.nextFloat(0f, 1f) < randomSpecies.spawnType.chance)
+            if (random.nextFloat(0f, 1f) < randomSpecies.spawnInfo.chance)
             {
                 //spawn fungus with the correct type
                 if (randomSpecies.fungusType.equals(ModBlocks.COLORED_CRIMSON_STRING))
