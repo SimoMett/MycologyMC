@@ -9,6 +9,7 @@ import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.genetics.Breeding;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -27,6 +28,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -77,6 +80,22 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 coloredFungusBlockEntity.tick();
             }
         };
+    }
+
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    //FIXME testing only
+    public void animateTick(BlockState blockState, Level level, BlockPos pos, RandomSource randomSource)
+    {
+        super.animateTick(blockState, level, pos, randomSource);
+        if (randomSource.nextInt(10) == 0)
+        {
+
+            double velX = 0;
+            double velY = 0;
+            double velZ = 0;
+            level.addParticle(ParticleTypes.HEART, (double)pos.getX() + randomSource.nextDouble(), (double)pos.getY() + 1, (double)pos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
+        }
     }
 
     @Override //deprecated

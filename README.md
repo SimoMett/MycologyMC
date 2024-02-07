@@ -9,9 +9,10 @@
 - [ ] A LOT of species. [This fantastic tool](https://github.com/SimoMett/mushroom_renderer) can help ;)
 - [ ] Edit mushroom spreading mechanic (partial)
 - [X] Implement breeding
+- [ ] Implement crafting mechanics (cooking recipes need to be remade)
+## Area effects and particles
 - [X] Implement fungus spores' area effect
 - [ ] Emitting particles
-- [ ] Implement crafting mechanics (cooking recipes need to be remade)
 ## Natural world generation
 - [X] Add natural generation in the world (to be polished)
 - [ ] Make some mushroom spawn only in certain biomes (consistently with their environment requirements)
