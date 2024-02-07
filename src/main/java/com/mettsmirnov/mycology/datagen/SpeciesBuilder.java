@@ -60,7 +60,7 @@ public class SpeciesBuilder
         this.terrain = "mycologymod:grass";
         this.biomesSpecs = BiomesSpecs.FOREST;
         this.areaEffect = FungusEffects.NO_EFFECT;
-        this.spawnType = null;
+        this.spawnType = FungusSpawn.NO_SPAWN;
         return this;
     }
 
