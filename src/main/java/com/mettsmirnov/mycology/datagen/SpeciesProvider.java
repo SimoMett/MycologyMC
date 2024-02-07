@@ -154,6 +154,7 @@ public class SpeciesProvider implements DataProvider//TODO
         /////////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("Amanita phalloides")
                 .colors4(0xffdb94, 0xc71c12, 0xe8e8e8, 0xF2F2F2)
+                .spawnType(FungusSpawn.SWAMP)
                 .buildAndAddToList(generator, hashCache, list);
 
         //Wither fungus
