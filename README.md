@@ -12,7 +12,8 @@
 - [ ] Implement crafting mechanics (cooking recipes need to be remade)
 ## Area effects and particles
 - [X] Implement fungus spores' area effect
-- [ ] Emitting particles
+- [X] Emitting particles
+- [ ] Create a nice looking sporing particle
 ## Natural world generation
 - [X] Add natural generation in the world (to be polished)
 - [ ] Make some mushroom spawn only in certain biomes (consistently with their environment requirements)
