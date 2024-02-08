@@ -8,8 +8,8 @@ import com.mettsmirnov.mycology.effects.FungusEffects;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.genetics.Breeding;
+import com.mettsmirnov.mycology.particles.ModParticles;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -85,16 +85,30 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     @OnlyIn(Dist.CLIENT)
     //FIXME testing only
-    public void animateTick(BlockState blockState, Level level, BlockPos pos, RandomSource randomSource)
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource)
     {
-        super.animateTick(blockState, level, pos, randomSource);
+        super.animateTick(blockState, level, blockPos, randomSource);
         if (randomSource.nextInt(10) == 0)
         {
-
+            ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
+            FungusDataModel thisFungusData = originBlockEntity.getFungusData();
+            int radius = (Integer)thisFungusData.getField(FungusDataModel.AREA);
+            AABB boxArea = new AABB(
+                    blockPos.getX() - radius,
+                    blockPos.getY() - radius,
+                    blockPos.getZ() - radius,
+                    blockPos.getX() + radius,
+                    blockPos.getY() + radius,
+                    blockPos.getZ() + radius
+            );
             double velX = 0;
             double velY = 0;
             double velZ = 0;
-            level.addParticle(ParticleTypes.HEART, (double)pos.getX() + randomSource.nextDouble(), (double)pos.getY() + 1, (double)pos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
+            BlockPos.betweenClosedStream(boxArea)
+                    .forEach(pos -> {
+                        level.addParticle(ModParticles.SPORE_PARTICLES.get(), (double)pos.getX() + randomSource.nextDouble(), (double)pos.getY() + 1, (double)pos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
+                    });
+
         }
     }
 
@@ -203,9 +217,9 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     private static ArrayList<ColoredFungusBlockEntity> getFungiInArea(ServerLevel level, BlockPos pos, int radius)
     {
         AABB boxArea = new AABB(
-                pos.getX() - (radius +1),
-                pos.getY() - (radius +1),
-                pos.getZ() - (radius +1),
+                pos.getX() - radius,
+                pos.getY() - radius,
+                pos.getZ() - radius,
                 pos.getX() + radius,
                 pos.getY() + radius,
                 pos.getZ() + radius
