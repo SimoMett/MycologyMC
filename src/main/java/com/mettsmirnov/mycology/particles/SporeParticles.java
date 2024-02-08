@@ -19,8 +19,10 @@ public class SporeParticles extends TextureSheetParticle
         this.zd = vZ;
         this.quadSize *= 1.5f;
         this.setLifetime(3*20 + (new Random().nextInt(-4, 4)*5));
+        this.gravity = 0.01f;
         this.setSpriteFromAge(spriteSet);
-        int color = 0x55453c;
+        int [] colors = {0x55453c, 0x6e5a4d, 0x55453c};
+        int color = colors[new Random().nextInt(3)];
         this.setColor((color >> 16)/255f, (color >> 8 & 255)/255f, (color & 255)/255f);
     }
 

@@ -88,27 +88,23 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource)
     {
         super.animateTick(blockState, level, blockPos, randomSource);
-        if (randomSource.nextInt(10) == 0)
+        ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
+        int radius = (Integer)originBlockEntity.getFungusData().getField(FungusDataModel.AREA);
+
+        Random random = new Random();
+        for(int i = 0; i<2; i++)
         {
-            ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
-            FungusDataModel thisFungusData = originBlockEntity.getFungusData();
-            int radius = (Integer)thisFungusData.getField(FungusDataModel.AREA);
-            AABB boxArea = new AABB(
-                    blockPos.getX() - radius,
-                    blockPos.getY() - radius,
-                    blockPos.getZ() - radius,
-                    blockPos.getX() + radius,
-                    blockPos.getY() + radius,
-                    blockPos.getZ() + radius
-            );
+            //get random BlockPos
+            BlockPos randomPos = new BlockPos(
+                    random.nextInt(blockPos.getX() - radius, blockPos.getX() + radius),
+                    random.nextInt(blockPos.getY() - radius, blockPos.getY() + radius),
+                    random.nextInt(blockPos.getZ() - radius, blockPos.getZ() + radius));
+
+            //spawn particle
             double velX = 0;
             double velY = 0;
             double velZ = 0;
-            BlockPos.betweenClosedStream(boxArea)
-                    .forEach(pos -> {
-                        level.addParticle(ModParticles.SPORE_PARTICLES.get(), (double)pos.getX() + randomSource.nextDouble(), (double)pos.getY() + 1, (double)pos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
-                    });
-
+            level.addParticle(ModParticles.SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
         }
     }
 
