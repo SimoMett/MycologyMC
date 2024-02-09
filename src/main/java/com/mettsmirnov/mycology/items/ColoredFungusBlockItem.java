@@ -89,11 +89,9 @@ public class ColoredFungusBlockItem extends BlockItem
     @Override
     protected boolean canPlace(BlockPlaceContext context, BlockState blockState)
     {
-        boolean canBePlaced = super.canPlace(context,blockState);
-        String terrainString = (String) context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("terrain", IFungusData.GeneType.DOMINANT);
+        //fungi can be placed from hand only on mycelium blocks
         BlockPos clickedPos = context.getClickedPos();
         BlockState belowBlock = context.getLevel().getBlockState(clickedPos.below());
-        boolean areRequirementsSat = belowBlock.is(BlockTags.create(new ResourceLocation(terrainString))) || belowBlock.is(Blocks.MYCELIUM);
-        return canBePlaced && areRequirementsSat;
+        return super.canPlace(context,blockState) && belowBlock.is(Blocks.MYCELIUM);
     }
 }
