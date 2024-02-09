@@ -398,6 +398,25 @@ public class SpeciesProvider implements DataProvider//TODO
                 .colors4(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .buildAndAddToList(generator, hashCache, list);
+        ////////////////////////////
+        //      Native fungi      //
+        ////////////////////////////
+        SpeciesBuilder.getInstance().createProtoSpecies("MEADOW_NATIVE")
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("FOREST_NATIVE")
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("TAIGA_NATIVE")
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("SPRUCE_TAIGA_NATIVE")
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("JUNGLE_NATIVE")
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("PLAINS_NATIVE")
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("SAVANNA_NATIVE")
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("RARE_MUSHROOM_FIELDS_NATIVE")
+                .buildAndAddToList(generator, hashCache, list);
         /////////////////////////
         //      DEV fungi      //
         /////////////////////////
