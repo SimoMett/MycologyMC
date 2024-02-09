@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology.effects;
 
+import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
@@ -40,8 +41,8 @@ public class FungusEffects
     public static final SingleEffect TELEPORTING_EFFECT = new SingleEffect("teleporting");
     public static final SingleEffect LIGHTFUL_EFFECT = new SingleEffect("lightful", MobEffects.SLOW_FALLING);
     public static final SingleEffect GOODCHANCE_EFFECT = new SingleEffect("goodchance", MobEffects.LUCK);
-    public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning");
-    public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge");
+    public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", ModEffects.GAIN_XP.get());
+    public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", ModEffects.XP_MULTIPLIER.get());
     public static final SingleEffect SPORING_EFFECT = new SingleEffect("sporing", null, (level, pos, box) -> {
         final List<BlockPos> pList = new ArrayList<>();
         BlockPos.betweenClosedStream(box).forEach( p -> {
