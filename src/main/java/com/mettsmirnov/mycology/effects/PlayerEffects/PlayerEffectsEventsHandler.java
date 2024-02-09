@@ -7,7 +7,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = MycologyMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class ModEventsHandler
+public class PlayerEffectsEventsHandler
 {
     @SubscribeEvent
     public static void onPlayerPickupXP(PlayerXpEvent.PickupXp evt)
