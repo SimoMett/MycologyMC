@@ -243,7 +243,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:nether")
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createDefaultSpecies("Galerina aurata")
+        SpeciesBuilder.getInstance().createDefaultSpecies("Galerina aurata") //Gold
                 .type(WARPED_TYPE)
                 .colors(new int[]{0xeed484, 0xffc21a, 0xffc96c, 0xfff59f})
                 .terrain("minecraft:gold_ores")
@@ -255,7 +255,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("mycologymod:quartz_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createSpecies("Russula lazula")
+        SpeciesBuilder.getInstance().createSpecies("Russula lazula") //Lapislazuli
                 .type(WARPED_TYPE)
                 .colors(new int[]{0xffffcc, 0x81726d, 0x183679, 0x2653b9})
                 .spreading(25)
@@ -273,7 +273,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .terrain("minecraft:redstone_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createDefaultSpecies("Amanita cuprea")
+        SpeciesBuilder.getInstance().createDefaultSpecies("Amanita cuprea") //Copper
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x20a387})
                 .terrain("minecraft:copper_ores")
@@ -402,6 +402,12 @@ public class SpeciesProvider implements DataProvider//TODO
         //      Native fungi      //
         ////////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("MEADOW_NATIVE")
+                .buildAndAddToList(generator, hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("Leccinum versipelle") //Birch forest biome native
+                .type(WARPED_TYPE)
+                .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
+                .spawnType(FungusSpawn.BIRCH_FOREST)
+                .colors4(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("FOREST_NATIVE")
                 .buildAndAddToList(generator, hashCache, list);
