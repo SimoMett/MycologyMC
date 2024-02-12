@@ -401,7 +401,10 @@ public class SpeciesProvider implements DataProvider//TODO
         ////////////////////////////
         //      Native fungi      //
         ////////////////////////////
-        SpeciesBuilder.getInstance().createProtoSpecies("MEADOW_NATIVE")
+        SpeciesBuilder.getInstance().createProtoSpecies("Agaricus campestris")
+                .type(WARPED_TYPE)
+                .biomesSpecs(BiomesSpecs.MEADOW)
+                .spawnType(FungusSpawn.MEADOW)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("Leccinum versipelle") //Birch forest biome native
                 .type(WARPED_TYPE)
