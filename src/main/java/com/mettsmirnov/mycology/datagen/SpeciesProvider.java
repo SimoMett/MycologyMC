@@ -403,7 +403,7 @@ public class SpeciesProvider implements DataProvider//TODO
         ////////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("Agaricus campestris")
                 .type(WARPED_TYPE)
-                .colors4(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)
+                .colors4(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)//FIXME darker
                 .biomesSpecs(BiomesSpecs.MEADOW)
                 .spawnType(FungusSpawn.MEADOW)
                 .buildAndAddToList(generator, hashCache, list);
@@ -418,7 +418,8 @@ public class SpeciesProvider implements DataProvider//TODO
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .spawnType(FungusSpawn.FOREST)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("Suillus granulatus") //Pinarolo
+        SpeciesBuilder.getInstance().createProtoSpecies("Suillus granulatus")
+                .type(WARPED_TYPE)
                 .colors4(0xFFF7E7, 0xFFA376, 0xC47D5A, 0xD88A64)
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_PINE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_PINE_TAIGA)
