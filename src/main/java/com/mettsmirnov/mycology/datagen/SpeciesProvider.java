@@ -68,7 +68,7 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createSpecies("Lactarius viridis")
                 .type(WARPED_TYPE)
-                .colors(new int[]{ 0xBF98BF, 0x96FE53, 0x99110F, 0xF502D3 })
+                .colors(new int[]{ 0xBF98BF, 0x96FE53, 0x99110F, 0xF502D3 })//FIXME
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -245,7 +245,7 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createDefaultSpecies("Galerina aurata") //Gold
                 .type(WARPED_TYPE)
-                .colors(new int[]{0xeed484, 0xffc21a, 0xffc96c, 0xfff59f})
+                .colors(new int[]{0xeed484, 0xffc21a, 0xffc96c, 0xfff59f})//FIXME
                 .terrain("minecraft:gold_ores")
                 .buildAndAddToList(generator, hashCache, list);
 
@@ -257,7 +257,7 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createSpecies("Russula lazula") //Lapislazuli
                 .type(WARPED_TYPE)
-                .colors(new int[]{0xffffcc, 0x81726d, 0x183679, 0x2653b9})
+                .colors(new int[]{0xffffcc, 0x81726d, 0x183679, 0x2653b9})//FIXME
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -403,12 +403,13 @@ public class SpeciesProvider implements DataProvider//TODO
         ////////////////////////////
         SpeciesBuilder.getInstance().createProtoSpecies("Agaricus campestris")
                 .type(WARPED_TYPE)
+                .colors4(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)
                 .biomesSpecs(BiomesSpecs.MEADOW)
                 .spawnType(FungusSpawn.MEADOW)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("Leccinum versipelle") //Birch forest biome native
                 .type(WARPED_TYPE)
-                .colors4(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)
+                .colors4(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)//FIXME
                 .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
                 .spawnType(FungusSpawn.BIRCH_FOREST)
                 .buildAndAddToList(generator, hashCache, list);
@@ -417,9 +418,14 @@ public class SpeciesProvider implements DataProvider//TODO
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .spawnType(FungusSpawn.FOREST)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("TAIGA_NATIVE")
+        SpeciesBuilder.getInstance().createProtoSpecies("Suillus granulatus") //Pinarolo
+                .colors4(0xFFF7E7, 0xFFA376, 0xC47D5A, 0xD88A64)
+                .biomesSpecs(BiomesSpecs.OLD_GROWTH_PINE_TAIGA)
+                .spawnType(FungusSpawn.OLD_GROWTH_PINE_TAIGA)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("SPRUCE_TAIGA_NATIVE")
+                .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
+                .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("JUNGLE_NATIVE")
                 .buildAndAddToList(generator, hashCache, list);

@@ -11,6 +11,8 @@ public class BiomesSpecs
     public static final BiomesSpecs MEADOW = new BiomesSpecs(0.8f, 0.5f);
     public static final BiomesSpecs LUSH_CAVES = new BiomesSpecs(0.5f, 0.5f);
     public static final BiomesSpecs TAIGA = new BiomesSpecs(0.8f, 0.25f);
+    public static final BiomesSpecs OLD_GROWTH_SPRUCE_TAIGA = new BiomesSpecs(0.8f, 0.25f);
+    public static final BiomesSpecs OLD_GROWTH_PINE_TAIGA = new BiomesSpecs(0.8f, .3f);
     public static final BiomesSpecs SNOWY_PLAINS = new BiomesSpecs(0.5f, 0f);
     public static final BiomesSpecs SNOWY_TAIGA = new BiomesSpecs(0.4f, -0.5f);
     public float humidity;
