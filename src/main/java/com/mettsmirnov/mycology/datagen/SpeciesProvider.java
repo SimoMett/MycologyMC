@@ -134,12 +134,12 @@ public class SpeciesProvider implements DataProvider//TODO
         //      Edible fungi       //
         /////////////////////////////
         //Sugar fungus
-        SpeciesBuilder.getInstance().createProtoSpecies("Laccaria dulcis") //oppure "Amanita dulcis"
+        SpeciesBuilder.getInstance().createProtoSpecies("Laccaria dulcis") // or "Amanita dulcis"
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createSpecies("Noble boletus squisitus")
+        SpeciesBuilder.getInstance().createSpecies("Noble boletus squisitus")// derived from "boletus edulis"
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{ 0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd })
+                .colors4(0xFFE6D8, 0xEDB4B4, 0xBE8C85, 0xFFE4E2)
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -405,11 +405,14 @@ public class SpeciesProvider implements DataProvider//TODO
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("Leccinum versipelle") //Birch forest biome native
                 .type(WARPED_TYPE)
+                .colors4(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)
                 .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
                 .spawnType(FungusSpawn.BIRCH_FOREST)
-                .colors4(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("FOREST_NATIVE")
+        SpeciesBuilder.getInstance().createProtoSpecies("Boletus edulis") //Forest biome native
+                .colors4(0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd)
+                .biomesSpecs(BiomesSpecs.FOREST)
+                .spawnType(FungusSpawn.FOREST)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("TAIGA_NATIVE")
                 .buildAndAddToList(generator, hashCache, list);
