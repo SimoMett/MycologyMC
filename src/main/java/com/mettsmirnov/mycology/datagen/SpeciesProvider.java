@@ -68,7 +68,7 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createSpecies("Lactarius viridis")
                 .type(WARPED_TYPE)
-                .colors(new int[]{ 0xBF98BF, 0x96FE53, 0x99110F, 0xF502D3 })//FIXME
+                .colors(new int[]{ 0xBF98BF, 0x6bb83c, 0x99110F, 0xF502D3 })//FIXME
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -90,9 +90,9 @@ public class SpeciesProvider implements DataProvider//TODO
                 .colors1(0x1c1bff)
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createSpecies("VIOLET_ovulus")
+        SpeciesBuilder.getInstance().createSpecies("Ovulus_VIOLET")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{ 0xAA48FB, 0xA81343, 0x38A23F19, 0x73E105EF })
+                .colors4(0xAA48FB, 0xA81343, 0x38A23F19, 0x73E105EF)
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
