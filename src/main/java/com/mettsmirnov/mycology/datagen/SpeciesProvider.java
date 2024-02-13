@@ -429,7 +429,9 @@ public class SpeciesProvider implements DataProvider//TODO
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("JUNGLE_NATIVE")
+        SpeciesBuilder.getInstance().createProtoSpecies("Amanita muscaria")//poisonous
+                .type(WARPED_TYPE)
+                .colors4(0xFFFCD9, 0xFF521E, 0xFFFFFF, 0xFFB171)
                 .biomesSpecs(BiomesSpecs.JUNGLE)
                 .spawnType(FungusSpawn.JUNGLE)
                 .buildAndAddToList(generator, hashCache, list);
