@@ -84,6 +84,8 @@ public class SpeciesProvider implements DataProvider//TODO
 
         SpeciesBuilder.getInstance().createProtoSpecies("BLUE_FUNGUS")
                 .colors1(0x1c1bff)
+                .biomesSpecs(BiomesSpecs.FOREST)
+                .spawnType(FungusSpawn.FLOWER_FOREST)
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createSpecies("Ovulus_VIOLET")
