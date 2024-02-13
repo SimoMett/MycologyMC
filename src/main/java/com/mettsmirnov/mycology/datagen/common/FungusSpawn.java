@@ -9,6 +9,7 @@ public class FungusSpawn
     public static final FungusSpawn NO_SPAWN = null;
     public static final FungusSpawn ANY_BIOME = new FungusSpawn("",.5f);
     public static final FungusSpawn PLAINS = new FungusSpawn("minecraft:plains", .5f);
+    public static final FungusSpawn SUNFLOWER_PLAINS = new FungusSpawn(Biomes.SUNFLOWER_PLAINS, .5f);
     public static final FungusSpawn FOREST = new FungusSpawn("minecraft:forest", .5f);
     public static final FungusSpawn FLOWER_FOREST = new FungusSpawn(Biomes.FLOWER_FOREST, .5f);
     public static final FungusSpawn DARK_FOREST = new FungusSpawn("minecraft:dark_forest", .5f);

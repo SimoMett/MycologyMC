@@ -62,30 +62,12 @@ public class SpeciesProvider implements DataProvider//TODO
                 .colors1(0x67ff32)
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createSpecies("Lactarius viridis")
-                .type(WARPED_TYPE)
-                .colors(new int[]{ 0xBF98BF, 0x6bb83c, 0x99110F, 0xF502D3 })//FIXME
-                .spreading(25)
-                .spreadBoost(1.0f)
-                .light(15)
-                .terrain("mycologymod:grass")
-                .biomesSpecs(BiomesSpecs.TAIGA)
-                .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.ANY_BIOME)
-                .buildAndAddToList(generator,hashCache, list);
-
         SpeciesBuilder.getInstance().createProtoSpecies("CYAN_FUNGUS")
                 .colors1(0x198185)
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createProtoSpecies("LIGHTBLUE_FUNGUS")
                 .colors1(0x41d3ff)
-                .buildAndAddToList(generator, hashCache, list);
-
-        SpeciesBuilder.getInstance().createProtoSpecies("BLUE_FUNGUS")
-                .colors1(0x1c1bff)
-                .biomesSpecs(BiomesSpecs.FOREST)
-                .spawnType(FungusSpawn.FLOWER_FOREST)
                 .buildAndAddToList(generator, hashCache, list);
 
         SpeciesBuilder.getInstance().createSpecies("Ovulus_VIOLET")
@@ -396,19 +378,30 @@ public class SpeciesProvider implements DataProvider//TODO
         ////////////////////////////
         //      Native fungi      //
         ////////////////////////////
-        SpeciesBuilder.getInstance().createProtoSpecies("Agaricus campestris")
+        SpeciesBuilder.getInstance().createProtoSpecies("Agaricus campestris")//plains native
                 .type(WARPED_TYPE)
                 .colors4(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)//FIXME darker
                 .biomesSpecs(BiomesSpecs.PLAINS)
                 .spawnType(FungusSpawn.PLAINS)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("Leccinum versipelle") //Birch forest biome native
+        SpeciesBuilder.getInstance().createSpecies("Lactarius viridis")//sunflower plains native
+                .type(WARPED_TYPE)
+                .colors(new int[]{ 0xBF98BF, 0x6bb83c, 0x99110F, 0xF502D3 })//FIXME
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain("mycologymod:grass")
+                .biomesSpecs(BiomesSpecs.PLAINS)
+                .areaEffect(FungusEffects.NO_EFFECT)
+                .spawnType(FungusSpawn.SUNFLOWER_PLAINS)
+                .buildAndAddToList(generator,hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("Leccinum versipelle") //Birch forest native
                 .type(WARPED_TYPE)
                 .colors4(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)//FIXME
                 .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
                 .spawnType(FungusSpawn.BIRCH_FOREST)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("Boletus edulis") //Forest biome native
+        SpeciesBuilder.getInstance().createProtoSpecies("Boletus edulis") //Forest native
                 .colors4(0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd)
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .spawnType(FungusSpawn.FOREST)
@@ -435,7 +428,10 @@ public class SpeciesProvider implements DataProvider//TODO
                 .biomesSpecs(BiomesSpecs.MEADOW)
                 .spawnType(FungusSpawn.MEADOW)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("SAVANNA_NATIVE")
+        SpeciesBuilder.getInstance().createProtoSpecies("BLUE_FUNGUS")//flower forest native
+                .colors1(0x1c1bff)
+                .biomesSpecs(BiomesSpecs.FOREST)
+                .spawnType(FungusSpawn.FLOWER_FOREST)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("RARE_MUSHROOM_FIELDS_NATIVE")
                 .areaEffect(FungusEffects.SPORING_EFFECT)
