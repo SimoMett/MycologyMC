@@ -58,10 +58,6 @@ public class SpeciesProvider implements DataProvider//TODO
                 .colors1(0xff8701)
                 .buildAndAddToList(generator, hashCache, list);
 
-        SpeciesBuilder.getInstance().createProtoSpecies("YELLOW_FUNGUS")
-                .colors1(0xfff620)
-                .buildAndAddToList(generator, hashCache, list);
-
         SpeciesBuilder.getInstance().createProtoSpecies("LIME_FUNGUS")
                 .colors1(0x67ff32)
                 .buildAndAddToList(generator, hashCache, list);
@@ -401,8 +397,8 @@ public class SpeciesProvider implements DataProvider//TODO
         SpeciesBuilder.getInstance().createProtoSpecies("Agaricus campestris")
                 .type(WARPED_TYPE)
                 .colors4(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)//FIXME darker
-                .biomesSpecs(BiomesSpecs.MEADOW)
-                .spawnType(FungusSpawn.MEADOW)
+                .biomesSpecs(BiomesSpecs.PLAINS)
+                .spawnType(FungusSpawn.PLAINS)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("Leccinum versipelle") //Birch forest biome native
                 .type(WARPED_TYPE)
@@ -421,7 +417,7 @@ public class SpeciesProvider implements DataProvider//TODO
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_PINE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_PINE_TAIGA)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("Chalciporus piperatus")
+        SpeciesBuilder.getInstance().createProtoSpecies("Chalciporus piperatus")//non edible
                 .colors4(0xFFC741, 0xEE7A1A, 0x64330B, 0x8E6C24)
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
@@ -432,7 +428,10 @@ public class SpeciesProvider implements DataProvider//TODO
                 .biomesSpecs(BiomesSpecs.JUNGLE)
                 .spawnType(FungusSpawn.JUNGLE)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("PLAINS_NATIVE")
+        SpeciesBuilder.getInstance().createProtoSpecies("YELLOW_FUNGUS")//meadow native
+                .colors1(0xfff620)
+                .biomesSpecs(BiomesSpecs.MEADOW)
+                .spawnType(FungusSpawn.MEADOW)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("SAVANNA_NATIVE")
                 .buildAndAddToList(generator, hashCache, list);
