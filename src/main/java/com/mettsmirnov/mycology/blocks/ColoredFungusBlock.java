@@ -82,17 +82,14 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         };
     }
 
-    @Override
     @OnlyIn(Dist.CLIENT)
-    //FIXME testing only
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource)
+    private static void addSporeParticle(int radius, BlockPos blockPos, Level level, RandomSource randomSource)
     {
-        super.animateTick(blockState, level, blockPos, randomSource);
-        ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
-        int radius = (Integer)originBlockEntity.getFungusData().getField(FungusDataModel.AREA);
+        radius *= 3;
 
         Random random = new Random();
-        for(int i = 0; i<2; i++)
+        int frequency = 60;
+        for (int i = 0; i < frequency; i++)
         {
             //get random BlockPos
             BlockPos randomPos = new BlockPos(
@@ -106,6 +103,17 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             double velZ = 0;
             level.addParticle(ModParticles.SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
         }
+    }
+
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    //FIXME testing only
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource)
+    {
+        super.animateTick(blockState, level, blockPos, randomSource);
+        ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
+        int radius = (Integer)originBlockEntity.getFungusData().getField(FungusDataModel.AREA);
+        addSporeParticle(radius, blockPos, level, randomSource);
     }
 
     @Override //deprecated
