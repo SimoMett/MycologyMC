@@ -17,7 +17,7 @@ public class FungusGeni
     public static String BOLETELLUS = "Boletellus"; //
     public static String BOLETUS = "Boletus"; //(porcini, commestibile o velenoso)
     public static String LECCINUM = "Leccinum";//(leccino, commestibili)
-    public static String TRICHOLOMOPSIS = "Tricholomopsis"; //(si potrebbe usare tipo Tricholomopsis evanescens per indicare un "ender fungus") (commestibile, neutro o tossico)
+    public static String TRICHOLOMOPSIS = "Tricholomopsis"; // (commestibile, neutro o tossico)
     public static String XEROCOMUS = "Xerocomus"; //(commestibile)
     public static String BOLBITIUS = "Bolbitius"; //(non commestibile)
     public static String SARCOSPHAERA = "Sarcosphaera";

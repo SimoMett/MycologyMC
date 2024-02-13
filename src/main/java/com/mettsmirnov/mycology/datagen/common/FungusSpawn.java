@@ -12,6 +12,8 @@ public class FungusSpawn
     public static final FungusSpawn OLD_GROWTH_PINE_TAIGA = new FungusSpawn("minecraft:old_growth_pine_taiga", .5f);
     public static final FungusSpawn MEADOW = new FungusSpawn("minecraft:meadow", .5f);
     public static final FungusSpawn SWAMP = new FungusSpawn("minecraft:swamp", .5f);
+    public static final FungusSpawn JUNGLE = new FungusSpawn("minecraft:jungle", .5f);
+    public static final FungusSpawn MUSHROOM_FIELDS = new FungusSpawn("minecraft:mushroom_fields", .5f);
 
     public String biomes;
     public float chance;

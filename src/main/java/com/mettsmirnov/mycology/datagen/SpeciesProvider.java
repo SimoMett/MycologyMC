@@ -424,17 +424,22 @@ public class SpeciesProvider implements DataProvider//TODO
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_PINE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_PINE_TAIGA)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("SPRUCE_TAIGA_NATIVE")
+        SpeciesBuilder.getInstance().createProtoSpecies("Chalciporus piperatus")
+                .colors4(0xFFC741, 0xEE7A1A, 0x64330B, 0x8E6C24)
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("JUNGLE_NATIVE")
+                .biomesSpecs(BiomesSpecs.JUNGLE)
+                .spawnType(FungusSpawn.JUNGLE)
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("PLAINS_NATIVE")
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("SAVANNA_NATIVE")
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("RARE_MUSHROOM_FIELDS_NATIVE")
+                .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
+                .spawnType(FungusSpawn.MUSHROOM_FIELDS)
                 .buildAndAddToList(generator, hashCache, list);
         /////////////////////////
         //      DEV fungi      //
