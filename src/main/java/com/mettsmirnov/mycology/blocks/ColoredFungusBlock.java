@@ -85,11 +85,10 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @OnlyIn(Dist.CLIENT)
     private static void addSporeParticle(int radius, BlockPos blockPos, Level level, RandomSource randomSource)
     {
+        Random random = new Random();
+        int frequency = 20*radius;
         int magicNumber = 3;
         radius *= magicNumber;
-
-        Random random = new Random();
-        int frequency = 20*radius/magicNumber;
         for (int i = 0; i < frequency; i++)
         {
             //get random BlockPos
