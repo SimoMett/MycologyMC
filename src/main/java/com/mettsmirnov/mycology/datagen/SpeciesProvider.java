@@ -388,9 +388,6 @@ public class SpeciesProvider implements DataProvider//TODO
         SpeciesBuilder.getInstance().createProtoSpecies("KNOWLEDGE_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.KNOWLEDGE_EFFECT)
                 .buildAndAddToList(generator, hashCache, list);
-        SpeciesBuilder.getInstance().createProtoSpecies("SPORING_EFFECT_FUNGUS")
-                .areaEffect(FungusEffects.SPORING_EFFECT)
-                .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("DYEING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.DYEING_EFFECT)
                 .buildAndAddToList(generator, hashCache, list);
@@ -440,6 +437,7 @@ public class SpeciesProvider implements DataProvider//TODO
         SpeciesBuilder.getInstance().createProtoSpecies("SAVANNA_NATIVE")
                 .buildAndAddToList(generator, hashCache, list);
         SpeciesBuilder.getInstance().createProtoSpecies("RARE_MUSHROOM_FIELDS_NATIVE")
+                .areaEffect(FungusEffects.SPORING_EFFECT)
                 .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
                 .buildAndAddToList(generator, hashCache, list);
