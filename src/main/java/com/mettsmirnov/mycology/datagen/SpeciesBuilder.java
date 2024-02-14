@@ -192,10 +192,4 @@ public class SpeciesBuilder
 
         this.completableFutureList.add(DataProvider.saveStable(this.hashCache,fungusJson,jsonLocation));
     }
-
-    @Deprecated(forRemoval = true)
-    public void buildAndAddToList(DataGenerator generator, CachedOutput hashCache, List<CompletableFuture<?>> list)
-    {
-        build();
-    }
 }
