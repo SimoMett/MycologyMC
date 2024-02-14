@@ -21,12 +21,11 @@ public class SpeciesBuilder
     public static final String CRIMSON_TYPE = ModBlocks.COLORED_CRIMSON_STRING;
     public static final String WARPED_TYPE = ModBlocks.COLORED_WARPED_STRING;
 
-    private SpeciesBuilder(){}
-    private static final SpeciesBuilder builderInstance = new SpeciesBuilder();
-
-    public static SpeciesBuilder getInstance()
+    public SpeciesBuilder(DataGenerator generator, CachedOutput hashCache, List<CompletableFuture<?>> completableFutureList)
     {
-        return builderInstance;
+        this.generator = generator;
+        this.hashCache = hashCache;
+        this.completableFutureList = completableFutureList;
     }
 
     //Traits
@@ -42,6 +41,11 @@ public class SpeciesBuilder
     private int areaRadius = 3;
     private IFungusEffect areaEffect;
     private FungusSpawn spawnInfo;
+
+    //building attributes
+    private final DataGenerator generator;
+    private final CachedOutput hashCache;
+    private final List<CompletableFuture<?>> completableFutureList;
 
     //Methods chaining
     public SpeciesBuilder createSpecies(String speciesName)
@@ -156,7 +160,7 @@ public class SpeciesBuilder
         return this;
     }
 
-    public void buildAndAddToList(DataGenerator generator, CachedOutput hashCache, List<CompletableFuture<?>> list)
+    public void build()
     {
         //IMPORTANT TODO: sanitize speciesName string
         JsonObject fungusJson = new JsonObject();
@@ -182,11 +186,16 @@ public class SpeciesBuilder
             spawnJson.addProperty("chance", spawnInfo.chance);
         }
         fungusJson.add("spawn", spawnJson);
-        Path path = generator.getPackOutput().getOutputFolder();
+        Path path = this.generator.getPackOutput().getOutputFolder();
         String jsonFileName = speciesName.toLowerCase().replace(' ', '_')+".json";
         Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", jsonFileName));
 
-        list.add(DataProvider.saveStable(hashCache,fungusJson,jsonLocation));
+        this.completableFutureList.add(DataProvider.saveStable(this.hashCache,fungusJson,jsonLocation));
     }
 
+    @Deprecated(forRemoval = true)
+    public void buildAndAddToList(DataGenerator generator, CachedOutput hashCache, List<CompletableFuture<?>> list)
+    {
+        build();
+    }
 }
