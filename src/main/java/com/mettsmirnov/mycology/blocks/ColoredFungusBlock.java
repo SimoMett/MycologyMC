@@ -54,6 +54,12 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         return SHAPE;
     }
 
+    @Override
+    public boolean propagatesSkylightDown(BlockState p_51039_, BlockGetter p_51040_, BlockPos p_51041_)
+    {
+        return true;
+    }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
