@@ -13,11 +13,11 @@
 ## Area effects and particles
 - [X] Implement fungus spores' area effect
 - [X] Emitting particles
-- [ ] Create a nice looking sporing particle
+- [X] Create a nice looking sporing particle
 ## Natural world generation
 - [X] Add natural generation in the world (to be polished)
-- [ ] Make some mushroom spawn only in certain biomes (consistently with their environment requirements)
-- [ ] Assign one or two species for each biome (except the arid ones)
+- [X] Make some mushroom spawn only in certain biomes (consistently with their environment requirements)
+- [X] Assign one or two species for each biome (except the arid ones)
 ### Other notes
 
 # Mycology
