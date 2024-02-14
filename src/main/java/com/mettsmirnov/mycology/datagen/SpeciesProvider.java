@@ -39,6 +39,9 @@ public class SpeciesProvider implements DataProvider//TODO
                 .areaEffect(FungusEffects.HEALING_EFFECT)
                 .spawnType(FungusSpawn.ANY_BIOME)
                 .buildAndAddToList(generator,hashCache, list);
+        SpeciesBuilder.getInstance().createProtoSpecies("GREEN_FUNGUS_2")
+                .colors4(0xD36146, 0x9BC859, 0x619B68, 0x3A734C)
+                .buildAndAddToList(generator, hashCache, list);
         /////////////////////////////
         //      Colors fungi       //
         /////////////////////////////
