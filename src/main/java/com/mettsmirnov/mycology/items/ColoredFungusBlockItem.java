@@ -5,6 +5,7 @@ import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderSet;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentContents;
@@ -89,9 +90,9 @@ public class ColoredFungusBlockItem extends BlockItem
     @Override
     protected boolean canPlace(BlockPlaceContext context, BlockState blockState)
     {
-        //fungi can be placed from hand only on mycelium blocks
+        //fungi can be placed from hand only on mycelium or podzol blocks
         BlockPos clickedPos = context.getClickedPos();
         BlockState belowBlock = context.getLevel().getBlockState(clickedPos.below());
-        return super.canPlace(context,blockState) && belowBlock.is(Blocks.MYCELIUM);
+        return super.canPlace(context,blockState) && (belowBlock.is(Blocks.MYCELIUM) || belowBlock.is(Blocks.PODZOL)) ;
     }
 }

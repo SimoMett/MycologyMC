@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class RandomFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
 {
-    //FIXME command "/place feature" doesn't work
+    //command "/place feature" doesn't work (I don't care)
     public RandomFungusFeatureConfiguration()
     {
         super(SimpleBlockConfiguration.CODEC);
