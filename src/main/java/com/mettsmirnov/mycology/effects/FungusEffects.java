@@ -85,11 +85,7 @@ public class FungusEffects
     });
 
     //dev
-    public static final SingleEffect DEV_TEST_EFFECT = new SingleEffect("testing", null, (level, pos, box) -> {
-            BlockPos.betweenClosedStream(box).forEach( p -> {
-            level.setBlock(p, Blocks.DIAMOND_BLOCK.defaultBlockState(), 2);
-        });
-    });
+    public static final IFungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
 
     public static IFungusEffect getEffectByName(String effectName)
     {
