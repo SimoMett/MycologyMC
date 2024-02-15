@@ -137,6 +137,7 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         speciesBuilder.createProtoSpecies("Amanita phalloides")
                 .colors4(0xffdb94, 0xc71c12, 0xe8e8e8, 0xF2F2F2)
+                .biomesSpecs(BiomesSpecs.SWAMP)
                 .spawnType(FungusSpawn.SWAMP)
                 .build();
 

@@ -15,6 +15,7 @@ public class BiomesSpecs
     public static final BiomesSpecs OLD_GROWTH_PINE_TAIGA = new BiomesSpecs(0.8f, .3f);
     public static final BiomesSpecs SNOWY_PLAINS = new BiomesSpecs(0.5f, 0f);
     public static final BiomesSpecs SNOWY_TAIGA = new BiomesSpecs(0.4f, -0.5f);
+
     public float humidity;
     public float temperature;
 
