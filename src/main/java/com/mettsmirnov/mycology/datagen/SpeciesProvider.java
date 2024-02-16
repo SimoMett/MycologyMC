@@ -448,7 +448,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("DEV_FUNGUS")
                 .colors4(0x5567E5, 0x9F55B5, 0xBF5DAF, 0xD32BD9)
                 .areaEffect(FungusEffects.DEV_TEST_EFFECT)
-                .areaRadius(1)
+                .areaRadius(2)
                 .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }

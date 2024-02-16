@@ -16,10 +16,10 @@ public class TransmuteBlockEffect implements IFungusEffect
     private final Block originBlock;
     private final Block targetBlock;
 
-    public TransmuteBlockEffect(String effectName, Block originBlock, Block targetBlock)
+    public TransmuteBlockEffect(String effectName, Block originalBlock, Block targetBlock)
     {
         this.effectName = effectName;
-        this.originBlock = originBlock;
+        this.originBlock = originalBlock;
         this.targetBlock = targetBlock;
         FungusEffects.registerFungusEffect(effectName, this);
     }
@@ -51,12 +51,13 @@ public class TransmuteBlockEffect implements IFungusEffect
         BlockPos.betweenClosedStream(box).forEach( p -> {
             pList.add(new BlockPos(p));
         });
+        pList.remove(origin.below());
 
         List <BlockPos> pList2 = pList.stream()
-                .filter(p -> p.distSqr(origin) < box.getSize()/2.0f)
+                .filter(p -> p.distSqr(origin) <= box.getSize()/2.0f)
                 .filter(p -> level.getBlockState(p).is(originBlock))
                 .toList();
-        if (!pList2.isEmpty())//FIXME list is always empty
+        if (!pList2.isEmpty())
         {
             BlockPos randomPos = pList2.get(new Random().nextInt(pList2.size()));
             level.setBlock(randomPos, targetBlock.defaultBlockState(), 2);
