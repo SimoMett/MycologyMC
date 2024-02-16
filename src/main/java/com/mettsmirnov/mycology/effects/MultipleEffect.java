@@ -8,25 +8,15 @@ import net.minecraft.world.entity.LivingEntity;
 
 import java.util.List;
 
-public class MultipleEffect implements IFungusEffect
+public class MultipleEffect extends FungusEffect
 {
-    private final String effectName;
     private final List<MobEffect> mobEffects;
-    //FIXME the fact that I need to register the fungus in the constructor for each subclass is annoying
     public MultipleEffect(String effectName, List<MobEffect> mobEffectList)
     {
-        this.effectName = effectName;
+        super(effectName);
         this.mobEffects = mobEffectList;
-        FungusEffects.registerFungusEffect(effectName, this);
     }
 
-    @Override
-    public String getEffectName()
-    {
-        return effectName;
-    }
-
-    @Override
     public void applyEffectToEntity(LivingEntity entity)
     {
         if (mobEffects != null)
@@ -36,7 +26,6 @@ public class MultipleEffect implements IFungusEffect
         }
     }
 
-    @Override
     public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
     {
 

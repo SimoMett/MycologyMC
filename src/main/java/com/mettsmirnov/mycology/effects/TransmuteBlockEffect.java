@@ -10,33 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class TransmuteBlockEffect implements IFungusEffect
+public class TransmuteBlockEffect extends FungusEffect
 {
-    private final String effectName;
     private final Block originBlock;
     private final Block targetBlock;
 
     public TransmuteBlockEffect(String effectName, Block originalBlock, Block targetBlock)
     {
-        this.effectName = effectName;
+        super(effectName);
         this.originBlock = originalBlock;
         this.targetBlock = targetBlock;
-        FungusEffects.registerFungusEffect(effectName, this);
     }
 
-    @Override
-    public String getEffectName()
-    {
-        return this.effectName;
-    }
-
-    @Override
     public void applyEffectToEntity(LivingEntity entity)
     {
 
     }
 
-    @Override
     public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
     {
         AABB box = new AABB(

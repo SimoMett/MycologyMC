@@ -8,11 +8,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.AABB;
 import org.apache.commons.lang3.function.TriConsumer;
 
-public class SingleEffect implements IFungusEffect
+public class SingleEffect extends FungusEffect
 {
-    private final String effectName;
-
-    private MobEffect mobEffect;
+    private final MobEffect mobEffect;
     private final TriConsumer<ServerLevel, BlockPos, AABB> consumer;
 
     public SingleEffect(String effectName)
@@ -27,15 +25,9 @@ public class SingleEffect implements IFungusEffect
 
     public SingleEffect(String effectName, MobEffect mobEffect, TriConsumer<ServerLevel, BlockPos, AABB> consumer)
     {
-        this.effectName = effectName;
+        super(effectName);
         this.mobEffect = mobEffect;
         this.consumer = consumer;
-        FungusEffects.registerFungusEffect(effectName, this);
-    }
-
-    public String getEffectName()
-    {
-        return effectName;
     }
 
     public void applyEffectToEntity(LivingEntity entity)

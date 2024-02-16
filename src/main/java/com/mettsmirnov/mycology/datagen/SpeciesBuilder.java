@@ -3,7 +3,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
-import com.mettsmirnov.mycology.effects.IFungusEffect;
+import com.mettsmirnov.mycology.effects.FungusEffect;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.effects.FungusEffects;
@@ -39,7 +39,7 @@ public class SpeciesBuilder
     private String terrain;
     private BiomesSpecs biomesSpecs;
     private int areaRadius = 3;
-    private IFungusEffect areaEffect;
+    private FungusEffect areaEffect;
     private FungusSpawn spawnInfo;
 
     //building attributes
@@ -148,7 +148,7 @@ public class SpeciesBuilder
         return this;
     }
 
-    public SpeciesBuilder areaEffect(IFungusEffect areaEffect)
+    public SpeciesBuilder areaEffect(FungusEffect areaEffect)
     {
         this.areaEffect = areaEffect;
         return this;

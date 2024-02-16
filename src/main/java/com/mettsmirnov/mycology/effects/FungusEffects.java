@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class FungusEffects
 {
-    private static final HashMap<String, IFungusEffect> effectsHashMap = new HashMap<>();
+    private static final HashMap<String, FungusEffect> effectsHashMap = new HashMap<>();
 
     public static final SingleEffect NO_EFFECT = new SingleEffect("none");
     public static final MultipleEffect POISON_EFFECT = new MultipleEffect("poison", List.of(MobEffects.POISON, MobEffects.CONFUSION));
@@ -85,14 +85,14 @@ public class FungusEffects
     });
 
     //dev
-    public static final IFungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
+    public static final FungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
 
-    public static IFungusEffect getEffectByName(String effectName)
+    public static FungusEffect getEffectByName(String effectName)
     {
         return effectsHashMap.get(effectName);
     }
 
-    public static void registerFungusEffect(String effectName, IFungusEffect fungusEffect)
+    public static void registerFungusEffect(String effectName, FungusEffect fungusEffect)
     {
         effectsHashMap.put(effectName, fungusEffect);
     }
