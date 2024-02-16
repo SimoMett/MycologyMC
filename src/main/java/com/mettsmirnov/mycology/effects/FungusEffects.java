@@ -43,21 +43,7 @@ public class FungusEffects
     public static final SingleEffect GOODCHANCE_EFFECT = new SingleEffect("goodchance", MobEffects.LUCK);
     public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", ModEffects.GAIN_XP.get());
     public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", ModEffects.XP_MULTIPLIER.get());
-    public static final SingleEffect SPORING_EFFECT = new SingleEffect("sporing", null, (level, pos, box) -> {
-        final List<BlockPos> pList = new ArrayList<>();
-        BlockPos.betweenClosedStream(box).forEach( p -> {
-            pList.add(new BlockPos(p));
-        });
-        List <BlockPos> pList2 = pList.stream()
-                .filter(p -> p.distSqr(pos) < box.getSize()/2.0f)
-                .filter(p -> level.getBlockState(p).is(Blocks.GRASS_BLOCK))
-                .toList();
-        if (!pList2.isEmpty())
-        {
-            BlockPos randomPos = pList2.get(new Random().nextInt(pList2.size()));
-            level.setBlock(randomPos, Blocks.MYCELIUM.defaultBlockState(), 2);
-        }
-    });
+    public static final FungusEffect SPORING_EFFECT = new TransmuteBlockEffect("sporing", Blocks.GRASS_BLOCK, Blocks.MYCELIUM);
     public static final SingleEffect DYEING_EFFECT = new SingleEffect("dyeing", null, (level, pos, box) -> {
         level.getEntitiesOfClass(Sheep.class, box).forEach( sheep -> {
             sheep.setColor(DyeColor.byId(new Random().nextInt(16)));
@@ -79,7 +65,7 @@ public class FungusEffects
             BonemealableBlock block = (BonemealableBlock) level.getBlockState(randomPos).getBlock();
             block.performBonemeal(level, RandomSource.create(), randomPos, level.getBlockState(randomPos));
             /*
-            if (Minecraft.getInstance().player != null) //it's broken
+            if (Minecraft.getInstance().player != null) //FIXME it's broken
                 BoneMealItem.addGrowthParticles(Minecraft.getInstance().player.clientLevel, randomPos, 0);*/
         }
     });
