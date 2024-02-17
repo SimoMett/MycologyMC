@@ -208,7 +208,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                     placeFungusBlock(blockState, level, blockpos1, thisFungusData);
             }
         }
-        //TODO implement here area effect
+        //implement here area effect
         String fungusEffect = (String) thisFungusData.getField(FungusDataModel.EFFECT);
         int areaRadius = (Integer) thisFungusData.getField(FungusDataModel.AREA);
         FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);

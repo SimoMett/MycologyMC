@@ -2,6 +2,7 @@ package com.mettsmirnov.mycology.effects;
 
 import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
@@ -64,9 +65,28 @@ public class FungusEffects
             BlockPos randomPos = pList2.get(new Random().nextInt(pList2.size()));
             BonemealableBlock block = (BonemealableBlock) level.getBlockState(randomPos).getBlock();
             block.performBonemeal(level, RandomSource.create(), randomPos, level.getBlockState(randomPos));
-            /*
-            if (Minecraft.getInstance().player != null) //FIXME it's broken
-                BoneMealItem.addGrowthParticles(Minecraft.getInstance().player.clientLevel, randomPos, 0);*/
+
+            //sendParticles(T type, double posX, double posY, double posZ, int particleCount, double xOffset, double yOffset, double zOffset, double speed);
+            level.sendParticles(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5D, pos.getY() + 0.5, pos.getZ() + 0.5, 1, 0, 0, 0.1, 0.5);
+            RandomSource randomsource = level.getRandom();
+
+            double d0 = 0.5D;
+            double d1 = 1.0D;
+            for(int i = 0; i < 4; ++i)
+            {
+                int particlesCount = (int) ((int)randomsource.nextGaussian() * 0.02D);
+                double d3 = randomsource.nextGaussian() * 0.02D;
+                double d4 = randomsource.nextGaussian() * 0.02D;
+                double d5 = 0.5D - d0;
+                double posX = (double)pos.getX() + d5 + randomsource.nextDouble() * d0 * 2.0D;
+                double posY = (double)pos.getY() + randomsource.nextDouble() * d1;
+                double posZ = (double)pos.getZ() + d5 + randomsource.nextDouble() * d0 * 2.0D;
+                if (!level.getBlockState(BlockPos.containing(posX, posY, posZ).below()).isAir())
+                {
+                    //sendParticles(T type, double posX, double posY, double posZ, int particleCount, double xOffset, double yOffset, double zOffset, double speed);
+                    //level.sendParticles(ParticleTypes.HAPPY_VILLAGER, posX, posY, posZ, particlesCount, d3, d4);
+                }
+            }
         }
     });
 
