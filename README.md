@@ -9,7 +9,7 @@
 - [ ] A LOT of species. [This fantastic tool](https://github.com/SimoMett/mushroom_renderer) can help ;)
 - [ ] Edit mushroom spreading mechanic (partial)
 - [X] Implement breeding
-- [ ] Implement crafting mechanics (cooking recipes need to be remade)
+- [X] Implement crafting mechanics
 ## Area effects and particles
 - [X] Implement fungus spores' area effect
 - [X] Emitting particles
