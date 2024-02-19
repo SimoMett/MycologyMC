@@ -54,9 +54,10 @@ public class ColoredFungusBlockItem extends BlockItem
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack itemStack, @Nullable Level p_41422_, List<Component> tooltip, TooltipFlag p_41424_) {
+    public void appendHoverText(ItemStack itemStack, @Nullable Level p_41422_, List<Component> tooltip, TooltipFlag p_41424_)
+    {
         super.appendHoverText(itemStack, p_41422_, tooltip, p_41424_);
-        //tooltip.add(new TextComponent("\u00a77Some info here pls"));
+        tooltip.add(Component.literal("\u00a77Mycology WIP build"));
     }
 
     @Nullable
