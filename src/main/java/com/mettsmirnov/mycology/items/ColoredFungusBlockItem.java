@@ -5,13 +5,8 @@ import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderSet;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -53,10 +48,8 @@ public class ColoredFungusBlockItem extends BlockItem
     @Override
     public Component getName(ItemStack itemStack)
     {
-        //TODO need testing
-        String name = (String) itemStack.getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("species", IFungusData.GeneType.DOMINANT);
-        Component textComponent = MutableComponent.create(ComponentContents.EMPTY).append(name);
-        return textComponent;
+        String speciesName = (String) itemStack.getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("species", IFungusData.GeneType.DOMINANT);
+        return Component.literal(speciesName);
     }
 
     @Override

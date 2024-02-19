@@ -9,6 +9,7 @@ import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.genetics.Breeding;
 import com.mettsmirnov.mycology.particles.ModParticles;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -46,12 +48,18 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
     public ColoredFungusBlock()
     {
-        super(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM));
+        super(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_MUSHROOM));
     }
 
     @Override //deprecated
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         return SHAPE;
+    }
+
+    @Override
+    protected MapCodec<? extends BushBlock> codec()
+    {
+        return null;
     }
 
     @Override
@@ -67,7 +75,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
     }
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player)
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader world, BlockPos pos, Player player)
     {
         ItemStack stack = super.getCloneItemStack(state, target, world, pos, player);
         FungusDataModel fungusData = ((ColoredFungusBlockEntity) world.getBlockEntity(pos)).getFungusData();
