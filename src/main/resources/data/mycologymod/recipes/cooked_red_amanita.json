@@ -1,8 +1,6 @@
 {
 	"type":"mycologymod:fungus_cooking",
-	"ingredient": {
-		"species":"Amanita rubra"
-	},
+	"ingredient": "Amanita rubra",
 	"result":"minecraft:baked_potato",
 	"experience": 0.0,
 	"cookingtime": 200
