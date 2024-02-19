@@ -13,6 +13,7 @@ import com.mettsmirnov.mycology.items.ModItems;
 import com.mettsmirnov.mycology.particles.ModParticles;
 import com.mettsmirnov.mycology.recipes.breeding.MutationRecipeLoader;
 import com.mettsmirnov.mycology.recipes.brewing.FungusBrewingRecipeLoader;
+import com.mettsmirnov.mycology.recipes.cooking.ModCookingRecipes;
 import com.mettsmirnov.mycology.world.features.ModFeatures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
@@ -36,7 +37,7 @@ public class MycologyMod
         evtBus.register(FungusItemColorer.class);
         evtBus.register(FungusBlockColorer.class);
         ModCapabilitiesHandler.registerCapabilities(evtBus);
-        //ModCookingRecipes.RECIPES.register(evtBus); TODO remake of cooking recipes
+        ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);// TODO remake of cooking recipes
         ModFeatures.FEATURES.register(evtBus);
         ModParticles.PARTICLES.register(evtBus);
         ModEffects.EFFECTS.register(evtBus);

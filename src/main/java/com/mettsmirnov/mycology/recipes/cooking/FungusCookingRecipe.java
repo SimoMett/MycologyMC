@@ -46,12 +46,9 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     {
         return ModCookingRecipes.FUNGUS_COOKING_RECIPE_SERIALIZER.get();
     }
-
     /*@Override
     public ResourceLocation getId()
     {
         return id;
     }*/
-
-
 }
