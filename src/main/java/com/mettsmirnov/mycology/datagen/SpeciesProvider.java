@@ -379,6 +379,10 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
+        speciesBuilder.createProtoSpecies("UNDEAD_EFFECT_FUNGUS")
+                .areaRadius(2)
+                .areaEffect(FungusEffects.UNDEAD_EFFECT)
+                .build();
         ////////////////////////////
         //      Native fungi      //
         ////////////////////////////

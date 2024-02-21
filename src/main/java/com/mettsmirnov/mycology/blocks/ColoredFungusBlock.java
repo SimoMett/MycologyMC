@@ -57,7 +57,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     }
 
     @Override
-    protected MapCodec<? extends BushBlock> codec()
+    protected MapCodec<? extends BushBlock> codec()//what is this for?
     {
         return null;
     }
