@@ -26,6 +26,25 @@ public class MutationsProvider implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput)
     {
+        /* Everything starts from the natives species:
+        *
+        * - Agaricus campestris         (plains)
+        * - Lactarius viridis           (sunflower plains)
+        * - Leccinum versipelle         (birch forest)
+        * - Boletus edulis              (forest)
+        * - Suillus granulatus          (old growth pine taiga)
+        * - Chalciporus piperatus       (old growth spruce taiga)
+        * - Amanita muscaria            (jungle)
+        * - YELLOW_FUNGUS               (meadow)
+        * - BLUE_FUNGUS                 (flower forest)
+        * - RARE_MUSHROOM_FIELDS_NATIVE (mushroom fields)
+        *
+        * Rule #1: Cross-breeding between Warped fungi can only generate Warped fungi.
+        *           Cross-breeding between Crimson fungi can only generate Crimson fungi.
+        */
+        addMutation("Amanita muscaria", "Chalciporus piperatus", "Amanita rubra", cachedOutput);
+        addMutation("Agaricus campestris", "Leccinum versipelle", "WHITE_FUNGUS", cachedOutput);
+        
         addMutation("WHITE_FUNGUS", "Lactarius viridis", "LIME_FUNGUS", cachedOutput);
         addMutation("WHITE_FUNGUS", "GREY_FUNGUS", "LIGHTGREY_FUNGUS", cachedOutput);
         addMutation("WHITE_FUNGUS", "BLACK_FUNGUS", "GREY_FUNGUS", cachedOutput);
@@ -33,28 +52,23 @@ public class MutationsProvider implements DataProvider
         addMutation("WHITE_FUNGUS", "Amanita rubra", "PINK_FUNGUS", cachedOutput);
         addMutation("BLUE_FUNGUS", "Amanita rubra", "VIOLET_ovulus", cachedOutput);
         addMutation("BLUE_FUNGUS", "Lactarius viridis", "CYAN_FUNGUS", cachedOutput);
-        addMutation("VIOLET_ovulus", "VIOLET_ovulus", "MAGENTA_FUNGUS", cachedOutput);
+        addMutation("VIOLET_ovulus", "PINK_FUNGUS", "MAGENTA_FUNGUS", cachedOutput);
         addMutation("Amanita rubra", "YELLOW_FUNGUS", "ORANGE_FUNGUS", cachedOutput);
+
+        //TODO possible mutations
+        addMutation("BONEBLOCK_SUSTAINED_FUNGUS", "???", "FERTILIZING_EFFECT_FUNGUS", cachedOutput);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 
     private void addMutation(String species1, String species2, String result, CachedOutput cache)
     {
-        JsonObject mutationJson = new JsonObject();
-        mutationJson.addProperty("species1", species1);
-        mutationJson.addProperty("species2", species2);
-        mutationJson.addProperty("result", result);
-        mutationJson.addProperty("chance", DEFAULT_MUTATION_CHANCE);
-
-        Path path = generator.getPackOutput().getOutputFolder();
-        String jsonFileName = result.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "mutations", jsonFileName));
-
-        list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
+        addMutation2(species1, species2, result, DEFAULT_MUTATION_CHANCE, cache);
     }
 
     private void addMutation2(String species1, String species2, String result, float chance, CachedOutput cache)
     {
+        if(species1.equals("???") || species2.equals("???") || result.equals("???"))
+            return;
         if (chance > 1f || chance <= 0f)
             throw new InvalidParameterException("Invalid 'chance' parameter");
         JsonObject mutationJson = new JsonObject();

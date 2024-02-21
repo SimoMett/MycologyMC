@@ -110,6 +110,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createProtoSpecies("WHITE_FUNGUS")
+                .type(WARPED_TYPE)
                 .colors1(0xffffff)
                 .build();
 
