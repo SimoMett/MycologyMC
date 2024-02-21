@@ -383,6 +383,21 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(2)
                 .areaEffect(FungusEffects.UNDEAD_EFFECT)
                 .build();
+        speciesBuilder.createProtoSpecies("CREEPING_EFFECT_FUNGUS")
+                .areaRadius(2)
+                .areaEffect(FungusEffects.CREEPING_EFFECT)
+                .build();
+        speciesBuilder.createProtoSpecies("SKELETONS_EFFECT_FUNGUS")
+                .areaRadius(2)
+                .areaEffect(FungusEffects.SKELETONS_EFFECT)
+                .build();
+        speciesBuilder.createProtoSpecies("GHASTLY_EFFECT_FUNGUS")
+                .areaRadius(2)
+                .areaEffect(FungusEffects.GHASTLY_EFFECT)
+                .build();
+        speciesBuilder.createProtoSpecies("LIGHTNING_EFFECT_FUNGUS")
+                .areaEffect(FungusEffects.LIGHTNING_EFFECT)
+                .build();
         ////////////////////////////
         //      Native fungi      //
         ////////////////////////////

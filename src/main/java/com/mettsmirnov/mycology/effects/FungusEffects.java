@@ -6,7 +6,12 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.Ghast;
+import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
@@ -75,6 +80,10 @@ public class FungusEffects
     });
     //entities spawn
     public static final FungusEffect UNDEAD_EFFECT = new SpawnEntityEffect("undead", Zombie::new);
+    public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
+    public static final FungusEffect SKELETONS_EFFECT = new SpawnEntityEffect("skeletons", (lvl) -> new Skeleton(EntityType.SKELETON, lvl));
+    public static final FungusEffect GHASTLY_EFFECT = new SpawnEntityEffect("ghastly", (lvl) -> new Ghast(EntityType.GHAST, lvl));
+    public static final FungusEffect LIGHTNING_EFFECT = new SpawnEntityEffect("lightning", (lvl) -> new LightningBolt(EntityType.LIGHTNING_BOLT, lvl));
 
     //dev
     public static final FungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
