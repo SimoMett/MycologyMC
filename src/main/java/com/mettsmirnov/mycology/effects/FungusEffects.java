@@ -70,9 +70,9 @@ public class FungusEffects
         {
             BlockPos randomPos = pList2.get(new Random().nextInt(pList2.size()));
             BonemealableBlock block = (BonemealableBlock) level.getBlockState(randomPos).getBlock();
-            block.performBonemeal(level, RandomSource.create(), randomPos, level.getBlockState(randomPos));
-
             RandomSource randomSource = RandomSource.create();
+            block.performBonemeal(level, randomSource, randomPos, level.getBlockState(randomPos));
+
             int particlesCount = 4;
             //sendParticles(T type, double posX, double posY, double posZ, int particlesCount, double xOffset, double yOffset, double zOffset, double speed);
             level.sendParticles(ParticleTypes.HAPPY_VILLAGER, randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + 0.6, randomPos.getZ() + randomSource.nextDouble(), particlesCount, 0, 0, 0.1, 0.5);
