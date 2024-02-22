@@ -44,7 +44,8 @@ public class MutationsProvider implements DataProvider
         */
         addMutation("Amanita muscaria", "Chalciporus piperatus", "Amanita rubra", cachedOutput);
         addMutation("Agaricus campestris", "Leccinum versipelle", "WHITE_FUNGUS", cachedOutput);
-        
+        addMutation("Agaricus campestris", "Boletus edulis", "GREY_FUNGUS", cachedOutput);
+
         addMutation("WHITE_FUNGUS", "Lactarius viridis", "LIME_FUNGUS", cachedOutput);
         addMutation("WHITE_FUNGUS", "GREY_FUNGUS", "LIGHTGREY_FUNGUS", cachedOutput);
         addMutation("WHITE_FUNGUS", "BLACK_FUNGUS", "GREY_FUNGUS", cachedOutput);
