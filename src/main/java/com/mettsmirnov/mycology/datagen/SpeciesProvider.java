@@ -287,7 +287,8 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("BLAZE_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors4(0xFF7B00, 0xFF9900, 0xFFDD36, 0xFFFF73)
+                .areaEffect(FungusEffects.BLAZING_EFFECT)
                 .terrain("mycologymod:nether_bricks")
                 .build();
 
