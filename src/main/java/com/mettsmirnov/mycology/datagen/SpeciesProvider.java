@@ -283,6 +283,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies("EXPERIENCE_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0x87CFEC, 0x2F94F9, 0x398D4C, 0xB4DF57})
+                .areaEffect(FungusEffects.EXPORBS_EFFECT)
                 .build();
 
         speciesBuilder.createDefaultSpecies("BLAZE_FUNGUS")

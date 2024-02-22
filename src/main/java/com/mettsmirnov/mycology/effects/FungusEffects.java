@@ -7,6 +7,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.monster.*;
@@ -82,7 +83,11 @@ public class FungusEffects
     public static final FungusEffect GHASTLY_EFFECT = new SpawnEntityEffect("ghastly", (lvl) -> new Ghast(EntityType.GHAST, lvl));
     public static final FungusEffect BLAZING_EFFECT = new SpawnEntityEffect("blazing" ,(lvl) -> new Blaze(EntityType.BLAZE, lvl));
     public static final FungusEffect LIGHTNING_EFFECT = new SpawnEntityEffect("lightning", (lvl) -> new LightningBolt(EntityType.LIGHTNING_BOLT, lvl));
-
+    public static final FungusEffect EXPORBS_EFFECT = new SpawnEntityEffect("exporbs", (lvl) -> {
+        ExperienceOrb orb = new ExperienceOrb(EntityType.EXPERIENCE_ORB, lvl);
+        orb.value = 1;
+        return orb;
+    });
     //dev
     public static final FungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
 
