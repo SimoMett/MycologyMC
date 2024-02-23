@@ -383,6 +383,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("UNDEAD_EFFECT_FUNGUS")
+                .colors4(0xD36146, 0x9BC859, 0x4891ff, 0x4b54bb)
                 .areaRadius(2)
                 .areaEffect(FungusEffects.UNDEAD_EFFECT)
                 .build();
