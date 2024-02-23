@@ -187,10 +187,6 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("SNOW_FUNGUS")
                 .build();
 
-        speciesBuilder.createProtoSpecies("SOULSAND_FUNGUS")
-                .terrain("mycologymod:soul_sand")
-                .build();
-
         speciesBuilder.createProtoSpecies("PRISMARINE_FUNGUS")
                 .terrain("mycologymod:prismarine")
                 .build();
@@ -205,8 +201,6 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("BONEBLOCK_SUSTAINED_FUNGUS")
                 .terrain("mycologymod:bone_block")
                 .build();
-
-
         /////////////////////////////
         //      Mineral fungi      //
         /////////////////////////////
@@ -464,6 +458,15 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.SPORING_EFFECT)
                 .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
+                .build();
+        speciesBuilder.createProtoSpecies("NETHER_FUNGUS")//nether wastes native
+                .terrain("mycologymod:nether")
+                .biomesSpecs(BiomesSpecs.NETHER)
+                .build();
+
+        speciesBuilder.createProtoSpecies("SOULSAND_FUNGUS")//soul sand valley native
+                .terrain("mycologymod:soul_sand")
+                .biomesSpecs(BiomesSpecs.NETHER)
                 .build();
         /////////////////////////
         //      DEV fungi      //
