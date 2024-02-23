@@ -58,6 +58,7 @@ public class MutationsProvider implements DataProvider
 
         //TODO possible mutations
         addMutation("BONEBLOCK_SUSTAINED_FUNGUS", "???", "FERTILIZING_EFFECT_FUNGUS", cachedOutput);
+        addMutation("Boletus edulis", "???", "Noble boletus squisitus", cachedOutput);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 

@@ -94,6 +94,7 @@ public class SpeciesBuilder
         return this;
     }
 
+    @Deprecated(forRemoval = true)
     public SpeciesBuilder colors(int[] colors)
     {
         this.colors = colors;
