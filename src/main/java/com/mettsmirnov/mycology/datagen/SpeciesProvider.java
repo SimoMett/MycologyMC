@@ -236,7 +236,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createSpecies("Russula lazula") //Lapislazuli
                 .type(WARPED_TYPE)
-                .colors(new int[]{0xffffcc, 0x81726d, 0x183679, 0x2653b9})//FIXME
+                .colors4(0xffffcc, 0x837672, 0x183679, 0x2653b9)
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -260,7 +260,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("IRON_FUNGUS")
                 .type(WARPED_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors4(0xffffcc, 0x8A8483, 0xC0997F, 0xFBD3B8)
                 .terrain("minecraft:iron_ores")
                 .build();
 
