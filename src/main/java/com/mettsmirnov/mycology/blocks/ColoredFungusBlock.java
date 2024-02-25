@@ -14,6 +14,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -74,6 +75,33 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     {
         return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
     }
+
+    @Override
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player)
+    {
+        if (level.getBlockEntity(pos) instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
+        {
+            if (!level.isClientSide && !player.isCreative())
+            {
+                ItemStack itemStack;
+                if(this.asBlock().equals(ModBlocks.COLORED_CRIMSON_FUNGUS.get()))
+                    itemStack = new ItemStack(ModBlocks.COLORED_CRIMSON_FUNGUS.get());
+                else
+                    itemStack = new ItemStack(ModBlocks.COLORED_WARPED_FUNGUS.get());
+
+                FungusDataModel fungusData = coloredFungusBlockEntity.getFungusData();
+                CompoundTag tags = fungusData.serializeNBT();
+                itemStack.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
+
+                ItemEntity stackEntity = new ItemEntity(level, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, itemStack);
+                stackEntity.setDefaultPickUpDelay();
+                level.addFreshEntity(stackEntity);
+            }
+        }
+
+        return super.playerWillDestroy(level, pos, state, player);
+    }
+
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader world, BlockPos pos, Player player)
     {
