@@ -287,6 +287,12 @@ public class SpeciesProvider implements DataProvider
                 .terrain("mycologymod:nether_bricks")
                 .build();
 
+        speciesBuilder.createDefaultSpecies("ANCIENT_DEBRIS_FUNGUS")
+                .type(CRIMSON_TYPE)
+                .colors4(0x52362F, 0x52362F, 0x29130D, 0x52362F)
+                .terrain("mycologymod:netherite")
+                .build();
+
         speciesBuilder.createDefaultSpecies("NETHERITE_FUNGUS")
                 .type(CRIMSON_TYPE)
                 .colors(new int[]{0, 0, 0, 0})
