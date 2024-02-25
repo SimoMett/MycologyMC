@@ -295,7 +295,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("NETHERITE_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors4(0x7b716d, 0x48413c, 0x272624, 0x4a484a)
                 .terrain("mycologymod:netherite")
                 .build();
 
