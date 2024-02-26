@@ -171,6 +171,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createProtoSpecies("OBSIDIAN_FUNGUS")
+                .colors4(0x300b5f, 0x2a1e4b, 0x36205a, 0x432e69)
                 .build();
 
         speciesBuilder.createProtoSpecies("BASALT_FUNGUS")
