@@ -83,15 +83,9 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         {
             if (!level.isClientSide && !player.isCreative())
             {
-                ItemStack itemStack;
-                if(this.asBlock().equals(ModBlocks.COLORED_CRIMSON_FUNGUS.get()))
-                    itemStack = new ItemStack(ModBlocks.COLORED_CRIMSON_FUNGUS.get());
-                else
-                    itemStack = new ItemStack(ModBlocks.COLORED_WARPED_FUNGUS.get());
+                ItemStack itemStack = new ItemStack(this.asItem());
 
-                FungusDataModel fungusData = coloredFungusBlockEntity.getFungusData();
-                CompoundTag tags = fungusData.serializeNBT();
-                itemStack.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
+                storeFungusDataIntoItemStack(coloredFungusBlockEntity.getFungusData(), itemStack);
 
                 ItemEntity stackEntity = new ItemEntity(level, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, itemStack);
                 stackEntity.setDefaultPickUpDelay();
@@ -102,13 +96,18 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         return super.playerWillDestroy(level, pos, state, player);
     }
 
+    private static void storeFungusDataIntoItemStack(FungusDataModel fungusDataModel, ItemStack itemStack)
+    {
+        CompoundTag tags = fungusDataModel.serializeNBT();
+        itemStack.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
+    }
+
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader world, BlockPos pos, Player player)
     {
         ItemStack stack = super.getCloneItemStack(state, target, world, pos, player);
         FungusDataModel fungusData = ((ColoredFungusBlockEntity) world.getBlockEntity(pos)).getFungusData();
-        CompoundTag tags = fungusData.serializeNBT();
-        stack.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
+        storeFungusDataIntoItemStack(fungusData, stack);
         return stack;
     }
 
@@ -256,7 +255,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(pos));
         if (newBlockEntity != null)
         {
-            newBlockEntity.getFungusData().deserializeNBT(dataModel.serializeNBT());
+            newBlockEntity.getFungusData().deserializeNBT(dataModel.serializeNBT());//FIXME ugly code
         }
     }
 
