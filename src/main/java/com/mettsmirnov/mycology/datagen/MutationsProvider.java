@@ -51,9 +51,9 @@ public class MutationsProvider implements DataProvider
         addMutation("WHITE_FUNGUS", "BLACK_FUNGUS", "GREY_FUNGUS", cachedOutput);
         addMutation("WHITE_FUNGUS", "BLUE_FUNGUS", "LIGHTBLUE_FUNGUS", cachedOutput);
         addMutation("WHITE_FUNGUS", "Amanita rubra", "PINK_FUNGUS", cachedOutput);
-        addMutation("BLUE_FUNGUS", "Amanita rubra", "VIOLET_ovulus", cachedOutput);
+        addMutation("BLUE_FUNGUS", "Amanita rubra", "Ovulus violaceus", cachedOutput);
         addMutation("BLUE_FUNGUS", "Lactarius viridis", "CYAN_FUNGUS", cachedOutput);
-        addMutation("VIOLET_ovulus", "PINK_FUNGUS", "MAGENTA_FUNGUS", cachedOutput);
+        addMutation("Ovulus violaceus", "PINK_FUNGUS", "MAGENTA_FUNGUS", cachedOutput);
         addMutation("Amanita rubra", "YELLOW_FUNGUS", "ORANGE_FUNGUS", cachedOutput);
 
         //TODO possible mutations

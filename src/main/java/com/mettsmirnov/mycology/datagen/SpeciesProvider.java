@@ -73,7 +73,7 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0x41d3ff)
                 .build();
 
-        speciesBuilder.createSpecies("Ovulus_VIOLET")
+        speciesBuilder.createSpecies("Ovulus violaceus")
                 .type(CRIMSON_TYPE)
                 .colors4(0xAA48FB, 0xA81343, 0xA23F19, 0xE105EF)
                 .spreading(25)
