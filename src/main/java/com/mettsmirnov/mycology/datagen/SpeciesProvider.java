@@ -145,7 +145,7 @@ public class SpeciesProvider implements DataProvider
         //Wither fungus
         speciesBuilder.createDefaultSpecies("Sarcosphaera arescens")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors4(0x9E928F, 0x5b5b5b, 0x585858, 0xe1e1e1)
                 .terrain("mycologymod:nether")
                 .areaEffect(FungusEffects.WITHERING_EFFECT)
                 .build();
@@ -287,7 +287,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain("mycologymod:nether_bricks")
                 .build();
 
-        speciesBuilder.createDefaultSpecies("ANCIENT_DEBRIS_FUNGUS")
+        speciesBuilder.createDefaultSpecies("ANCIENT_DEBRIS_FUNGUS")//antiquus something..
                 .type(CRIMSON_TYPE)
                 .colors4(0x52362F, 0x52362F, 0x29130D, 0x52362F)
                 .terrain("mycologymod:netherite")
