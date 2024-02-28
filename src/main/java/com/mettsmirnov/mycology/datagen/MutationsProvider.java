@@ -58,6 +58,7 @@ public class MutationsProvider implements DataProvider
 
         addMutation("Boletus edulis", "Suillus granulatus", "Polyporus ligneus", cachedOutput);
         addMutation("DEEPSLATE_SUSTAINED_FUNGUS","Polyporus ligneus","COAL_FUNGUS", cachedOutput);
+        addMutation("DEEPSLATE_SUSTAINED_FUNGUS","COAL_FUNGUS","IRON_FUNGUS", cachedOutput);
 
         addMutation("Galerina aurata", "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
 
