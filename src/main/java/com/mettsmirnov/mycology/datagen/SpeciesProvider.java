@@ -158,6 +158,7 @@ public class SpeciesProvider implements DataProvider
         //     Materials fungi     //
         /////////////////////////////
         speciesBuilder.createProtoSpecies("Polyporus ligneus")
+                .type(WARPED_TYPE)
                 .terrain("minecraft:logs")
                 .build();
 
@@ -465,6 +466,9 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.SPORING_EFFECT)
                 .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
+                .build();
+        speciesBuilder.createProtoSpecies("DEEPSLATE_SUSTAINED_FUNGUS")//fungus found in caves
+                //.spawnType(FungusSpawn.CAVES)
                 .build();
         speciesBuilder.createProtoSpecies("NETHER_FUNGUS")//nether wastes native
                 .terrain("mycologymod:nether")

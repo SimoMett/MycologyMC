@@ -56,6 +56,9 @@ public class MutationsProvider implements DataProvider
         addMutation("Ovulus violaceus", "PINK_FUNGUS", "MAGENTA_FUNGUS", cachedOutput);
         addMutation("Amanita rubra", "YELLOW_FUNGUS", "ORANGE_FUNGUS", cachedOutput);
 
+        addMutation("Boletus edulis", "Suillus granulatus", "Polyporus ligneus", cachedOutput);
+        addMutation("DEEPSLATE_SUSTAINED_FUNGUS","Polyporus ligneus","COAL_FUNGUS", cachedOutput);
+
         addMutation("Galerina aurata", "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
 
         //TODO possible mutations
