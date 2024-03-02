@@ -275,4 +275,10 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 .forEach(blockPos -> fungusBlockEntities.add((ColoredFungusBlockEntity) level.getBlockEntity(blockPos)));
         return fungusBlockEntities;
     }
+
+    @Override
+    public boolean canSurvive(BlockState p_51028_, LevelReader p_51029_, BlockPos p_51030_)
+    {
+        return true;//this was the cause for fungi not spawning underground. FIXME
+    }
 }
