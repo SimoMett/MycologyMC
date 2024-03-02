@@ -262,7 +262,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("Xerocomus ferrugineus")
                 .type(WARPED_TYPE)
-                .colors4(0xffffcc, 0x8A8483, 0xC0997F, 0xFBD3B8)
+                .colors4(0xffffcc, 0x95867e, 0xC0997F, 0xFBD3B8)
                 .terrain("minecraft:iron_ores")
                 .build();
 
