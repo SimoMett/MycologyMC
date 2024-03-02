@@ -260,7 +260,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain("minecraft:copper_ores")
                 .build();
 
-        speciesBuilder.createDefaultSpecies("IRON_FUNGUS")
+        speciesBuilder.createDefaultSpecies("Xerocomus ferrugineus")
                 .type(WARPED_TYPE)
                 .colors4(0xffffcc, 0x8A8483, 0xC0997F, 0xFBD3B8)
                 .terrain("minecraft:iron_ores")
