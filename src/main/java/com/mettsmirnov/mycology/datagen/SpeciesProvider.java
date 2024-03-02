@@ -136,11 +136,6 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //      Toxic fungi        //
         /////////////////////////////
-        speciesBuilder.createProtoSpecies("Amanita phalloides")
-                .colors4(0xffdb94, 0xc71c12, 0xe8e8e8, 0xF2F2F2)
-                .biomesSpecs(BiomesSpecs.SWAMP)
-                .spawnType(FungusSpawn.SWAMP)
-                .build();
 
         //Wither fungus
         speciesBuilder.createDefaultSpecies("Sarcosphaera arescens")
@@ -451,6 +446,11 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xFFFCD9, 0xFF521E, 0xFFFFFF, 0xFFB171)
                 .biomesSpecs(BiomesSpecs.JUNGLE)
                 .spawnType(FungusSpawn.JUNGLE)
+                .build();
+        speciesBuilder.createProtoSpecies("Amanita phalloides")
+                .colors4(0xffdb94, 0xc71c12, 0xe8e8e8, 0xF2F2F2)
+                .biomesSpecs(BiomesSpecs.SWAMP)
+                .spawnType(FungusSpawn.SWAMP)
                 .build();
         speciesBuilder.createProtoSpecies("YELLOW_FUNGUS")//meadow native
                 .colors1(0xfff620)
