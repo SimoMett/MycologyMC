@@ -14,10 +14,10 @@ import org.jline.utils.Log;
 import java.util.List;
 import java.util.Random;
 
-public class RandomFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
+public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
 {
     //command "/place feature" doesn't work (I don't care)
-    public RandomFungusFeatureConfiguration()
+    public SurfaceFungusFeatureConfiguration()
     {
         super(SimpleBlockConfiguration.CODEC);
     }
