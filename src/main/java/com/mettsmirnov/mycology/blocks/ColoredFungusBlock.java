@@ -277,7 +277,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     }
 
     @Override
-    public boolean canSurvive(BlockState p_51028_, LevelReader p_51029_, BlockPos p_51030_)
+    public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos origin)
     {
         return true;//this was the cause for fungi not spawning underground. FIXME
     }

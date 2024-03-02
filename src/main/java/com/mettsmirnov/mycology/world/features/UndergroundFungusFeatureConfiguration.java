@@ -2,6 +2,7 @@ package com.mettsmirnov.mycology.world.features;
 
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.data.FungusSpeciesList;
+import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -26,12 +27,9 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
     {
         List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         BlockPos origin = placeContext.origin();
-        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && s.spawnInfo.biomes.equals("#caves")).toList();
+        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && s.spawnInfo.equals(FungusSpawn.CAVES)).toList();
         if(!speciesList.isEmpty())
         {
-            float biomeTemp = placeContext.level().getBiome(origin).get().getModifiedClimateSettings().temperature();
-            float biomeDownfall = placeContext.level().getBiome(origin).get().getModifiedClimateSettings().downfall();
-
             //get random species
             Random random = new Random();
             FungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));

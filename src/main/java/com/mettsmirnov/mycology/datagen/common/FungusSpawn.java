@@ -37,4 +37,9 @@ public class FungusSpawn
         this.biomes = biomeResourceKey.location().toString();
         this.chance = chance;
     }
+
+    public boolean equals(FungusSpawn obj)
+    {
+        return biomes.equals(obj.biomes) && chance == obj.chance;
+    }
 }
