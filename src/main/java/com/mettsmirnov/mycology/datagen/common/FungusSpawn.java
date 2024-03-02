@@ -21,6 +21,7 @@ public class FungusSpawn
     public static final FungusSpawn SWAMP = new FungusSpawn("minecraft:swamp", .5f);
     public static final FungusSpawn JUNGLE = new FungusSpawn("minecraft:jungle", .5f);
     public static final FungusSpawn MUSHROOM_FIELDS = new FungusSpawn("minecraft:mushroom_fields", .5f);
+    public static final FungusSpawn CAVES = new FungusSpawn("#caves", .5f);
 
     public String biomes;
     public float chance;

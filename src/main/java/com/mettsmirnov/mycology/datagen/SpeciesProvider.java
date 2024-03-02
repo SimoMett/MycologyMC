@@ -468,7 +468,10 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
                 .build();
         speciesBuilder.createProtoSpecies("DEEPSLATE_SUSTAINED_FUNGUS")//fungus found in caves
-                //.spawnType(FungusSpawn.CAVES)
+                .type(CRIMSON_TYPE)
+                .colors4(0x8c909c, 0xcbd0db, 0x3f4045, 0x2b2d31)
+                .spawnType(FungusSpawn.CAVES)
+                //.terrain("minecraft:deepslate")
                 .build();
         speciesBuilder.createProtoSpecies("NETHER_FUNGUS")//nether wastes native
                 .terrain("mycologymod:nether")
