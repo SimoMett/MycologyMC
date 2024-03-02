@@ -255,8 +255,8 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies("Amanita cuprea") //Copper
-                .type(CRIMSON_TYPE)
-                .colors(new int[]{0xbb9173, 0xe8693d, 0x208068, 0x20a387})
+                .type(WARPED_TYPE)
+                .colors4(0xbb9173, 0xe8693d, 0x208068, 0x20a387)
                 .terrain("minecraft:copper_ores")
                 .build();
 
