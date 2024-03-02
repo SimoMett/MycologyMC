@@ -10,5 +10,6 @@ public class ModFeatures
 {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MycologyMod.MODID);
 
-    public static final RegistryObject<SurfaceFungusFeatureConfiguration> CONFIGURED_FUNGUS = FEATURES.register("simple_fungus", SurfaceFungusFeatureConfiguration::new);
+    public static final RegistryObject<SurfaceFungusFeatureConfiguration> SURFACE_FUNGUS = FEATURES.register("simple_fungus", SurfaceFungusFeatureConfiguration::new);
+    public static final RegistryObject<UndergroundFungusFeatureConfiguration> UNDERGROUND_FUNGUS = FEATURES.register("underground_fungus", UndergroundFungusFeatureConfiguration::new);
 }
