@@ -4,5 +4,5 @@
     "type": "forge:any"
   },
   "features": "mycologymod:underground_fungi",
-  "step": "underground_structures"
+  "step": "vegetal_decoration"
 }

@@ -4,5 +4,5 @@
     "type": "forge:any"
   },
   "features": "mycologymod:random_fungi",
-  "step": "surface_structures"
+  "step": "vegetal_decoration"
 }

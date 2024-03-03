@@ -471,7 +471,7 @@ public class SpeciesProvider implements DataProvider
                 .type(CRIMSON_TYPE)
                 .colors4(0x8c909c, 0xcbd0db, 0x3f4045, 0x2b2d31)
                 .spawnType(FungusSpawn.CAVES)
-                //.terrain("minecraft:deepslate")
+                .terrain("mycologymod:deepslate")
                 .build();
         speciesBuilder.createProtoSpecies("NETHER_FUNGUS")//nether wastes native
                 .terrain("mycologymod:nether")

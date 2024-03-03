@@ -5,7 +5,13 @@ import com.mettsmirnov.mycology.data.FungusSpeciesList;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
@@ -25,8 +31,10 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
     @Override
     public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> placeContext)
     {
-        List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         BlockPos origin = placeContext.origin();
+        WorldGenLevel level = placeContext.level();
+
+        List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && s.spawnInfo.equals(FungusSpawn.CAVES)).toList();
         if(!speciesList.isEmpty())
         {
@@ -37,19 +45,26 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
             if (random.nextFloat(0f, 1f) < randomSpecies.spawnInfo.chance)
             {
                 //spawn fungus with the correct type
-                BlockPos pos = origin.above();
-                if (randomSpecies.fungusType.equals(ModBlocks.COLORED_CRIMSON_STRING))
-                    placeContext.level().setBlock(pos, ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState(), 0); //WTF is the third parameter??
-                else
-                    placeContext.level().setBlock(pos, ModBlocks.COLORED_WARPED_FUNGUS.get().defaultBlockState(), 0);
+                BlockState terrainBlockState = level.getBlockState(origin);
 
-                //edit its block entity
-                BlockEntity blockEntity = placeContext.level().getBlockEntity(pos);
-                if (blockEntity instanceof ColoredFungusBlockEntity coloredFungusBlockEntity) {
-                    coloredFungusBlockEntity.getFungusData().loadFrom(randomSpecies);
-                } else {
-                    Log.error("WHY THIS BLOCKENTITY ISN'T A COLORED FUNGUS?");
-                    return false;
+                TagKey<Block> tag = BlockTags.create(new ResourceLocation(randomSpecies.defaultTraits.terrain));
+
+                if(terrainBlockState.is(tag) && level.getBlockState(origin.above()).isAir())
+                {
+                    BlockPos pos = origin.above();
+                    if (randomSpecies.fungusType.equals(ModBlocks.COLORED_CRIMSON_STRING))
+                        level.setBlock(pos, ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState(), 0); //WTF is the third parameter??
+                    else
+                        level.setBlock(pos, ModBlocks.COLORED_WARPED_FUNGUS.get().defaultBlockState(), 0);
+
+                    //edit its block entity
+                    BlockEntity blockEntity = level.getBlockEntity(pos);
+                    if (blockEntity instanceof ColoredFungusBlockEntity coloredFungusBlockEntity) {
+                        coloredFungusBlockEntity.getFungusData().loadFrom(randomSpecies);
+                    } else {
+                        Log.error("WHY THIS BLOCKENTITY ISN'T A COLORED FUNGUS?");
+                        return false;
+                    }
                 }
             }
             return true;
