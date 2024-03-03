@@ -1,5 +1,5 @@
 {
-  "feature": "mycologymod:random_fungi",
+  "feature": "mycologymod:surface_fungi",
   "placement": [
     {
       "type": "minecraft:heightmap",

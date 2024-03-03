@@ -3,6 +3,6 @@
   "biomes": {
     "type": "forge:any"
   },
-  "features": "mycologymod:random_fungi",
+  "features": "mycologymod:surface_fungi",
   "step": "vegetal_decoration"
 }
