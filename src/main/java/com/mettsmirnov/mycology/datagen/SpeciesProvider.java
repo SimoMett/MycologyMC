@@ -399,9 +399,9 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("LIGHTNING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.LIGHTNING_EFFECT)
                 .build();
-        ////////////////////////////
-        //      Native fungi      //
-        ////////////////////////////
+        //////////////////////////////
+        //  Overworld native fungi  //
+        //////////////////////////////
         speciesBuilder.createProtoSpecies("Agaricus campestris")//plains native
                 .type(WARPED_TYPE)
                 .colors4(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)//FIXME darker
@@ -473,14 +473,19 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.CAVES)
                 .terrain("mycologymod:deepslate")
                 .build();
+        /////////////////////////////
+        //   Nether native fungi   //
+        /////////////////////////////
         speciesBuilder.createProtoSpecies("NETHER_FUNGUS")//nether wastes native
                 .terrain("mycologymod:nether")
                 .biomesSpecs(BiomesSpecs.NETHER)
+                .spawnType(FungusSpawn.NETHER_WASTES)
                 .build();
 
         speciesBuilder.createProtoSpecies("SOULSAND_FUNGUS")//soul sand valley native
                 .terrain("mycologymod:soul_sand")
                 .biomesSpecs(BiomesSpecs.NETHER)
+                .spawnType(FungusSpawn.SOUL_SAND_VALLEY)
                 .build();
         /////////////////////////
         //      DEV fungi      //
