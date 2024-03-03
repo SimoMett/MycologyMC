@@ -10,6 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
@@ -90,6 +91,11 @@ public class FungusEffects
     });
     //dev
     public static final FungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
+    public static final FungusEffect TNT_EFFECT = new SpawnEntityEffect("tnt", (lvl) -> {
+        PrimedTnt tnt = new PrimedTnt(EntityType.TNT, lvl);
+        tnt.setFuse(100);//five seconds
+        return tnt;
+    });
 
     public static FungusEffect getEffectByName(String effectName)
     {

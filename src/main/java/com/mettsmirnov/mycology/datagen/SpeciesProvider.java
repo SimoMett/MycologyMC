@@ -490,6 +490,11 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.DEV_TEST_EFFECT)
                 .areaRadius(2)
                 .build();
+        speciesBuilder.createProtoSpecies("TNT_FUNGUS")
+                .colors4(0xc72e25, 0xc72e25, 0xe8e8e8, 0xe8e8e8)
+                .areaEffect(FungusEffects.TNT_EFFECT)
+                .areaRadius(4)
+                .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 
