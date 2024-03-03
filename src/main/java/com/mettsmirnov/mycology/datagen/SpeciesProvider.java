@@ -477,13 +477,13 @@ public class SpeciesProvider implements DataProvider
         //   Nether native fungi   //
         /////////////////////////////
         speciesBuilder.createProtoSpecies("NETHER_FUNGUS")//nether wastes native
-                .terrain("mycologymod:nether")
+                .terrain("minecraft:netherrack")
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.NETHER_WASTES)
                 .build();
 
         speciesBuilder.createProtoSpecies("SOULSAND_FUNGUS")//soul sand valley native
-                .terrain("mycologymod:soul_sand")
+                .terrain("minecraft:soul_sand")
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.SOUL_SAND_VALLEY)
                 .build();

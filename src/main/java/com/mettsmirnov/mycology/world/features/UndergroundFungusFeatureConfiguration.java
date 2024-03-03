@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jline.utils.Log;
 
 import java.util.List;
@@ -47,9 +48,10 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
                 //spawn fungus with the correct type
                 BlockState terrainBlockState = level.getBlockState(origin);
 
-                TagKey<Block> tag = BlockTags.create(new ResourceLocation(randomSpecies.defaultTraits.terrain));
+                ResourceLocation res = new ResourceLocation(randomSpecies.defaultTraits.terrain);
+                TagKey<Block> tag = BlockTags.create(res);
 
-                if(terrainBlockState.is(tag) && level.getBlockState(origin.above()).isAir())
+                if( (terrainBlockState.is(tag) || terrainBlockState.is(ForgeRegistries.BLOCKS.getValue(res)) ) && level.getBlockState(origin.above()).isAir())
                 {
                     BlockPos pos = origin.above();
                     if (randomSpecies.fungusType.equals(ModBlocks.COLORED_CRIMSON_STRING))
