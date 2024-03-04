@@ -3,7 +3,6 @@ package com.mettsmirnov.mycology.blocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
-import com.mettsmirnov.mycology.data.FungusSpeciesList;
 import com.mettsmirnov.mycology.effects.FungusEffects;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
@@ -36,12 +35,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 
 import static com.mettsmirnov.mycology.constants.Constants.BREEDING_CHANCE;
 import static com.mettsmirnov.mycology.constants.Constants.MAX_MUSHROOMS_IN_AREA;
-import static com.mettsmirnov.mycology.datagen.SpeciesBuilder.CRIMSON_TYPE;
 
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
 {
@@ -224,11 +221,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
                     float humidity = level.getBiome(blockpos1).get().getModifiedClimateSettings().downfall();
 
-                    String fungusType = FungusSpeciesList.INSTANCE.get((String) offspringDataModel.getField(FungusDataModel.SPECIES)).fungusType;
-                    if (Objects.equals(fungusType, CRIMSON_TYPE))
-                        blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
-                    else
-                        blockState = ModBlocks.COLORED_WARPED_FUNGUS.get().defaultBlockState();
+                    blockState = this.defaultBlockState();
 
                     if (offspringDataModel.matchesEnvironmentAndTerrain(light, temperature, humidity, level.getBlockState(blockpos1.below())))
                     {
