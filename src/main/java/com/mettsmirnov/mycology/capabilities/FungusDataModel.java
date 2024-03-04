@@ -189,6 +189,14 @@ public class FungusDataModel implements IFungusData
                 }
             }
         }
-        colors = FungusSpeciesList.INSTANCE.get((String) dominantTraits.get(SPECIES)).colors.clone();
+        try
+        {
+            colors = FungusSpeciesList.INSTANCE.get((String) dominantTraits.get(SPECIES)).colors.clone();
+        }
+        catch (NullPointerException e)
+        {
+            Log.error(e.getMessage());
+            colors = new int[]{0, 0, 0, 0};
+        }
     }
 }
