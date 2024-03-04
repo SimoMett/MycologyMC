@@ -476,14 +476,16 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //   Nether native fungi   //
         /////////////////////////////
-        speciesBuilder.createProtoSpecies("NETHER_FUNGUS")//nether wastes native
+        speciesBuilder.createProtoSpecies("Chalciporus infernalis")//nether wastes native
+                .colors4(0xb5917a, 0xff3a31, 0xff6500, 0xffa468)
                 .terrain("minecraft:netherrack")
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.NETHER_WASTES)
                 .build();
 
-        speciesBuilder.createProtoSpecies("SOULSAND_FUNGUS")//soul sand valley native
-                .terrain("minecraft:soul_sand")
+        speciesBuilder.createProtoSpecies("Agaricus animi")//soul sand valley native
+                .colors4(0x7b929c, 0x897160, 0x614e43, 0x887265)
+                .terrain("minecraft:soul_fire_base_blocks")
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.SOUL_SAND_VALLEY)
                 .build();
@@ -496,7 +498,7 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(2)
                 .build();
         speciesBuilder.createProtoSpecies("TNT_FUNGUS")
-                .colors4(0xc72e25, 0xc72e25, 0xe8e8e8, 0xe8e8e8)
+                .colors4(0xc72e25, 0xc72e25, 0xe8e8e8, 0x303030)
                 .areaEffect(FungusEffects.TNT_EFFECT)
                 .areaRadius(4)
                 .build();
