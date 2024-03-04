@@ -7,9 +7,8 @@ import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.food.Foods;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -35,7 +34,7 @@ public class ColoredFungusBlockItem extends BlockItem
 
     public ColoredFungusBlockItem(Block block)
     {
-        super(block, new Properties());
+        super(block, (new Item.Properties()).food(Foods.SPIDER_EYE));
     }
 
     //Forestry uses capability. Why shouldn't I?
@@ -68,6 +67,8 @@ public class ColoredFungusBlockItem extends BlockItem
 
         return blockState;
     }
+
+
 
     @Override
     protected boolean placeBlock(BlockPlaceContext context, BlockState blockState)
