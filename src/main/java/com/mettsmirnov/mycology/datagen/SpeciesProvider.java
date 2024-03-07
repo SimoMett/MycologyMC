@@ -40,14 +40,14 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
         speciesBuilder.createProtoSpecies("GREEN_FUNGUS_2")
-                .colors4(0xD36146, 0x9BC859, 0x619B68, 0x3A734C)
+                .colors4(0xD36146, 0x7EA144, 0x619B68, 0x3A734C)
                 .build();
         /////////////////////////////
         //      Colors fungi       //
         /////////////////////////////
         speciesBuilder.createSpecies("Amanita rubra")
                 .type(CRIMSON_TYPE)
-                .colors4(0xFFFFCC, 0xFF3300, 0xF2F2F2, 0xF2F2F2)
+                .colors4(0xFFFFCC, 0xC41717, 0xF2F2F2, 0xF2F2F2)
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -75,7 +75,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createSpecies("Ovulus violaceus")
                 .type(CRIMSON_TYPE)
-                .colors4(0xAA48FB, 0xA81343, 0xA23F19, 0xE105EF)
+                .colors4(0xAA48FB, 0x9c133f, 0xA23F19, 0xE105EF)
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -90,7 +90,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createProtoSpecies("PINK_FUNGUS")
-                .colors1(0xff94c1)
+                .colors4(0xf6dfb5, 0xffc0cb, 0xffc0cb, 0xffeef0)
                 .build();
 
         speciesBuilder.createProtoSpecies("BROWN_FUNGUS")
@@ -123,7 +123,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createSpecies("Noble boletus squisitus")// derived from "boletus edulis"
                 .type(CRIMSON_TYPE)
-                .colors4(0xFFE6D8, 0xEDB4B4, 0xBE8C85, 0xFFE4E2)
+                .colors4(0xFFE6D8, 0x907068, 0xBE8C85, 0xFFE4E2)
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
@@ -140,7 +140,7 @@ public class SpeciesProvider implements DataProvider
         //Wither fungus
         speciesBuilder.createDefaultSpecies("Sarcosphaera arescens")
                 .type(CRIMSON_TYPE)
-                .colors4(0x9E928F, 0x5b5b5b, 0x585858, 0xe1e1e1)
+                .colors4(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
                 .terrain("mycologymod:nether")
                 .areaEffect(FungusEffects.WITHERING_EFFECT)
                 .build();
@@ -273,7 +273,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("EXPERIENCE_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0x87CFEC, 0x2F94F9, 0x398D4C, 0xB4DF57})
+                .colors(new int[]{0x87CFEC, 0x2d81e2, 0x398D4C, 0xB4DF57})
                 .areaEffect(FungusEffects.EXPORBS_EFFECT)
                 .build();
 
@@ -298,7 +298,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("END_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0xe7f1b1, 0x3e0588, 0xa058ae, 0x490a61})
+                .colors(new int[]{0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61})
                 .terrain("mycologymod:endstone")
                 .build();
 
@@ -380,7 +380,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("UNDEAD_EFFECT_FUNGUS")
-                .colors4(0xD36146, 0x9BC859, 0x4891ff, 0x4b54bb)
+                .colors4(0xD36146, 0x7EA144, 0x4891ff, 0x4b54bb)
                 .areaRadius(2)
                 .areaEffect(FungusEffects.UNDEAD_EFFECT)
                 .build();
@@ -437,7 +437,7 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.OLD_GROWTH_PINE_TAIGA)
                 .build();
         speciesBuilder.createProtoSpecies("Chalciporus piperatus")//non edible
-                .colors4(0xFFC741, 0xEE7A1A, 0x64330B, 0x8E6C24)
+                .colors4(0xFFC741, 0xAE5913, 0x64330B, 0x8E6C24)
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
                 .build();
@@ -469,7 +469,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
         speciesBuilder.createProtoSpecies("FUNGUS profundorum")//fungus found in caves
                 .type(CRIMSON_TYPE)
-                .colors4(0x8c909c, 0xcbd0db, 0x3f4045, 0x2b2d31)
+                .colors4(0x8c909c, 0x94989C, 0x3f4045, 0x2b2d31)
                 .spawnType(FungusSpawn.CAVES)
                 .terrain("mycologymod:deepslate")
                 .build();
@@ -477,14 +477,14 @@ public class SpeciesProvider implements DataProvider
         //   Nether native fungi   //
         /////////////////////////////
         speciesBuilder.createProtoSpecies("Chalciporus infernalis")//nether wastes native
-                .colors4(0xb5917a, 0xff3a31, 0xff6500, 0xffa468)
+                .colors4(0xb5917a, 0xEE2E3D, 0xff6500, 0xffa468)
                 .terrain("minecraft:netherrack")
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.NETHER_WASTES)
                 .build();
 
         speciesBuilder.createProtoSpecies("Agaricus animi")//soul sand valley native
-                .colors4(0x7b929c, 0x897160, 0x614e43, 0x887265)
+                .colors4(0x7b929c, 0x796251, 0x614e43, 0x887265)
                 .terrain("minecraft:soul_fire_base_blocks")
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.SOUL_SAND_VALLEY)
