@@ -202,8 +202,8 @@ public class SpeciesProvider implements DataProvider
         //      Mineral fungi      //
         /////////////////////////////
         speciesBuilder.createDefaultSpecies("COAL_FUNGUS")
-                .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .type(WARPED_TYPE)
+                .colors4(0xa19b88, 0x8a8a8a, 0x383838, 0x2e2e2e)
                 .terrain("minecraft:coal_ores")
                 .build();
 
@@ -467,7 +467,7 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
                 .build();
-        speciesBuilder.createProtoSpecies("DEEPSLATE_SUSTAINED_FUNGUS")//fungus found in caves
+        speciesBuilder.createProtoSpecies("FUNGUS profundorum")//fungus found in caves
                 .type(CRIMSON_TYPE)
                 .colors4(0x8c909c, 0xcbd0db, 0x3f4045, 0x2b2d31)
                 .spawnType(FungusSpawn.CAVES)
