@@ -37,8 +37,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static com.mettsmirnov.mycology.constants.Constants.BREEDING_CHANCE;
-import static com.mettsmirnov.mycology.constants.Constants.MAX_MUSHROOMS_IN_AREA;
+import static com.mettsmirnov.mycology.constants.Constants.*;
 
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
 {
@@ -124,7 +123,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     private static void addSporeParticle(int radius, BlockPos blockPos, Level level, RandomSource randomSource)
     {
         Random random = new Random();
-        int frequency = 20*radius;
+        int frequency = SPORE_PARTICLES_FREQ*radius;
         int magicNumber = 3;
         radius *= magicNumber;
         for (int i = 0; i < frequency; i++)
