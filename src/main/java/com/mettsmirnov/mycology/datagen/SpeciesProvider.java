@@ -457,8 +457,8 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.MEADOW)
                 .spawnType(FungusSpawn.MEADOW)
                 .build();
-        speciesBuilder.createProtoSpecies("BLUE_FUNGUS")//flower forest native
-                .colors1(0x1c1bff)
+        speciesBuilder.createProtoSpecies("Boletellus caeruleus")//flower forest native
+                .colors4(0xF6DFB5, 0x4f94ee, 0xF6DFB5, 0xfff7e9)
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .spawnType(FungusSpawn.FLOWER_FOREST)
                 .build();
