@@ -73,7 +73,7 @@ public class SpeciesBuilder
     {
         return createDefaultSpecies(speciesName)
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0});
+                .colors4(0, 0, 0, 0);
     }
 
     public SpeciesBuilder type(String type)
@@ -91,13 +91,6 @@ public class SpeciesBuilder
     public SpeciesBuilder setRecessive()
     {
         this.isDominant = false;
-        return this;
-    }
-
-    @Deprecated(forRemoval = true)
-    public SpeciesBuilder colors(int[] colors)
-    {
-        this.colors = colors;
         return this;
     }
 

@@ -209,25 +209,25 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("EMERALD_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors4(0, 0, 0, 0)
                 .terrain("minecraft:emerald_ores")
                 .build();
 
         speciesBuilder.createDefaultSpecies("GLOWSTONE_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd})
+                .colors4(0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd)
                 .terrain("mycologymod:nether")
                 .build();
 
         speciesBuilder.createDefaultSpecies("Galerina aurata") //Gold
                 .type(WARPED_TYPE)
-                .colors(new int[]{0xeed484, 0xffc21a, 0xffc96c, 0xfff59f})//FIXME
+                .colors4(0xeed484, 0xFF9900, 0xFFDD36, 0xffe56b)
                 .terrain("minecraft:gold_ores")
                 .build();
 
         speciesBuilder.createDefaultSpecies("Bolbitius silex") //Quartz
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors4(0, 0, 0, 0)
                 .terrain("mycologymod:quartz_ores")
                 .build();
 
@@ -245,7 +245,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("REDSTONE_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors4(0, 0, 0, 0)
                 .terrain("minecraft:redstone_ores")
                 .build();
 
@@ -267,13 +267,13 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("DIAMOND_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0, 0, 0, 0})
+                .colors4(0, 0, 0, 0)
                 .terrain("minecraft:diamond_ores")
                 .build();
 
         speciesBuilder.createDefaultSpecies("EXPERIENCE_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0x87CFEC, 0x2d81e2, 0x398D4C, 0xB4DF57})
+                .colors4(0x87CFEC, 0x2d81e2, 0x398D4C, 0xB4DF57)
                 .areaEffect(FungusEffects.EXPORBS_EFFECT)
                 .build();
 
@@ -298,14 +298,14 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("END_FUNGUS")
                 .type(CRIMSON_TYPE)
-                .colors(new int[]{0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61})
+                .colors4(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
                 .terrain("mycologymod:endstone")
                 .build();
 
         speciesBuilder.createDefaultSpecies("Tricholomopsis evanescens")
                 .type(CRIMSON_TYPE)
                 .setRecessive()
-                .colors(new int[]{0x87cfec, 0x06d192, 0x69d0af, 0x068054})
+                .colors4(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
                 .terrain("mycologymod:endstone")
                 .build();
         /////////////////////////////////
@@ -410,7 +410,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
         speciesBuilder.createSpecies("Lactarius viridis")//sunflower plains native
                 .type(WARPED_TYPE)
-                .colors(new int[]{ 0xBF98BF, 0x6bb83c, 0x99110F, 0xF502D3 })//FIXME
+                .colors4( 0xBF98BF, 0x6bb83c, 0x99110F, 0xF502D3)//FIXME
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
