@@ -9,5 +9,5 @@ public class Constants
     public static final int BREEDING_CHANCE = 2;
     public static final float DEFAULT_MUTATION_CHANCE = 0.6f;
 
-    public static final int SPORE_PARTICLES_FREQ = 15;
+    public static final int SPORE_PARTICLES_FREQ = 10;
 }

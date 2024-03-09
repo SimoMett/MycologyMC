@@ -19,6 +19,8 @@ public class Breeding
         FungusDataModel offspring = new FungusDataModel();
         Random random = new Random();
         List<MutationRecipe> mutations = MutationRecipesList.getList();
+
+        //get all the mutations between species1 and species2
         mutations = mutations.stream()
                 .filter(m -> (m.getSpecies1().equals(species1.getField(FungusDataModel.SPECIES)) && m.getSpecies2().equals(species2.getField(FungusDataModel.SPECIES)))
                             || (m.getSpecies1().equals(species2.getField(FungusDataModel.SPECIES)) && m.getSpecies2().equals(species1.getField(FungusDataModel.SPECIES))))
@@ -27,12 +29,12 @@ public class Breeding
         if (!mutations.isEmpty())
         {
             int randomRecipeId = random.nextInt(mutations.size());
-            MutationRecipe mutationRecipe = mutations.get(randomRecipeId);
-            boolean performMutation = random.nextFloat(0f, 1f) < mutationRecipe.getChance();
+            MutationRecipe randomMutation = mutations.get(randomRecipeId);
+            boolean performMutation = random.nextFloat(0f, 1f) < randomMutation.getChance();
             if (performMutation)
             {
                 offspring = new FungusDataModel();
-                offspring.loadFrom(FungusSpeciesList.INSTANCE.get(mutationRecipe.getResultSpecies()));
+                offspring.loadFrom(FungusSpeciesList.INSTANCE.get(randomMutation.getResultSpecies()));
             }
         }
         //otherwise normal crossbreeding

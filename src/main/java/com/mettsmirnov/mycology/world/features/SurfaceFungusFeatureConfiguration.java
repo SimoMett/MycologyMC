@@ -6,6 +6,7 @@ import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
@@ -41,10 +42,8 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
             if (random.nextFloat(0f, 1f) < randomSpecies.spawnInfo.chance)
             {
                 //spawn fungus with the correct type
-                if (randomSpecies.fungusType.equals(ModBlocks.COLORED_CRIMSON_STRING))
-                    placeContext.level().setBlock(origin, ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState(), 0); //WTF is the third parameter??
-                else
-                    placeContext.level().setBlock(origin, ModBlocks.COLORED_WARPED_FUNGUS.get().defaultBlockState(), 0);
+                BlockState blockState = ModBlocks.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
+                placeContext.level().setBlock(origin, blockState, 0); //WTF is the third parameter??
 
                 //edit its block entity
                 BlockEntity blockEntity = placeContext.level().getBlockEntity(origin);

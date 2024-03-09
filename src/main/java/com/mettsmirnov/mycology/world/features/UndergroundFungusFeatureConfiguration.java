@@ -54,10 +54,8 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
                 if( (terrainBlockState.is(tag) || terrainBlockState.is(ForgeRegistries.BLOCKS.getValue(res)) ) && level.getBlockState(origin.above()).isAir())
                 {
                     BlockPos pos = origin.above();
-                    if (randomSpecies.fungusType.equals(ModBlocks.COLORED_CRIMSON_STRING))
-                        level.setBlock(pos, ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState(), 0); //WTF is the third parameter??
-                    else
-                        level.setBlock(pos, ModBlocks.COLORED_WARPED_FUNGUS.get().defaultBlockState(), 0);
+                    BlockState blockState = ModBlocks.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
+                    level.setBlock(pos, blockState, 0);
 
                     //edit its block entity
                     BlockEntity blockEntity = level.getBlockEntity(pos);
