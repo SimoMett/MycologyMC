@@ -69,8 +69,9 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0x198185)
                 .build();
 
-        speciesBuilder.createProtoSpecies("LIGHTBLUE_FUNGUS")
-                .colors1(0x41d3ff)
+        speciesBuilder.createProtoSpecies("FUNGUS caelestis")
+                .type(WARPED_TYPE)
+                .colors4(0xc9f38e, 0x87cfec, 0xcaeef9, 0x8ad4f1)
                 .build();
 
         speciesBuilder.createSpecies("Ovulus violaceus")
@@ -111,7 +112,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createProtoSpecies("WHITE_FUNGUS")
                 .type(WARPED_TYPE)
-                .colors1(0xffffff)
+                .colors4(0xfbf4e1, 0xfffdf6, 0xf3f3f3, 0xf3edd5) //FIXME I don't like it too much
                 .build();
 
         /////////////////////////////
