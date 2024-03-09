@@ -470,7 +470,7 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
                 .build();
-        speciesBuilder.createProtoSpecies("FUNGUS profundorum")//fungus found in caves
+        speciesBuilder.createProtoSpecies("Bolbitius profundorum")//fungus found in caves
                 .type(CRIMSON_TYPE)
                 .colors4(0x8c909c, 0x94989C, 0x3f4045, 0x2b2d31)
                 .spawnType(FungusSpawn.CAVES)
