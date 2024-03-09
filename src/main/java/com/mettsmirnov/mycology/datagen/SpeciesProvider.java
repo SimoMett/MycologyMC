@@ -155,7 +155,9 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         speciesBuilder.createProtoSpecies("Polyporus ligneus")
                 .type(WARPED_TYPE)
+                .colors4(0xbba77a, 0x8d664b, 0xb38f6e, 0x4f3a2d)
                 .terrain("minecraft:logs")
+                .areaEffect(FungusEffects.DECOMPOSING_EFFECT)
                 .build();
 
         speciesBuilder.createProtoSpecies("GRANITE_FUNGUS")

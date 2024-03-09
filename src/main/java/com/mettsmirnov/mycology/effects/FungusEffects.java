@@ -77,6 +77,7 @@ public class FungusEffects
             level.sendParticles(ParticleTypes.HAPPY_VILLAGER, randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + 0.6, randomPos.getZ() + randomSource.nextDouble(), particlesCount, 0, 0, 0.1, 0.5);
         }
     });
+    public static final FungusEffect DECOMPOSING_EFFECT = new SingleEffect("decomposing");//TODO
     //entities spawn
     public static final FungusEffect UNDEAD_EFFECT = new SpawnEntityEffect("undead", Zombie::new);
     public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
