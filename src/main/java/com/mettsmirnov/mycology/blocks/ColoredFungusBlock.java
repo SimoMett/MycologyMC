@@ -3,6 +3,7 @@ package com.mettsmirnov.mycology.blocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
+import com.mettsmirnov.mycology.data.FungusSpeciesList;
 import com.mettsmirnov.mycology.effects.FungusEffects;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import com.mettsmirnov.mycology.entities.ModEntities;
@@ -220,11 +221,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
                     float humidity = level.getBiome(blockpos1).get().getModifiedClimateSettings().downfall();
 
-                    blockState = this.defaultBlockState();
-
                     if (offspringDataModel.matchesEnvironmentAndTerrain(light, temperature, humidity, level.getBlockState(blockpos1.below())))
                     {
                         // ... then place it
+                        String fungusType = FungusSpeciesList.INSTANCE.get((String) offspringDataModel.getField(FungusDataModel.SPECIES)).fungusType;
+                        blockState = ModBlocks.getDefaultBlockStateFromFungusType(fungusType);
                         placeFungusBlock(blockState, level, blockpos1, offspringDataModel);
                         return;
                     }
