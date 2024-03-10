@@ -196,7 +196,7 @@ public class FungusDataModel implements IFungusData
         catch (NullPointerException e)
         {
             Log.error(e.getMessage());
-            colors = new int[]{0, 0, 0, 0};
+            colors = new int[]{0, 0, 0xff00ff, 0xff00ff};
         }
     }
 }

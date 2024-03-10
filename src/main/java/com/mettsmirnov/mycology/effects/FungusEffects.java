@@ -77,7 +77,24 @@ public class FungusEffects
             level.sendParticles(ParticleTypes.HAPPY_VILLAGER, randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + 0.6, randomPos.getZ() + randomSource.nextDouble(), particlesCount, 0, 0, 0.1, 0.5);
         }
     });
-    public static final FungusEffect DECOMPOSING_EFFECT = new SingleEffect("decomposing");//TODO
+    public static final FungusEffect DECOMPOSING_EFFECT = new SingleEffect("decomposing", null, (lvl, pos, box) -> {
+        final List<BlockPos> pList = new ArrayList<>();
+        BlockPos.betweenClosedStream(box).forEach( p -> {
+            pList.add(new BlockPos(p));
+        });
+        List <BlockPos> logBlocksList = pList.stream()
+                .filter(p -> p.distSqr(pos) < box.getSize()/2.0f)
+                .filter(p -> lvl.getBlockState(p).is(BlockTags.OVERWORLD_NATURAL_LOGS))
+                //.filter(p -> lvl.getBlockState(p.below()).is(BlockTags.DIRT))
+                .toList();
+        if (!logBlocksList.isEmpty())
+        {
+            BlockPos randomPos = logBlocksList.get(new Random().nextInt(logBlocksList.size()));
+            lvl.setBlock(randomPos, Blocks.AIR.defaultBlockState(), 2);
+            if(lvl.getBlockState(randomPos.below()).is(BlockTags.DIRT))
+                lvl.setBlock(randomPos.below(), Blocks.PODZOL.defaultBlockState(), 2);
+        }
+    });
     //entities spawn
     public static final FungusEffect UNDEAD_EFFECT = new SpawnEntityEffect("undead", Zombie::new);
     public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
