@@ -204,7 +204,7 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //      Mineral fungi      //
         /////////////////////////////
-        speciesBuilder.createDefaultSpecies("COAL_FUNGUS")
+        speciesBuilder.createDefaultSpecies("Leccinum carbonis")
                 .type(WARPED_TYPE)
                 .colors4(0xa19b88, 0x8a8a8a, 0x383838, 0x2e2e2e)
                 .terrain("minecraft:coal_ores")
