@@ -3,6 +3,8 @@ package com.mettsmirnov.mycology.effects;
 import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
@@ -10,9 +12,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 
@@ -77,7 +82,7 @@ public class FungusEffects
             level.sendParticles(ParticleTypes.HAPPY_VILLAGER, randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + 0.6, randomPos.getZ() + randomSource.nextDouble(), particlesCount, 0, 0, 0.1, 0.5);
         }
     });
-    public static final FungusEffect DECOMPOSING_EFFECT = new SingleEffect("decomposing", null, (lvl, pos, box) -> {
+    public static final FungusEffect DECOMPOSING2_EFFECT = new SingleEffect("decomposing2", null, (lvl, pos, box) -> {
         final List<BlockPos> pList = new ArrayList<>();
         BlockPos.betweenClosedStream(box).forEach( p -> {
             pList.add(new BlockPos(p));
@@ -91,6 +96,27 @@ public class FungusEffects
         {
             BlockPos randomPos = logBlocksList.get(new Random().nextInt(logBlocksList.size()));
             lvl.setBlock(randomPos, Blocks.AIR.defaultBlockState(), 2);
+            if(lvl.getBlockState(randomPos.below()).is(BlockTags.DIRT))
+                lvl.setBlock(randomPos.below(), Blocks.PODZOL.defaultBlockState(), 2);
+        }
+    });
+    public static final FungusEffect DECOMPOSING_EFFECT = new SingleEffect("decomposing", null, (lvl, pos, box) -> {
+        final List<BlockPos> pList = new ArrayList<>();
+        BlockPos.betweenClosedStream(box).forEach( p -> {
+            pList.add(new BlockPos(p));
+        });
+        List <BlockPos> logBlocksList = pList.stream()
+                .filter(p -> p.distSqr(pos) < box.getSize()/2.0f)
+                .filter(p -> lvl.getBlockState(p).is(BlockTags.OVERWORLD_NATURAL_LOGS))
+                .toList();
+        if (!logBlocksList.isEmpty())
+        {
+            BlockPos randomPos = logBlocksList.get(new Random().nextInt(logBlocksList.size()));
+            Item blockItem = lvl.getBlockState(randomPos).getBlock().asItem();
+            ItemStack itemStack = new ItemStack(blockItem);
+            lvl.addFreshEntity(new ItemEntity(lvl, randomPos.getX(), randomPos.getY(), randomPos.getZ(), itemStack));
+            lvl.setBlock(randomPos, Blocks.AIR.defaultBlockState(), 2);
+            lvl.playLocalSound(randomPos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1f, 1f, false);
             if(lvl.getBlockState(randomPos.below()).is(BlockTags.DIRT))
                 lvl.setBlock(randomPos.below(), Blocks.PODZOL.defaultBlockState(), 2);
         }
