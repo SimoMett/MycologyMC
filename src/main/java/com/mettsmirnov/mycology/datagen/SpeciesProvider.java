@@ -248,7 +248,7 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
 
-        speciesBuilder.createDefaultSpecies("REDSTONE_FUNGUS")
+        speciesBuilder.createDefaultSpecies("Russula concitata")
                 .type(CRIMSON_TYPE)
                 .colors4(0xFFF9EE, 0x760a00, 0x730000, 0xda0000)
                 .terrain("minecraft:redstone_ores")
