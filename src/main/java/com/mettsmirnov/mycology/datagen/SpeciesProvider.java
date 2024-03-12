@@ -157,6 +157,7 @@ public class SpeciesProvider implements DataProvider
                 .type(WARPED_TYPE)
                 .colors4(0xbba77a, 0x8d664b, 0xb38f6e, 0x4f3a2d)
                 .terrain("minecraft:logs")
+                .areaRadius(7)
                 .areaEffect(FungusEffects.DECOMPOSING_EFFECT)
                 .build();
 
@@ -177,6 +178,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createProtoSpecies("CLAY_FUNGUS")
+                .warpedType()
                 .terrain("mycologymod:clay")
                 .build();
 

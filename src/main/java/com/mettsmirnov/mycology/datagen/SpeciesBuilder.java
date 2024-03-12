@@ -82,6 +82,18 @@ public class SpeciesBuilder
         return this;
     }
 
+    public SpeciesBuilder warpedType()
+    {
+        this.type = WARPED_TYPE;
+        return this;
+    }
+
+    public SpeciesBuilder crimsonType()
+    {
+        this.type = CRIMSON_TYPE;
+        return this;
+    }
+
     public SpeciesBuilder setDominant()
     {
         this.isDominant = true;
