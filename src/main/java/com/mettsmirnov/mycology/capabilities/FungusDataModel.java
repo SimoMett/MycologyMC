@@ -43,7 +43,7 @@ public class FungusDataModel implements IFungusData
     {
         dominantTraits=new HashMap<>();
         dominantTraits.put("species","Boletus salubrium");
-        dominantTraits.put("isDominant", true); //maybe useless
+        //dominantTraits.put("isDominant", true); //maybe useless
         dominantTraits.put("spreading", 25);
         dominantTraits.put("spreadboost", 1f);
         dominantTraits.put("light", 15);
@@ -160,7 +160,6 @@ public class FungusDataModel implements IFungusData
     }
 
     //this method is responsible for loading all the data from the NBT when the world loads
-    //need testing
     @Override
     public void deserializeNBT(CompoundTag tag)
     {
