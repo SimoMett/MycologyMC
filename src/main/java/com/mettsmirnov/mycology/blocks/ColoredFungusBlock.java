@@ -271,6 +271,18 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos origin)
     {
-        return true;//this was the cause for fungi not spawning underground. FIXME
+        //this was the cause for fungi not spawning underground. FIXME
+        ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(origin));
+        if(originBlockEntity==null)
+            return false;
+        FungusDataModel thisFungusData = originBlockEntity.getFungusData();
+        BlockState belowBlock = level.getBlockState(origin.below());
+
+        boolean matchesTerrain = thisFungusData.matchesTerrain(belowBlock);
+        int light = level.getBrightness(LightLayer.SKY, origin);
+        float temperature = level.getBiome(origin).get().getModifiedClimateSettings().temperature();
+        float humidity = level.getBiome(origin).get().getModifiedClimateSettings().downfall();
+        boolean matchesEnv = thisFungusData.matchesEnvironment(light, temperature, humidity);
+        return matchesTerrain;
     }
 }
