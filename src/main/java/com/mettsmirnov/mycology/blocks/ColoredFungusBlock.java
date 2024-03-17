@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology.blocks;
 
+import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
@@ -12,7 +13,10 @@ import com.mettsmirnov.mycology.particles.ModParticles;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -34,6 +38,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
+import org.jline.utils.Log;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -271,12 +276,22 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos origin)
     {
-        //this was the cause for fungi not spawning underground. FIXME
+        // This part should prevent the case when 'originBlockEntity' is null
+        // i.e. when trying to plant the mushroom on the ground
+        BlockState belowBlock = level.getBlockState(origin.below());
+        TagKey<Block> allowedBlocks = BlockTags.create(new ResourceLocation(MycologyMod.MODID,"can_plant_on"));
+        if(belowBlock.is(allowedBlocks))
+            return true;
+        //
+
+
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(origin));
         if(originBlockEntity==null)
+        {
+            Log.error("ColoredFungusBlock#canSurvive: originBlockEntity is null");
             return false;
+        }
         FungusDataModel thisFungusData = originBlockEntity.getFungusData();
-        BlockState belowBlock = level.getBlockState(origin.below());
 
         boolean matchesTerrain = thisFungusData.matchesTerrain(belowBlock);
         int light = level.getBrightness(LightLayer.SKY, origin);
