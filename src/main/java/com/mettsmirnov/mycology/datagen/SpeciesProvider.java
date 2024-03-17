@@ -69,7 +69,7 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0x198185)
                 .build();
 
-        speciesBuilder.createProtoSpecies("FUNGUS caelestis")
+        speciesBuilder.createDefaultSpecies("FUNGUS caelestis")
                 .type(WARPED_TYPE)
                 .colors4(0xc9f38e, 0x87cfec, 0xcaeef9, 0x8ad4f1)
                 .build();
@@ -110,7 +110,7 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0x999999)
                 .build();
 
-        speciesBuilder.createProtoSpecies("WHITE_FUNGUS")
+        speciesBuilder.createDefaultSpecies("WHITE_FUNGUS")
                 .type(WARPED_TYPE)
                 .colors4(0xfbf4e1, 0xfffdf6, 0xf3f3f3, 0xf3edd5) //FIXME I don't like it too much
                 .build();
@@ -153,7 +153,7 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //     Materials fungi     //
         /////////////////////////////
-        speciesBuilder.createProtoSpecies("Polyporus ligneus")
+        speciesBuilder.createDefaultSpecies("Polyporus ligneus")
                 .type(WARPED_TYPE)
                 .colors4(0xbba77a, 0x8d664b, 0xb38f6e, 0x4f3a2d)
                 .terrain("minecraft:logs")
@@ -170,7 +170,8 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("ANDESITE_FUNGUS")
                 .build();
 
-        speciesBuilder.createProtoSpecies("OBSIDIAN_FUNGUS")
+        speciesBuilder.createDefaultSpecies("OBSIDIAN_FUNGUS")
+                .crimsonType()
                 .colors4(0x300b5f, 0x2a1e4b, 0x36205a, 0x432e69)
                 .build();
 
@@ -380,7 +381,8 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("DYEING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.DYEING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("FERTILIZING_EFFECT_FUNGUS")
+        speciesBuilder.createDefaultSpecies("FERTILIZING_EFFECT_FUNGUS")
+                .crimsonType()
                 .colors4(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
@@ -407,7 +409,7 @@ public class SpeciesProvider implements DataProvider
         //////////////////////////////
         //  Overworld native fungi  //
         //////////////////////////////
-        speciesBuilder.createProtoSpecies("Agaricus campestris")//plains native
+        speciesBuilder.createDefaultSpecies("Agaricus campestris")//plains native
                 .type(WARPED_TYPE)
                 .colors4(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)//FIXME darker
                 .biomesSpecs(BiomesSpecs.PLAINS)
@@ -424,35 +426,38 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.NO_EFFECT)
                 .spawnType(FungusSpawn.SUNFLOWER_PLAINS)
                 .build();
-        speciesBuilder.createProtoSpecies("Leccinum versipelle") //Birch forest native
+        speciesBuilder.createDefaultSpecies("Leccinum versipelle") //Birch forest native
                 .type(WARPED_TYPE)
                 .colors4(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)//FIXME
                 .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
                 .spawnType(FungusSpawn.BIRCH_FOREST)
                 .build();
-        speciesBuilder.createProtoSpecies("Boletus edulis") //Forest native
+        speciesBuilder.createDefaultSpecies("Boletus edulis") //Forest native
+                .crimsonType()
                 .colors4(0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd)
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .spawnType(FungusSpawn.FOREST)
                 .build();
-        speciesBuilder.createProtoSpecies("Suillus granulatus")
+        speciesBuilder.createDefaultSpecies("Suillus granulatus")
                 .type(WARPED_TYPE)
                 .colors4(0xFFF7E7, 0xFFA376, 0xC47D5A, 0xD88A64)
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_PINE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_PINE_TAIGA)
                 .build();
-        speciesBuilder.createProtoSpecies("Chalciporus piperatus")//non edible
+        speciesBuilder.createDefaultSpecies("Chalciporus piperatus")//non edible
+                .crimsonType()
                 .colors4(0xFFC741, 0xAE5913, 0x64330B, 0x8E6C24)
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
                 .build();
-        speciesBuilder.createProtoSpecies("Amanita muscaria")//poisonous
+        speciesBuilder.createDefaultSpecies("Amanita muscaria")//poisonous
                 .type(WARPED_TYPE)
                 .colors4(0xFFFCD9, 0xFF521E, 0xFFFFFF, 0xFFB171)
                 .biomesSpecs(BiomesSpecs.JUNGLE)
                 .spawnType(FungusSpawn.JUNGLE)
                 .build();
-        speciesBuilder.createProtoSpecies("Amanita phalloides")
+        speciesBuilder.createDefaultSpecies("Amanita phalloides")
+                .crimsonType()
                 .colors4(0xffdb94, 0xc71c12, 0xe8e8e8, 0xF2F2F2)
                 .biomesSpecs(BiomesSpecs.SWAMP)
                 .spawnType(FungusSpawn.SWAMP)
@@ -462,7 +467,8 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.MEADOW)
                 .spawnType(FungusSpawn.MEADOW)
                 .build();
-        speciesBuilder.createProtoSpecies("Boletellus caeruleus")//flower forest native
+        speciesBuilder.createDefaultSpecies("Boletellus caeruleus")//flower forest native
+                .crimsonType()
                 .colors4(0xF6DFB5, 0x4f94ee, 0xF6DFB5, 0xfff7e9)
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .spawnType(FungusSpawn.FLOWER_FOREST)
@@ -472,23 +478,26 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
                 .build();
-        speciesBuilder.createProtoSpecies("Bolbitius profundorum")//fungus found in caves
+        speciesBuilder.createDefaultSpecies("Bolbitius profundorum")//fungus found in caves
                 .type(CRIMSON_TYPE)
                 .colors4(0x8c909c, 0x94989C, 0x3f4045, 0x2b2d31)
-                .spawnType(FungusSpawn.CAVES)
+                .spawnType(null)
+                .light(3)
                 .terrain("mycologymod:deepslate")
                 .build();
         /////////////////////////////
         //   Nether native fungi   //
         /////////////////////////////
-        speciesBuilder.createProtoSpecies("Chalciporus infernalis")//nether wastes native
+        speciesBuilder.createDefaultSpecies("Chalciporus infernalis")//nether wastes native
+                .crimsonType()
                 .colors4(0xb5917a, 0xEE2E3D, 0xff6500, 0xffa468)
                 .terrain("minecraft:netherrack")
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.NETHER_WASTES)
                 .build();
 
-        speciesBuilder.createProtoSpecies("Agaricus animi")//soul sand valley native
+        speciesBuilder.createDefaultSpecies("Agaricus animi")//soul sand valley native
+                .crimsonType()
                 .colors4(0x7b929c, 0x796251, 0x614e43, 0x887265)
                 .terrain("minecraft:soul_fire_base_blocks")
                 .biomesSpecs(BiomesSpecs.NETHER)
@@ -497,12 +506,14 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////
         //      DEV fungi      //
         /////////////////////////
-        speciesBuilder.createProtoSpecies("DEV_FUNGUS")
+        speciesBuilder.createDefaultSpecies("DEV_FUNGUS")
+                .crimsonType()
                 .colors4(0x5567E5, 0x9F55B5, 0xBF5DAF, 0xD32BD9)
                 .areaEffect(FungusEffects.DEV_TEST_EFFECT)
                 .areaRadius(2)
                 .build();
-        speciesBuilder.createProtoSpecies("TNT_FUNGUS")
+        speciesBuilder.createDefaultSpecies("TNT_FUNGUS")
+                .crimsonType()
                 .colors4(0xc72e25, 0xc72e25, 0xe8e8e8, 0x303030)
                 .areaEffect(FungusEffects.TNT_EFFECT)
                 .areaRadius(4)
