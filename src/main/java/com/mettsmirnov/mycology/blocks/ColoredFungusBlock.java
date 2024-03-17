@@ -298,6 +298,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         float temperature = level.getBiome(origin).get().getModifiedClimateSettings().temperature();
         float humidity = level.getBiome(origin).get().getModifiedClimateSettings().downfall();
         boolean matchesEnv = thisFungusData.matchesEnvironment(light, temperature, humidity);
-        return matchesTerrain;
+        return thisFungusData.matchesEnvironmentAndTerrain(light, temperature, humidity, belowBlock);
     }
 }
