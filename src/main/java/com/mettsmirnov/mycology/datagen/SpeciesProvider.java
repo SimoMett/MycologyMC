@@ -312,7 +312,6 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("Tricholomopsis evanescens")
                 .type(CRIMSON_TYPE)
-                .setRecessive()
                 .colors4(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
                 .terrain("mycologymod:endstone")
                 .build();

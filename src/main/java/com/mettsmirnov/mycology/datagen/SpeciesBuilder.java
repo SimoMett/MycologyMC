@@ -31,7 +31,6 @@ public class SpeciesBuilder
     //Traits
     private String speciesName;
     private String type;
-    private boolean isDominant;
     private int[] colors;
     private int spreading;
     private float spreadBoost;
@@ -57,7 +56,6 @@ public class SpeciesBuilder
     public SpeciesBuilder createDefaultSpecies(String speciesName)
     {
         this.speciesName = speciesName;
-        this.setDominant();
         this.spreading = 25;
         this.spreadBoost = 1.0f;
         this.light = 15;
@@ -91,18 +89,6 @@ public class SpeciesBuilder
     public SpeciesBuilder crimsonType()
     {
         this.type = CRIMSON_TYPE;
-        return this;
-    }
-
-    public SpeciesBuilder setDominant()
-    {
-        this.isDominant = true;
-        return this;
-    }
-
-    public SpeciesBuilder setRecessive()
-    {
-        this.isDominant = false;
         return this;
     }
 
@@ -172,7 +158,6 @@ public class SpeciesBuilder
         JsonObject fungusJson = new JsonObject();
         fungusJson.addProperty("species",speciesName);
         fungusJson.addProperty("type",type);
-        fungusJson.addProperty("dominant", isDominant);
         JsonArray jsonColors = new JsonArray();
         for(int i = 0; i<4; i++)
             jsonColors.add(colors[i]);
