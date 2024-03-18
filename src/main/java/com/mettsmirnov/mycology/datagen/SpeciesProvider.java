@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static com.mettsmirnov.mycology.datagen.SpeciesBuilder.CRIMSON_TYPE;
-import static com.mettsmirnov.mycology.datagen.SpeciesBuilder.WARPED_TYPE;
-
 public class SpeciesProvider implements DataProvider
 {
     private final DataGenerator generator;
@@ -29,7 +26,7 @@ public class SpeciesProvider implements DataProvider
         List<CompletableFuture<?>> list = new ArrayList<>();
         SpeciesBuilder speciesBuilder = new SpeciesBuilder(this.generator, hashCache, list);
         speciesBuilder.createSpecies("Boletus salubrium")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0xC176C0, 0x95778C, 0xD01B05, 0xB99AA7)
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -47,7 +44,7 @@ public class SpeciesProvider implements DataProvider
         //      Colors fungi       //
         /////////////////////////////
         speciesBuilder.createSpecies("Amanita rubra")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0xFFFFCC, 0xC41717, 0xF2F2F2, 0xF2F2F2)
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -72,12 +69,12 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies("FUNGUS caelestis")
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xc9f38e, 0x87cfec, 0xcaeef9, 0x8ad4f1)
                 .build();
 
         speciesBuilder.createSpecies("Ovulus violaceus")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0xAA48FB, 0x9c133f, 0xA23F19, 0xE105EF)
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -114,7 +111,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies("WHITE_FUNGUS")
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xfbf4e1, 0xfffdf6, 0xf3f3f3, 0xf3edd5) //FIXME I don't like it too much
                 .build();
 
@@ -126,7 +123,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createSpecies("Noble boletus squisitus")// derived from "boletus edulis"
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0xFFE6D8, 0x907068, 0xBE8C85, 0xFFE4E2)
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -143,7 +140,7 @@ public class SpeciesProvider implements DataProvider
 
         //Wither fungus
         speciesBuilder.createDefaultSpecies("Sarcosphaera arescens")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
                 .terrain("mycologymod:nether")
                 .areaEffect(FungusEffects.WITHERING_EFFECT)
@@ -157,7 +154,7 @@ public class SpeciesProvider implements DataProvider
         //     Materials fungi     //
         /////////////////////////////
         speciesBuilder.createDefaultSpecies("Polyporus ligneus")
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xbba77a, 0x8d664b, 0xb38f6e, 0x4f3a2d)
                 .terrain("minecraft:logs")
                 .areaRadius(7)
@@ -211,37 +208,37 @@ public class SpeciesProvider implements DataProvider
         //      Mineral fungi      //
         /////////////////////////////
         speciesBuilder.createDefaultSpecies("Leccinum carbonis")
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xa19b88, 0x8a8a8a, 0x383838, 0x2e2e2e)
                 .terrain("minecraft:coal_ores")
                 .build();
 
         speciesBuilder.createDefaultSpecies("EMERALD_FUNGUS")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0, 0, 0, 0)
                 .terrain("minecraft:emerald_ores")
                 .build();
 
         speciesBuilder.createDefaultSpecies("GLOWSTONE_FUNGUS")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd)
                 .terrain("mycologymod:nether")
                 .build();
 
         speciesBuilder.createDefaultSpecies("Galerina aurata") //Gold
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xeed484, 0xFF9900, 0xFFDD36, 0xffe56b)
                 .terrain("minecraft:gold_ores")
                 .build();
 
         speciesBuilder.createDefaultSpecies("Bolbitius silex") //Quartz
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0, 0, 0, 0)
                 .terrain("mycologymod:quartz_ores")
                 .build();
 
         speciesBuilder.createSpecies("Russula lazula") //Lapislazuli
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xffffcc, 0x837672, 0x183679, 0x2653b9)
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -253,19 +250,19 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies("Russula concitata")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0xFFF9EE, 0x760a00, 0x730000, 0xda0000)
                 .terrain("minecraft:redstone_ores")
                 .build();
 
         speciesBuilder.createDefaultSpecies("Amanita cuprea") //Copper
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xbb9173, 0xe8693d, 0x208068, 0x20a387)
                 .terrain("minecraft:copper_ores")
                 .build();
 
         speciesBuilder.createDefaultSpecies("Xerocomus ferrugineus")
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xffffcc, 0x95867e, 0xC0997F, 0xFBD3B8)
                 .terrain("minecraft:iron_ores")
                 .build();
@@ -275,44 +272,44 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies("DIAMOND_FUNGUS")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0, 0, 0, 0)
                 .terrain("minecraft:diamond_ores")
                 .build();
 
         speciesBuilder.createDefaultSpecies("EXPERIENCE_FUNGUS")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0x87CFEC, 0x2d81e2, 0x398D4C, 0xB4DF57)
                 .areaEffect(FungusEffects.EXPORBS_EFFECT)
                 .build();
 
         speciesBuilder.createDefaultSpecies("BLAZE_FUNGUS")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0xFF7B00, 0xFF9900, 0xFFDD36, 0xFFFF73)
                 .areaEffect(FungusEffects.BLAZING_EFFECT)
                 .terrain("mycologymod:nether_bricks")
                 .build();
 
         speciesBuilder.createDefaultSpecies("Polyporus antiquus")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0x52362F, 0x52362F, 0x29130D, 0x52362F)
                 .terrain("mycologymod:netherite")
                 .build();
 
         speciesBuilder.createDefaultSpecies("NETHERITE_FUNGUS")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0x7b716d, 0x48413c, 0x272624, 0x4a484a)
                 .terrain("mycologymod:netherite")
                 .build();
 
         speciesBuilder.createDefaultSpecies("END_FUNGUS")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
                 .terrain("mycologymod:endstone")
                 .build();
 
         speciesBuilder.createDefaultSpecies("Tricholomopsis evanescens")
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
                 .terrain("mycologymod:endstone")
                 .build();
@@ -412,13 +409,13 @@ public class SpeciesProvider implements DataProvider
         //  Overworld native fungi  //
         //////////////////////////////
         speciesBuilder.createDefaultSpecies("Agaricus campestris")//plains native
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)//FIXME darker
                 .biomesSpecs(BiomesSpecs.PLAINS)
                 .spawnType(FungusSpawn.PLAINS)
                 .build();
         speciesBuilder.createSpecies("Lactarius viridis")//sunflower plains native
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4( 0xBF98BF, 0x6bb83c, 0x99110F, 0xF502D3)//FIXME
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -429,7 +426,7 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.SUNFLOWER_PLAINS)
                 .build();
         speciesBuilder.createDefaultSpecies("Leccinum versipelle") //Birch forest native
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)//FIXME
                 .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
                 .spawnType(FungusSpawn.BIRCH_FOREST)
@@ -441,7 +438,7 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.FOREST)
                 .build();
         speciesBuilder.createDefaultSpecies("Suillus granulatus")
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xFFF7E7, 0xFFA376, 0xC47D5A, 0xD88A64)
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_PINE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_PINE_TAIGA)
@@ -453,7 +450,7 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
                 .build();
         speciesBuilder.createDefaultSpecies("Amanita muscaria")//poisonous
-                .type(WARPED_TYPE)
+                .warpedType()
                 .colors4(0xFFFCD9, 0xFF521E, 0xFFFFFF, 0xFFB171)
                 .biomesSpecs(BiomesSpecs.JUNGLE)
                 .spawnType(FungusSpawn.JUNGLE)
@@ -481,7 +478,7 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
                 .build();
         speciesBuilder.createDefaultSpecies("Bolbitius profundorum")//fungus found in caves
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0x8c909c, 0x94989C, 0x3f4045, 0x2b2d31)
                 .spawnType(null)
                 .light(3)
