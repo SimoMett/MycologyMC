@@ -37,6 +37,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain("mycologymod:grass")
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.HEALING_EFFECT)
+                .areaRadius(3)
                 .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
         speciesBuilder.createProtoSpecies("GREEN_FUNGUS_2")
