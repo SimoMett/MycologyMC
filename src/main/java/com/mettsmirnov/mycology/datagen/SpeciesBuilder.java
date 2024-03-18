@@ -11,6 +11,7 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.server.packs.PackType;
+import org.jline.utils.Log;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -31,13 +32,13 @@ public class SpeciesBuilder
     //Traits
     private String speciesName;
     private String type;
-    private int[] colors;
-    private int spreading;
-    private float spreadBoost;
-    private int light;
+    private Integer[] colors;
+    private Integer spreading;
+    private Float spreadBoost;
+    private Integer light;
     private String terrain;
     private BiomesSpecs biomesSpecs;
-    private int areaRadius = 3;
+    private Integer areaRadius;
     private FungusEffect areaEffect;
     private FungusSpawn spawnInfo;
 
@@ -53,6 +54,7 @@ public class SpeciesBuilder
         return this;
     }
 
+    private static final int DEFAULT_AREA_RADIUS = 3;
     public SpeciesBuilder createDefaultSpecies(String speciesName)
     {
         this.speciesName = speciesName;
@@ -62,6 +64,7 @@ public class SpeciesBuilder
         this.terrain = "mycologymod:grass";
         this.biomesSpecs = BiomesSpecs.FOREST;
         this.areaEffect = FungusEffects.NO_EFFECT;
+        this.areaRadius = DEFAULT_AREA_RADIUS;
         this.spawnInfo = FungusSpawn.NO_SPAWN;
         return this;
     }
@@ -94,13 +97,13 @@ public class SpeciesBuilder
 
     public SpeciesBuilder colors4(int color1, int color2, int color3, int color4)
     {
-        this.colors = new int[]{color1, color2, color3, color4};
+        this.colors = new Integer[]{color1, color2, color3, color4};
         return this;
     }
 
     public SpeciesBuilder colors1(int color)
     {
-        this.colors = new int[]{color, color, color, color};
+        this.colors = new Integer[]{color, color, color, color};
         return this;
     }
 
@@ -143,6 +146,8 @@ public class SpeciesBuilder
     public SpeciesBuilder areaEffect(FungusEffect areaEffect)
     {
         this.areaEffect = areaEffect;
+        if(areaEffect.equals(FungusEffects.NO_EFFECT))
+            this.areaRadius = DEFAULT_AREA_RADIUS;
         return this;
     }
 
@@ -152,8 +157,36 @@ public class SpeciesBuilder
         return this;
     }
 
+    private static void manageException(String message)
+    {
+        //throw new NullPointerException(message);
+        Log.error(message);
+    }
+
     public void build()
     {
+        //FIXME is there a better way of doing this?
+        if(speciesName==null)
+            throw new NullPointerException("SpeciesBuilder: 'speciesName' is null");
+        if(type==null)
+            throw new NullPointerException("SpeciesBuilder: 'type' attribute of '"+speciesName+"' is null");
+        if(colors==null)
+            throw new NullPointerException("SpeciesBuilder: 'colors' attribute of '"+speciesName+"' is null");
+        if(spreading==null)
+            manageException("SpeciesBuilder: 'spreading' attribute of '"+speciesName+"' is null");
+        if(spreadBoost==null)
+            manageException("SpeciesBuilder: 'spreadBoost' attribute of '"+speciesName+"' is null");
+        if(light==null)
+            manageException("SpeciesBuilder: 'light' attribute of '"+speciesName+"' is null");
+        if(terrain==null)
+            manageException("SpeciesBuilder: 'terrain' attribute of '"+speciesName+"' is null");
+        if(biomesSpecs==null)
+            manageException("SpeciesBuilder: 'biomesSpecs' attribute of '"+speciesName+"' is null");
+        if(areaRadius==null)
+            manageException("SpeciesBuilder: 'areaRadius' attribute of '"+speciesName+"' is null");
+        if(areaEffect==null)
+            manageException("SpeciesBuilder: 'areaEffect' attribute of '"+speciesName+"' is null");
+
         //IMPORTANT TODO: sanitize speciesName string
         JsonObject fungusJson = new JsonObject();
         fungusJson.addProperty("species",speciesName);
@@ -182,5 +215,18 @@ public class SpeciesBuilder
         Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", jsonFileName));
 
         this.completableFutureList.add(DataProvider.saveStable(this.hashCache,fungusJson,jsonLocation));
+
+        //reset all variable
+        speciesName = null;
+        type = null;
+        colors = null;
+        spreading = null;
+        spreadBoost = null;
+        light = null;
+        terrain = null;
+        biomesSpecs = null;
+        areaRadius = null;
+        areaEffect = null;
+        spawnInfo = null;
     }
 }
