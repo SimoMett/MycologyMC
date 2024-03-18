@@ -61,7 +61,8 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0xff8701)
                 .build();
 
-        speciesBuilder.createProtoSpecies("LIME_FUNGUS")
+        speciesBuilder.createDefaultSpecies("LIME_FUNGUS")
+                .warpedType()
                 .colors1(0x67ff32)
                 .build();
 
@@ -86,7 +87,8 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
 
-        speciesBuilder.createProtoSpecies("MAGENTA_FUNGUS")
+        speciesBuilder.createDefaultSpecies("MAGENTA_FUNGUS")
+                .crimsonType()
                 .colors1(0xff44de)
                 .build();
 
