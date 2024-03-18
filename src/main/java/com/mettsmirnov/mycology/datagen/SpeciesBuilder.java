@@ -73,10 +73,11 @@ public class SpeciesBuilder
     public SpeciesBuilder createProtoSpecies(String speciesName)
     {
         return createDefaultSpecies(speciesName)
-                .type(CRIMSON_TYPE)
+                .crimsonType()
                 .colors4(0, 0, 0, 0);
     }
 
+    @Deprecated(forRemoval = true)
     public SpeciesBuilder type(String type)
     {
         this.type = type;
