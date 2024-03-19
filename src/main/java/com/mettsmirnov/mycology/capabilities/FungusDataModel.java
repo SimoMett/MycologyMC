@@ -43,7 +43,6 @@ public class FungusDataModel implements IFungusData
     {
         dominantTraits=new HashMap<>();
         dominantTraits.put("species","Boletus salubrium");
-        //dominantTraits.put("isDominant", true); //maybe useless
         dominantTraits.put("spreading", 25);
         dominantTraits.put("spreadboost", 1f);
         dominantTraits.put("light", 15);

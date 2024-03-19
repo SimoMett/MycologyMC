@@ -40,7 +40,6 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
     {
         FungusTraits defaultTraits = new FungusTraits();
         defaultTraits.species=obj.get("species").getAsString();
-        defaultTraits.isDominant=obj.get("dominant").getAsBoolean();
         defaultTraits.spreading=obj.get("spreading").getAsInt();
         defaultTraits.spreadboost=obj.get("spreadboost").getAsFloat();
         defaultTraits.light=obj.get("light").getAsInt();
