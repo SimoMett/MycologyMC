@@ -233,7 +233,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("Bolbitius silex") //Quartz
                 .crimsonType()
-                .colors4(0, 0, 0, 0)
+                .colors4(0xc83825, 0xfff1eb, 0xe0dcda, 0xffffff)
                 .terrain("mycologymod:quartz_ores")
                 .build();
 
