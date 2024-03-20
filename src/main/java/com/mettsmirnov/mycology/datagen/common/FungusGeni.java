@@ -21,4 +21,5 @@ public class FungusGeni
     public static String XEROCOMUS = "Xerocomus"; //(commestibile)
     public static String BOLBITIUS = "Bolbitius"; //(non commestibile)
     public static String SARCOSPHAERA = "Sarcosphaera";
+    public static String HYGROPHORUS = "Hygrophorus";
 }

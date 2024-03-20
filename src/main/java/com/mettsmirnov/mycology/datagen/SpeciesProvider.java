@@ -450,7 +450,7 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
                 .build();
-        speciesBuilder.createDefaultSpecies("SNOW_FUNGUS")
+        speciesBuilder.createDefaultSpecies("Hygrophorus niveus")
                 .crimsonType()
                 .colors4(0x6c4026 ,0xd5eeff, 0xd4e3ec, 0xffffff)
                 .biomesSpecs(BiomesSpecs.SNOWY_TAIGA)
