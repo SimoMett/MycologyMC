@@ -187,9 +187,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain("minecraft:terracotta")
                 .build();
 
-        speciesBuilder.createProtoSpecies("SNOW_FUNGUS")
-                .build();
-
         speciesBuilder.createProtoSpecies("PRISMARINE_FUNGUS")
                 .terrain("mycologymod:prismarine")
                 .build();
@@ -452,6 +449,12 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xFFC741, 0xAE5913, 0x64330B, 0x8E6C24)
                 .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
                 .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
+                .build();
+        speciesBuilder.createDefaultSpecies("SNOW_FUNGUS")
+                .crimsonType()
+                .colors4(0x6c4026 ,0xd5eeff, 0xd4e3ec, 0xffffff)
+                .biomesSpecs(BiomesSpecs.SNOWY_TAIGA)
+                .spawnType(FungusSpawn.SNOWY_TAIGA)
                 .build();
         speciesBuilder.createDefaultSpecies("Amanita muscaria")//poisonous
                 .warpedType()
