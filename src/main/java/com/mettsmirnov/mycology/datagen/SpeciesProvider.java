@@ -267,8 +267,12 @@ public class SpeciesProvider implements DataProvider
                 .terrain("minecraft:iron_ores")
                 .build();
 
-        speciesBuilder.createProtoSpecies("AMETHYST_FUNGUS")
+        speciesBuilder.createDefaultSpecies("AMETHYST_FUNGUS")
+                .crimsonType()
+                .colors4(0xfad2d4, 0xae80ff, 0xba8ed6, 0xf6c3da)
                 .terrain("mycologymod:amethyst")
+                .areaEffect(FungusEffects.BUDDING_EFFECT)
+                .areaRadius(4)
                 .build();
 
         speciesBuilder.createDefaultSpecies("DIAMOND_FUNGUS")

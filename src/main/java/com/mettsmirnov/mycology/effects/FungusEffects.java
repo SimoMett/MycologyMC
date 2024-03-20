@@ -121,6 +121,7 @@ public class FungusEffects
                 lvl.setBlock(randomPos.below(), Blocks.PODZOL.defaultBlockState(), 2);
         }
     });
+    public static final FungusEffect BUDDING_EFFECT = new TransmuteBlockEffect("budding", Blocks.AMETHYST_BLOCK, Blocks.BUDDING_AMETHYST);
     //entities spawn
     public static final FungusEffect UNDEAD_EFFECT = new SpawnEntityEffect("undead", Zombie::new);
     public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
