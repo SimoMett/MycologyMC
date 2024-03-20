@@ -178,8 +178,9 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("BASALT_FUNGUS")
                 .build();
 
-        speciesBuilder.createProtoSpecies("CLAY_FUNGUS")
+        speciesBuilder.createDefaultSpecies("CLAY_FUNGUS")
                 .warpedType()
+                .colors4(0xffdbb2, 0xb2c5ff, 0x8896c3, 0xadbfee)
                 .terrain("mycologymod:clay")
                 .build();
 
