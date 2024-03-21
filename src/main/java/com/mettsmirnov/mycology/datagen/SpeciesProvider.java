@@ -184,9 +184,9 @@ public class SpeciesProvider implements DataProvider
                 .terrain("mycologymod:clay")
                 .build();
 
-        speciesBuilder.createProtoSpecies("TERRACOTTA_FUNGUS")
+        /*speciesBuilder.createProtoSpecies("TERRACOTTA_FUNGUS")
                 .terrain("minecraft:terracotta")
-                .build();
+                .build();*/
 
         speciesBuilder.createProtoSpecies("PRISMARINE_FUNGUS")
                 .terrain("mycologymod:prismarine")
