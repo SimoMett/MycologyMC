@@ -480,7 +480,12 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .spawnType(FungusSpawn.FLOWER_FOREST)
                 .build();
-        speciesBuilder.createProtoSpecies("RARE_MUSHROOM_FIELDS_NATIVE")
+        speciesBuilder.createDefaultSpecies("Lactarius proleferens")
+                .warpedType()
+                //.colors1(0x81696b)
+                //.colors4(0x81696b, 0x81696b, 0x933c3e, 0x81696b)
+                .colors4(0x81696b, 0x933c3e, 0x933c3e, 0xd28d77)
+                //.colors4(0x81696b, 0xbfab77, 0xbfab77, 0xbfab77)
                 .areaEffect(FungusEffects.SPORING_EFFECT)
                 .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
@@ -488,7 +493,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies("Bolbitius profundorum")//fungus found in caves
                 .crimsonType()
                 .colors4(0x8c909c, 0x94989C, 0x3f4045, 0x2b2d31)
-                .spawnType(null)
+                .spawnType(FungusSpawn.NO_SPAWN)
                 .light(3)
                 .terrain("mycologymod:deepslate")
                 .build();

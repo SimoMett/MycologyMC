@@ -2,7 +2,6 @@ package com.mettsmirnov.mycology.datagen.common;
 
 public class FungusGeni
 {
-    //Warped fungus style
     public static String AMANITA = "Amanita"; //(velenoso)
     public static String CHALCIPORUS = "Chalciporus"; //(porcino pepato, commestibile)
     public static String GALERINA = "Galerina"; //(galerina marginata, velenoso)
@@ -11,8 +10,6 @@ public class FungusGeni
     public static String RUSSULA = "Russula";//(rossola, commestibile o neutro)
     public static String SUILLUS = "Suillus"; //(Pinaroli, commestibili)
     public static String POLYPORUS = "Polyporus"; //(Polipori, funghi legnosi)
-
-    //Crimson fungus style
     public static String AGARICUS = "Agaricus"; //(Champignon, prataioli)
     public static String BOLETELLUS = "Boletellus"; //
     public static String BOLETUS = "Boletus"; //(porcini, commestibile o velenoso)
