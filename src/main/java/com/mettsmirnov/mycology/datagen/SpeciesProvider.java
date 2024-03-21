@@ -178,14 +178,15 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("BASALT_FUNGUS")
                 .build();
 
-        speciesBuilder.createProtoSpecies("CLAY_FUNGUS")
+        speciesBuilder.createDefaultSpecies("CLAY_FUNGUS")
                 .warpedType()
+                .colors4(0xffdbb2, 0xb2c5ff, 0x8896c3, 0xadbfee)
                 .terrain("mycologymod:clay")
                 .build();
 
-        speciesBuilder.createProtoSpecies("TERRACOTTA_FUNGUS")
+        /*speciesBuilder.createProtoSpecies("TERRACOTTA_FUNGUS")
                 .terrain("minecraft:terracotta")
-                .build();
+                .build();*/
 
         speciesBuilder.createProtoSpecies("PRISMARINE_FUNGUS")
                 .terrain("mycologymod:prismarine")
