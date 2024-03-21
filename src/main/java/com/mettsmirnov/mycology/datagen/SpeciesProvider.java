@@ -274,7 +274,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("DIAMOND_FUNGUS")
                 .crimsonType()
-                .colors4(0, 0, 0, 0)
+                .colors4(0x848d9b, 0x5d636f, 0x21202a, 0x00ecff)
                 .terrain("minecraft:diamond_ores")
                 .build();
 
