@@ -28,16 +28,16 @@ public class MutationsProvider implements DataProvider
     {
         /* Everything starts from the natives species:
         *
-        * - Agaricus campestris         (plains)
-        * - Lactarius viridis           (sunflower plains)
-        * - Leccinum versipelle         (birch forest)
-        * - Boletus edulis              (forest)
-        * - Suillus granulatus          (old growth pine taiga)
-        * - Chalciporus piperatus       (old growth spruce taiga)
-        * - Amanita muscaria            (jungle)
-        * - YELLOW_FUNGUS               (meadow)
-        * - BLUE_FUNGUS                 (flower forest)
-        * - RARE_MUSHROOM_FIELDS_NATIVE (mushroom fields)
+        * - Agaricus campestris     (plains)
+        * - Lactarius viridis       (sunflower plains)
+        * - Leccinum versipelle     (birch forest)
+        * - Boletus edulis          (forest)
+        * - Suillus granulatus      (old growth pine taiga)
+        * - Chalciporus piperatus   (old growth spruce taiga)
+        * - Amanita muscaria        (jungle)
+        * - YELLOW_FUNGUS           (meadow)
+        * - BLUE_FUNGUS             (flower forest)
+        * - Lactarius proleferens   (mushroom fields)
         *
         * Rule #1: Cross-breeding between Warped fungi can only generate Warped fungi.
         *           Cross-breeding between Crimson fungi can only generate Crimson fungi.
@@ -57,15 +57,18 @@ public class MutationsProvider implements DataProvider
         addMutation("Amanita rubra", "YELLOW_FUNGUS", "ORANGE_FUNGUS", cachedOutput);
 
         addMutation("Boletus edulis", "Suillus granulatus", "Polyporus ligneus", cachedOutput);
-        addMutation("DEEPSLATE_SUSTAINED_FUNGUS","Polyporus ligneus","COAL_FUNGUS", cachedOutput);
-        addMutation("DEEPSLATE_SUSTAINED_FUNGUS","COAL_FUNGUS","Xerocomus ferrugineus", cachedOutput);
-
+        addMutation("Bolbitius profundorum","Polyporus ligneus","COAL_FUNGUS", cachedOutput);
+        addMutation("Bolbitius profundorum","COAL_FUNGUS","Xerocomus ferrugineus", cachedOutput);
+        addMutation("Bolbitius profundorum", "DIORITE_FUNGUS", "CALCITE_FUNGUS", cachedOutput);
+        addMutation("Russula concitata", "Russula lazula", "AMETHYST_FUNGUS", cachedOutput);
+        addMutation("AMETHYST_FUNGUS", "Chalciporus infernalis", "Bolbitius silex", cachedOutput);
         addMutation("Galerina aurata", "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
 
         //TODO possible mutations
         addMutation("BONEBLOCK_SUSTAINED_FUNGUS", "???", "FERTILIZING_EFFECT_FUNGUS", cachedOutput);
         addMutation("Boletus edulis", "???", "Noble boletus squisitus", cachedOutput);
-        addMutation("AMETHYST_FUNGUS", "???", "Bolbitius silex", cachedOutput);
+        addMutation("???", "Russula lazula", "EXPERIENCE_FUNGUS", cachedOutput);
+        addMutation("CALCITE_FUNGUS", "CLAY_FUNGUS", "Russula lazula", cachedOutput);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 

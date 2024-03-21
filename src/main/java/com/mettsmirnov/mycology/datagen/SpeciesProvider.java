@@ -205,6 +205,9 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //      Mineral fungi      //
         /////////////////////////////
+        speciesBuilder.createProtoSpecies("CALCITE_FUNGUS")
+                .build();
+
         speciesBuilder.createDefaultSpecies("Leccinum carbonis")
                 .warpedType()
                 .colors4(0xa19b88, 0x8a8a8a, 0x383838, 0x2e2e2e)
