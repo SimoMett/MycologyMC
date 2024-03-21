@@ -487,6 +487,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0x81696b, 0x933c3e, 0x933c3e, 0xd28d77)
                 //.colors4(0x81696b, 0xbfab77, 0xbfab77, 0xbfab77)
                 .areaEffect(FungusEffects.SPORING_EFFECT)
+                .areaRadius(4)
                 .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
                 .build();
