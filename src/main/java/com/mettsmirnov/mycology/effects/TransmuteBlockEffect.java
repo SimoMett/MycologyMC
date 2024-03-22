@@ -57,14 +57,14 @@ public class TransmuteBlockEffect extends FungusEffect
         if(originBlock != null)
         {
             pList2 = pList.stream()
-                    .filter(p -> p.distSqr(origin) <= box.getSize() / 2.0f)
+                    .filter(p -> p.distSqr(origin) <= radius)
                     .filter(p -> level.getBlockState(p).is(originBlock))
                     .toList();
         }
         else
         {
             pList2 = pList.stream()
-                    .filter(p -> p.distSqr(origin) <= box.getSize() / 2.0f)
+                    .filter(p -> p.distSqr(origin) <= radius)
                     .filter(p -> level.getBlockState(p).is(originalBlocks))
                     .toList();
         }
