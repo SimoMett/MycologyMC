@@ -122,6 +122,11 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("Laccaria dulcis") // or "Amanita dulcis"
                 .build();
 
+        speciesBuilder.createDefaultSpecies("Lactarius deliciosus")
+                .warpedType()
+                .colors4(0xffc2a5, 0xff9e76, 0xc47959, 0xd86b63)
+                .build();
+
         speciesBuilder.createSpecies("Noble boletus squisitus")// derived from "boletus edulis"
                 .crimsonType()
                 .colors4(0xFFE6D8, 0x907068, 0xBE8C85, 0xFFE4E2)
