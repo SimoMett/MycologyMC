@@ -165,6 +165,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createProtoSpecies("DIORITE_FUNGUS")
+                .crimsonType()
                 .build();
 
         speciesBuilder.createProtoSpecies("ANDESITE_FUNGUS")
@@ -206,6 +207,7 @@ public class SpeciesProvider implements DataProvider
         //      Mineral fungi      //
         /////////////////////////////
         speciesBuilder.createProtoSpecies("CALCITE_FUNGUS")
+                .crimsonType()
                 .build();
 
         speciesBuilder.createDefaultSpecies("Leccinum carbonis")
@@ -533,6 +535,11 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xc72e25, 0xc72e25, 0xe8e8e8, 0x303030)
                 .areaEffect(FungusEffects.TNT_EFFECT)
                 .areaRadius(4)
+                .build();
+        speciesBuilder.createProtoSpecies("FREEZING_FUNGUS")
+                .colors1(0x008fff)
+                .areaEffect(FungusEffects.FREEZING_EFFECT)
+                .areaRadius(8)
                 .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }

@@ -59,17 +59,19 @@ public class MutationsProvider implements DataProvider
         addMutation("Boletus edulis", "Suillus granulatus", "Polyporus ligneus", cachedOutput);
         addMutation("Bolbitius profundorum","Polyporus ligneus","COAL_FUNGUS", cachedOutput);
         addMutation("Bolbitius profundorum","COAL_FUNGUS","Xerocomus ferrugineus", cachedOutput);
+        addMutation("Bolbitius profundorum", "Hygrophorus niveus", "DIORITE_FUNGUS", cachedOutput);
         addMutation("Bolbitius profundorum", "DIORITE_FUNGUS", "CALCITE_FUNGUS", cachedOutput);
         addMutation("Russula concitata", "Russula lazula", "AMETHYST_FUNGUS", cachedOutput);
         addMutation("AMETHYST_FUNGUS", "Chalciporus infernalis", "Bolbitius silex", cachedOutput);
         addMutation("Galerina aurata", "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
         addMutation("CALCITE_FUNGUS", "CLAY_FUNGUS", "Russula lazula", cachedOutput);
 
+        addMutation("Hygrophorus niveus", "Noble boletus squisitus", "FREEZING_FUNGUS", cachedOutput);
+
         //TODO possible mutations
         addMutation("BONEBLOCK_SUSTAINED_FUNGUS", "???", "FERTILIZING_EFFECT_FUNGUS", cachedOutput);
         addMutation("Boletus edulis", "???", "Noble boletus squisitus", cachedOutput);
         addMutation("???", "Russula lazula", "EXPERIENCE_FUNGUS", cachedOutput);
-        addMutation("Bolbitius profundorum", "???", "DIORITE_FUNGUS", cachedOutput);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 
