@@ -119,12 +119,14 @@ public class SpeciesProvider implements DataProvider
         //      Edible fungi       //
         /////////////////////////////
         //Sugar fungus
-        speciesBuilder.createProtoSpecies("Laccaria dulcis") // or "Amanita dulcis"
+        speciesBuilder.createDefaultSpecies("Laccaria dulcis")
+                .warpedType()
+                .colors4(0x97634a, 0x7695ff, 0xcdd7ff, 0x9aa8ff)
                 .build();
 
         speciesBuilder.createDefaultSpecies("Lactarius deliciosus")
                 .warpedType()
-                .colors4(0xffc2a5, 0xff9e76, 0xc47959, 0xd86b63)
+                .colors4(0xffc2a5, 0xff9e76, 0xe8a689, 0xd86b63)
                 .build();
 
         speciesBuilder.createSpecies("Noble boletus squisitus")// derived from "boletus edulis"
@@ -169,10 +171,6 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("GRANITE_FUNGUS")
                 .build();
 
-        speciesBuilder.createProtoSpecies("DIORITE_FUNGUS")
-                .crimsonType()
-                .build();
-
         speciesBuilder.createProtoSpecies("ANDESITE_FUNGUS")
                 .build();
 
@@ -211,8 +209,14 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //      Mineral fungi      //
         /////////////////////////////
+        speciesBuilder.createDefaultSpecies("DIORITE_FUNGUS")
+                .crimsonType()
+                .colors4(0xffb796, 0xffffff, 0xffffff, 0x8f8f8f)
+                .build();
+
         speciesBuilder.createProtoSpecies("CALCITE_FUNGUS")
                 .crimsonType()
+                .colors4(0xf8f0d5, 0xffffff, 0xffffff, 0xbbb89d)
                 .build();
 
         speciesBuilder.createDefaultSpecies("Leccinum carbonis")
@@ -223,7 +227,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies("EMERALD_FUNGUS")
                 .crimsonType()
-                .colors4(0, 0, 0, 0)
+                .colors4(0x8c909c, 0x5f6269, 0x287441, 0x96ffaa)
                 .terrain("minecraft:emerald_ores")
                 .build();
 

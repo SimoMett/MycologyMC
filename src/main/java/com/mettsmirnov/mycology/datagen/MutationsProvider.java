@@ -57,6 +57,7 @@ public class MutationsProvider implements DataProvider
         addMutation("Amanita rubra", "YELLOW_FUNGUS", "ORANGE_FUNGUS", cachedOutput);
 
         addMutation("Boletus edulis", "Suillus granulatus", "Polyporus ligneus", cachedOutput);
+        addMutation("Polyporus ligneus", "Lactarius deliciosus", "Laccaria dulcis", cachedOutput);
         addMutation("Bolbitius profundorum","Polyporus ligneus","COAL_FUNGUS", cachedOutput);
         addMutation("Bolbitius profundorum","COAL_FUNGUS","Xerocomus ferrugineus", cachedOutput);
         addMutation("Bolbitius profundorum", "Hygrophorus niveus", "DIORITE_FUNGUS", cachedOutput);
@@ -65,6 +66,7 @@ public class MutationsProvider implements DataProvider
         addMutation("AMETHYST_FUNGUS", "Chalciporus infernalis", "Bolbitius silex", cachedOutput);
         addMutation("Galerina aurata", "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
         addMutation("CALCITE_FUNGUS", "CLAY_FUNGUS", "Russula lazula", cachedOutput);
+        addMutation("Russula lazula", "Amanita cuprea", "EMERALD_FUNGUS", cachedOutput);
 
         addMutation("Hygrophorus niveus", "Noble boletus squisitus", "FREEZING_FUNGUS", cachedOutput);
 
