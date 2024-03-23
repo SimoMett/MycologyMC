@@ -246,7 +246,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createSpecies("Russula lazula") //Lapislazuli
-                .warpedType()
+                .crimsonType()
                 .colors4(0xffffcc, 0x837672, 0x183679, 0x2653b9)
                 .spreading(25)
                 .spreadBoost(1.0f)
