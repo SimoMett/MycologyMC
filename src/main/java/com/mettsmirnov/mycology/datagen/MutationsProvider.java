@@ -26,54 +26,95 @@ public class MutationsProvider implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput)
     {
-        /* Everything starts from the natives species:
-        *
-        * - Agaricus campestris     (plains)
-        * - Lactarius viridis       (sunflower plains)
-        * - Leccinum versipelle     (birch forest)
-        * - Boletus edulis          (forest)
-        * - Suillus granulatus      (old growth pine taiga)
-        * - Chalciporus piperatus   (old growth spruce taiga)
-        * - Amanita muscaria        (jungle)
-        * - YELLOW_FUNGUS           (meadow)
-        * - BLUE_FUNGUS             (flower forest)
-        * - Lactarius proleferens   (mushroom fields)
-        *
-        * Rule #1: Cross-breeding between Warped fungi can only generate Warped fungi.
-        *           Cross-breeding between Crimson fungi can only generate Crimson fungi.
+        /*
+        *   Everything starts from the natives species:
         */
-        addMutation("Amanita muscaria", "Chalciporus piperatus", "Amanita rubra", cachedOutput);
-        addMutation("Agaricus campestris", "Leccinum versipelle", "WHITE_FUNGUS", cachedOutput);
-        addMutation("Agaricus campestris", "Boletus edulis", "GREY_FUNGUS", cachedOutput);
+        //  Overworld
+        final String AGARICUS_CAMPESTRIS = "Agaricus campestris";       //(plains)
+        final String LACTARIUS_VIRIDIS = "Lactarius viridis";           //(sunflower plains)
+        final String LECCINUM_VERSIPELLE = "Leccinum versipelle";       //(birch forest)
+        final String BOLETUS_EDULIS = "Boletus edulis";                 //(forest)
+        final String SUILLUS_GRANULATUS = "Suillus granulatus";         //(old growth pine taiga)
+        final String CHALCIPORUS_PIPERATUS = "Chalciporus piperatus";   //(old growth spruce taiga)
+        final String AMANITA_MUSCARIA = "Amanita muscaria";             //(jungle)
+        final String YELLOW_FUNGUS = "YELLOW_FUNGUS";                   //(meadow)
+        final String BLUE_FUNGUS = "BLUE_FUNGUS";                       //(flower forest)
+        final String LACTARIUS_PROLEFERENS = "Lactarius proleferens";   //(mushroom fields)
+        final String HYGROPHORUS_NIVEUS = "Hygrophorus niveus";         //(snowy taiga)
 
-        addMutation("WHITE_FUNGUS", "Lactarius viridis", "LIME_FUNGUS", cachedOutput);
-        addMutation("WHITE_FUNGUS", "GREY_FUNGUS", "LIGHTGREY_FUNGUS", cachedOutput);
-        addMutation("WHITE_FUNGUS", "BLACK_FUNGUS", "GREY_FUNGUS", cachedOutput);
-        addMutation("WHITE_FUNGUS", "BLUE_FUNGUS", "LIGHTBLUE_FUNGUS", cachedOutput);
-        addMutation("WHITE_FUNGUS", "Amanita rubra", "PINK_FUNGUS", cachedOutput);
-        addMutation("BLUE_FUNGUS", "Amanita rubra", "Ovulus violaceus", cachedOutput);
-        addMutation("BLUE_FUNGUS", "Lactarius viridis", "CYAN_FUNGUS", cachedOutput);
-        addMutation("Ovulus violaceus", "PINK_FUNGUS", "MAGENTA_FUNGUS", cachedOutput);
-        addMutation("Amanita rubra", "YELLOW_FUNGUS", "ORANGE_FUNGUS", cachedOutput);
+        // Nether
+        final String AGARICUS_ANIMI = "Agaricus animi";
+        final String CHALCIPORUS_INFERNALIS = "Chalciporus infernalis";
+        /*
+        *   Rule #1: Cross-breeding between Warped fungi can only generate Warped fungi.
+        *               Cross-breeding between Crimson fungi can only generate Crimson fungi.
+        */
 
-        addMutation("Boletus edulis", "Suillus granulatus", "Polyporus ligneus", cachedOutput);
-        addMutation("Polyporus ligneus", "Lactarius deliciosus", "Laccaria dulcis", cachedOutput);
-        addMutation("Bolbitius profundorum","Polyporus ligneus","COAL_FUNGUS", cachedOutput);
-        addMutation("Bolbitius profundorum","COAL_FUNGUS","Xerocomus ferrugineus", cachedOutput);
-        addMutation("Bolbitius profundorum", "Hygrophorus niveus", "DIORITE_FUNGUS", cachedOutput);
-        addMutation("Bolbitius profundorum", "DIORITE_FUNGUS", "CALCITE_FUNGUS", cachedOutput);
-        addMutation("Russula concitata", "Russula lazula", "AMETHYST_FUNGUS", cachedOutput);
-        addMutation("AMETHYST_FUNGUS", "Chalciporus infernalis", "Bolbitius silex", cachedOutput);
+        // Colors branch
+        final String AMANITA_RUBRA = "Amanita rubra";
+        final String WHITE_FUNGUS = "WHITE_FUNGUS";
+        final String GREY_FUNGUS = "GREY_FUNGUS";
+        final String LIME_FUNGUS = "LIME_FUNGUS";
+        final String LIGHTGREY_FUNGUS = "LIGHTGREY_FUNGUS";
+        final String BLACK_FUNGUS = "BLACK_FUNGUS";
+        final String LIGHTBLUE_FUNGUS = "LIGHTBLUE_FUNGUS";
+        final String PINK_FUNGUS = "PINK_FUNGUS";
+        final String OVULUS_VIOLACEUS = "Ovulus violaceus";
+        final String CYAN_FUNGUS = "CYAN_FUNGUS";
+        final String MAGENTA_FUNGUS = "MAGENTA_FUNGUS";
+        final String ORANGE_FUNGUS = "ORANGE_FUNGUS";
+        addMutation(AMANITA_MUSCARIA, CHALCIPORUS_PIPERATUS, AMANITA_RUBRA, cachedOutput);
+        addMutation(AGARICUS_CAMPESTRIS, LECCINUM_VERSIPELLE, WHITE_FUNGUS, cachedOutput);
+        addMutation(AGARICUS_CAMPESTRIS, BOLETUS_EDULIS, GREY_FUNGUS, cachedOutput);
+        addMutation(WHITE_FUNGUS, LACTARIUS_VIRIDIS, LIME_FUNGUS, cachedOutput);
+        addMutation(WHITE_FUNGUS, GREY_FUNGUS, LIGHTGREY_FUNGUS, cachedOutput);
+        addMutation(WHITE_FUNGUS, BLACK_FUNGUS, GREY_FUNGUS, cachedOutput);
+        addMutation(WHITE_FUNGUS, BLUE_FUNGUS, LIGHTBLUE_FUNGUS, cachedOutput);
+        addMutation(WHITE_FUNGUS, AMANITA_RUBRA, PINK_FUNGUS, cachedOutput);
+        addMutation(BLUE_FUNGUS, AMANITA_RUBRA, OVULUS_VIOLACEUS, cachedOutput);
+        addMutation(BLUE_FUNGUS, LACTARIUS_VIRIDIS, CYAN_FUNGUS, cachedOutput);
+        addMutation(OVULUS_VIOLACEUS, PINK_FUNGUS, MAGENTA_FUNGUS, cachedOutput);
+        addMutation(AMANITA_RUBRA, YELLOW_FUNGUS, ORANGE_FUNGUS, cachedOutput);
+
+        // Materials branch
+        final String POLYPORUS_LIGNEUS = "Polyporus ligneus";
+        addMutation(BOLETUS_EDULIS, SUILLUS_GRANULATUS, POLYPORUS_LIGNEUS, cachedOutput);
+
+        // Minerals branch
+        final String BOLBITIUS_PROFONDORUM = "Bolbitius profundorum";
+        final String COAL_FUNGUS = "COAL_FUNGUS";
+        final String XEROCOMUS_FERRUGINEUS = "Xerocomus ferrugineus";
+        final String DIORITE_FUNGUS = "DIORITE_FUNGUS";
+        final String CALCITE_FUNGUS = "CALCITE_FUNGUS";
+        final String AMETHYST_FUNGUS = "AMETHYST_FUNGUS";
+        final String RUSSULA_LAZULA = "Russula lazula";
+        addMutation(BOLBITIUS_PROFONDORUM,POLYPORUS_LIGNEUS,COAL_FUNGUS, cachedOutput);
+        addMutation(BOLBITIUS_PROFONDORUM,COAL_FUNGUS,XEROCOMUS_FERRUGINEUS, cachedOutput);
+        addMutation(BOLBITIUS_PROFONDORUM, HYGROPHORUS_NIVEUS, DIORITE_FUNGUS, cachedOutput);
+        addMutation(BOLBITIUS_PROFONDORUM, DIORITE_FUNGUS, CALCITE_FUNGUS, cachedOutput);
+        addMutation("Russula concitata", RUSSULA_LAZULA, AMETHYST_FUNGUS, cachedOutput);
+        addMutation(AMETHYST_FUNGUS, CHALCIPORUS_INFERNALIS, "Bolbitius silex", cachedOutput);
         addMutation("Galerina aurata", "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
-        addMutation("CALCITE_FUNGUS", "CLAY_FUNGUS", "Russula lazula", cachedOutput);
-        addMutation("Russula lazula", "Amanita cuprea", "EMERALD_FUNGUS", cachedOutput);
+        addMutation(CALCITE_FUNGUS, "CLAY_FUNGUS", RUSSULA_LAZULA, cachedOutput);
+        addMutation(RUSSULA_LAZULA, "Amanita cuprea", "EMERALD_FUNGUS", cachedOutput);
 
-        addMutation("Hygrophorus niveus", "Noble boletus squisitus", "FREEZING_FUNGUS", cachedOutput);
+        // Benefic branch
+        final String LACTARIUS_DELICIOUS = "Lactarius deliciosus";
+        final String LACCARIA_DULCIS = "Laccaria dulcis";
+        final String NOBLE_BOLETUS_SQUISITUS = "Noble boletus squisitus";
+        addMutation(AGARICUS_CAMPESTRIS, SUILLUS_GRANULATUS, LACTARIUS_DELICIOUS, cachedOutput);
+        addMutation(POLYPORUS_LIGNEUS, LACTARIUS_DELICIOUS, LACCARIA_DULCIS, cachedOutput);
+        addMutation(BOLETUS_EDULIS, LACTARIUS_DELICIOUS, NOBLE_BOLETUS_SQUISITUS, cachedOutput);
+
+        // Environmental branch
+        final String FREEZING_FUNGUS = "FREEZING_FUNGUS";
+        addMutation(HYGROPHORUS_NIVEUS, NOBLE_BOLETUS_SQUISITUS, FREEZING_FUNGUS, cachedOutput);
 
         //TODO possible mutations
         addMutation("BONEBLOCK_SUSTAINED_FUNGUS", "???", "FERTILIZING_EFFECT_FUNGUS", cachedOutput);
-        addMutation("Boletus edulis", "???", "Noble boletus squisitus", cachedOutput);
-        addMutation("???", "Russula lazula", "EXPERIENCE_FUNGUS", cachedOutput);
+
+        addMutation("???", RUSSULA_LAZULA, "EXPERIENCE_FUNGUS", cachedOutput);
+        addMutation(AGARICUS_ANIMI, CHALCIPORUS_INFERNALIS, "???", cachedOutput);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 
