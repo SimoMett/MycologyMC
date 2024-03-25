@@ -9,6 +9,8 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.Inject;
 
 @Mod.EventBusSubscriber(modid = MycologyMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerEffectsEventsHandler
@@ -24,9 +26,8 @@ public class PlayerEffectsEventsHandler
         }
     }
 
-    @SubscribeEvent
-    public static void onPlayerDeath(LivingDeathEvent evt)
+    public static void test()
     {
-        evt.setCanceled(true);
+
     }
 }
