@@ -1,5 +1,6 @@
 {
   "package": "com.mettsmirnov.mycology.mixins",
+  "refmap": "mixins.mycologymod.refmap.json",
   "mixins": [
     "LivingEntityMixin"
   ]

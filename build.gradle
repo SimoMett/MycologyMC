@@ -234,7 +234,7 @@ sourceSets.each {
 mixin {
     add sourceSets.main, 'mixins.mycologymod.refmap.json'
 
-    config "mycologymod.mixins.json"
+    config "mixins.mycologymod.json"
     debug.verbose = true
     debug.export = true
 }

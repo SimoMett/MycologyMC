@@ -8,7 +8,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Attackable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,13 +16,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.extensions.IForgeLivingEntity;
+import org.jline.utils.Log;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity implements Attackable, IForgeLivingEntity
+public abstract class LivingEntityMixin extends Entity
 {
     public LivingEntityMixin(EntityType<?> p_19870_, Level p_19871_) {
         super(p_19870_, p_19871_);
@@ -37,6 +36,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, IF
     @Overwrite
     private boolean checkTotemDeathProtection(DamageSource p_21263_)
     {
+        Log.info("HAS IT BEEN CALLED?");
         if (p_21263_.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return false;
         } else {
@@ -69,7 +69,6 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, IF
                 this.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
                 this.level().broadcastEntityEvent(this, (byte)35);
             }
-
             return itemstack != null;
         }
     }
