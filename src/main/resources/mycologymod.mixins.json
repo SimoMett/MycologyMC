@@ -1,0 +1,6 @@
+{
+  "package": "com.mettsmirnov.mycology.mixins",
+  "mixins": [
+    "LivingEntityMixin"
+  ]
+}
