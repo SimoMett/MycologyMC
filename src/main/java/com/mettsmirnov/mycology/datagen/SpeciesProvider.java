@@ -483,8 +483,9 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.SWAMP)
                 .spawnType(FungusSpawn.SWAMP)
                 .build();
-        speciesBuilder.createProtoSpecies("YELLOW_FUNGUS")//meadow native
-                .colors1(0xfff620)
+        speciesBuilder.createDefaultSpecies("YELLOW_FUNGUS")//meadow native
+                .warpedType()
+                .colors4(0xffeebd, 0xffdf7f, 0x729bf3, 0x4370c2)
                 .biomesSpecs(BiomesSpecs.MEADOW)
                 .spawnType(FungusSpawn.MEADOW)
                 .build();
