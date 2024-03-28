@@ -1,11 +1,13 @@
 package com.mettsmirnov.mycology.mixins;
 
+import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +18,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.common.ForgeHooks;
-import org.jline.utils.Log;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,12 +32,12 @@ public abstract class LivingEntityMixin extends Entity
     @Shadow public abstract void setHealth(float health);
     @Shadow public abstract boolean removeAllEffects();
     @Shadow public abstract boolean addEffect(MobEffectInstance p_21165_);
-    @Shadow public abstract net.minecraft.world.item.ItemStack getItemInHand(InteractionHand hand);
+    @Shadow public abstract ItemStack getItemInHand(InteractionHand hand);
+    @Shadow public abstract boolean hasEffect(MobEffect p_21024_);
 
     @Overwrite
     private boolean checkTotemDeathProtection(DamageSource p_21263_)
     {
-        Log.info("HAS IT BEEN CALLED?");
         if (p_21263_.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return false;
         } else {
@@ -54,14 +55,16 @@ public abstract class LivingEntityMixin extends Entity
                 }
             }
 
-            if (itemstack != null) {
-                if ((LivingEntity) (Object) this instanceof ServerPlayer serverplayer)
-                {
-                    serverplayer.awardStat(Stats.ITEM_USED.get(Items.TOTEM_OF_UNDYING), 1);
-                    CriteriaTriggers.USED_TOTEM.trigger(serverplayer, itemstack);
-                    this.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
-                }
+            if (itemstack != null && (LivingEntity) (Object) this instanceof ServerPlayer serverplayer)
+            {
+                serverplayer.awardStat(Stats.ITEM_USED.get(Items.TOTEM_OF_UNDYING), 1);
+                CriteriaTriggers.USED_TOTEM.trigger(serverplayer, itemstack);
+                this.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
+            }
 
+            boolean hasLastChanceEffect = this.hasEffect(ModEffects.LAST_CHANCE.get());
+            if(itemstack != null || hasLastChanceEffect)
+            {
                 this.setHealth(1.0F);
                 this.removeAllEffects();
                 this.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
@@ -69,7 +72,8 @@ public abstract class LivingEntityMixin extends Entity
                 this.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
                 this.level().broadcastEntityEvent(this, (byte)35);
             }
-            return itemstack != null;
+
+            return itemstack != null || hasLastChanceEffect;
         }
     }
 }

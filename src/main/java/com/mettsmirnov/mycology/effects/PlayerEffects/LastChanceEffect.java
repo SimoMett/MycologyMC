@@ -16,10 +16,4 @@ public class LastChanceEffect extends MobEffect
     {
         super(MobEffectCategory.BENEFICIAL, Color.YELLOW.hashCode());
     }
-
-    @Override
-    public boolean isInstantenous()
-    {
-        return false;
-    }
 }

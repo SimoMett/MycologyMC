@@ -25,9 +25,4 @@ public class PlayerEffectsEventsHandler
             evt.getOrb().value*=(int)multiplier;
         }
     }
-
-    public static void test()
-    {
-
-    }
 }
