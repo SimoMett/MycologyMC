@@ -13,6 +13,7 @@ public class FungusTraits
     public Float temp;
     public Integer area;
     public String effect;
+    public String eatingEffect;
 
     public static final String[] traitsDictionary = new String[]{
             "species",
@@ -23,6 +24,7 @@ public class FungusTraits
             "humidity",
             "temp",
             "area",
-            "effect"
+            "effect",
+            "eatingEffect"
     };
 }

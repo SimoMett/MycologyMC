@@ -1,6 +1,7 @@
 package com.mettsmirnov.mycology.datagen;
 
 import com.mettsmirnov.mycology.effects.FungusEffects;
+import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -550,6 +551,11 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0x008fff)
                 .areaEffect(FungusEffects.FREEZING_EFFECT)
                 .areaRadius(8)
+                .build();
+        speciesBuilder.createDefaultSpecies("LIFE_UP_FUNGUS")
+                .crimsonType()
+                .colors1(0x00ff00)
+                .eatingEffect(ModEffects.LAST_CHANCE)
                 .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
