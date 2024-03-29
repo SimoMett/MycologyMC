@@ -9,7 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
@@ -26,7 +26,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Optional;
 
 public class ColoredFungusBlockItem extends BlockItem
 {
@@ -53,10 +52,14 @@ public class ColoredFungusBlockItem extends BlockItem
     @Override
     public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity)
     {
-        String eatBuff = (String) stack.getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("eat_effect", IFungusData.GeneType.DOMINANT);
-        Optional opt = ForgeRegistries.MOB_EFFECTS.getDelegate(new ResourceLocation(eatBuff));
-        MobEffect mobEffect = ForgeRegistries.MOB_EFFECTS.getDelegate(new ResourceLocation(eatBuff)).get().get();
-        return Foods.GOLDEN_APPLE;
+        IFungusData thisDataModel = stack.getCapability(FungusDataCapability.INSTANCE).resolve().get();
+        String eatBuff = (String) thisDataModel.getField("eatingEffect", IFungusData.GeneType.DOMINANT);
+        if(eatBuff != null)
+        {
+            MobEffect mobEffect = ForgeRegistries.MOB_EFFECTS.getDelegate(new ResourceLocation(eatBuff)).get().get();
+            return new FoodProperties.Builder().alwaysEat().effect(()-> new MobEffectInstance(mobEffect, -1), 1f).build();
+        }
+        return Foods.SPIDER_EYE;
     }
 
     @Override

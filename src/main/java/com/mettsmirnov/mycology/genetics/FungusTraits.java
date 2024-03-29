@@ -25,6 +25,6 @@ public class FungusTraits
             "temp",
             "area",
             "effect",
-            "eat_effect"
+            "eatingEffect"
     };
 }
