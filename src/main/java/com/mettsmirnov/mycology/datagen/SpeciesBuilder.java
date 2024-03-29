@@ -11,6 +11,8 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraftforge.registries.RegistryObject;
 import org.jline.utils.Log;
 
 import java.nio.file.Path;
@@ -40,6 +42,7 @@ public class SpeciesBuilder
     private BiomesSpecs biomesSpecs;
     private Integer areaRadius;
     private FungusEffect areaEffect;
+    private String eatingEffect;
     private FungusSpawn spawnInfo;
 
     //building attributes
@@ -197,6 +200,8 @@ public class SpeciesBuilder
         fungusJson.addProperty("temperature",biomesSpecs.temperature);
         fungusJson.addProperty("area",areaRadius);
         fungusJson.addProperty("effect",areaEffect.getEffectName());
+        if(eatingEffect != null)
+            fungusJson.addProperty("eat_effect", eatingEffect);
         JsonObject spawnJson = new JsonObject();
         if(spawnInfo !=null)
         {
@@ -221,6 +226,13 @@ public class SpeciesBuilder
         biomesSpecs = null;
         areaRadius = null;
         areaEffect = null;
+        eatingEffect = null;
         spawnInfo = null;
+    }
+
+    public SpeciesBuilder eatingEffect(RegistryObject<MobEffect> mobEffect)
+    {
+        eatingEffect = MycologyMod.MODID+":"+mobEffect.get().getDescriptionId().split("\\.")[2];
+        return this;
     }
 }

@@ -48,6 +48,8 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
         defaultTraits.temp=obj.get("temperature").getAsFloat();
         defaultTraits.area=obj.get("area").getAsInt();
         defaultTraits.effect=obj.get("effect").getAsString();
+        if(obj.get("eat_effect") != null)
+            defaultTraits.eatingEffect=obj.get("eat_effect").getAsString();
 
         int [] colors = new int[4];
         for (int i = 0; i<colors.length; i++)

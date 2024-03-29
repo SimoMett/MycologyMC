@@ -7,6 +7,11 @@ import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -17,9 +22,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ColoredFungusBlockItem extends BlockItem
 {
@@ -34,14 +41,22 @@ public class ColoredFungusBlockItem extends BlockItem
 
     public ColoredFungusBlockItem(Block block)
     {
-        super(block, (new Item.Properties()).food(Foods.SPIDER_EYE));
+        super(block, new Item.Properties().food(new FoodProperties.Builder().alwaysEat().build()));
     }
 
-    //Forestry uses capability. Why shouldn't I?
     @Nullable
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
         return super.initCapabilities(stack, nbt);
+    }
+
+    @Override
+    public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity)
+    {
+        String eatBuff = (String) stack.getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("eat_effect", IFungusData.GeneType.DOMINANT);
+        Optional opt = ForgeRegistries.MOB_EFFECTS.getDelegate(new ResourceLocation(eatBuff));
+        MobEffect mobEffect = ForgeRegistries.MOB_EFFECTS.getDelegate(new ResourceLocation(eatBuff)).get().get();
+        return Foods.GOLDEN_APPLE;
     }
 
     @Override
@@ -68,8 +83,6 @@ public class ColoredFungusBlockItem extends BlockItem
         return blockState;
     }
 
-
-
     @Override
     protected boolean placeBlock(BlockPlaceContext context, BlockState blockState)
     {
@@ -77,7 +90,6 @@ public class ColoredFungusBlockItem extends BlockItem
         ColoredFungusBlockEntity entity = (ColoredFungusBlockEntity)context.getLevel().getBlockEntity(context.getClickedPos());
 
         CompoundTag tags = context.getItemInHand().getCapability(FungusDataCapability.INSTANCE).resolve().get().serializeNBT();
-        //entity.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
         entity.handleUpdateTag(tags);
         return result;
     }
