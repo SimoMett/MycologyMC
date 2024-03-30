@@ -205,8 +205,10 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("PURPUR_SUSTAINED_FUNGUS")
                 .build();
 
-        speciesBuilder.createProtoSpecies("MAGMABLOCK_SUSTAINED_FUNGUS")
-                .terrain("mycologymod:magma_block")
+        speciesBuilder.createDefaultSpecies("MAGMABLOCK_SUSTAINED_FUNGUS")
+                .crimsonType()
+                .colors4(0x694d3e, 0x4b1009, 0xff6f19, 0xa03c00)
+                .terrain("minecraft:magma_block")
                 .build();
 
         speciesBuilder.createProtoSpecies("BONEBLOCK_SUSTAINED_FUNGUS")
@@ -354,7 +356,9 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("ILLUCINATING_FUNGUS")
                 .areaEffect(FungusEffects.ILLUCINATING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("HALLUCINATING_EFFECT_FUNGUS")
+        speciesBuilder.createDefaultSpecies("HALLUCINATING_EFFECT_FUNGUS")
+                .crimsonType()
+                .colors4(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
                 .areaEffect(FungusEffects.HALLUCINATING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("RADIOACTIVE_EFFECT_FUNGUS")
@@ -559,7 +563,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
         speciesBuilder.createDefaultSpecies("LIFE_UP_FUNGUS")
                 .crimsonType()
-                .colors1(0x00ff00)
+                .colors4(0xffd08d, 0x52e13d, 0xffffff, 0xffffff)
                 .eatingEffect(ModEffects.LAST_CHANCE)
                 .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
