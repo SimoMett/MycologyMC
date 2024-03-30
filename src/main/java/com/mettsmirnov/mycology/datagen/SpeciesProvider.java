@@ -26,18 +26,7 @@ public class SpeciesProvider implements DataProvider
         //FIXME all the fungi need some work
         List<CompletableFuture<?>> list = new ArrayList<>();
         SpeciesBuilder speciesBuilder = new SpeciesBuilder(this.generator, hashCache, list);
-        speciesBuilder.createSpecies("Boletus salubrium")
-                .crimsonType()
-                .colors4(0xC176C0, 0x95778C, 0xD01B05, 0xB99AA7)
-                .spreading(25)
-                .spreadBoost(1.0f)
-                .light(15)
-                .terrain("mycologymod:grass")
-                .biomesSpecs(BiomesSpecs.TAIGA)
-                .areaEffect(FungusEffects.HEALING_EFFECT)
-                .areaRadius(3)
-                .spawnType(FungusSpawn.ANY_BIOME)
-                .build();
+
         speciesBuilder.createProtoSpecies("GREEN_FUNGUS_2")
                 .colors4(0xD36146, 0x7EA144, 0x619B68, 0x3A734C)
                 .build();
@@ -341,7 +330,25 @@ public class SpeciesProvider implements DataProvider
         //    Special effects fungi    //
         /////////////////////////////////
         //TODO be rearranged
-        speciesBuilder.createProtoSpecies("DRUNK_EFFECT_FUNGUS")
+        speciesBuilder.createSpecies("Boletus salubrium")
+                .crimsonType()
+                .colors4(0xC176C0, 0x95778C, 0xD01B05, 0xB99AA7)
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain("mycologymod:grass")
+                .biomesSpecs(BiomesSpecs.TAIGA)
+                .areaEffect(FungusEffects.HEALING_EFFECT)
+                .areaRadius(3)
+                .build();
+        speciesBuilder.createDefaultSpecies("FERMENTER_FUNGUS")
+                .warpedType()
+                .colors4(0xa98565, 0xf9bcc1, 0xc7bdce, 0x6d719a)
+                //.areaEffect(FungusEffects.FERMENTING_EFFECT)
+                .build();
+        speciesBuilder.createDefaultSpecies("DRUNK_EFFECT_FUNGUS") //parent of FERMENTER_FUNGUS
+                .crimsonType()
+                .colors4(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
                 .areaEffect(FungusEffects.DRUNK_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("FATIGUE_EFFECT_FUNGUS")
@@ -350,7 +357,9 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("STRENGTH_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.STRENGTH_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("ANESTHETIC_EFFECT_FUNGUS")
+        speciesBuilder.createDefaultSpecies("ANESTHETIC_EFFECT_FUNGUS")
+                .warpedType()
+                .colors4(0x59a6cf, 0xe61e65, 0xe03775, 0xffffff)
                 .areaEffect(FungusEffects.ANESTHETIC_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("ILLUCINATING_FUNGUS")
@@ -361,7 +370,9 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xefe8de, 0x50483b, 0x1f3132, 0x28a6af)
                 .areaEffect(FungusEffects.HALLUCINATING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("RADIOACTIVE_EFFECT_FUNGUS")
+        speciesBuilder.createDefaultSpecies("RADIOACTIVE_EFFECT_FUNGUS")
+                .crimsonType()
+                .colors4(0xcc052a, 0xc0b334, 0xb79655, 0x514d1d)
                 .areaEffect(FungusEffects.RADIOACTIVE_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("BLINDING_EFFECT_FUNGUS")
@@ -394,7 +405,9 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("LIGHTFUL_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.LIGHTFUL_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("GOODCHANCE_EFFECT_FUNGUS")
+        speciesBuilder.createDefaultSpecies("GOODCHANCE_EFFECT_FUNGUS")
+                .crimsonType()
+                .colors4(0x20b189, 0x22b84d, 0x75dd62, 0xd2ffcc)
                 .areaEffect(FungusEffects.GOODCHANCE_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("LEARNING_EFFECT_FUNGUS")
@@ -411,7 +424,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("UNDEAD_EFFECT_FUNGUS")
+        speciesBuilder.createProtoSpecies("UNDEAD_EFFECT_FUNGUS") //might be a cordyceps?
                 .colors4(0xD36146, 0x7EA144, 0x4891ff, 0x4b54bb)
                 .areaRadius(2)
                 .areaEffect(FungusEffects.UNDEAD_EFFECT)
