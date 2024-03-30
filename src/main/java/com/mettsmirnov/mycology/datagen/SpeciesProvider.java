@@ -119,8 +119,7 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //      Edible fungi       //
         /////////////////////////////
-        //Sugar fungus
-        speciesBuilder.createDefaultSpecies("Laccaria dulcis")
+        speciesBuilder.createDefaultSpecies("Laccaria dulcis")//Sugar fungus
                 .warpedType()
                 .colors4(0x97634a, 0x7695ff, 0xcdd7ff, 0x9aa8ff)
                 .build();
@@ -128,6 +127,12 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies("Lactarius deliciosus")
                 .warpedType()
                 .colors4(0xffc2a5, 0xff9e76, 0xe8a689, 0xd86b63)
+                .build();
+
+        speciesBuilder.createDefaultSpecies("Craterellus cornucopioides")
+                .warpedType()
+                //.colors4(0x2e2038, 0x211c31, 0x141220, 0x0d0a1c)
+                .colors4(0x382b30, 0x211c31, 0x141220, 0x0d0a1c)
                 .build();
 
         speciesBuilder.createSpecies("Noble boletus squisitus")// derived from "boletus edulis"
