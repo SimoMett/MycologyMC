@@ -191,11 +191,11 @@ public class SpeciesProvider implements DataProvider
 
         /*speciesBuilder.createProtoSpecies("TERRACOTTA_FUNGUS")
                 .terrain("minecraft:terracotta")
-                .build();*/
+                .build();
 
         speciesBuilder.createProtoSpecies("PRISMARINE_FUNGUS")
                 .terrain("mycologymod:prismarine")
-                .build();
+                .build();*/
 
         speciesBuilder.createProtoSpecies("PURPUR_SUSTAINED_FUNGUS")
                 .build();
