@@ -356,9 +356,9 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("ILLUCINATING_FUNGUS")
                 .areaEffect(FungusEffects.ILLUCINATING_EFFECT)
                 .build();
-        speciesBuilder.createDefaultSpecies("HALLUCINATING_EFFECT_FUNGUS")
-                .crimsonType()
-                .colors4(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
+        speciesBuilder.createDefaultSpecies("Psilocybe baeocystis")
+                .warpedType()
+                .colors4(0xefe8de, 0x50483b, 0x1f3132, 0x28a6af)
                 .areaEffect(FungusEffects.HALLUCINATING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("RADIOACTIVE_EFFECT_FUNGUS")
