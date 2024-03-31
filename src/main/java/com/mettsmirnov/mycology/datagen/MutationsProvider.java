@@ -38,7 +38,7 @@ public class MutationsProvider implements DataProvider
         final String CHALCIPORUS_PIPERATUS = "Chalciporus piperatus";   //(old growth spruce taiga)
         final String AMANITA_MUSCARIA = "Amanita muscaria";             //(jungle)
         final String AMANITA_PHALLOIDES = "Amanita phalloides";         //(swamp)
-        final String YELLOW_FUNGUS = "YELLOW_FUNGUS";                   //(meadow)
+        final String YELLOW_FUNGUS = "Hygrocybe pratensis";             //(meadow)
         final String BLUE_FUNGUS = "Boletellus caeruleus";              //(flower forest)
         final String LACTARIUS_PROLEFERENS = "Lactarius proleferens";   //(mushroom fields)
         final String HYGROPHORUS_NIVEUS = "Hygrophorus niveus";         //(snowy taiga)
