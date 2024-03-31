@@ -1,7 +1,0 @@
-{
-  "type":"mycologymod:fungus_cooking",
-  "ingredient": "Russula lazula",
-  "result":"minecraft:lapis_lazuli",
-  "experience": 0.0,
-  "cookingtime": 200
-}

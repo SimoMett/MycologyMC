@@ -1,7 +1,0 @@
-{
-	"type":"mycologymod:fungus_cooking",
-	"ingredient": "Amanita rubra",
-	"result":"minecraft:red_dye",
-	"experience": 0.0,
-	"cookingtime": 200
-} 
