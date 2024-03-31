@@ -38,7 +38,7 @@ public class MutationsProvider implements DataProvider
         final String CHALCIPORUS_PIPERATUS = "Chalciporus piperatus";   //(old growth spruce taiga)
         final String AMANITA_MUSCARIA = "Amanita muscaria";             //(jungle)
         final String YELLOW_FUNGUS = "YELLOW_FUNGUS";                   //(meadow)
-        final String BLUE_FUNGUS = "BLUE_FUNGUS";                       //(flower forest)
+        final String BLUE_FUNGUS = "Boletellus caeruleus";              //(flower forest)
         final String LACTARIUS_PROLEFERENS = "Lactarius proleferens";   //(mushroom fields)
         final String HYGROPHORUS_NIVEUS = "Hygrophorus niveus";         //(snowy taiga)
 
@@ -82,17 +82,18 @@ public class MutationsProvider implements DataProvider
 
         // Minerals branch
         final String BOLBITIUS_PROFONDORUM = "Bolbitius profundorum";
-        final String COAL_FUNGUS = "COAL_FUNGUS";
+        final String COAL_FUNGUS = "Leccinum carbonis";
         final String XEROCOMUS_FERRUGINEUS = "Xerocomus ferrugineus";
         final String DIORITE_FUNGUS = "DIORITE_FUNGUS";
         final String CALCITE_FUNGUS = "CALCITE_FUNGUS";
         final String AMETHYST_FUNGUS = "AMETHYST_FUNGUS";
         final String RUSSULA_LAZULA = "Russula lazula";
+        final String RUSSULA_CONCITATA = "Russula concitata";
         addMutation(BOLBITIUS_PROFONDORUM,POLYPORUS_LIGNEUS,COAL_FUNGUS, cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM,COAL_FUNGUS,XEROCOMUS_FERRUGINEUS, cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM, HYGROPHORUS_NIVEUS, DIORITE_FUNGUS, cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM, DIORITE_FUNGUS, CALCITE_FUNGUS, cachedOutput);
-        addMutation("Russula concitata", RUSSULA_LAZULA, AMETHYST_FUNGUS, cachedOutput);
+        addMutation(RUSSULA_CONCITATA, RUSSULA_LAZULA, AMETHYST_FUNGUS, cachedOutput);
         addMutation(AMETHYST_FUNGUS, CHALCIPORUS_INFERNALIS, "Bolbitius silex", cachedOutput);
         addMutation("Galerina aurata", "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
         addMutation(CALCITE_FUNGUS, "CLAY_FUNGUS", RUSSULA_LAZULA, cachedOutput);
@@ -102,6 +103,7 @@ public class MutationsProvider implements DataProvider
         final String LACTARIUS_DELICIOUS = "Lactarius deliciosus";
         final String LACCARIA_DULCIS = "Laccaria dulcis";
         final String NOBLE_BOLETUS_SQUISITUS = "Noble boletus squisitus";
+        final String BOLETUS_SALUBRIUM = "Boletus salubrium";
         addMutation(AGARICUS_CAMPESTRIS, SUILLUS_GRANULATUS, LACTARIUS_DELICIOUS, cachedOutput);
         addMutation(POLYPORUS_LIGNEUS, LACTARIUS_DELICIOUS, LACCARIA_DULCIS, cachedOutput);
         addMutation(BOLETUS_EDULIS, LACTARIUS_DELICIOUS, NOBLE_BOLETUS_SQUISITUS, cachedOutput);
@@ -111,6 +113,7 @@ public class MutationsProvider implements DataProvider
         addMutation(HYGROPHORUS_NIVEUS, NOBLE_BOLETUS_SQUISITUS, FREEZING_FUNGUS, cachedOutput);
 
         //TODO possible mutations
+        addMutation(NOBLE_BOLETUS_SQUISITUS, "???", BOLETUS_SALUBRIUM, cachedOutput);
         addMutation("BONEBLOCK_SUSTAINED_FUNGUS", "???", "FERTILIZING_EFFECT_FUNGUS", cachedOutput);
 
         addMutation("???", RUSSULA_LAZULA, "EXPERIENCE_FUNGUS", cachedOutput);
