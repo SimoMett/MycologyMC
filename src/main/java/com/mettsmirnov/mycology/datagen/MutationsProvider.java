@@ -37,6 +37,7 @@ public class MutationsProvider implements DataProvider
         final String SUILLUS_GRANULATUS = "Suillus granulatus";         //(old growth pine taiga)
         final String CHALCIPORUS_PIPERATUS = "Chalciporus piperatus";   //(old growth spruce taiga)
         final String AMANITA_MUSCARIA = "Amanita muscaria";             //(jungle)
+        final String AMANITA_PHALLOIDES = "Amanita phalloides";         //(swamp)
         final String YELLOW_FUNGUS = "YELLOW_FUNGUS";                   //(meadow)
         final String BLUE_FUNGUS = "Boletellus caeruleus";              //(flower forest)
         final String LACTARIUS_PROLEFERENS = "Lactarius proleferens";   //(mushroom fields)
@@ -78,7 +79,9 @@ public class MutationsProvider implements DataProvider
 
         // Materials branch
         final String POLYPORUS_LIGNEUS = "Polyporus ligneus";
+        final String CLAY_FUNGUS = "CLAY_FUNGUS";
         addMutation(BOLETUS_EDULIS, SUILLUS_GRANULATUS, POLYPORUS_LIGNEUS, cachedOutput);
+        addMutation(POLYPORUS_LIGNEUS, AMANITA_PHALLOIDES, CLAY_FUNGUS, cachedOutput);
 
         // Minerals branch
         final String BOLBITIUS_PROFONDORUM = "Bolbitius profundorum";
