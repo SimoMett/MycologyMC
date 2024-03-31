@@ -37,7 +37,7 @@ public class MycologyMod
         evtBus.register(FungusItemColorer.class);
         evtBus.register(FungusBlockColorer.class);
         ModCapabilitiesHandler.registerCapabilities(evtBus);
-        ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);// TODO remake of cooking recipes
+        ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);
         ModFeatures.FEATURES.register(evtBus);
         ModParticles.PARTICLES.register(evtBus);
         ModEffects.EFFECTS.register(evtBus);
