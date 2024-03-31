@@ -57,7 +57,7 @@ public class MutationsProvider implements DataProvider
         final String LIME_FUNGUS = "LIME_FUNGUS";
         final String LIGHTGREY_FUNGUS = "LIGHTGREY_FUNGUS";
         final String BLACK_FUNGUS = "BLACK_FUNGUS";
-        final String LIGHTBLUE_FUNGUS = "LIGHTBLUE_FUNGUS";
+        final String LIGHTBLUE_FUNGUS = "Leccinum caelestis";
         final String PINK_FUNGUS = "PINK_FUNGUS";
         final String OVULUS_VIOLACEUS = "Ovulus violaceus";
         final String CYAN_FUNGUS = "CYAN_FUNGUS";

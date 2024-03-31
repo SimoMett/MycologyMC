@@ -58,7 +58,7 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0x198185)
                 .build();
 
-        speciesBuilder.createDefaultSpecies("FUNGUS caelestis")
+        speciesBuilder.createDefaultSpecies("Leccinum caelestis")
                 .warpedType()
                 .colors4(0xc9f38e, 0x87cfec, 0xcaeef9, 0x8ad4f1)
                 .build();
