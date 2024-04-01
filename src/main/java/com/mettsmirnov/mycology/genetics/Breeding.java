@@ -35,6 +35,7 @@ public class Breeding
             {
                 offspring = new FungusDataModel();
                 offspring.loadFrom(FungusSpeciesList.INSTANCE.get(randomMutation.getResultSpecies()));
+                return offspring;
             }
         }
         //otherwise normal crossbreeding
