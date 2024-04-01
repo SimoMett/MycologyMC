@@ -17,6 +17,7 @@ public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCoo
             instance.group(
                     Codec.STRING.fieldOf("ingredient").forGetter(FungusCookingRecipe::getSpeciesIngredient),
                     BuiltInRegistries.ITEM.byNameCodec().xmap(ItemStack::new, ItemStack::getItem).fieldOf("result").forGetter(FungusCookingRecipe::getResult),
+                    Codec.INT.fieldOf("count").forGetter(FungusCookingRecipe::getCount),
                     Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(FungusCookingRecipe::getExperience),
                     Codec.INT.fieldOf("cookingtime").orElse(200).forGetter(FungusCookingRecipe::getCookingTime)
             ).apply(instance, FungusCookingRecipe::new)

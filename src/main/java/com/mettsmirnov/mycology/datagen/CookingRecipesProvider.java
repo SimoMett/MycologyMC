@@ -31,11 +31,16 @@ public class CookingRecipesProvider implements DataProvider
     {
         addSmeltingRecipes("Amanita rubra", Items.RED_DYE, 0, 200, cache);
         addSmeltingRecipes("Russula lazula", Items.LAPIS_LAZULI, 0f, 200, cache);
+        addSmeltingRecipes("Galerina aurata", Items.GOLD_NUGGET, 2, 0f, 200, cache);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
-
     private void addSmeltingRecipes(String ingredientSpecies, Item resultItem, float exp, int cookingTime, CachedOutput cache)
+    {
+        addSmeltingRecipes(ingredientSpecies, resultItem, 1, exp, cookingTime, cache);
+    }
+
+    private void addSmeltingRecipes(String ingredientSpecies, Item resultItem, int stackSize, float exp, int cookingTime, CachedOutput cache)
     {
         JsonObject mutationJson = new JsonObject();
         String type = ModCookingRecipes.FUNGUS_COOKING_RECIPE_SERIALIZER.getKey().location().toString();
@@ -43,6 +48,7 @@ public class CookingRecipesProvider implements DataProvider
         mutationJson.addProperty("ingredient", ingredientSpecies);
         String result = ForgeRegistries.ITEMS.getDelegate(resultItem).get().key().location().toString();
         mutationJson.addProperty("result", result);
+        mutationJson.addProperty("count", stackSize);
         mutationJson.addProperty("experience", exp);
         mutationJson.addProperty("cookingtime", cookingTime);
 

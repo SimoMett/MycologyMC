@@ -13,9 +13,10 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
 {
     private final String speciesIngredient;
 
-    public FungusCookingRecipe(String speciesIngredient, ItemStack result, float exp, int cookingTime)
+    public FungusCookingRecipe(String speciesIngredient, ItemStack result, int stackSize, float exp, int cookingTime)
     {
         super(RecipeType.SMELTING, "fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS.get()), result, exp, cookingTime);
+        this.result.setCount(stackSize);
         this.speciesIngredient = speciesIngredient;
     }
 
@@ -27,6 +28,11 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     public ItemStack getResult()
     {
         return this.result;
+    }
+
+    public int getCount()
+    {
+        return this.result.getCount();
     }
 
     @Override
