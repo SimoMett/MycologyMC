@@ -232,7 +232,7 @@ public class SpeciesBuilder
 
     public SpeciesBuilder eatingEffect(RegistryObject<MobEffect> mobEffect)
     {
-        eatingEffect = MycologyMod.MODID+":"+mobEffect.get().getDescriptionId().split("\\.")[2];
+        eatingEffect = mobEffect.getKey().location().toString();
         return this;
     }
 }
