@@ -46,6 +46,9 @@ public class MutationsProvider implements DataProvider
         // Nether
         final String AGARICUS_ANIMI = "Agaricus animi";
         final String CHALCIPORUS_INFERNALIS = "Chalciporus infernalis";
+
+        // End
+        final String END_FUNGUS = "END_FUNGUS";
         /*
         *   Rule #1: Cross-breeding between Warped fungi can only generate Warped fungi.
         *               Cross-breeding between Crimson fungi can only generate Crimson fungi.

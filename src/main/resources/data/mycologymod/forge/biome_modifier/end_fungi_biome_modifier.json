@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_end",
+  "features": "mycologymod:surface_fungi",
+  "step": "vegetal_decoration"
+}

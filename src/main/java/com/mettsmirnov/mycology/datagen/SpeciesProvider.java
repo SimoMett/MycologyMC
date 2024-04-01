@@ -317,12 +317,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain("mycologymod:netherite")
                 .build();
 
-        speciesBuilder.createDefaultSpecies("END_FUNGUS")
-                .crimsonType()
-                .colors4(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
-                .terrain("mycologymod:endstone")
-                .build();
-
         speciesBuilder.createDefaultSpecies("Tricholomopsis evanescens")
                 .crimsonType()
                 .colors4(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
@@ -556,6 +550,16 @@ public class SpeciesProvider implements DataProvider
                 .terrain("minecraft:soul_fire_base_blocks")
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.SOUL_SAND_VALLEY)
+                .build();
+        //////////////////////////
+        //   End native fungi   //
+        //////////////////////////
+        speciesBuilder.createDefaultSpecies("END_FUNGUS")
+                .crimsonType()
+                .colors4(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
+                .terrain("mycologymod:endstone")
+                .biomesSpecs(BiomesSpecs.END)
+                .spawnType(FungusSpawn.END_MIDLANDS)
                 .build();
         /////////////////////////////
         //   Environmental fungi   //

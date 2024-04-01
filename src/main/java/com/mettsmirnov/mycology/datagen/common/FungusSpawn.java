@@ -25,6 +25,8 @@ public class FungusSpawn
     public static final FungusSpawn CAVES = new FungusSpawn("#caves", .5f);
     public static final FungusSpawn NETHER_WASTES = new FungusSpawn(Biomes.NETHER_WASTES, .5f);
     public static final FungusSpawn SOUL_SAND_VALLEY = new FungusSpawn(Biomes.SOUL_SAND_VALLEY, .5f);
+    public static final FungusSpawn END = new FungusSpawn(Biomes.THE_END, .5f);
+    public static final FungusSpawn END_MIDLANDS = new FungusSpawn(Biomes.END_HIGHLANDS, .5f);
 
     public String biomes;
     public float chance;
