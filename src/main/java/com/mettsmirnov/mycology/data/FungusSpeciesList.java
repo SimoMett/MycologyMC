@@ -39,7 +39,8 @@ public class FungusSpeciesList
     {
         Collection<ItemStack> collection = new ArrayList<>();
 
-        for(FungusSpecies species : speciesHashMap.values())
+        List<FungusSpecies> sortedSpecies = speciesHashMap.values().stream().sorted(Comparator.comparing(a -> a.defaultTraits.species)).toList();
+        for(FungusSpecies species : sortedSpecies)
         {
             ItemStack e;
             if(species.fungusType.equals("colored_crimson_fungus"))
