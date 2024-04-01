@@ -58,6 +58,7 @@ public class SpeciesDictionary
     public static final String RUSSULA_CONCITATA = "Russula concitata";
     public static final String GALERINA_AURATA = "Galerina aurata";
     public static final String DIAMOND_FUNGUS = "DIAMOND_FUNGUS";
+    public static final String BOLBITIUS_SILEX = "Bolbitius silex";
 
     // Benefic branch
     public static final String LACTARIUS_DELICIOUS = "Lactarius deliciosus";

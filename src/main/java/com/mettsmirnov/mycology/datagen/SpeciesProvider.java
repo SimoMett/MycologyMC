@@ -252,7 +252,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain("minecraft:gold_ores")
                 .build();
 
-        speciesBuilder.createDefaultSpecies("Bolbitius silex") //Quartz
+        speciesBuilder.createDefaultSpecies(BOLBITIUS_SILEX) //Quartz
                 .crimsonType()
                 .colors4(0xc83825, 0xfff1eb, 0xe0dcda, 0xffffff)
                 .terrain("mycologymod:quartz_ores")

@@ -54,6 +54,7 @@ public class CookingRecipesProvider implements DataProvider
         addSmeltingRecipes(XEROCOMUS_FERRUGINEUS, Items.IRON_NUGGET, 2, 0, 200, cache);
         addSmeltingRecipes(AMANITA_CUPREA, Items.RAW_COPPER, 0, 400, cache); //FIXME need copper nugget item
         addSmeltingRecipes(DIAMOND_FUNGUS, Items.DIAMOND, 0, 400, cache); //FIXME need diamond chunk item
+        addSmeltingRecipes(BOLBITIUS_SILEX, Items.QUARTZ, 0, 200, cache);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
     private void addSmeltingRecipes(String ingredientSpecies, Item resultItem, float exp, int cookingTime, CachedOutput cache)

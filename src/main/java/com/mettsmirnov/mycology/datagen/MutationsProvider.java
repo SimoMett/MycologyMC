@@ -59,7 +59,7 @@ public class MutationsProvider implements DataProvider
         addMutation(BOLBITIUS_PROFONDORUM, YELLOW_FUNGUS, AMANITA_CUPREA, cachedOutput);
         addMutation(XEROCOMUS_FERRUGINEUS, AMANITA_CUPREA, GALERINA_AURATA, cachedOutput);
         addMutation(RUSSULA_CONCITATA, RUSSULA_LAZULA, AMETHYST_FUNGUS, cachedOutput);
-        addMutation(AMETHYST_FUNGUS, CHALCIPORUS_INFERNALIS, "Bolbitius silex", cachedOutput);
+        addMutation(AMETHYST_FUNGUS, CHALCIPORUS_INFERNALIS, BOLBITIUS_SILEX, cachedOutput);
         addMutation(GALERINA_AURATA, "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
         addMutation(CALCITE_FUNGUS, CLAY_FUNGUS, RUSSULA_LAZULA, cachedOutput);
         addMutation(RUSSULA_LAZULA, AMANITA_CUPREA, "EMERALD_FUNGUS", cachedOutput);
