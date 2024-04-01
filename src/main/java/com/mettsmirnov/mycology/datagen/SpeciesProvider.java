@@ -27,7 +27,8 @@ public class SpeciesProvider implements DataProvider
         List<CompletableFuture<?>> list = new ArrayList<>();
         SpeciesBuilder speciesBuilder = new SpeciesBuilder(this.generator, hashCache, list);
 
-        speciesBuilder.createProtoSpecies("GREEN_FUNGUS_2")
+        speciesBuilder.createDefaultSpecies("GREEN_FUNGUS_2")
+                .crimsonType()
                 .colors4(0xD36146, 0x7EA144, 0x619B68, 0x3A734C)
                 .build();
         /////////////////////////////
@@ -80,7 +81,8 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0xff44de)
                 .build();
 
-        speciesBuilder.createProtoSpecies("PINK_FUNGUS")
+        speciesBuilder.createDefaultSpecies("PINK_FUNGUS")
+                .crimsonType()
                 .colors4(0xf6dfb5, 0xffc0cb, 0xffc0cb, 0xffeef0)
                 .build();
 
@@ -211,7 +213,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xffb796, 0xffffff, 0xffffff, 0x8f8f8f)
                 .build();
 
-        speciesBuilder.createProtoSpecies("CALCITE_FUNGUS")
+        speciesBuilder.createDefaultSpecies("CALCITE_FUNGUS")
                 .crimsonType()
                 .colors4(0xf8f0d5, 0xffffff, 0xffffff, 0xbbb89d)
                 .build();
@@ -555,6 +557,15 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.SOUL_SAND_VALLEY)
                 .build();
+        /////////////////////////////
+        //   Environmental fungi   //
+        /////////////////////////////
+        speciesBuilder.createDefaultSpecies("FREEZING_FUNGUS")
+                .crimsonType()
+                .colors4(0x6c4026 ,0x6bbeff, 0xd4e3ec, 0xffffff)
+                .areaEffect(FungusEffects.FREEZING_EFFECT)
+                .areaRadius(8)
+                .build();
         /////////////////////////
         //      DEV fungi      //
         /////////////////////////
@@ -570,11 +581,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.TNT_EFFECT)
                 .areaRadius(4)
                 .build();
-        speciesBuilder.createProtoSpecies("FREEZING_FUNGUS")
-                .colors1(0x008fff)
-                .areaEffect(FungusEffects.FREEZING_EFFECT)
-                .areaRadius(8)
-                .build();
+
         speciesBuilder.createDefaultSpecies("LIFE_UP_FUNGUS")
                 .crimsonType()
                 .colors4(0xffd08d, 0x52e13d, 0xffffff, 0xffffff)
