@@ -31,6 +31,7 @@ public class CookingRecipesProvider implements DataProvider
     @Override
     public @NotNull CompletableFuture<?> run(CachedOutput cache)
     {
+        // Colors
         addSmeltingRecipes(YELLOW_FUNGUS, Items.YELLOW_DYE, 2, 0, 200, cache);
         addSmeltingRecipes(ORANGE_FUNGUS, Items.ORANGE_DYE, 2, 0, 200, cache);
         addSmeltingRecipes(AMANITA_RUBRA, Items.RED_DYE, 2, 0, 200, cache);
@@ -46,9 +47,13 @@ public class CookingRecipesProvider implements DataProvider
         addSmeltingRecipes(LIGHTBLUE_FUNGUS, Items.LIGHT_BLUE_DYE, 2, 0, 200, cache);
         addSmeltingRecipes(PINK_FUNGUS, Items.PINK_DYE, 2, 0, 200, cache);
         addSmeltingRecipes(MAGENTA_FUNGUS, Items.MAGENTA_DYE, 2, 0, 200, cache);
-        addSmeltingRecipes("Russula lazula", Items.LAPIS_LAZULI, 0f, 200, cache);
-        addSmeltingRecipes("Galerina aurata", Items.GOLD_NUGGET, 2, 0f, 200, cache);
 
+        // Minerals
+        addSmeltingRecipes(RUSSULA_LAZULA, Items.LAPIS_LAZULI, 0f, 200, cache);
+        addSmeltingRecipes(GALERINA_AURATA, Items.GOLD_NUGGET, 2, 0f, 200, cache);
+        addSmeltingRecipes(XEROCOMUS_FERRUGINEUS, Items.IRON_NUGGET, 2, 0, 200, cache);
+        addSmeltingRecipes(AMANITA_CUPREA, Items.RAW_COPPER, 0, 400, cache); //FIXME need copper nugget item
+        addSmeltingRecipes(DIAMOND_FUNGUS, Items.DIAMOND, 0, 400, cache); //FIXME need diamond chunk item
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
     private void addSmeltingRecipes(String ingredientSpecies, Item resultItem, float exp, int cookingTime, CachedOutput cache)
