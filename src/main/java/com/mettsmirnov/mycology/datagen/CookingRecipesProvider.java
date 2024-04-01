@@ -18,6 +18,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
+import static com.mettsmirnov.mycology.datagen.SpeciesDictionary.*;
+
 public class CookingRecipesProvider implements DataProvider
 {
     private final DataGenerator generator;
@@ -29,7 +31,21 @@ public class CookingRecipesProvider implements DataProvider
     @Override
     public @NotNull CompletableFuture<?> run(CachedOutput cache)
     {
-        addSmeltingRecipes("Amanita rubra", Items.RED_DYE, 0, 200, cache);
+        addSmeltingRecipes(YELLOW_FUNGUS, Items.YELLOW_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(ORANGE_FUNGUS, Items.ORANGE_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(AMANITA_RUBRA, Items.RED_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(OVULUS_VIOLACEUS, Items.PURPLE_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(CYAN_FUNGUS, Items.CYAN_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(BLUE_FUNGUS, Items.BLUE_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(LACTARIUS_VIRIDIS, Items.GREEN_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(WHITE_FUNGUS, Items.WHITE_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(GREY_FUNGUS, Items.GRAY_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(LIME_FUNGUS, Items.LIME_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(LIGHTGREY_FUNGUS, Items.LIGHT_GRAY_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(BLACK_FUNGUS, Items.BLACK_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(LIGHTBLUE_FUNGUS, Items.LIGHT_BLUE_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(PINK_FUNGUS, Items.PINK_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(MAGENTA_FUNGUS, Items.MAGENTA_DYE, 2, 0, 200, cache);
         addSmeltingRecipes("Russula lazula", Items.LAPIS_LAZULI, 0f, 200, cache);
         addSmeltingRecipes("Galerina aurata", Items.GOLD_NUGGET, 2, 0f, 200, cache);
 
