@@ -176,8 +176,8 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0x300b5f, 0x2a1e4b, 0x36205a, 0x432e69)
                 .build();
 
-        /*speciesBuilder.createProtoSpecies("BASALT_FUNGUS")
-                .build();*/
+        speciesBuilder.createProtoSpecies("BASALT_FUNGUS")
+                .build();
 
         speciesBuilder.createDefaultSpecies("CLAY_FUNGUS")
                 .warpedType()
