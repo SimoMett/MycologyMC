@@ -42,6 +42,7 @@ public class MutationsProvider implements DataProvider
         final String BLUE_FUNGUS = "Boletellus caeruleus";              //(flower forest)
         final String LACTARIUS_PROLEFERENS = "Lactarius proleferens";   //(mushroom fields)
         final String HYGROPHORUS_NIVEUS = "Hygrophorus niveus";         //(snowy taiga)
+        final String BOLBITIUS_PROFONDORUM = "Bolbitius profundorum";   //(caves)
 
         // Nether
         final String AGARICUS_ANIMI = "Agaricus animi";
@@ -83,27 +84,36 @@ public class MutationsProvider implements DataProvider
         // Materials branch
         final String POLYPORUS_LIGNEUS = "Polyporus ligneus";
         final String CLAY_FUNGUS = "CLAY_FUNGUS";
-        addMutation(BOLETUS_EDULIS, SUILLUS_GRANULATUS, POLYPORUS_LIGNEUS, cachedOutput);
-        addMutation(POLYPORUS_LIGNEUS, AMANITA_PHALLOIDES, CLAY_FUNGUS, cachedOutput);
-
-        // Minerals branch
-        final String BOLBITIUS_PROFONDORUM = "Bolbitius profundorum";
-        final String COAL_FUNGUS = "Leccinum carbonis";
-        final String XEROCOMUS_FERRUGINEUS = "Xerocomus ferrugineus";
+        final String BASALT_FUNGUS = "BASALT_FUNGUS";
         final String DIORITE_FUNGUS = "DIORITE_FUNGUS";
         final String CALCITE_FUNGUS = "CALCITE_FUNGUS";
+        addMutation(BOLETUS_EDULIS, SUILLUS_GRANULATUS, POLYPORUS_LIGNEUS, cachedOutput);
+        addMutation(POLYPORUS_LIGNEUS, AMANITA_PHALLOIDES, CLAY_FUNGUS, cachedOutput);
+        addMutation(CHALCIPORUS_INFERNALIS, AGARICUS_ANIMI, BASALT_FUNGUS ,cachedOutput);
+        addMutation(BOLBITIUS_PROFONDORUM, HYGROPHORUS_NIVEUS, DIORITE_FUNGUS, cachedOutput);
+        addMutation(BOLBITIUS_PROFONDORUM, DIORITE_FUNGUS, CALCITE_FUNGUS, cachedOutput);
+
+        // Minerals branch
+        final String COAL_FUNGUS = "Leccinum carbonis";
+        final String XEROCOMUS_FERRUGINEUS = "Xerocomus ferrugineus";
+        final String AMANITA_CUPREA = "Amanita cuprea";
+        final String TUFF_FUNGUS = "TUFF_FUNGUS";
         final String AMETHYST_FUNGUS = "AMETHYST_FUNGUS";
         final String RUSSULA_LAZULA = "Russula lazula";
         final String RUSSULA_CONCITATA = "Russula concitata";
+        final String GALERINA_AURATA = "Galerina aurata";
+        final String DIAMOND_FUNGUS = "DIAMOND_FUNGUS";
         addMutation(BOLBITIUS_PROFONDORUM,POLYPORUS_LIGNEUS,COAL_FUNGUS, cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM,COAL_FUNGUS,XEROCOMUS_FERRUGINEUS, cachedOutput);
-        addMutation(BOLBITIUS_PROFONDORUM, HYGROPHORUS_NIVEUS, DIORITE_FUNGUS, cachedOutput);
-        addMutation(BOLBITIUS_PROFONDORUM, DIORITE_FUNGUS, CALCITE_FUNGUS, cachedOutput);
+        addMutation(BOLBITIUS_PROFONDORUM, YELLOW_FUNGUS, AMANITA_CUPREA, cachedOutput);
+        addMutation(XEROCOMUS_FERRUGINEUS, AMANITA_CUPREA, GALERINA_AURATA, cachedOutput);
         addMutation(RUSSULA_CONCITATA, RUSSULA_LAZULA, AMETHYST_FUNGUS, cachedOutput);
         addMutation(AMETHYST_FUNGUS, CHALCIPORUS_INFERNALIS, "Bolbitius silex", cachedOutput);
-        addMutation("Galerina aurata", "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
-        addMutation(CALCITE_FUNGUS, "CLAY_FUNGUS", RUSSULA_LAZULA, cachedOutput);
-        addMutation(RUSSULA_LAZULA, "Amanita cuprea", "EMERALD_FUNGUS", cachedOutput);
+        addMutation(GALERINA_AURATA, "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
+        addMutation(CALCITE_FUNGUS, CLAY_FUNGUS, RUSSULA_LAZULA, cachedOutput);
+        addMutation(RUSSULA_LAZULA, AMANITA_CUPREA, "EMERALD_FUNGUS", cachedOutput);
+        addMutation(CALCITE_FUNGUS, COAL_FUNGUS, TUFF_FUNGUS, cachedOutput);
+        addMutation(BASALT_FUNGUS, TUFF_FUNGUS, DIAMOND_FUNGUS, cachedOutput);
 
         // Benefic branch
         final String LACTARIUS_DELICIOUS = "Lactarius deliciosus";

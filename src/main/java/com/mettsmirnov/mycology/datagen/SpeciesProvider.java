@@ -165,6 +165,16 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.DECOMPOSING_EFFECT)
                 .build();
 
+        speciesBuilder.createDefaultSpecies("DIORITE_FUNGUS")
+                .crimsonType()
+                .colors4(0xffb796, 0xffffff, 0xffffff, 0x8f8f8f)
+                .build();
+
+        speciesBuilder.createDefaultSpecies("CALCITE_FUNGUS")
+                .crimsonType()
+                .colors4(0xf8f0d5, 0xffffff, 0xffffff, 0xbbb89d)
+                .build();
+
         speciesBuilder.createProtoSpecies("GRANITE_FUNGUS")
                 .build();
 
@@ -176,7 +186,12 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0x300b5f, 0x2a1e4b, 0x36205a, 0x432e69)
                 .build();
 
-        speciesBuilder.createProtoSpecies("BASALT_FUNGUS")
+        speciesBuilder.createDefaultSpecies("BASALT_FUNGUS")
+                .crimsonType()
+                .colors4(0, 0, 0, 0)
+                .build();
+
+        speciesBuilder.createProtoSpecies("TUFF_FUNGUS")
                 .build();
 
         speciesBuilder.createDefaultSpecies("CLAY_FUNGUS")
@@ -205,19 +220,10 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("BONEBLOCK_SUSTAINED_FUNGUS")
                 .terrain("mycologymod:bone_block")
                 .build();
+
         /////////////////////////////
         //      Mineral fungi      //
         /////////////////////////////
-        speciesBuilder.createDefaultSpecies("DIORITE_FUNGUS")
-                .crimsonType()
-                .colors4(0xffb796, 0xffffff, 0xffffff, 0x8f8f8f)
-                .build();
-
-        speciesBuilder.createDefaultSpecies("CALCITE_FUNGUS")
-                .crimsonType()
-                .colors4(0xf8f0d5, 0xffffff, 0xffffff, 0xbbb89d)
-                .build();
-
         speciesBuilder.createDefaultSpecies("Leccinum carbonis")
                 .warpedType()
                 .colors4(0xa19b88, 0x8a8a8a, 0x383838, 0x2e2e2e)
