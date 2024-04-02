@@ -21,7 +21,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -130,12 +129,14 @@ public class FungusEffects
     public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
     public static final FungusEffect SKELETONS_EFFECT = new SpawnEntityEffect("skeletons", (lvl) -> new Skeleton(EntityType.SKELETON, lvl));
     public static final FungusEffect GHASTLY_EFFECT = new SpawnEntityEffect("ghastly", (lvl) -> new Ghast(EntityType.GHAST, lvl));
-    //public static final FungusEffect BLAZING_EFFECT = new SpawnEntityEffect("blazing" ,(lvl) -> new Blaze(EntityType.BLAZE, lvl));
     public static final FungusEffect BLAZING_EFFECT = new SpawnEntityEffect("blazing" ,(lvl) -> {
         SmallFireball fireball = new SmallFireball(EntityType.SMALL_FIREBALL, lvl);
+        fireball.yPower = -0.09; // for gravity
+        fireball.setNoGravity(false);
         Random rand = new Random();
-        fireball.setDeltaMovement(new Vec3(rand.nextDouble(4), rand.nextDouble(4), rand.nextDouble(4)));
-        fireball.noPhysics = false;
+        final float scale = 0.8f;
+        final float spread = 1f; //additive random spread
+        fireball.shoot(rand.nextDouble(-1, 1), rand.nextDouble(1), rand.nextDouble(-1, 1), scale, spread);
         return fireball;
     });
     public static final FungusEffect LIGHTNING_EFFECT = new SpawnEntityEffect("lightning", (lvl) -> new LightningBolt(EntityType.LIGHTNING_BOLT, lvl));
