@@ -64,6 +64,7 @@ public class MutationsProvider implements DataProvider
         addMutation(CALCITE_FUNGUS, CLAY_FUNGUS, RUSSULA_LAZULA, cachedOutput);
         addMutation(RUSSULA_LAZULA, AMANITA_CUPREA, "EMERALD_FUNGUS", cachedOutput);
         addMutation(CALCITE_FUNGUS, COAL_FUNGUS, TUFF_FUNGUS, cachedOutput);
+        addMutation(AGARICUS_ANIMI, CHALCIPORUS_INFERNALIS, BASALT_FUNGUS, cachedOutput);
         addMutation(BASALT_FUNGUS, TUFF_FUNGUS, DIAMOND_FUNGUS, cachedOutput);
 
         // Benefic branch
@@ -79,7 +80,7 @@ public class MutationsProvider implements DataProvider
         addMutation("BONEBLOCK_SUSTAINED_FUNGUS", "???", "FERTILIZING_EFFECT_FUNGUS", cachedOutput);
 
         addMutation("???", RUSSULA_LAZULA, "EXPERIENCE_FUNGUS", cachedOutput);
-        addMutation(AGARICUS_ANIMI, CHALCIPORUS_INFERNALIS, "???", cachedOutput);
+        addMutation("???", END_FUNGUS, TRICHOLOMOPSIS_EVANESCENS, cachedOutput);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 

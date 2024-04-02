@@ -5,7 +5,7 @@ public class SpeciesDictionary
     /*
      *   Everything starts from the natives species:
      */
-    //  Overworld
+    //  Native Overworld
     public static final String AGARICUS_CAMPESTRIS = "Agaricus campestris";       //(plains)
     public static final String LACTARIUS_VIRIDIS = "Lactarius viridis";           //(sunflower plains)
     public static final String LECCINUM_VERSIPELLE = "Leccinum versipelle";       //(birch forest)
@@ -20,11 +20,11 @@ public class SpeciesDictionary
     public static final String HYGROPHORUS_NIVEUS = "Hygrophorus niveus";         //(snowy taiga)
     public static final String BOLBITIUS_PROFONDORUM = "Bolbitius profundorum";   //(caves)
 
-    // Nether
+    // Native Nether
     public static final String AGARICUS_ANIMI = "Agaricus animi";
     public static final String CHALCIPORUS_INFERNALIS = "Chalciporus infernalis";
 
-    // End
+    // Native End
     public static final String END_FUNGUS = "END_FUNGUS";
 
     // Colors branch
@@ -68,4 +68,7 @@ public class SpeciesDictionary
 
     // Environmental branch
     public static final String FREEZING_FUNGUS = "FREEZING_FUNGUS";
+
+    // End branch
+    public static final String TRICHOLOMOPSIS_EVANESCENS = "Tricholomopsis evanescens";
 }

@@ -327,7 +327,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain("mycologymod:netherite")
                 .build();
 
-        speciesBuilder.createDefaultSpecies("Tricholomopsis evanescens")
+        speciesBuilder.createDefaultSpecies(TRICHOLOMOPSIS_EVANESCENS)
                 .crimsonType()
                 .colors4(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
                 .terrain("mycologymod:endstone")
