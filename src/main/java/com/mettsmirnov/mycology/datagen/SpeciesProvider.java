@@ -308,7 +308,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.EXPORBS_EFFECT)
                 .build();
 
-        speciesBuilder.createDefaultSpecies("BLAZE_FUNGUS")
+        speciesBuilder.createDefaultSpecies(BLAZE_FUNGUS)
                 .crimsonType()
                 .colors4(0xFF7B00, 0xFF9900, 0xFFDD36, 0xFFFF73)
                 .areaEffect(FungusEffects.BLAZING_EFFECT)
@@ -402,10 +402,10 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("SPARKLING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.SPARKLING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("RAPTING_EFFECT_FUNGUS")
+        speciesBuilder.createProtoSpecies(RAPTING_FUNGUS)
                 .areaEffect(FungusEffects.RAPTING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("TELEPORTING_EFFECT_FUNGUS")
+        speciesBuilder.createProtoSpecies(TELEPORTING_FUNGUS)
                 .areaEffect(FungusEffects.TELEPORTING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("LIGHTFUL_EFFECT_FUNGUS")
@@ -450,7 +450,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("LIGHTNING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.LIGHTNING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("ENDER_EYE_FUNGUS")
+        speciesBuilder.createProtoSpecies(ENDER_EYE_FUNGUS)
                 .areaEffect(FungusEffects.EYE_OF_ENDER_EFFECT)
                 .build();
         //////////////////////////////

@@ -69,6 +69,12 @@ public class SpeciesDictionary
     // Environmental branch
     public static final String FREEZING_FUNGUS = "FREEZING_FUNGUS";
 
+    // Special branch
+    public static final String BLAZE_FUNGUS = "BLAZE_FUNGUS";
+    public static final String ENDER_EYE_FUNGUS = "ENDER_EYE_FUNGUS";
+
     // End branch
     public static final String TRICHOLOMOPSIS_EVANESCENS = "Tricholomopsis evanescens";
+    public static final String RAPTING_FUNGUS = "RAPTING_FUNGUS";
+    public static final String TELEPORTING_FUNGUS = "TELEPORTING_FUNGUS";
 }
