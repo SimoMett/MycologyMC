@@ -450,6 +450,9 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("LIGHTNING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.LIGHTNING_EFFECT)
                 .build();
+        speciesBuilder.createProtoSpecies("ENDER_EYE_FUNGUS")
+                .areaEffect(FungusEffects.EYE_OF_ENDER_EFFECT)
+                .build();
         //////////////////////////////
         //  Overworld native fungi  //
         //////////////////////////////

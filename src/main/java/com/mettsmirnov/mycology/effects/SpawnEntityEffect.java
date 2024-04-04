@@ -50,8 +50,11 @@ public class SpawnEntityEffect extends FungusEffect
         {
             BlockPos p = pList2.get(new Random().nextInt(pList2.size()));
             Entity entity = entitySupplier.apply(level);
-            entity.setPos(p.getX(), p.getY(), p.getZ());
-            level.addFreshEntity(entity);
+            if(entity!=null)
+            {
+                entity.setPos(p.getX(), p.getY(), p.getZ());
+                level.addFreshEntity(entity);
+            }
         }
     }
 }

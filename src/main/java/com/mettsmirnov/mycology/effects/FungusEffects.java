@@ -3,18 +3,22 @@ package com.mettsmirnov.mycology.effects;
 import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.StructureTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.projectile.EyeOfEnder;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -145,6 +149,22 @@ public class FungusEffects
         orb.value = 1;
         return orb;
     });
+    public static final FungusEffect EYE_OF_ENDER_EFFECT = new FungusEffect("eye_of_ender") {
+        @Override
+        public void applyEffectToEntity(LivingEntity entity) {}
+
+        @Override
+        public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
+        {
+            EyeOfEnder eyeOfEnder = new EyeOfEnder(level, origin.getX(), origin.getY()+0.5, origin.getZ());
+            BlockPos strongholdPos = level.findNearestMapStructure(StructureTags.EYE_OF_ENDER_LOCATED, origin, 100, false);
+            if(strongholdPos!= null)
+            {
+                eyeOfEnder.signalTo(strongholdPos);
+                level.addFreshEntity(eyeOfEnder);
+            }
+        }
+    };
     //dev
     public static final FungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
     public static final FungusEffect TNT_EFFECT = new SpawnEntityEffect("tnt", (lvl) -> {
