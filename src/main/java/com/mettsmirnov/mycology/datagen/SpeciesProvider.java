@@ -143,17 +143,22 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //      Toxic fungi        //
         /////////////////////////////
-
-        //Wither fungus
-        speciesBuilder.createDefaultSpecies("Sarcosphaera arescens")
+        speciesBuilder.createProtoSpecies(FATIGUE_FUNGUS)
+                .areaEffect(FungusEffects.FATIGUE_EFFECT)
+                .build();
+        speciesBuilder.createDefaultSpecies(DRUNK_FUNGUS) //parent of FERMENTER_FUNGUS
+                .crimsonType()
+                .colors4(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
+                .areaEffect(FungusEffects.DRUNK_EFFECT)
+                .build();
+        speciesBuilder.createProtoSpecies(POISON_FUNGUS)
+                .areaEffect(FungusEffects.POISON_EFFECT)
+                .build();
+        speciesBuilder.createDefaultSpecies(WITHERING_FUNGUS)
                 .crimsonType()
                 .colors4(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
                 .terrain("mycologymod:nether")
                 .areaEffect(FungusEffects.WITHERING_EFFECT)
-                .build();
-
-        speciesBuilder.createProtoSpecies("POISON_EFFECT_FUNGUS")
-                .areaEffect(FungusEffects.POISON_EFFECT)
                 .build();
 
         /////////////////////////////
@@ -352,26 +357,18 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xa98565, 0xf9bcc1, 0xc7bdce, 0x6d719a)
                 //.areaEffect(FungusEffects.FERMENTING_EFFECT)
                 .build();
-        speciesBuilder.createDefaultSpecies("DRUNK_EFFECT_FUNGUS") //parent of FERMENTER_FUNGUS
-                .crimsonType()
-                .colors4(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
-                .areaEffect(FungusEffects.DRUNK_EFFECT)
-                .build();
-        speciesBuilder.createProtoSpecies("FATIGUE_EFFECT_FUNGUS")
-                .areaEffect(FungusEffects.FATIGUE_EFFECT)
-                .build();
-        speciesBuilder.createProtoSpecies("STRENGTH_EFFECT_FUNGUS")
+        speciesBuilder.createProtoSpecies(STRENGTH_FUNGUS)
                 .areaEffect(FungusEffects.STRENGTH_EFFECT)
                 .build();
-        speciesBuilder.createDefaultSpecies("ANESTHETIC_EFFECT_FUNGUS")
+        speciesBuilder.createDefaultSpecies(ANESTHETIC_FUNGUS)
                 .warpedType()
                 .colors4(0x59a6cf, 0xe61e65, 0xe03775, 0xffffff)
                 .areaEffect(FungusEffects.ANESTHETIC_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("ILLUCINATING_FUNGUS")
+        speciesBuilder.createProtoSpecies(ILLUCINATING_FUNGUS)
                 .areaEffect(FungusEffects.ILLUCINATING_EFFECT)
                 .build();
-        speciesBuilder.createDefaultSpecies("Psilocybe baeocystis")
+        speciesBuilder.createDefaultSpecies(HALLUCINATING_FUNGUS)
                 .warpedType()
                 .colors4(0xefe8de, 0x50483b, 0x1f3132, 0x28a6af)
                 .areaEffect(FungusEffects.HALLUCINATING_EFFECT)
@@ -390,13 +387,13 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("NIGHTLY_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.NIGHTLY_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("SENSING_EFFECT_FUNGUS")
+        speciesBuilder.createProtoSpecies(SENSING_FUNGUS)
                 .areaEffect(FungusEffects.SENSING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("SHINING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.SHINING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("SCHIZO_EFFECT_FUNGUS")
+        speciesBuilder.createProtoSpecies(SCHIZO_FUNGUS)
                 .areaEffect(FungusEffects.SCHIZO_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("SPARKLING_EFFECT_FUNGUS")
@@ -443,6 +440,8 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(2)
                 .areaEffect(FungusEffects.SKELETONS_EFFECT)
                 .build();
+        speciesBuilder.createProtoSpecies("CRYING_FUNGUS") //randomly cries (i.e. drops ghast tears)
+                .build();
         speciesBuilder.createProtoSpecies("GHASTLY_EFFECT_FUNGUS")
                 .areaRadius(2)
                 .areaEffect(FungusEffects.GHASTLY_EFFECT)
@@ -453,6 +452,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies(ENDER_EYE_FUNGUS)
                 .areaEffect(FungusEffects.EYE_OF_ENDER_EFFECT)
                 .build();
+
         //////////////////////////////
         //  Overworld native fungi  //
         //////////////////////////////

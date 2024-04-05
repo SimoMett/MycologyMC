@@ -65,6 +65,20 @@ public class SpeciesDictionary
     public static final String LACCARIA_DULCIS = "Laccaria dulcis";
     public static final String NOBLE_BOLETUS_SQUISITUS = "Noble boletus squisitus";
     public static final String BOLETUS_SALUBRIUM = "Boletus salubrium";
+    public static final String STRENGTH_FUNGUS = "STRENGTH_FUNGUS";
+
+    // Toxic branch
+    public static final String FATIGUE_FUNGUS = "FATIGUE_FUNGUS";
+    public static final String DRUNK_FUNGUS = "DRUNK_FUNGUS";
+    public static final String POISON_FUNGUS = "POISON_FUNGUS";
+    public static final String WITHERING_FUNGUS = "Sarcosphaera arescens";
+
+    // Psico branch
+    public static final String ANESTHETIC_FUNGUS = "ANESTHETIC_FUNGUS";
+    public static final String ILLUCINATING_FUNGUS = "ILLUCINATING_FUNGUS";
+    public static final String HALLUCINATING_FUNGUS = "Psilocybe baeocystis";
+    public static final String SENSING_FUNGUS = "SENSING_FUNGUS";
+    public static final String SCHIZO_FUNGUS = "SCHIZO_FUNGUS";
 
     // Environmental branch
     public static final String FREEZING_FUNGUS = "FREEZING_FUNGUS";

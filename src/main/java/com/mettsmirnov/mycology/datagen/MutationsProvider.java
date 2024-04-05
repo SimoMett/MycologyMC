@@ -49,7 +49,7 @@ public class MutationsProvider implements DataProvider
         // Materials branch
         addMutation(BOLETUS_EDULIS, SUILLUS_GRANULATUS, POLYPORUS_LIGNEUS, cachedOutput);
         addMutation(POLYPORUS_LIGNEUS, AMANITA_PHALLOIDES, CLAY_FUNGUS, cachedOutput);
-        addMutation(CHALCIPORUS_INFERNALIS, AGARICUS_ANIMI, BASALT_FUNGUS ,cachedOutput);
+        addMutation(CHALCIPORUS_INFERNALIS, BOLBITIUS_PROFONDORUM, BASALT_FUNGUS ,cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM, HYGROPHORUS_NIVEUS, DIORITE_FUNGUS, cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM, DIORITE_FUNGUS, CALCITE_FUNGUS, cachedOutput);
 
@@ -71,20 +71,30 @@ public class MutationsProvider implements DataProvider
         addMutation(AGARICUS_CAMPESTRIS, SUILLUS_GRANULATUS, LACTARIUS_DELICIOUS, cachedOutput);
         addMutation(POLYPORUS_LIGNEUS, LACTARIUS_DELICIOUS, LACCARIA_DULCIS, cachedOutput);
         addMutation(BOLETUS_EDULIS, LACTARIUS_DELICIOUS, NOBLE_BOLETUS_SQUISITUS, cachedOutput);
+        addMutation(NOBLE_BOLETUS_SQUISITUS, "???", BOLETUS_SALUBRIUM, cachedOutput);
+        addMutation(BLAZE_FUNGUS, "???", STRENGTH_FUNGUS, cachedOutput);
+
+        // Psico branch
+        addMutation(STRENGTH_FUNGUS, "???", ANESTHETIC_FUNGUS, cachedOutput);
+        addMutation(ANESTHETIC_FUNGUS, "???", ILLUCINATING_FUNGUS, cachedOutput);
+        addMutation(ILLUCINATING_FUNGUS, "???", HALLUCINATING_FUNGUS, cachedOutput);
 
         // Environmental branch
         addMutation(HYGROPHORUS_NIVEUS, NOBLE_BOLETUS_SQUISITUS, FREEZING_FUNGUS, cachedOutput);
 
-        //TODO possible mutations
-        addMutation(NOBLE_BOLETUS_SQUISITUS, "???", BOLETUS_SALUBRIUM, cachedOutput);
-        addMutation("BONEBLOCK_SUSTAINED_FUNGUS", "???", "FERTILIZING_EFFECT_FUNGUS", cachedOutput);
-
-        addMutation("???", RUSSULA_LAZULA, "EXPERIENCE_FUNGUS", cachedOutput);
-        addMutation("???", END_FUNGUS, TRICHOLOMOPSIS_EVANESCENS, cachedOutput);
+        // Special branch
+        addMutation(CHALCIPORUS_INFERNALIS, AGARICUS_ANIMI, BLAZE_FUNGUS, cachedOutput);
         addMutation(TRICHOLOMOPSIS_EVANESCENS, BLAZE_FUNGUS, ENDER_EYE_FUNGUS, cachedOutput);
-        addMutation("???", TRICHOLOMOPSIS_EVANESCENS, "???", cachedOutput);
-        addMutation("???", "???", RAPTING_FUNGUS, cachedOutput);
+
+        // End branch
+        addMutation("???", END_FUNGUS, TRICHOLOMOPSIS_EVANESCENS, cachedOutput);
+        addMutation(TRICHOLOMOPSIS_EVANESCENS, "???", RAPTING_FUNGUS, cachedOutput);
         addMutation("???", RAPTING_FUNGUS, TELEPORTING_FUNGUS, cachedOutput);
+
+        //TODO possible mutations
+        addMutation("BONEBLOCK_SUSTAINED_FUNGUS", "???", "FERTILIZING_EFFECT_FUNGUS", cachedOutput);
+        addMutation("???", RUSSULA_LAZULA, "EXPERIENCE_FUNGUS", cachedOutput);
+
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 
