@@ -73,8 +73,7 @@ public class FungusEffects
             pList.add(new BlockPos(p));
         });
         List <BlockPos> pList2 = pList.stream()
-                //.filter(p -> p.distSqr(pos) < box.getSize()/2.0f)
-                .filter(p -> level.getBlockState(p).is(BlockTags.CROPS))
+                .filter(p -> level.getBlockState(p).is(BlockTags.CROPS) || level.getBlockState(p).is(Blocks.GRASS_BLOCK))
                 .toList();
         if (!pList2.isEmpty())
         {
