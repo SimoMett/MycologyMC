@@ -380,7 +380,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xcc052a, 0xc0b334, 0xb79655, 0x514d1d)
                 .areaEffect(FungusEffects.RADIOACTIVE_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("BLINDING_EFFECT_FUNGUS") // could be cool if this very rarely spawns in the overworld
+        speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
                 .areaEffect(FungusEffects.BLINDING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies("PHANTOM_EFFECT_FUNGUS")

@@ -72,6 +72,7 @@ public class SpeciesDictionary
     public static final String DRUNK_FUNGUS = "DRUNK_FUNGUS";
     public static final String POISON_FUNGUS = "POISON_FUNGUS";
     public static final String WITHERING_FUNGUS = "Sarcosphaera arescens";
+    public static final String BLINDING_FUNGUS = "BLINDING_FUNGUS";
 
     // Psico branch
     public static final String ANESTHETIC_FUNGUS = "ANESTHETIC_FUNGUS";
