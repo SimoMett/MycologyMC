@@ -79,6 +79,7 @@ public class MutationsProvider implements DataProvider
         addMutation(ANESTHETIC_FUNGUS, "???", ILLUCINATING_FUNGUS, cachedOutput);
         addMutation(ILLUCINATING_FUNGUS, "???", HALLUCINATING_FUNGUS, cachedOutput);
         addMutation(BLINDING_FUNGUS, "???", SENSING_FUNGUS, cachedOutput);
+        addMutation(BLINDING_FUNGUS, "???", NIGHTLY_FUNGUS, cachedOutput);
 
         // Environmental branch
         addMutation(HYGROPHORUS_NIVEUS, NOBLE_BOLETUS_SQUISITUS, FREEZING_FUNGUS, cachedOutput);

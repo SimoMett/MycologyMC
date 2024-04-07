@@ -80,6 +80,7 @@ public class SpeciesDictionary
     public static final String HALLUCINATING_FUNGUS = "Psilocybe baeocystis";
     public static final String SENSING_FUNGUS = "SENSING_FUNGUS";
     public static final String SCHIZO_FUNGUS = "SCHIZO_FUNGUS";
+    public static final String NIGHTLY_FUNGUS = "NIGHTLY_FUNGUS";
 
     // Environmental branch
     public static final String FREEZING_FUNGUS = "FREEZING_FUNGUS";

@@ -9,6 +9,7 @@ import net.minecraft.data.DataProvider;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -386,7 +387,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("PHANTOM_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.PHANTOM_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("NIGHTLY_EFFECT_FUNGUS")
+        speciesBuilder.createProtoSpecies(NIGHTLY_FUNGUS)
                 .areaEffect(FungusEffects.NIGHTLY_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(SENSING_FUNGUS)
@@ -554,7 +555,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(CHALCIPORUS_INFERNALIS)//nether wastes native
                 .crimsonType()
                 .colors4(0xb5917a, 0xEE2E3D, 0xff6500, 0xffa468)
-                .terrain("minecraft:netherrack")
+                .terrain(Blocks.NETHERRACK)
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.NETHER_WASTES)
                 .build();
