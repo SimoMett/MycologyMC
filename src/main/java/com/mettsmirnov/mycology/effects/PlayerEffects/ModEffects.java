@@ -14,6 +14,8 @@ public class ModEffects
     public static RegistryObject<MobEffect> GAIN_XP = EFFECTS.register("gain_xp", GainXPEffect::instance);
     public static RegistryObject<MobEffect> XP_MULTIPLIER = EFFECTS.register("xp_multiplier", XPMultiplierEffect::create);
 
+    //Others
+    public static RegistryObject<MobEffect> SENSING = EFFECTS.register("sensing", SensingEffect::create);
     //test only
     public static RegistryObject<MobEffect> SAMPLE = EFFECTS.register("sample", SampleEffect::create);
     public static RegistryObject<MobEffect> LAST_CHANCE = EFFECTS.register("last_chance", LastChanceEffect::instance);
