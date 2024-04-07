@@ -7,6 +7,7 @@ import com.mettsmirnov.mycology.effects.FungusEffect;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.effects.FungusEffects;
+import com.mettsmirnov.mycology.tags.ModBlockTags;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -14,6 +15,7 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jline.utils.Log;
 
@@ -66,7 +68,7 @@ public class SpeciesBuilder
         this.spreading = 25;
         this.spreadBoost = 1.0f;
         this.light = 15;
-        this.terrain = "mycologymod:grass";
+        this.terrain = "#"+ModBlockTags.GRASS.location();
         this.biomesSpecs = BiomesSpecs.FOREST;
         this.areaEffect = FungusEffects.NO_EFFECT;
         this.areaRadius = DEFAULT_AREA_RADIUS;
@@ -124,9 +126,16 @@ public class SpeciesBuilder
         return this;
     }
 
+    @Deprecated
     public SpeciesBuilder terrain(String terrainBlock)
     {
         this.terrain = terrainBlock;
+        return this;
+    }
+
+    public SpeciesBuilder terrain(Block terrainBlock)
+    {
+        this.terrain = ForgeRegistries.BLOCKS.getKey(terrainBlock).toString();
         return this;
     }
 
