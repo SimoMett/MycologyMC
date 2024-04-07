@@ -11,7 +11,9 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;
 import org.jline.utils.Log;
 
@@ -122,9 +124,15 @@ public class SpeciesBuilder
         return this;
     }
 
-    public SpeciesBuilder terrain(String terrain)
+    public SpeciesBuilder terrain(String terrainBlock)
     {
-        this.terrain = terrain;
+        this.terrain = terrainBlock;
+        return this;
+    }
+
+    public SpeciesBuilder terrain(TagKey<Block> terrainTag)
+    {
+        this.terrain = "#"+terrainTag.location();
         return this;
     }
 

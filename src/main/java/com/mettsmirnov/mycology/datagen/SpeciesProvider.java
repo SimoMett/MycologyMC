@@ -2,11 +2,13 @@ package com.mettsmirnov.mycology.datagen;
 
 import com.mettsmirnov.mycology.effects.FungusEffects;
 import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
+import com.mettsmirnov.mycology.tags.ModBlockTags;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
+import net.minecraft.tags.BlockTags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +44,7 @@ public class SpeciesProvider implements DataProvider
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
-                .terrain("mycologymod:grass")
+                .terrain(ModBlockTags.GRASS)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
                 .spawnType(FungusSpawn.DARK_FOREST)
@@ -72,7 +74,7 @@ public class SpeciesProvider implements DataProvider
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
-                .terrain("mycologymod:grass")
+                .terrain(ModBlockTags.GRASS)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
                 .spawnType(FungusSpawn.ANY_BIOME)
@@ -134,7 +136,7 @@ public class SpeciesProvider implements DataProvider
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
-                .terrain("mycologymod:podzol")
+                .terrain(ModBlockTags.PODZOL)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
                 .spawnType(FungusSpawn.ANY_BIOME)
@@ -157,7 +159,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(WITHERING_FUNGUS)
                 .crimsonType()
                 .colors4(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
-                .terrain("mycologymod:nether")
+                .terrain(ModBlockTags.NETHER)
                 .areaEffect(FungusEffects.WITHERING_EFFECT)
                 .build();
 
@@ -167,7 +169,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(POLYPORUS_LIGNEUS)
                 .warpedType()
                 .colors4(0xbba77a, 0x8d664b, 0xb38f6e, 0x4f3a2d)
-                .terrain("minecraft:logs")
+                .terrain(BlockTags.LOGS)
                 .areaRadius(7)
                 .areaEffect(FungusEffects.DECOMPOSING_EFFECT)
                 .build();
@@ -206,7 +208,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(CLAY_FUNGUS)
                 .warpedType()
                 .colors4(0xffdbb2, 0xb2c5ff, 0x8896c3, 0xadbfee)
-                .terrain("mycologymod:clay")
+                .terrain("minecraft:clay")
                 .build();
 
         /*speciesBuilder.createProtoSpecies("TERRACOTTA_FUNGUS")
@@ -227,7 +229,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createProtoSpecies("BONEBLOCK_SUSTAINED_FUNGUS")
-                .terrain("mycologymod:bone_block")
+                .terrain("minecraft:bone_block")
                 .build();
 
         /////////////////////////////
@@ -236,31 +238,31 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(COAL_FUNGUS)
                 .warpedType()
                 .colors4(0xa19b88, 0x8a8a8a, 0x383838, 0x2e2e2e)
-                .terrain("minecraft:coal_ores")
+                .terrain(BlockTags.COAL_ORES)
                 .build();
 
         speciesBuilder.createDefaultSpecies("EMERALD_FUNGUS")
                 .crimsonType()
                 .colors4(0x8c909c, 0x5f6269, 0x287441, 0x96ffaa)
-                .terrain("minecraft:emerald_ores")
+                .terrain(BlockTags.EMERALD_ORES)
                 .build();
 
         speciesBuilder.createDefaultSpecies("GLOWSTONE_FUNGUS")
                 .crimsonType()
                 .colors4(0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd)
-                .terrain("mycologymod:nether")
+                .terrain(ModBlockTags.NETHER)
                 .build();
 
         speciesBuilder.createDefaultSpecies(GALERINA_AURATA) //Gold
                 .warpedType()
                 .colors4(0xeed484, 0xFF9900, 0xFFDD36, 0xffe56b)
-                .terrain("minecraft:gold_ores")
+                .terrain(BlockTags.GOLD_ORES)
                 .build();
 
         speciesBuilder.createDefaultSpecies(BOLBITIUS_SILEX) //Quartz
                 .crimsonType()
                 .colors4(0xc83825, 0xfff1eb, 0xe0dcda, 0xffffff)
-                .terrain("mycologymod:quartz_ores")
+                .terrain(ModBlockTags.QUARTZ_ORES)
                 .build();
 
         speciesBuilder.createSpecies(RUSSULA_LAZULA) //Lapislazuli
@@ -269,7 +271,7 @@ public class SpeciesProvider implements DataProvider
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
-                .terrain("minecraft:lapis_ores")
+                .terrain(BlockTags.LAPIS_ORES)
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .areaEffect(FungusEffects.NO_EFFECT)
                 .spawnType(FungusSpawn.ANY_BIOME)
@@ -278,25 +280,25 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(RUSSULA_CONCITATA)
                 .crimsonType()
                 .colors4(0xFFF9EE, 0x760a00, 0x730000, 0xda0000)
-                .terrain("minecraft:redstone_ores")
+                .terrain(BlockTags.REDSTONE_ORES)
                 .build();
 
         speciesBuilder.createDefaultSpecies(AMANITA_CUPREA) //Copper
                 .warpedType()
                 .colors4(0xbb9173, 0xe8693d, 0x208068, 0x20a387)
-                .terrain("minecraft:copper_ores")
+                .terrain(BlockTags.COPPER_ORES)
                 .build();
 
         speciesBuilder.createDefaultSpecies(XEROCOMUS_FERRUGINEUS)
                 .warpedType()
                 .colors4(0xffffcc, 0x95867e, 0xC0997F, 0xFBD3B8)
-                .terrain("minecraft:iron_ores")
+                .terrain(BlockTags.IRON_ORES)
                 .build();
 
         speciesBuilder.createDefaultSpecies(AMETHYST_FUNGUS)
                 .crimsonType()
                 .colors4(0xfad2d4, 0xae80ff, 0xba8ed6, 0xf6c3da)
-                .terrain("mycologymod:amethyst")
+                .terrain("minecraft:amethyst_block")
                 .areaEffect(FungusEffects.BUDDING_EFFECT)
                 .areaRadius(4)
                 .build();
@@ -304,7 +306,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(DIAMOND_FUNGUS)
                 .crimsonType()
                 .colors4(0x848d9b, 0x5d636f, 0x21202a, 0x00ecff)
-                .terrain("minecraft:diamond_ores")
+                .terrain(BlockTags.DIAMOND_ORES)
                 .build();
 
         speciesBuilder.createDefaultSpecies("EXPERIENCE_FUNGUS")
@@ -317,25 +319,25 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType()
                 .colors4(0xFF7B00, 0xFF9900, 0xFFDD36, 0xFFFF73)
                 .areaEffect(FungusEffects.BLAZING_EFFECT)
-                .terrain("mycologymod:nether_bricks")
+                .terrain(ModBlockTags.NETHER_BRICKS)
                 .build();
 
         speciesBuilder.createDefaultSpecies("Polyporus antiquus")
                 .crimsonType()
                 .colors4(0x52362F, 0x52362F, 0x29130D, 0x52362F)
-                .terrain("mycologymod:netherite")
+                .terrain("minecraft:netherite_block")
                 .build();
 
         speciesBuilder.createDefaultSpecies("NETHERITE_FUNGUS")
                 .crimsonType()
                 .colors4(0x7b716d, 0x48413c, 0x272624, 0x4a484a)
-                .terrain("mycologymod:netherite")
+                .terrain("minecraft:netherite_block")
                 .build();
 
         speciesBuilder.createDefaultSpecies(TRICHOLOMOPSIS_EVANESCENS)
                 .crimsonType()
                 .colors4(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
-                .terrain("mycologymod:endstone")
+                .terrain("minecraft:end_stone")
                 .build();
         /////////////////////////////////
         //    Special effects fungi    //
@@ -347,7 +349,7 @@ public class SpeciesProvider implements DataProvider
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
-                .terrain("mycologymod:grass")
+                .terrain(ModBlockTags.GRASS)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.HEALING_EFFECT)
                 .areaRadius(3)
@@ -468,7 +470,7 @@ public class SpeciesProvider implements DataProvider
                 .spreading(25)
                 .spreadBoost(1.0f)
                 .light(15)
-                .terrain("mycologymod:grass")
+                .terrain(ModBlockTags.GRASS)
                 .biomesSpecs(BiomesSpecs.PLAINS)
                 .areaEffect(FungusEffects.NO_EFFECT)
                 .spawnType(FungusSpawn.SUNFLOWER_PLAINS)
@@ -544,7 +546,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0x8c909c, 0x94989C, 0x3f4045, 0x2b2d31)
                 .spawnType(FungusSpawn.NO_SPAWN)
                 .light(3)
-                .terrain("mycologymod:deepslate")
+                .terrain(ModBlockTags.DEEPSLATE)
                 .build();
         /////////////////////////////
         //   Nether native fungi   //
@@ -560,7 +562,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(AGARICUS_ANIMI)//soul sand valley native
                 .crimsonType()
                 .colors4(0x7b929c, 0x796251, 0x614e43, 0x887265)
-                .terrain("minecraft:soul_fire_base_blocks")
+                .terrain(BlockTags.SOUL_FIRE_BASE_BLOCKS)
                 .biomesSpecs(BiomesSpecs.NETHER)
                 .spawnType(FungusSpawn.SOUL_SAND_VALLEY)
                 .build();
@@ -570,7 +572,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(END_FUNGUS)
                 .crimsonType()
                 .colors4(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
-                .terrain("mycologymod:endstone")
+                .terrain("minecraft:end_stone")
                 .biomesSpecs(BiomesSpecs.END)
                 .spawnType(FungusSpawn.END_MIDLANDS)
                 .build();
