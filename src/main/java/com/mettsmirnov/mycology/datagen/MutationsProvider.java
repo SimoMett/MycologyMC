@@ -74,6 +74,11 @@ public class MutationsProvider implements DataProvider
         addMutation(NOBLE_BOLETUS_SQUISITUS, "???", BOLETUS_SALUBRIUM, cachedOutput);
         addMutation(BLAZE_FUNGUS, "???", STRENGTH_FUNGUS, cachedOutput);
 
+        // Alcoholic branch
+        addMutation(LACCARIA_DULCIS, "???", FERMENTER_FUNGUS, cachedOutput);
+        addMutation(FERMENTER_FUNGUS, "???", DRUNK_FUNGUS, cachedOutput);
+        addMutation(DRUNK_FUNGUS, BLINDING_FUNGUS, TOXIC_METILIC_FUNGUS, cachedOutput);
+
         // Psico branch
         addMutation(STRENGTH_FUNGUS, "???", ANESTHETIC_FUNGUS, cachedOutput);
         addMutation(ANESTHETIC_FUNGUS, "???", ILLUCINATING_FUNGUS, cachedOutput);

@@ -95,15 +95,18 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0x89501e)
                 .build();
 
-        speciesBuilder.createProtoSpecies(BLACK_FUNGUS)
-                .colors1(0x202020)
+        speciesBuilder.createDefaultSpecies(BLACK_FUNGUS)
+                .crimsonType()
+                .colors4(0xffdcc7, 0xffffff, 0xe4d6cd, 0x262626)
                 .build();
 
-        speciesBuilder.createProtoSpecies(GREY_FUNGUS)
+        speciesBuilder.createDefaultSpecies(GREY_FUNGUS)
+                .crimsonType()
                 .colors1(0x535353)
                 .build();
 
-        speciesBuilder.createProtoSpecies(LIGHTGREY_FUNGUS)
+        speciesBuilder.createDefaultSpecies(LIGHTGREY_FUNGUS)
+                .warpedType()
                 .colors1(0x999999)
                 .build();
 
@@ -148,11 +151,6 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         speciesBuilder.createProtoSpecies(FATIGUE_FUNGUS)
                 .areaEffect(FungusEffects.FATIGUE_EFFECT)
-                .build();
-        speciesBuilder.createDefaultSpecies(DRUNK_FUNGUS) //parent of FERMENTER_FUNGUS
-                .crimsonType()
-                .colors4(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
-                .areaEffect(FungusEffects.DRUNK_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(POISON_FUNGUS)
                 .areaEffect(FungusEffects.POISON_EFFECT)
@@ -340,6 +338,23 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
                 .terrain("minecraft:end_stone")
                 .build();
+
+        ///////////////////////////
+        //    Alcoholic fungi    //
+        ///////////////////////////
+        speciesBuilder.createDefaultSpecies(FERMENTER_FUNGUS)
+                .warpedType()
+                .colors4(0xa98565, 0xf9bcc1, 0xc7bdce, 0x6d719a)
+                //.areaEffect(FungusEffects.FERMENTING_EFFECT)
+                .build();
+        speciesBuilder.createDefaultSpecies(DRUNK_FUNGUS)
+                .crimsonType()
+                .colors4(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
+                .areaEffect(FungusEffects.DRUNK_EFFECT)
+                .build();
+        speciesBuilder.createProtoSpecies(TOXIC_METILIC_FUNGUS)
+                .build();
+
         /////////////////////////////////
         //    Special effects fungi    //
         /////////////////////////////////
@@ -355,12 +370,13 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.HEALING_EFFECT)
                 .areaRadius(3)
                 .build();
-        speciesBuilder.createDefaultSpecies("FERMENTER_FUNGUS")
+        speciesBuilder.createProtoSpecies("SPEED_FUNGUS")
                 .warpedType()
-                .colors4(0xa98565, 0xf9bcc1, 0xc7bdce, 0x6d719a)
-                //.areaEffect(FungusEffects.FERMENTING_EFFECT)
+                .colors4(0xfebf98, 0xd0eaff, 0xffffff, 0x92c5e4)
                 .build();
-        speciesBuilder.createProtoSpecies(STRENGTH_FUNGUS)
+        speciesBuilder.createDefaultSpecies(STRENGTH_FUNGUS)
+                .crimsonType()
+                .colors4(0xc04774, 0x916a7a, 0xc70d09, 0xda8d46)
                 .areaEffect(FungusEffects.STRENGTH_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(ANESTHETIC_FUNGUS)
@@ -443,7 +459,7 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(2)
                 .areaEffect(FungusEffects.SKELETONS_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("CRYING_FUNGUS") //randomly cries (i.e. drops ghast tears)
+        speciesBuilder.createProtoSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
                 .build();
         speciesBuilder.createProtoSpecies("GHASTLY_EFFECT_FUNGUS")
                 .areaRadius(2)

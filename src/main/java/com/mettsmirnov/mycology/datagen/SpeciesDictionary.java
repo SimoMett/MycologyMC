@@ -33,7 +33,7 @@ public class SpeciesDictionary
     public static final String GREY_FUNGUS = "GREY_FUNGUS";
     public static final String LIME_FUNGUS = "LIME_FUNGUS";
     public static final String LIGHTGREY_FUNGUS = "LIGHTGREY_FUNGUS";
-    public static final String BLACK_FUNGUS = "BLACK_FUNGUS";
+    public static final String BLACK_FUNGUS = "Coprinus comatus";
     public static final String LIGHTBLUE_FUNGUS = "Leccinum caelestis";
     public static final String PINK_FUNGUS = "PINK_FUNGUS";
     public static final String OVULUS_VIOLACEUS = "Ovulus violaceus";
@@ -67,9 +67,13 @@ public class SpeciesDictionary
     public static final String BOLETUS_SALUBRIUM = "Boletus salubrium";
     public static final String STRENGTH_FUNGUS = "STRENGTH_FUNGUS";
 
+    // Alcoholic branch
+    public static final String FERMENTER_FUNGUS = "FERMENTER_FUNGUS";
+    public static final String DRUNK_FUNGUS = "DRUNK_FUNGUS";
+    public static final String TOXIC_METILIC_FUNGUS = "TOXIC_METILIC_FUNGUS";
+
     // Toxic branch
     public static final String FATIGUE_FUNGUS = "FATIGUE_FUNGUS";
-    public static final String DRUNK_FUNGUS = "DRUNK_FUNGUS";
     public static final String POISON_FUNGUS = "POISON_FUNGUS";
     public static final String WITHERING_FUNGUS = "Sarcosphaera arescens";
     public static final String BLINDING_FUNGUS = "BLINDING_FUNGUS";
@@ -88,6 +92,7 @@ public class SpeciesDictionary
     // Special branch
     public static final String BLAZE_FUNGUS = "BLAZE_FUNGUS";
     public static final String ENDER_EYE_FUNGUS = "ENDER_EYE_FUNGUS";
+    public static final String CRYING_FUNGUS = "CRYING_FUNGUS";
 
     // End branch
     public static final String TRICHOLOMOPSIS_EVANESCENS = "Tricholomopsis evanescens";
