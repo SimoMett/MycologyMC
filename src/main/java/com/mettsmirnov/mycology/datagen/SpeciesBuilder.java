@@ -17,6 +17,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jline.utils.Log;
 
 import java.nio.file.Path;
@@ -37,7 +38,7 @@ public class SpeciesBuilder
 
     //Traits
     private String speciesName;
-    private String type;
+    private @NonNull String type;
     private Integer[] colors;
     private Integer spreading;
     private Float spreadBoost;
@@ -55,8 +56,9 @@ public class SpeciesBuilder
     private final List<CompletableFuture<?>> completableFutureList;
 
     //Methods chaining
-    public SpeciesBuilder createSpecies(String speciesName)
+    public SpeciesBuilder createSpecies(@NonNull String speciesName)
     {
+
         this.speciesName = speciesName;
         return this;
     }
@@ -180,8 +182,6 @@ public class SpeciesBuilder
     public void build()
     {
         //FIXME is there a better way of doing this?
-        if(speciesName==null)
-            throw new NullPointerException("SpeciesBuilder: 'speciesName' is null");
         if(type==null)
             throw new NullPointerException("SpeciesBuilder: 'type' attribute of '"+speciesName+"' is null");
         if(colors==null)
