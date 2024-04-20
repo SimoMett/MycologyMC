@@ -98,4 +98,7 @@ public class SpeciesDictionary
     public static final String TRICHOLOMOPSIS_EVANESCENS = "Tricholomopsis evanescens";
     public static final String RAPTING_FUNGUS = "RAPTING_FUNGUS";
     public static final String TELEPORTING_FUNGUS = "TELEPORTING_FUNGUS";
+
+    // Not yet identified
+    public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
 }

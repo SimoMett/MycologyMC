@@ -227,8 +227,9 @@ public class SpeciesProvider implements DataProvider
                 .terrain("minecraft:magma_block")
                 .build();
 
-        speciesBuilder.createProtoSpecies("BONEBLOCK_SUSTAINED_FUNGUS")
-                .terrain("minecraft:bone_block")
+        speciesBuilder.createProtoSpecies(BONEBLOCK_FUNGUS)
+                .crimsonType()
+                .terrain(Blocks.BONE_BLOCK)
                 .build();
 
         /////////////////////////////
@@ -468,7 +469,9 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("LIGHTNING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.LIGHTNING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(ENDER_EYE_FUNGUS)
+        speciesBuilder.createDefaultSpecies(ENDER_EYE_FUNGUS)
+                .crimsonType()
+                .colors4(0x90c074, 0x06d192, 0x72ac49, 0xb4e45b)
                 .areaEffect(FungusEffects.EYE_OF_ENDER_EFFECT)
                 .build();
 
