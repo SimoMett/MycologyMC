@@ -9,6 +9,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jline.utils.Log;
 
 import java.lang.reflect.Field;
@@ -122,7 +123,10 @@ public class FungusDataModel implements IFungusData
     public boolean matchesTerrain(BlockState terrainBlock)
     {
         String terrainTag = (String) dominantTraits.get(TERRAIN);
-        return terrainBlock.is(BlockTags.create(new ResourceLocation(terrainTag)));
+        if(terrainTag.charAt(0)=='#')
+            return terrainBlock.is(BlockTags.create(new ResourceLocation(terrainTag.substring(1))));
+        else
+            return terrainBlock.is(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(terrainTag)));
     }
 
     public final boolean matchesEnvironmentAndTerrain(Integer light, Float temperature, Float humidity, BlockState terrainBlock)
