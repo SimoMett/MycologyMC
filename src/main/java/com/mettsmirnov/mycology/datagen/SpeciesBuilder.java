@@ -70,7 +70,7 @@ public class SpeciesBuilder
         this.spreading = 25;
         this.spreadBoost = 1.0f;
         this.light = 15;
-        this.terrain = "#"+ModBlockTags.GRASS.location();
+        this.terrain(ModBlockTags.GRASS);
         this.biomesSpecs = BiomesSpecs.FOREST;
         this.areaEffect = FungusEffects.NO_EFFECT;
         this.areaRadius = DEFAULT_AREA_RADIUS;
@@ -125,13 +125,6 @@ public class SpeciesBuilder
     public SpeciesBuilder light(int light)
     {
         this.light = light;
-        return this;
-    }
-
-    @Deprecated
-    public SpeciesBuilder terrain(String terrainBlock)
-    {
-        this.terrain = terrainBlock;
         return this;
     }
 

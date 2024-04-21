@@ -207,7 +207,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(CLAY_FUNGUS)
                 .warpedType()
                 .colors4(0xffdbb2, 0xb2c5ff, 0x8896c3, 0xadbfee)
-                .terrain("minecraft:clay")
+                .terrain(Blocks.CLAY)
                 .build();
 
         /*speciesBuilder.createProtoSpecies("TERRACOTTA_FUNGUS")
@@ -224,7 +224,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies("MAGMABLOCK_SUSTAINED_FUNGUS")
                 .crimsonType()
                 .colors4(0x694d3e, 0x4b1009, 0xff6f19, 0xa03c00)
-                .terrain("minecraft:magma_block")
+                .terrain(Blocks.MAGMA_BLOCK)
                 .build();
 
         speciesBuilder.createProtoSpecies(BONEBLOCK_FUNGUS)
@@ -298,7 +298,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(AMETHYST_FUNGUS)
                 .crimsonType()
                 .colors4(0xfad2d4, 0xae80ff, 0xba8ed6, 0xf6c3da)
-                .terrain("minecraft:amethyst_block")
+                .terrain(Blocks.AMETHYST_BLOCK)
                 .areaEffect(FungusEffects.BUDDING_EFFECT)
                 .areaRadius(4)
                 .build();
@@ -325,19 +325,19 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies("Polyporus antiquus")
                 .crimsonType()
                 .colors4(0x52362F, 0x52362F, 0x29130D, 0x52362F)
-                .terrain("minecraft:netherite_block")
+                .terrain(Blocks.NETHERITE_BLOCK)
                 .build();
 
         speciesBuilder.createDefaultSpecies("NETHERITE_FUNGUS")
                 .crimsonType()
                 .colors4(0x7b716d, 0x48413c, 0x272624, 0x4a484a)
-                .terrain("minecraft:netherite_block")
+                .terrain(Blocks.NETHERITE_BLOCK)
                 .build();
 
         speciesBuilder.createDefaultSpecies(TRICHOLOMOPSIS_EVANESCENS)
                 .crimsonType()
                 .colors4(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
-                .terrain("minecraft:end_stone")
+                .terrain(Blocks.END_STONE)
                 .build();
 
         ///////////////////////////
@@ -592,7 +592,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(END_FUNGUS)
                 .crimsonType()
                 .colors4(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
-                .terrain("minecraft:end_stone")
+                .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
                 .spawnType(FungusSpawn.END_MIDLANDS)
                 .build();
