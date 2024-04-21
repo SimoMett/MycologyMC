@@ -54,10 +54,12 @@ public class SpeciesDictionary
     public static final String AMANITA_CUPREA = "Amanita cuprea";
     public static final String TUFF_FUNGUS = "TUFF_FUNGUS";
     public static final String AMETHYST_FUNGUS = "AMETHYST_FUNGUS";
+    public static final String BUDDING_FUNGUS = "BUDDING_FUNGUS";
     public static final String RUSSULA_LAZULA = "Russula lazula";
     public static final String RUSSULA_CONCITATA = "Russula concitata";
     public static final String GALERINA_AURATA = "Galerina aurata";
     public static final String DIAMOND_FUNGUS = "DIAMOND_FUNGUS";
+    public static final String EMERALD_FUNGUS = "EMERALD_FUNGUS";
     public static final String BOLBITIUS_SILEX = "Bolbitius silex";
 
     // Benefic branch
@@ -66,6 +68,7 @@ public class SpeciesDictionary
     public static final String NOBLE_BOLETUS_SQUISITUS = "Noble boletus squisitus";
     public static final String BOLETUS_SALUBRIUM = "Boletus salubrium";
     public static final String STRENGTH_FUNGUS = "STRENGTH_FUNGUS";
+    public static final String SPEED_FUNGUS = "SPEED_FUNGUS";
 
     // Alcoholic branch
     public static final String FERMENTER_FUNGUS = "FERMENTER_FUNGUS";
@@ -99,6 +102,8 @@ public class SpeciesDictionary
     public static final String RAPTING_FUNGUS = "RAPTING_FUNGUS";
     public static final String TELEPORTING_FUNGUS = "TELEPORTING_FUNGUS";
 
-    // Not yet identified
+    // Not yet identified (TODO)
     public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
+    public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
+    public static final String EXPERIENCE_FUNGUS = "EXPERIENCE_FUNGUS";
 }

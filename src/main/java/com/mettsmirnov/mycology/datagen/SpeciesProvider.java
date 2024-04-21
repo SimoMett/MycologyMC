@@ -228,7 +228,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createProtoSpecies(BONEBLOCK_FUNGUS)
-                .crimsonType()
+                .warpedType()
                 .terrain(Blocks.BONE_BLOCK)
                 .build();
 
@@ -241,7 +241,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain(BlockTags.COAL_ORES)
                 .build();
 
-        speciesBuilder.createDefaultSpecies("EMERALD_FUNGUS")
+        speciesBuilder.createDefaultSpecies(EMERALD_FUNGUS)
                 .crimsonType()
                 .colors4(0x8c909c, 0x5f6269, 0x287441, 0x96ffaa)
                 .terrain(BlockTags.EMERALD_ORES)
@@ -299,6 +299,10 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType()
                 .colors4(0xfad2d4, 0xae80ff, 0xba8ed6, 0xf6c3da)
                 .terrain(Blocks.AMETHYST_BLOCK)
+                .build();
+
+        speciesBuilder.createProtoSpecies(BUDDING_FUNGUS)
+                .terrain(Blocks.AMETHYST_BLOCK)
                 .areaEffect(FungusEffects.BUDDING_EFFECT)
                 .areaRadius(4)
                 .build();
@@ -309,7 +313,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain(BlockTags.DIAMOND_ORES)
                 .build();
 
-        speciesBuilder.createDefaultSpecies("EXPERIENCE_FUNGUS")
+        speciesBuilder.createDefaultSpecies(EXPERIENCE_FUNGUS)
                 .crimsonType()
                 .colors4(0x87CFEC, 0x2d81e2, 0x398D4C, 0xB4DF57)
                 .areaEffect(FungusEffects.EXPORBS_EFFECT)
@@ -371,7 +375,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.HEALING_EFFECT)
                 .areaRadius(3)
                 .build();
-        speciesBuilder.createProtoSpecies("SPEED_FUNGUS")
+        speciesBuilder.createDefaultSpecies(SPEED_FUNGUS)
                 .warpedType()
                 .colors4(0xfebf98, 0xd0eaff, 0xffffff, 0x92c5e4)
                 .build();
@@ -442,8 +446,8 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("DYEING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.DYEING_EFFECT)
                 .build();
-        speciesBuilder.createDefaultSpecies("FERTILIZING_EFFECT_FUNGUS")
-                .crimsonType()
+        speciesBuilder.createDefaultSpecies(FERTILIZING_FUNGUS)
+                .warpedType()
                 .colors4(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
@@ -552,7 +556,6 @@ public class SpeciesProvider implements DataProvider
                 .build();
         speciesBuilder.createDefaultSpecies(LACTARIUS_PROLEFERENS)
                 .warpedType()
-                //.colors1(0x81696b)
                 //.colors4(0x81696b, 0x81696b, 0x933c3e, 0x81696b)
                 .colors4(0x81696b, 0x933c3e, 0x933c3e, 0xd28d77)
                 //.colors4(0x81696b, 0xbfab77, 0xbfab77, 0xbfab77)
