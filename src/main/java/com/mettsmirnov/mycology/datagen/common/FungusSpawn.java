@@ -27,6 +27,7 @@ public class FungusSpawn
     public static final FungusSpawn SOUL_SAND_VALLEY = new FungusSpawn(Biomes.SOUL_SAND_VALLEY, .5f);
     public static final FungusSpawn END = new FungusSpawn(Biomes.THE_END, .5f);
     public static final FungusSpawn END_MIDLANDS = new FungusSpawn(Biomes.END_HIGHLANDS, .5f);
+    public static final FungusSpawn VERY_RARE = new FungusSpawn("#any",.1f);//FIXME to adjust
 
     public String biomes;
     public float chance;

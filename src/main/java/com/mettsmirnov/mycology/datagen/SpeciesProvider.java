@@ -399,11 +399,6 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xcc052a, 0xc0b334, 0xb79655, 0x514d1d)
                 .areaEffect(FungusEffects.RADIOACTIVE_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
-                .areaEffect(FungusEffects.BLINDING_EFFECT)
-                .areaRadius(10)
-                .spawnType(FungusSpawn.ANY_BIOME.chance(1f))
-                .build();
         speciesBuilder.createProtoSpecies("PHANTOM_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.PHANTOM_EFFECT)
                 .build();
@@ -597,6 +592,14 @@ public class SpeciesProvider implements DataProvider
                 .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
                 .spawnType(FungusSpawn.END_MIDLANDS)
+                .build();
+        ////////////////////////////////
+        //   Very rare native fungi   //
+        ////////////////////////////////
+        speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
+                .areaEffect(FungusEffects.BLINDING_EFFECT)
+                .areaRadius(10)
+                .spawnType(FungusSpawn.VERY_RARE)
                 .build();
         /////////////////////////////
         //   Environmental fungi   //
