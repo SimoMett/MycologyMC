@@ -2,6 +2,7 @@ package com.mettsmirnov.mycology.world.features;
 
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.data.FungusSpeciesList;
+import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -29,7 +30,7 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
         List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         BlockPos origin = placeContext.origin();
         String biomeName = placeContext.level().registryAccess().registryOrThrow(Registries.BIOME).getKey(placeContext.level().getBiome(origin).get()).toString();
-        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && s.spawnInfo.biomes.contains(biomeName)).toList();
+        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && (s.spawnInfo.biomes.contains(biomeName) || s.spawnInfo.equals(FungusSpawn.ANY_BIOME))).toList();
         if(!speciesList.isEmpty())
         {
             float biomeTemp = placeContext.level().getBiome(origin).get().getModifiedClimateSettings().temperature();

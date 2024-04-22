@@ -7,7 +7,7 @@ import net.minecraft.world.level.biome.Biomes;
 public class FungusSpawn
 {
     public static final FungusSpawn NO_SPAWN = null;
-    public static final FungusSpawn ANY_BIOME = new FungusSpawn("",.5f);
+    public static final FungusSpawn ANY_BIOME = new FungusSpawn("#any",.5f);
     public static final FungusSpawn PLAINS = new FungusSpawn("minecraft:plains", .5f);
     public static final FungusSpawn SUNFLOWER_PLAINS = new FungusSpawn(Biomes.SUNFLOWER_PLAINS, .5f);
     public static final FungusSpawn FOREST = new FungusSpawn("minecraft:forest", .5f);

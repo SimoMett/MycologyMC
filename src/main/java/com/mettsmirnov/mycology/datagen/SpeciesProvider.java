@@ -404,6 +404,8 @@ public class SpeciesProvider implements DataProvider
                 .build();
         speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
                 .areaEffect(FungusEffects.BLINDING_EFFECT)
+                .areaRadius(10)
+                .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
         speciesBuilder.createProtoSpecies("PHANTOM_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.PHANTOM_EFFECT)
