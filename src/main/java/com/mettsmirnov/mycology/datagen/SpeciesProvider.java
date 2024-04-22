@@ -78,7 +78,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain(ModBlockTags.GRASS)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
 
         speciesBuilder.createDefaultSpecies(MAGENTA_FUNGUS)
@@ -143,7 +142,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain(ModBlockTags.PODZOL)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
 
         /////////////////////////////
@@ -274,7 +272,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain(BlockTags.LAPIS_ORES)
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
 
         speciesBuilder.createDefaultSpecies(RUSSULA_CONCITATA)
@@ -405,7 +402,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
                 .areaEffect(FungusEffects.BLINDING_EFFECT)
                 .areaRadius(10)
-                .spawnType(FungusSpawn.ANY_BIOME)
+                .spawnType(FungusSpawn.ANY_BIOME.chance(1f))
                 .build();
         speciesBuilder.createProtoSpecies("PHANTOM_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.PHANTOM_EFFECT)

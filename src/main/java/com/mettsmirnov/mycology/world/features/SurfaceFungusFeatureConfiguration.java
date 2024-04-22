@@ -30,7 +30,7 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
         List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         BlockPos origin = placeContext.origin();
         String biomeName = placeContext.level().registryAccess().registryOrThrow(Registries.BIOME).getKey(placeContext.level().getBiome(origin).get()).toString();
-        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && (s.spawnInfo.biomes.contains(biomeName) || s.spawnInfo.equals(FungusSpawn.ANY_BIOME))).toList();
+        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && (s.spawnInfo.biomes.contains(biomeName) || s.spawnInfo.biomes.equals(FungusSpawn.ANY_BIOME.biomes))).toList();
         if(!speciesList.isEmpty())
         {
             float biomeTemp = placeContext.level().getBiome(origin).get().getModifiedClimateSettings().temperature();
@@ -40,7 +40,7 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
             Random random = new Random();
             FungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
 
-            if (random.nextFloat(0f, 1f) < randomSpecies.spawnInfo.chance)
+            if (random.nextFloat(0f, 1f) <= randomSpecies.spawnInfo.chance)
             {
                 //spawn fungus with the correct type
                 BlockState blockState = ModBlocks.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);

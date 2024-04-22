@@ -43,6 +43,11 @@ public class FungusSpawn
         this.chance = chance;
     }
 
+    public FungusSpawn chance(float chance)
+    {
+        return new FungusSpawn(this.biomes, chance);
+    }
+
     public boolean equals(FungusSpawn obj)
     {
         return biomes.equals(obj.biomes) && chance == obj.chance;
