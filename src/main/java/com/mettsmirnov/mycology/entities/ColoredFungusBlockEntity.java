@@ -52,7 +52,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
         List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
         for (LivingEntity entity : entityList)
         {
-            if (entity.distanceToSqr(pos.getCenter()) < areaRadius)
+            if (entity.distanceToSqr(pos.getCenter()) < (areaRadius*areaRadius))
             {
                 if (Duration.between(lastInstant, Instant.now()).getSeconds() > 1)
                 {
