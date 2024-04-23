@@ -1,5 +1,6 @@
 {
   "itemGroup.mycologymod": "Mycology",
+  "item.mycologymod.magnifying_glass": "Magnifying glass",
   "effect.mycologymod.sample": "Sampleness",
   "effect.mycologymod.gain_xp": "Learning",
   "effect.mycologymod.xp_multiplier": "Knowledge"

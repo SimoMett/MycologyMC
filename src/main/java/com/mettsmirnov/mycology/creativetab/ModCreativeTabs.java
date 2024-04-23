@@ -2,6 +2,7 @@ package com.mettsmirnov.mycology.creativetab;
 
 import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.data.FungusSpeciesList;
+import com.mettsmirnov.mycology.items.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -15,7 +16,10 @@ public class ModCreativeTabs
     public static final RegistryObject<CreativeModeTab> MAIN_CREATIVE_TAB = CREATIVE_TABS.register("", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup." + MycologyMod.MODID))
             .icon(() -> FungusSpeciesList.INSTANCE.getCreativeTabIcon())
-            .displayItems((enabledFlags, populator) -> populator.acceptAll(FungusSpeciesList.INSTANCE.getAllSpeciesCollection()))
+            .displayItems((enabledFlags, populator) -> {
+                populator.acceptAll(FungusSpeciesList.INSTANCE.getAllSpeciesCollection());
+                populator.accept(ModItems.MAGNIFYING_GLASS.get());
+            })
             .build()
     );
 }
