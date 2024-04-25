@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology.items;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -16,10 +17,15 @@ public class MagnifyingGlassItem extends Item
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player p_41433_, InteractionHand p_41434_)
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand p_41434_)
     {
-        if(level.isClientSide())
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
+        {
             Log.info("CLIENT ITEM USED");
-        return super.use(level, p_41433_, p_41434_);
+            //FIXME apparently from forge 47.999.1 there's no more NetworkHooks
+            //NetworkHooks.openScreen(serverPlayer, state.getMenuProvider(level, pos));
+        }
+
+        return super.use(level, player, p_41434_);
     }
 }

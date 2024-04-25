@@ -10,6 +10,7 @@ import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItems;
+import com.mettsmirnov.mycology.menu.ModMenus;
 import com.mettsmirnov.mycology.particles.ModParticles;
 import com.mettsmirnov.mycology.recipes.breeding.MutationRecipeLoader;
 import com.mettsmirnov.mycology.recipes.brewing.FungusBrewingRecipeLoader;
@@ -41,6 +42,7 @@ public class MycologyMod
         ModFeatures.FEATURES.register(evtBus);
         ModParticles.PARTICLES.register(evtBus);
         ModEffects.EFFECTS.register(evtBus);
+        ModMenus.MENU_TYPES.register(evtBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(FungusDataAttacher.class);
