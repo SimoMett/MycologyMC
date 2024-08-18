@@ -19,8 +19,6 @@ public class ModScreens
 	@SubscribeEvent
 	public static void clientLoad(FMLClientSetupEvent event)
 	{
-		event.enqueueWork(() -> {
-			MenuScreens.register(ModMenus.MAGNIFYING_GLASS_MENU.get(), MagnifyingGlassScreen::new);
-		});
+		event.enqueueWork(() -> MenuScreens.register(ModMenus.MAGNIFYING_GLASS_MENU.get(), MagnifyingGlassScreen::new));
 	}
 }

@@ -1,12 +1,12 @@
 package com.mettsmirnov.mycology.items;
 
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.player.Player;
+import com.mettsmirnov.mycology.capabilities.FungusDataModel;
+import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
+import com.mettsmirnov.mycology.menu.MagnifyingGlassMenuProvider;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.context.UseOnContext;
 import org.jline.utils.Log;
 
 public class MagnifyingGlassItem extends Item
@@ -17,15 +17,18 @@ public class MagnifyingGlassItem extends Item
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand p_41434_)
+    public InteractionResult useOn(UseOnContext context)
     {
-        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
+        if(!context.getLevel().isClientSide())
         {
-            Log.info("CLIENT ITEM USED");
-            //FIXME apparently from forge 47.999.1 there's no more NetworkHooks
-            //NetworkHooks.openScreen(serverPlayer, state.getMenuProvider(level, pos));
+            BlockPos pos = context.getClickedPos();
+            if (context.getLevel().getBlockEntity(pos) instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
+            {
+                FungusDataModel fungusDataModel = coloredFungusBlockEntity.getFungusData();
+                //apparently from forge 47.999.1 there's no more NetworkHooks
+                context.getPlayer().openMenu(new MagnifyingGlassMenuProvider());
+            }
         }
-
-        return super.use(level, player, p_41434_);
+        return InteractionResult.sidedSuccess(context.getLevel().isClientSide());
     }
 }

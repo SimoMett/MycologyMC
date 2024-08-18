@@ -1,7 +1,6 @@
 package com.mettsmirnov.mycology.menu;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -21,15 +20,14 @@ public class MagnifyingGlassMenu extends AbstractContainerMenu
         super(ModMenus.MAGNIFYING_GLASS_MENU.get(), containerId);
     }
 
-
-
     @Override
     public ItemStack quickMoveStack(Player player, int i) {
         return null;
     }
 
     @Override
-    public boolean stillValid(Player player) {
-        return false;
+    public boolean stillValid(Player player)
+    {
+        return true;//Must be true. Otherwise, instantly closes
     }
 }
