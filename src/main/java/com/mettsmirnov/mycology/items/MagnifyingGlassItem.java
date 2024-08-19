@@ -22,20 +22,15 @@ public class MagnifyingGlassItem extends Item
     @Override
     public InteractionResult useOn(UseOnContext context)
     {
-        if(!context.getLevel().isClientSide())
+        if(context.getLevel().isClientSide())
         {
             BlockPos pos = context.getClickedPos();
             if (context.getLevel().getBlockEntity(pos) instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
             {
                 FungusDataModel fungusDataModel = coloredFungusBlockEntity.getFungusData();
-                //apparently from forge 47.999.1 there's no more NetworkHooks
-                //context.getPlayer().openMenu(new MagnifyingGlassMenuProvider(fungusDataModel));
+                Minecraft.getInstance().setScreen(new MagnifyingGlassScreen(fungusDataModel));
             }
         }
-        else
-        {
-            Minecraft.getInstance().setScreen(new MagnifyingGlassScreen(Component.literal("test111")));
-        }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.sidedSuccess(context.getLevel().isClientSide());
     }
 }
