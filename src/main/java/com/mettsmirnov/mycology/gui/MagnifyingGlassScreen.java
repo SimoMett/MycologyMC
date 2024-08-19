@@ -4,19 +4,32 @@ import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.menu.MagnifyingGlassMenu;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGlassMenu>
+public class MagnifyingGlassScreen extends Screen
 {
-    public MagnifyingGlassScreen(MagnifyingGlassMenu p_98409_, Inventory inventory, Component text)
+    private final int imageWidth;
+    private final int imageHeight;
+    private int leftPos;
+    private int topPos;
+    //private final FungusDataModel fungusDataModel;
+    public MagnifyingGlassScreen(Component title)
     {
-        super(p_98409_, inventory, text);
-
+        super(title);
+        //this.fungusDataModel = magnifyingGlassMenu.fungusDataModel;
         this.imageWidth = 176;
         this.imageHeight = 194;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        this.leftPos = (this.width - this.imageWidth) / 2;
+        this.topPos = (this.height - this.imageHeight) / 2;
     }
 
     @Override
@@ -24,11 +37,11 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
     {
         //super.render(p_283479_, p_283661_, p_281248_, p_281886_);
         this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
+        this.renderBg(guiGraphics, partialTicks, mouseX, mouseY);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
-        this.renderTooltip(guiGraphics, mouseX, mouseY);
+        //this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
-    @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1)
     {
         ResourceLocation texture = new ResourceLocation(MycologyMod.MODID+":textures/screens/magnifying_glass.png");
@@ -40,20 +53,14 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
     }
 
     @Override
-    public boolean keyPressed(int key, int b, int c)
-    {
-        if (key == 256)
-        {
-            this.minecraft.player.closeContainer();
-            return true;
-        }
-        return super.keyPressed(key, b, c);
+    public boolean isPauseScreen() {
+        return false;
     }
 
-    @Override
+    /*@Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY)
     {
         //guiGraphics.drawString(this.font, Component.translatable("gui.particlez.lens_gui.label_info_here"), 96, 8, -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal("test info here"), 96, 8, -12829636, false);
-    }
+        guiGraphics.drawString(this.font, Component.literal((String)fungusDataModel.getField(FungusDataModel.SPECIES)), 96, 8, -12829636, false);
+    }*/
 }

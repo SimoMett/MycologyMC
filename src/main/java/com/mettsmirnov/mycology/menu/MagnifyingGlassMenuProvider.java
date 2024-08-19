@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology.menu;
 
+import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -9,6 +10,12 @@ import org.jetbrains.annotations.Nullable;
 
 public class MagnifyingGlassMenuProvider implements MenuProvider
 {
+    private FungusDataModel fungusDataModel;
+    public MagnifyingGlassMenuProvider(FungusDataModel dataModel)
+    {
+        this.fungusDataModel = dataModel;
+    }
+
     @Override
     public Component getDisplayName()
     {
@@ -19,6 +26,6 @@ public class MagnifyingGlassMenuProvider implements MenuProvider
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player)
     {
-        return new MagnifyingGlassMenu(i, inventory);
+        return new MagnifyingGlassMenu(i, inventory, fungusDataModel);
     }
 }
