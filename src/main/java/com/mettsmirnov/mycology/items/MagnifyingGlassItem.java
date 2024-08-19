@@ -26,7 +26,8 @@ public class MagnifyingGlassItem extends Item
             {
                 FungusDataModel fungusDataModel = coloredFungusBlockEntity.getFungusData();
                 //apparently from forge 47.999.1 there's no more NetworkHooks
-                context.getPlayer().openMenu(new MagnifyingGlassMenuProvider());
+                context.getPlayer().openMenu(new MagnifyingGlassMenuProvider(fungusDataModel));
+                return InteractionResult.SUCCESS;
             }
         }
         return InteractionResult.sidedSuccess(context.getLevel().isClientSide());
