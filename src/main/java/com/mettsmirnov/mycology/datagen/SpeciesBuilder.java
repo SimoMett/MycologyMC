@@ -215,7 +215,7 @@ public class SpeciesBuilder
         JsonObject spawnJson = new JsonObject();
         if(spawnInfo !=null)
         {
-            spawnJson.addProperty("biomes", spawnInfo.biomes);
+            spawnJson.addProperty("biomes", spawnInfo.getBiomes());
             spawnJson.addProperty("chance", spawnInfo.chance);
         }
         fungusJson.add("spawn", spawnJson);
