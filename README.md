@@ -1,5 +1,6 @@
 [![Java CI with Gradle](https://github.com/DonSimonetti/MycologyMC/actions/workflows/gradle.yml/badge.svg)](https://github.com/DonSimonetti/MycologyMC/actions/workflows/gradle.yml)
-
+# Notes
+Branch 'dev' is for development, 'master' for release.
 # TODO
 ## Generic
 - [X] Get the NBT tags working
