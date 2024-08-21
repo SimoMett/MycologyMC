@@ -9,6 +9,7 @@ import net.minecraft.data.DataProvider;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.ArrayList;
@@ -599,7 +600,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
                 .areaEffect(FungusEffects.BLINDING_EFFECT)
                 .areaRadius(10)
-                .spawnType(FungusSpawn.VERY_RARE)
+                .spawnType(FungusSpawn.VERY_RARE.withBiomes(Biomes.DARK_FOREST))
                 .build();
         /////////////////////////////
         //   Environmental fungi   //

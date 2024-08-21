@@ -27,10 +27,10 @@ public class FungusSpawn
     public static final FungusSpawn SOUL_SAND_VALLEY = new FungusSpawn(Biomes.SOUL_SAND_VALLEY, .5f);
     public static final FungusSpawn END = new FungusSpawn(Biomes.THE_END, .5f);
     public static final FungusSpawn END_MIDLANDS = new FungusSpawn(Biomes.END_HIGHLANDS, .5f);
-    public static final FungusSpawn VERY_RARE = new FungusSpawn("#any",1f);//FIXME to adjust
+    public static final FungusSpawn VERY_RARE = new FungusSpawn("#any",.1f);//FIXME to adjust
 
     private String biomes;
-    public float chance;
+    public final float chance;
 
     public FungusSpawn(String biomes, float chance)
     {
@@ -49,9 +49,9 @@ public class FungusSpawn
         return this.biomes;
     }
 
-    public String setBiomes(ResourceKey<Biome> biomeResourceKey)
+    public FungusSpawn withBiomes(ResourceKey<Biome> biomeResourceKey)
     {
-        return this.biomes = biomeResourceKey.location().toString();
+        return new FungusSpawn(biomeResourceKey, this.chance);
     }
 
     public FungusSpawn chance(float chance)
