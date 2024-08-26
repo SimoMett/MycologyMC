@@ -592,7 +592,13 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
                 .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
-                .spawnType(FungusSpawn.END_MIDLANDS)
+                .spawnType(FungusSpawn.END)
+                .build();
+        speciesBuilder.createProtoSpecies(CHORUS_FUNGUS)
+                .colors1(0xb35fa1)
+                .terrain(Blocks.END_STONE)
+                .biomesSpecs(BiomesSpecs.END)
+                .spawnType(FungusSpawn.END_HIGHLANDS)
                 .build();
         ////////////////////////////////
         //   Very rare native fungi   //

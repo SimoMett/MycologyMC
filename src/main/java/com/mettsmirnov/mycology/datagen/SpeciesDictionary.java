@@ -26,6 +26,7 @@ public class SpeciesDictionary
 
     // Native End
     public static final String END_FUNGUS = "Agaricus transdimensionalis";
+    public static final String CHORUS_FUNGUS = "CHORUS FUNGUS";
 
     // Colors branch
     public static final String AMANITA_RUBRA = "Amanita rubra";
