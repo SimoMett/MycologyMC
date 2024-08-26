@@ -599,6 +599,11 @@ public class SpeciesProvider implements DataProvider
                 .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
                 .spawnType(FungusSpawn.END_HIGHLANDS)
+                /*
+                *
+                *
+                * */
+                //.areaEffect()
                 .build();
         ////////////////////////////////
         //   Very rare native fungi   //

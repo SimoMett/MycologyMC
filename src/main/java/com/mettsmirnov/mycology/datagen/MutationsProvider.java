@@ -96,8 +96,8 @@ public class MutationsProvider implements DataProvider
         addMutation(TRICHOLOMOPSIS_EVANESCENS, BLAZE_FUNGUS, ENDER_EYE_FUNGUS, cachedOutput);
 
         // End branch
-        addMutation("???", END_FUNGUS, TRICHOLOMOPSIS_EVANESCENS, cachedOutput);
-        addMutation(TRICHOLOMOPSIS_EVANESCENS, "???", RAPTING_FUNGUS, cachedOutput);
+        addMutation(CHORUS_FUNGUS, END_FUNGUS, TRICHOLOMOPSIS_EVANESCENS, cachedOutput);
+        addMutation(TRICHOLOMOPSIS_EVANESCENS, CHORUS_FUNGUS, RAPTING_FUNGUS, cachedOutput);
         addMutation("???", RAPTING_FUNGUS, TELEPORTING_FUNGUS, cachedOutput);
 
         // Not yet identified branch
