@@ -171,6 +171,7 @@ public class FungusEffects
         tnt.setFuse(100);//five seconds
         return tnt;
     });
+    public static final FungusEffect PLANT_EFFECT = new PlantEffect("planting");
 
     public static FungusEffect getEffectByName(String effectName)
     {

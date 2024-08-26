@@ -603,7 +603,7 @@ public class SpeciesProvider implements DataProvider
                 *
                 *
                 * */
-                //.areaEffect()
+                .areaRadius(3)
                 .build();
         ////////////////////////////////
         //   Very rare native fungi   //
@@ -642,6 +642,10 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType()
                 .colors4(0xffd08d, 0x52e13d, 0xffffff, 0xffffff)
                 .eatingEffect(ModEffects.LAST_CHANCE)
+                .build();
+        speciesBuilder.createProtoSpecies("PLANTING_FUNGUS")
+                .areaEffect(FungusEffects.PLANT_EFFECT)
+                .areaRadius(10)
                 .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
