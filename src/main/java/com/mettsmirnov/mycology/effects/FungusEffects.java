@@ -155,10 +155,10 @@ public class FungusEffects
         @Override
         public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
         {
-            EyeOfEnder eyeOfEnder = new EyeOfEnder(level, origin.getX(), origin.getY()+0.5, origin.getZ());
             BlockPos strongholdPos = level.findNearestMapStructure(StructureTags.EYE_OF_ENDER_LOCATED, origin, 100, false);
             if(strongholdPos!= null)
             {
+                EyeOfEnder eyeOfEnder = new EyeOfEnder(level, origin.getX(), origin.getY()+0.5, origin.getZ());
                 eyeOfEnder.signalTo(strongholdPos);
                 level.addFreshEntity(eyeOfEnder);
             }
