@@ -53,7 +53,7 @@ public class FungusEffects
     public static final SingleEffect SCHIZO_EFFECT = new SingleEffect("schizo");
     public static final SingleEffect SPARKLING_EFFECT = new SingleEffect("sparkling");
     public static final SingleEffect WITHERING_EFFECT = new SingleEffect("wither", MobEffects.WITHER);
-    public static final SingleEffect RAPTING_EFFECT = new SingleEffect("rapting");
+    public static final RaptingEffect RAPTING_EFFECT = new RaptingEffect("rapting");
     public static final SingleEffect TELEPORTING_EFFECT = new SingleEffect("teleporting");
     public static final SingleEffect LIGHTFUL_EFFECT = new SingleEffect("lightful", MobEffects.SLOW_FALLING);
     public static final SingleEffect GOODCHANCE_EFFECT = new SingleEffect("goodchance", MobEffects.LUCK);
