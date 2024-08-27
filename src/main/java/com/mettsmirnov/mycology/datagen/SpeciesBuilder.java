@@ -98,9 +98,9 @@ public class SpeciesBuilder
         return this;
     }
 
-    public SpeciesBuilder colors4(int color1, int color2, int color3, int color4)
+    public SpeciesBuilder colors4(int stelum, int head, int details1, int details2)
     {
-        this.colors = new Integer[]{color1, color2, color3, color4};
+        this.colors = new Integer[]{stelum, head, details1, details2};
         return this;
     }
 
@@ -215,7 +215,7 @@ public class SpeciesBuilder
         JsonObject spawnJson = new JsonObject();
         if(spawnInfo !=null)
         {
-            spawnJson.addProperty("biomes", spawnInfo.biomes);
+            spawnJson.addProperty("biomes", spawnInfo.getBiomes());
             spawnJson.addProperty("chance", spawnInfo.chance);
         }
         fungusJson.add("spawn", spawnJson);

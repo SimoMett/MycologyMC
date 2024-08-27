@@ -1,3 +1,8 @@
 {
-  "itemGroup.mycologymod": "Mycology"
+  "itemGroup.mycologymod": "Mycology",
+  "item.mycologymod.magnifying_glass": "Lente di ingrandimento",
+  "effect.mycologymod.sample": "Esempio",
+  "effect.mycologymod.gain_xp": "Apprendimento",
+  "effect.mycologymod.xp_multiplier": "Conoscenza",
+  "gui.magnifyingglass.terrain": "Terreno:"
 }

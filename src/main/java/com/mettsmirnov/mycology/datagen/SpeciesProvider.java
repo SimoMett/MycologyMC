@@ -9,6 +9,7 @@ import net.minecraft.data.DataProvider;
 import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
 import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.ArrayList;
@@ -78,7 +79,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain(ModBlockTags.GRASS)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
 
         speciesBuilder.createDefaultSpecies(MAGENTA_FUNGUS)
@@ -143,7 +143,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain(ModBlockTags.PODZOL)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
 
         /////////////////////////////
@@ -274,7 +273,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain(BlockTags.LAPIS_ORES)
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
 
         speciesBuilder.createDefaultSpecies(RUSSULA_CONCITATA)
@@ -401,11 +399,6 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType()
                 .colors4(0xcc052a, 0xc0b334, 0xb79655, 0x514d1d)
                 .areaEffect(FungusEffects.RADIOACTIVE_EFFECT)
-                .build();
-        speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
-                .areaEffect(FungusEffects.BLINDING_EFFECT)
-                .areaRadius(10)
-                .spawnType(FungusSpawn.ANY_BIOME)
                 .build();
         speciesBuilder.createProtoSpecies("PHANTOM_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.PHANTOM_EFFECT)
@@ -599,7 +592,26 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
                 .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
-                .spawnType(FungusSpawn.END_MIDLANDS)
+                .spawnType(FungusSpawn.END)
+                .build();
+        speciesBuilder.createProtoSpecies(CHORUS_FUNGUS)
+                .colors1(0xb35fa1)
+                .terrain(Blocks.END_STONE)
+                .biomesSpecs(BiomesSpecs.END)
+                .spawnType(FungusSpawn.END_HIGHLANDS)
+                /*
+                *
+                *
+                * */
+                .areaRadius(3)
+                .build();
+        ////////////////////////////////
+        //   Very rare native fungi   //
+        ////////////////////////////////
+        speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
+                .areaEffect(FungusEffects.BLINDING_EFFECT)
+                .areaRadius(10)
+                .spawnType(FungusSpawn.VERY_RARE.withBiomes(Biomes.DARK_FOREST))
                 .build();
         /////////////////////////////
         //   Environmental fungi   //
@@ -630,6 +642,10 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType()
                 .colors4(0xffd08d, 0x52e13d, 0xffffff, 0xffffff)
                 .eatingEffect(ModEffects.LAST_CHANCE)
+                .build();
+        speciesBuilder.createProtoSpecies("PLANTING_FUNGUS")
+                .areaEffect(FungusEffects.PLANT_EFFECT)
+                .areaRadius(10)
                 .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }

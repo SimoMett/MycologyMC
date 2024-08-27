@@ -1,6 +1,16 @@
 {
   "itemGroup.mycologymod": "Mycology",
+  "item.mycologymod.magnifying_glass": "Magnifying glass",
   "effect.mycologymod.sample": "Sampleness",
   "effect.mycologymod.gain_xp": "Learning",
-  "effect.mycologymod.xp_multiplier": "Knowledge"
+  "effect.mycologymod.xp_multiplier": "Knowledge",
+  "gui.magnifyingglass.terrain": "Terrain:",
+  "gui.magnifyingglass.light": "Light:",
+  "gui.magnifyingglass.humidity": "Humidity:",
+  "gui.magnifyingglass.temp": "Temperature:",
+  "gui.magnifyingglass.spreading": "Spreading:",
+  "gui.magnifyingglass.spreadboost": "Spreadboost:",
+  "gui.magnifyingglass.area": "Area:",
+  "gui.magnifyingglass.effect": "Effect:",
+  "gui.magnifyingglass.dominant": "Dominant"
 }

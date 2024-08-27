@@ -53,7 +53,7 @@ public class FungusEffects
     public static final SingleEffect SCHIZO_EFFECT = new SingleEffect("schizo");
     public static final SingleEffect SPARKLING_EFFECT = new SingleEffect("sparkling");
     public static final SingleEffect WITHERING_EFFECT = new SingleEffect("wither", MobEffects.WITHER);
-    public static final SingleEffect RAPTING_EFFECT = new SingleEffect("rapting");
+    public static final RaptingEffect RAPTING_EFFECT = new RaptingEffect("rapting");
     public static final SingleEffect TELEPORTING_EFFECT = new SingleEffect("teleporting");
     public static final SingleEffect LIGHTFUL_EFFECT = new SingleEffect("lightful", MobEffects.SLOW_FALLING);
     public static final SingleEffect GOODCHANCE_EFFECT = new SingleEffect("goodchance", MobEffects.LUCK);
@@ -155,10 +155,10 @@ public class FungusEffects
         @Override
         public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
         {
-            EyeOfEnder eyeOfEnder = new EyeOfEnder(level, origin.getX(), origin.getY()+0.5, origin.getZ());
             BlockPos strongholdPos = level.findNearestMapStructure(StructureTags.EYE_OF_ENDER_LOCATED, origin, 100, false);
             if(strongholdPos!= null)
             {
+                EyeOfEnder eyeOfEnder = new EyeOfEnder(level, origin.getX(), origin.getY()+0.5, origin.getZ());
                 eyeOfEnder.signalTo(strongholdPos);
                 level.addFreshEntity(eyeOfEnder);
             }
@@ -171,6 +171,7 @@ public class FungusEffects
         tnt.setFuse(100);//five seconds
         return tnt;
     });
+    public static final FungusEffect PLANT_EFFECT = new PlantEffect("planting");
 
     public static FungusEffect getEffectByName(String effectName)
     {

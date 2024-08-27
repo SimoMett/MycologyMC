@@ -25,7 +25,8 @@ public class SpeciesDictionary
     public static final String CHALCIPORUS_INFERNALIS = "Chalciporus infernalis";
 
     // Native End
-    public static final String END_FUNGUS = "END_FUNGUS";
+    public static final String END_FUNGUS = "Agaricus transdimensionalis";
+    public static final String CHORUS_FUNGUS = "CHORUS FUNGUS";
 
     // Colors branch
     public static final String AMANITA_RUBRA = "Amanita rubra";
