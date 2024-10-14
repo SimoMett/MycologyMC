@@ -19,5 +19,6 @@ public class ModEffects
     //test only
     public static RegistryObject<MobEffect> SAMPLE = EFFECTS.register("sample", SampleEffect::create);
     public static RegistryObject<MobEffect> LAST_CHANCE = EFFECTS.register("last_chance", LastChanceEffect::instance);
+    public static RegistryObject<MobEffect> ANESTHETIC = EFFECTS.register("anesthetic", AnestheticEffect::instance);
 
 }
