@@ -172,6 +172,7 @@ public class FungusEffects
         return tnt;
     });
     public static final FungusEffect PLANT_EFFECT = new PlantEffect("planting");
+    public static final FungusEffect ANTHESIS_EFFECT = new AnthesisEffect("anthesis");
 
     public static FungusEffect getEffectByName(String effectName)
     {

@@ -647,6 +647,10 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.PLANT_EFFECT)
                 .areaRadius(10)
                 .build();
+        speciesBuilder.createProtoSpecies("COCOA_FUNGUS")
+                .areaEffect(FungusEffects.ANTHESIS_EFFECT)
+                .areaRadius(10)
+                .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 
