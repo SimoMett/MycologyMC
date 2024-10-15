@@ -28,33 +28,31 @@ public class AnthesisEffect extends FungusEffect
     {
         AABB box = getAABB(origin, radius);
 
-        final List<BlockPos> pList = new ArrayList<>();
-        BlockPos.betweenClosedStream(box).forEach( p -> {
-            if(level.getBlockState(p).is(Blocks.JUNGLE_LOG))
-                pList.add(new BlockPos(p));
-        });
+        final List<BlockPos> jungleLogsPos = getBlocksInAABBMatchingType(box, level, Blocks.JUNGLE_LOG);
 
-        if (!pList.isEmpty())
+        if (!jungleLogsPos.isEmpty())
+            plantRandomCocoaBean(level, jungleLogsPos);
+    }
+
+    private static void plantRandomCocoaBean(ServerLevel level, List<BlockPos> pList)
+    {
+        BlockPos randomJungleLog = pList.get(new Random().nextInt(pList.size()));
+
+        int xOffset = new Random().nextInt(3)-1;
+        int zOffset = 0;
+        if(xOffset==0)
+            zOffset = new Random().nextBoolean()? 1 : -1;
+        BlockPos randomPos = randomJungleLog.offset(xOffset, 0, zOffset);
+
+        if(level.getBlockState(randomPos).isAir())
         {
-            BlockPos randomJungleLog = pList.get(new Random().nextInt(pList.size()));
+            BlockState cocoaBlockState = Blocks.COCOA.defaultBlockState();
+            if (zOffset == -1)
+                cocoaBlockState = cocoaBlockState.rotate(level, randomPos, Rotation.CLOCKWISE_180);
+            if(xOffset != 0)
+                cocoaBlockState = cocoaBlockState.rotate(level, randomPos, xOffset==-1? Rotation.CLOCKWISE_90 : Rotation.COUNTERCLOCKWISE_90);
+            level.setBlock(randomPos, cocoaBlockState, 2);
 
-            int xOffset = new Random().nextInt(3)-1;
-            int zOffset = 0;
-            if(xOffset==0)
-                zOffset = new Random().nextBoolean()? 1 : -1;
-            BlockPos randomPos = randomJungleLog.offset(xOffset, 0, zOffset);
-
-            if(level.getBlockState(randomPos).isAir())
-            {
-                BlockState cocoaBlockState = Blocks.COCOA.defaultBlockState();
-                if (zOffset == -1)
-                    cocoaBlockState = cocoaBlockState.rotate(level, randomPos, Rotation.CLOCKWISE_180);
-                if(xOffset != 0)
-                    cocoaBlockState = cocoaBlockState.rotate(level, randomPos, xOffset==-1? Rotation.CLOCKWISE_90 : Rotation.COUNTERCLOCKWISE_90);
-                level.setBlock(randomPos, cocoaBlockState, 2);
-
-            }
         }
-
     }
 }

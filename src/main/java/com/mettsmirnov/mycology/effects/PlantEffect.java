@@ -35,8 +35,7 @@ public class PlantEffect extends FungusEffect
         List <BlockPos> pList2;
         pList2 = pList.stream()
                 .filter(p -> p.distSqr(origin) <= radius)
-                .filter(p -> level.getBlockState(p).is(Blocks.AIR))
-                .filter(p -> level.getBlockState(p.below()).is(Blocks.FARMLAND))
+                .filter(p -> level.getBlockState(p).is(Blocks.AIR) && level.getBlockState(p.below()).is(Blocks.FARMLAND))
                 .toList();
 
         if (!pList2.isEmpty())

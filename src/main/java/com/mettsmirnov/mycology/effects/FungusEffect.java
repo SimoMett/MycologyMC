@@ -4,7 +4,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class FungusEffect
 {
@@ -34,5 +38,15 @@ public abstract class FungusEffect
                 origin.getY() + radius,
                 origin.getZ() + radius
         );
+    }
+
+    protected static List<BlockPos> getBlocksInAABBMatchingType(AABB box, ServerLevel level, Block block)
+    {
+        List<BlockPos> list = new ArrayList<>();
+        BlockPos.betweenClosedStream(box).forEach( p -> {
+            if(level.getBlockState(p).is(block))
+                list.add(new BlockPos(p));
+        });
+        return list;
     }
 }
