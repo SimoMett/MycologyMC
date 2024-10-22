@@ -228,6 +228,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createProtoSpecies(BONEBLOCK_FUNGUS)
                 .warpedType()
+                .colors4(0xfff6ea, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .terrain(Blocks.BONE_BLOCK)
                 .build();
 
