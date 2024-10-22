@@ -37,6 +37,7 @@ public class SpeciesDictionary
     public static final String BLACK_FUNGUS = "Coprinus comatus";
     public static final String LIGHTBLUE_FUNGUS = "Leccinum caelestis";
     public static final String PINK_FUNGUS = "PINK_FUNGUS";
+    public static final String BROWN_FUNGUS = "BROWN_FUNGUS";
     public static final String OVULUS_VIOLACEUS = "Ovulus violaceus";
     public static final String CYAN_FUNGUS = "CYAN_FUNGUS";
     public static final String MAGENTA_FUNGUS = "MAGENTA_FUNGUS";
@@ -107,4 +108,5 @@ public class SpeciesDictionary
     public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
     public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
     public static final String EXPERIENCE_FUNGUS = "EXPERIENCE_FUNGUS";
+    public static final String COCOA_FUNGUS = "COCOA_FUNGUS";
 }

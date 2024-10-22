@@ -45,6 +45,7 @@ public class MutationsProvider implements DataProvider
         addMutation(BLUE_FUNGUS, LACTARIUS_VIRIDIS, CYAN_FUNGUS, cachedOutput);
         addMutation(OVULUS_VIOLACEUS, PINK_FUNGUS, MAGENTA_FUNGUS, cachedOutput);
         addMutation(AMANITA_RUBRA, YELLOW_FUNGUS, ORANGE_FUNGUS, cachedOutput);
+        addMutation(POLYPORUS_LIGNEUS, AMANITA_MUSCARIA, BROWN_FUNGUS, cachedOutput);
 
         // Materials branch
         addMutation(BOLETUS_EDULIS, SUILLUS_GRANULATUS, POLYPORUS_LIGNEUS, cachedOutput);
@@ -104,6 +105,7 @@ public class MutationsProvider implements DataProvider
         addMutation(AGARICUS_CAMPESTRIS, POLYPORUS_LIGNEUS, BONEBLOCK_FUNGUS, cachedOutput);
         addMutation(BONEBLOCK_FUNGUS, AGARICUS_CAMPESTRIS, FERTILIZING_FUNGUS, cachedOutput);
         addMutation(EMERALD_FUNGUS, RUSSULA_LAZULA, EXPERIENCE_FUNGUS, cachedOutput);
+        addMutation(BROWN_FUNGUS, CHORUS_FUNGUS, COCOA_FUNGUS, cachedOutput);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }

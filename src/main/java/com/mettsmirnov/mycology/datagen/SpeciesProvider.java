@@ -91,7 +91,8 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xf6dfb5, 0xffc0cb, 0xffc0cb, 0xffeef0)
                 .build();
 
-        speciesBuilder.createProtoSpecies("BROWN_FUNGUS")
+        speciesBuilder.createDefaultSpecies(BROWN_FUNGUS)
+                .warpedType()
                 .colors1(0x89501e)
                 .build();
 
@@ -226,7 +227,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain(Blocks.MAGMA_BLOCK)
                 .build();
 
-        speciesBuilder.createProtoSpecies(BONEBLOCK_FUNGUS)
+        speciesBuilder.createDefaultSpecies(BONEBLOCK_FUNGUS)
                 .warpedType()
                 .colors4(0xfff6ea, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .terrain(Blocks.BONE_BLOCK)
@@ -648,7 +649,9 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.PLANT_EFFECT)
                 .areaRadius(10)
                 .build();
-        speciesBuilder.createProtoSpecies("COCOA_FUNGUS")
+        speciesBuilder.createDefaultSpecies(COCOA_FUNGUS)
+                .warpedType()
+                .colors4(0xeeaa3c, 0xae5913, 0x64330b, 0x4e2407)
                 .areaEffect(FungusEffects.ANTHESIS_EFFECT)
                 .areaRadius(10)
                 .build();
