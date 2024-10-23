@@ -93,7 +93,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies(BROWN_FUNGUS)
                 .warpedType()
-                .colors1(0x89501e)
+                .colors4(0xeeaa3c, 0xae5913, 0x64330b, 0x4e2407)
                 .build();
 
         speciesBuilder.createDefaultSpecies(BLACK_FUNGUS)
@@ -421,6 +421,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.SPARKLING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(RAPTING_FUNGUS)
+                .crimsonType()
                 .areaEffect(FungusEffects.RAPTING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(TELEPORTING_FUNGUS)
@@ -596,7 +597,8 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.END)
                 .spawnType(FungusSpawn.END)
                 .build();
-        speciesBuilder.createProtoSpecies(CHORUS_FUNGUS)
+        speciesBuilder.createDefaultSpecies(CHORUS_FUNGUS)
+                .crimsonType()
                 .colors1(0xb35fa1)
                 .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
@@ -649,9 +651,10 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.PLANT_EFFECT)
                 .areaRadius(10)
                 .build();
+
         speciesBuilder.createDefaultSpecies(COCOA_FUNGUS)
-                .warpedType()
-                .colors4(0xeeaa3c, 0xae5913, 0x64330b, 0x4e2407)
+                .crimsonType()
+                .colors4(0xeeaa3c, 0x8c4614, 0x64330b, 0x4e2407)
                 .areaEffect(FungusEffects.ANTHESIS_EFFECT)
                 .areaRadius(10)
                 .build();

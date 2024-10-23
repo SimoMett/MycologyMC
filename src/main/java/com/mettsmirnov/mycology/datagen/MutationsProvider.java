@@ -59,6 +59,7 @@ public class MutationsProvider implements DataProvider
         addMutation(BOLBITIUS_PROFONDORUM,COAL_FUNGUS,XEROCOMUS_FERRUGINEUS, cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM, YELLOW_FUNGUS, AMANITA_CUPREA, cachedOutput);
         addMutation(XEROCOMUS_FERRUGINEUS, AMANITA_CUPREA, GALERINA_AURATA, cachedOutput);
+        addMutation(AMANITA_CUPREA, BLAZE_FUNGUS, RUSSULA_CONCITATA, cachedOutput);
         addMutation(RUSSULA_CONCITATA, RUSSULA_LAZULA, AMETHYST_FUNGUS, cachedOutput);
         addMutation(AMETHYST_FUNGUS, CHALCIPORUS_INFERNALIS, BOLBITIUS_SILEX, cachedOutput);
         addMutation(LACTARIUS_PROLEFERENS, AMETHYST_FUNGUS, BUDDING_FUNGUS, cachedOutput);
@@ -78,7 +79,7 @@ public class MutationsProvider implements DataProvider
         addMutation(LACCARIA_DULCIS, "???", SPEED_FUNGUS, cachedOutput);
 
         // Alcoholic branch
-        addMutation(LACCARIA_DULCIS, "???", FERMENTER_FUNGUS, cachedOutput);
+        addMutation(LACCARIA_DULCIS, LECCINUM_VERSIPELLE, FERMENTER_FUNGUS, cachedOutput);
         addMutation(FERMENTER_FUNGUS, FATIGUE_FUNGUS, DRUNK_FUNGUS, cachedOutput);
         addMutation(DRUNK_FUNGUS, BLINDING_FUNGUS, TOXIC_METILIC_FUNGUS, cachedOutput);
 
