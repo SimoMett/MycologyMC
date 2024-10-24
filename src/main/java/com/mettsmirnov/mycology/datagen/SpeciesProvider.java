@@ -449,7 +449,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("UNDEAD_EFFECT_FUNGUS") //might be a cordyceps?
+        speciesBuilder.createProtoSpecies(UNDEAD_FUNGUS) //might be a cordyceps?
                 .colors4(0xD36146, 0x7EA144, 0x4891ff, 0x4b54bb)
                 .areaRadius(2)
                 .areaEffect(FungusEffects.UNDEAD_EFFECT)

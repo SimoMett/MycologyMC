@@ -107,6 +107,7 @@ public class SpeciesDictionary
     // Not yet identified (TODO)
     public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
     public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
+    public static final String UNDEAD_FUNGUS = "Cordyceps malignus";
     public static final String EXPERIENCE_FUNGUS = "EXPERIENCE_FUNGUS";
     public static final String COCOA_FUNGUS = "COCOA_FUNGUS";
 }

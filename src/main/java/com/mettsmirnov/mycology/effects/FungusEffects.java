@@ -3,6 +3,9 @@ package com.mettsmirnov.mycology.effects;
 import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -10,14 +13,12 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.StructureTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.projectile.EyeOfEnder;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.DyeColor;
@@ -128,7 +129,23 @@ public class FungusEffects
     });
     public static final FungusEffect BUDDING_EFFECT = new TransmuteBlockEffect("budding", Blocks.AMETHYST_BLOCK, Blocks.BUDDING_AMETHYST);
     //entities spawn
-    public static final FungusEffect UNDEAD_EFFECT = new SpawnEntityEffect("undead", Zombie::new);
+    public static final FungusEffect UNDEAD_EFFECT = new SingleEffect("undead", null, (level, pos, box) -> {
+        List<Villager> nearbyVillagers = level.getEntitiesOfClass(Villager.class, box);
+        if (!nearbyVillagers.isEmpty())
+        {
+            Villager villager = nearbyVillagers.get(new Random().nextInt(nearbyVillagers.size()));
+
+
+            ZombieVillager zombievillager = villager.convertTo(EntityType.ZOMBIE_VILLAGER, false);
+            if (zombievillager != null) {
+                zombievillager.finalizeSpawn(level, level.getCurrentDifficultyAt(zombievillager.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, true), (CompoundTag) null);
+                zombievillager.setVillagerData(villager.getVillagerData());
+                zombievillager.setGossips((Tag) villager.getGossips().store(NbtOps.INSTANCE));
+                zombievillager.setTradeOffers(villager.getOffers().createTag());
+                zombievillager.setVillagerXp(villager.getVillagerXp());
+            }
+        }
+    });
     public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
     public static final FungusEffect SKELETONS_EFFECT = new SpawnEntityEffect("skeletons", (lvl) -> new Skeleton(EntityType.SKELETON, lvl));
     public static final FungusEffect GHASTLY_EFFECT = new SpawnEntityEffect("ghastly", (lvl) -> new Ghast(EntityType.GHAST, lvl));
