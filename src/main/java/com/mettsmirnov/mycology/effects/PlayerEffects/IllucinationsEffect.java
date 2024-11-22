@@ -34,12 +34,6 @@ public class IllucinationsEffect extends MobEffect
     }
 
     @Override
-    public boolean isInstantenous()
-    {
-        return false;
-    }
-
-    @Override
     public boolean shouldApplyEffectTickThisTick(int remainingTicks, int p_301085_) {
         return new Random().nextInt(300)==0;
     }
