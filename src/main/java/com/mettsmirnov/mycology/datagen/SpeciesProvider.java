@@ -149,7 +149,9 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //      Toxic fungi        //
         /////////////////////////////
-        speciesBuilder.createProtoSpecies(FATIGUE_FUNGUS)
+        speciesBuilder.createDefaultSpecies(FATIGUE_FUNGUS)
+                .warpedType()
+                .colors1(0)
                 .areaEffect(FungusEffects.FATIGUE_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(POISON_FUNGUS)
@@ -389,7 +391,9 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0x59a6cf, 0xe61e65, 0xe03775, 0xffffff)
                 .areaEffect(FungusEffects.ANESTHETIC_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(ILLUCINATING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(ILLUCINATING_FUNGUS)
+                .warpedType()
+                .colors1(0)
                 .areaEffect(FungusEffects.ILLUCINATING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(HALLUCINATING_FUNGUS)
@@ -462,7 +466,9 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(2)
                 .areaEffect(FungusEffects.SKELETONS_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
+        speciesBuilder.createDefaultSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
+                .crimsonType()
+                .colors1(0)
                 .build();
         speciesBuilder.createProtoSpecies("GHASTLY_EFFECT_FUNGUS")
                 .areaRadius(2)

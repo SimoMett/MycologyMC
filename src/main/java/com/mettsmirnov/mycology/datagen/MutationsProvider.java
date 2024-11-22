@@ -75,8 +75,8 @@ public class MutationsProvider implements DataProvider
         addMutation(POLYPORUS_LIGNEUS, LACTARIUS_DELICIOUS, LACCARIA_DULCIS, cachedOutput);
         addMutation(BOLETUS_EDULIS, LACTARIUS_DELICIOUS, NOBLE_BOLETUS_SQUISITUS, cachedOutput);
         addMutation(NOBLE_BOLETUS_SQUISITUS, LACCARIA_DULCIS, BOLETUS_SALUBRIUM, cachedOutput);
-        addMutation(BLAZE_FUNGUS, BOLETUS_SALUBRIUM, STRENGTH_FUNGUS, cachedOutput);
-        addMutation(LACCARIA_DULCIS, "???", SPEED_FUNGUS, cachedOutput);
+        addMutation(CRYING_FUNGUS, BOLETUS_SALUBRIUM, STRENGTH_FUNGUS, cachedOutput);
+        addMutation(LACCARIA_DULCIS, BLAZE_FUNGUS, SPEED_FUNGUS, cachedOutput);
 
         // Alcoholic branch
         addMutation(LACCARIA_DULCIS, LECCINUM_VERSIPELLE, FERMENTER_FUNGUS, cachedOutput);
@@ -85,19 +85,20 @@ public class MutationsProvider implements DataProvider
 
         // Psico branch
         addMutation(STRENGTH_FUNGUS, AMANITA_MUSCARIA, ANESTHETIC_FUNGUS, cachedOutput);
-        addMutation(ANESTHETIC_FUNGUS, "???", ILLUCINATING_FUNGUS, cachedOutput);
-        addMutation(ILLUCINATING_FUNGUS, "???", HALLUCINATING_FUNGUS, cachedOutput);
+        addMutation(ANESTHETIC_FUNGUS, FERMENTER_FUNGUS, ILLUCINATING_FUNGUS, cachedOutput);
+        addMutation(ILLUCINATING_FUNGUS, DRUNK_FUNGUS, HALLUCINATING_FUNGUS, cachedOutput);
         addMutation(BLINDING_FUNGUS, "???", SENSING_FUNGUS, cachedOutput);
         addMutation(BLINDING_FUNGUS, "???", NIGHTLY_FUNGUS, cachedOutput);
 
         // Environmental branch
         addMutation(HYGROPHORUS_NIVEUS, NOBLE_BOLETUS_SQUISITUS, FREEZING_FUNGUS, cachedOutput);
 
-        // Special branch
+        // Nether branch
         addMutation(CHALCIPORUS_INFERNALIS, AGARICUS_ANIMI, BLAZE_FUNGUS, cachedOutput);
-        addMutation(TRICHOLOMOPSIS_EVANESCENS, BLAZE_FUNGUS, ENDER_EYE_FUNGUS, cachedOutput);
+        addMutation(AGARICUS_ANIMI, CHALCIPORUS_PIPERATUS, CRYING_FUNGUS, cachedOutput);
 
         // End branch
+        addMutation(TRICHOLOMOPSIS_EVANESCENS, BLAZE_FUNGUS, ENDER_EYE_FUNGUS, cachedOutput);
         addMutation(CHORUS_FUNGUS, END_FUNGUS, TRICHOLOMOPSIS_EVANESCENS, cachedOutput);
         addMutation(TRICHOLOMOPSIS_EVANESCENS, CHORUS_FUNGUS, RAPTING_FUNGUS, cachedOutput);
         addMutation("???", RAPTING_FUNGUS, TELEPORTING_FUNGUS, cachedOutput);
