@@ -43,7 +43,7 @@ public class FungusEffects
     public static final SingleEffect HEALING_EFFECT = new SingleEffect("regeneration", MobEffects.REGENERATION);
     public static final SingleEffect STRENGTH_EFFECT = new SingleEffect("strengthening", MobEffects.DAMAGE_BOOST);
     public static final SingleEffect ANESTHETIC_EFFECT = new SingleEffect("anesthetic");
-    public static final SingleEffect ILLUCINATING_EFFECT = new SingleEffect("illucinating");
+    public static final SingleEffect ILLUCINATING_EFFECT = new SingleEffect("illucinating", ModEffects.ILLUCINATIONS.get());
     public static final SingleEffect HALLUCINATING_EFFECT = new SingleEffect("hallucinating");
     public static final SingleEffect RADIOACTIVE_EFFECT = new SingleEffect("radioactive");
     public static final SingleEffect BLINDING_EFFECT = new SingleEffect("blinding", MobEffects.BLINDNESS);

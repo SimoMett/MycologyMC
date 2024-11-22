@@ -16,9 +16,10 @@ public class ModEffects
 
     //Others
     public static RegistryObject<MobEffect> SENSING = EFFECTS.register("sensing", SensingEffect::create);
+    public static RegistryObject<MobEffect> ANESTHETIC = EFFECTS.register("anesthetic", AnestheticEffect::instance);
+    public static RegistryObject<MobEffect> LAST_CHANCE = EFFECTS.register("last_chance", LastChanceEffect::instance);
+    public static RegistryObject<MobEffect> ILLUCINATIONS = EFFECTS.register("illucinations", IllucinationsEffect::instance);
+
     //test only
     public static RegistryObject<MobEffect> SAMPLE = EFFECTS.register("sample", SampleEffect::create);
-    public static RegistryObject<MobEffect> LAST_CHANCE = EFFECTS.register("last_chance", LastChanceEffect::instance);
-    public static RegistryObject<MobEffect> ANESTHETIC = EFFECTS.register("anesthetic", AnestheticEffect::instance);
-
 }
