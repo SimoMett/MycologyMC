@@ -91,8 +91,9 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xf6dfb5, 0xffc0cb, 0xffc0cb, 0xffeef0)
                 .build();
 
-        speciesBuilder.createProtoSpecies("BROWN_FUNGUS")
-                .colors1(0x89501e)
+        speciesBuilder.createDefaultSpecies(BROWN_FUNGUS)
+                .warpedType()
+                .colors4(0xeeaa3c, 0xae5913, 0x64330b, 0x4e2407)
                 .build();
 
         speciesBuilder.createDefaultSpecies(BLACK_FUNGUS)
@@ -148,7 +149,9 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //      Toxic fungi        //
         /////////////////////////////
-        speciesBuilder.createProtoSpecies(FATIGUE_FUNGUS)
+        speciesBuilder.createDefaultSpecies(FATIGUE_FUNGUS)
+                .warpedType()
+                .colors1(0)
                 .areaEffect(FungusEffects.FATIGUE_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(POISON_FUNGUS)
@@ -226,8 +229,9 @@ public class SpeciesProvider implements DataProvider
                 .terrain(Blocks.MAGMA_BLOCK)
                 .build();
 
-        speciesBuilder.createProtoSpecies(BONEBLOCK_FUNGUS)
+        speciesBuilder.createDefaultSpecies(BONEBLOCK_FUNGUS)
                 .warpedType()
+                .colors4(0xfff6ea, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .terrain(Blocks.BONE_BLOCK)
                 .build();
 
@@ -387,7 +391,9 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0x59a6cf, 0xe61e65, 0xe03775, 0xffffff)
                 .areaEffect(FungusEffects.ANESTHETIC_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(ILLUCINATING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(ILLUCINATING_FUNGUS)
+                .warpedType()
+                .colors1(0)
                 .areaEffect(FungusEffects.ILLUCINATING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(HALLUCINATING_FUNGUS)
@@ -419,6 +425,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.SPARKLING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(RAPTING_FUNGUS)
+                .crimsonType()
                 .areaEffect(FungusEffects.RAPTING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(TELEPORTING_FUNGUS)
@@ -446,7 +453,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies("UNDEAD_EFFECT_FUNGUS") //might be a cordyceps?
+        speciesBuilder.createProtoSpecies(UNDEAD_FUNGUS) //might be a cordyceps?
                 .colors4(0xD36146, 0x7EA144, 0x4891ff, 0x4b54bb)
                 .areaRadius(2)
                 .areaEffect(FungusEffects.UNDEAD_EFFECT)
@@ -459,7 +466,9 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(2)
                 .areaEffect(FungusEffects.SKELETONS_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
+        speciesBuilder.createDefaultSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
+                .crimsonType()
+                .colors1(0)
                 .build();
         speciesBuilder.createProtoSpecies("GHASTLY_EFFECT_FUNGUS")
                 .areaRadius(2)
@@ -594,15 +603,12 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.END)
                 .spawnType(FungusSpawn.END)
                 .build();
-        speciesBuilder.createProtoSpecies(CHORUS_FUNGUS)
-                .colors1(0xb35fa1)
+        speciesBuilder.createDefaultSpecies(CHORUS_FUNGUS)
+                .crimsonType()
+                .colors4(0xe1dab6, 0xa078db, 0xeee9ff, 0xbea9b8)
                 .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
                 .spawnType(FungusSpawn.END_HIGHLANDS)
-                /*
-                *
-                *
-                * */
                 .areaRadius(3)
                 .build();
         ////////////////////////////////
@@ -643,8 +649,15 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xffd08d, 0x52e13d, 0xffffff, 0xffffff)
                 .eatingEffect(ModEffects.LAST_CHANCE)
                 .build();
-        speciesBuilder.createProtoSpecies("PLANTING_FUNGUS")
+        speciesBuilder.createProtoSpecies(PLANTING_FUNGUS)
                 .areaEffect(FungusEffects.PLANT_EFFECT)
+                .areaRadius(10)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(COCOA_FUNGUS)
+                .crimsonType()
+                .colors4(0xeeaa3c, 0x8c4614, 0x64330b, 0x4e2407)
+                .areaEffect(FungusEffects.ANTHESIS_EFFECT)
                 .areaRadius(10)
                 .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));

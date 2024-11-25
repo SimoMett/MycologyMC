@@ -37,6 +37,7 @@ public class SpeciesDictionary
     public static final String BLACK_FUNGUS = "Coprinus comatus";
     public static final String LIGHTBLUE_FUNGUS = "Leccinum caelestis";
     public static final String PINK_FUNGUS = "PINK_FUNGUS";
+    public static final String BROWN_FUNGUS = "BROWN_FUNGUS";
     public static final String OVULUS_VIOLACEUS = "Ovulus violaceus";
     public static final String CYAN_FUNGUS = "CYAN_FUNGUS";
     public static final String MAGENTA_FUNGUS = "MAGENTA_FUNGUS";
@@ -72,7 +73,7 @@ public class SpeciesDictionary
     public static final String SPEED_FUNGUS = "SPEED_FUNGUS";
 
     // Alcoholic branch
-    public static final String FERMENTER_FUNGUS = "FERMENTER_FUNGUS";
+    public static final String FERMENTER_FUNGUS = "Hygrocybe saccharoidis";
     public static final String DRUNK_FUNGUS = "DRUNK_FUNGUS";
     public static final String TOXIC_METILIC_FUNGUS = "TOXIC_METILIC_FUNGUS";
 
@@ -106,5 +107,8 @@ public class SpeciesDictionary
     // Not yet identified (TODO)
     public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
     public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
+    public static final String UNDEAD_FUNGUS = "Cordyceps malignus";
     public static final String EXPERIENCE_FUNGUS = "EXPERIENCE_FUNGUS";
+    public static final String COCOA_FUNGUS = "COCOA_FUNGUS";
+    public static final String PLANTING_FUNGUS = "PLANTING_FUNGUS";
 }

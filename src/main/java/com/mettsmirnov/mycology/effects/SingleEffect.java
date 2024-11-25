@@ -39,16 +39,6 @@ public class SingleEffect extends FungusEffect
     public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
     {
         if (consumer != null)
-        {
-            AABB box = new AABB(
-                    origin.getX() - radius,
-                    origin.getY() - radius,
-                    origin.getZ() - radius,
-                    origin.getX() + radius,
-                    origin.getY() + radius,
-                    origin.getZ() + radius
-            );
-            consumer.accept(level, origin, box);
-        }
+            consumer.accept(level, origin, getAABB(origin, radius));
     }
 }

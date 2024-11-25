@@ -45,6 +45,7 @@ public class MutationsProvider implements DataProvider
         addMutation(BLUE_FUNGUS, LACTARIUS_VIRIDIS, CYAN_FUNGUS, cachedOutput);
         addMutation(OVULUS_VIOLACEUS, PINK_FUNGUS, MAGENTA_FUNGUS, cachedOutput);
         addMutation(AMANITA_RUBRA, YELLOW_FUNGUS, ORANGE_FUNGUS, cachedOutput);
+        addMutation(POLYPORUS_LIGNEUS, AMANITA_MUSCARIA, BROWN_FUNGUS, cachedOutput);
 
         // Materials branch
         addMutation(BOLETUS_EDULIS, SUILLUS_GRANULATUS, POLYPORUS_LIGNEUS, cachedOutput);
@@ -58,6 +59,7 @@ public class MutationsProvider implements DataProvider
         addMutation(BOLBITIUS_PROFONDORUM,COAL_FUNGUS,XEROCOMUS_FERRUGINEUS, cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM, YELLOW_FUNGUS, AMANITA_CUPREA, cachedOutput);
         addMutation(XEROCOMUS_FERRUGINEUS, AMANITA_CUPREA, GALERINA_AURATA, cachedOutput);
+        addMutation(AMANITA_CUPREA, BLAZE_FUNGUS, RUSSULA_CONCITATA, cachedOutput);
         addMutation(RUSSULA_CONCITATA, RUSSULA_LAZULA, AMETHYST_FUNGUS, cachedOutput);
         addMutation(AMETHYST_FUNGUS, CHALCIPORUS_INFERNALIS, BOLBITIUS_SILEX, cachedOutput);
         addMutation(LACTARIUS_PROLEFERENS, AMETHYST_FUNGUS, BUDDING_FUNGUS, cachedOutput);
@@ -73,29 +75,30 @@ public class MutationsProvider implements DataProvider
         addMutation(POLYPORUS_LIGNEUS, LACTARIUS_DELICIOUS, LACCARIA_DULCIS, cachedOutput);
         addMutation(BOLETUS_EDULIS, LACTARIUS_DELICIOUS, NOBLE_BOLETUS_SQUISITUS, cachedOutput);
         addMutation(NOBLE_BOLETUS_SQUISITUS, LACCARIA_DULCIS, BOLETUS_SALUBRIUM, cachedOutput);
-        addMutation(BLAZE_FUNGUS, BOLETUS_SALUBRIUM, STRENGTH_FUNGUS, cachedOutput);
-        addMutation(LACCARIA_DULCIS, "???", SPEED_FUNGUS, cachedOutput);
+        addMutation(CRYING_FUNGUS, BOLETUS_SALUBRIUM, STRENGTH_FUNGUS, cachedOutput);
+        addMutation(LACCARIA_DULCIS, BLAZE_FUNGUS, SPEED_FUNGUS, cachedOutput);
 
         // Alcoholic branch
-        addMutation(LACCARIA_DULCIS, "???", FERMENTER_FUNGUS, cachedOutput);
-        addMutation(FERMENTER_FUNGUS, FATIGUE_FUNGUS, DRUNK_FUNGUS, cachedOutput);
+        addMutation(LACCARIA_DULCIS, LECCINUM_VERSIPELLE, FERMENTER_FUNGUS, cachedOutput);
+        addMutation(FERMENTER_FUNGUS, BLAZE_FUNGUS, DRUNK_FUNGUS, cachedOutput);
         addMutation(DRUNK_FUNGUS, BLINDING_FUNGUS, TOXIC_METILIC_FUNGUS, cachedOutput);
 
         // Psico branch
         addMutation(STRENGTH_FUNGUS, AMANITA_MUSCARIA, ANESTHETIC_FUNGUS, cachedOutput);
-        addMutation(ANESTHETIC_FUNGUS, "???", ILLUCINATING_FUNGUS, cachedOutput);
-        addMutation(ILLUCINATING_FUNGUS, "???", HALLUCINATING_FUNGUS, cachedOutput);
+        addMutation(ANESTHETIC_FUNGUS, FERMENTER_FUNGUS, ILLUCINATING_FUNGUS, cachedOutput);
+        addMutation(ILLUCINATING_FUNGUS, DRUNK_FUNGUS, HALLUCINATING_FUNGUS, cachedOutput);
         addMutation(BLINDING_FUNGUS, "???", SENSING_FUNGUS, cachedOutput);
         addMutation(BLINDING_FUNGUS, "???", NIGHTLY_FUNGUS, cachedOutput);
 
         // Environmental branch
         addMutation(HYGROPHORUS_NIVEUS, NOBLE_BOLETUS_SQUISITUS, FREEZING_FUNGUS, cachedOutput);
 
-        // Special branch
+        // Nether branch
         addMutation(CHALCIPORUS_INFERNALIS, AGARICUS_ANIMI, BLAZE_FUNGUS, cachedOutput);
-        addMutation(TRICHOLOMOPSIS_EVANESCENS, BLAZE_FUNGUS, ENDER_EYE_FUNGUS, cachedOutput);
+        addMutation(AGARICUS_ANIMI, CHALCIPORUS_PIPERATUS, CRYING_FUNGUS, cachedOutput);
 
         // End branch
+        addMutation(TRICHOLOMOPSIS_EVANESCENS, BLAZE_FUNGUS, ENDER_EYE_FUNGUS, cachedOutput);
         addMutation(CHORUS_FUNGUS, END_FUNGUS, TRICHOLOMOPSIS_EVANESCENS, cachedOutput);
         addMutation(TRICHOLOMOPSIS_EVANESCENS, CHORUS_FUNGUS, RAPTING_FUNGUS, cachedOutput);
         addMutation("???", RAPTING_FUNGUS, TELEPORTING_FUNGUS, cachedOutput);
@@ -104,6 +107,8 @@ public class MutationsProvider implements DataProvider
         addMutation(AGARICUS_CAMPESTRIS, POLYPORUS_LIGNEUS, BONEBLOCK_FUNGUS, cachedOutput);
         addMutation(BONEBLOCK_FUNGUS, AGARICUS_CAMPESTRIS, FERTILIZING_FUNGUS, cachedOutput);
         addMutation(EMERALD_FUNGUS, RUSSULA_LAZULA, EXPERIENCE_FUNGUS, cachedOutput);
+        addMutation(BROWN_FUNGUS, CHORUS_FUNGUS, COCOA_FUNGUS, cachedOutput);
+        addMutation(FERTILIZING_FUNGUS, CHORUS_FUNGUS, PLANTING_FUNGUS, cachedOutput);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }

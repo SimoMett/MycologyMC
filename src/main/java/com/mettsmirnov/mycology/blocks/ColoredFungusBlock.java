@@ -168,6 +168,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         //code copied from MushroomBlock.randomTick
         //TODO use nbt data instead of magic numbers
         int spreading = (int)thisFungusData.getField(FungusDataModel.SPREADING, IFungusData.GeneType.DOMINANT);//TODO implement spreadboost
+        int areaRadius = (Integer) thisFungusData.getField(FungusDataModel.AREA);
         if (rand.nextInt(spreading) == 0)
         {
             //check if there are 'i' mushrooms in area
@@ -205,8 +206,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 boolean crossBreeding = dice.nextInt(BREEDING_CHANCE) == 0; //FIXME adjust BREEDING_CHANCE
 
                 // check if there are any different fungi nearby (by 'nearby' I mean the dominant "area" trait)
-                int radius = (Integer)thisFungusData.getField(FungusDataModel.AREA);
-                ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, radius);
+                ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, areaRadius);
 
                 if (crossBreeding && !nearbyFungi.isEmpty())
                 {
@@ -242,7 +242,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         }
         //implement here area effect
         String fungusEffect = (String) thisFungusData.getField(FungusDataModel.EFFECT);
-        int areaRadius = (Integer) thisFungusData.getField(FungusDataModel.AREA);
         FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
     }
 

@@ -29,14 +29,7 @@ public class SpawnEntityEffect extends FungusEffect
     @Override
     public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
     {
-        AABB box = new AABB(
-                origin.getX() - radius,
-                origin.getY() - radius,
-                origin.getZ() - radius,
-                origin.getX() + radius,
-                origin.getY() + radius,
-                origin.getZ() + radius
-        );
+        AABB box = getAABB(origin, radius);
 
         final List<BlockPos> pList = new ArrayList<>();
         BlockPos.betweenClosedStream(box).forEach( p -> {
