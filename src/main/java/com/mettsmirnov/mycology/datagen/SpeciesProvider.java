@@ -605,14 +605,10 @@ public class SpeciesProvider implements DataProvider
                 .build();
         speciesBuilder.createDefaultSpecies(CHORUS_FUNGUS)
                 .crimsonType()
-                .colors1(0xb35fa1)
+                .colors4(0xe1dab6, 0xa078db, 0xeee9ff, 0xbea9b8)
                 .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
                 .spawnType(FungusSpawn.END_HIGHLANDS)
-                /*
-                *
-                *
-                * */
                 .areaRadius(3)
                 .build();
         ////////////////////////////////
