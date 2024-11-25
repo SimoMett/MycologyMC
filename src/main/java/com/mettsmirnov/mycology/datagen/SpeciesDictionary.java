@@ -73,7 +73,7 @@ public class SpeciesDictionary
     public static final String SPEED_FUNGUS = "SPEED_FUNGUS";
 
     // Alcoholic branch
-    public static final String FERMENTER_FUNGUS = "FERMENTER_FUNGUS";
+    public static final String FERMENTER_FUNGUS = "Hygrocybe saccharoidis";
     public static final String DRUNK_FUNGUS = "DRUNK_FUNGUS";
     public static final String TOXIC_METILIC_FUNGUS = "TOXIC_METILIC_FUNGUS";
 
