@@ -653,7 +653,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xffd08d, 0x52e13d, 0xffffff, 0xffffff)
                 .eatingEffect(ModEffects.LAST_CHANCE)
                 .build();
-        speciesBuilder.createProtoSpecies("PLANTING_FUNGUS")
+        speciesBuilder.createProtoSpecies(PLANTING_FUNGUS)
                 .areaEffect(FungusEffects.PLANT_EFFECT)
                 .areaRadius(10)
                 .build();

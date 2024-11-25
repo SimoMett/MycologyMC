@@ -108,6 +108,7 @@ public class MutationsProvider implements DataProvider
         addMutation(BONEBLOCK_FUNGUS, AGARICUS_CAMPESTRIS, FERTILIZING_FUNGUS, cachedOutput);
         addMutation(EMERALD_FUNGUS, RUSSULA_LAZULA, EXPERIENCE_FUNGUS, cachedOutput);
         addMutation(BROWN_FUNGUS, CHORUS_FUNGUS, COCOA_FUNGUS, cachedOutput);
+        addMutation(FERTILIZING_FUNGUS, CHORUS_FUNGUS, PLANTING_FUNGUS, cachedOutput);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
