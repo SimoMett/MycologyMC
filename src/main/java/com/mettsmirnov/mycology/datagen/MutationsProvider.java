@@ -103,12 +103,26 @@ public class MutationsProvider implements DataProvider
         addMutation(TRICHOLOMOPSIS_EVANESCENS, CHORUS_FUNGUS, RAPTING_FUNGUS, cachedOutput);
         addMutation("???", RAPTING_FUNGUS, TELEPORTING_FUNGUS, cachedOutput);
 
+        // Nature branch
+        addMutation(BROWN_FUNGUS, CHORUS_FUNGUS, COCOA_FUNGUS, cachedOutput);
+        addMutation(FERTILIZING_FUNGUS, CHORUS_FUNGUS, PLANTING_FUNGUS, cachedOutput);
+
+        // Mutant branch
+        addMutation(LACTARIUS_PROLEFERENS, FLOWERS_FUNGUS, DYEING_FUNGUS, cachedOutput);
+        addMutation(LACTARIUS_PROLEFERENS, "???", UNDEAD_FUNGUS, cachedOutput);
+
+        // Energetic branch
+        addMutation(BLAZE_FUNGUS, CHALCIPORUS_INFERNALIS, LIGHTNING_FUNGUS, cachedOutput);
+        addMutation(LACTARIUS_PROLEFERENS, GLOWSTONE_FUNGUS, LIGHTNING_FUNGUS, cachedOutput);
+
+        // Existential branch
+        addMutation(EMERALD_FUNGUS, RUSSULA_LAZULA, EXPERIENCE_FUNGUS, cachedOutput);
+        addMutation("???", "???", LEARNING_FUNGUS, cachedOutput);
+        addMutation(LEARNING_FUNGUS, EXPERIENCE_FUNGUS, KNOWLEDGE_FUNGUS, cachedOutput);
+
         // Not yet identified branch
         addMutation(AGARICUS_CAMPESTRIS, POLYPORUS_LIGNEUS, BONEBLOCK_FUNGUS, cachedOutput);
         addMutation(BONEBLOCK_FUNGUS, AGARICUS_CAMPESTRIS, FERTILIZING_FUNGUS, cachedOutput);
-        addMutation(EMERALD_FUNGUS, RUSSULA_LAZULA, EXPERIENCE_FUNGUS, cachedOutput);
-        addMutation(BROWN_FUNGUS, CHORUS_FUNGUS, COCOA_FUNGUS, cachedOutput);
-        addMutation(FERTILIZING_FUNGUS, CHORUS_FUNGUS, PLANTING_FUNGUS, cachedOutput);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }

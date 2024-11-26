@@ -250,7 +250,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain(BlockTags.EMERALD_ORES)
                 .build();
 
-        speciesBuilder.createDefaultSpecies("GLOWSTONE_FUNGUS")
+        speciesBuilder.createDefaultSpecies(GLOWSTONE_FUNGUS)
                 .crimsonType()
                 .colors4(0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd)
                 .terrain(ModBlockTags.NETHER)
@@ -313,12 +313,6 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType()
                 .colors4(0x848d9b, 0x5d636f, 0x21202a, 0x00ecff)
                 .terrain(BlockTags.DIAMOND_ORES)
-                .build();
-
-        speciesBuilder.createDefaultSpecies(EXPERIENCE_FUNGUS)
-                .crimsonType()
-                .colors4(0x87CFEC, 0x2d81e2, 0x398D4C, 0xB4DF57)
-                .areaEffect(FungusEffects.EXPORBS_EFFECT)
                 .build();
 
         speciesBuilder.createDefaultSpecies(BLAZE_FUNGUS)
@@ -434,18 +428,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("LIGHTFUL_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.LIGHTFUL_EFFECT)
                 .build();
-        speciesBuilder.createDefaultSpecies("GOODCHANCE_EFFECT_FUNGUS")
-                .crimsonType()
-                .colors4(0x20b189, 0x22b84d, 0x75dd62, 0xd2ffcc)
-                .areaEffect(FungusEffects.GOODCHANCE_EFFECT)
-                .build();
-        speciesBuilder.createProtoSpecies("LEARNING_EFFECT_FUNGUS")
-                .areaEffect(FungusEffects.LEARNING_EFFECT)
-                .build();
-        speciesBuilder.createProtoSpecies("KNOWLEDGE_EFFECT_FUNGUS")
-                .areaEffect(FungusEffects.KNOWLEDGE_EFFECT)
-                .build();
-        speciesBuilder.createProtoSpecies("DYEING_EFFECT_FUNGUS")
+        speciesBuilder.createProtoSpecies(DYEING_FUNGUS)
                 .areaEffect(FungusEffects.DYEING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(FERTILIZING_FUNGUS)
@@ -453,7 +436,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(UNDEAD_FUNGUS) //might be a cordyceps?
+        speciesBuilder.createProtoSpecies(UNDEAD_FUNGUS)
                 .colors4(0xD36146, 0x7EA144, 0x4891ff, 0x4b54bb)
                 .areaRadius(2)
                 .areaEffect(FungusEffects.UNDEAD_EFFECT)
@@ -470,7 +453,7 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType()
                 .colors1(0)
                 .build();
-        speciesBuilder.createProtoSpecies("LIGHTNING_EFFECT_FUNGUS")
+        speciesBuilder.createProtoSpecies(LIGHTNING_FUNGUS)
                 .areaEffect(FungusEffects.LIGHTNING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(ENDER_EYE_FUNGUS)
@@ -624,6 +607,47 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.FREEZING_EFFECT)
                 .areaRadius(8)
                 .build();
+
+        //////////////////////
+        //   Nature fungi   //
+        //////////////////////
+        speciesBuilder.createProtoSpecies(PLANTING_FUNGUS)
+                .areaEffect(FungusEffects.PLANT_EFFECT)
+                .areaRadius(10)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(COCOA_FUNGUS)
+                .crimsonType()
+                .colors4(0xeeaa3c, 0x8c4614, 0x64330b, 0x4e2407)
+                .areaEffect(FungusEffects.ANTHESIS_EFFECT)
+                .areaRadius(10)
+                .build();
+
+        speciesBuilder.createProtoSpecies(FLOWERS_FUNGUS)
+                .build();
+
+        ///////////////////////////
+        //   Existential fungi   //
+        ///////////////////////////
+        speciesBuilder.createDefaultSpecies(EXPERIENCE_FUNGUS)
+                .crimsonType()
+                .colors4(0x87CFEC, 0x2d81e2, 0x398D4C, 0xB4DF57)
+                .areaEffect(FungusEffects.EXPORBS_EFFECT)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(GOODCHANCE_FUNGUS)
+                .crimsonType()
+                .colors4(0x20b189, 0x22b84d, 0x75dd62, 0xd2ffcc)
+                .areaEffect(FungusEffects.GOODCHANCE_EFFECT)
+                .build();
+
+        speciesBuilder.createProtoSpecies(LEARNING_FUNGUS)
+                .areaEffect(FungusEffects.LEARNING_EFFECT)
+                .build();
+
+        speciesBuilder.createProtoSpecies(KNOWLEDGE_FUNGUS)
+                .areaEffect(FungusEffects.KNOWLEDGE_EFFECT)
+                .build();
         /////////////////////////
         //      DEV fungi      //
         /////////////////////////
@@ -644,17 +668,6 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType()
                 .colors4(0xffd08d, 0x52e13d, 0xffffff, 0xffffff)
                 .eatingEffect(ModEffects.LAST_CHANCE)
-                .build();
-        speciesBuilder.createProtoSpecies(PLANTING_FUNGUS)
-                .areaEffect(FungusEffects.PLANT_EFFECT)
-                .areaRadius(10)
-                .build();
-
-        speciesBuilder.createDefaultSpecies(COCOA_FUNGUS)
-                .crimsonType()
-                .colors4(0xeeaa3c, 0x8c4614, 0x64330b, 0x4e2407)
-                .areaEffect(FungusEffects.ANTHESIS_EFFECT)
-                .areaRadius(10)
                 .build();
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }

@@ -104,11 +104,27 @@ public class SpeciesDictionary
     public static final String RAPTING_FUNGUS = "RAPTING_FUNGUS";
     public static final String TELEPORTING_FUNGUS = "TELEPORTING_FUNGUS";
 
+    // Nature branch
+    public static final String COCOA_FUNGUS = "COCOA_FUNGUS";
+    public static final String PLANTING_FUNGUS = "PLANTING_FUNGUS";
+    public static final String FLOWERS_FUNGUS = "FLOWERS_FUNGUS";
+
+    // Mutant branch
+    public static final String DYEING_FUNGUS = "DYEING_EFFECT_FUNGUS";
+    public static final String UNDEAD_FUNGUS = "Cordyceps malignus";
+
+    // Energetic branch
+    public static final String GLOWSTONE_FUNGUS = "GLOWSTONE_FUNGUS";
+    public static final String LIGHTNING_FUNGUS = "LIGHTNING_EFFECT_FUNGUS";
+
+    // Existential branch
+    public static final String EXPERIENCE_FUNGUS = "EXPERIENCE_FUNGUS";
+    public static final String GOODCHANCE_FUNGUS = "GOODCHANCE_EFFECT_FUNGUS";
+    public static final String LEARNING_FUNGUS = "LEARNING_FUNGUS";
+    public static final String KNOWLEDGE_FUNGUS = "KNOWLEDGE_FUNGUS";
+
     // Not yet identified (TODO)
     public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
     public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
-    public static final String UNDEAD_FUNGUS = "Cordyceps malignus";
-    public static final String EXPERIENCE_FUNGUS = "EXPERIENCE_FUNGUS";
-    public static final String COCOA_FUNGUS = "COCOA_FUNGUS";
-    public static final String PLANTING_FUNGUS = "PLANTING_FUNGUS";
+
 }
