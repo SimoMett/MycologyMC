@@ -470,10 +470,6 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType()
                 .colors1(0)
                 .build();
-        speciesBuilder.createProtoSpecies("GHASTLY_EFFECT_FUNGUS")
-                .areaRadius(2)
-                .areaEffect(FungusEffects.GHASTLY_EFFECT)
-                .build();
         speciesBuilder.createProtoSpecies("LIGHTNING_EFFECT_FUNGUS")
                 .areaEffect(FungusEffects.LIGHTNING_EFFECT)
                 .build();

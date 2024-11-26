@@ -148,7 +148,6 @@ public class FungusEffects
     });
     public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
     public static final FungusEffect SKELETONS_EFFECT = new SpawnEntityEffect("skeletons", (lvl) -> new Skeleton(EntityType.SKELETON, lvl));
-    public static final FungusEffect GHASTLY_EFFECT = new SpawnEntityEffect("ghastly", (lvl) -> new Ghast(EntityType.GHAST, lvl));
     public static final FungusEffect BLAZING_EFFECT = new SpawnEntityEffect("blazing" ,(lvl) -> {
         SmallFireball fireball = new SmallFireball(EntityType.SMALL_FIREBALL, lvl);
         fireball.yPower = -0.09; // for gravity
