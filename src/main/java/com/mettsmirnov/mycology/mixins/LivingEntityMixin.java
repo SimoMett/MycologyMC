@@ -15,12 +15,17 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.common.ForgeHooks;
+import org.jline.utils.Log;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity
@@ -75,5 +80,12 @@ public abstract class LivingEntityMixin extends Entity
 
             return itemstack != null || hasLastChanceEffect;
         }
+    }
+
+    @Inject(method = "dropExperience", at = @At(value = "HEAD"), cancellable = true)
+    public void cancelDropExperience(CallbackInfo ci)
+    {
+        if(this.hasEffect(ModEffects.KNOWLEDGE.get()) && !this.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY))
+            ci.cancel();
     }
 }

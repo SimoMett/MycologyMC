@@ -59,7 +59,7 @@ public class FungusEffects
     public static final SingleEffect LIGHTFUL_EFFECT = new SingleEffect("lightful", MobEffects.SLOW_FALLING);
     public static final SingleEffect GOODCHANCE_EFFECT = new SingleEffect("goodchance", MobEffects.LUCK);
     public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", ModEffects.GAIN_XP.get());
-    public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", ModEffects.XP_MULTIPLIER.get());
+    public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", ModEffects.KNOWLEDGE.get());
     public static final FungusEffect SPORING_EFFECT = new TransmuteBlockEffect("sporing", BlockTags.VALID_SPAWN, Blocks.MYCELIUM);
     public static final FungusEffect FREEZING_EFFECT = new TransmuteBlockEffect("freezing", Blocks.WATER, Blocks.ICE);
     public static final SingleEffect DYEING_EFFECT = new SingleEffect("dyeing", null, (level, pos, box) -> {
