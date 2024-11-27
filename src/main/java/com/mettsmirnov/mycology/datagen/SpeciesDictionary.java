@@ -19,6 +19,7 @@ public class SpeciesDictionary
     public static final String LACTARIUS_PROLEFERENS = "Lactarius proleferens";   //(mushroom fields)
     public static final String HYGROPHORUS_NIVEUS = "Hygrophorus niveus";         //(snowy taiga)
     public static final String BOLBITIUS_PROFONDORUM = "Bolbitius profundorum";   //(caves)
+    public static final String BLINDING_FUNGUS = "BLINDING_FUNGUS";               //(overworld, very rare)
 
     // Native Nether
     public static final String AGARICUS_ANIMI = "Agaricus animi";
@@ -79,25 +80,23 @@ public class SpeciesDictionary
 
     // Toxic branch
     public static final String FATIGUE_FUNGUS = "FATIGUE_FUNGUS";
-    public static final String POISON_FUNGUS = "POISON_FUNGUS";
-    public static final String WITHERING_FUNGUS = "Sarcosphaera arescens";
-    public static final String BLINDING_FUNGUS = "BLINDING_FUNGUS";
+    //public static final String POISON_FUNGUS = "POISON_FUNGUS";
 
     // Psico branch
     public static final String ANESTHETIC_FUNGUS = "ANESTHETIC_FUNGUS";
     public static final String ILLUCINATING_FUNGUS = "ILLUCINATING_FUNGUS";
     public static final String HALLUCINATING_FUNGUS = "Psilocybe baeocystis";
     public static final String SENSING_FUNGUS = "SENSING_FUNGUS";
-    public static final String SCHIZO_FUNGUS = "SCHIZO_FUNGUS";
+    //public static final String SCHIZO_FUNGUS = "SCHIZO_FUNGUS";
     public static final String NIGHTLY_FUNGUS = "NIGHTLY_FUNGUS";
 
     // Environmental branch
     public static final String FREEZING_FUNGUS = "FREEZING_FUNGUS";
 
-    // Special branch
+    // Nether branch
     public static final String BLAZE_FUNGUS = "BLAZE_FUNGUS";
-    public static final String ENDER_EYE_FUNGUS = "ENDER_EYE_FUNGUS";
     public static final String CRYING_FUNGUS = "CRYING_FUNGUS";
+    public static final String WITHERING_FUNGUS = "Sarcosphaera arescens";
 
     // End branch
     public static final String TRICHOLOMOPSIS_EVANESCENS = "Tricholomopsis evanescens";
@@ -123,7 +122,13 @@ public class SpeciesDictionary
     public static final String LEARNING_FUNGUS = "LEARNING_FUNGUS";
     public static final String KNOWLEDGE_FUNGUS = "KNOWLEDGE_FUNGUS";
 
+    // Magic branch
+    public static final String CURING_FUNGUS = "CURING_FUNGUS";
+    public static final String SKELETONS_FUNGUS = "SKELETONS_FUNGUS";
+    public static final String LIFE_UP_FUNGUS = "LIFE_UP_FUNGUS";
+
     // Not yet identified (TODO)
+    public static final String ENDER_EYE_FUNGUS = "ENDER_EYE_FUNGUS";
     public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
     public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
 

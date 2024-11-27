@@ -83,6 +83,9 @@ public class MutationsProvider implements DataProvider
         addMutation(FERMENTER_FUNGUS, BLAZE_FUNGUS, DRUNK_FUNGUS, cachedOutput);
         addMutation(DRUNK_FUNGUS, BLINDING_FUNGUS, TOXIC_METILIC_FUNGUS, cachedOutput);
 
+        // Toxic branch
+        addMutation(FERMENTER_FUNGUS, SPEED_FUNGUS, FATIGUE_FUNGUS, cachedOutput);
+
         // Psico branch
         addMutation(STRENGTH_FUNGUS, AMANITA_MUSCARIA, ANESTHETIC_FUNGUS, cachedOutput);
         addMutation(ANESTHETIC_FUNGUS, FERMENTER_FUNGUS, ILLUCINATING_FUNGUS, cachedOutput);
@@ -96,6 +99,7 @@ public class MutationsProvider implements DataProvider
         // Nether branch
         addMutation(CHALCIPORUS_INFERNALIS, AGARICUS_ANIMI, BLAZE_FUNGUS, cachedOutput);
         addMutation(AGARICUS_ANIMI, CHALCIPORUS_PIPERATUS, CRYING_FUNGUS, cachedOutput);
+        addMutation(CRYING_FUNGUS, SKELETONS_FUNGUS, WITHERING_FUNGUS, cachedOutput);
 
         // End branch
         addMutation(TRICHOLOMOPSIS_EVANESCENS, BLAZE_FUNGUS, ENDER_EYE_FUNGUS, cachedOutput);
@@ -120,6 +124,11 @@ public class MutationsProvider implements DataProvider
         addMutation("???", "???", LEARNING_FUNGUS, cachedOutput);
         addMutation(LEARNING_FUNGUS, EXPERIENCE_FUNGUS, KNOWLEDGE_FUNGUS, cachedOutput);
         addMutation(EXPERIENCE_FUNGUS, KNOWLEDGE_FUNGUS, GOODCHANCE_FUNGUS, cachedOutput); //very rare
+
+        // Magic branch
+        addMutation(UNDEAD_FUNGUS, KNOWLEDGE_FUNGUS, CURING_FUNGUS, cachedOutput);
+        addMutation(BONEBLOCK_FUNGUS, UNDEAD_FUNGUS, SKELETONS_FUNGUS, cachedOutput);
+        addMutation(BOLETUS_SALUBRIUM, CURING_FUNGUS, LIFE_UP_FUNGUS, cachedOutput);
 
         // Not yet identified branch
         addMutation(AGARICUS_CAMPESTRIS, POLYPORUS_LIGNEUS, BONEBLOCK_FUNGUS, cachedOutput);
