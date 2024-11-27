@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology.mixins;
 
+import com.mettsmirnov.mycology.effects.PlayerEffects.KnowledgeEffect;
 import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,11 +16,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.common.ForgeHooks;
-import org.jline.utils.Log;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -85,7 +84,7 @@ public abstract class LivingEntityMixin extends Entity
     @Inject(method = "dropExperience", at = @At(value = "HEAD"), cancellable = true)
     public void cancelDropExperience(CallbackInfo ci)
     {
-        if(this.hasEffect(ModEffects.KNOWLEDGE.get()) && !this.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY))
+        if(KnowledgeEffect.shouldRestoreXp((LivingEntity) (Object) this))
             ci.cancel();
     }
 }

@@ -1,11 +1,10 @@
 package com.mettsmirnov.mycology.mixins;
 
-import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
+import com.mettsmirnov.mycology.effects.PlayerEffects.KnowledgeEffect;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,7 +21,7 @@ public abstract class ServerPlayerMixin extends Player
     @Inject(method = "restoreFrom", at = @At("TAIL"))
     public void restoreXp(ServerPlayer player, boolean p_9017_, CallbackInfo ci)
     {
-        if(player.hasEffect(ModEffects.KNOWLEDGE.get()) && !player.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY))
+        if(KnowledgeEffect.shouldRestoreXp(player))
         {
             this.experienceLevel = player.experienceLevel;
             this.totalExperience = player.totalExperience;
