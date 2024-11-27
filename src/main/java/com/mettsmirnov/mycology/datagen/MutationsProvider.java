@@ -101,7 +101,7 @@ public class MutationsProvider implements DataProvider
         addMutation(TRICHOLOMOPSIS_EVANESCENS, BLAZE_FUNGUS, ENDER_EYE_FUNGUS, cachedOutput);
         addMutation(CHORUS_FUNGUS, END_FUNGUS, TRICHOLOMOPSIS_EVANESCENS, cachedOutput);
         addMutation(TRICHOLOMOPSIS_EVANESCENS, CHORUS_FUNGUS, RAPTING_FUNGUS, cachedOutput);
-        addMutation("???", RAPTING_FUNGUS, TELEPORTING_FUNGUS, cachedOutput);
+        addMutation(KNOWLEDGE_FUNGUS, RAPTING_FUNGUS, TELEPORTING_FUNGUS, cachedOutput);
 
         // Nature branch
         addMutation(BROWN_FUNGUS, CHORUS_FUNGUS, COCOA_FUNGUS, cachedOutput);
@@ -119,6 +119,7 @@ public class MutationsProvider implements DataProvider
         addMutation(EMERALD_FUNGUS, RUSSULA_LAZULA, EXPERIENCE_FUNGUS, cachedOutput);
         addMutation("???", "???", LEARNING_FUNGUS, cachedOutput);
         addMutation(LEARNING_FUNGUS, EXPERIENCE_FUNGUS, KNOWLEDGE_FUNGUS, cachedOutput);
+        addMutation(EXPERIENCE_FUNGUS, KNOWLEDGE_FUNGUS, GOODCHANCE_FUNGUS, cachedOutput); //very rare
 
         // Not yet identified branch
         addMutation(AGARICUS_CAMPESTRIS, POLYPORUS_LIGNEUS, BONEBLOCK_FUNGUS, cachedOutput);
