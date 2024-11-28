@@ -2,8 +2,6 @@ package com.mettsmirnov.mycology.datagen;
 
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
-import com.mettsmirnov.mycology.recipes.cooking.FungusCookingRecipe;
-import com.mettsmirnov.mycology.recipes.cooking.FungusCookingRecipeSerializer;
 import com.mettsmirnov.mycology.recipes.cooking.ModCookingRecipes;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
