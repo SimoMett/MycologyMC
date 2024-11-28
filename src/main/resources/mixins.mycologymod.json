@@ -4,6 +4,7 @@
   "mixins": [
     "GameRendererMixin",
     "LivingEntityMixin",
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "ServerPlayerMixin"
   ]
 }

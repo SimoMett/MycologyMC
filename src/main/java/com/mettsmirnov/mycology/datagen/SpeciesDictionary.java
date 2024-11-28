@@ -19,6 +19,7 @@ public class SpeciesDictionary
     public static final String LACTARIUS_PROLEFERENS = "Lactarius proleferens";   //(mushroom fields)
     public static final String HYGROPHORUS_NIVEUS = "Hygrophorus niveus";         //(snowy taiga)
     public static final String BOLBITIUS_PROFONDORUM = "Bolbitius profundorum";   //(caves)
+    public static final String BLINDING_FUNGUS = "BLINDING_FUNGUS";               //(overworld, very rare)
 
     // Native Nether
     public static final String AGARICUS_ANIMI = "Agaricus animi";
@@ -63,6 +64,8 @@ public class SpeciesDictionary
     public static final String DIAMOND_FUNGUS = "DIAMOND_FUNGUS";
     public static final String EMERALD_FUNGUS = "EMERALD_FUNGUS";
     public static final String BOLBITIUS_SILEX = "Bolbitius silex";
+    public static final String POLYPORUS_ANTIQUUS = "Polyporus antiquus";
+    public static final String NETHERITE_FUNGUS = "NETHERITE_FUNGUS";
 
     // Benefic branch
     public static final String LACTARIUS_DELICIOUS = "Lactarius deliciosus";
@@ -79,36 +82,57 @@ public class SpeciesDictionary
 
     // Toxic branch
     public static final String FATIGUE_FUNGUS = "FATIGUE_FUNGUS";
-    public static final String POISON_FUNGUS = "POISON_FUNGUS";
-    public static final String WITHERING_FUNGUS = "Sarcosphaera arescens";
-    public static final String BLINDING_FUNGUS = "BLINDING_FUNGUS";
+    //public static final String POISON_FUNGUS = "POISON_FUNGUS";
 
     // Psico branch
     public static final String ANESTHETIC_FUNGUS = "ANESTHETIC_FUNGUS";
     public static final String ILLUCINATING_FUNGUS = "ILLUCINATING_FUNGUS";
     public static final String HALLUCINATING_FUNGUS = "Psilocybe baeocystis";
     public static final String SENSING_FUNGUS = "SENSING_FUNGUS";
-    public static final String SCHIZO_FUNGUS = "SCHIZO_FUNGUS";
-    public static final String NIGHTLY_FUNGUS = "NIGHTLY_FUNGUS";
+    //public static final String SCHIZO_FUNGUS = "SCHIZO_FUNGUS";
+    //public static final String NIGHTLY_FUNGUS = "NIGHTLY_FUNGUS";
 
     // Environmental branch
     public static final String FREEZING_FUNGUS = "FREEZING_FUNGUS";
 
-    // Special branch
+    // Nether branch
     public static final String BLAZE_FUNGUS = "BLAZE_FUNGUS";
-    public static final String ENDER_EYE_FUNGUS = "ENDER_EYE_FUNGUS";
     public static final String CRYING_FUNGUS = "CRYING_FUNGUS";
+    public static final String WITHERING_FUNGUS = "Sarcosphaera arescens";
 
     // End branch
     public static final String TRICHOLOMOPSIS_EVANESCENS = "Tricholomopsis evanescens";
     public static final String RAPTING_FUNGUS = "RAPTING_FUNGUS";
     public static final String TELEPORTING_FUNGUS = "TELEPORTING_FUNGUS";
 
-    // Not yet identified (TODO)
-    public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
-    public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
-    public static final String UNDEAD_FUNGUS = "Cordyceps malignus";
-    public static final String EXPERIENCE_FUNGUS = "EXPERIENCE_FUNGUS";
+    // Nature branch
     public static final String COCOA_FUNGUS = "COCOA_FUNGUS";
     public static final String PLANTING_FUNGUS = "PLANTING_FUNGUS";
+    public static final String FLOWERS_FUNGUS = "FLOWERS_FUNGUS";
+
+    // Mutant branch
+    public static final String DYEING_FUNGUS = "DYEING_EFFECT_FUNGUS";
+    public static final String UNDEAD_FUNGUS = "Cordyceps malignus";
+
+    // Energetic branch
+    public static final String GLOWSTONE_FUNGUS = "GLOWSTONE_FUNGUS";
+    public static final String LIGHTNING_FUNGUS = "LIGHTNING_EFFECT_FUNGUS";
+
+    // Existential branch
+    public static final String EXPERIENCE_FUNGUS = "EXPERIENCE_FUNGUS";
+    public static final String GOODCHANCE_FUNGUS = "GOODCHANCE_EFFECT_FUNGUS";
+    public static final String LEARNING_FUNGUS = "LEARNING_FUNGUS";
+    public static final String KNOWLEDGE_FUNGUS = "KNOWLEDGE_FUNGUS";
+
+    // Magic branch
+    public static final String CURING_FUNGUS = "CURING_FUNGUS";
+    public static final String SKELETONS_FUNGUS = "SKELETONS_FUNGUS";
+    public static final String LIFE_UP_FUNGUS = "LIFE_UP_FUNGUS";
+
+    // Not yet identified (TODO)
+    public static final String ENDER_EYE_FUNGUS = "ENDER_EYE_FUNGUS";
+    public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
+    public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
+    public static final String CRATERELLUS_CORNUCOPIOIDES = "Craterellus cornucopioides";
+
 }
