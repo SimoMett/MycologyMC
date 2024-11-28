@@ -616,6 +616,8 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(CURING_FUNGUS)
                 .warpedType()
                 .colors4(0xfece69, 0xd32daf, 0xb048eb, 0xff99e5)
+                .areaEffect(FungusEffects.CURING_EFFECT)
+                .areaRadius(5)
                 .build();
 
         speciesBuilder.createProtoSpecies(SKELETONS_FUNGUS)

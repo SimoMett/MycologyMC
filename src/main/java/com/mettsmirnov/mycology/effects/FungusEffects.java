@@ -146,6 +146,7 @@ public class FungusEffects
             }
         }
     });
+    public static final FungusEffect CURING_EFFECT = new CuringEffect("curing");
     public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
     public static final FungusEffect SKELETONS_EFFECT = new SpawnEntityEffect("skeletons", (lvl) -> new Skeleton(EntityType.SKELETON, lvl));
     public static final FungusEffect BLAZING_EFFECT = new SpawnEntityEffect("blazing" ,(lvl) -> {
