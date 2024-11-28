@@ -129,7 +129,7 @@ public class SpeciesProvider implements DataProvider
                 .colors4(0xffc2a5, 0xff9e76, 0xe8a689, 0xd86b63)
                 .build();
 
-        speciesBuilder.createDefaultSpecies("Craterellus cornucopioides")
+        speciesBuilder.createDefaultSpecies(CRATERELLUS_CORNUCOPIOIDES)
                 .warpedType()
                 //.colors4(0x2e2038, 0x211c31, 0x141220, 0x0d0a1c)
                 .colors4(0x382b30, 0x211c31, 0x141220, 0x0d0a1c)
@@ -302,13 +302,13 @@ public class SpeciesProvider implements DataProvider
                 .terrain(ModBlockTags.NETHER_BRICKS)
                 .build();
 
-        speciesBuilder.createDefaultSpecies("Polyporus antiquus")
+        speciesBuilder.createDefaultSpecies(POLYPORUS_ANTIQUUS)
                 .crimsonType()
                 .colors4(0x52362F, 0x52362F, 0x29130D, 0x52362F)
                 .terrain(Blocks.NETHERITE_BLOCK)
                 .build();
 
-        speciesBuilder.createDefaultSpecies("NETHERITE_FUNGUS")
+        speciesBuilder.createDefaultSpecies(NETHERITE_FUNGUS)
                 .crimsonType()
                 .colors4(0x7b716d, 0x48413c, 0x272624, 0x4a484a)
                 .terrain(Blocks.NETHERITE_BLOCK)
@@ -374,10 +374,6 @@ public class SpeciesProvider implements DataProvider
                 .warpedType()
                 .colors4(0xefe8de, 0x50483b, 0x1f3132, 0x28a6af)
                 .areaEffect(FungusEffects.HALLUCINATING_EFFECT)
-                .build();
-
-        speciesBuilder.createProtoSpecies(NIGHTLY_FUNGUS)
-                .areaEffect(FungusEffects.NIGHTLY_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(SENSING_FUNGUS)
                 .areaEffect(FungusEffects.SENSING_EFFECT)
@@ -666,6 +662,9 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createProtoSpecies("CREEPING_EFFECT_FUNGUS")
                 .areaRadius(2)
                 .areaEffect(FungusEffects.CREEPING_EFFECT)
+                .build();
+        speciesBuilder.createProtoSpecies(NIGHTLY_FUNGUS)
+                .areaEffect(FungusEffects.NIGHTLY_EFFECT)
                 .build();*/
 
         /////////////////////////

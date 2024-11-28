@@ -64,6 +64,8 @@ public class SpeciesDictionary
     public static final String DIAMOND_FUNGUS = "DIAMOND_FUNGUS";
     public static final String EMERALD_FUNGUS = "EMERALD_FUNGUS";
     public static final String BOLBITIUS_SILEX = "Bolbitius silex";
+    public static final String POLYPORUS_ANTIQUUS = "Polyporus antiquus";
+    public static final String NETHERITE_FUNGUS = "NETHERITE_FUNGUS";
 
     // Benefic branch
     public static final String LACTARIUS_DELICIOUS = "Lactarius deliciosus";
@@ -88,7 +90,7 @@ public class SpeciesDictionary
     public static final String HALLUCINATING_FUNGUS = "Psilocybe baeocystis";
     public static final String SENSING_FUNGUS = "SENSING_FUNGUS";
     //public static final String SCHIZO_FUNGUS = "SCHIZO_FUNGUS";
-    public static final String NIGHTLY_FUNGUS = "NIGHTLY_FUNGUS";
+    //public static final String NIGHTLY_FUNGUS = "NIGHTLY_FUNGUS";
 
     // Environmental branch
     public static final String FREEZING_FUNGUS = "FREEZING_FUNGUS";
@@ -131,5 +133,6 @@ public class SpeciesDictionary
     public static final String ENDER_EYE_FUNGUS = "ENDER_EYE_FUNGUS";
     public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
     public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
+    public static final String CRATERELLUS_CORNUCOPIOIDES = "Craterellus cornucopioides";
 
 }

@@ -63,7 +63,7 @@ public class MutationsProvider implements DataProvider
         addMutation(RUSSULA_CONCITATA, RUSSULA_LAZULA, AMETHYST_FUNGUS, cachedOutput);
         addMutation(AMETHYST_FUNGUS, CHALCIPORUS_INFERNALIS, BOLBITIUS_SILEX, cachedOutput);
         addMutation(LACTARIUS_PROLEFERENS, AMETHYST_FUNGUS, BUDDING_FUNGUS, cachedOutput);
-        addMutation(GALERINA_AURATA, "Polyporus antiquus", "NETHERITE_FUNGUS", cachedOutput);
+        addMutation(GALERINA_AURATA, POLYPORUS_ANTIQUUS, NETHERITE_FUNGUS, cachedOutput);
         addMutation(CALCITE_FUNGUS, CLAY_FUNGUS, RUSSULA_LAZULA, cachedOutput);
         addMutation(RUSSULA_LAZULA, AMANITA_CUPREA, EMERALD_FUNGUS, cachedOutput);
         addMutation(CALCITE_FUNGUS, COAL_FUNGUS, TUFF_FUNGUS, cachedOutput);
@@ -77,6 +77,7 @@ public class MutationsProvider implements DataProvider
         addMutation(NOBLE_BOLETUS_SQUISITUS, LACCARIA_DULCIS, BOLETUS_SALUBRIUM, cachedOutput);
         addMutation(CRYING_FUNGUS, BOLETUS_SALUBRIUM, STRENGTH_FUNGUS, cachedOutput);
         addMutation(LACCARIA_DULCIS, BLAZE_FUNGUS, SPEED_FUNGUS, cachedOutput);
+        addMutation(BLACK_FUNGUS, LACTARIUS_DELICIOUS, CRATERELLUS_CORNUCOPIOIDES, cachedOutput);
 
         // Alcoholic branch
         addMutation(LACCARIA_DULCIS, LECCINUM_VERSIPELLE, FERMENTER_FUNGUS, cachedOutput);
@@ -90,8 +91,8 @@ public class MutationsProvider implements DataProvider
         addMutation(STRENGTH_FUNGUS, AMANITA_MUSCARIA, ANESTHETIC_FUNGUS, cachedOutput);
         addMutation(ANESTHETIC_FUNGUS, FERMENTER_FUNGUS, ILLUCINATING_FUNGUS, cachedOutput);
         addMutation(ILLUCINATING_FUNGUS, DRUNK_FUNGUS, HALLUCINATING_FUNGUS, cachedOutput);
-        addMutation(BLINDING_FUNGUS, "???", SENSING_FUNGUS, cachedOutput);
-        addMutation(BLINDING_FUNGUS, "???", NIGHTLY_FUNGUS, cachedOutput);
+        addMutation(BLINDING_FUNGUS, KNOWLEDGE_FUNGUS, SENSING_FUNGUS, cachedOutput);
+        //addMutation(BLINDING_FUNGUS, "???", NIGHTLY_FUNGUS, cachedOutput);
 
         // Environmental branch
         addMutation(HYGROPHORUS_NIVEUS, NOBLE_BOLETUS_SQUISITUS, FREEZING_FUNGUS, cachedOutput);
@@ -113,7 +114,7 @@ public class MutationsProvider implements DataProvider
 
         // Mutant branch
         addMutation(LACTARIUS_PROLEFERENS, FLOWERS_FUNGUS, DYEING_FUNGUS, cachedOutput);
-        addMutation(LACTARIUS_PROLEFERENS, "???", UNDEAD_FUNGUS, cachedOutput);
+        addMutation(LACTARIUS_PROLEFERENS, CRATERELLUS_CORNUCOPIOIDES, UNDEAD_FUNGUS, cachedOutput);
 
         // Energetic branch
         addMutation(BLAZE_FUNGUS, CHALCIPORUS_INFERNALIS, LIGHTNING_FUNGUS, cachedOutput);
@@ -121,7 +122,7 @@ public class MutationsProvider implements DataProvider
 
         // Existential branch
         addMutation(EMERALD_FUNGUS, RUSSULA_LAZULA, EXPERIENCE_FUNGUS, cachedOutput);
-        addMutation("???", "???", LEARNING_FUNGUS, cachedOutput);
+        addMutation(BOLBITIUS_SILEX, DIAMOND_FUNGUS, LEARNING_FUNGUS, cachedOutput);
         addMutation(LEARNING_FUNGUS, EXPERIENCE_FUNGUS, KNOWLEDGE_FUNGUS, cachedOutput);
         addMutation(EXPERIENCE_FUNGUS, KNOWLEDGE_FUNGUS, GOODCHANCE_FUNGUS, cachedOutput); //very rare
 
