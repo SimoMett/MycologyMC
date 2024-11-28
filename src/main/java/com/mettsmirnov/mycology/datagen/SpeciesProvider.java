@@ -367,7 +367,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
         speciesBuilder.createDefaultSpecies(ILLUCINATING_FUNGUS)
                 .warpedType()
-                .colors1(0)
+                .colors4(0xa86a30, 0xb8ba81, 0xbe1339, 0xeeb97a)
                 .areaEffect(FungusEffects.ILLUCINATING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(HALLUCINATING_FUNGUS)
@@ -559,7 +559,7 @@ public class SpeciesProvider implements DataProvider
         //////////////////////
         speciesBuilder.createDefaultSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
                 .crimsonType()
-                .colors1(0)
+                .colors4(0xc18c6d, 0xccebff, 0xffffff, 0xe5f5ff)
                 .build();
         speciesBuilder.createDefaultSpecies(WITHERING_FUNGUS)
                 .crimsonType()
@@ -602,16 +602,20 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createProtoSpecies(LEARNING_FUNGUS)
+                .crimsonType()
                 .areaEffect(FungusEffects.LEARNING_EFFECT)
                 .build();
 
         speciesBuilder.createProtoSpecies(KNOWLEDGE_FUNGUS)
+                .crimsonType()
                 .areaEffect(FungusEffects.KNOWLEDGE_EFFECT)
                 .build();
         ///////////////////////////
         //      Magic fungi      //
         ///////////////////////////
-        speciesBuilder.createProtoSpecies(CURING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(CURING_FUNGUS)
+                .warpedType()
+                .colors4(0xfece69, 0xd32daf, 0xb048eb, 0xff99e5)
                 .build();
 
         speciesBuilder.createProtoSpecies(SKELETONS_FUNGUS)
