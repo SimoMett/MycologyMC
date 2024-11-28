@@ -12,6 +12,6 @@ public class ModPotions
 {
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, MycologyMod.MODID);
 
-    public static final RegistryObject<Potion> TELEPORTING_POTION = POTIONS.register("teleporting_potion",
+    public static final RegistryObject<Potion> TELEPORTING = POTIONS.register("teleporting",
             ()-> new Potion(new MobEffectInstance(ModEffects.TELEPORTING.get(), 600)));
 }
