@@ -10,6 +10,7 @@ import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import com.mettsmirnov.mycology.entities.ModEntities;
 import com.mettsmirnov.mycology.items.FungusItemColorer;
 import com.mettsmirnov.mycology.items.ModItems;
+import com.mettsmirnov.mycology.items.potions.ModPotions;
 import com.mettsmirnov.mycology.menu.ModMenus;
 import com.mettsmirnov.mycology.particles.ModParticles;
 import com.mettsmirnov.mycology.recipes.breeding.MutationRecipeLoader;
@@ -32,6 +33,7 @@ public class MycologyMod
         IEventBus evtBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.ITEMS.register(evtBus);
+        ModPotions.POTIONS.register(evtBus);
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
         ModEntities.ENTITIES.register(evtBus);

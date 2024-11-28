@@ -5,7 +5,10 @@
   "effect.mycologymod.gain_xp": "Learning",
   "effect.mycologymod.xp_multiplier": "Knowledge",
   "effect.mycologymod.last_chance": "Another chance",
+
   "effect.mycologymod.teleporting": "Teleporting",
+  "item.minecraft.potion.effect.teleporting_potion": "Potion of Teleporting",
+
   "gui.magnifyingglass.terrain": "Terrain:",
   "gui.magnifyingglass.light": "Light:",
   "gui.magnifyingglass.humidity": "Humidity:",

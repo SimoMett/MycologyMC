@@ -9,7 +9,7 @@ public class TeleportingEffect extends MobEffect
     public static TeleportingEffect instance() { return new TeleportingEffect(); }
 
     protected TeleportingEffect() {
-        super(MobEffectCategory.NEUTRAL, 0);
+        super(MobEffectCategory.NEUTRAL, 0x00B253);
     }
 
     public static boolean shouldTeleport(Player player)
