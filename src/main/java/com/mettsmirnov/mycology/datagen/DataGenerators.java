@@ -19,5 +19,6 @@ public class DataGenerators
         dataGentor.addProvider(true, new SpeciesProvider(dataGentor));
         dataGentor.addProvider(true, new MutationsProvider(dataGentor));
         dataGentor.addProvider(true, new CookingRecipesProvider(dataGentor));
+        dataGentor.addProvider(true, new BrewingRecipesProvider(dataGentor));
     }
 }
