@@ -5,9 +5,9 @@ Branch 'dev' is for development, 'master' for release.
 ## Generic
 - [X] Get the NBT tags working
 - [X] Make a data model to be stored in each mushroom (species, temperature, humidity, soil type, effects, ecc...)
-- [ ] Datapack support
+- [X] Datapack support
 - [X] Ability to plant mushrooms (to be polished)
-- [ ] A LOT of species. [This fantastic tool](https://github.com/SimoMett/mushroom_renderer) can help ;)
+- [X] A LOT of species. [This fantastic tool](https://github.com/SimoMett/mushroom_renderer) can help ;)
 - [ ] Edit mushroom spreading mechanic (partial)
 - [X] Implement breeding
 - [X] Implement crafting mechanics
