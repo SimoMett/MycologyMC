@@ -19,7 +19,7 @@ public class SpeciesDictionary
     public static final String LACTARIUS_PROLEFERENS = "Lactarius proleferens";   //(mushroom fields)
     public static final String HYGROPHORUS_NIVEUS = "Hygrophorus niveus";         //(snowy taiga)
     public static final String BOLBITIUS_PROFONDORUM = "Bolbitius profundorum";   //(caves)
-    public static final String BLINDING_FUNGUS = "BLINDING_FUNGUS";               //(overworld, very rare)
+    public static final String BLINDING_FUNGUS = "Coprinus caecans";              //(overworld, very rare)
 
     // Native Nether
     public static final String AGARICUS_ANIMI = "Agaricus animi";
@@ -31,14 +31,14 @@ public class SpeciesDictionary
 
     // Colors branch
     public static final String AMANITA_RUBRA = "Amanita rubra";
-    public static final String WHITE_FUNGUS = "WHITE_FUNGUS";
+    public static final String WHITE_FUNGUS = "Laccaria pallida";
     public static final String GREY_FUNGUS = "GREY_FUNGUS";
     public static final String LIME_FUNGUS = "LIME_FUNGUS";
     public static final String LIGHTGREY_FUNGUS = "LIGHTGREY_FUNGUS";
     public static final String BLACK_FUNGUS = "Coprinus comatus";
     public static final String LIGHTBLUE_FUNGUS = "Leccinum caelestis";
     public static final String PINK_FUNGUS = "PINK_FUNGUS";
-    public static final String BROWN_FUNGUS = "BROWN_FUNGUS";
+    public static final String BROWN_FUNGUS = "Bolbitius fuscus";
     public static final String OVULUS_VIOLACEUS = "Ovulus violaceus";
     public static final String CYAN_FUNGUS = "CYAN_FUNGUS";
     public static final String MAGENTA_FUNGUS = "MAGENTA_FUNGUS";
@@ -61,7 +61,7 @@ public class SpeciesDictionary
     public static final String RUSSULA_LAZULA = "Russula lazula";
     public static final String RUSSULA_CONCITATA = "Russula concitata";
     public static final String GALERINA_AURATA = "Galerina aurata";
-    public static final String DIAMOND_FUNGUS = "DIAMOND_FUNGUS";
+    public static final String DIAMOND_FUNGUS = "Leccinum adamantinus";
     public static final String EMERALD_FUNGUS = "EMERALD_FUNGUS";
     public static final String BOLBITIUS_SILEX = "Bolbitius silex";
     public static final String POLYPORUS_ANTIQUUS = "Polyporus antiquus";
@@ -93,10 +93,10 @@ public class SpeciesDictionary
     //public static final String NIGHTLY_FUNGUS = "NIGHTLY_FUNGUS";
 
     // Environmental branch
-    public static final String FREEZING_FUNGUS = "FREEZING_FUNGUS";
+    public static final String FREEZING_FUNGUS = "Galerina gelans";
 
     // Nether branch
-    public static final String BLAZE_FUNGUS = "BLAZE_FUNGUS";
+    public static final String BLAZE_FUNGUS = "Boletellus fulgens";
     public static final String CRYING_FUNGUS = "CRYING_FUNGUS";
     public static final String WITHERING_FUNGUS = "Sarcosphaera arescens";
 
@@ -116,7 +116,7 @@ public class SpeciesDictionary
 
     // Energetic branch
     public static final String GLOWSTONE_FUNGUS = "GLOWSTONE_FUNGUS";
-    public static final String LIGHTNING_FUNGUS = "LIGHTNING_EFFECT_FUNGUS";
+    public static final String LIGHTNING_FUNGUS = "Polyporus irruens";
 
     // Existential branch
     public static final String EXPERIENCE_FUNGUS = "EXPERIENCE_FUNGUS";
@@ -125,14 +125,14 @@ public class SpeciesDictionary
     public static final String KNOWLEDGE_FUNGUS = "KNOWLEDGE_FUNGUS";
 
     // Magic branch
-    public static final String CURING_FUNGUS = "CURING_FUNGUS";
+    public static final String CURING_FUNGUS = "Lactarius curans";
     public static final String SKELETONS_FUNGUS = "SKELETONS_FUNGUS";
     public static final String LIFE_UP_FUNGUS = "LIFE_UP_FUNGUS";
 
     // Not yet identified (TODO)
     public static final String ENDER_EYE_FUNGUS = "ENDER_EYE_FUNGUS";
-    public static final String BONEBLOCK_FUNGUS = "BONEBLOCK_FUNGUS";
-    public static final String FERTILIZING_FUNGUS = "FERTILIZING_FUNGUS";
+    public static final String BONEBLOCK_FUNGUS = "Xerocomus osseus";
+    public static final String FERTILIZING_FUNGUS = "Leccinum fertilis";
     public static final String CRATERELLUS_CORNUCOPIOIDES = "Craterellus cornucopioides";
 
 }
