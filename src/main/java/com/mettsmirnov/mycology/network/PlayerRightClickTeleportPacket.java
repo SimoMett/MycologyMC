@@ -5,6 +5,8 @@ import com.mettsmirnov.mycology.effects.PlayerEffects.TeleportingEffect;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
@@ -36,6 +38,7 @@ public class PlayerRightClickTeleportPacket
             {
                 BlockPos pos = hitResult.getBlockPos().above();
                 player.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+                player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.PLAYERS);
             }
         }
     }
