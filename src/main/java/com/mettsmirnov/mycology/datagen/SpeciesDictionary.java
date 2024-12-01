@@ -106,9 +106,9 @@ public class SpeciesDictionary
     public static final String TELEPORTING_FUNGUS = "TELEPORTING_FUNGUS";
 
     // Nature branch
-    public static final String COCOA_FUNGUS = "COCOA_FUNGUS";
-    public static final String PLANTING_FUNGUS = "PLANTING_FUNGUS";
-    public static final String FLOWERS_FUNGUS = "FLOWERS_FUNGUS";
+    public static final String COCOA_FUNGUS = "Craterellus cacao";
+    public static final String PLANTING_FUNGUS = "Russula agricola";
+    public static final String FLOWERS_FUNGUS = "Suillus florens";
 
     // Mutant branch
     public static final String DYEING_FUNGUS = "DYEING_EFFECT_FUNGUS";
