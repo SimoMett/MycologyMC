@@ -558,12 +558,10 @@ public class SpeciesProvider implements DataProvider
         //   Nether fungi   //
         //////////////////////
         speciesBuilder.createDefaultSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
-                .crimsonType()
-                .colors4(0xc18c6d, 0xccebff, 0xffffff, 0xe5f5ff)
+                .crimsonType(0xc18c6d, 0xccebff, 0xffffff, 0xe5f5ff)
                 .build();
         speciesBuilder.createDefaultSpecies(WITHERING_FUNGUS)
-                .crimsonType()
-                .colors4(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
+                .crimsonType(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
                 .terrain(ModBlockTags.NETHER)
                 .areaEffect(FungusEffects.WITHERING_EFFECT)
                 .build();
@@ -577,8 +575,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies(COCOA_FUNGUS)
-                .crimsonType()
-                .colors4(0xeeaa3c, 0x8c4614, 0x64330b, 0x4e2407)
+                .crimsonType(0xeeaa3c, 0x8c4614, 0x64330b, 0x4e2407)
                 .areaEffect(FungusEffects.ANTHESIS_EFFECT)
                 .areaRadius(10)
                 .build();

@@ -112,12 +112,14 @@ public class SpeciesBuilder
         return this;
     }
 
+    @Deprecated
     public SpeciesBuilder colors4(int stelum, int head, int details1, int details2)
     {
         this.colors = new Integer[]{stelum, head, details1, details2};
         return this;
     }
 
+    @Deprecated
     public SpeciesBuilder colors1(int color)
     {
         this.colors = new Integer[]{color, color, color, color};
