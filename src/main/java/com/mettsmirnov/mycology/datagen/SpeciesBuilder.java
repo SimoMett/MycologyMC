@@ -92,9 +92,23 @@ public class SpeciesBuilder
         return this;
     }
 
+    public SpeciesBuilder warpedType(int stelum, int head, int details1, int details2)
+    {
+        this.type = WARPED_TYPE;
+        this.colors = new Integer[]{stelum, head, details1, details2};
+        return this;
+    }
+
     public SpeciesBuilder crimsonType()
     {
         this.type = CRIMSON_TYPE;
+        return this;
+    }
+
+    public SpeciesBuilder crimsonType(int stelum, int head, int details1, int details2)
+    {
+        this.type = CRIMSON_TYPE;
+        this.colors = new Integer[]{stelum, head, details1, details2};
         return this;
     }
 
