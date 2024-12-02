@@ -5,6 +5,7 @@ public class FungusGeni
     public static final String AMANITA = "Amanita"; //(velenoso)
     public static final String CHALCIPORUS = "Chalciporus"; //(porcino pepato, commestibile)
     public static final String GALERINA = "Galerina"; //(galerina marginata, velenoso)
+    public static final String OVULUS = "Ovulus";
     public static final String LACCARIA = "Laccaria"; //(commestibile)
     public static final String LACTARIUS = "Lactarius"; //(pennenciole, commestibili o velenosi)
     public static final String RUSSULA = "Russula";//(rossola, commestibile o neutro)
