@@ -29,7 +29,6 @@ public class SpeciesProvider implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput hashCache)
     {
-        //FIXME all the fungi need some work
         List<CompletableFuture<?>> list = new ArrayList<>();
         SpeciesBuilder speciesBuilder = new SpeciesBuilder(this.generator, hashCache, list);
 
@@ -137,8 +136,7 @@ public class SpeciesProvider implements DataProvider
         //      Toxic fungi        //
         /////////////////////////////
         speciesBuilder.createDefaultSpecies(FATIGUE_FUNGUS)
-                .warpedType()
-                .colors1(0)
+                .warpedType(0xabd9ed, 0x8aabaf, 0x596e77, 0xe2c6b5)
                 .areaEffect(FungusEffects.FATIGUE_EFFECT)
                 .build();
 
@@ -341,6 +339,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.RAPTING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(TELEPORTING_FUNGUS)
+                .crimsonType()
                 .areaEffect(FungusEffects.TELEPORTING_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(DYEING_FUNGUS)
@@ -533,13 +532,13 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.GOODCHANCE_EFFECT)
                 .build();
 
-        speciesBuilder.createProtoSpecies(LEARNING_FUNGUS)
-                .crimsonType()
+        speciesBuilder.createDefaultSpecies(LEARNING_FUNGUS)
+                .crimsonType(0xb95b61, 0x19508f, 0x414bdb, 0xf6aff4)
                 .areaEffect(FungusEffects.LEARNING_EFFECT)
                 .build();
 
-        speciesBuilder.createProtoSpecies(KNOWLEDGE_FUNGUS)
-                .crimsonType()
+        speciesBuilder.createDefaultSpecies(KNOWLEDGE_FUNGUS)
+                .crimsonType(0xCD725A, 0xD00369, 0x730F17, 0x99B2FF)
                 .areaEffect(FungusEffects.KNOWLEDGE_EFFECT)
                 .build();
         ///////////////////////////
