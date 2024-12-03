@@ -15,9 +15,7 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
 
     public FungusCookingRecipe(String speciesIngredient, ItemStack result, int stackSize, float exp, int cookingTime)
     {
-        //FIXME why only 'COLORED_CRIMSON_FUNGUS'?
-        //TODO check if cooking is possibile with other fungi
-        super(RecipeType.SMELTING, "fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS.get()), result, exp, cookingTime);
+        super(RecipeType.SMELTING, "fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS.get(), ModItems.COLORED_WARPED_FUNGUS.get(), ModItems.COLORED_RED_FUNGUS.get()), result, exp, cookingTime);
         this.result.setCount(stackSize);
         this.speciesIngredient = speciesIngredient;
     }
