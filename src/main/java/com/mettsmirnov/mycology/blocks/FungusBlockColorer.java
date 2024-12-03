@@ -11,9 +11,6 @@ import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
-import java.util.Random;
-
 public class FungusBlockColorer implements BlockColor
 {
     @Override
@@ -40,6 +37,6 @@ public class FungusBlockColorer implements BlockColor
     @SubscribeEvent
     public static void registerColorsEvent(RegisterColorHandlersEvent.Block evt)
     {
-        evt.register(new FungusBlockColorer(), ModBlocks.COLORED_CRIMSON_FUNGUS.get(), ModBlocks.COLORED_WARPED_FUNGUS.get());
+        evt.register(new FungusBlockColorer(), ModBlocks.COLORED_CRIMSON_FUNGUS.get(), ModBlocks.COLORED_WARPED_FUNGUS.get(), ModBlocks.COLORED_RED_FUNGUS.get());
     }
 }

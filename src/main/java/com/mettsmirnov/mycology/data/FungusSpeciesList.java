@@ -8,6 +8,9 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.*;
 
+import static com.mettsmirnov.mycology.blocks.ModBlocks.COLORED_CRIMSON_STRING;
+import static com.mettsmirnov.mycology.blocks.ModBlocks.COLORED_RED_STRING;
+
 public class FungusSpeciesList
 {
     private HashMap<String, FungusSpecies> speciesHashMap = new HashMap<>();
@@ -43,8 +46,10 @@ public class FungusSpeciesList
         for(FungusSpecies species : sortedSpecies)
         {
             ItemStack e;
-            if(species.fungusType.equals("colored_crimson_fungus"))
+            if(species.fungusType.equals(COLORED_CRIMSON_STRING))
                 e = new ItemStack(ModItems.COLORED_CRIMSON_FUNGUS.get());
+            else if(species.fungusType.equals(COLORED_RED_STRING))
+                e = new ItemStack(ModItems.COLORED_RED_FUNGUS.get());
             else
                 e = new ItemStack(ModItems.COLORED_WARPED_FUNGUS.get());
             e.getCapability(FungusDataCapability.INSTANCE).resolve().get().setColors(species.colors);
@@ -59,8 +64,10 @@ public class FungusSpeciesList
         FungusSpecies species = speciesHashMap.get("Boletus salubrium");
 
         ItemStack e;
-        if(species.fungusType.equals("colored_crimson_fungus"))
+        if(species.fungusType.equals(COLORED_CRIMSON_STRING))
             e = new ItemStack(ModItems.COLORED_CRIMSON_FUNGUS.get());
+        else if(species.fungusType.equals(COLORED_RED_STRING))
+            e = new ItemStack(ModItems.COLORED_RED_FUNGUS.get());
         else
             e = new ItemStack(ModItems.COLORED_WARPED_FUNGUS.get());
         e.getCapability(FungusDataCapability.INSTANCE).resolve().get().setColors(species.colors);

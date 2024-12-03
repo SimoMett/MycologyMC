@@ -28,6 +28,7 @@ public class SpeciesBuilder
 {
     public static final String CRIMSON_TYPE = ModBlocks.COLORED_CRIMSON_STRING;
     public static final String WARPED_TYPE = ModBlocks.COLORED_WARPED_STRING;
+    public static final String RED_TYPE = ModBlocks.COLORED_RED_STRING;
 
     public SpeciesBuilder(DataGenerator generator, CachedOutput hashCache, List<CompletableFuture<?>> completableFutureList)
     {
@@ -58,7 +59,6 @@ public class SpeciesBuilder
     //Methods chaining
     public SpeciesBuilder createSpecies(@NonNull String speciesName)
     {
-
         this.speciesName = speciesName;
         return this;
     }
@@ -109,6 +109,19 @@ public class SpeciesBuilder
     {
         this.type = CRIMSON_TYPE;
         this.colors = new Integer[]{stelum, head, details1, details2};
+        return this;
+    }
+
+    public SpeciesBuilder redType()
+    {
+        this.type = RED_TYPE;
+        return this;
+    }
+
+    public SpeciesBuilder redType(int stelum, int head, int details)
+    {
+        this.type = RED_TYPE;
+        this.colors = new Integer[]{stelum, head, details, details};
         return this;
     }
 

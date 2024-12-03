@@ -12,6 +12,7 @@ public class ModItems
 
     public static final RegistryObject<ColoredFungusBlockItem> COLORED_CRIMSON_FUNGUS = ITEMS.register("colored_crimson_fungus", ColoredFungusBlockItem::createColoredCrimson);
     public static final RegistryObject<ColoredFungusBlockItem> COLORED_WARPED_FUNGUS = ITEMS.register("colored_warped_fungus", ColoredFungusBlockItem::createColoredWarped);
+    public static final RegistryObject<ColoredFungusBlockItem> COLORED_RED_FUNGUS = ITEMS.register("colored_red_fungus", ColoredFungusBlockItem::createColoredRed);
 
     //all the items below..
     public static final RegistryObject<MagnifyingGlassItem> MAGNIFYING_GLASS = ITEMS.register("magnifying_glass", MagnifyingGlassItem::new);

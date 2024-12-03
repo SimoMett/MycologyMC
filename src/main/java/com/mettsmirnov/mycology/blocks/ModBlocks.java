@@ -13,14 +13,18 @@ public class ModBlocks
 
     public static final String COLORED_CRIMSON_STRING = "colored_crimson_fungus";
     public static final String COLORED_WARPED_STRING = "colored_warped_fungus";
-    public static final RegistryObject<Block> COLORED_CRIMSON_FUNGUS = BLOCKS.register(COLORED_CRIMSON_STRING,ColoredFungusBlock::new);
-    public static final RegistryObject<Block> COLORED_WARPED_FUNGUS = BLOCKS.register(COLORED_WARPED_STRING,ColoredFungusBlock::new);
+    public static final String COLORED_RED_STRING = "colored_red_fungus";
+    public static final RegistryObject<Block> COLORED_CRIMSON_FUNGUS = BLOCKS.register(COLORED_CRIMSON_STRING, ColoredFungusBlock::new);
+    public static final RegistryObject<Block> COLORED_WARPED_FUNGUS = BLOCKS.register(COLORED_WARPED_STRING, ColoredFungusBlock::new);
+    public static final RegistryObject<Block> COLORED_RED_FUNGUS = BLOCKS.register(COLORED_RED_STRING, ColoredFungusBlock::new);
 
     public static BlockState getDefaultBlockStateFromFungusType(String fungusType)
     {
         BlockState blockState;
         if(fungusType.equals(ModBlocks.COLORED_CRIMSON_STRING))
             blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
+        else if(fungusType.equals(ModBlocks.COLORED_RED_STRING))
+            blockState = ModBlocks.COLORED_RED_FUNGUS.get().defaultBlockState();
         else
             blockState = ModBlocks.COLORED_WARPED_FUNGUS.get().defaultBlockState();
         return blockState;

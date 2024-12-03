@@ -38,6 +38,11 @@ public class ColoredFungusBlockItem extends BlockItem
         return new ColoredFungusBlockItem(ModBlocks.COLORED_WARPED_FUNGUS.get());
     }
 
+    public static ColoredFungusBlockItem createColoredRed()
+    {
+        return new ColoredFungusBlockItem(ModBlocks.COLORED_RED_FUNGUS.get());
+    }
+
     public ColoredFungusBlockItem(Block block)
     {
         super(block, new Item.Properties().food(new FoodProperties.Builder().alwaysEat().build()));

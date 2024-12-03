@@ -24,5 +24,6 @@ public class JeiModPlugin implements IModPlugin
     {
         registration.registerSubtypeInterpreter(ModItems.COLORED_CRIMSON_FUNGUS.get(), new FungusSubtypeInterpreter());
         registration.registerSubtypeInterpreter(ModItems.COLORED_WARPED_FUNGUS.get(), new FungusSubtypeInterpreter());
+        registration.registerSubtypeInterpreter(ModItems.COLORED_RED_FUNGUS.get(), new FungusSubtypeInterpreter());
     }
 }

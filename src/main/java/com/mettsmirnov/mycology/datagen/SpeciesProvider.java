@@ -609,7 +609,7 @@ public class SpeciesProvider implements DataProvider
         //      DEV fungi      //
         /////////////////////////
         speciesBuilder.createDefaultSpecies("DEV_FUNGUS")
-                .crimsonType(0x5567E5, 0x9F55B5, 0xBF5DAF, 0xD32BD9)
+                .redType(0x5567E5, 0x9F55B5, 0xBF5DAF)
                 .areaEffect(FungusEffects.DEV_TEST_EFFECT)
                 .areaRadius(2)
                 .build();

@@ -9,8 +9,6 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
-
 public class FungusItemColorer implements ItemColor
 {
     @Override
@@ -30,6 +28,6 @@ public class FungusItemColorer implements ItemColor
     @SubscribeEvent
     public static void registerColorsEvent(RegisterColorHandlersEvent.Item evt)
     {
-        evt.register(new FungusItemColorer(), ModItems.COLORED_CRIMSON_FUNGUS.get(), ModItems.COLORED_WARPED_FUNGUS.get());
+        evt.register(new FungusItemColorer(), ModItems.COLORED_CRIMSON_FUNGUS.get(), ModItems.COLORED_WARPED_FUNGUS.get(), ModItems.COLORED_RED_FUNGUS.get());
     }
 }
