@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mycologymod:item/red_fungus_stelum",
+    "layer1": "mycologymod:item/red_fungus_head",
+    "layer2": "mycologymod:item/red_fungus_details"
+  }
+}
