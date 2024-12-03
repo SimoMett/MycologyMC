@@ -66,8 +66,10 @@ public class SpeciesDictionary
     public static final String DIAMOND_FUNGUS = LECCINUM+" adamantinus";
     public static final String EMERALD_FUNGUS = CRATERELLUS+" smaragdi";
     public static final String BOLBITIUS_SILEX = BOLBITIUS+" silex";
-    public static final String POLYPORUS_ANTIQUUS = POLYPORUS+" antiquus";
-    public static final String NETHERITE_FUNGUS = "NETHERITE_FUNGUS";
+
+    // Removed due to non-conformity with the lore of netherite.
+    //public static final String POLYPORUS_ANTIQUUS = POLYPORUS+" antiquus";
+    //public static final String NETHERITE_FUNGUS = "NETHERITE_FUNGUS";
 
     // Benefic branch
     public static final String LACTARIUS_DELICIOUS = LACTARIUS+" deliciosus";

@@ -269,7 +269,8 @@ public class SpeciesProvider implements DataProvider
                 .terrain(ModBlockTags.NETHER_BRICKS)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(POLYPORUS_ANTIQUUS)
+        // Removed due to non-conformity with the lore of netherite.
+        /*speciesBuilder.createDefaultSpecies(POLYPORUS_ANTIQUUS)
                 .crimsonType(0x52362F, 0x52362F, 0x29130D, 0x52362F)
                 .terrain(Blocks.NETHERITE_BLOCK)
                 .build();
@@ -277,7 +278,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(NETHERITE_FUNGUS)
                 .crimsonType(0x7b716d, 0x48413c, 0x272624, 0x4a484a)
                 .terrain(Blocks.NETHERITE_BLOCK)
-                .build();
+                .build();*/
 
         speciesBuilder.createDefaultSpecies(TRICHOLOMOPSIS_EVANESCENS)
                 .crimsonType(0x87cfec, 0x06d192, 0x69d0af, 0x068054)

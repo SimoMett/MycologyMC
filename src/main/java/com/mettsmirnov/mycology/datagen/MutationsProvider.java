@@ -63,7 +63,7 @@ public class MutationsProvider implements DataProvider
         addMutation(RUSSULA_CONCITATA, RUSSULA_LAZULA, AMETHYST_FUNGUS, cachedOutput);
         addMutation(AMETHYST_FUNGUS, CHALCIPORUS_INFERNALIS, BOLBITIUS_SILEX, cachedOutput);
         addMutation(LACTARIUS_PROLEFERENS, AMETHYST_FUNGUS, BUDDING_FUNGUS, cachedOutput);
-        addMutation(GALERINA_AURATA, POLYPORUS_ANTIQUUS, NETHERITE_FUNGUS, cachedOutput);
+        //addMutation(GALERINA_AURATA, POLYPORUS_ANTIQUUS, NETHERITE_FUNGUS, cachedOutput); // Removed due to non-conformity with the lore of netherite.
         addMutation(CALCITE_FUNGUS, CLAY_FUNGUS, RUSSULA_LAZULA, cachedOutput);
         addMutation(RUSSULA_LAZULA, AMANITA_CUPREA, EMERALD_FUNGUS, cachedOutput);
         addMutation(CALCITE_FUNGUS, COAL_FUNGUS, TUFF_FUNGUS, cachedOutput);
