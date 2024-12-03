@@ -42,8 +42,8 @@ public class SpeciesDictionary
     public static final String PINK_FUNGUS = HYGROPHORUS+" rosaceus";
     public static final String BROWN_FUNGUS = BOLBITIUS+" fuscus";
     public static final String OVULUS_VIOLACEUS = OVULUS+" violaceus";
-    public static final String CYAN_FUNGUS = "CYAN_FUNGUS";
-    public static final String MAGENTA_FUNGUS = "MAGENTA_FUNGUS";
+    public static final String CYAN_FUNGUS = RUSSULA+" cyanea";
+    public static final String MAGENTA_FUNGUS = RUSSULA+" fuchsia";
     public static final String ORANGE_FUNGUS = LACCARIA+" lutea";
 
     // Materials branch
@@ -75,7 +75,7 @@ public class SpeciesDictionary
     public static final String NOBLE_BOLETUS_SQUISITUS = "Noble "+BOLETUS+" squisitus";
     public static final String BOLETUS_SALUBRIUM = BOLETUS+" salubrium";
     public static final String STRENGTH_FUNGUS = SUILLUS+" roborans";
-    public static final String SPEED_FUNGUS = "SPEED_FUNGUS";
+    public static final String SPEED_FUNGUS = LACTARIUS+" agilis";
 
     // Alcoholic branch
     public static final String FERMENTER_FUNGUS = HYGROCYBE+" saccharoidis";
