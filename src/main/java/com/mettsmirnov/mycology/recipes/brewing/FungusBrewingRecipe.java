@@ -35,7 +35,7 @@ public class FungusBrewingRecipe implements IBrewingRecipe
 
     public boolean isIngredient(ItemStack ingredient)
     {
-        if (ingredient.is(ModItems.COLORED_CRIMSON_FUNGUS.get()))
+        if (ingredient.is(ModItems.COLORED_CRIMSON_FUNGUS.get()) || ingredient.is(ModItems.COLORED_WARPED_FUNGUS.get()))
         {
             String species = (String)ingredient.getCapability(FungusDataCapability.INSTANCE).resolve().get().getField("species", IFungusData.GeneType.DOMINANT);
             return species.equals(this.species);
