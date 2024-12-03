@@ -20,6 +20,7 @@ public class ModBlocks
 
     public static BlockState getDefaultBlockStateFromFungusType(String fungusType)
     {
+        //FIXME need a (hash) map
         BlockState blockState;
         if(fungusType.equals(ModBlocks.COLORED_CRIMSON_STRING))
             blockState = ModBlocks.COLORED_CRIMSON_FUNGUS.get().defaultBlockState();

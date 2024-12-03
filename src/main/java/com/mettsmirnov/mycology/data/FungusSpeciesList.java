@@ -45,6 +45,7 @@ public class FungusSpeciesList
         List<FungusSpecies> sortedSpecies = speciesHashMap.values().stream().sorted(Comparator.comparing(a -> a.defaultTraits.species)).toList();
         for(FungusSpecies species : sortedSpecies)
         {
+            //FIXME critical. Need a (hash) map
             ItemStack e;
             if(species.fungusType.equals(COLORED_CRIMSON_STRING))
                 e = new ItemStack(ModItems.COLORED_CRIMSON_FUNGUS.get());
@@ -63,6 +64,7 @@ public class FungusSpeciesList
     {
         FungusSpecies species = speciesHashMap.get("Boletus salubrium");
 
+        //FIXME critical. Need a (hash) map
         ItemStack e;
         if(species.fungusType.equals(COLORED_CRIMSON_STRING))
             e = new ItemStack(ModItems.COLORED_CRIMSON_FUNGUS.get());
