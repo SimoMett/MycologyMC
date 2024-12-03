@@ -296,6 +296,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.DRUNK_EFFECT)
                 .build();
         speciesBuilder.createProtoSpecies(TOXIC_METILIC_FUNGUS)
+                .warpedType()
                 .build();
 
         /////////////////////////////////
@@ -477,6 +478,7 @@ public class SpeciesProvider implements DataProvider
         //   Very rare native fungi   //
         ////////////////////////////////
         speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
+                .warpedType()
                 .areaEffect(FungusEffects.BLINDING_EFFECT)
                 .areaRadius(10)
                 .spawnType(FungusSpawn.VERY_RARE.withBiomes(Biomes.DARK_FOREST))

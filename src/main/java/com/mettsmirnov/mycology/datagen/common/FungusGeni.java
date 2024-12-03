@@ -20,6 +20,8 @@ public class FungusGeni
     public static final String BOLBITIUS = "Bolbitius"; //(non commestibile)
     public static final String SARCOSPHAERA = "Sarcosphaera";
     public static final String HYGROPHORUS = "Hygrophorus";
+    public static final String HYGROCYBE = "Hygrocybe";
     public static final String CRATERELLUS = "Craterellus";
     public static final String COPRINUS = "Coprinus";
+    public static final String CORTINARIUS = "Cortinarius"; // (tossico)
 }

@@ -29,7 +29,7 @@ public class SpeciesDictionary
 
     // Native End
     public static final String END_FUNGUS = AGARICUS+" transdimensionalis";
-    public static final String CHORUS_FUNGUS = "CHORUS FUNGUS";
+    public static final String CHORUS_FUNGUS = BOLETELLUS+" choruum";
 
     // Colors branch
     public static final String AMANITA_RUBRA = AMANITA+" rubra";
@@ -39,32 +39,32 @@ public class SpeciesDictionary
     public static final String LIGHTGREY_FUNGUS = CRATERELLUS+" pallidus";
     public static final String BLACK_FUNGUS = COPRINUS+" comatus";
     public static final String LIGHTBLUE_FUNGUS = LECCINUM+" caelestis";
-    public static final String PINK_FUNGUS = "PINK_FUNGUS";
+    public static final String PINK_FUNGUS = HYGROPHORUS+" rosaceus";
     public static final String BROWN_FUNGUS = BOLBITIUS+" fuscus";
     public static final String OVULUS_VIOLACEUS = OVULUS+" violaceus";
     public static final String CYAN_FUNGUS = "CYAN_FUNGUS";
     public static final String MAGENTA_FUNGUS = "MAGENTA_FUNGUS";
-    public static final String ORANGE_FUNGUS = "ORANGE_FUNGUS";
+    public static final String ORANGE_FUNGUS = LACCARIA+" lutea";
 
     // Materials branch
     public static final String POLYPORUS_LIGNEUS = POLYPORUS+" ligneus";
-    public static final String CLAY_FUNGUS = "CLAY_FUNGUS";
-    public static final String BASALT_FUNGUS = "BASALT_FUNGUS";
-    public static final String DIORITE_FUNGUS = "DIORITE_FUNGUS";
-    public static final String CALCITE_FUNGUS = "CALCITE_FUNGUS";
+    public static final String CLAY_FUNGUS = LACCARIA+" cretae";
+    public static final String BASALT_FUNGUS = TRICHOLOMOPSIS+" fundamentorum";
+    public static final String DIORITE_FUNGUS = HYGROCYBE+" dioritis";
+    public static final String CALCITE_FUNGUS = OVULUS+" calcareus";
 
     // Minerals branch
     public static final String COAL_FUNGUS = LECCINUM+" carbonis";
     public static final String XEROCOMUS_FERRUGINEUS = XEROCOMUS+" ferrugineus";
     public static final String AMANITA_CUPREA = AMANITA+" cuprea";
-    public static final String TUFF_FUNGUS = "TUFF_FUNGUS";
-    public static final String AMETHYST_FUNGUS = "AMETHYST_FUNGUS";
+    public static final String TUFF_FUNGUS = HYGROCYBE+" tophi";
+    public static final String AMETHYST_FUNGUS = SUILLUS+" amethystus";
     public static final String BUDDING_FUNGUS = "BUDDING_FUNGUS";
     public static final String RUSSULA_LAZULA = RUSSULA+" lazula";
     public static final String RUSSULA_CONCITATA = RUSSULA+" concitata";
     public static final String GALERINA_AURATA = GALERINA+" aurata";
     public static final String DIAMOND_FUNGUS = LECCINUM+" adamantinus";
-    public static final String EMERALD_FUNGUS = "EMERALD_FUNGUS";
+    public static final String EMERALD_FUNGUS = CRATERELLUS+" smaragdi";
     public static final String BOLBITIUS_SILEX = BOLBITIUS+" silex";
     public static final String POLYPORUS_ANTIQUUS = POLYPORUS+" antiquus";
     public static final String NETHERITE_FUNGUS = "NETHERITE_FUNGUS";
@@ -78,9 +78,9 @@ public class SpeciesDictionary
     public static final String SPEED_FUNGUS = "SPEED_FUNGUS";
 
     // Alcoholic branch
-    public static final String FERMENTER_FUNGUS = "Hygrocybe saccharoidis";
+    public static final String FERMENTER_FUNGUS = HYGROCYBE+" saccharoidis";
     public static final String DRUNK_FUNGUS = COPRINUS+" ebrius";
-    public static final String TOXIC_METILIC_FUNGUS = "TOXIC_METILIC_FUNGUS";
+    public static final String TOXIC_METILIC_FUNGUS = CORTINARIUS+" venenatus";
 
     // Toxic branch
     public static final String FATIGUE_FUNGUS = XEROCOMUS+" exhaustus";
@@ -90,7 +90,7 @@ public class SpeciesDictionary
     public static final String ANESTHETIC_FUNGUS = HYGROPHORUS+" medens";
     public static final String ILLUCINATING_FUNGUS = OVULUS+" pavoris";
     public static final String HALLUCINATING_FUNGUS = "Psilocybe baeocystis";
-    public static final String SENSING_FUNGUS = "SENSING_FUNGUS";
+    public static final String SENSING_FUNGUS = TRICHOLOMOPSIS+" sensibilis";
     //public static final String SCHIZO_FUNGUS = "SCHIZO_FUNGUS";
     //public static final String NIGHTLY_FUNGUS = "NIGHTLY_FUNGUS";
 
@@ -104,8 +104,8 @@ public class SpeciesDictionary
 
     // End branch
     public static final String TRICHOLOMOPSIS_EVANESCENS = TRICHOLOMOPSIS+" evanescens";
-    public static final String RAPTING_FUNGUS = "RAPTING_FUNGUS";
-    public static final String TELEPORTING_FUNGUS = "TELEPORTING_FUNGUS";
+    public static final String RAPTING_FUNGUS = CHALCIPORUS+" rapiens";
+    public static final String TELEPORTING_FUNGUS = OVULUS+" expeditus";
 
     // Nature branch
     public static final String COCOA_FUNGUS = CRATERELLUS+" cacao";
@@ -113,7 +113,7 @@ public class SpeciesDictionary
     public static final String FLOWERS_FUNGUS = SUILLUS+" florens";
 
     // Mutant branch
-    public static final String DYEING_FUNGUS = "DYEING_EFFECT_FUNGUS";
+    public static final String DYEING_FUNGUS = GALERINA+" colorata";
     public static final String UNDEAD_FUNGUS = "Cordyceps malignus";
 
     // Energetic branch
@@ -122,17 +122,17 @@ public class SpeciesDictionary
 
     // Existential branch
     public static final String EXPERIENCE_FUNGUS = GALERINA+" peritia";
-    public static final String GOODCHANCE_FUNGUS = "GOODCHANCE_EFFECT_FUNGUS";
+    public static final String GOODCHANCE_FUNGUS = AGARICUS+" fortunatus";
     public static final String LEARNING_FUNGUS = CHALCIPORUS+" studens";
     public static final String KNOWLEDGE_FUNGUS = RUSSULA+" docta";
 
     // Magic branch
     public static final String CURING_FUNGUS = LACTARIUS+" curans";
-    public static final String SKELETONS_FUNGUS = "SKELETONS_FUNGUS";
+    public static final String SKELETONS_FUNGUS = POLYPORUS+" exsceletro";
     public static final String LIFE_UP_FUNGUS = BOLETUS+" parcens";
 
     // Not yet identified (TODO)
-    public static final String ENDER_EYE_FUNGUS = "ENDER_EYE_FUNGUS";
+    public static final String ENDER_EYE_FUNGUS = BOLBITIUS+" dirigens";
     public static final String BONEBLOCK_FUNGUS = XEROCOMUS+" osseus";
     public static final String FERTILIZING_FUNGUS = LECCINUM+" fertilis";
     public static final String CRATERELLUS_CORNUCOPIOIDES = CRATERELLUS+" cornucopioides";
