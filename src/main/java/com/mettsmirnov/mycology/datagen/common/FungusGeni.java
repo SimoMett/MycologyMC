@@ -22,6 +22,7 @@ public class FungusGeni
     public static final String HYGROPHORUS = "Hygrophorus";
     public static final String HYGROCYBE = "Hygrocybe";
     public static final String CRATERELLUS = "Craterellus";
+    public static final String CANTHARELLUS = "Cantharellus";
     public static final String COPRINUS = "Coprinus";
     public static final String CORTINARIUS = "Cortinarius"; // (tossico)
 }

@@ -9,7 +9,7 @@ public class SpeciesDictionary
      */
     //  Native Overworld
     public static final String AGARICUS_CAMPESTRIS = AGARICUS+" campestris";       //(plains)
-    public static final String LACTARIUS_VIRIDIS = LACTARIUS+" viridis";           //(sunflower plains)
+    public static final String LACTARIUS_VIRIDIS = LACTARIUS+" virens";           //(sunflower plains)
     public static final String LECCINUM_VERSIPELLE = LECCINUM+" versipelle";       //(birch forest)
     public static final String BOLETUS_EDULIS = BOLETUS+" edulis";                 //(forest)
     public static final String SUILLUS_GRANULATUS = SUILLUS+" granulatus";         //(old growth pine taiga)
@@ -35,7 +35,7 @@ public class SpeciesDictionary
     public static final String AMANITA_RUBRA = AMANITA+" rubra";
     public static final String WHITE_FUNGUS = LACCARIA+" candida";
     public static final String GREY_FUNGUS = BOLETELLUS+" cineraceus";
-    public static final String LIME_FUNGUS = "LIME_FUNGUS";
+    public static final String LIME_FUNGUS = CANTHARELLUS+" viridis";
     public static final String LIGHTGREY_FUNGUS = CRATERELLUS+" pallidus";
     public static final String BLACK_FUNGUS = COPRINUS+" comatus";
     public static final String LIGHTBLUE_FUNGUS = LECCINUM+" caelestis";
@@ -58,8 +58,8 @@ public class SpeciesDictionary
     public static final String XEROCOMUS_FERRUGINEUS = XEROCOMUS+" ferrugineus";
     public static final String AMANITA_CUPREA = AMANITA+" cuprea";
     public static final String TUFF_FUNGUS = HYGROCYBE+" tophi";
-    public static final String AMETHYST_FUNGUS = SUILLUS+" amethystus";
-    public static final String BUDDING_FUNGUS = "BUDDING_FUNGUS";
+    public static final String AMETHYST_FUNGUS = SUILLUS+" amethystis";
+    public static final String BUDDING_FUNGUS = XEROCOMUS+" gemmans";
     public static final String RUSSULA_LAZULA = RUSSULA+" lazula";
     public static final String RUSSULA_CONCITATA = RUSSULA+" concitata";
     public static final String GALERINA_AURATA = GALERINA+" aurata";
