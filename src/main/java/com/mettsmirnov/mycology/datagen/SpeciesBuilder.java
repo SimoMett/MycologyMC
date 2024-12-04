@@ -64,8 +64,10 @@ public class SpeciesBuilder
     }
 
     private static final int DEFAULT_AREA_RADIUS = 3;
+    //Soon to be @Deprecated
     public SpeciesBuilder createDefaultSpecies(String speciesName)
     {
+        this.crimsonType(0, 0, 0, 0);
         this.speciesName = speciesName;
         this.spreading = 25;
         this.spreadBoost = 1.0f;
@@ -79,13 +81,6 @@ public class SpeciesBuilder
     }
 
     @Deprecated
-    public SpeciesBuilder createProtoSpecies(String speciesName)
-    {
-        return createDefaultSpecies(speciesName)
-                .crimsonType()
-                .colors4(0, 0, 0, 0);
-    }
-
     public SpeciesBuilder warpedType()
     {
         this.type = WARPED_TYPE;
@@ -99,6 +94,7 @@ public class SpeciesBuilder
         return this;
     }
 
+    @Deprecated
     public SpeciesBuilder crimsonType()
     {
         this.type = CRIMSON_TYPE;
@@ -108,13 +104,6 @@ public class SpeciesBuilder
     public SpeciesBuilder crimsonType(int stelum, int head, int details1, int details2)
     {
         this.type = CRIMSON_TYPE;
-        this.colors = new Integer[]{stelum, head, details1, details2};
-        return this;
-    }
-
-    @Deprecated
-    public SpeciesBuilder colors4(int stelum, int head, int details1, int details2)
-    {
         this.colors = new Integer[]{stelum, head, details1, details2};
         return this;
     }

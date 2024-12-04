@@ -32,10 +32,6 @@ public class SpeciesProvider implements DataProvider
         List<CompletableFuture<?>> list = new ArrayList<>();
         SpeciesBuilder speciesBuilder = new SpeciesBuilder(this.generator, hashCache, list);
 
-        /*speciesBuilder.createDefaultSpecies("GREEN_FUNGUS_2")
-                .crimsonType()
-                .colors4(0xD36146, 0x7EA144, 0x619B68, 0x3A734C)
-                .build();*/
         /////////////////////////////
         //      Colors fungi       //
         /////////////////////////////
@@ -59,7 +55,8 @@ public class SpeciesProvider implements DataProvider
                 .colors1(0x67ff32)
                 .build();
 
-        speciesBuilder.createProtoSpecies(CYAN_FUNGUS)
+        speciesBuilder.createDefaultSpecies(CYAN_FUNGUS)
+                .warpedType()
                 .colors1(0x198185)
                 .build();
 
@@ -252,7 +249,8 @@ public class SpeciesProvider implements DataProvider
                 .terrain(Blocks.AMETHYST_BLOCK)
                 .build();
 
-        speciesBuilder.createProtoSpecies(BUDDING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(BUDDING_FUNGUS)
+                .warpedType()
                 .terrain(Blocks.AMETHYST_BLOCK)
                 .areaEffect(FungusEffects.BUDDING_EFFECT)
                 .areaRadius(4)
@@ -296,8 +294,8 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
                 .areaEffect(FungusEffects.DRUNK_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(TOXIC_METILIC_FUNGUS)
-                .warpedType()
+        speciesBuilder.createDefaultSpecies(TOXIC_METILIC_FUNGUS)
+                .warpedType(0x9b8ac5, 0xf3dbec, 0x883674, 0xc797ab)
                 .build();
 
         /////////////////////////////////
@@ -333,18 +331,19 @@ public class SpeciesProvider implements DataProvider
                 .warpedType(0xefe8de, 0x50483b, 0x1f3132, 0x28a6af)
                 .areaEffect(FungusEffects.HALLUCINATING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(SENSING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(SENSING_FUNGUS)
                 .areaEffect(FungusEffects.SENSING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(RAPTING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(RAPTING_FUNGUS)
                 .crimsonType()
                 .areaEffect(FungusEffects.RAPTING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(TELEPORTING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(TELEPORTING_FUNGUS)
                 .crimsonType()
                 .areaEffect(FungusEffects.TELEPORTING_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(DYEING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(DYEING_FUNGUS)
+                .warpedType()
                 .areaEffect(FungusEffects.DYEING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(FERTILIZING_FUNGUS)
@@ -356,7 +355,7 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(2)
                 .areaEffect(FungusEffects.UNDEAD_EFFECT)
                 .build();
-        speciesBuilder.createProtoSpecies(LIGHTNING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(LIGHTNING_FUNGUS)
                 .areaEffect(FungusEffects.LIGHTNING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(ENDER_EYE_FUNGUS)
@@ -478,8 +477,8 @@ public class SpeciesProvider implements DataProvider
         ////////////////////////////////
         //   Very rare native fungi   //
         ////////////////////////////////
-        speciesBuilder.createProtoSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
-                .warpedType()
+        speciesBuilder.createDefaultSpecies(BLINDING_FUNGUS) // could be cool if this very rarely spawns in the overworld
+                .warpedType(0xD36146, 0x7EA144, 0x619B68, 0x3A734C)
                 .areaEffect(FungusEffects.BLINDING_EFFECT)
                 .areaRadius(10)
                 .spawnType(FungusSpawn.VERY_RARE.withBiomes(Biomes.DARK_FOREST))
@@ -508,7 +507,8 @@ public class SpeciesProvider implements DataProvider
         //////////////////////
         //   Nature fungi   //
         //////////////////////
-        speciesBuilder.createProtoSpecies(PLANTING_FUNGUS)
+        speciesBuilder.createDefaultSpecies(PLANTING_FUNGUS)
+                .crimsonType(0xffcb99, 0xff66d8, 0xf8fa53, 0x49b2e3)
                 .areaEffect(FungusEffects.PLANT_EFFECT)
                 .areaRadius(10)
                 .build();
@@ -519,7 +519,8 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(10)
                 .build();
 
-        speciesBuilder.createProtoSpecies(FLOWERS_FUNGUS)
+        speciesBuilder.createDefaultSpecies(FLOWERS_FUNGUS)
+                .warpedType()
                 .build();
 
         ///////////////////////////
@@ -553,7 +554,7 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(5)
                 .build();
 
-        speciesBuilder.createProtoSpecies(SKELETONS_FUNGUS)
+        speciesBuilder.createDefaultSpecies(SKELETONS_FUNGUS)
                 .warpedType()
                 .areaRadius(2)
                 .areaEffect(FungusEffects.SKELETONS_EFFECT)
