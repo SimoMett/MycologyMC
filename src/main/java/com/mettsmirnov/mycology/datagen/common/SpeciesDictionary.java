@@ -1,4 +1,4 @@
-package com.mettsmirnov.mycology.datagen;
+package com.mettsmirnov.mycology.datagen.common;
 
 import static com.mettsmirnov.mycology.datagen.common.FungusGeni.*;
 

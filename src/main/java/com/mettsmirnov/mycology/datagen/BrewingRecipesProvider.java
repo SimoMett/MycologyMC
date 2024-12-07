@@ -12,7 +12,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
-import static com.mettsmirnov.mycology.datagen.SpeciesDictionary.*;
+import static com.mettsmirnov.mycology.datagen.common.SpeciesDictionary.*;
 
 public class BrewingRecipesProvider implements DataProvider
 {

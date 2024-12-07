@@ -1,5 +1,6 @@
 package com.mettsmirnov.mycology.datagen;
 
+import com.mettsmirnov.mycology.datagen.common.SpeciesBuilder;
 import com.mettsmirnov.mycology.effects.FungusEffects;
 import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
 import com.mettsmirnov.mycology.tags.ModBlockTags;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static com.mettsmirnov.mycology.datagen.SpeciesDictionary.*;
+import static com.mettsmirnov.mycology.datagen.common.SpeciesDictionary.*;
 
 public class SpeciesProvider implements DataProvider
 {

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
 import static com.mettsmirnov.mycology.config.ModCommonConfigs.DEFAULT_MUTATION_CHANCE;
-import static com.mettsmirnov.mycology.datagen.SpeciesDictionary.*;
+import static com.mettsmirnov.mycology.datagen.common.SpeciesDictionary.*;
 
 public class MutationsProvider implements DataProvider
 {

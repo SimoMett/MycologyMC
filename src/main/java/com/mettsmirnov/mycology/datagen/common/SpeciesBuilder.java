@@ -1,11 +1,9 @@
-package com.mettsmirnov.mycology.datagen;
+package com.mettsmirnov.mycology.datagen.common;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.effects.FungusEffect;
-import com.mettsmirnov.mycology.datagen.common.BiomesSpecs;
-import com.mettsmirnov.mycology.datagen.common.FungusSpawn;
 import com.mettsmirnov.mycology.effects.FungusEffects;
 import com.mettsmirnov.mycology.tags.ModBlockTags;
 import net.minecraft.data.CachedOutput;
@@ -64,11 +62,11 @@ public class SpeciesBuilder
     }
 
     private static final int DEFAULT_AREA_RADIUS = 3;
-    //Soon to be @Deprecated
+    @Deprecated
     public SpeciesBuilder createDefaultSpecies(String speciesName)
     {
+        this.createSpecies(speciesName);
         this.crimsonType(0, 0, 0, 0);
-        this.speciesName = speciesName;
         this.spreading = 25;
         this.spreadBoost = 1.0f;
         this.light = 15;
