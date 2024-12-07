@@ -51,13 +51,11 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies(LIME_FUNGUS)
-                .warpedType()
-                .colors1(0x67ff32)
+                .warpedType(0x9e885f, 0xdd6544, 0x20b482, 0x50ec6c)
                 .build();
 
         speciesBuilder.createDefaultSpecies(CYAN_FUNGUS)
-                .warpedType()
-                .colors1(0x198185)
+                .warpedType(0xdcab8a, 0x45af9c, 0xd3907c, 0x0c6c91)
                 .build();
 
         speciesBuilder.createDefaultSpecies(LIGHTBLUE_FUNGUS)
@@ -75,8 +73,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies(MAGENTA_FUNGUS)
-                .crimsonType()
-                .colors1(0xff44de)
+                .crimsonType(0xffb2cf, 0xef459d, 0x981c33, 0xffffff)
                 .build();
 
         speciesBuilder.createDefaultSpecies(PINK_FUNGUS)
@@ -156,13 +153,11 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies(BASALT_FUNGUS)
-                .crimsonType()
-                .colors1(0)
+                .crimsonType(0x4f4b4f, 0x838383, 0x878787, 0x1b2632)
                 .build();
 
         speciesBuilder.createDefaultSpecies(TUFF_FUNGUS)
-                .warpedType()
-                .colors1(0)
+                .warpedType(0x95978d, 0x63625c, 0x6b6b5f, 0x393c34)
                 .build();
 
         speciesBuilder.createDefaultSpecies(CLAY_FUNGUS)
@@ -250,7 +245,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies(BUDDING_FUNGUS)
-                .warpedType()
+                .warpedType(0xebb9d2, 0x8e61ff, 0xd665b8, 0xf6b0d0)
                 .terrain(Blocks.AMETHYST_BLOCK)
                 .areaEffect(FungusEffects.BUDDING_EFFECT)
                 .areaRadius(4)
@@ -332,18 +327,19 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.HALLUCINATING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(SENSING_FUNGUS)
+                .warpedType(0xcec2c5, 0xffcf42, 0xffffff, 0x1984a1)
                 .areaEffect(FungusEffects.SENSING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(RAPTING_FUNGUS)
-                .crimsonType()
+                .crimsonType(0x71ecad, 0xc575ff, 0xb8dce5, 0x157865)
                 .areaEffect(FungusEffects.RAPTING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(TELEPORTING_FUNGUS)
-                .crimsonType()
+                .crimsonType(0x4b6ae5, 0x2bd9a1, 0x37e3bd, 0x5ef9e2)
                 .areaEffect(FungusEffects.TELEPORTING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(DYEING_FUNGUS)
-                .warpedType()
+                .warpedType(0xffcb99, 0xff66d8, 0xf8fa53, 0x49b2e3)
                 .areaEffect(FungusEffects.DYEING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(FERTILIZING_FUNGUS)
@@ -356,6 +352,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.UNDEAD_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(LIGHTNING_FUNGUS)
+                .warpedType(0xfeffcc, 0xffcf42, 0xffffff, 0xb2ffff)
                 .areaEffect(FungusEffects.LIGHTNING_EFFECT)
                 .build();
         speciesBuilder.createDefaultSpecies(ENDER_EYE_FUNGUS)
@@ -508,7 +505,7 @@ public class SpeciesProvider implements DataProvider
         //   Nature fungi   //
         //////////////////////
         speciesBuilder.createDefaultSpecies(PLANTING_FUNGUS)
-                .crimsonType(0xffcb99, 0xff66d8, 0xf8fa53, 0x49b2e3)
+                .crimsonType(0xffd0a3, 0xe76542, 0xfde5cd, 0xa7492f)
                 .areaEffect(FungusEffects.PLANT_EFFECT)
                 .areaRadius(10)
                 .build();
@@ -520,7 +517,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies(FLOWERS_FUNGUS)
-                .warpedType()
+                .warpedType(0xbc8364, 0x51beff, 0xffdf7f, 0xff8f4c)
                 .build();
 
         ///////////////////////////
@@ -555,7 +552,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createDefaultSpecies(SKELETONS_FUNGUS)
-                .warpedType()
+                .warpedType(0xe2dfd4, 0xffffff, 0xffffff, 0x909090)
                 .areaRadius(2)
                 .areaEffect(FungusEffects.SKELETONS_EFFECT)
                 .build();
@@ -619,6 +616,11 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.TNT_EFFECT)
                 .areaRadius(4)
                 .build();
+
+        //some colors
+        //(0x9c2b17, 0x9cd424, 0xb6e6be, 0x860a18)
+        //(0x9c2b17, 0x9cd424, 0xfade85, 0x860a18)
+
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 

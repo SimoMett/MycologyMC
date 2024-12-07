@@ -83,8 +83,7 @@ public class SpeciesBuilder
     @Deprecated
     public SpeciesBuilder warpedType()
     {
-        this.type = WARPED_TYPE;
-        return this;
+        return this.warpedType(0, 0, 0, 0);
     }
 
     public SpeciesBuilder warpedType(int stelum, int head, int details1, int details2)
@@ -97,8 +96,7 @@ public class SpeciesBuilder
     @Deprecated
     public SpeciesBuilder crimsonType()
     {
-        this.type = CRIMSON_TYPE;
-        return this;
+        return this.crimsonType(0, 0, 0, 0);
     }
 
     public SpeciesBuilder crimsonType(int stelum, int head, int details1, int details2)

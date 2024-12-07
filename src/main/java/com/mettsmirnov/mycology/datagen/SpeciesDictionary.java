@@ -111,7 +111,7 @@ public class SpeciesDictionary
 
     // Nature branch
     public static final String COCOA_FUNGUS = CRATERELLUS+" cacao";
-    public static final String PLANTING_FUNGUS = RUSSULA+" agricola";
+    public static final String PLANTING_FUNGUS = IMLERIA+" agricola";
     public static final String FLOWERS_FUNGUS = SUILLUS+" florens";
 
     // Mutant branch

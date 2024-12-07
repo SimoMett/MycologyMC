@@ -25,4 +25,5 @@ public class FungusGeni
     public static final String CANTHARELLUS = "Cantharellus";
     public static final String COPRINUS = "Coprinus";
     public static final String CORTINARIUS = "Cortinarius"; // (tossico)
+    public static final String IMLERIA = "Imleria";
 }
