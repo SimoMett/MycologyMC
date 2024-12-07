@@ -12,7 +12,7 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
-import static com.mettsmirnov.mycology.constants.Constants.DEFAULT_MUTATION_CHANCE;
+import static com.mettsmirnov.mycology.config.ModCommonConfigs.DEFAULT_MUTATION_CHANCE;
 import static com.mettsmirnov.mycology.datagen.SpeciesDictionary.*;
 
 public class MutationsProvider implements DataProvider
@@ -140,7 +140,7 @@ public class MutationsProvider implements DataProvider
 
     private void addMutation(String species1, String species2, String result, CachedOutput cache)
     {
-        addMutation2(species1, species2, result, DEFAULT_MUTATION_CHANCE, cache);
+        addMutation2(species1, species2, result, DEFAULT_MUTATION_CHANCE.get(), cache);
     }
 
     private void addMutation2(String species1, String species2, String result, float chance, CachedOutput cache)

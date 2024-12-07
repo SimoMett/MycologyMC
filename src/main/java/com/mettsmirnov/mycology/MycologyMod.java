@@ -4,6 +4,7 @@ import com.mettsmirnov.mycology.blocks.FungusBlockColorer;
 import com.mettsmirnov.mycology.blocks.ModBlocks;
 import com.mettsmirnov.mycology.capabilities.FungusDataAttacher;
 import com.mettsmirnov.mycology.capabilities.ModCapabilitiesHandler;
+import com.mettsmirnov.mycology.config.ModCommonConfigs;
 import com.mettsmirnov.mycology.creativetab.ModCreativeTabs;
 import com.mettsmirnov.mycology.data.FungusSpeciesLoader;
 import com.mettsmirnov.mycology.effects.PlayerEffects.ModEffects;
@@ -20,7 +21,9 @@ import com.mettsmirnov.mycology.world.features.ModFeatures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(MycologyMod.MODID)
@@ -32,6 +35,7 @@ public class MycologyMod
     {
         IEventBus evtBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModCommonConfigs.SPEC, MODID+"-common.toml");
         ModItems.ITEMS.register(evtBus);
         ModPotions.POTIONS.register(evtBus);
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);

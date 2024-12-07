@@ -17,9 +17,9 @@ import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Random;
 
+import static com.mettsmirnov.mycology.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
 import static com.mettsmirnov.mycology.genetics.FungusTraits.traitsDictionary;
 import static com.mettsmirnov.mycology.myutils.StringDecomposition.compose;
-import static com.mettsmirnov.mycology.constants.Constants.DEBUG;
 
 public class FungusDataModel implements IFungusData
 {
@@ -115,9 +115,11 @@ public class FungusDataModel implements IFungusData
 
     public boolean matchesEnvironment(Integer light, Float temperature, Float humidity)
     {
-        return DEBUG || (light < (Integer)dominantTraits.get(LIGHT) // let's say for now that mushroom prefer sporing in darker areas
+        boolean matchesEnv = light < (Integer)dominantTraits.get(LIGHT) // let's say for now that mushroom prefer sporing in darker areas
                 && dominantTraits.get(TEMP).equals(temperature)
-                && dominantTraits.get(HUMIDITY).equals(humidity));
+                && dominantTraits.get(HUMIDITY).equals(humidity);
+
+        return IGNORE_AMBIENT_CONDITIONS.get() || matchesEnv;
     }
 
     public boolean matchesTerrain(BlockState terrainBlock)

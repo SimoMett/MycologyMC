@@ -4,6 +4,7 @@ import com.mettsmirnov.mycology.MycologyMod;
 import com.mettsmirnov.mycology.capabilities.FungusDataCapability;
 import com.mettsmirnov.mycology.capabilities.FungusDataModel;
 import com.mettsmirnov.mycology.capabilities.IFungusData;
+import com.mettsmirnov.mycology.config.ModCommonConfigs;
 import com.mettsmirnov.mycology.data.FungusSpeciesList;
 import com.mettsmirnov.mycology.effects.FungusEffects;
 import com.mettsmirnov.mycology.entities.ColoredFungusBlockEntity;
@@ -43,7 +44,7 @@ import org.jline.utils.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static com.mettsmirnov.mycology.constants.Constants.*;
+import static com.mettsmirnov.mycology.config.ModCommonConfigs.*;
 
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
 {
@@ -129,8 +130,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     private static void addSporeParticle(int radius, BlockPos blockPos, Level level, RandomSource randomSource)
     {
         Random random = new Random();
-        int density = SPORE_PARTICLES_FREQ*radius;
-        radius *= RADIUS_MULTIPLIER;
+        int density = SPORE_PARTICLES_FREQ.get()*radius;
+        radius *= RADIUS_MULTIPLIER.get();
         for (int i = 0; i < density; i++)
         {
             //get random BlockPos
@@ -173,7 +174,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         {
             //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
-            int i = MAX_MUSHROOMS_IN_AREA;
+            int i = MAX_MUSHROOMS_IN_AREA.get();
             for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4)))
             {
                 if (level.getBlockState(blockpos).is(this))
@@ -203,7 +204,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             if (level.isEmptyBlock(blockpos1))
             {
                 Random dice = new Random();
-                boolean crossBreeding = dice.nextInt(BREEDING_CHANCE) == 0; //FIXME adjust BREEDING_CHANCE
+                boolean crossBreeding = dice.nextInt(ModCommonConfigs.BREEDING_CHANCE.get()) == 0; //FIXME adjust BREEDING_CHANCE
 
                 // check if there are any different fungi nearby (by 'nearby' I mean the dominant "area" trait)
                 ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, areaRadius);
