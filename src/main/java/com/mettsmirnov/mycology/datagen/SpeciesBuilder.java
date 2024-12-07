@@ -80,12 +80,6 @@ public class SpeciesBuilder
         return this;
     }
 
-    @Deprecated
-    public SpeciesBuilder warpedType()
-    {
-        return this.warpedType(0, 0, 0, 0);
-    }
-
     public SpeciesBuilder warpedType(int stelum, int head, int details1, int details2)
     {
         this.type = WARPED_TYPE;
@@ -93,23 +87,10 @@ public class SpeciesBuilder
         return this;
     }
 
-    @Deprecated
-    public SpeciesBuilder crimsonType()
-    {
-        return this.crimsonType(0, 0, 0, 0);
-    }
-
     public SpeciesBuilder crimsonType(int stelum, int head, int details1, int details2)
     {
         this.type = CRIMSON_TYPE;
         this.colors = new Integer[]{stelum, head, details1, details2};
-        return this;
-    }
-
-    @Deprecated
-    public SpeciesBuilder colors1(int color)
-    {
-        this.colors = new Integer[]{color, color, color, color};
         return this;
     }
 
@@ -178,8 +159,6 @@ public class SpeciesBuilder
     public void build()
     {
         //FIXME is there a better way of doing this?
-        if(type==null)
-            throw new NullPointerException("SpeciesBuilder: 'type' attribute of '"+speciesName+"' is null");
         if(colors==null)
             throw new NullPointerException("SpeciesBuilder: 'colors' attribute of '"+speciesName+"' is null");
         if(spreading==null)
@@ -230,7 +209,7 @@ public class SpeciesBuilder
 
         //reset all variable
         speciesName = null;
-        type = null;
+        type = CRIMSON_TYPE;
         colors = null;
         spreading = null;
         spreadBoost = null;
