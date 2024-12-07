@@ -16,7 +16,7 @@ public class SpeciesDictionary
     public static final String CHALCIPORUS_PIPERATUS = CHALCIPORUS+" piperatus";   //(old growth spruce taiga)
     public static final String AMANITA_MUSCARIA = AMANITA+" muscaria";             //(jungle)
     public static final String AMANITA_PHALLOIDES = AMANITA+" phalloides";         //(swamp)
-    public static final String YELLOW_FUNGUS = "Hygrocybe pratensis";             //(meadow)
+    public static final String YELLOW_FUNGUS = HYGROCYBE+" pratensis";             //(meadow)
     public static final String BLUE_FUNGUS = BOLETELLUS+" caeruleus";              //(flower forest)
     public static final String LACTARIUS_PROLEFERENS = LACTARIUS+" proleferens";   //(mushroom fields)
     public static final String HYGROPHORUS_NIVEUS = HYGROPHORUS+" niveus";         //(snowy taiga)
