@@ -1,22 +1,50 @@
 package com.simomett.mycologymod.genetics;
 
-import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.data.FungusSpeciesList;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
+import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 
 
 public class FungusGenoma
 {
+    /*public FungusGenoma(ByteBuf byteBuf)
+    {
+
+    }*/
+
+    public void encode(ByteBuf byteBuf)
+    {
+
+    }
+
+    private FungusGenoma()
+    {
+        dominantTraits = new FungusTraits(FungusTraits.EMPTY);
+        recessiveTraits = new FungusTraits(FungusTraits.EMPTY);
+    }
+
+    public FungusGenoma normalCrossbreedWith(FungusGenoma that)
+    {
+        FungusGenoma offspring = new FungusGenoma();
+        Random random = new Random();
+        for(String trait : traitsDictionary)
+        {
+            String o = random.nextBoolean() ? this.getField(trait) : this.getField(trait, FungusGenoma.GeneType.RECESSIVE);
+            offspring.setField(trait, FungusGenoma.GeneType.DOMINANT, o);
+            String p = random.nextBoolean() ? that.getField(trait) : that.getField(trait, FungusGenoma.GeneType.RECESSIVE);
+            offspring.setField(trait, FungusGenoma.GeneType.RECESSIVE, p);
+        }
+        return offspring;
+    }
+
     public enum GeneType
     {
         DOMINANT,
@@ -39,16 +67,6 @@ public class FungusGenoma
     private final FungusTraits recessiveTraits;
     private int[] colors; //TODO remove colors member.
     //colors should not be part of the genoma. The color scheme should be defined by the dominant trait of species. And so should be the type of fungus (crimson/warped).
-
-    @Deprecated(forRemoval = true)
-    public FungusGenoma()
-    {
-        //default traits
-        dominantTraits=new FungusTraits("Fungus impossibilis", 25, 1f, 15, MycologyMod.MODID+":grass", 0, 0, 1, "none", Optional.empty());
-        recessiveTraits = new FungusTraits(dominantTraits);
-
-        colors = new int[]{-1,new Random().nextInt(),-1,-1};
-    }
 
     public FungusGenoma(FungusTraits dominant, FungusTraits recessive)
     {
@@ -110,7 +128,7 @@ public class FungusGenoma
 
     public boolean matchesTerrain(BlockState terrainBlock)
     {
-        String terrainTag = (String) dominantTraits.get(TERRAIN);
+        String terrainTag = dominantTraits.terrain();
         if(terrainTag.charAt(0)=='#')
             return terrainBlock.is(BlockTags.create(ResourceLocation.parse(terrainTag.substring(1))));
         else
@@ -122,15 +140,11 @@ public class FungusGenoma
         return matchesEnvironment(light, temperature, humidity) && matchesTerrain(terrainBlock);
     }
 
-    /*public void encode(ByteBuf buff)
-    {
-
-    }*/
-
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (!(o instanceof FungusGenoma that)) return false;
-        return Objects.equals(dominantTraits, that.dominantTraits) && Objects.equals(recessiveTraits, that.recessiveTraits) && Objects.deepEquals(colors, that.colors);
+        return Objects.equals(dominantTraits, that.dominantTraits) && Objects.equals(recessiveTraits, that.recessiveTraits) && Arrays.equals(colors, that.colors);
     }
 
     @Override

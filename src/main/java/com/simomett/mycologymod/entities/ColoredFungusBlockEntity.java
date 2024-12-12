@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.Nullable;
+import org.jline.utils.Log;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
-    private FungusGenoma fungusGenoma = new FungusGenoma();
+    private FungusGenoma fungusGenoma;
 
     public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
@@ -31,6 +32,12 @@ public class ColoredFungusBlockEntity extends BlockEntity
     private static Instant lastInstant = Instant.now();
     public void tick()
     {
+        if(fungusGenoma==null)
+        {
+            Log.error("ColoredFungusBlockEntity ticked with null \'fungusGenoma\'");
+            return;
+        }
+
         BlockPos pos = this.getBlockPos();
 
         String fungusEffect = fungusGenoma.getDominantTraits().effect();
@@ -70,9 +77,12 @@ public class ColoredFungusBlockEntity extends BlockEntity
         return fungusGenoma;
     }
 
-    public void applyGenoma(@NonNull FungusGenoma fungusGenoma)
+    public void applyGenoma(FungusGenoma fungusGenoma)
     {
-        this.fungusGenoma = new FungusGenoma(fungusGenoma.getDominantTraits(), fungusGenoma.getRecessiveTraits());
+        if(fungusGenoma!=null)
+            this.fungusGenoma = new FungusGenoma(fungusGenoma.getDominantTraits(), fungusGenoma.getRecessiveTraits());
+        else
+            Log.error("Cannot apply null genoma");
     }
 
     //Server-Client synchronization
@@ -93,6 +103,4 @@ public class ColoredFungusBlockEntity extends BlockEntity
             (this.level).sendBlockUpdated(this.getBlockPos(), blockState, blockState, 3);
         }
     }
-
-
 }

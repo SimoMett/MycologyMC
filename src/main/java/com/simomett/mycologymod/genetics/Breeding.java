@@ -15,7 +15,7 @@ public class Breeding
     //TODO move into FungusGenoma
     public static FungusGenoma crossBreed(FungusGenoma species1, FungusGenoma species2)
     {
-        FungusGenoma offspring = new FungusGenoma();
+        FungusGenoma offspring;
         Random random = new Random();
         List<MutationRecipe> mutations = MutationRecipesList.getList();
 
@@ -36,14 +36,8 @@ public class Breeding
                 return offspring;
             }
         }
-        //otherwise normal crossbreeding
-        for(String trait : traitsDictionary)
-        {
-            String o = random.nextBoolean() ? species1.getField(trait) : species1.getField(trait, FungusGenoma.GeneType.RECESSIVE);
-            offspring.setField(trait, FungusGenoma.GeneType.DOMINANT, o);
-            String p = random.nextBoolean() ? species2.getField(trait) : species2.getField(trait, FungusGenoma.GeneType.RECESSIVE);
-            offspring.setField(trait, FungusGenoma.GeneType.RECESSIVE, p);
-        }
+
+        offspring = species1.normalCrossbreedWith(species2);
         return offspring;
     }
 }

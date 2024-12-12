@@ -10,7 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import java.util.*;
 
 import static com.simomett.mycologymod.blocks.ModBlocks.COLORED_CRIMSON_STRING;
-import static com.simomett.mycologymod.capabilities.ModDataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.blocks.ModBlocks.COLORED_WARPED_STRING;
+import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.BOLETUS_SALUBRIUM;
 import static com.simomett.mycologymod.items.ModItems.COLORED_CRIMSON_FUNGUS;
 
@@ -28,7 +29,7 @@ public class FungusSpeciesList
 
     public FungusSpecies get(String speciesName)
     {
-        return speciesHashMap.get(speciesName);
+        return speciesHashMap.getOrDefault(speciesName, new FungusSpecies(FungusTraits.EMPTY, new int[]{0, 0, 0, 0}, COLORED_WARPED_STRING, FungusSpawn.NO_SPAWN));
     }
 
     public ArrayList<FungusSpecies> getSpeciesList()

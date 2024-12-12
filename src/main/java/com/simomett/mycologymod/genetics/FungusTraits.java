@@ -9,19 +9,21 @@ import static com.simomett.mycologymod.genetics.FungusGenoma.*;
 public class FungusTraits
 {
     public static final String[] traitsDictionary = new String[]{
-            "species",
-            "spreading",
-            "spreadboost",
-            "light",
-            "terrain",
-            "humidity",
-            "temp",
-            "area",
-            "effect",
-            "eatingEffect"//optional
+            SPECIES,
+            SPREADING,
+            SPREAD_BOOST,
+            LIGHT,
+            TERRAIN,
+            HUMIDITY,
+            TEMP,
+            AREA,
+            EFFECT,
+            EATING_EFFECT//optional
     };
 
     private final Map<String, String> traitsMap = new HashMap<>(traitsDictionary.length);
+
+    public static final FungusTraits EMPTY = new FungusTraits("EMPTY", 15, 0f, 0, "none", 0f, 0f, 0, "none", Optional.empty());
 
     public FungusTraits(String species, int spreading, float spreadboost, int light, String terrain, float humidity, float temp, int area, String effect, String eatingEffect)
     {
@@ -117,15 +119,11 @@ public class FungusTraits
         traitsMap.put(trait, val);
     }
 
-    /*@Override
-    public boolean equals(Object o) {
+    @Override
+    public boolean equals(Object o)
+    {
         if (o == null || getClass() != o.getClass()) return false;
         FungusTraits that = (FungusTraits) o;
         return Objects.equals(traitsMap, that.traitsMap);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(traitsMap);
-    }*/
 }

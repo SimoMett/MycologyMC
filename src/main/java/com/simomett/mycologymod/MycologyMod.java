@@ -3,19 +3,15 @@ package com.simomett.mycologymod;
 import com.mojang.logging.LogUtils;
 import com.simomett.mycologymod.blocks.FungusBlockColorer;
 import com.simomett.mycologymod.blocks.ModBlocks;
-import com.simomett.mycologymod.capabilities.ModDataComponentTypes;
+import com.simomett.mycologymod.datacomponents.ModDataComponentTypes;
 import com.simomett.mycologymod.config.ModCommonConfigs;
 import com.simomett.mycologymod.creativetab.ModCreativeTabs;
 import com.simomett.mycologymod.data.FungusSpeciesLoader;
-import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
 import com.simomett.mycologymod.entities.ModEntities;
-import com.simomett.mycologymod.items.FungusItemColorer;
 import com.simomett.mycologymod.items.ModItems;
-import com.simomett.mycologymod.items.potions.ModPotions;
 import com.simomett.mycologymod.particles.ModParticles;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipeLoader;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
-import com.simomett.mycologymod.recipes.cooking.ModCookingRecipes;
 import com.simomett.mycologymod.world.features.ModFeatures;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -47,11 +43,10 @@ public class MycologyMod {
         ModDataComponentTypes.DATA_COMPONENTS.register(evtBus);
         ModEntities.ENTITIES.register(evtBus);
         evtBus.register(FungusBlockColorer.class);
+        ModParticles.PARTICLES.register(evtBus);
         /*ModPotions.POTIONS.register(evtBus);
         evtBus.register(FungusItemColorer.class);
         //ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);
-
-        //ModParticles.PARTICLES.register(evtBus);
         ModEffects.EFFECTS.register(evtBus);*/
         //ModMenus.MENU_TYPES.register(evtBus); //FIXME
         ModFeatures.FEATURES.register(evtBus);

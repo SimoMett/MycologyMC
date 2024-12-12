@@ -1,7 +1,6 @@
-package com.simomett.mycologymod.capabilities;
+package com.simomett.mycologymod.datacomponents;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.genetics.FungusGenoma;
@@ -9,12 +8,9 @@ import com.simomett.mycologymod.genetics.FungusTraits;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Supplier;
 
 import static com.simomett.mycologymod.genetics.FungusGenoma.*;
@@ -45,12 +41,14 @@ public class ModDataComponentTypes
             ).apply(instance, FungusGenoma::new)
     );
 
+    //public static StreamCodec<ByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::new);
+
     public static final Supplier<DataComponentType<FungusGenoma>> FUNGUS_GENOMA = DATA_COMPONENTS.registerComponentType(
             "fungus_data",
             builder -> builder
                     // The codec to read/write the data to disk
                     .persistent(FUNGUS_GENOMA_CODEC)
                     // The codec to read/write the data across the network
-                    //.networkSynchronized(BASIC_STREAM_CODEC)
+                    //.networkSynchronized(FUNGUS_GENOMA_STREAM_CODEC)
     );
 }

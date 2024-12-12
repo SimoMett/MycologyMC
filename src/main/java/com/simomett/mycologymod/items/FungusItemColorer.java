@@ -8,7 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import org.jetbrains.annotations.NotNull;
 
-import static com.simomett.mycologymod.capabilities.ModDataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)

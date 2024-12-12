@@ -7,6 +7,7 @@ import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.entities.ModEntities;
 import com.simomett.mycologymod.particles.ModParticles;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -37,6 +38,7 @@ import org.jline.utils.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.config.ModCommonConfigs.*;
 
 
@@ -70,7 +72,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
+        BlockEntity blockEntity = ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
+        return blockEntity;
     }
 
     @Override
@@ -95,8 +98,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
     private static void storeFungusDataIntoItemStack(FungusGenoma fungusGenoma, ItemStack itemStack)
     {
-        //CompoundTag tags = fungusDataModel.serializeNBT();
-        //itemStack.getCapability(FungusDataCapability.INSTANCE).resolve().get().deserializeNBT(tags);
+        itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, fungusGenoma).build());
     }
 
     @Override
@@ -120,7 +122,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         };
     }
 
-    /*@OnlyIn(Dist.CLIENT)
+    @OnlyIn(Dist.CLIENT)
     private static void addSporeParticle(int radius, BlockPos blockPos, Level level, RandomSource randomSource)
     {
         Random random = new Random();
@@ -151,7 +153,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         //ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
         //int radius = (Integer)originBlockEntity.getFungusData().getField(FungusGenoma.AREA);
         //addSporeParticle(radius, blockPos, level, randomSource);
-    }*/
+    }
 
     /*@Override //deprecated
     public void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)
@@ -288,6 +290,12 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             return false;
         }
         FungusGenoma thisFungusData = originBlockEntity.getFungusData();
+
+        if(thisFungusData==null)
+        {
+            Log.error("Block cannot survive. FungusGenoma is null");
+            return false;
+        }
 
         boolean matchesTerrain = thisFungusData.matchesTerrain(belowBlock);
         int light = level.getBrightness(LightLayer.SKY, origin);

@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-import static com.simomett.mycologymod.capabilities.ModDataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.genetics.FungusGenoma.EATING_EFFECT;
 
 public class ColoredFungusBlockItem extends BlockItem
@@ -40,7 +40,7 @@ public class ColoredFungusBlockItem extends BlockItem
 
     public ColoredFungusBlockItem(Block block)
     {
-        super(block, new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().build()));
+        super(block, new Item.Properties().stacksTo(DEFAULT_MAX_STACK_SIZE).food(new FoodProperties.Builder().alwaysEdible().build()));
     }
 
     @Override

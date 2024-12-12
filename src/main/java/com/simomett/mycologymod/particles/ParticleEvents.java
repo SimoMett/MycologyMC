@@ -13,6 +13,6 @@ public class ParticleEvents
     @SubscribeEvent
     public static void registerParticleFactories(final RegisterParticleProvidersEvent evt)
     {
-        //evt.registerSpriteSet(ModParticles.SPORE_PARTICLES.get(), SporeParticles.Provider::new);
+        evt.registerSpriteSet(ModParticles.SPORE_PARTICLES.get(), SporeParticles.Provider::new);
     }
 }
