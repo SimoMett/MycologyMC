@@ -2,16 +2,10 @@ package com.simomett.mycologymod.genetics;
 
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.data.FungusSpeciesList;
-import com.simomett.mycologymod.myutils.StringDecomposition;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jline.utils.Log;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -19,8 +13,6 @@ import java.util.Optional;
 import java.util.Random;
 
 import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
-import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.BOLETUS_SALUBRIUM;
-import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 
 
 public class FungusGenoma
@@ -48,10 +40,11 @@ public class FungusGenoma
     private int[] colors; //TODO remove colors member.
     //colors should not be part of the genoma. The color scheme should be defined by the dominant trait of species. And so should be the type of fungus (crimson/warped).
 
+    @Deprecated(forRemoval = true)
     public FungusGenoma()
     {
         //default traits
-        dominantTraits=new FungusTraits(BOLETUS_SALUBRIUM, 25, 1f, 15, MycologyMod.MODID+":grass", 0, 0, 1, "none", Optional.empty());
+        dominantTraits=new FungusTraits("Fungus impossibilis", 25, 1f, 15, MycologyMod.MODID+":grass", 0, 0, 1, "none", Optional.empty());
         recessiveTraits = new FungusTraits(dominantTraits);
 
         colors = new int[]{-1,new Random().nextInt(),-1,-1};

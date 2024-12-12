@@ -45,12 +45,10 @@ public class MycologyMod {
         ModBlocks.BLOCKS.register(evtBus);
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         ModDataComponentTypes.DATA_COMPONENTS.register(evtBus);
-        /*ModPotions.POTIONS.register(evtBus);
-
         ModEntities.ENTITIES.register(evtBus);
-        evtBus.register(FungusItemColorer.class);
         evtBus.register(FungusBlockColorer.class);
-        //ModCapabilitiesHandler.registerCapabilities(evtBus);
+        /*ModPotions.POTIONS.register(evtBus);
+        evtBus.register(FungusItemColorer.class);
         //ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);
 
         //ModParticles.PARTICLES.register(evtBus);
@@ -59,7 +57,6 @@ public class MycologyMod {
         ModFeatures.FEATURES.register(evtBus);
 
         NeoForge.EVENT_BUS.register(this);
-        //NeoForge.EVENT_BUS.register(FungusDataAttacher.class);
     }
 
     @SubscribeEvent

@@ -1,11 +1,14 @@
 package com.simomett.mycologymod.items;
 
 import com.simomett.mycologymod.blocks.ModBlocks;
-import com.simomett.mycologymod.capabilities.ModDataComponentTypes;
-import com.simomett.mycologymod.genetics.FungusGenoma;
+import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
@@ -19,8 +22,10 @@ import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.simomett.mycologymod.capabilities.ModDataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.genetics.FungusGenoma.EATING_EFFECT;
 
 public class ColoredFungusBlockItem extends BlockItem
 {
@@ -41,13 +46,14 @@ public class ColoredFungusBlockItem extends BlockItem
     @Override
     public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity)
     {
-        /*IFungusData thisDataModel = stack.getCapability(FungusDataCapability.INSTANCE).resolve().get();
-        String eatBuff = (String) thisDataModel.getField("eatingEffect", IFungusData.GeneType.DOMINANT);
-        if(eatBuff != null)
+        Optional<String> eatEff = stack.get(FUNGUS_GENOMA).getDominantTraits().eatingEffect();
+        if(eatEff.isPresent())
         {
-            MobEffect mobEffect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(eatBuff));
+            MobEffect mobEffect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(eatEff.get()));
+            if(mobEffect==null)
+                throw new NullPointerException("mobEffect specified in "+EATING_EFFECT+" is null");
             return new FoodProperties.Builder().alwaysEdible().effect(()-> new MobEffectInstance(Holder.direct(mobEffect), -1), 1f).build();
-        }*/
+        }
         return Foods.SPIDER_EYE;
     }
 
@@ -70,10 +76,9 @@ public class ColoredFungusBlockItem extends BlockItem
     protected boolean placeBlock(BlockPlaceContext context, BlockState blockState)
     {
         boolean result = super.placeBlock(context, blockState);
-        //ColoredFungusBlockEntity entity = (ColoredFungusBlockEntity)context.getLevel().getBlockEntity(context.getClickedPos());
+        ColoredFungusBlockEntity entity = (ColoredFungusBlockEntity)context.getLevel().getBlockEntity(context.getClickedPos());
 
-        FungusGenoma thisGenoma = context.getItemInHand().get(FUNGUS_GENOMA);
-        //entity.handleUpdateTag(tags);
+        entity.applyGenoma(context.getItemInHand().get(FUNGUS_GENOMA));
         return result;
     }
 
@@ -83,6 +88,6 @@ public class ColoredFungusBlockItem extends BlockItem
         //fungi can be placed from hand only on mycelium or podzol blocks
         BlockPos clickedPos = context.getClickedPos();
         BlockState belowBlock = context.getLevel().getBlockState(clickedPos.below());
-        return super.canPlace(context,blockState) && (belowBlock.is(Blocks.MYCELIUM) || belowBlock.is(Blocks.PODZOL)) ;
+        return context.getLevel().getBlockState(clickedPos).isAir() && (belowBlock.is(Blocks.MYCELIUM) || belowBlock.is(Blocks.PODZOL));
     }
 }

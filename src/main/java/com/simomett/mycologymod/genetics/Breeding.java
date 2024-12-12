@@ -12,6 +12,7 @@ import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 
 public class Breeding
 {
+    //TODO move into FungusGenoma
     public static FungusGenoma crossBreed(FungusGenoma species1, FungusGenoma species2)
     {
         FungusGenoma offspring = new FungusGenoma();

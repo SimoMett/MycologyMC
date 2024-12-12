@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.blocks;
 
+import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import net.minecraft.client.color.block.BlockColor;
@@ -18,22 +19,13 @@ public class FungusBlockColorer implements BlockColor
     @Override
     public int getColor(BlockState blockState, @Nullable BlockAndTintGetter blockAndTint, @Nullable BlockPos blockPos, int tintIndex)
     {
-        //overlay indexes
-        /*final int OVERLAY_STELUM=0;
-        final int OVERLAY_HEAD=1;
-        final int OVERLAY_DETAILS=2;
-        final int OVERLAY_DETAILS2=3;*/
-
-        assert blockAndTint != null;
-        assert blockPos != null;
         BlockEntity blockEntity = blockAndTint.getBlockEntity(blockPos);
-        if(blockEntity instanceof ColoredFungusBlockEntity)
-        {
-            FungusGenoma fungusData = ((ColoredFungusBlockEntity) blockEntity).getFungusData();
-            int[] array = fungusData.getColors();
-            return array[tintIndex];
-        }
-        return -1;
+        FungusGenoma fungusData = ((ColoredFungusBlockEntity) blockEntity).getFungusData();
+        FungusSpeciesList.FungusSpecies fs = FungusSpeciesList.INSTANCE.get(fungusData.getDominantTraits().species());
+        if(fs!=null)
+            return fs.colors[tintIndex];
+        else
+            return -1;
     }
 
     @SubscribeEvent

@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
@@ -20,33 +21,20 @@ import java.util.List;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
-    private final FungusGenoma fungusGenoma = new FungusGenoma();
+    private FungusGenoma fungusGenoma = new FungusGenoma();
 
     public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
         super(ModEntities.COLORED_FUNGUS.get(), blockPos, blockState);
     }
 
-    /*public void load(CompoundTag tag)
-    {
-        super.load(tag);
-        fungusGenoma.deserializeNBT(tag);
-    }
-
-    @Override
-    protected void saveAdditional(CompoundTag tag)
-    {
-        tag.merge(fungusGenoma.serializeNBT());
-        super.saveAdditional(tag);
-    }*/
-
     private static Instant lastInstant = Instant.now();
     public void tick()
     {
         BlockPos pos = this.getBlockPos();
 
-        String fungusEffect = fungusGenoma.getField(FungusGenoma.EFFECT);
-        int areaRadius = Integer.parseInt(getFungusData().getField(FungusGenoma.AREA));
+        String fungusEffect = fungusGenoma.getDominantTraits().effect();
+        int areaRadius = fungusGenoma.getDominantTraits().area();
         List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
         for (LivingEntity entity : entityList)
         {
@@ -82,6 +70,11 @@ public class ColoredFungusBlockEntity extends BlockEntity
         return fungusGenoma;
     }
 
+    public void applyGenoma(@NonNull FungusGenoma fungusGenoma)
+    {
+        this.fungusGenoma = new FungusGenoma(fungusGenoma.getDominantTraits(), fungusGenoma.getRecessiveTraits());
+    }
+
     //Server-Client synchronization
     @Nullable
     @Override
@@ -101,11 +94,5 @@ public class ColoredFungusBlockEntity extends BlockEntity
         }
     }
 
-    /*@Override
-    public CompoundTag getUpdateTag()
-    {
-        CompoundTag tag = super.getUpdateTag();
-        tag.merge(fungusGenoma.serializeNBT());
-        return tag;
-    }*/
+
 }
