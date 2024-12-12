@@ -36,6 +36,7 @@ public class FungusColorer implements BlockColor, ItemColor
     {
         if(blockAndTint.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity fungusEntity)
         {
+            //FIXME WHY fungusEntity.getFungusGenoma() IS NULL WHEN LOADING LEVEL?
             FungusSpeciesList.FungusSpecies fs = FungusSpeciesList.INSTANCE.get(fungusEntity.getFungusGenoma().getDominantTraits().species());
             if (fs != null)
                 return fs.colors[tintIndex];
