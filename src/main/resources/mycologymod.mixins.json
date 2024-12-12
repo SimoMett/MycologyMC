@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.simomett.mycologymod.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mycologymod.refmap.json",
+  "mixins": [
+    "GameRendererMixin",
+    "LivingEntityMixin",
+    "MinecraftMixin",
+    "ServerPlayerMixin",
+    "IZombieVillagerMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
