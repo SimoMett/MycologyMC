@@ -3,7 +3,7 @@ package com.simomett.mycologymod.entities;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.effects.FungusEffects;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -12,7 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.Nullable;
 import org.jline.utils.Log;
 
@@ -20,9 +19,11 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 
+import static com.simomett.mycologymod.datacomponents.ModDataAttachmentTypes.FUNGUS_GENOMA_ATTACHMENT;
+import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
+
 public class ColoredFungusBlockEntity extends BlockEntity
 {
-    private FungusGenoma fungusGenoma;
 
     public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
@@ -32,16 +33,10 @@ public class ColoredFungusBlockEntity extends BlockEntity
     private static Instant lastInstant = Instant.now();
     public void tick()
     {
-        if(fungusGenoma==null)
-        {
-            Log.error("ColoredFungusBlockEntity ticked with null \'fungusGenoma\'");
-            return;
-        }
-
         BlockPos pos = this.getBlockPos();
 
-        String fungusEffect = fungusGenoma.getDominantTraits().effect();
-        int areaRadius = fungusGenoma.getDominantTraits().area();
+        String fungusEffect = getFungusGenoma().getDominantTraits().effect();
+        int areaRadius = getFungusGenoma().getDominantTraits().area();
         List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
         for (LivingEntity entity : entityList)
         {
@@ -72,15 +67,18 @@ public class ColoredFungusBlockEntity extends BlockEntity
         return level.getEntitiesOfClass(LivingEntity.class, boxArea);
     }
 
-    public final FungusGenoma getFungusData()
+    public final FungusGenoma getFungusGenoma()
     {
-        return fungusGenoma;
+        return components().get(FUNGUS_GENOMA.get());
     }
 
     public void applyGenoma(FungusGenoma fungusGenoma)
     {
         if(fungusGenoma!=null)
-            this.fungusGenoma = new FungusGenoma(fungusGenoma.getDominantTraits(), fungusGenoma.getRecessiveTraits());
+        {
+            FungusGenoma genoma = new FungusGenoma(fungusGenoma.getDominantTraits(), fungusGenoma.getRecessiveTraits());
+            setComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, genoma).build());
+        }
         else
             Log.error("Cannot apply null genoma");
     }

@@ -1,8 +1,9 @@
 package com.simomett.mycologymod;
 
 import com.mojang.logging.LogUtils;
-import com.simomett.mycologymod.blocks.FungusBlockColorer;
+import com.simomett.mycologymod.blocks.FungusColorer;
 import com.simomett.mycologymod.blocks.ModBlocks;
+import com.simomett.mycologymod.datacomponents.ModDataAttachmentTypes;
 import com.simomett.mycologymod.datacomponents.ModDataComponentTypes;
 import com.simomett.mycologymod.config.ModCommonConfigs;
 import com.simomett.mycologymod.creativetab.ModCreativeTabs;
@@ -42,7 +43,8 @@ public class MycologyMod {
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         ModDataComponentTypes.DATA_COMPONENTS.register(evtBus);
         ModEntities.ENTITIES.register(evtBus);
-        evtBus.register(FungusBlockColorer.class);
+        ModDataAttachmentTypes.ATTACHMENT_TYPES.register(evtBus);
+        evtBus.register(FungusColorer.class);
         ModParticles.PARTICLES.register(evtBus);
         /*ModPotions.POTIONS.register(evtBus);
         evtBus.register(FungusItemColorer.class);

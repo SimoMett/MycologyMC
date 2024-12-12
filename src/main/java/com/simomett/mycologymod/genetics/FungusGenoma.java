@@ -17,13 +17,13 @@ public class FungusGenoma
 {
     /*public FungusGenoma(ByteBuf byteBuf)
     {
-
-    }*/
+        this();
+    }
 
     public void encode(ByteBuf byteBuf)
     {
 
-    }
+    }*/
 
     private FungusGenoma()
     {
@@ -65,8 +65,6 @@ public class FungusGenoma
 
     private final FungusTraits dominantTraits;
     private final FungusTraits recessiveTraits;
-    private int[] colors; //TODO remove colors member.
-    //colors should not be part of the genoma. The color scheme should be defined by the dominant trait of species. And so should be the type of fungus (crimson/warped).
 
     public FungusGenoma(FungusTraits dominant, FungusTraits recessive)
     {
@@ -107,16 +105,6 @@ public class FungusGenoma
         return dominantTraits.get(key);
     }
 
-    public int[] getColors()
-    {
-        return colors;
-    }
-
-    public void setColors(int[] colors)
-    {
-        this.colors = colors;
-    }
-
     public boolean matchesEnvironment(Integer light, Float temperature, Float humidity)
     {
         boolean matchesEnv = light < dominantTraits.light() // let's say for now that mushroom prefer sporing in darker areas
@@ -144,11 +132,11 @@ public class FungusGenoma
     public boolean equals(Object o)
     {
         if (!(o instanceof FungusGenoma that)) return false;
-        return Objects.equals(dominantTraits, that.dominantTraits) && Objects.equals(recessiveTraits, that.recessiveTraits) && Arrays.equals(colors, that.colors);
+        return Objects.equals(dominantTraits, that.dominantTraits) && Objects.equals(recessiveTraits, that.recessiveTraits);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dominantTraits, recessiveTraits, Arrays.hashCode(colors));
+        return Objects.hash(dominantTraits, recessiveTraits);
     }
 }

@@ -85,7 +85,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             {
                 ItemStack itemStack = new ItemStack(this.asItem());
 
-                storeFungusDataIntoItemStack(coloredFungusBlockEntity.getFungusData(), itemStack);
+                storeFungusDataIntoItemStack(coloredFungusBlockEntity.getFungusGenoma(), itemStack);
 
                 ItemEntity stackEntity = new ItemEntity(level, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, itemStack);
                 stackEntity.setDefaultPickUpDelay();
@@ -105,7 +105,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader world, BlockPos pos, Player player)
     {
         ItemStack stack = super.getCloneItemStack(state, target, world, pos, player);
-        FungusGenoma fungusData = ((ColoredFungusBlockEntity) world.getBlockEntity(pos)).getFungusData();
+        FungusGenoma fungusData = ((ColoredFungusBlockEntity) world.getBlockEntity(pos)).getFungusGenoma();
         storeFungusDataIntoItemStack(fungusData, stack);
         return stack;
     }
@@ -289,7 +289,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             Log.error("ColoredFungusBlock#canSurvive: originBlockEntity is null");
             return false;
         }
-        FungusGenoma thisFungusData = originBlockEntity.getFungusData();
+        FungusGenoma thisFungusData = originBlockEntity.getFungusGenoma();
 
         if(thisFungusData==null)
         {
