@@ -73,8 +73,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        BlockEntity blockEntity = COLORED_FUNGUS.get().create(blockPos, blockState);
-        return blockEntity;
+        return COLORED_FUNGUS.get().create(blockPos, blockState);
     }
 
     @Override

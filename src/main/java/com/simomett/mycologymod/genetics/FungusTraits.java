@@ -24,6 +24,7 @@ public class FungusTraits
     private final Map<String, String> traitsMap = new HashMap<>(traitsDictionary.length);
 
     public static final FungusTraits EMPTY = new FungusTraits("EMPTY", 15, 0f, 0, "none", 0f, 0f, 0, "none", Optional.empty());
+    public static final FungusTraits UNINIT = new FungusTraits("UNINITIALIZED", 15, 0f, 0, "none", 0f, 0f, 0, "none", Optional.empty());
 
     public FungusTraits(String species, int spreading, float spreadboost, int light, String terrain, float humidity, float temp, int area, String effect, String eatingEffect)
     {

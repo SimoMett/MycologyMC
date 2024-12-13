@@ -15,15 +15,18 @@ import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 
 public class FungusGenoma
 {
-    /*public FungusGenoma(ByteBuf byteBuf)
+    public FungusGenoma(ByteBuf byteBuf)
     {
-        this();
+        //TODO IMPLEMENT
+        dominantTraits = new FungusTraits(FungusTraits.UNINIT);
+        recessiveTraits = new FungusTraits(FungusTraits.UNINIT);
     }
 
     public void encode(ByteBuf byteBuf)
     {
-
-    }*/
+        //TODO IMPLEMENT
+        //and hope it works
+    }
 
     private FungusGenoma()
     {

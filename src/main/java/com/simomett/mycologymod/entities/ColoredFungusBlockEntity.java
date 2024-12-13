@@ -2,8 +2,10 @@ package com.simomett.mycologymod.entities;
 
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.effects.FungusEffects;
+import com.simomett.mycologymod.genetics.FungusTraits;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -12,8 +14,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.Nullable;
-import org.jline.utils.Log;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -24,10 +26,27 @@ import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNG
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
+    private @NonNull FungusGenoma fungusGenoma = new FungusGenoma(FungusTraits.EMPTY, FungusTraits.EMPTY);
 
     public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
         super(ModEntities.COLORED_FUNGUS.get(), blockPos, blockState);
+    }
+
+    @Override
+    public void onLoad()
+    {
+        super.onLoad();
+        //components() are null only in client. is this the problem?
+        if(components().has(FUNGUS_GENOMA.get()))
+            fungusGenoma = components().get(FUNGUS_GENOMA.get());
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries)
+    {
+        super.saveAdditional(tag, registries);
+        //setData(FUNGUS_GENOMA_ATTACHMENT, fungusGenoma);//forse inutile
     }
 
     private static Instant lastInstant = Instant.now();
@@ -69,18 +88,15 @@ public class ColoredFungusBlockEntity extends BlockEntity
 
     public final FungusGenoma getFungusGenoma()
     {
-        return getData(FUNGUS_GENOMA_ATTACHMENT);
+        return fungusGenoma;
     }
 
-    public final void applyGenoma(FungusGenoma fungusGenoma)
+    public final void applyGenoma(FungusGenoma genoma)
     {
-        if(fungusGenoma!=null)
-        {
-            FungusGenoma genoma = new FungusGenoma(fungusGenoma.getDominantTraits(), fungusGenoma.getRecessiveTraits());
-            setData(FUNGUS_GENOMA_ATTACHMENT, genoma);
-        }
+        if(genoma!=null)
+            this.fungusGenoma = genoma;
         else
-            Log.error("Cannot apply null genoma");
+            throw new NullPointerException("Cannot apply null genoma");
     }
 
     //Server-Client synchronization

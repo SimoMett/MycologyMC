@@ -41,7 +41,7 @@ public class ModDataComponentTypes
             ).apply(instance, FungusGenoma::new)
     );
 
-    //public static StreamCodec<ByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::new);
+    public static StreamCodec<ByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::new);
 
     public static final Supplier<DataComponentType<FungusGenoma>> FUNGUS_GENOMA = DATA_COMPONENTS.registerComponentType(
             "fungus_data",
@@ -49,6 +49,6 @@ public class ModDataComponentTypes
                     // The codec to read/write the data to disk
                     .persistent(FUNGUS_GENOMA_CODEC)
                     // The codec to read/write the data across the network
-                    //.networkSynchronized(FUNGUS_GENOMA_STREAM_CODEC)
+                    .networkSynchronized(FUNGUS_GENOMA_STREAM_CODEC)
     );
 }
