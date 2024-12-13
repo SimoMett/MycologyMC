@@ -40,6 +40,7 @@ import java.util.Random;
 
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.config.ModCommonConfigs.*;
+import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;
 
 
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
@@ -72,7 +73,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        BlockEntity blockEntity = ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
+        BlockEntity blockEntity = COLORED_FUNGUS.get().create(blockPos, blockState);
         return blockEntity;
     }
 
@@ -84,7 +85,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             if (!level.isClientSide && !player.isCreative())
             {
                 ItemStack itemStack = new ItemStack(this.asItem());
-
                 storeFungusDataIntoItemStack(coloredFungusBlockEntity.getFungusGenoma(), itemStack);
 
                 ItemEntity stackEntity = new ItemEntity(level, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, itemStack);
@@ -92,7 +92,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 level.addFreshEntity(stackEntity);
             }
         }
-
         return super.playerWillDestroy(level, pos, state, player);
     }
 
@@ -105,7 +104,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader world, BlockPos pos, Player player)
     {
         ItemStack stack = super.getCloneItemStack(state, target, world, pos, player);
-        FungusGenoma fungusData = ((ColoredFungusBlockEntity) world.getBlockEntity(pos)).getFungusGenoma();
+        FungusGenoma fungusData = world.getBlockEntity(pos, COLORED_FUNGUS.get()).orElseThrow().getFungusGenoma();
         storeFungusDataIntoItemStack(fungusData, stack);
         return stack;
     }
