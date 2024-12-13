@@ -69,15 +69,15 @@ public class ColoredFungusBlockEntity extends BlockEntity
 
     public final FungusGenoma getFungusGenoma()
     {
-        return components().get(FUNGUS_GENOMA.get());
+        return getData(FUNGUS_GENOMA_ATTACHMENT);
     }
 
-    public void applyGenoma(FungusGenoma fungusGenoma)
+    public final void applyGenoma(FungusGenoma fungusGenoma)
     {
         if(fungusGenoma!=null)
         {
             FungusGenoma genoma = new FungusGenoma(fungusGenoma.getDominantTraits(), fungusGenoma.getRecessiveTraits());
-            setComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, genoma).build());
+            setData(FUNGUS_GENOMA_ATTACHMENT, genoma);
         }
         else
             Log.error("Cannot apply null genoma");
