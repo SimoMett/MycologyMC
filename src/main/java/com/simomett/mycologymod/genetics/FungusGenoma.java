@@ -2,7 +2,7 @@ package com.simomett.mycologymod.genetics;
 
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,13 +16,13 @@ import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 
 public class FungusGenoma implements Serializable
 {
-    public static FungusGenoma fromByteBuf(RegistryFriendlyByteBuf byteBuf)
+    public static FungusGenoma fromByteBuf(FriendlyByteBuf byteBuf)
     {
-        //FIXME 'IndexOutOfBoundsException: readerIndex(670) + length(1) exceeds writerIndex(670): PooledUnsafeHeapByteBuf(ridx: 670, widx: 670, cap: 1024)'
+        //FIXME I've fixed the thrown exceptio, but I'm back to the start (black fungus after exit and entering the level)
         //great...
         try
         {
-            byte [] dst = new byte[byteBuf.readableBytes()];
+            byte [] dst = new byte[byteBuf.readInt()];
             byteBuf.readBytes(dst);
             ByteArrayInputStream i = new ByteArrayInputStream(dst);
             ObjectInputStream inputStream = new ObjectInputStream(i);
@@ -35,11 +35,13 @@ public class FungusGenoma implements Serializable
         }
     }
 
-    public void encode(RegistryFriendlyByteBuf byteBuf)
+    public void encode(FriendlyByteBuf byteBuf)
     {
         try
         {
-            byteBuf.writeBytes(serialize());
+            byte [] serialized = serialize();
+            byteBuf.writeInt(serialized.length);
+            byteBuf.writeBytes(serialized);
         }
         catch (IOException e)
         {

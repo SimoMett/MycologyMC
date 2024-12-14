@@ -7,7 +7,7 @@ import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.genetics.FungusTraits;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -41,7 +41,7 @@ public class ModDataComponentTypes
             ).apply(instance, FungusGenoma::new)
     );
 
-    public static StreamCodec<RegistryFriendlyByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::fromByteBuf);
+    public static StreamCodec<FriendlyByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::fromByteBuf);
 
     public static final Supplier<DataComponentType<FungusGenoma>> FUNGUS_GENOMA = DATA_COMPONENTS.registerComponentType(
             "fungus_data",
