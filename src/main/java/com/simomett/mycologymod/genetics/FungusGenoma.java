@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.genetics;
 
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -8,6 +9,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.io.*;
+import java.nio.ByteBuffer;
 import java.util.*;
 
 import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
@@ -22,10 +24,12 @@ public class FungusGenoma implements Serializable
         //great...
         try
         {
-            ByteArrayInputStream i = new ByteArrayInputStream(byteBuf.array());
+            byte [] dst = new byte[byteBuf.readableBytes()];
+            byteBuf.readBytes(dst);
+            ByteArrayInputStream i = new ByteArrayInputStream(dst);
             ObjectInputStream inputStream = new ObjectInputStream(i);
             FungusGenoma genoma = (FungusGenoma) inputStream.readObject();
-            return new FungusGenoma(genoma.getDominantTraits(), genoma.getRecessiveTraits());
+            return new FungusGenoma(genoma.getDominantTraits(), genoma.getRecessiveTraits()); //I've got the genoma correctly though...
         }
         catch (Exception e)
         {
