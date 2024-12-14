@@ -7,25 +7,50 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.io.*;
 import java.util.*;
 
 import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 
 
-public class FungusGenoma
+public class FungusGenoma implements Serializable
 {
-    public FungusGenoma(ByteBuf byteBuf)
+    public static FungusGenoma FungusGenomaFromByteBuf(ByteBuf byteBuf)
     {
-        //TODO IMPLEMENT
-        dominantTraits = new FungusTraits(FungusTraits.UNINIT);
-        recessiveTraits = new FungusTraits(FungusTraits.UNINIT);
+        //FIXME 'Client disconnected with reason: Internal Exception: io.netty.handler.codec.DecoderException: Failed to decode packet 'clientbound/minecraft:container_set_content''
+        //great...
+        try
+        {
+            ByteArrayInputStream i = new ByteArrayInputStream(byteBuf.array());
+            ObjectInputStream inputStream = new ObjectInputStream(i);
+            FungusGenoma genoma = (FungusGenoma) inputStream.readObject();
+            return new FungusGenoma(genoma.getDominantTraits(), genoma.getRecessiveTraits());
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     public void encode(ByteBuf byteBuf)
     {
-        //TODO IMPLEMENT
-        //and hope it works
+        try
+        {
+            byteBuf.writeBytes(serialize());
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected byte[] serialize() throws IOException
+    {
+        ByteArrayOutputStream b = new ByteArrayOutputStream();
+        ObjectOutputStream o = new ObjectOutputStream(b);
+        o.writeObject(this);
+        return b.toByteArray();
     }
 
     private FungusGenoma()

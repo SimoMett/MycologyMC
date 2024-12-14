@@ -2,11 +2,12 @@ package com.simomett.mycologymod.genetics;
 
 //I'm convinced this is a horrible class
 
+import java.io.Serializable;
 import java.util.*;
 
 import static com.simomett.mycologymod.genetics.FungusGenoma.*;
 
-public class FungusTraits
+public class FungusTraits implements Serializable
 {
     public static final String[] traitsDictionary = new String[]{
             SPECIES,
@@ -69,7 +70,6 @@ public class FungusTraits
                 fungusTraits.effect(),
                 fungusTraits.eatingEffect());
     }
-
 
     public String species(){return traitsMap.get(SPECIES);}
 

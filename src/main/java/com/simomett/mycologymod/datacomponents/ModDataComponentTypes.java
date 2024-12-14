@@ -41,7 +41,7 @@ public class ModDataComponentTypes
             ).apply(instance, FungusGenoma::new)
     );
 
-    public static StreamCodec<ByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::new);
+    public static StreamCodec<ByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::FungusGenomaFromByteBuf);
 
     public static final Supplier<DataComponentType<FungusGenoma>> FUNGUS_GENOMA = DATA_COMPONENTS.registerComponentType(
             "fungus_data",
