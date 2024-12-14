@@ -1,15 +1,13 @@
 package com.simomett.mycologymod.genetics;
 
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
 import com.simomett.mycologymod.data.FungusSpeciesList;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.io.*;
-import java.nio.ByteBuffer;
 import java.util.*;
 
 import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
@@ -18,9 +16,9 @@ import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 
 public class FungusGenoma implements Serializable
 {
-    public static FungusGenoma FungusGenomaFromByteBuf(ByteBuf byteBuf)
+    public static FungusGenoma fromByteBuf(RegistryFriendlyByteBuf byteBuf)
     {
-        //FIXME 'Client disconnected with reason: Internal Exception: io.netty.handler.codec.DecoderException: Failed to decode packet 'clientbound/minecraft:container_set_content''
+        //FIXME 'IndexOutOfBoundsException: readerIndex(670) + length(1) exceeds writerIndex(670): PooledUnsafeHeapByteBuf(ridx: 670, widx: 670, cap: 1024)'
         //great...
         try
         {
@@ -37,7 +35,7 @@ public class FungusGenoma implements Serializable
         }
     }
 
-    public void encode(ByteBuf byteBuf)
+    public void encode(RegistryFriendlyByteBuf byteBuf)
     {
         try
         {
