@@ -11,6 +11,7 @@ import com.simomett.mycologymod.data.FungusSpeciesLoader;
 import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
 import com.simomett.mycologymod.entities.ModEntities;
 import com.simomett.mycologymod.items.ModItems;
+import com.simomett.mycologymod.items.potions.ModPotions;
 import com.simomett.mycologymod.particles.ModParticles;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipeLoader;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
@@ -47,8 +48,8 @@ public class MycologyMod {
         ModDataAttachmentTypes.ATTACHMENT_TYPES.register(evtBus);
         evtBus.register(FungusColorer.class);
         ModParticles.PARTICLES.register(evtBus);
-        /*ModPotions.POTIONS.register(evtBus);
-        //ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);*/
+        ModPotions.POTIONS.register(evtBus);
+        //ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);
         ModEffects.EFFECTS.register(evtBus);
         //ModMenus.MENU_TYPES.register(evtBus); //FIXME
         ModFeatures.FEATURES.register(evtBus);
