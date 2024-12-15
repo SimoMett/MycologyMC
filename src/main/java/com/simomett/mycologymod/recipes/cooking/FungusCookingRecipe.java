@@ -1,11 +1,11 @@
 package com.simomett.mycologymod.recipes.cooking;
 
-import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.items.ModItems;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+
+import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 
 public class FungusCookingRecipe extends AbstractCookingRecipe
 {
@@ -33,16 +33,13 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
         return this.result.getCount();
     }
 
-    /*@Override
-    public boolean matches(Container container, Level level)
+    @Override
+    public boolean matches(SingleRecipeInput container, Level level)
     {
         ItemStack input = container.getItem(0);
-        if(input.getCapability(FungusDataCapability.INSTANCE).resolve().isEmpty())
-            return false;
-        FungusGenoma inputCapability = (FungusGenoma) input.getCapability(FungusDataCapability.INSTANCE).resolve().get();
-        String inputSpecies = (String) inputCapability.getField("species", IFungusData.GeneType.DOMINANT);
+        String inputSpecies = input.get(FUNGUS_GENOMA).getDominantTraits().species();
         return inputSpecies.equals(speciesIngredient);
-    }*/
+    }
 
     @Override
     public RecipeSerializer<?> getSerializer()
