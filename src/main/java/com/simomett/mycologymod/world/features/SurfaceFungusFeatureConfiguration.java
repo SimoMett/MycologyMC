@@ -4,6 +4,7 @@ import com.simomett.mycologymod.blocks.ModBlocks;
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
+import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -49,9 +50,7 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
                 //edit its block entity
                 BlockEntity blockEntity = placeContext.level().getBlockEntity(origin);
                 if (blockEntity instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
-                {
-                    //coloredFungusBlockEntity.getFungusData().loadFrom(randomSpecies);
-                }
+                    coloredFungusBlockEntity.applyGenoma(new FungusGenoma(randomSpecies));
                 else
                 {
                     Log.error("WHY THIS BLOCKENTITY ISN'T A COLORED FUNGUS?");

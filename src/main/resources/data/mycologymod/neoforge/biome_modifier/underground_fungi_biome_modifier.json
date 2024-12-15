@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_underground",
+  "features": "mycologymod:underground_fungi",
+  "step": "vegetal_decoration"
+}
