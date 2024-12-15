@@ -6,6 +6,7 @@ import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.genetics.FungusTraits;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.protocol.Packet;
@@ -98,7 +99,10 @@ public class ColoredFungusBlockEntity extends BlockEntity
     public final void applyGenoma(FungusGenoma genoma)
     {
         if(genoma!=null)
+        {
             this.fungusGenoma = genoma;
+            this.setComponents(DataComponentMap.builder().set(FUNGUS_GENOMA.get(), fungusGenoma).build());
+        }
         else
             throw new NullPointerException("Cannot apply null genoma");
     }
@@ -130,7 +134,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
         if (this.level != null) {
 
             BlockState blockState = this.getBlockState();
-            (this.level).sendBlockUpdated(this.getBlockPos(), blockState, blockState, 3);
+            this.level.sendBlockUpdated(this.getBlockPos(), blockState, blockState, 3);
         }
     }
 }

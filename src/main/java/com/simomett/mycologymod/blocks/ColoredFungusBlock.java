@@ -1,21 +1,16 @@
 package com.simomett.mycologymod.blocks;
 
 import com.mojang.serialization.MapCodec;
-import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.config.ModCommonConfigs;
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.genetics.Breeding;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
-import com.simomett.mycologymod.entities.ModEntities;
 import com.simomett.mycologymod.particles.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
