@@ -122,15 +122,10 @@ public class FungusGenoma implements Serializable
             recessiveTraits.replace(trait, val);
     }
 
-    public String getField(String trait, GeneType type)
-    {
-        return type==GeneType.DOMINANT? dominantTraits.get(trait) : recessiveTraits.get(trait);
-    }
-
     @Deprecated(forRemoval = true)
     public String getField(String key)
     {
-        return dominantTraits.get(key);
+        return dominantTraits.get(key).orElseThrow();
     }
 
     public boolean matchesEnvironment(Integer light, Float temperature, Float humidity)
@@ -158,13 +153,14 @@ public class FungusGenoma implements Serializable
 
     public FungusGenoma normalCrossbreedWith(FungusGenoma that)
     {
+        //FIXME better implementation to consider optional fields (eg. eating effect)
         FungusGenoma offspring = new FungusGenoma();
         Random random = new Random();
         for(String trait : traitsDictionary)
         {
-            String o = random.nextBoolean() ? this.getField(trait) : this.getField(trait, FungusGenoma.GeneType.RECESSIVE);
+            String o = random.nextBoolean() ? this.getDominantTraits().get(trait).orElse(null) : this.getRecessiveTraits().get(trait).orElse(null);
             offspring.setField(trait, FungusGenoma.GeneType.DOMINANT, o);
-            String p = random.nextBoolean() ? that.getField(trait) : that.getField(trait, FungusGenoma.GeneType.RECESSIVE);
+            String p = random.nextBoolean() ? that.getDominantTraits().get(trait).orElse(null) : that.getRecessiveTraits().get(trait).orElse(null);
             offspring.setField(trait, FungusGenoma.GeneType.RECESSIVE, p);
         }
         return offspring;

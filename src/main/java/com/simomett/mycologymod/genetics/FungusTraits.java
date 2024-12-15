@@ -106,11 +106,11 @@ public class FungusTraits implements Serializable
         return Optional.ofNullable(traitsMap.get(EATING_EFFECT));
     }
 
-    public String get(String trait)
+    public Optional<String> get(String trait)
     {
-        if(!traitsMap.containsKey(trait))
+        if(!Arrays.asList(traitsDictionary).contains(trait))
             throw new RuntimeException("Unknown trait requested: "+trait);
-        return traitsMap.get(trait);
+        return Optional.ofNullable(traitsMap.get(trait));
     }
 
     public void replace(String trait, String val)
