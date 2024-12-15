@@ -127,6 +127,7 @@ public class FungusGenoma implements Serializable
         return type==GeneType.DOMINANT? dominantTraits.get(trait) : recessiveTraits.get(trait);
     }
 
+    @Deprecated(forRemoval = true)
     public String getField(String key)
     {
         return dominantTraits.get(key);

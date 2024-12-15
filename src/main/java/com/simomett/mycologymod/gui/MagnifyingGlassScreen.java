@@ -32,7 +32,7 @@ public class MagnifyingGlassScreen extends Screen
 
     private void drawWidgets(GuiGraphics guiGraphics, int xOrigin, int yOrigin)
     {
-        guiGraphics.drawString(this.font, Component.literal((String) fungusGenoma.getField(FungusGenoma.SPECIES)), xOrigin, yOrigin, -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(fungusGenoma.getDominantTraits().species()), xOrigin, yOrigin, -12829636, false);
         //Index column
         int a = 6;
         final int o = 10;
@@ -51,14 +51,14 @@ public class MagnifyingGlassScreen extends Screen
         b = 0;
         d = 83;
         guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.dominant"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getField(FungusGenoma.TERRAIN))), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getField(FungusGenoma.LIGHT))), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getField(FungusGenoma.HUMIDITY))), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getField(FungusGenoma.TEMP))), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getField(FungusGenoma.SPREADING))), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getField(FungusGenoma.SPREAD_BOOST))), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getField(FungusGenoma.AREA))), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getField(FungusGenoma.EFFECT))), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().terrain())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().light())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().humidity())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().temp())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().spreading())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().spreadboost())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().area())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().effect())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
 
         //Recessive column
         //Kinda unreal to have all genoma by just looking through a magnifying glass

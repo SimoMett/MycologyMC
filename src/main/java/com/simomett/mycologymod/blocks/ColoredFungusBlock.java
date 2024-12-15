@@ -2,6 +2,10 @@ package com.simomett.mycologymod.blocks;
 
 import com.mojang.serialization.MapCodec;
 import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.config.ModCommonConfigs;
+import com.simomett.mycologymod.data.FungusSpeciesList;
+import com.simomett.mycologymod.effects.FungusEffects;
+import com.simomett.mycologymod.genetics.Breeding;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.entities.ModEntities;
@@ -154,17 +158,17 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         addSporeParticle(radius, blockPos, level, randomSource);
     }
 
-    /*@Override //deprecated
-    public void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)
+    @Override
+    protected void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)
     {
         BlockPos originalPos = pos;
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(originalPos));
-        FungusDataModel thisFungusData = originBlockEntity.getFungusData();
+        FungusGenoma genoma = originBlockEntity.getFungusGenoma();
 
         //code copied from MushroomBlock.randomTick
         //TODO use nbt data instead of magic numbers
-        int spreading = (int)thisFungusData.getField(FungusDataModel.SPREADING, IFungusData.GeneType.DOMINANT);//TODO implement spreadboost
-        int areaRadius = (Integer) thisFungusData.getField(FungusDataModel.AREA);
+        int spreading = genoma.getDominantTraits().spreading();//TODO implement spreadboost
+        int areaRadius = genoma.getDominantTraits().area();
         if (rand.nextInt(spreading) == 0)
         {
             //check if there are 'i' mushrooms in area
@@ -207,49 +211,49 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 if (crossBreeding && !nearbyFungi.isEmpty())
                 {
                     // precalculate the genotype
-                    ColoredFungusBlockEntity randomBlockEntity = nearbyFungi.get(new Random().nextInt(nearbyFungi.size()));
-                    FungusDataModel offspringDataModel = Breeding.crossBreed(randomBlockEntity.getFungusData(), thisFungusData);
+                    ColoredFungusBlockEntity randomFungus = nearbyFungi.get(new Random().nextInt(nearbyFungi.size()));
+                    FungusGenoma offspringGenoma = Breeding.crossBreed(randomFungus.getFungusGenoma(), genoma);
 
                     // if the environment requisites for the fungus are matched ...
                     int light = level.getBrightness(LightLayer.SKY, blockpos1);
                         //LightLayer.SKY is the light level of a block due to other blocks obstructing skylight. 0 is in complete darkness, 15 is in plain air.
                         //LightLayer.BLOCK is the light level of a block due to other sources of light (Glowstone, torches..).
 
-                    float temperature = level.getBiome(blockpos1).get().getModifiedClimateSettings().temperature();
+                    float temperature = level.getBiome(blockpos1).value().getModifiedClimateSettings().temperature();
                         // getBaseTemperature() or getModifiedClimateSettings().temperature() ?
                         // they seems to be the same...
 
-                    float humidity = level.getBiome(blockpos1).get().getModifiedClimateSettings().downfall();
+                    float humidity = level.getBiome(blockpos1).value().getModifiedClimateSettings().downfall();
 
-                    if (offspringDataModel.matchesEnvironmentAndTerrain(light, temperature, humidity, level.getBlockState(blockpos1.below())))
+                    if (offspringGenoma.matchesEnvironmentAndTerrain(light, temperature, humidity, level.getBlockState(blockpos1.below())))
                     {
                         // ... then place it
-                        String fungusType = FungusSpeciesList.INSTANCE.get((String) offspringDataModel.getField(FungusDataModel.SPECIES)).fungusType;
+                        String fungusType = FungusSpeciesList.INSTANCE.get(offspringGenoma.getDominantTraits().species()).fungusType;
                         blockState = ModBlocks.getDefaultBlockStateFromFungusType(fungusType);
-                        placeFungusBlock(blockState, level, blockpos1, offspringDataModel);
+                        placeFungusBlock(blockState, level, blockpos1, offspringGenoma);
                         return;
                     }
                 }
 
                 //otherwise proceed with normal spreading
                 if (blockState.canSurvive(level, blockpos1))
-                    placeFungusBlock(blockState, level, blockpos1, thisFungusData);
+                    placeFungusBlock(blockState, level, blockpos1, genoma);
             }
         }
         //implement here area effect
-        String fungusEffect = (String) thisFungusData.getField(FungusDataModel.EFFECT);
+        String fungusEffect = genoma.getDominantTraits().effect();
         FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
-    }*/
+    }
 
-    /*private static void placeFungusBlock(BlockState blockState, ServerLevel level, BlockPos pos, FungusDataModel dataModel)
+    private static void placeFungusBlock(BlockState blockState, ServerLevel level, BlockPos pos, FungusGenoma genoma)
     {
         level.setBlock(pos, blockState, 2); //wtf is this '2'?
         ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(pos));
         if (newBlockEntity != null)
         {
-            newBlockEntity.getFungusData().deserializeNBT(dataModel.serializeNBT());//FIXME ugly code
+            newBlockEntity.applyGenoma(genoma);
         }
-    }*/
+    }
 
     private static ArrayList<ColoredFungusBlockEntity> getFungiInArea(ServerLevel level, BlockPos pos, int radius)
     {

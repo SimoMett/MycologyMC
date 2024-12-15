@@ -21,8 +21,8 @@ public class Breeding
 
         //get all the mutations between species1 and species2
         mutations = mutations.stream()
-                .filter(m -> (m.getSpecies1().equals(species1.getField(FungusGenoma.SPECIES)) && m.getSpecies2().equals(species2.getField(FungusGenoma.SPECIES)))
-                            || (m.getSpecies1().equals(species2.getField(FungusGenoma.SPECIES)) && m.getSpecies2().equals(species1.getField(FungusGenoma.SPECIES))))
+                .filter(m -> (m.getSpecies1().equals(species1.getDominantTraits().species()) && m.getSpecies2().equals(species2.getDominantTraits().species()))
+                            || (m.getSpecies1().equals(species2.getDominantTraits().species()) && m.getSpecies2().equals(species1.getDominantTraits().species())))
                 .toList();
 
         if (!mutations.isEmpty())
