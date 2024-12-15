@@ -41,6 +41,7 @@ import java.util.Random;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.config.ModCommonConfigs.*;
 import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;
+import static com.simomett.mycologymod.tags.ModBlockTags.CAN_PLANT_ON;
 
 
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
@@ -273,8 +274,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         // This part should prevent the case when 'originBlockEntity' is null
         // i.e. when trying to plant the mushroom on the ground
         BlockState belowBlock = level.getBlockState(origin.below());
-        TagKey<Block> allowedBlocks = BlockTags.create(ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID,"can_plant_on"));
-        if(belowBlock.is(allowedBlocks))
+        if(belowBlock.is(CAN_PLANT_ON))
             return true;
         //
 
