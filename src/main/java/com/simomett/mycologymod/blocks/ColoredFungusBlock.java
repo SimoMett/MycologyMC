@@ -149,9 +149,9 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource)
     {
         super.animateTick(blockState, level, blockPos, randomSource);
-        //ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
-        //int radius = (Integer)originBlockEntity.getFungusData().getField(FungusGenoma.AREA);
-        //addSporeParticle(radius, blockPos, level, randomSource);
+        ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
+        int radius = originBlockEntity.getFungusGenoma().getDominantTraits().area();
+        addSporeParticle(radius, blockPos, level, randomSource);
     }
 
     /*@Override //deprecated
