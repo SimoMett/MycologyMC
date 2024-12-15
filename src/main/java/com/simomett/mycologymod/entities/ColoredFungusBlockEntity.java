@@ -47,7 +47,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries)
     {
-        // awful work-around
+        // FIXME awful work-around
         super.loadAdditional(tag, registries);
         CompoundTag genomaTag = tag.getCompound("components").getCompound(ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID,GENOMA_DATA_COMPONENT_NAME).toString());
         fungusGenoma = new FungusGenoma(genomaTag);
@@ -114,7 +114,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries)
     {
-        // awful work-around: part-2
+        // FIXME awful work-around: part-2
         CompoundTag fungusData = new CompoundTag();
         fungusData.put(ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, GENOMA_DATA_COMPONENT_NAME).toString(),
                 FUNGUS_GENOMA_CODEC.encodeStart(NbtOps.INSTANCE, fungusGenoma).getOrThrow());

@@ -115,7 +115,7 @@ public class FungusTraits implements Serializable
 
     public void replace(String trait, String val)
     {
-        if(!traitsMap.containsKey(trait))
+        if(!Arrays.asList(traitsDictionary).contains(trait))
             throw new RuntimeException("Unknown trait requested: "+trait);
         traitsMap.put(trait, val);
     }

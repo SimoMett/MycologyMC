@@ -65,8 +65,6 @@ public class FungusGenoma implements Serializable
 
     public static FungusGenoma fromByteBuf(FriendlyByteBuf byteBuf)
     {
-        //FIXME I've fixed the thrown exceptio, but I'm back to the start (black fungus after exit and entering the level)
-        //great...
         try
         {
             byte [] dst = new byte[byteBuf.readInt()];
@@ -114,14 +112,6 @@ public class FungusGenoma implements Serializable
         return recessiveTraits;
     }
 
-    public void setField(String trait, GeneType type, String val)
-    {
-        if (type==GeneType.DOMINANT)
-            dominantTraits.replace(trait, val);
-        else
-            recessiveTraits.replace(trait, val);
-    }
-
     @Deprecated(forRemoval = true)
     public String getField(String key)
     {
@@ -159,9 +149,9 @@ public class FungusGenoma implements Serializable
         for(String trait : traitsDictionary)
         {
             String o = random.nextBoolean() ? this.getDominantTraits().get(trait).orElse(null) : this.getRecessiveTraits().get(trait).orElse(null);
-            offspring.setField(trait, FungusGenoma.GeneType.DOMINANT, o);
+            offspring.getDominantTraits().replace(trait, o);
             String p = random.nextBoolean() ? that.getDominantTraits().get(trait).orElse(null) : that.getRecessiveTraits().get(trait).orElse(null);
-            offspring.setField(trait, FungusGenoma.GeneType.RECESSIVE, p);
+            offspring.getRecessiveTraits().replace(trait, p);
         }
         return offspring;
     }
