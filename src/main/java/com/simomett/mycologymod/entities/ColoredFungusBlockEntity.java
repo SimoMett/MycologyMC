@@ -1,14 +1,17 @@
 package com.simomett.mycologymod.entities;
 
+import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.genetics.FungusTraits;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -21,8 +24,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 
-import static com.simomett.mycologymod.datacomponents.ModDataAttachmentTypes.FUNGUS_GENOMA_ATTACHMENT;
-import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.*;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
@@ -43,10 +45,12 @@ public class ColoredFungusBlockEntity extends BlockEntity
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries)
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries)
     {
-        super.saveAdditional(tag, registries);
-        //setData(FUNGUS_GENOMA_ATTACHMENT, fungusGenoma);//forse inutile
+        // awful work-around
+        super.loadAdditional(tag, registries);
+        CompoundTag genomaTag = tag.getCompound("components").getCompound(ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID,GENOMA_DATA_COMPONENT_NAME).toString());
+        fungusGenoma = new FungusGenoma(genomaTag);
     }
 
     private static Instant lastInstant = Instant.now();
@@ -105,6 +109,18 @@ public class ColoredFungusBlockEntity extends BlockEntity
     public Packet<ClientGamePacketListener> getUpdatePacket()
     {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries)
+    {
+        // awful work-around: part-2
+        CompoundTag fungusData = new CompoundTag();
+        fungusData.put(ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, GENOMA_DATA_COMPONENT_NAME).toString(),
+                FUNGUS_GENOMA_CODEC.encodeStart(NbtOps.INSTANCE, fungusGenoma).getOrThrow());
+        CompoundTag components = new CompoundTag();
+        components.put("components", fungusData);
+        return components;
     }
 
     @Override

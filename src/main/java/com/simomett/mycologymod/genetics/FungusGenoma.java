@@ -2,6 +2,8 @@ package com.simomett.mycologymod.genetics;
 
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -11,11 +13,56 @@ import java.io.*;
 import java.util.*;
 
 import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
+import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
-
 
 public class FungusGenoma implements Serializable
 {
+    public enum GeneType
+    {
+        DOMINANT,
+        RECESSIVE
+    }
+
+    public static final String
+            SPECIES = "species",
+            SPREADING = "spreading",
+            SPREAD_BOOST = "spreadboost",
+            LIGHT = "light",
+            TERRAIN = "terrain",
+            HUMIDITY = "humidity",
+            TEMP= "temp",
+            AREA = "area",
+            EFFECT = "effect",
+            EATING_EFFECT = "eat_effect";
+
+    private final FungusTraits dominantTraits;
+    private final FungusTraits recessiveTraits;
+
+    public FungusGenoma(FungusTraits dominant, FungusTraits recessive)
+    {
+        dominantTraits = new FungusTraits(dominant);
+        recessiveTraits = new FungusTraits(recessive);
+    }
+
+    public FungusGenoma(FungusSpeciesList.FungusSpecies species)
+    {
+        this(species.defaultTraits, species.defaultTraits);
+    }
+
+    public FungusGenoma(CompoundTag genomaTag)
+    {
+        FungusGenoma g = FUNGUS_GENOMA_CODEC.parse(NbtOps.INSTANCE, genomaTag).getOrThrow();
+        dominantTraits = g.dominantTraits;
+        recessiveTraits = g.recessiveTraits;
+    }
+
+    private FungusGenoma()
+    {
+        dominantTraits = new FungusTraits(FungusTraits.UNINIT);
+        recessiveTraits = new FungusTraits(dominantTraits);
+    }
+
     public static FungusGenoma fromByteBuf(FriendlyByteBuf byteBuf)
     {
         //FIXME I've fixed the thrown exceptio, but I'm back to the start (black fungus after exit and entering the level)
@@ -55,58 +102,6 @@ public class FungusGenoma implements Serializable
         ObjectOutputStream o = new ObjectOutputStream(b);
         o.writeObject(this);
         return b.toByteArray();
-    }
-
-    private FungusGenoma()
-    {
-        dominantTraits = new FungusTraits(FungusTraits.EMPTY);
-        recessiveTraits = new FungusTraits(FungusTraits.EMPTY);
-    }
-
-    public FungusGenoma normalCrossbreedWith(FungusGenoma that)
-    {
-        FungusGenoma offspring = new FungusGenoma();
-        Random random = new Random();
-        for(String trait : traitsDictionary)
-        {
-            String o = random.nextBoolean() ? this.getField(trait) : this.getField(trait, FungusGenoma.GeneType.RECESSIVE);
-            offspring.setField(trait, FungusGenoma.GeneType.DOMINANT, o);
-            String p = random.nextBoolean() ? that.getField(trait) : that.getField(trait, FungusGenoma.GeneType.RECESSIVE);
-            offspring.setField(trait, FungusGenoma.GeneType.RECESSIVE, p);
-        }
-        return offspring;
-    }
-
-    public enum GeneType
-    {
-        DOMINANT,
-        RECESSIVE
-    }
-
-    public static final String
-            SPECIES = "species",
-            SPREADING = "spreading",
-            SPREAD_BOOST = "spreadboost",
-            LIGHT = "light",
-            TERRAIN = "terrain",
-            HUMIDITY = "humidity",
-            TEMP= "temp",
-            AREA = "area",
-            EFFECT = "effect",
-            EATING_EFFECT = "eat_effect";
-
-    private final FungusTraits dominantTraits;
-    private final FungusTraits recessiveTraits;
-
-    public FungusGenoma(FungusTraits dominant, FungusTraits recessive)
-    {
-        dominantTraits = new FungusTraits(dominant);
-        recessiveTraits = new FungusTraits(recessive);
-    }
-
-    public FungusGenoma(FungusSpeciesList.FungusSpecies species)
-    {
-        this(species.defaultTraits, species.defaultTraits);
     }
 
     public FungusTraits getDominantTraits()
@@ -158,6 +153,20 @@ public class FungusGenoma implements Serializable
     public final boolean matchesEnvironmentAndTerrain(Integer light, Float temperature, Float humidity, BlockState terrainBlock)
     {
         return matchesEnvironment(light, temperature, humidity) && matchesTerrain(terrainBlock);
+    }
+
+    public FungusGenoma normalCrossbreedWith(FungusGenoma that)
+    {
+        FungusGenoma offspring = new FungusGenoma();
+        Random random = new Random();
+        for(String trait : traitsDictionary)
+        {
+            String o = random.nextBoolean() ? this.getField(trait) : this.getField(trait, FungusGenoma.GeneType.RECESSIVE);
+            offspring.setField(trait, FungusGenoma.GeneType.DOMINANT, o);
+            String p = random.nextBoolean() ? that.getField(trait) : that.getField(trait, FungusGenoma.GeneType.RECESSIVE);
+            offspring.setField(trait, FungusGenoma.GeneType.RECESSIVE, p);
+        }
+        return offspring;
     }
 
     @Override

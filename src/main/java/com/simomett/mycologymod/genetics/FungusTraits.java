@@ -19,7 +19,7 @@ public class FungusTraits implements Serializable
             TEMP,
             AREA,
             EFFECT,
-            EATING_EFFECT//optional
+            EATING_EFFECT //optional
     };
 
     private final Map<String, String> traitsMap = new HashMap<>(traitsDictionary.length);

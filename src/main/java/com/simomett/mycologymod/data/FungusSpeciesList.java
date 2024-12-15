@@ -29,7 +29,7 @@ public class FungusSpeciesList
 
     public FungusSpecies get(String speciesName)
     {
-        return speciesHashMap.getOrDefault(speciesName, new FungusSpecies(FungusTraits.EMPTY, new int[]{0, 0, 0, 0}, COLORED_WARPED_STRING, FungusSpawn.NO_SPAWN));
+        return speciesHashMap.getOrDefault(speciesName, new FungusSpecies(FungusTraits.UNINIT, new int[]{0, 0, 0, 0}, COLORED_WARPED_STRING, FungusSpawn.NO_SPAWN));
     }
 
     public ArrayList<FungusSpecies> getSpeciesList()

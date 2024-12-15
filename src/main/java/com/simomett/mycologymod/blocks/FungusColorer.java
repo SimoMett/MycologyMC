@@ -17,7 +17,6 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static com.simomett.mycologymod.datacomponents.ModDataAttachmentTypes.FUNGUS_GENOMA_ATTACHMENT;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
@@ -36,8 +35,8 @@ public class FungusColorer implements BlockColor, ItemColor
     {
         if(blockAndTint.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity fungusEntity)
         {
-            //FIXME WHY fungusEntity.getFungusGenoma() IS NULL WHEN LOADING LEVEL?
-            FungusSpeciesList.FungusSpecies fs = FungusSpeciesList.INSTANCE.get(fungusEntity.getFungusGenoma().getDominantTraits().species());
+            String speciesName = fungusEntity.getFungusGenoma().getDominantTraits().species();
+            FungusSpeciesList.FungusSpecies fs = FungusSpeciesList.INSTANCE.get(speciesName);
             if (fs != null)
                 return fs.colors[tintIndex];
             else

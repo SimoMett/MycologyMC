@@ -43,8 +43,9 @@ public class ModDataComponentTypes
 
     public static StreamCodec<FriendlyByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::fromByteBuf);
 
+    public static final String GENOMA_DATA_COMPONENT_NAME = "fungus_data";
     public static final Supplier<DataComponentType<FungusGenoma>> FUNGUS_GENOMA = DATA_COMPONENTS.registerComponentType(
-            "fungus_data",
+            GENOMA_DATA_COMPONENT_NAME,
             builder -> builder
                     // The codec to read/write the data to disk
                     .persistent(FUNGUS_GENOMA_CODEC)
