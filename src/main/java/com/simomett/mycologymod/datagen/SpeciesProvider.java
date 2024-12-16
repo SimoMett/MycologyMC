@@ -436,7 +436,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
         speciesBuilder.createDefaultSpecies(BOLBITIUS_PROFONDORUM)//fungus found in caves
                 .crimsonType(0x8c909c, 0x94989C, 0x3f4045, 0x2b2d31)
-                .spawnType(FungusSpawn.NO_SPAWN)
+                .spawnType(FungusSpawn.CAVES)
                 .light(3)
                 .terrain(ModBlockTags.DEEPSLATE)
                 .build();
