@@ -1,17 +1,18 @@
 package com.simomett.mycologymod.gui;
 
 
+import com.simomett.mycologymod.gui.menu.ModMenus;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModScreens
 {
 	@SubscribeEvent
-	public static void clientLoad(FMLClientSetupEvent event)
+	public static void clientLoad(RegisterMenuScreensEvent event)
 	{
-		//event.enqueueWork(() -> MenuScreens.register(ModMenus.MAGNIFYING_GLASS_MENU.get(), MagnifyingGlassScreen::new));
+		event.register(ModMenus.MAGNIFYING_GLASS_MENU.get(), MagnifyingGlassScreen::new);
 	}
 }

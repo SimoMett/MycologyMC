@@ -1,30 +1,31 @@
 package com.simomett.mycologymod.gui;
 
 import com.simomett.mycologymod.MycologyMod;
-import com.simomett.mycologymod.genetics.FungusGenoma;
+import com.simomett.mycologymod.gui.menu.MagnifyingGlassMenu;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 
-public class MagnifyingGlassScreen extends Screen
+public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGlassMenu>
 {
     private final int imageWidth;
     private final int imageHeight;
     private int leftPos;
     private int topPos;
-    private final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, ":textures/screens/magnifying_glass.png");
-    private final FungusGenoma fungusGenoma;
-    public MagnifyingGlassScreen(FungusGenoma fungusGenoma)
+    private final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "textures/screens/magnifying_glass.png");
+
+    public MagnifyingGlassScreen(MagnifyingGlassMenu magnifyingGlassMenu, Inventory inventory, Component component)
     {
-        super(Component.literal("MYTITLE"));
-        this.fungusGenoma = fungusGenoma;
+        super(magnifyingGlassMenu, inventory, component);
         this.imageWidth = 176;
         this.imageHeight = 194;
     }
 
     @Override
-    protected void init() {
+    protected void init()
+    {
         super.init();
         this.leftPos = (this.width - this.imageWidth) / 2;
         this.topPos = (this.height - this.imageHeight) / 2;
@@ -32,7 +33,7 @@ public class MagnifyingGlassScreen extends Screen
 
     private void drawWidgets(GuiGraphics guiGraphics, int xOrigin, int yOrigin)
     {
-        guiGraphics.drawString(this.font, Component.literal(fungusGenoma.getDominantTraits().species()), xOrigin, yOrigin, -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(menu.fungusGenoma.getDominantTraits().species()), xOrigin, yOrigin, -12829636, false);
         //Index column
         int a = 6;
         final int o = 10;
@@ -51,14 +52,14 @@ public class MagnifyingGlassScreen extends Screen
         b = 0;
         d = 83;
         guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.dominant"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().terrain())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().light())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().humidity())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().temp())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().spreading())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().spreadboost())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().area())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusGenoma.getDominantTraits().effect())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().terrain())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().light())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().humidity())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().temp())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().spreading())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().spreadboost())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().area())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().effect())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
 
         //Recessive column
         //Kinda unreal to have all genoma by just looking through a magnifying glass
@@ -79,6 +80,13 @@ public class MagnifyingGlassScreen extends Screen
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks)
     {
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        //guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+        //drawWidgets(guiGraphics, this.leftPos+6, this.topPos+6);
+    }
+
+    @Override
+    protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1)
+    {
         guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
         drawWidgets(guiGraphics, this.leftPos+6, this.topPos+6);
     }

@@ -12,6 +12,7 @@ import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
 import com.simomett.mycologymod.entities.ModEntities;
 import com.simomett.mycologymod.items.ModItems;
 import com.simomett.mycologymod.items.potions.ModPotions;
+import com.simomett.mycologymod.gui.menu.ModMenus;
 import com.simomett.mycologymod.particles.ModParticles;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipeLoader;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
@@ -52,7 +53,7 @@ public class MycologyMod {
         ModPotions.POTIONS.register(evtBus);
         ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);
         ModEffects.EFFECTS.register(evtBus);
-        //ModMenus.MENU_TYPES.register(evtBus); //FIXME
+        ModMenus.MENU_TYPES.register(evtBus);
         ModFeatures.FEATURES.register(evtBus);
 
         NeoForge.EVENT_BUS.register(this);

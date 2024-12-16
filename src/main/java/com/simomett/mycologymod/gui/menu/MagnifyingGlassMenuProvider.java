@@ -1,4 +1,4 @@
-package com.simomett.mycologymod.menu;
+package com.simomett.mycologymod.gui.menu;
 
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.network.chat.Component;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class MagnifyingGlassMenuProvider implements MenuProvider
 {
-    private FungusGenoma fungusGenoma;
+    private final FungusGenoma fungusGenoma;
     public MagnifyingGlassMenuProvider(FungusGenoma dataModel)
     {
         this.fungusGenoma = dataModel;
