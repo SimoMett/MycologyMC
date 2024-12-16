@@ -11,7 +11,7 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 public class ModScreens
 {
 	@SubscribeEvent
-	public static void clientLoad(RegisterMenuScreensEvent event)
+	public static void registerScreen(RegisterMenuScreensEvent event)
 	{
 		event.register(ModMenus.MAGNIFYING_GLASS_MENU.get(), MagnifyingGlassScreen::new);
 	}

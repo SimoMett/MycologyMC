@@ -8,8 +8,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 
-import java.util.Objects;
-
 public class MagnifyingGlassItem extends Item
 {
     public MagnifyingGlassItem()
@@ -26,9 +24,9 @@ public class MagnifyingGlassItem extends Item
             if (context.getLevel().getBlockEntity(pos) instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
             {
                 FungusGenoma fungusGenoma = coloredFungusBlockEntity.getFungusGenoma();
-                Objects.requireNonNull(context.getPlayer()).openMenu(new MagnifyingGlassMenuProvider(fungusGenoma));
+                context.getPlayer().openMenu(new MagnifyingGlassMenuProvider(fungusGenoma), fungusGenoma::encode);
             }
         }
-        return InteractionResult.sidedSuccess(true);
+        return InteractionResult.SUCCESS;
     }
 }

@@ -18,7 +18,7 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
 
     public MagnifyingGlassScreen(MagnifyingGlassMenu magnifyingGlassMenu, Inventory inventory, Component component)
     {
-        super(magnifyingGlassMenu, inventory, component);
+        super(magnifyingGlassMenu, inventory, Component.empty());
         this.imageWidth = 176;
         this.imageHeight = 194;
     }
@@ -77,18 +77,17 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks)
-    {
-        super.render(guiGraphics, mouseX, mouseY, partialTicks);
-        //guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-        //drawWidgets(guiGraphics, this.leftPos+6, this.topPos+6);
-    }
-
-    @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1)
     {
         guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
         drawWidgets(guiGraphics, this.leftPos+6, this.topPos+6);
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY)
+    {
+        //guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
+        //guiGraphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 4210752, false);
     }
 
     @Override
