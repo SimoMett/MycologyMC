@@ -2,6 +2,7 @@ package com.simomett.mycologymod.items;
 
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.blocks.ModBlocks;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -17,4 +18,5 @@ public class ModItems
 
     //all the items below...
     public static final DeferredItem<MagnifyingGlassItem> MAGNIFYING_GLASS = ITEMS.register("magnifying_glass", MagnifyingGlassItem::new);
+    public static final DeferredItem<Item> TEST_TUBE = ITEMS.registerSimpleItem("test_tube");
 }
