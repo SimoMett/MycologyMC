@@ -7,6 +7,7 @@ import com.simomett.mycologymod.MycologyMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -16,7 +17,7 @@ import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import java.util.*;
 
 @EventBusSubscriber(modid = MycologyMod.MODID, bus = EventBusSubscriber.Bus.GAME)
-public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener
+public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener<JsonElement>
 {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
@@ -26,7 +27,7 @@ public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener
 
     private FungusBrewingRecipeLoader()
     {
-        super(GSON, "fungi_brewing");
+        super(ExtraCodecs.JSON, "fungi_brewing");
     }
 
     @Override

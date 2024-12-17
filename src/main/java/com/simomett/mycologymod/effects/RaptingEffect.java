@@ -25,7 +25,7 @@ public class RaptingEffect extends FungusEffect
         for(int i = 0; i < 16; ++i)
         {
             double d0 = livingEntity.getX() + (livingEntity.getRandom().nextDouble() - 0.5) * 16.0;
-            double d1 = Mth.clamp(livingEntity.getY() + (double)(livingEntity.getRandom().nextInt(16) - 8), (double)level.getMinBuildHeight(), (double)(level.getMinBuildHeight() + ((ServerLevel)level).getLogicalHeight() - 1));
+            double d1 = Mth.clamp(livingEntity.getY() + (double)(livingEntity.getRandom().nextInt(16) - 8), (double)level.getMinY(), (double)(level.getMinY() + ((ServerLevel)level).getLogicalHeight() - 1));
             double d2 = livingEntity.getZ() + (livingEntity.getRandom().nextDouble() - 0.5) * 16.0;
             if (livingEntity.isPassenger())
             {

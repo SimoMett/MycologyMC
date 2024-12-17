@@ -133,7 +133,7 @@ public class FungusGenoma implements Serializable
         if(terrainTag.charAt(0)=='#')
             return terrainBlock.is(BlockTags.create(ResourceLocation.parse(terrainTag.substring(1))));
         else
-            return terrainBlock.is(BuiltInRegistries.BLOCK.get(ResourceLocation.parse(terrainTag)));
+            return terrainBlock.is(BuiltInRegistries.BLOCK.get(ResourceLocation.parse(terrainTag)).get());
     }
 
     public final boolean matchesEnvironmentAndTerrain(Integer light, Float temperature, Float humidity, BlockState terrainBlock)

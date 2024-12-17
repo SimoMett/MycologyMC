@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.effects.PlayerEffects;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,11 +21,11 @@ public class GainXPEffect extends MobEffect
     }
 
     @Override
-    public boolean applyEffectTick(LivingEntity entity, int level)
+    public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier)
     {
         if(entity instanceof Player player)
         {
-            player.giveExperiencePoints(level+1);
+            player.giveExperiencePoints(amplifier+1);
         }
         return true;
     }

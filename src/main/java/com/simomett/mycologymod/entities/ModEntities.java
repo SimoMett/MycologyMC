@@ -11,5 +11,5 @@ public class ModEntities
 {
     public static final DeferredRegister<BlockEntityType<?>> ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MycologyMod.MODID);
 
-    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ColoredFungusBlockEntity>> COLORED_FUNGUS = ENTITIES.register("colored_fungus",()-> BlockEntityType.Builder.of(ColoredFungusBlockEntity::new, ModBlocks.COLORED_CRIMSON_FUNGUS.get(),ModBlocks.COLORED_WARPED_FUNGUS.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ColoredFungusBlockEntity>> COLORED_FUNGUS = ENTITIES.register("colored_fungus",()-> new BlockEntityType<>(ColoredFungusBlockEntity::new, ModBlocks.COLORED_CRIMSON_FUNGUS.get(),ModBlocks.COLORED_WARPED_FUNGUS.get()));
 }

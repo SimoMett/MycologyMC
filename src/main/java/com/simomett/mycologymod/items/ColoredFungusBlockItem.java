@@ -5,7 +5,9 @@ import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -14,6 +16,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,21 +32,21 @@ import static com.simomett.mycologymod.genetics.FungusGenoma.EATING_EFFECT;
 
 public class ColoredFungusBlockItem extends BlockItem
 {
-    public static ColoredFungusBlockItem createColoredCrimson()
+    public ColoredFungusBlockItem(Block block, ResourceLocation resourceLocation)
     {
-        return new ColoredFungusBlockItem(ModBlocks.COLORED_CRIMSON_FUNGUS.get());
-    }
-    public static ColoredFungusBlockItem createColoredWarped()
-    {
-        return new ColoredFungusBlockItem(ModBlocks.COLORED_WARPED_FUNGUS.get());
-    }
-
-    public ColoredFungusBlockItem(Block block)
-    {
-        super(block, new Item.Properties().stacksTo(DEFAULT_MAX_STACK_SIZE).food(new FoodProperties.Builder().alwaysEdible().build()));
+        super(block, new Item.Properties()
+                .setId(ResourceKey.create(Registries.ITEM, resourceLocation))
+                .stacksTo(DEFAULT_MAX_STACK_SIZE)
+                .food(new FoodProperties.Builder().alwaysEdible().build()));
     }
 
     @Override
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity)
+    {
+        return super.finishUsingItem(stack, level, livingEntity);
+    }
+
+    /*@Override
     public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity)
     {
         Optional<String> eatEff = stack.get(FUNGUS_GENOMA).getDominantTraits().eatingEffect();
@@ -55,7 +58,7 @@ public class ColoredFungusBlockItem extends BlockItem
             return new FoodProperties.Builder().alwaysEdible().effect(()-> new MobEffectInstance(Holder.direct(mobEffect), -1), 1f).build();
         }
         return Foods.SPIDER_EYE;
-    }
+    }*/
 
     @Override
     public Component getName(ItemStack itemStack)

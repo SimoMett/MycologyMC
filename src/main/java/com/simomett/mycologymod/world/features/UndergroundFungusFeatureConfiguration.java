@@ -54,7 +54,7 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
                 ResourceLocation res = ResourceLocation.parse(terrain);
                 TagKey<Block> tag = BlockTags.create(res);
 
-                if( (terrainBlockState.is(tag) || terrainBlockState.is(BuiltInRegistries.BLOCK.get(res)) ) && level.getBlockState(origin.above()).isAir())
+                if( (terrainBlockState.is(tag) || terrainBlockState.is(BuiltInRegistries.BLOCK.get(res).get()) ) && level.getBlockState(origin.above()).isAir())
                 {
                     BlockPos pos = origin.above();
                     BlockState blockState = ModBlocks.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);

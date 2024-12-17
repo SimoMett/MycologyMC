@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.effects.PlayerEffects;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -28,7 +29,7 @@ public class IllucinationsEffect extends MobEffect
     }
 
     @Override
-    public boolean applyEffectTick(LivingEntity entity, int level)
+    public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier)
     {
         fakeEffects.get(new Random().nextInt(fakeEffects.size())).accept(entity);
         return true;

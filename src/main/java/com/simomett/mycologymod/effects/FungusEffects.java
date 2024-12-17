@@ -12,6 +12,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.StructureTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Sheep;
@@ -135,12 +136,11 @@ public class FungusEffects
         {
             Villager villager = nearbyVillagers.get(new Random().nextInt(nearbyVillagers.size()));
 
-
-            ZombieVillager zombievillager = villager.convertTo(EntityType.ZOMBIE_VILLAGER, false);
+            ZombieVillager zombievillager = villager.convertTo(EntityType.ZOMBIE_VILLAGER, ConversionParams.single(villager, true, true), m -> m.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 300)));
             if (zombievillager != null) {
-                zombievillager.finalizeSpawn(level, level.getCurrentDifficultyAt(zombievillager.blockPosition()), MobSpawnType.CONVERSION, new Zombie.ZombieGroupData(false, true));
+                zombievillager.finalizeSpawn(level, level.getCurrentDifficultyAt(zombievillager.blockPosition()), EntitySpawnReason.CONVERSION, new Zombie.ZombieGroupData(false, true));
                 zombievillager.setVillagerData(villager.getVillagerData());
-                zombievillager.setGossips((Tag) villager.getGossips().store(NbtOps.INSTANCE));
+                zombievillager.setGossips(villager.getGossips().store(NbtOps.INSTANCE));
                 zombievillager.setTradeOffers(villager.getOffers());
                 zombievillager.setVillagerXp(villager.getVillagerXp());
             }

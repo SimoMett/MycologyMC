@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.effects.PlayerEffects;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
@@ -30,9 +31,8 @@ public class SensingEffect extends MobEffect
     }
 
     @Override
-    public boolean applyEffectTick(LivingEntity entity, int level)
+    public boolean applyEffectTick(ServerLevel lvl, LivingEntity entity, int amplifier)
     {
-        Level lvl = entity.level();
         if(lvl.isClientSide)
         {
             double radius = 10;

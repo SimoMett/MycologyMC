@@ -10,6 +10,8 @@ import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.particles.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -37,6 +39,7 @@ import org.jline.utils.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.simomett.mycologymod.blocks.ModBlocks.COLORED_WARPED_STRING;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.config.ModCommonConfigs.*;
 import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;
@@ -47,9 +50,9 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 {
     protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
 
-    public ColoredFungusBlock()
+    public ColoredFungusBlock(BlockBehaviour.Properties properties)
     {
-        super(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_MUSHROOM));
+        super(properties);
     }
 
     @Override //deprecated
@@ -60,11 +63,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     protected MapCodec<? extends BushBlock> codec()//what is this for?
     {
-        return null;
+        return simpleCodec(ColoredFungusBlock::new);
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState p_51039_, BlockGetter p_51040_, BlockPos p_51041_)
+    public boolean propagatesSkylightDown(BlockState p_51039_)
     {
         return true;
     }

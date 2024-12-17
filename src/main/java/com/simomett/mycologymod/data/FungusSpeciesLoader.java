@@ -9,6 +9,7 @@ import com.simomett.mycologymod.genetics.FungusTraits;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.profiling.ProfilerFiller;
 
 import java.util.Collection;
@@ -16,7 +17,7 @@ import java.util.Map;
 
 import static com.simomett.mycologymod.genetics.FungusGenoma.*;
 
-public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
+public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener<JsonElement>
 {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
@@ -24,7 +25,7 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener
 
     private FungusSpeciesLoader()
     {
-        super(GSON, "fungi");
+        super(ExtraCodecs.JSON, "fungi");
     }
 
     @Override

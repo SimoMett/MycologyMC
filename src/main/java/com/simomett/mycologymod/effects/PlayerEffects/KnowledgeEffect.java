@@ -14,6 +14,6 @@ public class KnowledgeEffect extends MobEffect
 
     public static boolean shouldRestoreXp(LivingEntity e)
     {
-        return e.hasEffect(ModEffects.KNOWLEDGE) && !e.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY);
+        return e.hasEffect(ModEffects.KNOWLEDGE) && !e.level().getServer().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY);
     }
 }

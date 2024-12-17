@@ -6,7 +6,10 @@ import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -30,12 +33,13 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
     {
         List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         BlockPos origin = placeContext.origin();
-        String biomeName = placeContext.level().registryAccess().registryOrThrow(Registries.BIOME).getKey(placeContext.level().getBiome(origin).value()).toString();
+        Holder<Biome> biome = placeContext.level().getBiome(origin);
+        String biomeName = biome.getRegisteredName();
         speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && (s.spawnInfo.getBiomes().contains(biomeName) || s.spawnInfo.getBiomes().equals(FungusSpawn.ANY_BIOME.getBiomes()))).toList();
         if(!speciesList.isEmpty())
         {
-            float biomeTemp = placeContext.level().getBiome(origin).value().getModifiedClimateSettings().temperature();
-            float biomeDownfall = placeContext.level().getBiome(origin).value().getModifiedClimateSettings().downfall();
+            float biomeTemp = biome.value().getModifiedClimateSettings().temperature();
+            float biomeDownfall = biome.value().getModifiedClimateSettings().downfall();
 
             //get random species
             Random random = new Random();

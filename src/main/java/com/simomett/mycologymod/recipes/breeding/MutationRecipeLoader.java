@@ -6,12 +6,13 @@ import com.google.gson.JsonElement;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.profiling.ProfilerFiller;
 
 import java.util.Collection;
 import java.util.Map;
 
-public class MutationRecipeLoader extends SimpleJsonResourceReloadListener
+public class MutationRecipeLoader extends SimpleJsonResourceReloadListener<JsonElement>
 {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
@@ -19,7 +20,7 @@ public class MutationRecipeLoader extends SimpleJsonResourceReloadListener
 
     private MutationRecipeLoader()
     {
-        super(GSON, "mutations");
+        super(ExtraCodecs.JSON, "mutations");
     }
 
     @Override

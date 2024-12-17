@@ -13,5 +13,5 @@ public class ModPotions
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(BuiltInRegistries.POTION, MycologyMod.MODID);
 
     public static final DeferredHolder<Potion, Potion> TELEPORTING = POTIONS.register("teleporting",
-            ()-> new Potion(new MobEffectInstance(ModEffects.TELEPORTING, 600)));
+            ()-> new Potion("teleporting", new MobEffectInstance(ModEffects.TELEPORTING, 600)));
 }

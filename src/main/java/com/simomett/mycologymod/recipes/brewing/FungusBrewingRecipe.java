@@ -43,12 +43,8 @@ public class FungusBrewingRecipe implements IBrewingRecipe
     {
         if (!input.isEmpty() && !ingredient.isEmpty() && isIngredient(ingredient) && isInput(input))
         {
-            ItemStack result = PotionContents.createItemStack(Items.POTION, Holder.direct(BuiltInRegistries.POTION.get(ResourceLocation.parse(resultPotion))));
-            if (result != input)
-            {
-                return result;
-            }
-            return ItemStack.EMPTY;
+            ItemStack result = PotionContents.createItemStack(Items.POTION, BuiltInRegistries.POTION.get(ResourceLocation.parse(resultPotion)).get());
+            return !result.equals(input) ? result : ItemStack.EMPTY;
         }
         return ItemStack.EMPTY;
     }

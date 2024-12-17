@@ -42,7 +42,6 @@ public class MycologyMod {
     {
         modContainer.registerConfig(ModConfig.Type.COMMON, ModCommonConfigs.SPEC, MODID+"-common.toml");
 
-        ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         ModDataComponentTypes.DATA_COMPONENTS.register(evtBus);

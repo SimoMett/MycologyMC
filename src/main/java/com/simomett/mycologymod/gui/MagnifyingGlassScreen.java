@@ -4,6 +4,7 @@ import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.gui.menu.MagnifyingGlassMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -79,7 +80,7 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1)
     {
-        guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+        guiGraphics.blitSprite(RenderType.GUI_TEXTURED, TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
         drawWidgets(guiGraphics, this.leftPos+6, this.topPos+6);
     }
 

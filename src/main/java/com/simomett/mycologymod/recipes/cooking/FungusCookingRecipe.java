@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.recipes.cooking;
 
 import com.simomett.mycologymod.items.ModItems;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -13,8 +14,8 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
 
     public FungusCookingRecipe(String speciesIngredient, ItemStack result, int stackSize, float exp, int cookingTime)
     {
-        super(RecipeType.SMELTING, "fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS.get()), result, exp, cookingTime);
-        this.result.setCount(stackSize);
+        super("fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS.get()), result, exp, cookingTime);
+        this.result().setCount(stackSize);
         this.speciesIngredient = speciesIngredient;
     }
 
@@ -25,12 +26,12 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
 
     public ItemStack getResult()
     {
-        return this.result;
+        return this.result();
     }
 
     public int getCount()
     {
-        return this.result.getCount();
+        return this.result().getCount();
     }
 
     @Override
@@ -42,8 +43,24 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer()
+    public RecipeSerializer<? extends AbstractCookingRecipe> getSerializer()
     {
         return ModCookingRecipes.FUNGUS_COOKING_RECIPE_SERIALIZER.get();
+    }
+
+    @Override
+    public RecipeType<? extends AbstractCookingRecipe> getType() {
+        return null;
+    }
+
+    @Override
+    public RecipeBookCategory recipeBookCategory() {
+        return null;
+    }
+
+    @Override
+    protected Item furnaceIcon()
+    {
+        return null;
     }
 }

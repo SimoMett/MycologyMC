@@ -20,8 +20,8 @@ public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCoo
                     Codec.STRING.fieldOf("ingredient").forGetter(FungusCookingRecipe::getSpeciesIngredient),
                     BuiltInRegistries.ITEM.byNameCodec().xmap(ItemStack::new, ItemStack::getItem).fieldOf("result").forGetter(FungusCookingRecipe::getResult),
                     Codec.INT.fieldOf("count").forGetter(FungusCookingRecipe::getCount),
-                    Codec.FLOAT.fieldOf("experience").forGetter(FungusCookingRecipe::getExperience),
-                    Codec.INT.fieldOf("cookingtime").forGetter(FungusCookingRecipe::getCookingTime)
+                    Codec.FLOAT.fieldOf("experience").forGetter(FungusCookingRecipe::experience),
+                    Codec.INT.fieldOf("cookingtime").forGetter(FungusCookingRecipe::cookingTime)
             ).apply(instance, FungusCookingRecipe::new)
         );
     }
