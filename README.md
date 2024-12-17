@@ -1,7 +1,7 @@
 # Mycology
 [![Java CI with Gradle](https://github.com/DonSimonetti/MycologyMC/actions/workflows/gradle.yml/badge.svg)](https://github.com/DonSimonetti/MycologyMC/actions/workflows/gradle.yml)
 
-Mycology is a mod for Minecraft that provides a breeding system for mushrooms. You can find new fungi all of the world (and dimensions), each with it's unique characteristics.
+Mycology is a Minecraft 1.21.3 mod for NeoForge that provides a breeding system for mushrooms. You can find new fungi all of the world (and dimensions), each with it's unique characteristics.
 
 Some of them can be cooked in a furnace or distilled in a brewing stand, but the fun part (at user discretion) is combining between them to hopefully get an interesting and usefull (or very bad and toxic) mutation.
 
