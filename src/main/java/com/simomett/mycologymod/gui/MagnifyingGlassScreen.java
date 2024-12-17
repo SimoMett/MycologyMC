@@ -80,7 +80,7 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1)
     {
-        guiGraphics.blitSprite(RenderType.GUI_TEXTURED, TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+        guiGraphics.blit(RenderType::guiTextured, TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
         drawWidgets(guiGraphics, this.leftPos+6, this.topPos+6);
     }
 
