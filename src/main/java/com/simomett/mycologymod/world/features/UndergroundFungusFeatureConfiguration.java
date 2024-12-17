@@ -49,12 +49,21 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
                 //spawn fungus with the correct type
                 BlockState terrainBlockState = level.getBlockState(origin);
                 String terrain = randomSpecies.defaultTraits.terrain();
+                boolean blockMatchesTerrain;
                 if(terrain.startsWith("#"))
+                {
                     terrain = terrain.substring(1);
-                ResourceLocation res = ResourceLocation.parse(terrain);
-                TagKey<Block> tag = BlockTags.create(res);
+                    ResourceLocation res = ResourceLocation.parse(terrain);
+                    TagKey<Block> tag = BlockTags.create(res);
+                    blockMatchesTerrain = terrainBlockState.is(tag);
+                }
+                else
+                {
+                    ResourceLocation res = ResourceLocation.parse(terrain);
+                    blockMatchesTerrain = terrainBlockState.is(BuiltInRegistries.BLOCK.get(res).get());
+                }
 
-                if( (terrainBlockState.is(tag) || terrainBlockState.is(BuiltInRegistries.BLOCK.get(res).get()) ) && level.getBlockState(origin.above()).isAir())
+                if(blockMatchesTerrain && level.getBlockState(origin.above()).isAir())
                 {
                     BlockPos pos = origin.above();
                     BlockState blockState = ModBlocks.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
