@@ -151,7 +151,6 @@ public class FungusEffects
     public static final FungusEffect SKELETONS_EFFECT = new SpawnEntityEffect("skeletons", (lvl) -> new Skeleton(EntityType.SKELETON, lvl));
     public static final FungusEffect BLAZING_EFFECT = new SpawnEntityEffect("blazing" ,(lvl) -> {
         SmallFireball fireball = new SmallFireball(EntityType.SMALL_FIREBALL, lvl);
-        //FIXME fireball.yPower = -0.09; // for gravity
         fireball.setNoGravity(false);
         Random rand = new Random();
         final float scale = 0.8f;
