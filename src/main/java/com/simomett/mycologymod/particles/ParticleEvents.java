@@ -14,5 +14,6 @@ public class ParticleEvents
     public static void registerParticleFactories(final RegisterParticleProvidersEvent evt)
     {
         evt.registerSpriteSet(ModParticles.SPORE_PARTICLES.get(), SporeParticles.Provider::new);
+        evt.registerSpriteSet(ModParticles.MUTANT_SPORE_PARTICLES.get(), MutantSporeParticles.Provider::new);
     }
 }

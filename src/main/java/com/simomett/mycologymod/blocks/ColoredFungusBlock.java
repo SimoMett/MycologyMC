@@ -24,6 +24,8 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -45,6 +47,7 @@ import static com.simomett.mycologymod.tags.ModBlockTags.CAN_PLANT_ON;
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
 {
     protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
+    public static final BooleanProperty IS_LIT = BooleanProperty.create("is_lit");
 
     public ColoredFungusBlock(BlockBehaviour.Properties properties)
     {
@@ -54,6 +57,18 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override //deprecated
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         return SHAPE;
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
+    {
+        builder.add(IS_LIT);
+    }
+
+    @Override
+    public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos)
+    {
+        return state.getValue(IS_LIT) ? 4 : 0;
     }
 
     @Override
@@ -120,7 +135,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     }
 
     @OnlyIn(Dist.CLIENT)
-    private static void addSporeParticle(int radius, BlockPos blockPos, Level level, RandomSource randomSource)
+    private static void addSporeParticle(int radius, BlockState blockState, BlockPos blockPos, Level level, RandomSource randomSource)
     {
         Random random = new Random();
         int density = SPORE_PARTICLES_FREQ.get()*radius;
@@ -137,7 +152,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             double velX = 0;
             double velY = 0;
             double velZ = 0;
-            level.addParticle(ModParticles.SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
+
+            if(blockState.getValue(IS_LIT))
+                level.addParticle(ModParticles.MUTANT_SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
+            else
+                level.addParticle(ModParticles.SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
         }
     }
 
@@ -148,7 +167,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         super.animateTick(blockState, level, blockPos, randomSource);
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
         int radius = originBlockEntity.getFungusGenoma().getDominantTraits().area();
-        addSporeParticle(radius, blockPos, level, randomSource);
+        addSporeParticle(radius, blockState, blockPos, level, randomSource);
     }
 
     @Override

@@ -8,20 +8,12 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public class SporeParticles extends TextureSheetParticle
+public class MutantSporeParticles extends SporeParticles
 {
-    protected SporeParticles(ClientLevel level, SpriteSet spriteSet, double x, double y, double z, double vX, double vY, double vZ)
+    protected MutantSporeParticles(ClientLevel level, SpriteSet spriteSet, double x, double y, double z, double vX, double vY, double vZ)
     {
-        super(level, x, y, z, vX, vY, vZ);
-        this.friction = .8f;
-        this.xd = vX;
-        this.yd = vY;
-        this.zd = vZ;
-        this.quadSize *= 1.5f;
-        this.setLifetime(3*20 + (new Random().nextInt(-4, 4)*5));
-        this.gravity = 0.01f;
-        this.setSpriteFromAge(spriteSet);
-        int [] colors = {0x55453c, 0x6e5a4d, 0x55453c};
+        super(level, spriteSet, x, y, z, vX, vY, vZ);
+        int [] colors = {0x55453c, 0x6e5a4d, 0x55453c, 0x6e5a4d, 0x55453c, 0xfff100};
         int color = colors[new Random().nextInt(colors.length)];
         this.setColor((color >> 16)/255f, (color >> 8 & 255)/255f, (color & 255)/255f);
     }
@@ -44,7 +36,7 @@ public class SporeParticles extends TextureSheetParticle
 
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double vX, double vY, double vZ)
         {
-            return new SporeParticles(level, this.spriteSet, x, y, z, vX, vY, vZ);
+            return new MutantSporeParticles(level, this.spriteSet, x, y, z, vX, vY, vZ);
         }
     }
 }

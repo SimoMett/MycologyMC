@@ -12,4 +12,5 @@ public class ModParticles
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, MycologyMod.MODID);
 
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SPORE_PARTICLES = PARTICLES.register("spore", () -> new SimpleParticleType(true));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MUTANT_SPORE_PARTICLES = PARTICLES.register("mutant_spore", () -> new SimpleParticleType(true));
 }
