@@ -143,7 +143,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    //FIXME testing only
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource)
     {
         super.animateTick(blockState, level, blockPos, randomSource);
@@ -160,8 +159,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         FungusGenoma genoma = originBlockEntity.getFungusGenoma();
 
         //code copied from MushroomBlock.randomTick
-        //TODO use nbt data instead of magic numbers
-        int spreading = genoma.getDominantTraits().spreading();//TODO implement spreadboost
+        int spreading = genoma.getDominantTraits().spreading();
+        float spreadBoost = genoma.getDominantTraits().spreadboost(); //TODO implement spreadboost
         int areaRadius = genoma.getDominantTraits().area();
         if (rand.nextInt(spreading) == 0)
         {

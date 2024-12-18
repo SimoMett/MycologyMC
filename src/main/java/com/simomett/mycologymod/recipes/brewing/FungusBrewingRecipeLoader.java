@@ -60,7 +60,7 @@ public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener<
             if(poppedRecipe!=null)
             {
                 builder.addRecipe(poppedRecipe);
-                //TODO do the recipes need to be removed from BrewingRecipeRegistry when all the resources reload?
+                //do the recipes need to be removed from BrewingRecipeRegistry when all the resources reload?
             }
         }
         while (poppedRecipe!=null);
