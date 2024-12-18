@@ -33,9 +33,16 @@ public class SpeciesProvider implements DataProvider
         List<CompletableFuture<?>> list = new ArrayList<>();
         SpeciesBuilder speciesBuilder = new SpeciesBuilder(this.generator, hashCache, list);
 
-        /////////////////////////////
-        //      Colors fungi       //
-        /////////////////////////////
+        //////////////////////////////
+        //     Overworld branch     //
+        //////////////////////////////
+        speciesBuilder.createDefaultSpecies(AGARICUS_CAMPESTRIS)
+                .warpedType(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)//FIXME darker
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.PLAINS)
+                .spawnType(FungusSpawn.PLAINS)
+                .build();
+
         speciesBuilder.createSpecies(AMANITA_RUBRA)
                 .crimsonType(0xFFFFCC, 0xC41717, 0xF2F2F2, 0xF2F2F2)
                 .spreading(25)
@@ -47,28 +54,205 @@ public class SpeciesProvider implements DataProvider
                 .spawnType(FungusSpawn.DARK_FOREST)
                 .build();
 
+        speciesBuilder.createSpecies(LACTARIUS_VIRENS)
+                .warpedType( 0xBF98BF, 0x6bb83c, 0x99110F, 0xF502D3)//FIXME
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.PLAINS)
+                .areaEffect(FungusEffects.NO_EFFECT)
+                .spawnType(FungusSpawn.SUNFLOWER_PLAINS)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(LECCINUM_VERSIPELLE)
+                .warpedType(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)//FIXME
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
+                .spawnType(FungusSpawn.BIRCH_FOREST)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(BOLETUS_EDULIS)
+                .crimsonType(0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.FOREST)
+                .spawnType(FungusSpawn.FOREST)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(SUILLUS_GRANULATUS)
+                .warpedType(0xFFF7E7, 0xFFA376, 0xC47D5A, 0xD88A64)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.OLD_GROWTH_PINE_TAIGA)
+                .spawnType(FungusSpawn.OLD_GROWTH_PINE_TAIGA)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(CHALCIPORUS_PIPERATUS)//non edible
+                .crimsonType(0xFFC741, 0xAE5913, 0x64330B, 0x8E6C24)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
+                //.areaEffect(FungusEffects.SNEEZING)
+                .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(HYGROPHORUS_NIVEUS)
+                .crimsonType(0x6c4026 ,0xd5eeff, 0xd4e3ec, 0xffffff)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.SNOWY_TAIGA)
+                .spawnType(FungusSpawn.SNOWY_TAIGA)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(AMANITA_MUSCARIA)//poisonous
+                .warpedType(0xFFFCD9, 0xFF521E, 0xFFFFFF, 0xFFB171)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.JUNGLE)
+                .spawnType(FungusSpawn.JUNGLE)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(AMANITA_PHALLOIDES)
+                .crimsonType(0xffdb94, 0xc71c12, 0xe8e8e8, 0xF2F2F2)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.SWAMP)
+                .spawnType(FungusSpawn.SWAMP)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(YELLOW_FUNGUS)
+                .warpedType(0xffeebd, 0xffd047, 0xc6a046, 0xf08342)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.MEADOW)
+                .spawnType(FungusSpawn.MEADOW)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(BLUE_FUNGUS)
+                .crimsonType(0xF6DFB5, 0x4f94ee, 0xF6DFB5, 0xfff7e9)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.FOREST)
+                .spawnType(FungusSpawn.FLOWER_FOREST)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(LACTARIUS_PROLEFERENS)
+                .warpedType(0x81696b, 0x933c3e, 0x933c3e, 0xd28d77)
+                .areaEffect(FungusEffects.SPORING_EFFECT)
+                .areaRadius(4)
+                .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
+                .spawnType(FungusSpawn.MUSHROOM_FIELDS)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(BOLBITIUS_PROFONDORUM)
+                .crimsonType(0x8c909c, 0x94989C, 0x3f4045, 0x2b2d31)
+                .spawnType(FungusSpawn.CAVES)
+                .light(3)
+                .terrain(ModBlockTags.DEEPSLATE)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(BLINDING_FUNGUS)
+                .warpedType(0xD36146, 0x7EA144, 0x619B68, 0x3A734C)
+                .terrain(ModBlockTags.GRASS)
+                .areaEffect(FungusEffects.BLINDING_EFFECT)
+                .areaRadius(10)
+                .spawnType(FungusSpawn.VERY_RARE.withBiomes(Biomes.DARK_FOREST))
+                .build();
+
+        ///////////////////////
+        //   Nether branch   //
+        ///////////////////////
+        speciesBuilder.createDefaultSpecies(CHALCIPORUS_INFERNALIS)//nether wastes native
+                .crimsonType(0xb5917a, 0xEE2E3D, 0xff6500, 0xffa468)
+                .terrain(Blocks.NETHERRACK)
+                .biomesSpecs(BiomesSpecs.NETHER)
+                .spawnType(FungusSpawn.NETHER_WASTES)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(AGARICUS_ANIMI)//soul sand valley native
+                .crimsonType(0x7b929c, 0x796251, 0x614e43, 0x887265)
+                .terrain(BlockTags.SOUL_FIRE_BASE_BLOCKS)
+                .biomesSpecs(BiomesSpecs.NETHER)
+                .spawnType(FungusSpawn.SOUL_SAND_VALLEY)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(BLAZE_FUNGUS)
+                .crimsonType(0xFF7B00, 0xFF9900, 0xFFDD36, 0xFFFF73)
+                .areaEffect(FungusEffects.BLAZING_EFFECT)
+                .terrain(ModBlockTags.NETHER_BRICKS)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
+                .crimsonType(0xc18c6d, 0xccebff, 0xffffff, 0xe5f5ff)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(WITHERING_FUNGUS)
+                .crimsonType(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
+                .terrain(ModBlockTags.NETHER)
+                .areaEffect(FungusEffects.WITHERING_EFFECT)
+                .build();
+
+        ////////////////////
+        //   End branch   //
+        ////////////////////
+        speciesBuilder.createDefaultSpecies(END_FUNGUS)
+                .crimsonType(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
+                .terrain(Blocks.END_STONE)
+                .biomesSpecs(BiomesSpecs.END)
+                .spawnType(FungusSpawn.END)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(CHORUS_FUNGUS)
+                .crimsonType(0xe1dab6, 0xa078db, 0xeee9ff, 0xbea9b8)
+                .terrain(Blocks.END_STONE)
+                .biomesSpecs(BiomesSpecs.END)
+                .spawnType(FungusSpawn.END_HIGHLANDS)
+                .areaRadius(3)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(TRICHOLOMOPSIS_EVANESCENS)
+                .crimsonType(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
+                .terrain(Blocks.END_STONE)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(ENDER_EYE_FUNGUS)
+                .crimsonType(0x90c074, 0x06d192, 0x72ac49, 0xb4e45b)
+                .areaEffect(FungusEffects.EYE_OF_ENDER_EFFECT)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(RAPTING_FUNGUS)
+                .crimsonType(0x71ecad, 0xc575ff, 0xb8dce5, 0x157865)
+                .areaEffect(FungusEffects.RAPTING_EFFECT)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(TELEPORTING_FUNGUS)
+                .crimsonType(0x4b6ae5, 0x2bd9a1, 0x37e3bd, 0x5ef9e2)
+                .areaEffect(FungusEffects.TELEPORTING_EFFECT)
+                .build();
+
+        /////////////////////////////
+        //      Colors fungi       //
+        /////////////////////////////
         speciesBuilder.createDefaultSpecies(ORANGE_FUNGUS)
                 .warpedType(0xffe0bd, 0xfc9646, 0xc98d6a, 0x844432)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(LIME_FUNGUS)
                 .warpedType(0x9e885f, 0xdd6544, 0x20b482, 0x50ec6c)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(CYAN_FUNGUS)
                 .warpedType(0xdcab8a, 0x45af9c, 0xd3907c, 0x0c6c91)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(LIGHTBLUE_FUNGUS)
                 .warpedType(0xc9f38e, 0x87cfec, 0xcaeef9, 0x8ad4f1)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createSpecies(OVULUS_VIOLACEUS)
                 .crimsonType(0xAA48FB, 0x9c133f, 0xA23F19, 0xE105EF)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .spreading(25)
                 .spreadBoost(1.0f)
@@ -80,42 +264,69 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies(MAGENTA_FUNGUS)
                 .crimsonType(0xffb2cf, 0xef459d, 0x981c33, 0xffffff)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(PINK_FUNGUS)
                 .crimsonType(0xf6dfb5, 0xffc0cb, 0xffc0cb, 0xffeef0)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(BROWN_FUNGUS)
                 .warpedType(0xeeaa3c, 0xae5913, 0x64330b, 0x4e2407)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(BLACK_FUNGUS)
                 .crimsonType(0xffdcc7, 0xffffff, 0xe4d6cd, 0x262626)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(GREY_FUNGUS)
                 .crimsonType(0xffe0bd, 0x949494, 0x938b7f, 0xaa988e)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(LIGHTGREY_FUNGUS)
                 .warpedType(0xffdfcc, 0xf8feff, 0xdcdcdc, 0xbfbfbf)
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(WHITE_FUNGUS)
                 .warpedType(0xfbf4e1, 0xfffdf6, 0xf3f3f3, 0xf3edd5) //FIXME I don't like it too much
+                .spreading(25)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         /////////////////////////////
-        //      Edible fungi       //
+        //     Benefic branch      //
         /////////////////////////////
+        speciesBuilder.createSpecies(BOLETUS_SALUBRIUM)
+                .crimsonType(0xC176C0, 0x95778C, 0xD01B05, 0xB99AA7)
+                .spreading(25)
+                .spreadBoost(1.0f)
+                .light(15)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.TAIGA)
+                .areaEffect(FungusEffects.HEALING_EFFECT)
+                .areaRadius(3)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(SPEED_FUNGUS)
+                .warpedType(0xfebf98, 0xd0eaff, 0xffffff, 0x92c5e4)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(STRENGTH_FUNGUS)
+                .crimsonType(0xc04774, 0x916a7a, 0xc70d09, 0xda8d46)
+                .areaEffect(FungusEffects.STRENGTH_EFFECT)
+                .build();
+
         speciesBuilder.createDefaultSpecies(LACCARIA_DULCIS)//Sugar fungus
                 .warpedType(0x97634a, 0x7695ff, 0xcdd7ff, 0x9aa8ff)
                 .build();
@@ -126,7 +337,6 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies(CRATERELLUS_CORNUCOPIOIDES)
                 .warpedType(0x382b30, 0x211c31, 0x141220, 0x0d0a1c)
-                //.colors4(0x2e2038, 0x211c31, 0x141220, 0x0d0a1c)
                 .build();
 
         speciesBuilder.createSpecies(NOBLE_BOLETUS_SQUISITUS)
@@ -137,6 +347,23 @@ public class SpeciesProvider implements DataProvider
                 .terrain(ModBlockTags.PODZOL)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .areaEffect(FungusEffects.NO_EFFECT)
+                .build();
+
+        ///////////////////////////
+        //    Alcoholic fungi    //
+        ///////////////////////////
+        speciesBuilder.createDefaultSpecies(FERMENTER_FUNGUS)
+                .warpedType(0xa98565, 0xf9bcc1, 0xc7bdce, 0x6d719a)
+                //.areaEffect(FungusEffects.FERMENTING_EFFECT)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(DRUNK_FUNGUS)
+                .crimsonType(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
+                .areaEffect(FungusEffects.DRUNK_EFFECT)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(TOXIC_METILIC_FUNGUS)
+                .warpedType(0x9b8ac5, 0xf3dbec, 0x883674, 0xc797ab)
                 .build();
 
         /////////////////////////////
@@ -216,11 +443,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain(BlockTags.EMERALD_ORES)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(GLOWSTONE_FUNGUS)
-                .crimsonType(0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd)
-                .terrain(ModBlockTags.NETHER)
-                .build();
-
         speciesBuilder.createDefaultSpecies(GALERINA_AURATA) //Gold
                 .warpedType(0xeed484, 0xFF9900, 0xFFDD36, 0xffe56b)
                 .terrain(BlockTags.GOLD_ORES)
@@ -273,12 +495,6 @@ public class SpeciesProvider implements DataProvider
                 .terrain(BlockTags.DIAMOND_ORES)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(BLAZE_FUNGUS)
-                .crimsonType(0xFF7B00, 0xFF9900, 0xFFDD36, 0xFFFF73)
-                .areaEffect(FungusEffects.BLAZING_EFFECT)
-                .terrain(ModBlockTags.NETHER_BRICKS)
-                .build();
-
         // Removed due to non-conformity with the lore of netherite.
         /*speciesBuilder.createDefaultSpecies(POLYPORUS_ANTIQUUS)
                 .crimsonType(0x52362F, 0x52362F, 0x29130D, 0x52362F)
@@ -290,47 +506,9 @@ public class SpeciesProvider implements DataProvider
                 .terrain(Blocks.NETHERITE_BLOCK)
                 .build();*/
 
-        speciesBuilder.createDefaultSpecies(TRICHOLOMOPSIS_EVANESCENS)
-                .crimsonType(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
-                .terrain(Blocks.END_STONE)
-                .build();
-
-        ///////////////////////////
-        //    Alcoholic fungi    //
-        ///////////////////////////
-        speciesBuilder.createDefaultSpecies(FERMENTER_FUNGUS)
-                .warpedType(0xa98565, 0xf9bcc1, 0xc7bdce, 0x6d719a)
-                //.areaEffect(FungusEffects.FERMENTING_EFFECT)
-                .build();
-        speciesBuilder.createDefaultSpecies(DRUNK_FUNGUS)
-                .crimsonType(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
-                .areaEffect(FungusEffects.DRUNK_EFFECT)
-                .build();
-        speciesBuilder.createDefaultSpecies(TOXIC_METILIC_FUNGUS)
-                .warpedType(0x9b8ac5, 0xf3dbec, 0x883674, 0xc797ab)
-                .build();
-
-        /////////////////////////////////
-        //    Special effects fungi    //
-        /////////////////////////////////
-        //TODO be rearranged
-        speciesBuilder.createSpecies(BOLETUS_SALUBRIUM)
-                .crimsonType(0xC176C0, 0x95778C, 0xD01B05, 0xB99AA7)
-                .spreading(25)
-                .spreadBoost(1.0f)
-                .light(15)
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.TAIGA)
-                .areaEffect(FungusEffects.HEALING_EFFECT)
-                .areaRadius(3)
-                .build();
-        speciesBuilder.createDefaultSpecies(SPEED_FUNGUS)
-                .warpedType(0xfebf98, 0xd0eaff, 0xffffff, 0x92c5e4)
-                .build();
-        speciesBuilder.createDefaultSpecies(STRENGTH_FUNGUS)
-                .crimsonType(0xc04774, 0x916a7a, 0xc70d09, 0xda8d46)
-                .areaEffect(FungusEffects.STRENGTH_EFFECT)
-                .build();
+        ////////////////////////
+        //    Psico branch    //
+        ////////////////////////
         speciesBuilder.createDefaultSpecies(ANESTHETIC_FUNGUS)
                 .warpedType(0x59a6cf, 0xe61e65, 0xe03775, 0xffffff)
                 .areaEffect(FungusEffects.ANESTHETIC_EFFECT)
@@ -347,193 +525,16 @@ public class SpeciesProvider implements DataProvider
                 .warpedType(0xcec2c5, 0xffcf42, 0xffffff, 0x1984a1)
                 .areaEffect(FungusEffects.SENSING_EFFECT)
                 .build();
-        speciesBuilder.createDefaultSpecies(RAPTING_FUNGUS)
-                .crimsonType(0x71ecad, 0xc575ff, 0xb8dce5, 0x157865)
-                .areaEffect(FungusEffects.RAPTING_EFFECT)
-                .build();
-        speciesBuilder.createDefaultSpecies(TELEPORTING_FUNGUS)
-                .crimsonType(0x4b6ae5, 0x2bd9a1, 0x37e3bd, 0x5ef9e2)
-                .areaEffect(FungusEffects.TELEPORTING_EFFECT)
-                .build();
-        speciesBuilder.createDefaultSpecies(DYEING_FUNGUS)
-                .warpedType(0xffcb99, 0xff66d8, 0xf8fa53, 0x49b2e3)
-                .terrain(ModBlockTags.GRASS)
-                .areaEffect(FungusEffects.DYEING_EFFECT)
-                .build();
+
+        //////////////////////
+        //   Nature fungi   //
+        //////////////////////
         speciesBuilder.createDefaultSpecies(FERTILIZING_FUNGUS)
                 .warpedType(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .terrain(ModBlockTags.GRASS)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
-        speciesBuilder.createDefaultSpecies(UNDEAD_FUNGUS)
-                .warpedType(0x9b4e3b, 0x6a8a3d, 0x457ae3, 0x4b54bb)
-                .areaRadius(2)
-                .areaEffect(FungusEffects.UNDEAD_EFFECT)
-                .build();
-        speciesBuilder.createDefaultSpecies(LIGHTNING_FUNGUS)
-                .warpedType(0xfeffcc, 0xffcf42, 0xffffff, 0xb2ffff)
-                .areaEffect(FungusEffects.LIGHTNING_EFFECT)
-                .build();
-        speciesBuilder.createDefaultSpecies(ENDER_EYE_FUNGUS)
-                .crimsonType(0x90c074, 0x06d192, 0x72ac49, 0xb4e45b)
-                .areaEffect(FungusEffects.EYE_OF_ENDER_EFFECT)
-                .build();
 
-        //////////////////////////////
-        //  Overworld native fungi  //
-        //////////////////////////////
-        speciesBuilder.createDefaultSpecies(AGARICUS_CAMPESTRIS)//plains native
-                .warpedType(0xFFF7E7, 0xFFF7E7, 0xC7C1B4, 0xA8A398)//FIXME darker
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.PLAINS)
-                .spawnType(FungusSpawn.PLAINS)
-                .build();
-        speciesBuilder.createSpecies(LACTARIUS_VIRIDIS)//sunflower plains native
-                .warpedType( 0xBF98BF, 0x6bb83c, 0x99110F, 0xF502D3)//FIXME
-                .spreading(25)
-                .spreadBoost(1.0f)
-                .light(15)
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.PLAINS)
-                .areaEffect(FungusEffects.NO_EFFECT)
-                .spawnType(FungusSpawn.SUNFLOWER_PLAINS)
-                .build();
-        speciesBuilder.createDefaultSpecies(LECCINUM_VERSIPELLE) //Birch forest native
-                .warpedType(0xFFFBFB, 0xFF7C2D, 0x885431, 0xBD7142)//FIXME
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
-                .spawnType(FungusSpawn.BIRCH_FOREST)
-                .build();
-        speciesBuilder.createDefaultSpecies(BOLETUS_EDULIS) //Forest native
-                .crimsonType(0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd)
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.FOREST)
-                .spawnType(FungusSpawn.FOREST)
-                .build();
-        speciesBuilder.createDefaultSpecies(SUILLUS_GRANULATUS)
-                .warpedType(0xFFF7E7, 0xFFA376, 0xC47D5A, 0xD88A64)
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.OLD_GROWTH_PINE_TAIGA)
-                .spawnType(FungusSpawn.OLD_GROWTH_PINE_TAIGA)
-                .build();
-        speciesBuilder.createDefaultSpecies(CHALCIPORUS_PIPERATUS)//non edible
-                .crimsonType(0xFFC741, 0xAE5913, 0x64330B, 0x8E6C24)
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.OLD_GROWTH_SPRUCE_TAIGA)
-                .spawnType(FungusSpawn.OLD_GROWTH_SPRUCE_TAIGA)
-                .build();
-        speciesBuilder.createDefaultSpecies(HYGROPHORUS_NIVEUS)
-                .crimsonType(0x6c4026 ,0xd5eeff, 0xd4e3ec, 0xffffff)
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.SNOWY_TAIGA)
-                .spawnType(FungusSpawn.SNOWY_TAIGA)
-                .build();
-        speciesBuilder.createDefaultSpecies(AMANITA_MUSCARIA)//poisonous
-                .warpedType(0xFFFCD9, 0xFF521E, 0xFFFFFF, 0xFFB171)
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.JUNGLE)
-                .spawnType(FungusSpawn.JUNGLE)
-                .build();
-        speciesBuilder.createDefaultSpecies(AMANITA_PHALLOIDES)
-                .crimsonType(0xffdb94, 0xc71c12, 0xe8e8e8, 0xF2F2F2)
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.SWAMP)
-                .spawnType(FungusSpawn.SWAMP)
-                .build();
-        speciesBuilder.createDefaultSpecies(YELLOW_FUNGUS)//meadow native
-                .warpedType(0xffeebd, 0xffd047, 0xc6a046, 0xf08342)
-                //.colors4(0xffeebd, 0xffdf7f, 0x729bf3, 0x4370c2)//old colors
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.MEADOW)
-                .spawnType(FungusSpawn.MEADOW)
-                .build();
-        speciesBuilder.createDefaultSpecies(BLUE_FUNGUS)//flower forest native
-                .crimsonType(0xF6DFB5, 0x4f94ee, 0xF6DFB5, 0xfff7e9)
-                .terrain(ModBlockTags.GRASS)
-                .biomesSpecs(BiomesSpecs.FOREST)
-                .spawnType(FungusSpawn.FLOWER_FOREST)
-                .build();
-        speciesBuilder.createDefaultSpecies(LACTARIUS_PROLEFERENS)
-                .warpedType(0x81696b, 0x933c3e, 0x933c3e, 0xd28d77)
-                //.colors4(0x81696b, 0x81696b, 0x933c3e, 0x81696b)
-                //.colors4(0x81696b, 0xbfab77, 0xbfab77, 0xbfab77)
-                .areaEffect(FungusEffects.SPORING_EFFECT)
-                .areaRadius(4)
-                .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
-                .spawnType(FungusSpawn.MUSHROOM_FIELDS)
-                .build();
-        speciesBuilder.createDefaultSpecies(BOLBITIUS_PROFONDORUM)//fungus found in caves
-                .crimsonType(0x8c909c, 0x94989C, 0x3f4045, 0x2b2d31)
-                .spawnType(FungusSpawn.CAVES)
-                .light(3)
-                .terrain(ModBlockTags.DEEPSLATE)
-                .build();
-        /////////////////////////////
-        //   Nether native fungi   //
-        /////////////////////////////
-        speciesBuilder.createDefaultSpecies(CHALCIPORUS_INFERNALIS)//nether wastes native
-                .crimsonType(0xb5917a, 0xEE2E3D, 0xff6500, 0xffa468)
-                .terrain(Blocks.NETHERRACK)
-                .biomesSpecs(BiomesSpecs.NETHER)
-                .spawnType(FungusSpawn.NETHER_WASTES)
-                .build();
-
-        speciesBuilder.createDefaultSpecies(AGARICUS_ANIMI)//soul sand valley native
-                .crimsonType(0x7b929c, 0x796251, 0x614e43, 0x887265)
-                .terrain(BlockTags.SOUL_FIRE_BASE_BLOCKS)
-                .biomesSpecs(BiomesSpecs.NETHER)
-                .spawnType(FungusSpawn.SOUL_SAND_VALLEY)
-                .build();
-        //////////////////////////
-        //   End native fungi   //
-        //////////////////////////
-        speciesBuilder.createDefaultSpecies(END_FUNGUS)
-                .crimsonType(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
-                .terrain(Blocks.END_STONE)
-                .biomesSpecs(BiomesSpecs.END)
-                .spawnType(FungusSpawn.END)
-                .build();
-        speciesBuilder.createDefaultSpecies(CHORUS_FUNGUS)
-                .crimsonType(0xe1dab6, 0xa078db, 0xeee9ff, 0xbea9b8)
-                .terrain(Blocks.END_STONE)
-                .biomesSpecs(BiomesSpecs.END)
-                .spawnType(FungusSpawn.END_HIGHLANDS)
-                .areaRadius(3)
-                .build();
-        ////////////////////////////////
-        //   Very rare native fungi   //
-        ////////////////////////////////
-        speciesBuilder.createDefaultSpecies(BLINDING_FUNGUS)
-                .warpedType(0xD36146, 0x7EA144, 0x619B68, 0x3A734C)
-                .terrain(ModBlockTags.GRASS)
-                .areaEffect(FungusEffects.BLINDING_EFFECT)
-                .areaRadius(10)
-                .spawnType(FungusSpawn.VERY_RARE.withBiomes(Biomes.DARK_FOREST))
-                .build();
-        /////////////////////////////
-        //   Environmental fungi   //
-        /////////////////////////////
-        speciesBuilder.createDefaultSpecies(FREEZING_FUNGUS)
-                .crimsonType(0x6c4026 ,0x6bbeff, 0xd4e3ec, 0xffffff)
-                .areaEffect(FungusEffects.FREEZING_EFFECT)
-                .areaRadius(8)
-                .build();
-
-        //////////////////////
-        //   Nether fungi   //
-        //////////////////////
-        speciesBuilder.createDefaultSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
-                .crimsonType(0xc18c6d, 0xccebff, 0xffffff, 0xe5f5ff)
-                .build();
-        speciesBuilder.createDefaultSpecies(WITHERING_FUNGUS)
-                .crimsonType(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
-                .terrain(ModBlockTags.NETHER)
-                .areaEffect(FungusEffects.WITHERING_EFFECT)
-                .build();
-
-        //////////////////////
-        //   Nature fungi   //
-        //////////////////////
         speciesBuilder.createDefaultSpecies(PLANTING_FUNGUS)
                 .crimsonType(0xffd0a3, 0xe76542, 0xfde5cd, 0xa7492f)
                 .terrain(ModBlockTags.GRASS)
@@ -551,6 +552,43 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(FLOWERS_FUNGUS)
                 .warpedType(0xbc8364, 0x51beff, 0xffdf7f, 0xff8f4c)
                 .terrain(ModBlockTags.GRASS)
+                .build();
+
+        /////////////////////////
+        //    Mutant branch    //
+        /////////////////////////
+        speciesBuilder.createDefaultSpecies(DYEING_FUNGUS)
+                .warpedType(0xffcb99, 0xff66d8, 0xf8fa53, 0x49b2e3)
+                .terrain(ModBlockTags.GRASS)
+                .areaEffect(FungusEffects.DYEING_EFFECT)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(UNDEAD_FUNGUS)
+                .warpedType(0x9b4e3b, 0x6a8a3d, 0x457ae3, 0x4b54bb)
+                .areaRadius(2)
+                .areaEffect(FungusEffects.UNDEAD_EFFECT)
+                .build();
+
+        ////////////////////////////
+        //    Energetic branch    //
+        ////////////////////////////
+        speciesBuilder.createDefaultSpecies(GLOWSTONE_FUNGUS)
+                .crimsonType(0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd)
+                .terrain(ModBlockTags.NETHER)
+                .build();
+
+        speciesBuilder.createDefaultSpecies(LIGHTNING_FUNGUS)
+                .warpedType(0xfeffcc, 0xffcf42, 0xffffff, 0xb2ffff)
+                .areaEffect(FungusEffects.LIGHTNING_EFFECT)
+                .build();
+
+        /////////////////////////////
+        //   Environmental fungi   //
+        /////////////////////////////
+        speciesBuilder.createDefaultSpecies(FREEZING_FUNGUS)
+                .crimsonType(0x6c4026 ,0x6bbeff, 0xd4e3ec, 0xffffff)
+                .areaEffect(FungusEffects.FREEZING_EFFECT)
+                .areaRadius(8)
                 .build();
 
         ///////////////////////////
@@ -579,6 +617,7 @@ public class SpeciesProvider implements DataProvider
                 .terrain(ModBlockTags.GRASS)
                 .areaEffect(FungusEffects.KNOWLEDGE_EFFECT)
                 .build();
+
         ///////////////////////////
         //      Magic fungi      //
         ///////////////////////////
@@ -598,6 +637,7 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType(0xffd08d, 0x52e13d, 0xffffff, 0xffffff)
                 .eatingEffect(ModEffects.LAST_CHANCE)
                 .build();
+
         ///////////////////////////
         //    Phase Two fungi    //
         ///////////////////////////
@@ -648,11 +688,11 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.DEV_TEST_EFFECT)
                 .areaRadius(2)
                 .build();
-        speciesBuilder.createDefaultSpecies("TNT_FUNGUS")
+        /*speciesBuilder.createDefaultSpecies("TNT_FUNGUS")
                 .crimsonType(0xc72e25, 0xc72e25, 0xe8e8e8, 0x303030)
                 .areaEffect(FungusEffects.TNT_EFFECT)
                 .areaRadius(4)
-                .build();
+                .build();*/
 
         //some colors
         //(0x9c2b17, 0x9cd424, 0xb6e6be, 0x860a18)

@@ -37,7 +37,7 @@ public class CookingRecipesProvider implements DataProvider
         addSmeltingRecipes(OVULUS_VIOLACEUS, Items.PURPLE_DYE, 2, 0, 200, cache);
         addSmeltingRecipes(CYAN_FUNGUS, Items.CYAN_DYE, 2, 0, 200, cache);
         addSmeltingRecipes(BLUE_FUNGUS, Items.BLUE_DYE, 2, 0, 200, cache);
-        addSmeltingRecipes(LACTARIUS_VIRIDIS, Items.GREEN_DYE, 2, 0, 200, cache);
+        addSmeltingRecipes(LACTARIUS_VIRENS, Items.GREEN_DYE, 2, 0, 200, cache);
         addSmeltingRecipes(WHITE_FUNGUS, Items.WHITE_DYE, 2, 0, 200, cache);
         addSmeltingRecipes(GREY_FUNGUS, Items.GRAY_DYE, 2, 0, 200, cache);
         addSmeltingRecipes(LIME_FUNGUS, Items.LIME_DYE, 2, 0, 200, cache);

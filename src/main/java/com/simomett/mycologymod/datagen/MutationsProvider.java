@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
 import static com.simomett.mycologymod.config.ModCommonConfigs.DEFAULT_MUTATION_CHANCE;
-import static com.simomett.mycologymod.config.ModCommonConfigs.DEFAULT_MUTATION_CHANCE_CONFIG;
 import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.*;
 
 public class MutationsProvider implements DataProvider
@@ -37,13 +36,13 @@ public class MutationsProvider implements DataProvider
         addMutation(AMANITA_MUSCARIA, CHALCIPORUS_PIPERATUS, AMANITA_RUBRA, cachedOutput);
         addMutation(AGARICUS_CAMPESTRIS, LECCINUM_VERSIPELLE, WHITE_FUNGUS, cachedOutput);
         addMutation(AGARICUS_CAMPESTRIS, BOLETUS_EDULIS, GREY_FUNGUS, cachedOutput);
-        addMutation(WHITE_FUNGUS, LACTARIUS_VIRIDIS, LIME_FUNGUS, cachedOutput);
+        addMutation(WHITE_FUNGUS, LACTARIUS_VIRENS, LIME_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, GREY_FUNGUS, LIGHTGREY_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, BLACK_FUNGUS, GREY_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, BLUE_FUNGUS, LIGHTBLUE_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, AMANITA_RUBRA, PINK_FUNGUS, cachedOutput);
         addMutation(BLUE_FUNGUS, AMANITA_RUBRA, OVULUS_VIOLACEUS, cachedOutput);
-        addMutation(BLUE_FUNGUS, LACTARIUS_VIRIDIS, CYAN_FUNGUS, cachedOutput);
+        addMutation(BLUE_FUNGUS, LACTARIUS_VIRENS, CYAN_FUNGUS, cachedOutput);
         addMutation(OVULUS_VIOLACEUS, PINK_FUNGUS, MAGENTA_FUNGUS, cachedOutput);
         addMutation(AMANITA_RUBRA, YELLOW_FUNGUS, ORANGE_FUNGUS, cachedOutput);
         addMutation(POLYPORUS_LIGNEUS, AMANITA_MUSCARIA, BROWN_FUNGUS, cachedOutput);

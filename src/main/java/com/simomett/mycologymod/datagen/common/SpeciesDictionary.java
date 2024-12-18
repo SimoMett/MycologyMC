@@ -9,7 +9,7 @@ public class SpeciesDictionary
      */
     //  Native Overworld
     public static final String AGARICUS_CAMPESTRIS = AGARICUS+" campestris";       //(plains)
-    public static final String LACTARIUS_VIRIDIS = LACTARIUS+" virens";           //(sunflower plains)
+    public static final String LACTARIUS_VIRENS = LACTARIUS+" virens";           //(sunflower plains)
     public static final String LECCINUM_VERSIPELLE = LECCINUM+" versipelle";       //(birch forest)
     public static final String BOLETUS_EDULIS = BOLETUS+" edulis";                 //(forest)
     public static final String SUILLUS_GRANULATUS = SUILLUS+" granulatus";         //(old growth pine taiga)
@@ -52,6 +52,7 @@ public class SpeciesDictionary
     public static final String BASALT_FUNGUS = TRICHOLOMOPSIS+" fundamentorum";
     public static final String DIORITE_FUNGUS = HYGROCYBE+" dioritis";
     public static final String CALCITE_FUNGUS = OVULUS+" calcareus";
+    public static final String BONEBLOCK_FUNGUS = XEROCOMUS+" osseus";
 
     // Minerals branch
     public static final String COAL_FUNGUS = LECCINUM+" carbonis";
@@ -78,6 +79,7 @@ public class SpeciesDictionary
     public static final String BOLETUS_SALUBRIUM = BOLETUS+" salubrium";
     public static final String STRENGTH_FUNGUS = SUILLUS+" roborans";
     public static final String SPEED_FUNGUS = LACTARIUS+" agilis";
+    public static final String CRATERELLUS_CORNUCOPIOIDES = CRATERELLUS+" cornucopioides";
 
     // Alcoholic branch
     public static final String FERMENTER_FUNGUS = HYGROCYBE+" saccharoidis";
@@ -108,11 +110,13 @@ public class SpeciesDictionary
     public static final String TRICHOLOMOPSIS_EVANESCENS = TRICHOLOMOPSIS+" evanescens";
     public static final String RAPTING_FUNGUS = CHALCIPORUS+" rapiens";
     public static final String TELEPORTING_FUNGUS = OVULUS+" expeditus";
+    public static final String ENDER_EYE_FUNGUS = BOLBITIUS+" dirigens";
 
     // Nature branch
     public static final String COCOA_FUNGUS = CRATERELLUS+" cacao";
     public static final String PLANTING_FUNGUS = IMLERIA+" agricola";
     public static final String FLOWERS_FUNGUS = SUILLUS+" florens";
+    public static final String FERTILIZING_FUNGUS = LECCINUM+" fertilis";
 
     // Mutant branch
     public static final String DYEING_FUNGUS = GALERINA+" colorata";
@@ -132,11 +136,4 @@ public class SpeciesDictionary
     public static final String CURING_FUNGUS = LACTARIUS+" curans";
     public static final String SKELETONS_FUNGUS = POLYPORUS+" exsceletro";
     public static final String LIFE_UP_FUNGUS = BOLETUS+" parcens";
-
-    // Not yet identified (TODO)
-    public static final String ENDER_EYE_FUNGUS = BOLBITIUS+" dirigens";
-    public static final String BONEBLOCK_FUNGUS = XEROCOMUS+" osseus";
-    public static final String FERTILIZING_FUNGUS = LECCINUM+" fertilis";
-    public static final String CRATERELLUS_CORNUCOPIOIDES = CRATERELLUS+" cornucopioides";
-
 }
