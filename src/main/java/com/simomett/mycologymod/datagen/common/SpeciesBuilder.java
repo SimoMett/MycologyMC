@@ -19,6 +19,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jline.utils.Log;
 
 import java.nio.file.Path;
+import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -156,8 +157,13 @@ public class SpeciesBuilder
         Log.error(message);
     }
 
+    private static final int MAX_NAME_LEN = 34;
     public void build()
     {
+        if(speciesName.length() > MAX_NAME_LEN)
+            speciesName = speciesName.substring(0, MAX_NAME_LEN);
+        if(!(speciesName.matches("([a-zA-Z]* ?)*") || speciesName.matches("[A-Z]*_FUNGUS")))
+            throw new InvalidParameterException("SpeciesBuilder: invalid species name '"+speciesName+"'");
         //FIXME is there a better way of doing this?
         if(colors==null)
             throw new NullPointerException("SpeciesBuilder: 'colors' attribute of '"+speciesName+"' is null");
@@ -176,7 +182,6 @@ public class SpeciesBuilder
         if(areaEffect==null)
             manageException("SpeciesBuilder: 'areaEffect' attribute of '"+speciesName+"' is null");
 
-        //IMPORTANT TODO: sanitize speciesName string
         JsonObject fungusJson = new JsonObject();
         fungusJson.addProperty("species",speciesName);
         fungusJson.addProperty("type",type);
