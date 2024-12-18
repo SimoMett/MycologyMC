@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:glass_pane",
+    "s": "minecraft:slime_ball"
+  },
+  "pattern": [
+    "#s#",
+    "# #",
+    " # "
+  ],
+  "result": {
+    "count": 5,
+    "id": "mycologymod:test_tube"
+  }
+}

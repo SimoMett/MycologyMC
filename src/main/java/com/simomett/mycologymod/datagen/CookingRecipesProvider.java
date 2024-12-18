@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.recipes.cooking.ModCookingRecipes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -52,8 +51,8 @@ public class CookingRecipesProvider implements DataProvider
         addSmeltingRecipes(RUSSULA_LAZULA, Items.LAPIS_LAZULI, 0f, 200, cache);
         addSmeltingRecipes(GALERINA_AURATA, Items.GOLD_NUGGET, 2, 0f, 200, cache);
         addSmeltingRecipes(XEROCOMUS_FERRUGINEUS, Items.IRON_NUGGET, 2, 0, 200, cache);
-        addSmeltingRecipes(AMANITA_CUPREA, Items.RAW_COPPER, 0, 400, cache); //FIXME need copper nugget item
-        addSmeltingRecipes(DIAMOND_FUNGUS, Items.DIAMOND, 0, 400, cache); //FIXME need diamond chunk item
+        addSmeltingRecipes(AMANITA_CUPREA, Items.RAW_COPPER, 0, 400, cache);
+        addSmeltingRecipes(DIAMOND_FUNGUS, Items.DIAMOND, 0, 400, cache);
         addSmeltingRecipes(BOLBITIUS_SILEX, Items.QUARTZ, 0, 200, cache);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
@@ -76,7 +75,7 @@ public class CookingRecipesProvider implements DataProvider
 
         Path path = generator.getPackOutput().getOutputFolder();
         String jsonFileName = "cooked_"+ingredientSpecies.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "recipes", jsonFileName));
+        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "recipe", jsonFileName));
 
         list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }
