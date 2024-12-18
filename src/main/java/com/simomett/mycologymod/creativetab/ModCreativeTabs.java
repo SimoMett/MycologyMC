@@ -19,6 +19,8 @@ public class ModCreativeTabs
             .displayItems((enabledFlags, populator) -> {
                 populator.acceptAll(FungusSpeciesList.INSTANCE.getAllSpeciesCollection());
                 populator.accept(ModItems.MAGNIFYING_GLASS.get());
+                populator.accept(ModItems.TEST_TUBE);
+                populator.accept(ModItems.CHROMIUM_ORE);
             })
             .build()
     );

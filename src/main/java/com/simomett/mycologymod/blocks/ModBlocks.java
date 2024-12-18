@@ -3,6 +3,7 @@ package com.simomett.mycologymod.blocks;
 import com.simomett.mycologymod.MycologyMod;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,6 +25,8 @@ public class ModBlocks
             new ColoredFungusBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_MUSHROOM)
                     .setId(ResourceKey.create(Registries.BLOCK, r)))
     );
+
+    public static final DeferredBlock<Block> CHROMIUM_ORE = BLOCKS.registerSimpleBlock("chromium_ore");
 
     public static BlockState getDefaultBlockStateFromFungusType(String fungusType)
     {
