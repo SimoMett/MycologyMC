@@ -4,14 +4,11 @@ import com.mojang.serialization.MapCodec;
 import com.simomett.mycologymod.config.ModCommonConfigs;
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.effects.FungusEffects;
-import com.simomett.mycologymod.genetics.Breeding;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.particles.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -39,7 +36,6 @@ import org.jline.utils.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static com.simomett.mycologymod.blocks.ModBlocks.COLORED_WARPED_STRING;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.config.ModCommonConfigs.*;
 import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;
@@ -210,7 +206,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 {
                     // precalculate the genotype
                     ColoredFungusBlockEntity randomFungus = nearbyFungi.get(new Random().nextInt(nearbyFungi.size()));
-                    FungusGenoma offspringGenoma = Breeding.crossBreed(randomFungus.getFungusGenoma(), genoma);
+                    FungusGenoma offspringGenoma = randomFungus.getFungusGenoma().crossBreedWith(genoma);
 
                     // if the environment requisites for the fungus are matched ...
                     int light = level.getBrightness(LightLayer.SKY, blockpos1);

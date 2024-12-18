@@ -1,6 +1,8 @@
 package com.simomett.mycologymod.genetics;
 
 import com.simomett.mycologymod.data.FungusSpeciesList;
+import com.simomett.mycologymod.recipes.breeding.MutationRecipe;
+import com.simomett.mycologymod.recipes.breeding.MutationRecipesList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -141,7 +143,7 @@ public class FungusGenoma implements Serializable
         return matchesEnvironment(light, temperature, humidity) && matchesTerrain(terrainBlock);
     }
 
-    public FungusGenoma normalCrossbreedWith(FungusGenoma that)
+    public FungusGenoma normalCrossBreedWith(FungusGenoma that)
     {
         //FIXME better implementation to consider optional fields (eg. eating effect)
         FungusGenoma offspring = new FungusGenoma();
@@ -153,6 +155,32 @@ public class FungusGenoma implements Serializable
             String p = random.nextBoolean() ? that.getDominantTraits().get(trait).orElse(null) : that.getRecessiveTraits().get(trait).orElse(null);
             offspring.getRecessiveTraits().replace(trait, p);
         }
+        return offspring;
+    }
+
+    public FungusGenoma crossBreedWith(FungusGenoma species2)
+    {
+        FungusGenoma offspring;
+        Random random = new Random();
+        List<MutationRecipe> mutations = MutationRecipesList.getList();
+
+        //get all the mutations between species1 and species2
+        mutations = mutations.stream()
+                .filter(m -> (m.getSpecies1().equals(this.getDominantTraits().species()) && m.getSpecies2().equals(species2.getDominantTraits().species()))
+                        || (m.getSpecies1().equals(species2.getDominantTraits().species()) && m.getSpecies2().equals(this.getDominantTraits().species())))
+                .toList();
+
+        if (!mutations.isEmpty())
+        {
+            int randomRecipeId = random.nextInt(mutations.size());
+            MutationRecipe randomMutation = mutations.get(randomRecipeId);
+
+            boolean shouldPerformMutation = random.nextFloat(0f, 1f) < randomMutation.getChance();
+            if (shouldPerformMutation)
+                return new FungusGenoma(FungusSpeciesList.INSTANCE.get(randomMutation.getResultSpecies()));
+        }
+
+        offspring = this.normalCrossBreedWith(species2);
         return offspring;
     }
 
