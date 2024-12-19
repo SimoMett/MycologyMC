@@ -30,6 +30,14 @@ public class SpeciesBuilder
     public static final String CRIMSON_TYPE = ModBlocks.COLORED_CRIMSON_STRING;
     public static final String WARPED_TYPE = ModBlocks.COLORED_WARPED_STRING;
 
+    //some spreading default values
+    public static final int DEFAULT_SPREADING = 25;
+    public static final int VERY_SLOW_SPREADING = 50;
+
+    public static final float DEFAULT_SPREADBOOST = 1.5f;
+
+    public static final int DEFAULT_AREA_RADIUS = 3;
+
     public SpeciesBuilder(DataGenerator generator, CachedOutput hashCache, List<CompletableFuture<?>> completableFutureList)
     {
         this.generator = generator;
@@ -59,19 +67,17 @@ public class SpeciesBuilder
     //Methods chaining
     public SpeciesBuilder createSpecies(@NonNull String speciesName)
     {
-
         this.speciesName = speciesName;
         return this;
     }
 
-    private static final int DEFAULT_AREA_RADIUS = 3;
     @Deprecated
     public SpeciesBuilder createDefaultSpecies(String speciesName)
     {
         this.createSpecies(speciesName);
         this.crimsonType(0, 0, 0, 0);
-        this.spreading = 25;
-        this.spreadBoost = 1.0f;
+        this.spreading = DEFAULT_SPREADING;
+        this.spreadBoost = DEFAULT_SPREADBOOST;
         this.light = 15;
         this.terrain(ModBlockTags.GRASS);
         this.biomesSpecs = BiomesSpecs.FOREST;

@@ -635,6 +635,9 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies(LIFE_UP_FUNGUS)
                 .crimsonType(0xffd08d, 0x52e13d, 0xffffff, 0xffffff)
+                .spreading(SpeciesBuilder.VERY_SLOW_SPREADING)
+                .areaEffect(FungusEffects.NO_EFFECT)
+                .areaRadius(0)
                 .eatingEffect(ModEffects.LAST_CHANCE)
                 .build();
 

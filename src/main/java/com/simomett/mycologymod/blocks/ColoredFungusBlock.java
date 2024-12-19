@@ -177,17 +177,20 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         addSporeParticle(radius, blockState, blockPos, level, randomSource);
     }
 
-    @Override
+    @Override // copied from MushroomBlock.randomTick
     protected void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)
     {
         BlockPos originalPos = pos;
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(originalPos));
-        FungusGenoma genoma = originBlockEntity.getFungusGenoma();
+        FungusGenoma thisGenoma = originBlockEntity.getFungusGenoma();
 
-        //code copied from MushroomBlock.randomTick
-        int spreading = genoma.getDominantTraits().spreading();
-        float spreadBoost = genoma.getDominantTraits().spreadboost(); //TODO implement spreadboost
-        int areaRadius = genoma.getDominantTraits().area();
+        float spreadBoost = thisGenoma.matchesEnvironment(level, originalPos)? thisGenoma.getDominantTraits().spreadboost() : 1f;
+        int spreading = Math.round(thisGenoma.getDominantTraits().spreading() / spreadBoost);
+        if(spreading==0)
+            spreading=1;
+
+        int areaRadius = thisGenoma.getDominantTraits().area();
+
         if (rand.nextInt(spreading) == 0)
         {
             //check if there are 'i' mushrooms in area
@@ -198,9 +201,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 if (level.getBlockState(blockpos).is(this))
                 {
                     --i;
-                    if (i <= 0) {
+                    if (i <= 0)
                         return;
-                    }
                 }
             }
 
@@ -211,57 +213,45 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             for(int k = 0; k < 4; ++k)
             {
                 if (level.isEmptyBlock(blockpos1) && blockState.canSurvive(level, blockpos1))
-                {
                     pos = blockpos1;
-                }
 
                 blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
             }
 
-            //mushroom spreading (and breeding) procedure
             if (level.isEmptyBlock(blockpos1))
+                breedAndSpread(blockState, level, blockpos1, areaRadius, thisGenoma);
+        }
+
+        // area effect
+        String fungusEffect = thisGenoma.getDominantTraits().effect();
+        FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
+    }
+
+    private static void breedAndSpread(BlockState blockState, ServerLevel level, BlockPos blockpos1, int areaRadius, FungusGenoma genoma)
+    {
+        boolean crossBreeding = new Random().nextInt(ModCommonConfigs.BREEDING_CHANCE.get()) == 0; //TODO use mutations probabilities
+
+        ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, areaRadius);
+
+        if (crossBreeding && !nearbyFungi.isEmpty())
+        {
+            // precalculate the genotype
+            ColoredFungusBlockEntity randomFungus = nearbyFungi.get(new Random().nextInt(nearbyFungi.size()));
+            FungusGenoma offspringGenoma = randomFungus.getFungusGenoma().crossBreedWith(genoma);
+
+            if (offspringGenoma.matchesEnvironmentAndTerrain(level, blockpos1, level.getBlockState(blockpos1.below())))
             {
-                Random dice = new Random();
-                boolean crossBreeding = dice.nextInt(ModCommonConfigs.BREEDING_CHANCE.get()) == 0; //FIXME adjust BREEDING_CHANCE
-
-                // check if there are any different fungi nearby (by 'nearby' I mean the dominant "area" trait)
-                ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, areaRadius);
-
-                if (crossBreeding && !nearbyFungi.isEmpty())
-                {
-                    // precalculate the genotype
-                    ColoredFungusBlockEntity randomFungus = nearbyFungi.get(new Random().nextInt(nearbyFungi.size()));
-                    FungusGenoma offspringGenoma = randomFungus.getFungusGenoma().crossBreedWith(genoma);
-
-                    // if the environment requisites for the fungus are matched ...
-                    int light = level.getBrightness(LightLayer.SKY, blockpos1);
-                        //LightLayer.SKY is the light level of a block due to other blocks obstructing skylight. 0 is in complete darkness, 15 is in plain air.
-                        //LightLayer.BLOCK is the light level of a block due to other sources of light (Glowstone, torches..).
-
-                    float temperature = level.getBiome(blockpos1).value().getModifiedClimateSettings().temperature();
-                        // getBaseTemperature() or getModifiedClimateSettings().temperature() ?
-                        // they seems to be the same...
-
-                    float humidity = level.getBiome(blockpos1).value().getModifiedClimateSettings().downfall();
-
-                    if (offspringGenoma.matchesEnvironmentAndTerrain(light, temperature, humidity, level.getBlockState(blockpos1.below())))
-                    {
-                        // ... then place it
-                        String fungusType = FungusSpeciesList.INSTANCE.get(offspringGenoma.getDominantTraits().species()).fungusType;
-                        blockState = ModBlocks.getDefaultBlockStateFromFungusType(fungusType);
-                        placeFungusBlock(blockState, level, blockpos1, offspringGenoma);
-                        return;
-                    }
-                }
-
-                //otherwise proceed with normal spreading
-                if (blockState.canSurvive(level, blockpos1))
-                    placeFungusBlock(blockState, level, blockpos1, genoma);
+                // ... then place it
+                String fungusType = FungusSpeciesList.INSTANCE.get(offspringGenoma.getDominantTraits().species()).fungusType;
+                blockState = ModBlocks.getDefaultBlockStateFromFungusType(fungusType);
+                placeFungusBlock(blockState, level, blockpos1, offspringGenoma);
             }
         }
-        //implement here area effect
-        String fungusEffect = genoma.getDominantTraits().effect();
-        FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
+        else if (blockState.canSurvive(level, blockpos1))
+        {
+            // ... otherwise proceed with normal spreading
+            placeFungusBlock(blockState, level, blockpos1, genoma);
+        }
     }
 
     private static void placeFungusBlock(BlockState blockState, ServerLevel level, BlockPos pos, FungusGenoma genoma)
@@ -318,11 +308,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             return false;
         }
 
-        boolean matchesTerrain = thisFungusData.matchesTerrain(belowBlock);
-        int light = level.getBrightness(LightLayer.SKY, origin);
-        float temperature = level.getBiome(origin).value().getModifiedClimateSettings().temperature();
-        float humidity = level.getBiome(origin).value().getModifiedClimateSettings().downfall();
-        boolean matchesEnv = thisFungusData.matchesEnvironment(light, temperature, humidity);
-        return thisFungusData.matchesEnvironmentAndTerrain(light, temperature, humidity, belowBlock);
+        return thisFungusData.matchesEnvironmentAndTerrain(level, origin, belowBlock);
     }
 }

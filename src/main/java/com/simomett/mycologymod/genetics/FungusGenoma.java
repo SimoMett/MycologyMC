@@ -3,12 +3,15 @@ package com.simomett.mycologymod.genetics;
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipe;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipesList;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.io.*;
@@ -120,8 +123,18 @@ public class FungusGenoma implements Serializable
         return dominantTraits.get(key).orElseThrow();
     }
 
-    public boolean matchesEnvironment(Integer light, Float temperature, Float humidity)
+    public boolean matchesEnvironment(LevelReader level, BlockPos origin)
     {
+        //LightLayer.SKY is the light level of a block due to other blocks obstructing skylight. 0 is in complete darkness, 15 is in plain air.
+        //LightLayer.BLOCK is the light level of a block due to other sources of light (Glowstone, torches..).
+        int light = level.getBrightness(LightLayer.SKY, origin);
+
+        // getBaseTemperature() or getModifiedClimateSettings().temperature() ?
+        // they seems to be the same...
+        float temperature = level.getBiome(origin).value().getModifiedClimateSettings().temperature();
+
+        float humidity = level.getBiome(origin).value().getModifiedClimateSettings().downfall();
+
         boolean matchesEnv = light < dominantTraits.light() // let's say for now that mushroom prefer sporing in darker areas
                 && dominantTraits.temp().equals(temperature)
                 && dominantTraits.humidity().equals(humidity);
@@ -138,9 +151,9 @@ public class FungusGenoma implements Serializable
             return terrainBlock.is(BuiltInRegistries.BLOCK.get(ResourceLocation.parse(terrainTag)).get());
     }
 
-    public final boolean matchesEnvironmentAndTerrain(Integer light, Float temperature, Float humidity, BlockState terrainBlock)
+    public final boolean matchesEnvironmentAndTerrain(LevelReader level, BlockPos blockPos, BlockState terrainBlock)
     {
-        return matchesEnvironment(light, temperature, humidity) && matchesTerrain(terrainBlock);
+        return matchesEnvironment(level, blockPos) && matchesTerrain(terrainBlock);
     }
 
     public FungusGenoma normalCrossBreedWith(FungusGenoma that)
