@@ -155,6 +155,7 @@ public class FungusEffects
         Random rand = new Random();
         final float scale = 0.8f;
         final float spread = 1f; //additive random spread
+        //TODO give chance to attack directly a random living entity
         fireball.shoot(rand.nextDouble(-1, 1), rand.nextDouble(1), rand.nextDouble(-1, 1), scale, spread);
         return fireball;
     });
