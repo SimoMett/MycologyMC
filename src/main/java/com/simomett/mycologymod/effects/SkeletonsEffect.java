@@ -2,6 +2,7 @@ package com.simomett.mycologymod.effects;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Skeleton;
@@ -33,6 +34,7 @@ public class SkeletonsEffect extends FungusEffect
             level.destroyBlock(pos.above(), false);
             Skeleton skeleton = new Skeleton(EntityType.SKELETON, level);
             level.addFreshEntity(skeleton);
+            skeleton.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), EntitySpawnReason.CONVERSION, null);
             skeleton.setPos(pos.getCenter());
         }
     }
