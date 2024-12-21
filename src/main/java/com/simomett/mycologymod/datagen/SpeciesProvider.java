@@ -172,6 +172,7 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(BLAZE_FUNGUS)
                 .crimsonType(0xFF7B00, 0xFF9900, 0xFFDD36, 0xFFFF73)
                 .areaEffect(FungusEffects.BLAZING_EFFECT)
+                .areaRadius(9)
                 .terrain(ModBlockTags.NETHER_BRICKS)
                 .build();
 

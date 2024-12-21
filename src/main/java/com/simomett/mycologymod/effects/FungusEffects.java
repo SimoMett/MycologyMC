@@ -149,16 +149,7 @@ public class FungusEffects
     public static final FungusEffect CURING_EFFECT = new CuringEffect("curing");
     public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
     public static final FungusEffect SKELETONS_EFFECT = new SkeletonsEffect("skeletons");
-    public static final FungusEffect BLAZING_EFFECT = new SpawnEntityEffect("blazing" ,(lvl) -> {
-        SmallFireball fireball = new SmallFireball(EntityType.SMALL_FIREBALL, lvl);
-        fireball.setNoGravity(false);
-        Random rand = new Random();
-        final float scale = 0.8f;
-        final float spread = 1f; //additive random spread
-        //TODO give chance to attack directly a random living entity
-        fireball.shoot(rand.nextDouble(-1, 1), rand.nextDouble(1), rand.nextDouble(-1, 1), scale, spread);
-        return fireball;
-    });
+    public static final FungusEffect BLAZING_EFFECT = new BlazingEffect("blazing");
     public static final FungusEffect LIGHTNING_EFFECT = new SpawnEntityEffect("lightning", (lvl) -> new LightningBolt(EntityType.LIGHTNING_BOLT, lvl));
     public static final FungusEffect EXPORBS_EFFECT = new SpawnEntityEffect("exporbs", (lvl) -> {
         ExperienceOrb orb = new ExperienceOrb(EntityType.EXPERIENCE_ORB, lvl);
