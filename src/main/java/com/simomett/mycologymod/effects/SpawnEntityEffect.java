@@ -29,16 +29,7 @@ public class SpawnEntityEffect extends FungusEffect
     @Override
     public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
     {
-        AABB box = getAABB(origin, radius);
-
-        final List<BlockPos> pList = new ArrayList<>();
-        BlockPos.betweenClosedStream(box).forEach( p -> {
-            pList.add(new BlockPos(p));
-        });
-        List <BlockPos> pList2 = pList.stream()
-                .filter(p -> p.distSqr(origin) < box.getSize()/2.0f)
-                .filter(p -> level.getBlockState(p).isAir() && level.getBlockState(p.above()).isAir())
-                .toList();
+        List <BlockPos> pList2 = getPositionsForSpawningEntity(level, origin, radius);
         if (!pList2.isEmpty())
         {
             BlockPos p = pList2.get(new Random().nextInt(pList2.size()));
@@ -49,5 +40,20 @@ public class SpawnEntityEffect extends FungusEffect
                 level.addFreshEntity(entity);
             }
         }
+    }
+
+    public static List<BlockPos> getPositionsForSpawningEntity(ServerLevel level, BlockPos origin, int radius)
+    {
+        AABB box = getAABB(origin, radius);
+
+        final List<BlockPos> pList = new ArrayList<>();
+        BlockPos.betweenClosedStream(box).forEach( p -> {
+            pList.add(new BlockPos(p));
+        });
+
+        return pList.stream()
+                .filter(p -> p.distSqr(origin) < box.getSize()/2.0f)
+                .filter(p -> level.getBlockState(p).isAir() && level.getBlockState(p.above()).isAir() && !level.getBlockState(p.below()).isAir())
+                .toList();
     }
 }

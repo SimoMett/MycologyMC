@@ -150,7 +150,7 @@ public class FungusEffects
     public static final FungusEffect CREEPING_EFFECT = new SpawnEntityEffect("creeping", (lvl) -> new Creeper(EntityType.CREEPER, lvl));
     public static final FungusEffect SKELETONS_EFFECT = new SkeletonsEffect("skeletons");
     public static final FungusEffect BLAZING_EFFECT = new BlazingEffect("blazing");
-    public static final FungusEffect LIGHTNING_EFFECT = new SpawnEntityEffect("lightning", (lvl) -> new LightningBolt(EntityType.LIGHTNING_BOLT, lvl));
+    public static final FungusEffect LIGHTNING_EFFECT = new LightningEffect("lightning");
     public static final FungusEffect EXPORBS_EFFECT = new SpawnEntityEffect("exporbs", (lvl) -> {
         ExperienceOrb orb = new ExperienceOrb(EntityType.EXPERIENCE_ORB, lvl);
         orb.value = 1;

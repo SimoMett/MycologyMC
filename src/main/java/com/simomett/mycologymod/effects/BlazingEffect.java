@@ -1,8 +1,8 @@
 package com.simomett.mycologymod.effects;
 
+import com.simomett.mycologymod.config.ModCommonConfigs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.SmallFireball;
@@ -32,7 +32,7 @@ public class BlazingEffect extends FungusEffect
         final float spread = 1f; //additive random spread
         AABB bbox = FungusEffect.getAABB(origin, radius);
         List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, bbox);
-        if(rand.nextInt(3) == 0 && !entities.isEmpty())
+        if(rand.nextInt(ModCommonConfigs.EFFECT_BLAZING_HIT_ENTITY_CHANCE.get()) == 0 && !entities.isEmpty())
         {
             LivingEntity e = entities.get(rand.nextInt(entities.size()));
             double dist = e.position().distanceTo(origin.getCenter());
