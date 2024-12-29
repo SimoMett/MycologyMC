@@ -15,4 +15,5 @@ public class ModBlockTags
     public static final TagKey<Block> QUARTZ_ORES = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "quartz_ores"));
     public static final TagKey<Block> NETHER_BRICKS = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "nether_bricks"));
     public static final TagKey<Block> CAN_PLANT_ON = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "can_plant_on"));
+    public static final TagKey<Block> FUNGUS_PLANTABLE = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "fungus_plantable"));
 }

@@ -1,13 +1,20 @@
 package com.simomett.mycologymod.effects;
 
+import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 public class PlantEffect extends FungusEffect
@@ -40,9 +47,14 @@ public class PlantEffect extends FungusEffect
 
         if (!pList2.isEmpty())
         {
-            BlockPos randomPos = pList2.get(new Random().nextInt(pList2.size()));
-            //TODO change wheat crop with a random distribution of crops (loot table?)
-            level.setBlock(randomPos, Blocks.WHEAT.defaultBlockState(), 2);
+            Random rand = new Random();
+            BlockPos randomPos = pList2.get(rand.nextInt(pList2.size()));
+            // using a custom loot table ?
+            Optional<HolderSet.Named<Block>> plants = BuiltInRegistries.BLOCK.get(ModBlockTags.FUNGUS_PLANTABLE);
+            BlockState randomPlant = plants.get().get(rand.nextInt(plants.get().size())).value().defaultBlockState();
+            if(randomPlant.hasProperty(CropBlock.AGE))
+                randomPlant.setValue(CropBlock.AGE, 0);
+            level.setBlock(randomPos, randomPlant, 2);
         }
     }
 }
