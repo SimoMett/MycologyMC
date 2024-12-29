@@ -156,22 +156,15 @@ public class FungusEffects
         orb.value = 1;
         return orb;
     });
-    public static final FungusEffect EYE_OF_ENDER_EFFECT = new FungusEffect("eye_of_ender") {
-        @Override
-        public void applyEffectToEntity(LivingEntity entity) {}
-
-        @Override
-        public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
+    public static final FungusEffect EYE_OF_ENDER_EFFECT = new LevelOnlyEffect("eye_of_ender", (level, origin, box) -> {
+        BlockPos strongholdPos = level.findNearestMapStructure(StructureTags.EYE_OF_ENDER_LOCATED, origin, 100, false);
+        if(strongholdPos!= null)
         {
-            BlockPos strongholdPos = level.findNearestMapStructure(StructureTags.EYE_OF_ENDER_LOCATED, origin, 100, false);
-            if(strongholdPos!= null)
-            {
-                EyeOfEnder eyeOfEnder = new EyeOfEnder(level, origin.getX(), origin.getY()+0.5, origin.getZ());
-                eyeOfEnder.signalTo(strongholdPos);
-                level.addFreshEntity(eyeOfEnder);
-            }
+            EyeOfEnder eyeOfEnder = new EyeOfEnder(level, origin.getX(), origin.getY()+0.5, origin.getZ());
+            eyeOfEnder.signalTo(strongholdPos);
+            level.addFreshEntity(eyeOfEnder);
         }
-    };
+    });
     //dev
     public static final FungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
     public static final FungusEffect TNT_EFFECT = new SpawnEntityEffect("tnt", (lvl) -> {
