@@ -3,10 +3,7 @@ package com.simomett.mycologymod.effects;
 import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.Tag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -21,7 +18,6 @@ import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.projectile.EyeOfEnder;
-import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -63,11 +59,10 @@ public class FungusEffects
     public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", ModEffects.KNOWLEDGE);
     public static final FungusEffect SPORING_EFFECT = new TransmuteBlockEffect("sporing", BlockTags.VALID_SPAWN, Blocks.MYCELIUM);
     public static final FungusEffect FREEZING_EFFECT = new TransmuteBlockEffect("freezing", Blocks.WATER, Blocks.ICE);
-    public static final SingleEffect DYEING_EFFECT = new SingleEffect("dyeing", null, (level, pos, box) -> {
+    public static final LevelOnlyEffect DYEING_EFFECT = new LevelOnlyEffect("dyeing", (level, pos, box) -> {
         level.getEntitiesOfClass(Sheep.class, box).forEach( sheep -> {
             sheep.setColor(DyeColor.byId(new Random().nextInt(16)));
         });
-
     });
     public static final SingleEffect FERTILIZING_EFFECT = new SingleEffect("fertilizing", null, (level, pos, box) -> {
         final List<BlockPos> pList = new ArrayList<>();
@@ -174,6 +169,10 @@ public class FungusEffects
     });
     public static final FungusEffect PLANT_EFFECT = new PlantEffect("planting");
     public static final FungusEffect ANTHESIS_EFFECT = new AnthesisEffect("anthesis");
+
+    public static final FungusEffect DEFENSE_EFFECT = new LevelOnlyEffect("defense", (lvl, origin, box) -> {
+        lvl.getEntitiesOfClass(Monster.class, box).forEach(monster -> monster.hurtServer(lvl, monster.damageSources().generic(), 3));
+    });
 
     public static FungusEffect getEffectByName(String effectName)
     {

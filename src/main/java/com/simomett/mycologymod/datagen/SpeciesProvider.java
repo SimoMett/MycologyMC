@@ -338,6 +338,8 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies(CRATERELLUS_CORNUCOPIOIDES)
                 .warpedType(0x382b30, 0x211c31, 0x141220, 0x0d0a1c)
+                .areaEffect(FungusEffects.DEFENSE_EFFECT)
+                .areaRadius(6)
                 .build();
 
         speciesBuilder.createSpecies(NOBLE_BOLETUS_SQUISITUS)
