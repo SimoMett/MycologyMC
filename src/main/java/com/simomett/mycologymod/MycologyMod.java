@@ -1,8 +1,8 @@
 package com.simomett.mycologymod;
 
-import com.mojang.logging.LogUtils;
 import com.simomett.mycologymod.blocks.FungusColorer;
 import com.simomett.mycologymod.blocks.ModBlocks;
+import com.simomett.mycologymod.config.ModClientConfigs;
 import com.simomett.mycologymod.datacomponents.ModDataAttachmentTypes;
 import com.simomett.mycologymod.datacomponents.ModDataComponentTypes;
 import com.simomett.mycologymod.config.ModCommonConfigs;
@@ -34,7 +34,8 @@ public class MycologyMod
 
     public MycologyMod(IEventBus evtBus, ModContainer modContainer)
     {
-        modContainer.registerConfig(ModConfig.Type.COMMON, ModCommonConfigs.SPEC, MODID+"-common.toml");
+        modContainer.registerConfig(ModConfig.Type.COMMON, ModCommonConfigs.SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, ModClientConfigs.SPEC);
 
         ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);

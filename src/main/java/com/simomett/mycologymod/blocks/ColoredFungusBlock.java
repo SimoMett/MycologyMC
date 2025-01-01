@@ -18,7 +18,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -39,6 +38,7 @@ import org.jline.utils.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.simomett.mycologymod.config.ModClientConfigs.SPORE_PARTICLES_FREQ;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.config.ModCommonConfigs.*;
 import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;
