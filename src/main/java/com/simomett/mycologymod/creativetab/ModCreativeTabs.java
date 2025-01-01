@@ -21,6 +21,8 @@ public class ModCreativeTabs
                 populator.accept(ModItems.MAGNIFYING_GLASS.get());
                 populator.accept(ModItems.TEST_TUBE);
                 populator.accept(ModItems.CHROMIUM_ORE);
+                populator.accept(ModItems.CHROMIUM_POWDER);
+                populator.accept(ModItems.CHROMIUM_MUTAGEN);
             })
             .build()
     );

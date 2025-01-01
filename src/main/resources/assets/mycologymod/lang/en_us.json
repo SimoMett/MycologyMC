@@ -3,6 +3,8 @@
   "item.mycologymod.magnifying_glass": "Magnifying glass",
   "item.mycologymod.test_tube": "Test tube",
   "block.mycologymod.chromium_ore": "Chromium ore",
+  "item.mycologymod.chromium_powder": "Chromium powder",
+  "item.mycologymod.chromium_mutagen": "Chromium mutagen",
   "effect.mycologymod.sample": "Sampleness",
   "effect.mycologymod.gain_xp": "Learning",
   "effect.mycologymod.xp_multiplier": "Knowledge",
