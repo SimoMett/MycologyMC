@@ -1,6 +1,8 @@
 package com.simomett.mycologymod.genetics;
 
-public abstract class AbstractGene<T>
+import java.io.Serializable;
+
+public abstract class AbstractGene<T> implements Serializable
 {
     protected T value;
 
@@ -15,4 +17,10 @@ public abstract class AbstractGene<T>
     }
 
     public abstract void randomMutate();
+
+    @Override
+    public String toString()
+    {
+        return value.toString();
+    }
 }

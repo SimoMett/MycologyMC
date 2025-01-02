@@ -13,7 +13,7 @@ public class IntGene extends AbstractGene<Integer>
     }
 
     @Override
-    public void randomMutate()
+    public final void randomMutate()
     {
         if(value.equals(minVal))
             value+=1;

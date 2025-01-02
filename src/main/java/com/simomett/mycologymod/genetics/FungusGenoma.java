@@ -189,34 +189,20 @@ public class FungusGenoma implements Serializable
 
     public void changeRandomTraitByMutagen()
     {
+        String[] traitsPool = new String[]{
+                SPREADING,
+                SPREAD_BOOST,
+                LIGHT,
+                HUMIDITY,
+                TEMP,
+                AREA,
+                EFFECT
+        };
+
         Random random = new Random();
         FungusTraits traits = random.nextBoolean()? dominantTraits : recessiveTraits;
-
-        HashMap<String, Supplier<Object>> traitsPool = new HashMap<>();
-        traitsPool.put(SPREADING, () -> traits.spreading() + (new Random().nextBoolean()? 1 : -1));
-        traitsPool.put(SPREAD_BOOST, traits::spreadboost);
-        traitsPool.put(LIGHT, traits::light);
-        traitsPool.put(HUMIDITY, traits::humidity);
-        traitsPool.put(TEMP, traits::temp);
-        traitsPool.put(AREA, traits::area);
-        traitsPool.put(EFFECT, traits::effect);
-
-        String randomTrait = traitsPool.keySet().stream().toList().get(random.nextInt(traitsPool.size()));
-        Object traitVal = traitsPool.get(randomTrait).get();
-        /*if(traitVal instanceof Float f)
-        {
-            Float newVal = f + (random.nextBoolean()? 1 : -1);
-            traits.replace();
-        }
-        else if(traitVal instanceof Integer i)
-        {
-            Integer newVal = i + (random.nextBoolean()? 1 : -1);
-            traits.replace();
-        }
-        else if(EFFECT.equals(traitVal))
-        {
-            traits.replace(EFFECT, FungusEffects.NO_EFFECT.getEffectName());
-        }*/
+        String randomTrait = traitsPool[random.nextInt(traitsPool.length)];
+        traits.get(randomTrait).randomMutate();
     }
 
     @Override

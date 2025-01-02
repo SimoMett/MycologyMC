@@ -13,7 +13,7 @@ public class FloatGene extends AbstractGene<Float>
     }
 
     @Override
-    public void randomMutate()
+    public final void randomMutate()
     {
         if((value - minVal) < 1)
             value+=1;
