@@ -62,7 +62,7 @@ public class FungusTraits implements Serializable
     }
 
     public String species() {
-        return traitsMap.get(SPECIES).toString();
+        return (String) traitsMap.get(SPECIES).value();
     }
 
     public Integer spreading() {
@@ -90,15 +90,18 @@ public class FungusTraits implements Serializable
     }
 
     public Integer area() {
-        return Integer.valueOf(traitsMap.get(AREA).toString());
+        return (Integer) traitsMap.get(AREA).value();
     }
 
     public String effect() {
         return (String) traitsMap.get(EFFECT).value();
     }
 
-    public Optional<String> eatingEffect() {
-        return Optional.ofNullable((String) traitsMap.get(EATING_EFFECT).value());
+    public Optional<String> eatingEffect()
+    {
+        if(traitsMap.containsKey(EATING_EFFECT))
+            return Optional.ofNullable((String) traitsMap.get(EATING_EFFECT).value());
+        return Optional.empty();
     }
 
     public AbstractGene<?> get(String trait)
