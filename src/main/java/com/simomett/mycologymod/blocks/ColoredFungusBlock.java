@@ -48,12 +48,12 @@ import static com.simomett.mycologymod.tags.ModBlockTags.CAN_PLANT_ON;
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
 {
     protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
-    public static final BooleanProperty LIT = BlockStateProperties.LIT;
+    public static final BooleanProperty MUTAGEN_APPLIED = BlockStateProperties.LIT;
 
     public ColoredFungusBlock(BlockBehaviour.Properties properties)
     {
         super(properties);
-        registerDefaultState(getStateDefinition().any().setValue(LIT, false));
+        registerDefaultState(getStateDefinition().any().setValue(MUTAGEN_APPLIED, false));
     }
 
     @Override //deprecated
@@ -64,13 +64,13 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
-        builder.add(LIT);
+        builder.add(MUTAGEN_APPLIED);
     }
 
     @Override
     public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos)
     {
-        return state.getValue(LIT) ? 5 : 0;
+        return hasMutagen(state) ? 5 : 0;
     }
 
     @Override
@@ -155,7 +155,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             double velY = 0;
             double velZ = 0;
 
-            if(blockState.getValue(LIT))
+            if(hasMutagen(blockState))
                 level.addParticle(ModParticles.MUTANT_SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
             else
                 level.addParticle(ModParticles.SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
@@ -188,6 +188,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
         if (rand.nextInt(spreading) == 0)
         {
+            boolean hasMutagen = hasMutagen(blockState);
             removeMutagen(originalPos, blockState, level);
             //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
@@ -215,7 +216,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             }
 
             if (level.isEmptyBlock(blockpos1))
-                breedAndSpread(blockState, level, blockpos1, areaRadius, thisGenoma);
+                breedAndSpread(blockState, level, blockpos1, areaRadius, thisGenoma, hasMutagen);
         }
 
         // area effect
@@ -223,30 +224,37 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
     }
 
-    private static void breedAndSpread(BlockState blockState, ServerLevel level, BlockPos blockpos1, int areaRadius, FungusGenoma genoma)
+    private static void breedAndSpread(BlockState blockState, ServerLevel level, BlockPos pos, int areaRadius, FungusGenoma genoma, boolean hasMutagen)
     {
-        boolean crossBreeding = new Random().nextInt(ModCommonConfigs.BREEDING_CHANCE.get()) == 0; //TODO use mutations probabilities
+        Random rand = new Random();
+        boolean crossBreeding = rand.nextInt(ModCommonConfigs.BREEDING_CHANCE.get()) == 0; //TODO use mutations probabilities
+        //TODO mutagen boost mutation chance
 
-        ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, blockpos1, areaRadius);
+        ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, pos, areaRadius);
 
         if (crossBreeding && !nearbyFungi.isEmpty())
         {
             // precalculate the genotype
-            ColoredFungusBlockEntity randomFungus = nearbyFungi.get(new Random().nextInt(nearbyFungi.size()));
+            ColoredFungusBlockEntity randomFungus = nearbyFungi.get(rand.nextInt(nearbyFungi.size()));
             FungusGenoma offspringGenoma = randomFungus.getFungusGenoma().crossBreedWith(genoma);
 
-            if (offspringGenoma.matchesEnvironmentAndTerrain(level, blockpos1, level.getBlockState(blockpos1.below())))
+            if (offspringGenoma.matchesEnvironmentAndTerrain(level, pos, level.getBlockState(pos.below())))
             {
                 // ... then place it
                 String fungusType = FungusSpeciesList.INSTANCE.get(offspringGenoma.getDominantTraits().species()).fungusType;
                 blockState = ModBlocks.getDefaultBlockStateFromFungusType(fungusType);
-                placeFungusBlock(blockState, level, blockpos1, offspringGenoma);
+                placeFungusBlock(blockState, level, pos, offspringGenoma);
             }
         }
-        else if (blockState.canSurvive(level, blockpos1))
+        else if (blockState.canSurvive(level, pos))
         {
             // ... otherwise proceed with normal spreading
-            placeFungusBlock(blockState, level, blockpos1, genoma);
+            if(hasMutagen)
+            {
+                for(int i = 0; i<rand.nextInt(1, 3); i++)
+                    genoma.changeRandomTraitByMutagen();
+            }
+            placeFungusBlock(blockState, level, pos, genoma);
         }
     }
 
@@ -309,16 +317,16 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
     public static void applyMutagen(BlockPos pos, BlockState blockState, ServerLevel level)
     {
-        level.setBlockAndUpdate(pos, blockState.setValue(LIT, true));
+        level.setBlockAndUpdate(pos, blockState.setValue(MUTAGEN_APPLIED, true));
     }
 
     public static boolean hasMutagen(BlockState blockState)
     {
-        return blockState.getValue(LIT);
+        return blockState.getValue(MUTAGEN_APPLIED);
     }
 
     public static void removeMutagen(BlockPos pos, BlockState blockState, ServerLevel level)
     {
-        level.setBlockAndUpdate(pos, blockState.setValue(LIT, false));
+        level.setBlockAndUpdate(pos, blockState.setValue(MUTAGEN_APPLIED, false));
     }
 }
