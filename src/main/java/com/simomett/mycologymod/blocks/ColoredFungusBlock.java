@@ -249,7 +249,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         else if (blockState.canSurvive(level, pos))
         {
             // ... otherwise proceed with normal spreading
-            if(hasMutagen)
+            if(hasMutagen && rand.nextFloat(0f,1f) < MUTAGEN_EFFECTIVENESS.get())
             {
                 for(int i = 0; i<rand.nextInt(1, 3); i++)
                     genoma.changeRandomTraitByMutagen();
