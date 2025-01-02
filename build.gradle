@@ -10,6 +10,13 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+    maven {
+        url "https://maven2.bai.lol"
+        content {
+            includeGroup "lol.bai"
+            includeGroup "mcp.mobius.waila"
+        }
+    }
 }
 
 base {
@@ -96,6 +103,11 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
+    // WTHIT integration
+    compileOnly "mcp.mobius.waila:wthit-api:neo-${wthitVersion}"
+    runtimeOnly "mcp.mobius.waila:wthit:neo-${wthitVersion}"
+    runtimeOnly "lol.bai:badpackets:neo-${badpacketsVersion}"
+
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"

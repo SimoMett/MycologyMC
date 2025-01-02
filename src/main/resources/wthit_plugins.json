@@ -1,0 +1,7 @@
+{
+  "mycologymod:plugin":
+  {
+    "initializer": "com.simomett.mycologymod.compatibility.wthit.WthitPlugin",
+    "side": "client"
+  }
+}
