@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
@@ -48,11 +49,12 @@ import static com.simomett.mycologymod.tags.ModBlockTags.CAN_PLANT_ON;
 public class ColoredFungusBlock extends BushBlock implements EntityBlock
 {
     protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
-    public static final BooleanProperty IS_LIT = BooleanProperty.create("is_lit");
+    public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
     public ColoredFungusBlock(BlockBehaviour.Properties properties)
     {
         super(properties);
+        registerDefaultState(getStateDefinition().any().setValue(LIT, false));
     }
 
     @Override //deprecated
@@ -63,19 +65,13 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
     {
-        builder.add(IS_LIT);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context)
-    {
-        return super.getStateForPlacement(context).setValue(IS_LIT, false);
+        builder.add(LIT);
     }
 
     @Override
     public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos)
     {
-        return state.getValue(IS_LIT) ? 4 : 0;
+        return state.getValue(LIT) ? 5 : 0;
     }
 
     @Override
@@ -160,7 +156,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             double velY = 0;
             double velZ = 0;
 
-            if(blockState.getValue(IS_LIT))
+            if(blockState.getValue(LIT))
                 level.addParticle(ModParticles.MUTANT_SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
             else
                 level.addParticle(ModParticles.SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
@@ -193,6 +189,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
         if (rand.nextInt(spreading) == 0)
         {
+            level.setBlockAndUpdate(originalPos, blockState.setValue(LIT, false));
             //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
             int i = MAX_MUSHROOMS_IN_AREA.get();
@@ -256,7 +253,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
     private static void placeFungusBlock(BlockState blockState, ServerLevel level, BlockPos pos, FungusGenoma genoma)
     {
-        level.setBlock(pos, blockState, 2); //wtf is this '2'?
+        level.setBlock(pos, blockState, Block.UPDATE_CLIENTS);
         ColoredFungusBlockEntity newBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(pos));
         if (newBlockEntity != null)
         {
