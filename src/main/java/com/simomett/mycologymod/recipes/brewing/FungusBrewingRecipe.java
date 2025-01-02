@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.recipes.brewing;
 
-import com.simomett.mycologymod.items.ModItems;
-import net.minecraft.core.Holder;
+import com.simomett.mycologymod.tags.ModItemTags;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -31,7 +30,7 @@ public class FungusBrewingRecipe implements IBrewingRecipe
 
     public boolean isIngredient(ItemStack ingredient)
     {
-        if (ingredient.is(ModItems.COLORED_CRIMSON_FUNGUS.get()) || ingredient.is(ModItems.COLORED_WARPED_FUNGUS.get()))
+        if (ingredient.is(ModItemTags.COLORED_FUNGUS_ITEMS))
         {
             String species = ingredient.get(FUNGUS_GENOMA).getDominantTraits().species();
             return species.equals(this.species);
