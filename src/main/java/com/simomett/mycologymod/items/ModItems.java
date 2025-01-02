@@ -22,5 +22,5 @@ public class ModItems
     public static final DeferredItem<Item> TEST_TUBE = ITEMS.registerSimpleItem("test_tube");
     public static final DeferredItem<BlockItem> CHROMIUM_ORE = ITEMS.registerSimpleBlockItem("chromium_ore", ModBlocks.CHROMIUM_ORE);
     public static final DeferredItem<Item> CHROMIUM_POWDER = ITEMS.registerSimpleItem("chromium_powder");
-    public static final DeferredItem<Item> CHROMIUM_MUTAGEN = ITEMS.registerSimpleItem("chromium_mutagen"); // Ammonium dichromate
+    public static final DeferredItem<Item> CHROMIUM_MUTAGEN = ITEMS.registerItem("chromium_mutagen", MutagenItem::new); // Ammonium dichromate
 }

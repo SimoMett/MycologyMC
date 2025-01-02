@@ -189,7 +189,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
         if (rand.nextInt(spreading) == 0)
         {
-            level.setBlockAndUpdate(originalPos, blockState.setValue(LIT, false));
+            removeMutagen(originalPos, blockState, level);
             //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
             int i = MAX_MUSHROOMS_IN_AREA.get();
@@ -306,5 +306,20 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         }
 
         return thisFungusData.matchesEnvironmentAndTerrain(level, origin, belowBlock);
+    }
+
+    public static void applyMutagen(BlockPos pos, BlockState blockState, ServerLevel level)
+    {
+        level.setBlockAndUpdate(pos, blockState.setValue(LIT, true));
+    }
+
+    public static boolean hasMutagen(BlockState blockState)
+    {
+        return blockState.getValue(LIT);
+    }
+
+    public static void removeMutagen(BlockPos pos, BlockState blockState, ServerLevel level)
+    {
+        level.setBlockAndUpdate(pos, blockState.setValue(LIT, false));
     }
 }

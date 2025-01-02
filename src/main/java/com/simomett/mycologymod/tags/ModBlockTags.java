@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 
 public class ModBlockTags
 {
+    public static final TagKey<Block> COLORED_FUNGUS_BLOCKS = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "colored_fungus_blocks"));
     public static final TagKey<Block> GRASS = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "grass"));
     public static final TagKey<Block> PODZOL = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "podzol"));
     public static final TagKey<Block> NETHER = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "nether"));
