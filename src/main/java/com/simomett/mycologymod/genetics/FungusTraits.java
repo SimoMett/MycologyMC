@@ -99,7 +99,7 @@ public class FungusTraits implements Serializable
 
     public Optional<String> eatingEffect()
     {
-        if(traitsMap.containsKey(EATING_EFFECT))
+        if(traitsMap.containsKey(EATING_EFFECT) && traitsMap.get(EATING_EFFECT) != null)
             return Optional.ofNullable((String) traitsMap.get(EATING_EFFECT).value());
         return Optional.empty();
     }
