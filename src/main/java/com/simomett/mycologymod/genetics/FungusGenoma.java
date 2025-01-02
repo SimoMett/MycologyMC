@@ -112,12 +112,6 @@ public class FungusGenoma implements Serializable
         return recessiveTraits;
     }
 
-    @Deprecated(forRemoval = true)
-    public String getField(String key)
-    {
-        return dominantTraits.get(key).orElseThrow();
-    }
-
     public boolean matchesEnvironment(LevelReader level, BlockPos origin)
     {
         //LightLayer.SKY is the light level of a block due to other blocks obstructing skylight. 0 is in complete darkness, 15 is in plain air.
@@ -159,9 +153,9 @@ public class FungusGenoma implements Serializable
         Random random = new Random();
         for(String trait : traitsDictionary)
         {
-            String o = random.nextBoolean() ? this.getDominantTraits().get(trait).orElse(null) : this.getRecessiveTraits().get(trait).orElse(null);
+            AbstractGene<?> o = random.nextBoolean() ? this.getDominantTraits().get(trait) : this.getRecessiveTraits().get(trait);
             offspring.getDominantTraits().replace(trait, o);
-            String p = random.nextBoolean() ? that.getDominantTraits().get(trait).orElse(null) : that.getRecessiveTraits().get(trait).orElse(null);
+            AbstractGene<?> p = random.nextBoolean() ? that.getDominantTraits().get(trait) : that.getRecessiveTraits().get(trait);
             offspring.getRecessiveTraits().replace(trait, p);
         }
         return offspring;

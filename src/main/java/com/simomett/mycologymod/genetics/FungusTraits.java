@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.genetics;
 
-//I'm convinced this is a horrible class
+import com.simomett.mycologymod.config.ModCommonConfigs;
 
 import java.io.Serializable;
 import java.util.*;
@@ -22,39 +22,29 @@ public class FungusTraits implements Serializable
             EATING_EFFECT //optional
     };
 
-    private final Map<String, String> traitsMap = new HashMap<>(traitsDictionary.length);
+    private final Map<String, AbstractGene<?>> traitsMap = new HashMap<>(traitsDictionary.length);
 
     public static final FungusTraits EMPTY = new FungusTraits("EMPTY", 15, 0f, 0, "none", 0f, 0f, 0, "none", Optional.empty());
     public static final FungusTraits UNINIT = new FungusTraits("UNINITIALIZED", 15, 0f, 0, "none", 0f, 0f, 0, "none", Optional.empty());
 
     public FungusTraits(String species, int spreading, float spreadboost, int light, String terrain, float humidity, float temp, int area, String effect, String eatingEffect)
     {
-        traitsMap.put(SPECIES, species);
-        traitsMap.put(SPREADING, String.valueOf(spreading));
-        traitsMap.put(SPREAD_BOOST, String.valueOf(spreadboost));
-        traitsMap.put(LIGHT, String.valueOf(light));
-        traitsMap.put(TERRAIN, terrain);
-        traitsMap.put(HUMIDITY, String.valueOf(humidity));
-        traitsMap.put(TEMP, String.valueOf(temp));
-        traitsMap.put(AREA, String.valueOf(area));
-        traitsMap.put(EFFECT, effect);
+        traitsMap.put(SPECIES, new StringGene(species));
+        traitsMap.put(SPREADING, new IntGene(spreading, 1, ModCommonConfigs.MIN_SPREADING_SPEED.get()));
+        traitsMap.put(SPREAD_BOOST, new FloatGene(spreadboost, 1f, ModCommonConfigs.MAX_SPREAD_BOOST.get()));
+        traitsMap.put(LIGHT, new IntGene(light, 1, 15));
+        traitsMap.put(TERRAIN, new StringGene(terrain));
+        traitsMap.put(HUMIDITY, new FloatGene(humidity, 0f, 1f));
+        traitsMap.put(TEMP, new FloatGene(temp, -0.7f, 2f));
+        traitsMap.put(AREA, new IntGene(area, 1, 16));
+        traitsMap.put(EFFECT, new EffectGene(effect));
         if(eatingEffect!=null && !eatingEffect.isEmpty())
-            traitsMap.put(EATING_EFFECT, eatingEffect);
+            traitsMap.put(EATING_EFFECT, new StringGene(eatingEffect));
     }
 
     public FungusTraits(String species, int spreading, float spreadboost, int light, String terrain, float humidity, float temp, int area, String effect, Optional<String> eatingEffect)
     {
-        traitsMap.put(SPECIES, species);
-        traitsMap.put(SPREADING, String.valueOf(spreading));
-        traitsMap.put(SPREAD_BOOST, String.valueOf(spreadboost));
-        traitsMap.put(LIGHT, String.valueOf(light));
-        traitsMap.put(TERRAIN, terrain);
-        traitsMap.put(HUMIDITY, String.valueOf(humidity));
-        traitsMap.put(TEMP, String.valueOf(temp));
-        traitsMap.put(AREA, String.valueOf(area));
-        traitsMap.put(EFFECT, effect);
-        if(eatingEffect.isPresent() && !eatingEffect.get().isEmpty())
-            traitsMap.put(EATING_EFFECT, eatingEffect.get());
+        this(species, spreading, spreadboost, light, terrain, humidity, temp, area, effect, eatingEffect.orElse(null));
     }
 
     public FungusTraits(FungusTraits fungusTraits)
@@ -71,53 +61,58 @@ public class FungusTraits implements Serializable
                 fungusTraits.eatingEffect());
     }
 
-    public String species(){return traitsMap.get(SPECIES);}
+    public String species() {
+        return traitsMap.get(SPECIES).toString();
+    }
 
     public Integer spreading() {
-        return Integer.valueOf(traitsMap.get(SPREADING));
+        return (Integer) traitsMap.get(SPREADING).value();
     }
 
     public Float spreadboost() {
-        return Float.valueOf(traitsMap.get(SPREAD_BOOST));
+        return (Float) traitsMap.get(SPREAD_BOOST).value();
     }
 
     public Integer light() {
-        return Integer.valueOf(traitsMap.get(LIGHT));
+        return (Integer) traitsMap.get(LIGHT).value();
     }
 
-    public String terrain(){return traitsMap.get(TERRAIN);}
+    public String terrain() {
+        return (String) traitsMap.get(TERRAIN).value();
+    }
 
     public Float humidity() {
-        return Float.valueOf(traitsMap.get(HUMIDITY));
+        return (Float) traitsMap.get(HUMIDITY).value();
     }
 
     public Float temp() {
-        return Float.valueOf(traitsMap.get(TEMP));
+        return (Float) traitsMap.get(TEMP).value();
     }
 
     public Integer area() {
-        return Integer.valueOf(traitsMap.get(AREA));
+        return Integer.valueOf(traitsMap.get(AREA).toString());
     }
 
-    public String effect(){return traitsMap.get(EFFECT);}
-
-    public Optional<String> eatingEffect()
-    {
-        return Optional.ofNullable(traitsMap.get(EATING_EFFECT));
+    public String effect() {
+        return (String) traitsMap.get(EFFECT).value();
     }
 
-    public Optional<String> get(String trait)
-    {
-        if(!Arrays.asList(traitsDictionary).contains(trait))
-            throw new RuntimeException("Unknown trait requested: "+trait);
-        return Optional.ofNullable(traitsMap.get(trait));
+    public Optional<String> eatingEffect() {
+        return Optional.ofNullable((String) traitsMap.get(EATING_EFFECT).value());
     }
 
-    public void replace(String trait, String val)
+    public AbstractGene<?> get(String trait)
     {
         if(!Arrays.asList(traitsDictionary).contains(trait))
             throw new RuntimeException("Unknown trait requested: "+trait);
-        traitsMap.put(trait, val);
+        return traitsMap.get(trait);
+    }
+
+    public void replace(String trait, AbstractGene<?> newVal)
+    {
+        if(!Arrays.asList(traitsDictionary).contains(trait))
+            throw new RuntimeException("Unknown trait requested: "+trait);
+        traitsMap.put(trait, newVal);
     }
 
     @Override
