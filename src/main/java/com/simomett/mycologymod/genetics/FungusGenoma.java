@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.genetics;
 
 import com.simomett.mycologymod.data.FungusSpeciesList;
+import com.simomett.mycologymod.genetics.gene.Gene;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipe;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipesList;
 import net.minecraft.core.BlockPos;
@@ -16,7 +17,6 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.io.*;
 import java.util.*;
-import java.util.function.Supplier;
 
 import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
@@ -153,9 +153,9 @@ public class FungusGenoma implements Serializable
         Random random = new Random();
         for(String trait : traitsDictionary)
         {
-            AbstractGene<?> o = random.nextBoolean() ? this.getDominantTraits().get(trait) : this.getRecessiveTraits().get(trait);
+            Gene<?> o = random.nextBoolean() ? this.getDominantTraits().get(trait) : this.getRecessiveTraits().get(trait);
             offspring.getDominantTraits().replace(trait, o);
-            AbstractGene<?> p = random.nextBoolean() ? that.getDominantTraits().get(trait) : that.getRecessiveTraits().get(trait);
+            Gene<?> p = random.nextBoolean() ? that.getDominantTraits().get(trait) : that.getRecessiveTraits().get(trait);
             offspring.getRecessiveTraits().replace(trait, p);
         }
         return offspring;

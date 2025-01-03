@@ -1,6 +1,8 @@
 package com.simomett.mycologymod.genetics;
 
 import com.simomett.mycologymod.config.ModCommonConfigs;
+import com.simomett.mycologymod.effects.FungusEffects;
+import com.simomett.mycologymod.genetics.gene.*;
 
 import java.io.Serializable;
 import java.util.*;
@@ -22,10 +24,10 @@ public class FungusTraits implements Serializable
             EATING_EFFECT //optional
     };
 
-    private final Map<String, AbstractGene<?>> traitsMap = new HashMap<>(traitsDictionary.length);
+    private final Map<String, Gene<?>> traitsMap = new HashMap<>(traitsDictionary.length);
 
-    public static final FungusTraits EMPTY = new FungusTraits("EMPTY", 15, 0f, 0, "none", 0f, 0f, 0, "none", Optional.empty());
-    public static final FungusTraits UNINIT = new FungusTraits("UNINITIALIZED", 15, 0f, 0, "none", 0f, 0f, 0, "none", Optional.empty());
+    public static final FungusTraits EMPTY = new FungusTraits("EMPTY", 15, 0f, 0, "none", 0f, 0f, 0, FungusEffects.NO_EFFECT.getEffectName(), Optional.empty());
+    public static final FungusTraits UNINIT = new FungusTraits("UNINITIALIZED", 15, 0f, 0, "none", 0f, 0f, 0, FungusEffects.NO_EFFECT.getEffectName(), Optional.empty());
 
     public FungusTraits(String species, int spreading, float spreadboost, int light, String terrain, float humidity, float temp, int area, String effect, String eatingEffect)
     {
@@ -104,14 +106,14 @@ public class FungusTraits implements Serializable
         return Optional.empty();
     }
 
-    public AbstractGene<?> get(String trait)
+    public Gene<?> get(String trait)
     {
         if(!Arrays.asList(traitsDictionary).contains(trait))
             throw new RuntimeException("Unknown trait requested: "+trait);
         return traitsMap.get(trait);
     }
 
-    public void replace(String trait, AbstractGene<?> newVal)
+    public void replace(String trait, Gene<?> newVal)
     {
         if(!Arrays.asList(traitsDictionary).contains(trait))
             throw new RuntimeException("Unknown trait requested: "+trait);

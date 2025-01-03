@@ -1,6 +1,6 @@
-package com.simomett.mycologymod.genetics;
+package com.simomett.mycologymod.genetics.gene;
 
-public class StringGene extends AbstractGene<String>
+public class StringGene extends Gene<String>
 {
 
     public StringGene(String value) {

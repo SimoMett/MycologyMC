@@ -1,11 +1,11 @@
-package com.simomett.mycologymod.genetics;
+package com.simomett.mycologymod.genetics.gene;
 
 import java.util.Random;
 
-public class FloatGene extends AbstractGene<Float>
+public class IntGene extends Gene<Integer>
 {
-    private final Float minVal, maxVal;
-    public FloatGene(Float value, Float minVal, Float maxVal)
+    private final Integer minVal, maxVal;
+    public IntGene(Integer value, Integer minVal, Integer maxVal)
     {
         super(value);
         this.minVal = minVal;
@@ -15,9 +15,9 @@ public class FloatGene extends AbstractGene<Float>
     @Override
     public final void randomMutate()
     {
-        if((value - minVal) < 1)
+        if(value.equals(minVal))
             value+=1;
-        else if ((maxVal - value)<1)
+        else if (value.equals(maxVal))
             value-=1;
         else
             value += new Random().nextBoolean()? 1: -1;
