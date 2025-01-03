@@ -1,8 +1,8 @@
-package com.simomett.mycologymod.genetics;
+package com.simomett.mycologymod.genetics.gene;
 
 import com.simomett.mycologymod.effects.FungusEffects;
 
-public class EffectGene extends AbstractGene<String>
+public class EffectGene extends Gene<String>
 {
     public EffectGene(String value) {
         super(value);
