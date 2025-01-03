@@ -23,4 +23,12 @@ public abstract class AbstractGene<T> implements Serializable
     {
         return value.toString();
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(!(obj instanceof AbstractGene<?> that))
+            return false;
+        return this.value.equals(that.value);
+    }
 }
