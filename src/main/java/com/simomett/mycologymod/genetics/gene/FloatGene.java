@@ -15,11 +15,11 @@ public class FloatGene extends Gene<Float>
     @Override
     public final void randomMutate()
     {
-        if((value - minVal) < 1)
-            value+=1;
-        else if ((maxVal - value)<1)
-            value-=1;
+        if((value - minVal) < .1)
+            value+=.1f;
+        else if ((maxVal - value) < .1)
+            value-=.1f;
         else
-            value += new Random().nextBoolean()? 1: -1;
+            value += new Random().nextBoolean()? .1f: -0.1f;
     }
 }
