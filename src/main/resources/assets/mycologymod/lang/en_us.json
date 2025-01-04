@@ -5,6 +5,8 @@
   "block.mycologymod.chromium_ore": "Chromite ore",
   "item.mycologymod.chromium_powder": "Chromite powder",
   "item.mycologymod.chromium_mutagen": "Chromite mutagen",
+  "item.mycologymod.chromium_ingot": "Chromium ingot",
+  "item.mycologymod.chromium_nugget": "Chromium nugget",
   "effect.mycologymod.sample": "Sampleness",
   "effect.mycologymod.gain_xp": "Learning",
   "effect.mycologymod.xp_multiplier": "Knowledge",

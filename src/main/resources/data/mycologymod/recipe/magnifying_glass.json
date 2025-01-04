@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "minecraft:glass_pane",
+    "D": "mycologymod:chromium_nugget"
+  },
+  "pattern": [
+    " D ",
+    "DXD ",
+    "#D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mycologymod:magnifying_glass"
+  }
+}

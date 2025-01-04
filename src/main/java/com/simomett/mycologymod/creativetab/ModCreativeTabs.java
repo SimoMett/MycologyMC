@@ -23,6 +23,8 @@ public class ModCreativeTabs
                 populator.accept(ModItems.CHROMIUM_ORE);
                 populator.accept(ModItems.CHROMIUM_POWDER);
                 populator.accept(ModItems.CHROMIUM_MUTAGEN);
+                populator.accept(ModItems.CHROMIUM_INGOT);
+                populator.accept(ModItems.CHROMIUM_NUGGET);
             })
             .build()
     );
