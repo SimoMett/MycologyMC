@@ -40,7 +40,7 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
         int a = 6;
         final int o = 10;
         int b = o;
-        int d = 0;
+        int d = 0; // X alignment
         guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.terrain"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.light"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.humidity"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
@@ -52,8 +52,8 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
 
         //Dominant column
         b = 0;
-        d = 83;
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.dominant"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        d = 83; // X alignment
+        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.dominant"), xOrigin+d, yOrigin-2+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, ModBlockTags.getTranslatableComponent(menu.fungusGenoma.getDominantTraits().terrain()), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().light())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().humidity())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
@@ -62,20 +62,6 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().spreadboost())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().area())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().effect())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-
-        //Recessive column
-        //Kinda unreal to have all genoma by just looking through a magnifying glass
-        /*b = 0;
-        int c = 100;
-        guiGraphics.drawString(this.font, Component.literal("recessive"), xOrigin+c, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusDataModel.getField(FungusDataModel.TERRAIN, IFungusData.GeneType.RECESSIVE))), xOrigin+c, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusDataModel.getField(FungusDataModel.LIGHT, IFungusData.GeneType.RECESSIVE))), xOrigin+c, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusDataModel.getField(FungusDataModel.HUMIDITY, IFungusData.GeneType.RECESSIVE))), xOrigin+c, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusDataModel.getField(FungusDataModel.TEMP, IFungusData.GeneType.RECESSIVE))), xOrigin+c, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusDataModel.getField(FungusDataModel.SPREADING, IFungusData.GeneType.RECESSIVE))), xOrigin+c, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusDataModel.getField(FungusDataModel.SPREAD_BOOST, IFungusData.GeneType.RECESSIVE))), xOrigin+c, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusDataModel.getField(FungusDataModel.AREA, IFungusData.GeneType.RECESSIVE))), xOrigin+c, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(fungusDataModel.getField(FungusDataModel.EFFECT, IFungusData.GeneType.RECESSIVE))), xOrigin+c, yOrigin+a+(b+=o), -12829636, false);*/
     }
 
     @Override
