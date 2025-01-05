@@ -188,8 +188,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
         if (rand.nextInt(spreading) == 0)
         {
-            boolean hasMutagen = hasMutagen(blockState);
-            removeMutagen(originalPos, blockState, level);
             //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
             int i = MAX_MUSHROOMS_IN_AREA.get();
@@ -202,6 +200,9 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                         return;
                 }
             }
+
+            boolean hasMutagen = hasMutagen(blockState);
+            removeMutagen(originalPos, blockState, level);
 
             // find a random position for the new block
             BlockPos blockpos1 = pos.offset(rand.nextInt(3) - 1, rand.nextInt(2) - rand.nextInt(2), rand.nextInt(3) - 1);
@@ -249,7 +250,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         else if (blockState.canSurvive(level, pos))
         {
             // ... otherwise proceed with normal spreading
-            if(hasMutagen)
+            if(hasMutagen && rand.nextFloat(0f,1f) < MUTAGEN_EFFECTIVENESS.get())
             {
                 for(int i = 0; i<rand.nextInt(1, 3); i++)
                     genoma.changeRandomTraitByMutagen();
