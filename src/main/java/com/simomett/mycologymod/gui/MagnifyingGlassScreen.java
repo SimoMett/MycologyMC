@@ -2,6 +2,7 @@ package com.simomett.mycologymod.gui;
 
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.gui.menu.MagnifyingGlassMenu;
+import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderType;
@@ -53,7 +54,7 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
         b = 0;
         d = 83;
         guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.dominant"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().terrain())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, ModBlockTags.getTranslatableComponent(menu.fungusGenoma.getDominantTraits().terrain()), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().light())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().humidity())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().temp())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);

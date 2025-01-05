@@ -2,6 +2,7 @@ package com.simomett.mycologymod.tags;
 
 import com.simomett.mycologymod.MycologyMod;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -17,4 +18,12 @@ public class ModBlockTags
     public static final TagKey<Block> NETHER_BRICKS = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "nether_bricks"));
     public static final TagKey<Block> CAN_PLANT_ON = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "can_plant_on"));
     public static final TagKey<Block> FUNGUS_PLANTABLE = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "fungus_plantable"));
+
+    public static Component getTranslatableComponent(String tagName)
+    {
+        if(tagName.startsWith("#"))
+            tagName = tagName.substring(1);
+        TagKey<Block> terrain = TagKey.create(Registries.BLOCK, ResourceLocation.parse(tagName));
+        return Component.translatable(terrain.location().toLanguageKey("tag"));
+    }
 }

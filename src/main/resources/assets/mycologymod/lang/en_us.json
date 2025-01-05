@@ -51,5 +51,11 @@
   "gui.magnifyingglass.spreadboost": "Spreadboost:",
   "gui.magnifyingglass.area": "Area:",
   "gui.magnifyingglass.effect": "Effect:",
-  "gui.magnifyingglass.dominant": "Dominant"
+  "gui.magnifyingglass.dominant": "Dominant",
+
+  "tag.mycologymod.grass": "Grass",
+  "tag.mycologymod.podzol": "Podzol",
+  "tag.mycologymod.nether": "Nether",
+  "tag.mycologymod.deepslate": "Deepslate",
+  "tag.mycologymod.quartz_ores": "Quartz Ores"
 }
