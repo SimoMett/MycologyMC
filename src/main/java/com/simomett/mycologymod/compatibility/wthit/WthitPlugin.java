@@ -9,7 +9,7 @@ public class WthitPlugin implements IWailaPlugin
     @Override
     public void register(IRegistrar registrar)
     {
-        registrar.head(new FungusBlockOverride(), ColoredFungusBlock.class);
+        //registrar.head(new FungusBlockOverride(), ColoredFungusBlock.class);
         registrar.icon(new FungusBlockOverride(), ColoredFungusBlock.class);
     }
 }

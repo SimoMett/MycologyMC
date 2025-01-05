@@ -1,5 +1,8 @@
 {
   "itemGroup.mycologymod": "Mycology",
+  "block.mycologymod.colored_crimson_fungus": "Mysterious fungus",
+  "block.mycologymod.colored_warped_fungus": "Mysterious fungus",
+
   "item.mycologymod.magnifying_glass": "Magnifying glass",
   "item.mycologymod.test_tube": "Test tube",
   "block.mycologymod.chromium_ore": "Chromite ore",
