@@ -24,7 +24,7 @@ public class ModCommonConfigs
 
     static
     {
-        MAX_MUSHROOMS_IN_AREA = BUILDER.define("Max spread count of mushrooms", 10);
+        MAX_MUSHROOMS_IN_AREA = BUILDER.define("Max spread count of mushrooms", 4); // I don't want mushrooms spamming all over the biomes
         BREEDING_CHANCE = BUILDER.define("Cross-breeding chance", 2);
         DEFAULT_MUTATION_CHANCE_CONFIG = BUILDER.define("Default mutation chance", DEFAULT_MUTATION_CHANCE);
         MUTAGEN_EFFECTIVENESS = BUILDER.defineInRange("Mutagen effectiveness", 1f, 0f, 1f);
