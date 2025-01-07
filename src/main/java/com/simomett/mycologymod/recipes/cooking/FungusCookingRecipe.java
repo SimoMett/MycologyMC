@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.recipes.cooking;
 
 import com.simomett.mycologymod.items.ModItems;
-import com.simomett.mycologymod.recipes.ModRecipeTypes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -46,8 +45,12 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     public boolean matches(SingleRecipeInput container, Level level)
     {
         ItemStack input = container.getItem(0);
-        String inputSpecies = input.get(FUNGUS_GENOMA).getDominantTraits().species();
-        return inputSpecies.equals(speciesIngredient);
+        if(input.has(FUNGUS_GENOMA)) // of course 'input' can be 'air'
+        {
+            String inputSpecies = input.get(FUNGUS_GENOMA).getDominantTraits().species();
+            return inputSpecies.equals(speciesIngredient);
+        }
+        return false;
     }
 
     @Override
