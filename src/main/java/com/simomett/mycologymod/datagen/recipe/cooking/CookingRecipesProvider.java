@@ -11,6 +11,8 @@ import net.minecraft.world.item.Items;
 import java.util.concurrent.CompletableFuture;
 
 import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.*;
+import static com.simomett.mycologymod.items.ModItems.COOKED_CRIMSON_FUNGUS;
+import static com.simomett.mycologymod.items.ModItems.COOKED_WARPED_FUNGUS;
 
 public class CookingRecipesProvider extends RecipeProvider
 {
@@ -22,41 +24,56 @@ public class CookingRecipesProvider extends RecipeProvider
     @Override
     protected void buildRecipes()
     {
+        // Default recipes
+        addDefaultSmeltingRecipe(BOLETUS_EDULIS, COOKED_CRIMSON_FUNGUS.get());
+        addDefaultSmeltingRecipe(POLYPORUS_LIGNEUS, COOKED_WARPED_FUNGUS.get());
+
         // Colors
-        addSmeltingRecipes(YELLOW_FUNGUS, Items.YELLOW_DYE, 2, 0, 200);
-        addSmeltingRecipes(ORANGE_FUNGUS, Items.ORANGE_DYE, 2, 0, 200);
-        addSmeltingRecipes(AMANITA_RUBRA, Items.RED_DYE, 2, 0, 200);
-        addSmeltingRecipes(OVULUS_VIOLACEUS, Items.PURPLE_DYE, 2, 0, 200);
-        addSmeltingRecipes(CYAN_FUNGUS, Items.CYAN_DYE, 2, 0, 200);
-        addSmeltingRecipes(BLUE_FUNGUS, Items.BLUE_DYE, 2, 0, 200);
-        addSmeltingRecipes(LACTARIUS_VIRENS, Items.GREEN_DYE, 2, 0, 200);
-        addSmeltingRecipes(WHITE_FUNGUS, Items.WHITE_DYE, 2, 0, 200);
-        addSmeltingRecipes(GREY_FUNGUS, Items.GRAY_DYE, 2, 0, 200);
-        addSmeltingRecipes(LIME_FUNGUS, Items.LIME_DYE, 2, 0, 200);
-        addSmeltingRecipes(LIGHTGREY_FUNGUS, Items.LIGHT_GRAY_DYE, 2, 0, 200);
-        addSmeltingRecipes(BLACK_FUNGUS, Items.BLACK_DYE, 2, 0, 200);
-        addSmeltingRecipes(LIGHTBLUE_FUNGUS, Items.LIGHT_BLUE_DYE, 2, 0, 200);
-        addSmeltingRecipes(PINK_FUNGUS, Items.PINK_DYE, 2, 0, 200);
-        addSmeltingRecipes(MAGENTA_FUNGUS, Items.MAGENTA_DYE, 2, 0, 200);
+        addSmeltingRecipe(YELLOW_FUNGUS, Items.YELLOW_DYE, 2, 0, 200);
+        addSmeltingRecipe(ORANGE_FUNGUS, Items.ORANGE_DYE, 2, 0, 200);
+        addSmeltingRecipe(AMANITA_RUBRA, Items.RED_DYE, 2, 0, 200);
+        addSmeltingRecipe(OVULUS_VIOLACEUS, Items.PURPLE_DYE, 2, 0, 200);
+        addSmeltingRecipe(CYAN_FUNGUS, Items.CYAN_DYE, 2, 0, 200);
+        addSmeltingRecipe(BLUE_FUNGUS, Items.BLUE_DYE, 2, 0, 200);
+        addSmeltingRecipe(LACTARIUS_VIRENS, Items.GREEN_DYE, 2, 0, 200);
+        addSmeltingRecipe(WHITE_FUNGUS, Items.WHITE_DYE, 2, 0, 200);
+        addSmeltingRecipe(GREY_FUNGUS, Items.GRAY_DYE, 2, 0, 200);
+        addSmeltingRecipe(LIME_FUNGUS, Items.LIME_DYE, 2, 0, 200);
+        addSmeltingRecipe(LIGHTGREY_FUNGUS, Items.LIGHT_GRAY_DYE, 2, 0, 200);
+        addSmeltingRecipe(BLACK_FUNGUS, Items.BLACK_DYE, 2, 0, 200);
+        addSmeltingRecipe(LIGHTBLUE_FUNGUS, Items.LIGHT_BLUE_DYE, 2, 0, 200);
+        addSmeltingRecipe(PINK_FUNGUS, Items.PINK_DYE, 2, 0, 200);
+        addSmeltingRecipe(MAGENTA_FUNGUS, Items.MAGENTA_DYE, 2, 0, 200);
 
         // Minerals
-        addSmeltingRecipes(RUSSULA_LAZULA, Items.LAPIS_LAZULI, 0f, 200);
-        addSmeltingRecipes(GALERINA_AURATA, Items.GOLD_NUGGET, 2, 0f, 200);
-        addSmeltingRecipes(XEROCOMUS_FERRUGINEUS, Items.IRON_NUGGET, 2, 0, 200);
-        addSmeltingRecipes(AMANITA_CUPREA, Items.RAW_COPPER, 0, 400);
-        addSmeltingRecipes(DIAMOND_FUNGUS, Items.DIAMOND, 0, 400);
-        addSmeltingRecipes(BOLBITIUS_SILEX, Items.QUARTZ, 0, 200);
+        addSmeltingRecipe(RUSSULA_LAZULA, Items.LAPIS_LAZULI, 0f, 200);
+        addSmeltingRecipe(GALERINA_AURATA, Items.GOLD_NUGGET, 2, 0f, 200);
+        addSmeltingRecipe(XEROCOMUS_FERRUGINEUS, Items.IRON_NUGGET, 2, 0, 200);
+        addSmeltingRecipe(AMANITA_CUPREA, Items.RAW_COPPER, 0, 400);
+        addSmeltingRecipe(DIAMOND_FUNGUS, Items.DIAMOND, 0, 400);
+        addSmeltingRecipe(BOLBITIUS_SILEX, Items.QUARTZ, 0, 200);
     }
 
-    private void addSmeltingRecipes(String ingredientSpecies, Item resultItem, int stackSize, float exp, int cookingTime)
+    private void addDefaultSmeltingRecipe(String ingredientSpecies, Item resultItem)
+    {
+        addSmeltingRecipe(ingredientSpecies, resultItem, .35f, 200);
+    }
+
+    /*private void addDefaultSmeltingRecipe(String ingredientSpecies, String fungusType)
+    {
+        ResourceLocation resLoc = ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, fungusType.replace("colored", "cooked"));
+        addSmeltingRecipe(ingredientSpecies, BuiltInRegistries.ITEM.get(resLoc).orElseThrow().value(),.35f, 200);
+    }*/
+
+    private void addSmeltingRecipe(String ingredientSpecies, Item resultItem, int stackSize, float exp, int cookingTime)
     {
         new FungusCookingRecipeBuilder(ingredientSpecies, new ItemStack(resultItem, stackSize), exp, cookingTime)
                 .save(this.output);
     }
 
-    private void addSmeltingRecipes(String ingredientSpecies, Item resultItem, float exp, int cookingTime)
+    private void addSmeltingRecipe(String ingredientSpecies, Item resultItem, float exp, int cookingTime)
     {
-        addSmeltingRecipes(ingredientSpecies, resultItem, 1, exp, cookingTime);
+        addSmeltingRecipe(ingredientSpecies, resultItem, 1, exp, cookingTime);
     }
 
     public static class Runner extends RecipeProvider.Runner
