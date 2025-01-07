@@ -2,6 +2,8 @@
   "itemGroup.mycologymod": "Mycology",
   "block.mycologymod.colored_crimson_fungus": "Mysterious fungus",
   "block.mycologymod.colored_warped_fungus": "Mysterious fungus",
+  "item.mycologymod.cooked_crimson_fungus": "Cooked fungus",
+  "item.mycologymod.cooked_warped_fungus": "Cooked fungus",
 
   "item.mycologymod.magnifying_glass": "Magnifying glass",
   "item.mycologymod.test_tube": "Test tube",

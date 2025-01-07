@@ -18,6 +18,8 @@ public class ModItems
             new ColoredFungusBlockItem(ModBlocks.COLORED_WARPED_FUNGUS.get(), r));
 
     //all the items below...
+    public static final DeferredItem<Item> COOKED_CRIMSON_FUNGUS = ITEMS.registerSimpleItem("cooked_crimson_fungus");
+    public static final DeferredItem<Item> COOKED_WARPED_FUNGUS = ITEMS.registerSimpleItem("cooked_warped_fungus");
     public static final DeferredItem<MagnifyingGlassItem> MAGNIFYING_GLASS = ITEMS.register("magnifying_glass", MagnifyingGlassItem::new);
     public static final DeferredItem<Item> TEST_TUBE = ITEMS.registerSimpleItem("test_tube");
     public static final DeferredItem<BlockItem> CHROMIUM_ORE = ITEMS.registerSimpleBlockItem("chromium_ore", ModBlocks.CHROMIUM_ORE);

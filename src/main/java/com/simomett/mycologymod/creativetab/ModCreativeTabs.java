@@ -18,6 +18,8 @@ public class ModCreativeTabs
             .icon(() -> FungusSpeciesList.INSTANCE.getCreativeTabIcon())
             .displayItems((enabledFlags, populator) -> {
                 populator.acceptAll(FungusSpeciesList.INSTANCE.getAllSpeciesCollection());
+                populator.accept(ModItems.COOKED_CRIMSON_FUNGUS);
+                populator.accept(ModItems.COOKED_WARPED_FUNGUS);
                 populator.accept(ModItems.MAGNIFYING_GLASS.get());
                 populator.accept(ModItems.TEST_TUBE);
                 populator.accept(ModItems.CHROMIUM_ORE);
