@@ -14,6 +14,7 @@ import com.simomett.mycologymod.items.ModItems;
 import com.simomett.mycologymod.items.potions.ModPotions;
 import com.simomett.mycologymod.gui.menu.ModMenus;
 import com.simomett.mycologymod.particles.ModParticles;
+import com.simomett.mycologymod.recipes.ModRecipeTypes;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipeLoader;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
 import com.simomett.mycologymod.recipes.cooking.ModCookingRecipes;
@@ -46,6 +47,7 @@ public class MycologyMod
         evtBus.register(FungusColorer.class);
         ModParticles.PARTICLES.register(evtBus);
         ModPotions.POTIONS.register(evtBus);
+        ModRecipeTypes.RECIPE_TYPES.register(evtBus);
         ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);
         ModEffects.EFFECTS.register(evtBus);
         ModMenus.MENU_TYPES.register(evtBus);

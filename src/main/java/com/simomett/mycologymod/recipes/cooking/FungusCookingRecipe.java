@@ -1,8 +1,10 @@
 package com.simomett.mycologymod.recipes.cooking;
 
 import com.simomett.mycologymod.items.ModItems;
+import com.simomett.mycologymod.recipes.ModRecipeTypes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
@@ -55,8 +57,10 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     }
 
     @Override
-    public RecipeType<? extends AbstractCookingRecipe> getType() {
-        return null;
+    public RecipeType<? extends AbstractCookingRecipe> getType()
+    {
+        //This is actually what makes the recipe usable in the "furnace"
+        return RecipeType.SMELTING;
     }
 
     @Override
@@ -67,6 +71,6 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     @Override
     protected Item furnaceIcon()
     {
-        return null;
+        return Items.FURNACE;
     }
 }
