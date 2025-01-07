@@ -67,7 +67,7 @@ public class CookingRecipesProvider implements DataProvider
         String type = ModCookingRecipes.FUNGUS_COOKING_RECIPE_SERIALIZER.getKey().location().toString();
         mutationJson.addProperty("type",type);
         mutationJson.addProperty("ingredient", ingredientSpecies);
-        String result = BuiltInRegistries.ITEM.getKey(resultItem).toLanguageKey();
+        String result = BuiltInRegistries.ITEM.getKey(resultItem).toString();
         mutationJson.addProperty("result", result);
         mutationJson.addProperty("count", stackSize);
         mutationJson.addProperty("experience", exp);
