@@ -64,8 +64,9 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     }
 
     @Override
-    public RecipeBookCategory recipeBookCategory() {
-        return null;
+    public RecipeBookCategory recipeBookCategory()
+    {
+        return RecipeBookCategories.FURNACE_MISC;
     }
 
     @Override
