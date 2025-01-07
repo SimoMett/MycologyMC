@@ -44,14 +44,6 @@ public class CookingRecipesProvider extends RecipeProvider
         addSmeltingRecipe(LIGHTBLUE_FUNGUS, Items.LIGHT_BLUE_DYE, 2, 0, 200);
         addSmeltingRecipe(PINK_FUNGUS, Items.PINK_DYE, 2, 0, 200);
         addSmeltingRecipe(MAGENTA_FUNGUS, Items.MAGENTA_DYE, 2, 0, 200);
-
-        // Minerals
-        addSmeltingRecipe(RUSSULA_LAZULA, Items.LAPIS_LAZULI, 0f, 200);
-        addSmeltingRecipe(GALERINA_AURATA, Items.GOLD_NUGGET, 2, 0f, 200);
-        addSmeltingRecipe(XEROCOMUS_FERRUGINEUS, Items.IRON_NUGGET, 2, 0, 200);
-        addSmeltingRecipe(AMANITA_CUPREA, Items.RAW_COPPER, 0, 400);
-        addSmeltingRecipe(DIAMOND_FUNGUS, Items.DIAMOND, 0, 400);
-        addSmeltingRecipe(BOLBITIUS_SILEX, Items.QUARTZ, 0, 200);
     }
 
     private void addDefaultSmeltingRecipe(String ingredientSpecies, Item resultItem)

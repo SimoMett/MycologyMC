@@ -52,7 +52,7 @@ public class FungusCookingRecipeBuilder implements RecipeBuilder
         output.accept(
                 ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(
                         MycologyMod.MODID,
-                        speciesIngredient.toLowerCase().replace(" ", "_"))),
+                        "cooked_"+speciesIngredient.toLowerCase().replace(" ", "_"))),
                 new FungusCookingRecipe(speciesIngredient, result, exp, cookingTime),
                 null);
     }

@@ -11,4 +11,5 @@ public class ModCookingRecipes
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, MycologyMod.MODID);
 
     public static final DeferredHolder<RecipeSerializer<?>, FungusCookingRecipeSerializer> FUNGUS_COOKING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("fungus_cooking", FungusCookingRecipeSerializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, FungusBlastingRecipeSerializer> FUNGUS_BLASTING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("fungus_blasting", FungusBlastingRecipeSerializer::new);
 }
