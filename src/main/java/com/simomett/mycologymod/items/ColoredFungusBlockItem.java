@@ -2,6 +2,7 @@ package com.simomett.mycologymod.items;
 
 import com.simomett.mycologymod.blocks.ModBlocks;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
+import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -91,6 +92,6 @@ public class ColoredFungusBlockItem extends BlockItem
         //fungi can be placed from hand only on mycelium or podzol blocks
         BlockPos clickedPos = context.getClickedPos();
         BlockState belowBlock = context.getLevel().getBlockState(clickedPos.below());
-        return context.getLevel().getBlockState(clickedPos).isAir() && (belowBlock.is(Blocks.MYCELIUM) || belowBlock.is(Blocks.PODZOL));
+        return context.getLevel().getBlockState(clickedPos).isAir() && belowBlock.is(ModBlockTags.CAN_PLANT_ON);
     }
 }
