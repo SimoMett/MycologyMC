@@ -4,6 +4,7 @@ import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.genetics.gene.Gene;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipe;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipesList;
+import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -11,8 +12,10 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.io.*;
@@ -135,10 +138,13 @@ public class FungusGenoma implements Serializable
     public boolean matchesTerrain(BlockState terrainBlock)
     {
         String terrainTag = dominantTraits.terrain();
-        if(terrainTag.charAt(0)=='#')
-            return terrainBlock.is(BlockTags.create(ResourceLocation.parse(terrainTag.substring(1))));
-        else
-            return terrainBlock.is(BuiltInRegistries.BLOCK.get(ResourceLocation.parse(terrainTag)).get());//FIXME crash
+        ResourceLocation a = ResourceLocation.tryParse(terrainTag.substring(1));
+        if(null==a)
+            a = ResourceLocation.tryParse(terrainTag);
+        TagKey<Block> t = BlockTags.create(a);
+        return (BuiltInRegistries.BLOCK.get(a).isPresent() && terrainBlock.is(BuiltInRegistries.BLOCK.get(a).get()))
+                || terrainBlock.is(t)
+                || terrainBlock.is(ModBlockTags.CAN_PLANT_ON);
     }
 
     public final boolean matchesEnvironmentAndTerrain(LevelReader level, BlockPos blockPos, BlockState terrainBlock)
