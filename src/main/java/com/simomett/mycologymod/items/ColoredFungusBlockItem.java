@@ -1,54 +1,44 @@
 package com.simomett.mycologymod.items;
 
-import com.simomett.mycologymod.blocks.ModBlocks;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Optional;
 
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
-import static com.simomett.mycologymod.genetics.FungusGenoma.EATING_EFFECT;
 
 public class ColoredFungusBlockItem extends BlockItem
 {
+    private static final List<MobEffectInstance> EFFECTS_WHEN_EATEN_RAW = List.of(
+            new MobEffectInstance(MobEffects.POISON, 80),
+            new MobEffectInstance(MobEffects.HUNGER, 140));
+
     public ColoredFungusBlockItem(Block block, ResourceLocation resourceLocation)
     {
         super(block, new Item.Properties()
                 .setId(ResourceKey.create(Registries.ITEM, resourceLocation))
                 .stacksTo(DEFAULT_MAX_STACK_SIZE)
-                .food(new FoodProperties.Builder().alwaysEdible().build()));
+                .food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(),
+                        Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()));
     }
 
-    @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity)
-    {
-        return super.finishUsingItem(stack, level, livingEntity);
-    }
-
-    /*@Override
-    public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity)
+    /*public @Nullable FoodProperties getFoodProperties(ItemStack stack, LivingEntity entity)
     {
         Optional<String> eatEff = stack.get(FUNGUS_GENOMA).getDominantTraits().eatingEffect();
         if(eatEff.isPresent())
