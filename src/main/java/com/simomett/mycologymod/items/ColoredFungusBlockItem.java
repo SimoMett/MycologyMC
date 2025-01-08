@@ -3,23 +3,27 @@ package com.simomett.mycologymod.items;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 
@@ -34,22 +38,26 @@ public class ColoredFungusBlockItem extends BlockItem
         super(block, new Item.Properties()
                 .setId(ResourceKey.create(Registries.ITEM, resourceLocation))
                 .stacksTo(DEFAULT_MAX_STACK_SIZE)
-                .food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(),
-                        Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()));
+                .food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build()));
     }
 
-    /*public @Nullable FoodProperties getFoodProperties(ItemStack stack, LivingEntity entity)
+    @Override
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity)
     {
-        Optional<String> eatEff = stack.get(FUNGUS_GENOMA).getDominantTraits().eatingEffect();
-        if(eatEff.isPresent())
+        if(stack.get(FUNGUS_GENOMA).getDominantTraits().eatingEffect().isPresent())
         {
-            MobEffect mobEffect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(eatEff.get()));
-            if(mobEffect==null)
-                throw new NullPointerException("mobEffect specified in "+EATING_EFFECT+" is null");
-            return new FoodProperties.Builder().alwaysEdible().effect(()-> new MobEffectInstance(Holder.direct(mobEffect), -1), 1f).build();
+            String eatEff = stack.get(FUNGUS_GENOMA).getDominantTraits().eatingEffect().get();
+            Optional<Holder.Reference<MobEffect>> mobEffect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(eatEff));
+            if(mobEffect.isPresent())
+                livingEntity.addEffect(new MobEffectInstance(mobEffect.get().getDelegate(), -1));
+            else
+            {
+                for(MobEffectInstance i : EFFECTS_WHEN_EATEN_RAW)
+                    livingEntity.addEffect(i);
+            }
         }
-        return Foods.SPIDER_EYE;
-    }*/
+        return super.finishUsingItem(stack, level, livingEntity);
+    }
 
     @Override
     public Component getName(ItemStack itemStack)
@@ -79,7 +87,7 @@ public class ColoredFungusBlockItem extends BlockItem
     @Override
     protected boolean canPlace(BlockPlaceContext context, BlockState blockState)
     {
-        //fungi can be placed from hand only on mycelium or podzol blocks
+        //fungi can be placed from hand only on mycelium or podzol blocks by default (see can_plant_on block tag)
         BlockPos clickedPos = context.getClickedPos();
         BlockState belowBlock = context.getLevel().getBlockState(clickedPos.below());
         return context.getLevel().getBlockState(clickedPos).isAir() && belowBlock.is(ModBlockTags.CAN_PLANT_ON);
