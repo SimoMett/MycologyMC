@@ -29,7 +29,7 @@ import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNG
 
 public class ColoredFungusBlockItem extends BlockItem
 {
-    private static final List<MobEffectInstance> EFFECTS_WHEN_EATEN_RAW = List.of(
+    public static final List<MobEffectInstance> EFFECTS_WHEN_EATEN_RAW = List.of(
             new MobEffectInstance(MobEffects.POISON, 80),
             new MobEffectInstance(MobEffects.HUNGER, 140));
 

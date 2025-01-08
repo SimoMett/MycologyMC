@@ -301,7 +301,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         if(originBlockEntity==null)
         {
             // Sometimes originBlockEntity is infact null
-            // This happens when mushroom try to spread but fails
+            // This happens when mushroom try to spread but fails. I.E. the mushroom is not yet planted.
             Log.error("ColoredFungusBlock#canSurvive: originBlockEntity is null");
             return false;
         }

@@ -20,6 +20,8 @@ public class ModCreativeTabs
                 populator.acceptAll(FungusSpeciesList.INSTANCE.getAllSpeciesCollection());
                 populator.accept(ModItems.COOKED_CRIMSON_FUNGUS);
                 populator.accept(ModItems.COOKED_WARPED_FUNGUS);
+                populator.accept(ModItems.COOKED_POISONOUS_CRIMSON_FUNGUS);
+                populator.accept(ModItems.COOKED_POISONOUS_WARPED_FUNGUS);
                 populator.accept(ModItems.MAGNIFYING_GLASS.get());
                 populator.accept(ModItems.TEST_TUBE);
                 populator.accept(ModItems.CHROMIUM_ORE);

@@ -5,8 +5,12 @@ import com.simomett.mycologymod.blocks.ModBlocks;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import static com.simomett.mycologymod.items.ColoredFungusBlockItem.EFFECTS_WHEN_EATEN_RAW;
 
 
 public class ModItems
@@ -21,6 +25,10 @@ public class ModItems
     //all the items below...
     public static final DeferredItem<Item> COOKED_CRIMSON_FUNGUS = ITEMS.registerSimpleItem("cooked_crimson_fungus", new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
     public static final DeferredItem<Item> COOKED_WARPED_FUNGUS = ITEMS.registerSimpleItem("cooked_warped_fungus", new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
+    public static final DeferredItem<Item> COOKED_POISONOUS_CRIMSON_FUNGUS = ITEMS.registerSimpleItem("cooked_poisonous_crimson_fungus",
+            new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()));
+    public static final DeferredItem<Item> COOKED_POISONOUS_WARPED_FUNGUS = ITEMS.registerSimpleItem("cooked_poisonous_warped_fungus",
+            new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()));
     public static final DeferredItem<MagnifyingGlassItem> MAGNIFYING_GLASS = ITEMS.register("magnifying_glass", MagnifyingGlassItem::new);
     public static final DeferredItem<Item> TEST_TUBE = ITEMS.registerSimpleItem("test_tube");
     public static final DeferredItem<BlockItem> CHROMIUM_ORE = ITEMS.registerSimpleBlockItem("chromium_ore", ModBlocks.CHROMIUM_ORE);

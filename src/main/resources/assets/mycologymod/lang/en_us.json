@@ -4,6 +4,8 @@
   "block.mycologymod.colored_warped_fungus": "Mysterious fungus",
   "item.mycologymod.cooked_crimson_fungus": "Cooked fungus",
   "item.mycologymod.cooked_warped_fungus": "Cooked fungus",
+  "item.mycologymod.cooked_poisonous_crimson_fungus": "Cooked fungus",
+  "item.mycologymod.cooked_poisonous_warped_fungus": "Cooked fungus",
 
   "item.mycologymod.magnifying_glass": "Magnifying glass",
   "item.mycologymod.test_tube": "Test tube",

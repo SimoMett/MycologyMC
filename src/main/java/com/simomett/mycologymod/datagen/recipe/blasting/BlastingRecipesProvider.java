@@ -26,7 +26,7 @@ public class BlastingRecipesProvider extends RecipeProvider
         // Minerals
         addBlastingRecipe(RUSSULA_LAZULA, Items.LAPIS_LAZULI, 0f, 200);
         addBlastingRecipe(GALERINA_AURATA, Items.GOLD_NUGGET, 2, 0f, 200);
-        addBlastingRecipe(XEROCOMUS_FERRUGINEUS, Items.IRON_NUGGET, 2, 0, 200);
+        addBlastingRecipe(XEROCOMUS_FERRUGINEUS, Items.IRON_NUGGET, 3, 0, 200);
         addBlastingRecipe(AMANITA_CUPREA, Items.RAW_COPPER, 0, 400);
         addBlastingRecipe(DIAMOND_FUNGUS, Items.DIAMOND, 0, 400);
         addBlastingRecipe(BOLBITIUS_SILEX, Items.QUARTZ, 0, 200);
