@@ -433,6 +433,13 @@ public class SpeciesProvider implements DataProvider
                 .terrain(Blocks.BONE_BLOCK)
                 .build();
 
+        speciesBuilder.createDefaultSpecies(SLIME_FUNGUS)
+                .warpedType(0xdcc98e, 0x9fda67, 0x86d274, 0xa5ff99)
+                .light(14)
+                .terrain(Blocks.MOSS_BLOCK)
+                .biomesSpecs(BiomesSpecs.SWAMP)
+                .build();
+
         /////////////////////////////
         //      Mineral fungi      //
         /////////////////////////////

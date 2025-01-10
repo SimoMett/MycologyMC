@@ -53,6 +53,7 @@ public class MutationsProvider implements DataProvider
         addMutation(CHALCIPORUS_INFERNALIS, BOLBITIUS_PROFONDORUM, BASALT_FUNGUS ,cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM, HYGROPHORUS_NIVEUS, DIORITE_FUNGUS, cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM, DIORITE_FUNGUS, CALCITE_FUNGUS, cachedOutput);
+        addMutation(AMANITA_PHALLOIDES, BONEBLOCK_FUNGUS, SLIME_FUNGUS, cachedOutput);
 
         // Minerals branch
         addMutation(BOLBITIUS_PROFONDORUM,POLYPORUS_LIGNEUS,COAL_FUNGUS, cachedOutput);
