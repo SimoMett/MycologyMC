@@ -2,6 +2,7 @@ package com.simomett.mycologymod.genetics;
 
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.genetics.gene.Gene;
+import com.simomett.mycologymod.network.serializable.IModSerializable;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipe;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipesList;
 import com.simomett.mycologymod.tags.ModBlockTags;
@@ -25,7 +26,7 @@ import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CO
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 
-public class FungusGenoma implements Serializable
+public class FungusGenoma implements IModSerializable
 {
     public static final String
             SPECIES = "species",
@@ -66,7 +67,7 @@ public class FungusGenoma implements Serializable
         recessiveTraits = new FungusTraits(dominantTraits);
     }
 
-    public static FungusGenoma fromByteBuf(FriendlyByteBuf byteBuf)
+    public FungusGenoma(FriendlyByteBuf byteBuf)
     {
         try
         {
@@ -75,7 +76,8 @@ public class FungusGenoma implements Serializable
             ByteArrayInputStream i = new ByteArrayInputStream(dst);
             ObjectInputStream inputStream = new ObjectInputStream(i);
             FungusGenoma genoma = (FungusGenoma) inputStream.readObject();
-            return new FungusGenoma(genoma.getDominantTraits(), genoma.getRecessiveTraits()); //I've got the genoma correctly though...
+            this.dominantTraits = genoma.getDominantTraits();
+            this.recessiveTraits = genoma.getRecessiveTraits(); //I've got the genoma correctly though...
         }
         catch (Exception e)
         {
@@ -95,14 +97,6 @@ public class FungusGenoma implements Serializable
         {
             throw new RuntimeException(e);
         }
-    }
-
-    protected byte[] serialize() throws IOException
-    {
-        ByteArrayOutputStream b = new ByteArrayOutputStream();
-        ObjectOutputStream o = new ObjectOutputStream(b);
-        o.writeObject(this);
-        return b.toByteArray();
     }
 
     public FungusTraits getDominantTraits()
