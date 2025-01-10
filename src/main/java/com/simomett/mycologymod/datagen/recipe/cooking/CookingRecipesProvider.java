@@ -53,9 +53,10 @@ public class CookingRecipesProvider extends RecipeProvider
         addDefaultSmeltingRecipe(MAGENTA_FUNGUS, Items.MAGENTA_DYE, 2);
         addDefaultSmeltingRecipe(BROWN_FUNGUS, Items.BROWN_DYE, 2);
 
-        // Stuff
+        // Materials
         addDefaultSmeltingRecipe(POLYPORUS_LIGNEUS, Items.CHARCOAL);
         addDefaultSmeltingRecipe(BONEBLOCK_FUNGUS, Items.BONE_MEAL, 2);
+        addDefaultSmeltingRecipe(SLIME_FUNGUS, Items.SLIME_BALL);
     }
 
     private void addDefaultSmeltingRecipe(String ingredientSpecies, Item resultItem)

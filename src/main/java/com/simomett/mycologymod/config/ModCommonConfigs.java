@@ -31,9 +31,11 @@ public class ModCommonConfigs
         MIN_SPREADING_SPEED = BUILDER.defineInRange("Minimum spreading speed", 25, 2, 25);
         MAX_SPREAD_BOOST = BUILDER.define("Maximum spreading boost", DEFAULT_SPREADBOOST*3);
         RADIUS_MULTIPLIER = BUILDER.define("Radius multiplier", 2);
-        IGNORE_AMBIENT_CONDITIONS = BUILDER.define("Ignore ambient conditions for sporing", true);//FIXME false in final release (or totally removed)
         EFFECT_BLAZING_HIT_ENTITY_CHANCE = BUILDER.define("Chance of Blazing effect to hit an entity", 3);
         EFFECT_LIGHTNING_HIT_CREEPER_CHANCE = BUILDER.define("Chance of Lightning effect to hit a creeper", 3);
+
+        //DEV ONLY
+        IGNORE_AMBIENT_CONDITIONS = BUILDER.comment("Development ONLY").define("Ignore ambient conditions for sporing", false);
         SPEC = BUILDER.build();
     }
 }

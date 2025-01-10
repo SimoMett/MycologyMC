@@ -2,6 +2,7 @@ package com.simomett.mycologymod.genetics;
 
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.genetics.gene.Gene;
+import com.simomett.mycologymod.network.serializable.IModSerializable;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipe;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipesList;
 import com.simomett.mycologymod.tags.ModBlockTags;
@@ -25,7 +26,7 @@ import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CO
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 
-public class FungusGenoma implements Serializable
+public class FungusGenoma implements IModSerializable
 {
     public static final String
             SPECIES = "species",
@@ -66,7 +67,7 @@ public class FungusGenoma implements Serializable
         recessiveTraits = new FungusTraits(dominantTraits);
     }
 
-    public static FungusGenoma fromByteBuf(FriendlyByteBuf byteBuf)
+    public FungusGenoma(FriendlyByteBuf byteBuf)
     {
         try
         {
@@ -75,7 +76,8 @@ public class FungusGenoma implements Serializable
             ByteArrayInputStream i = new ByteArrayInputStream(dst);
             ObjectInputStream inputStream = new ObjectInputStream(i);
             FungusGenoma genoma = (FungusGenoma) inputStream.readObject();
-            return new FungusGenoma(genoma.getDominantTraits(), genoma.getRecessiveTraits()); //I've got the genoma correctly though...
+            this.dominantTraits = genoma.getDominantTraits();
+            this.recessiveTraits = genoma.getRecessiveTraits(); //I've got the genoma correctly though...
         }
         catch (Exception e)
         {
@@ -97,14 +99,6 @@ public class FungusGenoma implements Serializable
         }
     }
 
-    protected byte[] serialize() throws IOException
-    {
-        ByteArrayOutputStream b = new ByteArrayOutputStream();
-        ObjectOutputStream o = new ObjectOutputStream(b);
-        o.writeObject(this);
-        return b.toByteArray();
-    }
-
     public FungusTraits getDominantTraits()
     {
         return dominantTraits;
@@ -119,20 +113,16 @@ public class FungusGenoma implements Serializable
     {
         //LightLayer.SKY is the light level of a block due to other blocks obstructing skylight. 0 is in complete darkness, 15 is in plain air.
         //LightLayer.BLOCK is the light level of a block due to other sources of light (Glowstone, torches..).
-        boolean matchesLight = level.getBrightness(LightLayer.SKY, origin) < dominantTraits.light() &&
+        boolean matchesLight = level.getBrightness(LightLayer.SKY, origin) <= dominantTraits.light() &&
                 level.getBrightness(LightLayer.BLOCK, origin) < dominantTraits.light(); // mushrooms prefer sporing in darker areas
 
         // getBaseTemperature() or getModifiedClimateSettings().temperature() ?
         // they seems to be the same...
         float temperature = level.getBiome(origin).value().getModifiedClimateSettings().temperature();
-
         float humidity = level.getBiome(origin).value().getModifiedClimateSettings().downfall();
+        boolean matchesAmbient = dominantTraits.temp().equals(temperature) && dominantTraits.humidity().equals(humidity);
 
-        boolean matchesEnv = matchesLight
-                && dominantTraits.temp().equals(temperature)
-                && dominantTraits.humidity().equals(humidity);
-
-        return IGNORE_AMBIENT_CONDITIONS.get() || matchesEnv;
+        return IGNORE_AMBIENT_CONDITIONS.get() || (matchesLight && matchesAmbient);
     }
 
     public boolean matchesTerrain(BlockState terrainBlock)

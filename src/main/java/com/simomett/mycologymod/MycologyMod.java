@@ -1,6 +1,5 @@
 package com.simomett.mycologymod;
 
-import com.simomett.mycologymod.blocks.FungusColorer;
 import com.simomett.mycologymod.blocks.ModBlocks;
 import com.simomett.mycologymod.config.ModClientConfigs;
 import com.simomett.mycologymod.datacomponents.ModDataAttachmentTypes;
@@ -43,7 +42,6 @@ public class MycologyMod
         ModDataComponentTypes.DATA_COMPONENTS.register(evtBus);
         ModEntities.ENTITIES.register(evtBus);
         ModDataAttachmentTypes.ATTACHMENT_TYPES.register(evtBus);
-        evtBus.register(FungusColorer.class);
         ModParticles.PARTICLES.register(evtBus);
         ModPotions.POTIONS.register(evtBus);
         ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);

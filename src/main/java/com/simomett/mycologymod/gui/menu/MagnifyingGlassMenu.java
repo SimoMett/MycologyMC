@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.gui.menu;
 
 import com.simomett.mycologymod.genetics.FungusGenoma;
-import com.simomett.mycologymod.genetics.FungusTraits;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -10,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class MagnifyingGlassMenu extends AbstractContainerMenu
 {
-    public FungusGenoma fungusGenoma = new FungusGenoma(FungusTraits.UNINIT, FungusTraits.UNINIT);
+    public FungusGenoma fungusGenoma;
 
     public MagnifyingGlassMenu(int containerId, Inventory inventory, FungusGenoma fungusGenoma)
     {
@@ -21,7 +20,7 @@ public class MagnifyingGlassMenu extends AbstractContainerMenu
     public MagnifyingGlassMenu(int containerId, Inventory inventory, RegistryFriendlyByteBuf friendlyByteBuf)
     {
         super(ModMenus.MAGNIFYING_GLASS_MENU.get(), containerId);
-        fungusGenoma = FungusGenoma.fromByteBuf(friendlyByteBuf);
+        fungusGenoma = new FungusGenoma(friendlyByteBuf);
     }
 
     @Override

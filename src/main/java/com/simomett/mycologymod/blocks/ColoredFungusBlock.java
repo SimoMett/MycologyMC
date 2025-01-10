@@ -299,12 +299,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(origin));
         if(originBlockEntity==null)
-        {
-            // Sometimes originBlockEntity is infact null
-            // This happens when mushroom try to spread but fails. I.E. the mushroom is not yet planted.
-            Log.error("ColoredFungusBlock#canSurvive: originBlockEntity is null");
-            return false;
-        }
+            return false;// This happens when mushroom try to spread but fails. I.E. the mushroom is not yet planted.
+
         FungusGenoma thisFungusData = originBlockEntity.getFungusGenoma();
 
         if(thisFungusData==null)
