@@ -119,20 +119,16 @@ public class FungusGenoma implements Serializable
     {
         //LightLayer.SKY is the light level of a block due to other blocks obstructing skylight. 0 is in complete darkness, 15 is in plain air.
         //LightLayer.BLOCK is the light level of a block due to other sources of light (Glowstone, torches..).
-        boolean matchesLight = level.getBrightness(LightLayer.SKY, origin) < dominantTraits.light() &&
+        boolean matchesLight = level.getBrightness(LightLayer.SKY, origin) <= dominantTraits.light() &&
                 level.getBrightness(LightLayer.BLOCK, origin) < dominantTraits.light(); // mushrooms prefer sporing in darker areas
 
         // getBaseTemperature() or getModifiedClimateSettings().temperature() ?
         // they seems to be the same...
         float temperature = level.getBiome(origin).value().getModifiedClimateSettings().temperature();
-
         float humidity = level.getBiome(origin).value().getModifiedClimateSettings().downfall();
+        boolean matchesAmbient = dominantTraits.temp().equals(temperature) && dominantTraits.humidity().equals(humidity);
 
-        boolean matchesEnv = matchesLight
-                && dominantTraits.temp().equals(temperature)
-                && dominantTraits.humidity().equals(humidity);
-
-        return IGNORE_AMBIENT_CONDITIONS.get() || matchesEnv;
+        return IGNORE_AMBIENT_CONDITIONS.get() || (matchesLight && matchesAmbient);
     }
 
     public boolean matchesTerrain(BlockState terrainBlock)
