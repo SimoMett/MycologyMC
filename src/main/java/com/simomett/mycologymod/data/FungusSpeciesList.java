@@ -17,19 +17,21 @@ import static com.simomett.mycologymod.items.ModItems.COLORED_CRIMSON_FUNGUS;
 
 public class FungusSpeciesList
 {
-    private HashMap<String, FungusSpecies> speciesHashMap = new HashMap<>();
+    private final HashMap<String, FungusSpecies> speciesHashMap = new HashMap<>();
+    private final FungusSpeciesColorsMap colorsMap = FungusSpeciesColorsMap.INSTANCE;
 
     public static FungusSpeciesList INSTANCE = new FungusSpeciesList();
 
     public void put(FungusTraits defaultTraits, int[] colors, String fungusType, FungusSpawn spawnType)
     {
-        FungusSpecies species = new FungusSpecies(defaultTraits,colors,fungusType, spawnType);
+        FungusSpecies species = new FungusSpecies(defaultTraits, fungusType, spawnType);
         speciesHashMap.put(defaultTraits.species(), species);
+        colorsMap.put(defaultTraits.species(), colors);
     }
 
     public FungusSpecies get(String speciesName)
     {
-        return speciesHashMap.getOrDefault(speciesName, new FungusSpecies(FungusTraits.UNINIT, new int[]{0, 0, 0, 0}, COLORED_WARPED_STRING, FungusSpawn.NO_SPAWN));
+        return speciesHashMap.getOrDefault(speciesName, new FungusSpecies(FungusTraits.UNINIT, COLORED_WARPED_STRING, FungusSpawn.NO_SPAWN));
     }
 
     public ArrayList<FungusSpecies> getSpeciesList()
@@ -76,14 +78,12 @@ public class FungusSpeciesList
     public static class FungusSpecies
     {
         public FungusTraits defaultTraits;
-        public int [] colors;
         public String fungusType;
         public final FungusSpawn spawnInfo;
 
-        public FungusSpecies(FungusTraits traits, int [] cols, String type, FungusSpawn spawnInfo)
+        public FungusSpecies(FungusTraits traits, String type, FungusSpawn spawnInfo)
         {
             defaultTraits = traits;
-            colors = cols;
             fungusType = type;
             this.spawnInfo = spawnInfo;
         }
