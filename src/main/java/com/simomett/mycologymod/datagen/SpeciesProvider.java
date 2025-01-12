@@ -105,7 +105,7 @@ public class SpeciesProvider implements DataProvider
                 .warpedType(0xFFFCD9, 0xFF521E, 0xFFFFFF, 0xFFB171)
                 .terrain(ModBlockTags.GRASS)
                 .biomesSpecs(BiomesSpecs.JUNGLE)
-                .spawnType(FungusSpawn.JUNGLE)
+                .spawnType(FungusSpawn.JUNGLES)
                 .build();
 
         speciesBuilder.createDefaultSpecies(AMANITA_PHALLOIDES)

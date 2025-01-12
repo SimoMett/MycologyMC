@@ -25,6 +25,7 @@ import java.util.*;
 import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
+import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
 
 public class FungusGenoma implements IModSerializable
 {
@@ -128,9 +129,7 @@ public class FungusGenoma implements IModSerializable
     public boolean matchesTerrain(BlockState terrainBlock)
     {
         String terrainTag = dominantTraits.terrain();
-        ResourceLocation a = ResourceLocation.tryParse(terrainTag.substring(1));
-        if(null==a)
-            a = ResourceLocation.tryParse(terrainTag);
+        ResourceLocation a = parseStringOrTag(terrainTag);
         TagKey<Block> t = BlockTags.create(a);
         return (BuiltInRegistries.BLOCK.get(a).isPresent() && terrainBlock.is(BuiltInRegistries.BLOCK.get(a).get()))
                 || terrainBlock.is(t)

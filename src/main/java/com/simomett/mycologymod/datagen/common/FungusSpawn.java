@@ -2,6 +2,7 @@ package com.simomett.mycologymod.datagen.common;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 
@@ -22,7 +23,7 @@ public class FungusSpawn
     public static final FungusSpawn OLD_GROWTH_PINE_TAIGA = new FungusSpawn(Biomes.OLD_GROWTH_PINE_TAIGA, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn MEADOW = new FungusSpawn(Biomes.MEADOW, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn SWAMP = new FungusSpawn(Biomes.SWAMP, 1f);
-    public static final FungusSpawn JUNGLE = new FungusSpawn(Biomes.JUNGLE, DEFAULT_SPAWN_CHANCE);
+    public static final FungusSpawn JUNGLES = new FungusSpawn(BiomeTags.IS_JUNGLE, .7f);
     public static final FungusSpawn MUSHROOM_FIELDS = new FungusSpawn(Biomes.MUSHROOM_FIELDS, 1f);
     public static final FungusSpawn CAVES = new FungusSpawn("#caves", DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn NETHER_WASTES = new FungusSpawn(Biomes.NETHER_WASTES, DEFAULT_SPAWN_CHANCE);
@@ -43,8 +44,12 @@ public class FungusSpawn
 
     public FungusSpawn(ResourceKey<Biome> biomeResourceKey, float chance)
     {
-        this.biomes = biomeResourceKey.location().toString();
-        this.chance = chance;
+        this(biomeResourceKey.location().toString(), chance);
+    }
+
+    public FungusSpawn(TagKey<Biome> biomeTag, float chance)
+    {
+        this("#"+biomeTag.location(), chance);
     }
 
     public String getBiomes()
