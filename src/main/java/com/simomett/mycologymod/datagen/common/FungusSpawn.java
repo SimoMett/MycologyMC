@@ -21,7 +21,7 @@ public class FungusSpawn
     public static final FungusSpawn OLD_GROWTH_SPRUCE_TAIGA = new FungusSpawn(Biomes.OLD_GROWTH_SPRUCE_TAIGA, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn OLD_GROWTH_PINE_TAIGA = new FungusSpawn(Biomes.OLD_GROWTH_PINE_TAIGA, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn MEADOW = new FungusSpawn(Biomes.MEADOW, DEFAULT_SPAWN_CHANCE);
-    public static final FungusSpawn SWAMP = new FungusSpawn(Biomes.SWAMP, DEFAULT_SPAWN_CHANCE);
+    public static final FungusSpawn SWAMP = new FungusSpawn(Biomes.SWAMP, 1f);
     public static final FungusSpawn JUNGLE = new FungusSpawn(Biomes.JUNGLE, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn MUSHROOM_FIELDS = new FungusSpawn(Biomes.MUSHROOM_FIELDS, 1f);
     public static final FungusSpawn CAVES = new FungusSpawn("#caves", DEFAULT_SPAWN_CHANCE);
