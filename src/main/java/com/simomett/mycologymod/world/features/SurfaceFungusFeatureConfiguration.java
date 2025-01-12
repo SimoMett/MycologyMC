@@ -5,16 +5,12 @@ import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
-import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -39,7 +35,7 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
     {
         ResourceLocation a = parseStringOrTag(biomeTag);
         TagKey<Biome> t = TagKey.create(Registries.BIOME, a);
-        return biome.is(t) || biomeTag.equals(FungusSpawn.ANY_BIOME.getBiomes());
+        return (biome.is(t) || biome.is(a)) || biomeTag.equals(FungusSpawn.ANY_BIOME.getBiomes());
     }
 
     @Override
@@ -62,7 +58,7 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
             {
                 //spawn fungus with the correct type
                 BlockState blockState = ModBlocks.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
-                placeContext.level().setBlock(origin, blockState, 0); //WTF is the third parameter??
+                placeContext.level().setBlock(origin, blockState, 0); //Block.UPDATE_CLIENTS?
 
                 //edit its block entity
                 BlockEntity blockEntity = placeContext.level().getBlockEntity(origin);
