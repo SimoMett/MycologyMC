@@ -53,7 +53,7 @@ public class SpeciesDictionary
     public static final String DIORITE_FUNGUS = HYGROCYBE+" dioritis";
     public static final String CALCITE_FUNGUS = OVULUS+" calcareus";
     public static final String BONEBLOCK_FUNGUS = XEROCOMUS+" osseus";
-    public static final String SLIME_FUNGUS = LACCARIA+" gelatinosa";
+    public static final String SLIME_FUNGUS = LACCARIA+" viscida";
 
     // Minerals branch
     public static final String COAL_FUNGUS = LECCINUM+" carbonis";
