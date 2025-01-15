@@ -7,6 +7,8 @@ import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -21,6 +23,8 @@ import org.jline.utils.Log;
 
 import java.util.List;
 import java.util.Random;
+
+import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
 
 public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
 {
@@ -49,19 +53,9 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
                 //spawn fungus with the correct type
                 BlockState terrainBlockState = level.getBlockState(origin);
                 String terrain = randomSpecies.defaultTraits.terrain();
-                boolean blockMatchesTerrain;
-                if(terrain.startsWith("#"))
-                {
-                    terrain = terrain.substring(1);
-                    ResourceLocation res = ResourceLocation.parse(terrain);
-                    TagKey<Block> tag = BlockTags.create(res);
-                    blockMatchesTerrain = terrainBlockState.is(tag);
-                }
-                else
-                {
-                    ResourceLocation res = ResourceLocation.parse(terrain);
-                    blockMatchesTerrain = terrainBlockState.is(BuiltInRegistries.BLOCK.get(res).get());
-                }
+
+                ResourceLocation res = parseStringOrTag(terrain);
+                boolean blockMatchesTerrain = terrainBlockState.is(ResourceKey.create(Registries.BLOCK, res)) || terrainBlockState.is(BlockTags.create(res));
 
                 if(blockMatchesTerrain && level.getBlockState(origin.above()).isAir())
                 {
@@ -70,14 +64,8 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
                     level.setBlock(pos, blockState, 0);
 
                     //edit its block entity
-                    BlockEntity blockEntity = level.getBlockEntity(pos);
-                    if (blockEntity instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
-                        coloredFungusBlockEntity.applyGenoma(new FungusGenoma(randomSpecies));
-                    else
-                    {
-                        Log.error("WHY THIS BLOCKENTITY ISN'T A COLORED FUNGUS?");
-                        return false;
-                    }
+                    ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity) level.getBlockEntity(pos);
+                    blockEntity.applyGenoma(new FungusGenoma(randomSpecies));
                 }
             }
             return true;

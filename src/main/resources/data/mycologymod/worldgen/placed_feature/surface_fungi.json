@@ -3,17 +3,27 @@
   "placement": [
     {
       "type": "minecraft:heightmap",
-      "heightmap": "OCEAN_FLOOR_WG"
+      "heightmap": "MOTION_BLOCKING_NO_LEAVES"
     },
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 5
+      "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
+        "type": "minecraft:replaceable"
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:has_sturdy_face",
+        "offset": [
+          0,
+          -1,
+          0
+        ],
+        "direction": "down"
       }
     }
   ]

@@ -33,7 +33,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
-import org.jline.utils.Log;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -296,20 +295,24 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             return true;
         //
 
-
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(origin));
-        if(originBlockEntity==null)
+        if(null==originBlockEntity)
             return false;// This happens when mushroom try to spread but fails. I.E. the mushroom is not yet planted.
 
         FungusGenoma thisFungusData = originBlockEntity.getFungusGenoma();
 
-        if(thisFungusData==null)
+        if(null==thisFungusData)
         {
-            Log.error("Block cannot survive. FungusGenoma is null");
+            originBlockEntity.setRemoved();
             return false;
         }
 
-        return thisFungusData.matchesEnvironmentAndTerrain(level, origin, belowBlock);
+        //WARNING
+        // if whatever mod/datapack changes default temperature and humidity of a biome, the fungus cannot be generated.
+        boolean canSurvive = thisFungusData.matchesEnvironmentAndTerrain(level, origin, belowBlock);
+        if(!canSurvive)
+            originBlockEntity.setRemoved();
+        return canSurvive;
     }
 
     public static void applyMutagen(BlockPos pos, BlockState blockState, ServerLevel level)
