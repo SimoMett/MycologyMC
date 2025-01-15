@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.io.*;
 import java.util.*;
 
-import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
@@ -123,7 +122,7 @@ public class FungusGenoma implements IModSerializable
         float humidity = level.getBiome(origin).value().getModifiedClimateSettings().downfall();
         boolean matchesAmbient = dominantTraits.temp().equals(temperature) && dominantTraits.humidity().equals(humidity);
 
-        return IGNORE_AMBIENT_CONDITIONS.get() || (matchesLight && matchesAmbient);
+        return matchesLight && matchesAmbient;
     }
 
     public boolean matchesTerrain(BlockState terrainBlock)
