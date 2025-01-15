@@ -59,6 +59,8 @@ public class OverworldFungusFeatureConfiguration extends Feature<SimpleBlockConf
                 if(placeContext.level().setBlock(origin, blockState, Block.UPDATE_CLIENTS))
                 {
                     ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity) placeContext.level().getBlockEntity(origin);
+                    if(null==blockEntity)
+                        blockEntity = new ColoredFungusBlockEntity(placeContext.origin(), blockState);
                     blockEntity.applyGenoma(new FungusGenoma(randomSpecies));
                     return true;
                 }
