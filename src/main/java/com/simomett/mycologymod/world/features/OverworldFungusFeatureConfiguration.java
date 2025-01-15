@@ -22,10 +22,10 @@ import java.util.Random;
 
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
 
-public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
+public class OverworldFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
 {
     //command "/place feature" doesn't work (I don't care)
-    public SurfaceFungusFeatureConfiguration()
+    public OverworldFungusFeatureConfiguration()
     {
         super(SimpleBlockConfiguration.CODEC);
     }
