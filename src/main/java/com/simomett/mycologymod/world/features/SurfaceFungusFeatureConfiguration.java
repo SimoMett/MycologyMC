@@ -11,6 +11,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -53,15 +54,16 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
             {
                 //spawn fungus with the correct type
                 BlockState blockState = ModBlocks.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
-                placeContext.level().setBlock(origin, blockState, 0); //Block.UPDATE_CLIENTS?
 
                 //edit its block entity
-                ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity) placeContext.level().getBlockEntity(origin);
-                blockEntity.applyGenoma(new FungusGenoma(randomSpecies));
+                if(placeContext.level().setBlock(origin, blockState, Block.UPDATE_CLIENTS))
+                {
+                    ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity) placeContext.level().getBlockEntity(origin);
+                    blockEntity.applyGenoma(new FungusGenoma(randomSpecies));
+                    return true;
+                }
             }
-            return true;
         }
-        else
-            return false;
+        return false;
     }
 }
