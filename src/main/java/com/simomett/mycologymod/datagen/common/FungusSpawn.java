@@ -6,7 +6,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 
-public class FungusSpawn
+import java.io.Serializable;
+
+public class FungusSpawn implements Serializable
 {
     private static final float DEFAULT_SPAWN_CHANCE = .4f;
     public static final FungusSpawn NO_SPAWN = null;

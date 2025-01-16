@@ -11,9 +11,14 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.*;
 
 import static com.simomett.mycologymod.blocks.ModBlocks.COLORED_CRIMSON_STRING;
@@ -21,6 +26,7 @@ import static com.simomett.mycologymod.blocks.ModBlocks.COLORED_WARPED_STRING;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.items.ModItems.COLORED_CRIMSON_FUNGUS;
 
+@EventBusSubscriber(modid = MycologyMod.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
 {
     private final HashMap<String, FungusSpecies> speciesHashMap = new HashMap<>();
@@ -99,7 +105,7 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
         return TYPE;
     }
 
-    public static class FungusSpecies
+    public static class FungusSpecies implements Serializable
     {
         public FungusTraits defaultTraits;
         public String fungusType;
@@ -111,5 +117,14 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
             fungusType = type;
             this.spawnInfo = spawnInfo;
         }
+    }
+
+    @SubscribeEvent
+    public static void syncEvent(OnDatapackSyncEvent evt)
+    {
+        if(null != evt.getPlayer())
+            PacketDistributor.sendToPlayer(evt.getPlayer(), FungusSpeciesList.INSTANCE);
+        else
+            PacketDistributor.sendToAllPlayers(FungusSpeciesList.INSTANCE);
     }
 }
