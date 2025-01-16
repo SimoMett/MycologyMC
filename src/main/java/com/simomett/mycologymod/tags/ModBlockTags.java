@@ -18,6 +18,7 @@ public class ModBlockTags
     public static final TagKey<Block> NETHER_BRICKS = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "nether_bricks"));
     public static final TagKey<Block> CAN_PLANT_ON = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "can_plant_on"));
     public static final TagKey<Block> FUNGUS_PLANTABLE = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "fungus_plantable"));
+    public static final TagKey<Block> SPORING_REPLACEABLES = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "sporing_replaceables"));
 
     public static Component getTranslatableComponent(String tagName)
     {
