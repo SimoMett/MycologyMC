@@ -108,6 +108,7 @@ public class FungusEffects
         BlockPos.betweenClosedStream(box).forEach( p -> {
             pList.add(new BlockPos(p));
         });
+        pList.remove(pos.below());
         List <BlockPos> logBlocksList = pList.stream()
                 .filter(p -> p.distSqr(pos) < box.getSize()/2.0f)
                 .filter(p -> lvl.getBlockState(p).is(BlockTags.OVERWORLD_NATURAL_LOGS))
