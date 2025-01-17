@@ -183,7 +183,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         int spreading = Math.round(thisGenoma.getDominantTraits().spreading() / spreadBoost);
         if(spreading==0)
             spreading=1;
-        boolean canSpread = level.getBlockState(originalPos.below()).is(Blocks.MYCELIUM) || thisGenoma.matchesEnvironmentAndTerrain(level, pos, level.getBlockState(pos.below()));
+        boolean canSpread = thisGenoma.matchesEnvironmentAndTerrain(level, pos, level.getBlockState(pos.below()));
 
         int areaRadius = thisGenoma.getDominantTraits().area();
 
