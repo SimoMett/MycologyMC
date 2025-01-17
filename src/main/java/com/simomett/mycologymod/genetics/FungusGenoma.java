@@ -17,6 +17,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.io.*;
@@ -137,7 +138,7 @@ public class FungusGenoma implements IModSerializable
 
     public final boolean matchesEnvironmentAndTerrain(LevelReader level, BlockPos blockPos, BlockState terrainBlock)
     {
-        return matchesEnvironment(level, blockPos) && matchesTerrain(terrainBlock);
+        return (matchesEnvironment(level, blockPos) && matchesTerrain(terrainBlock)) || terrainBlock.is(Blocks.MYCELIUM);
     }
 
     public FungusGenoma normalCrossBreedWith(FungusGenoma that)
