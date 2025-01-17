@@ -246,7 +246,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             ColoredFungusBlockEntity randomFungus = nearbyFungi.get(rand.nextInt(nearbyFungi.size()));
             FungusGenoma offspringGenoma = randomFungus.getFungusGenoma().crossBreedWith(genoma);
 
-            if (offspringGenoma.matchesEnvironmentAndTerrain(level, pos, level.getBlockState(pos.below())))
+            if (offspringGenoma.matchesTerrain(level.getBlockState(pos.below())))
             {
                 // ... then place it
                 String fungusType = FungusSpeciesList.INSTANCE.get(offspringGenoma.getDominantTraits().species()).fungusType;
