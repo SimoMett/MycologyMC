@@ -31,8 +31,8 @@ public class SpeciesBuilder
     public static final String WARPED_TYPE = ModBlocks.COLORED_WARPED_STRING;
 
     //some spreading default values
-    public static final int DEFAULT_SPREADING = 25;
-    public static final int VERY_SLOW_SPREADING = 50;
+    public static final int DEFAULT_SPREADING = 24;
+    public static final int VERY_SLOW_SPREADING = 2*DEFAULT_SPREADING;
 
     public static final float DEFAULT_SPREADBOOST = 1.5f;
 
