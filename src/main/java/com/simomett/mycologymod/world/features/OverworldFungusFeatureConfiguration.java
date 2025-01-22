@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import java.util.List;
 import java.util.Random;
 
+import static com.simomett.mycologymod.genetics.FungusGenoma.matchesTerrain;
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
 
 public class OverworldFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
@@ -43,7 +44,9 @@ public class OverworldFungusFeatureConfiguration extends Feature<SimpleBlockConf
         List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         BlockPos origin = placeContext.origin();
         final Holder<Biome> biome = placeContext.level().getBiome(origin);
-        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && matchesBiome(s.spawnInfo.getBiomes(), biome)).toList();
+        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null
+                && matchesTerrain(s.defaultTraits.terrain(), placeContext.level().getBlockState(origin.below()))
+                && matchesBiome(s.spawnInfo.getBiomes(), biome)).toList();
         if(!speciesList.isEmpty())
         {
             //get random species

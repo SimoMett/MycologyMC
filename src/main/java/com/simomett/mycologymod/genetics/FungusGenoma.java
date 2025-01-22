@@ -128,8 +128,12 @@ public class FungusGenoma implements IModSerializable
 
     public boolean matchesTerrain(BlockState terrainBlock)
     {
-        String terrainTag = dominantTraits.terrain();
-        ResourceLocation a = parseStringOrTag(terrainTag);
+        return matchesTerrain(dominantTraits.terrain(), terrainBlock);
+    }
+
+    public static boolean matchesTerrain(String terrain, BlockState terrainBlock)
+    {
+        ResourceLocation a = parseStringOrTag(terrain);
         TagKey<Block> t = BlockTags.create(a);
         return (BuiltInRegistries.BLOCK.get(a).isPresent() && terrainBlock.is(BuiltInRegistries.BLOCK.get(a).get()))
                 || terrainBlock.is(t)
