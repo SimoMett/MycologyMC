@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.effects;
 
 import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
+import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.NbtOps;
@@ -57,7 +58,7 @@ public class FungusEffects
     public static final SingleEffect GOODCHANCE_EFFECT = new SingleEffect("goodchance", MobEffects.LUCK);
     public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", ModEffects.GAIN_XP);
     public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", ModEffects.KNOWLEDGE);
-    public static final FungusEffect SPORING_EFFECT = new TransmuteBlockEffect("sporing", BlockTags.VALID_SPAWN, Blocks.MYCELIUM);
+    public static final FungusEffect SPORING_EFFECT = new TransmuteBlockEffect("sporing", ModBlockTags.SPORING_REPLACEABLES, Blocks.MYCELIUM);
     public static final FungusEffect FREEZING_EFFECT = new TransmuteBlockEffect("freezing", Blocks.WATER, Blocks.ICE);
     public static final LevelOnlyEffect DYEING_EFFECT = new LevelOnlyEffect("dyeing", (level, pos, box) -> {
         level.getEntitiesOfClass(Sheep.class, box).forEach( sheep -> {
@@ -107,6 +108,7 @@ public class FungusEffects
         BlockPos.betweenClosedStream(box).forEach( p -> {
             pList.add(new BlockPos(p));
         });
+        pList.remove(pos.below());
         List <BlockPos> logBlocksList = pList.stream()
                 .filter(p -> p.distSqr(pos) < box.getSize()/2.0f)
                 .filter(p -> lvl.getBlockState(p).is(BlockTags.OVERWORLD_NATURAL_LOGS))

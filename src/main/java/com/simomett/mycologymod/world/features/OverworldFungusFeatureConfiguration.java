@@ -20,12 +20,13 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import java.util.List;
 import java.util.Random;
 
+import static com.simomett.mycologymod.genetics.FungusGenoma.matchesTerrain;
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
 
-public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
+public class OverworldFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
 {
     //command "/place feature" doesn't work (I don't care)
-    public SurfaceFungusFeatureConfiguration()
+    public OverworldFungusFeatureConfiguration()
     {
         super(SimpleBlockConfiguration.CODEC);
     }
@@ -43,7 +44,9 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
         List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
         BlockPos origin = placeContext.origin();
         final Holder<Biome> biome = placeContext.level().getBiome(origin);
-        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && matchesBiome(s.spawnInfo.getBiomes(), biome)).toList();
+        speciesList = speciesList.stream().filter(s -> s.spawnInfo != null
+                && matchesTerrain(s.defaultTraits.terrain(), placeContext.level().getBlockState(origin.below()))
+                && matchesBiome(s.spawnInfo.getBiomes(), biome)).toList();
         if(!speciesList.isEmpty())
         {
             //get random species
@@ -59,6 +62,8 @@ public class SurfaceFungusFeatureConfiguration extends Feature<SimpleBlockConfig
                 if(placeContext.level().setBlock(origin, blockState, Block.UPDATE_CLIENTS))
                 {
                     ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity) placeContext.level().getBlockEntity(origin);
+                    if(null==blockEntity)
+                        blockEntity = new ColoredFungusBlockEntity(placeContext.origin(), blockState);
                     blockEntity.applyGenoma(new FungusGenoma(randomSpecies));
                     return true;
                 }

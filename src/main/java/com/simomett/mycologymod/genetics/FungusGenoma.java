@@ -17,12 +17,12 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.io.*;
 import java.util.*;
 
-import static com.simomett.mycologymod.config.ModCommonConfigs.IGNORE_AMBIENT_CONDITIONS;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
@@ -123,13 +123,17 @@ public class FungusGenoma implements IModSerializable
         float humidity = level.getBiome(origin).value().getModifiedClimateSettings().downfall();
         boolean matchesAmbient = dominantTraits.temp().equals(temperature) && dominantTraits.humidity().equals(humidity);
 
-        return IGNORE_AMBIENT_CONDITIONS.get() || (matchesLight && matchesAmbient);
+        return matchesLight && matchesAmbient;
     }
 
     public boolean matchesTerrain(BlockState terrainBlock)
     {
-        String terrainTag = dominantTraits.terrain();
-        ResourceLocation a = parseStringOrTag(terrainTag);
+        return matchesTerrain(dominantTraits.terrain(), terrainBlock);
+    }
+
+    public static boolean matchesTerrain(String terrain, BlockState terrainBlock)
+    {
+        ResourceLocation a = parseStringOrTag(terrain);
         TagKey<Block> t = BlockTags.create(a);
         return (BuiltInRegistries.BLOCK.get(a).isPresent() && terrainBlock.is(BuiltInRegistries.BLOCK.get(a).get()))
                 || terrainBlock.is(t)
@@ -138,7 +142,7 @@ public class FungusGenoma implements IModSerializable
 
     public final boolean matchesEnvironmentAndTerrain(LevelReader level, BlockPos blockPos, BlockState terrainBlock)
     {
-        return matchesEnvironment(level, blockPos) && matchesTerrain(terrainBlock);
+        return (matchesEnvironment(level, blockPos) && matchesTerrain(terrainBlock)) || terrainBlock.is(Blocks.MYCELIUM);
     }
 
     public FungusGenoma normalCrossBreedWith(FungusGenoma that)

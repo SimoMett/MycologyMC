@@ -45,7 +45,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createSpecies(AMANITA_RUBRA)
                 .crimsonType(0xFFFFCC, 0xC41717, 0xF2F2F2, 0xF2F2F2)
-                .spreading(25)
+                .spreading(24)
                 .spreadBoost(1.0f)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
@@ -56,7 +56,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createSpecies(LACTARIUS_VIRENS)
                 .warpedType( 0xBF98BF, 0x6bb83c, 0x99110F, 0xF502D3)//FIXME
-                .spreading(25)
+                .spreading(24)
                 .spreadBoost(1.0f)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
@@ -229,33 +229,33 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         speciesBuilder.createDefaultSpecies(ORANGE_FUNGUS)
                 .warpedType(0xffe0bd, 0xfc9646, 0xc98d6a, 0x844432)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(LIME_FUNGUS)
                 .warpedType(0x9e885f, 0xdd6544, 0x20b482, 0x50ec6c)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(CYAN_FUNGUS)
                 .warpedType(0xdcab8a, 0x45af9c, 0xd3907c, 0x0c6c91)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(LIGHTBLUE_FUNGUS)
                 .warpedType(0xc9f38e, 0x87cfec, 0xcaeef9, 0x8ad4f1)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createSpecies(OVULUS_VIOLACEUS)
                 .crimsonType(0xAA48FB, 0x9c133f, 0xA23F19, 0xE105EF)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
-                .spreading(25)
+                .spreading(24)
                 .spreadBoost(1.0f)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
@@ -265,43 +265,43 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies(MAGENTA_FUNGUS)
                 .crimsonType(0xffb2cf, 0xef459d, 0x981c33, 0xffffff)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(PINK_FUNGUS)
                 .crimsonType(0xf6dfb5, 0xffc0cb, 0xffc0cb, 0xffeef0)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(BROWN_FUNGUS)
                 .warpedType(0xeeaa3c, 0xae5913, 0x64330b, 0x4e2407)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(BLACK_FUNGUS)
                 .crimsonType(0xffdcc7, 0xffffff, 0xe4d6cd, 0x262626)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(GREY_FUNGUS)
                 .crimsonType(0xffe0bd, 0x949494, 0x938b7f, 0xaa988e)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(LIGHTGREY_FUNGUS)
                 .warpedType(0xffdfcc, 0xf8feff, 0xdcdcdc, 0xbfbfbf)
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(WHITE_FUNGUS)
                 .warpedType(0xfbf4e1, 0xfffdf6, 0xf3f3f3, 0xf3edd5) //FIXME I don't like it too much
-                .spreading(25)
+                .spreading(24)
                 .terrain(ModBlockTags.GRASS)
                 .build();
 
@@ -310,7 +310,7 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         speciesBuilder.createSpecies(BOLETUS_SALUBRIUM)
                 .crimsonType(0xC176C0, 0x95778C, 0xD01B05, 0xB99AA7)
-                .spreading(25)
+                .spreading(24)
                 .spreadBoost(1.0f)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
@@ -344,7 +344,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createSpecies(NOBLE_BOLETUS_SQUISITUS)
                 .crimsonType(0xFFE6D8, 0x907068, 0xBE8C85, 0xFFE4E2)
-                .spreading(25)
+                .spreading(24)
                 .spreadBoost(1.0f)
                 .light(15)
                 .terrain(ModBlockTags.PODZOL)
@@ -445,7 +445,7 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         speciesBuilder.createDefaultSpecies(COAL_FUNGUS)
                 .warpedType(0xa19b88, 0x8a8a8a, 0x383838, 0x2e2e2e)
-                .terrain(BlockTags.COAL_ORES)
+                .terrain(ModBlockTags.COAL)
                 .build();
 
         speciesBuilder.createDefaultSpecies(EMERALD_FUNGUS)
@@ -465,7 +465,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createSpecies(RUSSULA_LAZULA) //Lapislazuli
                 .crimsonType(0xffffcc, 0x837672, 0x183679, 0x2653b9)
-                .spreading(25)
+                .spreading(24)
                 .spreadBoost(1.0f)
                 .light(15)
                 .terrain(BlockTags.LAPIS_ORES)

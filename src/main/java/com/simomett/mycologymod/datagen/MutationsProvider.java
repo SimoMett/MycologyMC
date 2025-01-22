@@ -48,7 +48,7 @@ public class MutationsProvider implements DataProvider
         addMutation(POLYPORUS_LIGNEUS, AMANITA_MUSCARIA, BROWN_FUNGUS, cachedOutput);
 
         // Materials branch
-        addMutation(BOLETUS_EDULIS, SUILLUS_GRANULATUS, POLYPORUS_LIGNEUS, cachedOutput);
+        addMutation(BOLETUS_EDULIS, SUILLUS_GRANULATUS, POLYPORUS_LIGNEUS, .7f, cachedOutput);
         addMutation(POLYPORUS_LIGNEUS, AMANITA_PHALLOIDES, CLAY_FUNGUS, cachedOutput);
         addMutation(CHALCIPORUS_INFERNALIS, BOLBITIUS_PROFONDORUM, BASALT_FUNGUS ,cachedOutput);
         addMutation(BOLBITIUS_PROFONDORUM, HYGROPHORUS_NIVEUS, DIORITE_FUNGUS, cachedOutput);
@@ -141,12 +141,12 @@ public class MutationsProvider implements DataProvider
 
     private void addMutation(String species1, String species2, String result, CachedOutput cache)
     {
-        addMutation2(species1, species2, result, DEFAULT_MUTATION_CHANCE, cache);
+        addMutation(species1, species2, result, DEFAULT_MUTATION_CHANCE, cache);
     }
 
-    private void addMutation2(String species1, String species2, String result, float chance, CachedOutput cache)
+    private void addMutation(String species1, String species2, String result, float chance, CachedOutput cache)
     {
-        if(species1.equals("???") || species2.equals("???") || result.equals("???"))
+        if(species1.equals("???") || species2.equals("???") || result.equals("???")) //TODO remove
             return;
         if (chance > 1f || chance <= 0f)
             throw new InvalidParameterException("Invalid 'chance' parameter");
