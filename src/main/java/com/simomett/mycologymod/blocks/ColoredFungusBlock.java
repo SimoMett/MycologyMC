@@ -235,6 +235,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
     private static void breedAndSpread(BlockState blockState, ServerLevel level, BlockPos pos, int areaRadius, FungusGenoma genoma, boolean hasMutagen)
     {
+        //WARNING
+        // if whatever mod/datapack changes default temperature and humidity of a biome, the fungus cannot spread.
         Random rand = new Random();
         boolean crossBreeding = rand.nextInt(ModCommonConfigs.BREEDING_CHANCE.get()) == 0; //TODO use mutations probabilities
 
@@ -315,9 +317,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             return false;
         }
 
-        //WARNING
-        // if whatever mod/datapack changes default temperature and humidity of a biome, the fungus cannot be generated.
-        boolean canSurvive = thisFungusData.matchesEnvironmentAndTerrain(level, origin, belowBlock);
+        boolean canSurvive = thisFungusData.matchesTerrain(belowBlock);
         if(!canSurvive)
             originBlockEntity.setRemoved();
         return canSurvive;

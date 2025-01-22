@@ -17,7 +17,7 @@ public class LevelOnlyEffect extends FungusEffect
     }
 
     @Override
-    public void applyEffectToEntity(LivingEntity entity) {}
+    public final void applyEffectToEntity(LivingEntity entity) {}
 
     @Override
     public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)

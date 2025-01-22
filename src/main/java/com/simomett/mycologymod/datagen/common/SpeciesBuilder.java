@@ -47,7 +47,7 @@ public class SpeciesBuilder
 
     //Traits
     private String speciesName;
-    private @NonNull String type;
+    private String type;
     private Integer[] colors;
     private Integer spreading;
     private Float spreadBoost;
