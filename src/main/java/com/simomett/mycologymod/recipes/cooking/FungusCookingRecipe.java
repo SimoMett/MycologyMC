@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.recipes.cooking;
 
 import com.simomett.mycologymod.items.ModItems;
+import com.simomett.mycologymod.recipes.ModRecipes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -32,7 +33,7 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
 
     public ItemStack getResult()
     {
-        return this.result();
+        return this.result().copy();
     }
 
     public int getCount()
@@ -55,7 +56,7 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     @Override
     public RecipeSerializer<? extends AbstractCookingRecipe> getSerializer()
     {
-        return ModCookingRecipes.FUNGUS_COOKING_RECIPE_SERIALIZER.get();
+        return ModRecipes.FUNGUS_COOKING_RECIPE_SERIALIZER.get();
     }
 
     @Override

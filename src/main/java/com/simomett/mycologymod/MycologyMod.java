@@ -15,7 +15,7 @@ import com.simomett.mycologymod.gui.menu.ModMenus;
 import com.simomett.mycologymod.particles.ModParticles;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipeLoader;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
-import com.simomett.mycologymod.recipes.cooking.ModCookingRecipes;
+import com.simomett.mycologymod.recipes.ModRecipes;
 import com.simomett.mycologymod.world.features.ModFeatures;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -44,7 +44,7 @@ public class MycologyMod
         ModDataAttachmentTypes.ATTACHMENT_TYPES.register(evtBus);
         ModParticles.PARTICLES.register(evtBus);
         ModPotions.POTIONS.register(evtBus);
-        ModCookingRecipes.RECIPE_SERIALIZERS.register(evtBus);
+        ModRecipes.RECIPE_SERIALIZERS.register(evtBus);
         ModEffects.EFFECTS.register(evtBus);
         ModMenus.MENU_TYPES.register(evtBus);
         ModFeatures.FEATURES.register(evtBus);
