@@ -55,6 +55,7 @@ public class CookingRecipesProvider extends RecipeProvider
 
         // Materials
         addDefaultSmeltingRecipe(POLYPORUS_LIGNEUS, Items.CHARCOAL);
+        addDefaultSmeltingRecipe(COAL_FUNGUS, Items.COAL);
         addDefaultSmeltingRecipe(BONEBLOCK_FUNGUS, Items.BONE_MEAL, 2);
         addDefaultSmeltingRecipe(SLIME_FUNGUS, Items.SLIME_BALL);
     }
