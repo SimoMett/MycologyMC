@@ -21,6 +21,12 @@ public class FungusShapelessRecipe implements CraftingRecipe
         this.result = result;
     }
 
+    public FungusShapelessRecipe(String speciesIngredient, ItemStack result, Integer count)
+    {
+        this.speciesIngredient = speciesIngredient;
+        this.result = new ItemStack(result.getItem(), count);
+    }
+
     public String getSpeciesIngredient()
     {
         return speciesIngredient;
@@ -65,5 +71,10 @@ public class FungusShapelessRecipe implements CraftingRecipe
     public CraftingBookCategory category()
     {
         return CraftingBookCategory.MISC;
+    }
+
+    public Integer getCount()
+    {
+        return result.getCount();
     }
 }

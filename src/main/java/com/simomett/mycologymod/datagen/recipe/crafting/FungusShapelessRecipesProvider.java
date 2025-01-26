@@ -30,7 +30,6 @@ public class FungusShapelessRecipesProvider extends RecipeProvider
 
     private void addCraftingRecipe(String ingredientSpecies, Item resultItem, int stackSize)
     {
-        //FIXME stackSize is not saved
         new FungusShapelessRecipeBuilder(ingredientSpecies, new ItemStack(resultItem, stackSize))
                 .save(this.output);
     }
