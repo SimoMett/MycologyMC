@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.io.*;
 import java.util.*;
 
+import static com.simomett.mycologymod.config.ModCommonConfigs.MUTAGEN_EFFECTIVENESS;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
@@ -160,7 +161,7 @@ public class FungusGenoma implements IModSerializable
         return offspring;
     }
 
-    public FungusGenoma crossBreedWith(FungusGenoma species2)
+    public FungusGenoma crossBreedWith(FungusGenoma species2, boolean mutagen)
     {
         FungusGenoma offspring;
         Random random = new Random();
@@ -177,7 +178,17 @@ public class FungusGenoma implements IModSerializable
             int randomRecipeId = random.nextInt(mutations.size());
             MutationRecipe randomMutation = mutations.get(randomRecipeId);
 
-            boolean shouldPerformMutation = random.nextFloat(0f, 1f) < randomMutation.getChance();
+            boolean shouldPerformMutation;
+            if(mutagen)
+            {
+                //Triangular distribution
+                float a = random.nextFloat(0f, 1f);
+                float b = random.nextFloat(0f, 1f);
+                shouldPerformMutation = (a + b) < (randomMutation.getChance() + MUTAGEN_EFFECTIVENESS.get());
+            }
+            else
+                shouldPerformMutation = random.nextFloat(0f, 1f) < randomMutation.getChance();
+
             if (shouldPerformMutation)
                 return new FungusGenoma(FungusSpeciesList.INSTANCE.get(randomMutation.getResultSpecies()));
         }

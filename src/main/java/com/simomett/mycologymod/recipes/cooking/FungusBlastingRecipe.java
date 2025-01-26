@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.recipes.cooking;
 
 import com.simomett.mycologymod.items.ModItems;
+import com.simomett.mycologymod.recipes.ModRecipes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -11,11 +12,18 @@ import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNG
 
 public class FungusBlastingRecipe extends AbstractCookingRecipe
 {
+    public static final String NAME = "fungus_blasting";
     private final String speciesIngredient;
 
     public FungusBlastingRecipe(String speciesIngredient, ItemStack result, float exp, int cookingTime)
     {
-        super("fungus_blasting", CookingBookCategory.MISC, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS, ModItems.COLORED_WARPED_FUNGUS), result, exp, cookingTime);
+        super(NAME, CookingBookCategory.MISC, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS, ModItems.COLORED_WARPED_FUNGUS), result, exp, cookingTime);
+        this.speciesIngredient = speciesIngredient;
+    }
+
+    public FungusBlastingRecipe(String speciesIngredient, ItemStack result, Integer stackSize, float exp, int cookingTime)
+    {
+        super(NAME, CookingBookCategory.MISC, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS, ModItems.COLORED_WARPED_FUNGUS), new ItemStack(result.getItem(), stackSize), exp, cookingTime);
         this.speciesIngredient = speciesIngredient;
     }
 
@@ -26,7 +34,7 @@ public class FungusBlastingRecipe extends AbstractCookingRecipe
 
     public ItemStack getResult()
     {
-        return this.result();
+        return this.result().copy();
     }
 
     public int getCount()
@@ -49,7 +57,7 @@ public class FungusBlastingRecipe extends AbstractCookingRecipe
     @Override
     public RecipeSerializer<? extends AbstractCookingRecipe> getSerializer()
     {
-        return ModCookingRecipes.FUNGUS_BLASTING_RECIPE_SERIALIZER.get();
+        return ModRecipes.FUNGUS_BLASTING_RECIPE_SERIALIZER.get();
     }
 
     @Override

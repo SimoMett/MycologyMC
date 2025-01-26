@@ -27,6 +27,8 @@ public class ModBlocks
 
     public static final DeferredBlock<Block> CHROMIUM_ORE = BLOCKS.registerSimpleBlock("chromium_ore",
             BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE).requiresCorrectToolForDrops());
+    public static final DeferredBlock<Block> CHROMIUM_BLOCK = BLOCKS.registerSimpleBlock("chromium_block",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE).requiresCorrectToolForDrops());
 
     public static BlockState getDefaultBlockStateFromFungusType(String fungusType)
     {

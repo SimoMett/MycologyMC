@@ -382,6 +382,7 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         speciesBuilder.createDefaultSpecies(POLYPORUS_LIGNEUS)
                 .warpedType(0xbba77a, 0x8d664b, 0xb38f6e, 0x4f3a2d)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
                 .terrain(BlockTags.LOGS)
                 .areaRadius(7)
                 .areaEffect(FungusEffects.DECOMPOSING_EFFECT)
@@ -389,11 +390,13 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies(DIORITE_FUNGUS)
                 .crimsonType(0xffb796, 0xffffff, 0xffffff, 0x8f8f8f)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
                 .terrain(Blocks.DIORITE)
                 .build();
 
         speciesBuilder.createDefaultSpecies(CALCITE_FUNGUS)
                 .crimsonType(0xf8f0d5, 0xffffff, 0xffffff, 0xbbb89d)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-2)
                 .terrain(Blocks.CALCITE)
                 .build();
 
@@ -409,6 +412,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies(CLAY_FUNGUS)
                 .warpedType(0xffdbb2, 0xb2c5ff, 0x8896c3, 0xadbfee)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
                 .terrain(Blocks.CLAY)
                 .build();
 
@@ -445,16 +449,19 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         speciesBuilder.createDefaultSpecies(COAL_FUNGUS)
                 .warpedType(0xa19b88, 0x8a8a8a, 0x383838, 0x2e2e2e)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-2)
                 .terrain(ModBlockTags.COAL)
                 .build();
 
         speciesBuilder.createDefaultSpecies(EMERALD_FUNGUS)
                 .crimsonType(0x8c909c, 0x5f6269, 0x287441, 0x96ffaa)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-3)
                 .terrain(BlockTags.EMERALD_ORES)
                 .build();
 
         speciesBuilder.createDefaultSpecies(GALERINA_AURATA) //Gold
                 .warpedType(0xeed484, 0xFF9900, 0xFFDD36, 0xffe56b)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-3)
                 .terrain(BlockTags.GOLD_ORES)
                 .build();
 
@@ -465,7 +472,7 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createSpecies(RUSSULA_LAZULA) //Lapislazuli
                 .crimsonType(0xffffcc, 0x837672, 0x183679, 0x2653b9)
-                .spreading(24)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-2)
                 .spreadBoost(1.0f)
                 .light(15)
                 .terrain(BlockTags.LAPIS_ORES)
@@ -480,11 +487,13 @@ public class SpeciesProvider implements DataProvider
 
         speciesBuilder.createDefaultSpecies(AMANITA_CUPREA) //Copper
                 .warpedType(0xbb9173, 0xe8693d, 0x208068, 0x20a387)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
                 .terrain(BlockTags.COPPER_ORES)
                 .build();
 
         speciesBuilder.createDefaultSpecies(XEROCOMUS_FERRUGINEUS)
                 .warpedType(0xffffcc, 0x95867e, 0xC0997F, 0xFBD3B8)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-3)
                 .terrain(BlockTags.IRON_ORES)
                 .build();
 

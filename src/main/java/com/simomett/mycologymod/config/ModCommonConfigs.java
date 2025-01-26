@@ -11,7 +11,7 @@ public class ModCommonConfigs
     public static final ModConfigSpec SPEC;
 
     public static final ModConfigSpec.ConfigValue<Integer> MAX_MUSHROOMS_IN_AREA;
-    public static final ModConfigSpec.ConfigValue<Integer> BREEDING_CHANCE;
+    public static final ModConfigSpec.ConfigValue<Float> BREEDING_CHANCE;
     public static final float DEFAULT_MUTATION_CHANCE = .6f;
     public static final ModConfigSpec.ConfigValue<Float> DEFAULT_MUTATION_CHANCE_CONFIG;
     public static final ModConfigSpec.DoubleValue MUTAGEN_EFFECTIVENESS;
@@ -24,9 +24,9 @@ public class ModCommonConfigs
     static
     {
         MAX_MUSHROOMS_IN_AREA = BUILDER.define("Max spread count of mushrooms", 4); // I don't want mushrooms spamming all over the biomes
-        BREEDING_CHANCE = BUILDER.define("Cross-breeding chance", 2);
+        BREEDING_CHANCE = BUILDER.define("Cross-breeding chance", .6f);
         DEFAULT_MUTATION_CHANCE_CONFIG = BUILDER.define("Default mutation chance", DEFAULT_MUTATION_CHANCE);
-        MUTAGEN_EFFECTIVENESS = BUILDER.defineInRange("Mutagen effectiveness", 1f, 0f, 1f);
+        MUTAGEN_EFFECTIVENESS = BUILDER.defineInRange("Mutagen effectiveness", .9f, 0f, 1f);
         MIN_SPREADING_SPEED = BUILDER.defineInRange("Minimum spreading speed", 25, 2, 25);
         MAX_SPREAD_BOOST = BUILDER.define("Maximum spreading boost", DEFAULT_SPREADBOOST*3);
         RADIUS_MULTIPLIER = BUILDER.define("Radius multiplier", 2);
