@@ -12,11 +12,18 @@ import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNG
 
 public class FungusBlastingRecipe extends AbstractCookingRecipe
 {
+    public static final String NAME = "fungus_blasting";
     private final String speciesIngredient;
 
     public FungusBlastingRecipe(String speciesIngredient, ItemStack result, float exp, int cookingTime)
     {
-        super("fungus_blasting", CookingBookCategory.MISC, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS, ModItems.COLORED_WARPED_FUNGUS), result, exp, cookingTime);
+        super(NAME, CookingBookCategory.MISC, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS, ModItems.COLORED_WARPED_FUNGUS), result, exp, cookingTime);
+        this.speciesIngredient = speciesIngredient;
+    }
+
+    public FungusBlastingRecipe(String speciesIngredient, ItemStack result, Integer stackSize, float exp, int cookingTime)
+    {
+        super(NAME, CookingBookCategory.MISC, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS, ModItems.COLORED_WARPED_FUNGUS), new ItemStack(result.getItem(), stackSize), exp, cookingTime);
         this.speciesIngredient = speciesIngredient;
     }
 
