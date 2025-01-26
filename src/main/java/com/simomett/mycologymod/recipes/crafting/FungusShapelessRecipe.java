@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.recipes.crafting;
 
+import com.simomett.mycologymod.items.ModItems;
 import com.simomett.mycologymod.recipes.ModRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
@@ -14,6 +15,8 @@ public class FungusShapelessRecipe implements CraftingRecipe
     public static final String NAME = "fungus_crafting_shapeless";
     private final String speciesIngredient;
     private final ItemStack result;
+
+    private PlacementInfo placementInfo;
 
     public FungusShapelessRecipe(String speciesIngredient, ItemStack result)
     {
@@ -58,7 +61,11 @@ public class FungusShapelessRecipe implements CraftingRecipe
     @Override
     public PlacementInfo placementInfo()
     {
-        return null;
+        if (this.placementInfo == null) {
+            this.placementInfo = PlacementInfo.create(Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS, ModItems.COLORED_WARPED_FUNGUS));
+        }
+
+        return this.placementInfo;
     }
 
     @Override
