@@ -1,24 +1,22 @@
 package com.simomett.mycologymod.recipes.crafting;
 
-import com.simomett.mycologymod.items.ModItems;
+import com.simomett.mycologymod.recipes.ModRecipes;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
 
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 
-public class FungusShapelessCraftingRecipe extends ShapelessRecipe
+public class FungusShapelessRecipe implements CraftingRecipe
 {
+    public static final String NAME = "fungus_crafting_shapeless";
     private final String speciesIngredient;
     private final ItemStack result;
 
-    public FungusShapelessCraftingRecipe(String speciesIngredient, ItemStack result)
+    public FungusShapelessRecipe(String speciesIngredient, ItemStack result)
     {
-        super("fungus_crafting_shapeless", CraftingBookCategory.MISC, result, List.of(
-                Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS),
-                Ingredient.of(ModItems.COLORED_WARPED_FUNGUS)));
         this.speciesIngredient = speciesIngredient;
         this.result = result;
     }
@@ -46,8 +44,26 @@ public class FungusShapelessCraftingRecipe extends ShapelessRecipe
     }
 
     @Override
-    public RecipeSerializer<ShapelessRecipe> getSerializer()
+    public ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider)
     {
-        return super.getSerializer();
+        return getResult();
+    }
+
+    @Override
+    public PlacementInfo placementInfo()
+    {
+        return null;
+    }
+
+    @Override
+    public RecipeSerializer<? extends CraftingRecipe> getSerializer()
+    {
+        return ModRecipes.FUNGUS_SHAPELESS_RECIPE_SERIALIZER.get();
+    }
+
+    @Override
+    public CraftingBookCategory category()
+    {
+        return CraftingBookCategory.MISC;
     }
 }

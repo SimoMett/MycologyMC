@@ -3,6 +3,7 @@ package com.simomett.mycologymod.datagen;
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.datagen.recipe.blasting.BlastingRecipesProvider;
 import com.simomett.mycologymod.datagen.recipe.cooking.CookingRecipesProvider;
+import com.simomett.mycologymod.datagen.recipe.crafting.FungusShapelessRecipesProvider;
 import net.minecraft.data.DataGenerator;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -22,6 +23,7 @@ public class DataGenerators
         dataGentor.addProvider(true, new MutationsProvider(dataGentor));
         dataGentor.addProvider(evt.includeServer(), new CookingRecipesProvider.Runner(dataGentor.getPackOutput(), evt.getLookupProvider()));
         dataGentor.addProvider(evt.includeServer(), new BlastingRecipesProvider.Runner(dataGentor.getPackOutput(), evt.getLookupProvider()));
+        dataGentor.addProvider(evt.includeServer(), new FungusShapelessRecipesProvider.Runner(dataGentor.getPackOutput(), evt.getLookupProvider()));
         dataGentor.addProvider(true, new BrewingRecipesProvider(dataGentor));
     }
 }

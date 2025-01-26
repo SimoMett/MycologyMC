@@ -3,7 +3,8 @@ package com.simomett.mycologymod.recipes;
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.recipes.cooking.FungusBlastingRecipeSerializer;
 import com.simomett.mycologymod.recipes.cooking.FungusCookingRecipeSerializer;
-import com.simomett.mycologymod.recipes.crafting.FungusShapelessCraftingRecipeSerializer;
+import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipe;
+import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipeSerializer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -16,5 +17,5 @@ public class ModRecipes
     public static final DeferredHolder<RecipeSerializer<?>, FungusCookingRecipeSerializer> FUNGUS_COOKING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("fungus_cooking", FungusCookingRecipeSerializer::new);
     public static final DeferredHolder<RecipeSerializer<?>, FungusBlastingRecipeSerializer> FUNGUS_BLASTING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("fungus_blasting", FungusBlastingRecipeSerializer::new);
 
-    public static final DeferredHolder<RecipeSerializer<?>, FungusShapelessCraftingRecipeSerializer> FUNGUS_SHAPELESS_CRAFTING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("fungus_crafting_shapeless", FungusShapelessCraftingRecipeSerializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, FungusShapelessRecipeSerializer> FUNGUS_SHAPELESS_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register(FungusShapelessRecipe.NAME, FungusShapelessRecipeSerializer::new);
 }
