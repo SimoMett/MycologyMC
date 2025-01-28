@@ -24,7 +24,7 @@ public class FungusShapelessRecipesProvider extends RecipeProvider
     @Override
     protected void buildRecipes()
     {
-        // Colors
+        // Dyes
         addCraftingRecipe(YELLOW_FUNGUS, Items.YELLOW_DYE, 2);
         addCraftingRecipe(ORANGE_FUNGUS, Items.ORANGE_DYE, 2);
         addCraftingRecipe(AMANITA_RUBRA, Items.RED_DYE, 2);
@@ -42,9 +42,10 @@ public class FungusShapelessRecipesProvider extends RecipeProvider
         addCraftingRecipe(MAGENTA_FUNGUS, Items.MAGENTA_DYE, 2);
         addCraftingRecipe(BROWN_FUNGUS, Items.BROWN_DYE, 2);
 
-        // Materials
+        // Items
         addCraftingRecipe(SLIME_FUNGUS, Items.SLIME_BALL);
         addCraftingRecipe(XEROCOMUS_FERRUGINEUS, Items.BONE_MEAL);
+        addCraftingRecipe(BLAZE_FUNGUS, Items.BLAZE_POWDER);
     }
 
     private void addCraftingRecipe(String ingredientSpecies, Item resultItem, int stackSize)
