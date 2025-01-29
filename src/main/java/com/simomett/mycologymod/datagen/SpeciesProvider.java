@@ -176,8 +176,14 @@ public class SpeciesProvider implements DataProvider
                 .terrain(ModBlockTags.NETHER_BRICKS)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
+        speciesBuilder.createSpecies(CRYING_FUNGUS) //randomly cries (i.e. drops ghast tears)
                 .crimsonType(0xc18c6d, 0xccebff, 0xffffff, 0xe5f5ff)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
+                .light(13)
+                .terrain(Blocks.NETHERRACK)
+                .areaEffect(FungusEffects.CRYING_EFFECT)
+                .areaRadius(2)
                 .build();
 
         speciesBuilder.createDefaultSpecies(WITHERING_FUNGUS)

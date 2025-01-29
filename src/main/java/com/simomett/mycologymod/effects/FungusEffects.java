@@ -22,6 +22,7 @@ import net.minecraft.world.entity.projectile.EyeOfEnder;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 
@@ -163,17 +164,22 @@ public class FungusEffects
         }
     });
     //dev
-    public static final FungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
-    public static final FungusEffect TNT_EFFECT = new SpawnEntityEffect("tnt", (lvl) -> {
+    /*public static final FungusEffect TNT_EFFECT = new SpawnEntityEffect("tnt", (lvl) -> {
         PrimedTnt tnt = new PrimedTnt(EntityType.TNT, lvl);
         tnt.setFuse(100);//five seconds
         return tnt;
-    });
+    });*/
     public static final FungusEffect PLANT_EFFECT = new PlantEffect("planting");
     public static final FungusEffect ANTHESIS_EFFECT = new AnthesisEffect("anthesis");
 
     public static final FungusEffect DEFENSE_EFFECT = new LevelOnlyEffect("defense", (lvl, origin, box) -> {
         lvl.getEntitiesOfClass(Monster.class, box).forEach(monster -> monster.hurtServer(lvl, monster.damageSources().generic(), 3));
+    });
+
+    public static final FungusEffect CRYING_EFFECT = new SpawnEntityEffect("crying", (lvl) -> {
+        ItemEntity itemEntity = new ItemEntity(EntityType.ITEM, lvl);
+        itemEntity.setItem(new ItemStack(Items.GHAST_TEAR));
+        return itemEntity;
     });
 
     public static FungusEffect getEffectByName(String effectName)
