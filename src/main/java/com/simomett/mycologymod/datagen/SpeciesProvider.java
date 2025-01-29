@@ -162,10 +162,11 @@ public class SpeciesProvider implements DataProvider
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
                 .spreadBoost(1.1f)
                 .light(15)
-                .areaEffect(FungusEffects.SPORING_EFFECT)
-                .areaRadius(4)
+                .terrain(Blocks.MYCELIUM)
                 .biomesSpecs(BiomesSpecs.MUSHROOM_FIELDS)
                 .spawnType(FungusSpawn.MUSHROOM_FIELDS)
+                .areaEffect(FungusEffects.SPORING_EFFECT)
+                .areaRadius(4)
                 .build();
 
         speciesBuilder.createSpecies(BOLBITIUS_PROFONDORUM)
@@ -173,8 +174,9 @@ public class SpeciesProvider implements DataProvider
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING)
                 .spreadBoost(1.1f)
                 .light(3)
-                .spawnType(FungusSpawn.CAVES)
                 .terrain(ModBlockTags.DEEPSLATE)
+                .spawnType(FungusSpawn.CAVES)
+                .biomesSpecs(BiomesSpecs.FOREST)
                 .build();
 
         speciesBuilder.createSpecies(BLINDING_FUNGUS)
@@ -186,6 +188,7 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.BLINDING_EFFECT)
                 .areaRadius(10)
                 .spawnType(FungusSpawn.VERY_RARE.withBiomes(Biomes.DARK_FOREST))
+                .biomesSpecs(BiomesSpecs.FOREST)
                 .build();
 
         ///////////////////////
@@ -217,6 +220,7 @@ public class SpeciesProvider implements DataProvider
                 .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(13)
                 .terrain(ModBlockTags.NETHER_BRICKS)
+                .biomesSpecs(BiomesSpecs.NETHER)
                 .areaEffect(FungusEffects.BLAZING_EFFECT)
                 .areaRadius(9)
                 .build();
@@ -227,6 +231,7 @@ public class SpeciesProvider implements DataProvider
                 .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(13)
                 .terrain(Blocks.NETHERRACK)
+                .biomesSpecs(BiomesSpecs.NETHER)
                 .areaEffect(FungusEffects.CRYING_EFFECT)
                 .areaRadius(2)
                 .build();
