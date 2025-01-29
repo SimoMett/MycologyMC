@@ -101,6 +101,11 @@ public class FungusTraits implements Serializable
         return (String) traitsMap.get(EFFECT).value();
     }
 
+    public EffectGene effectGene()
+    {
+        return (EffectGene) traitsMap.get(EFFECT);
+    }
+
     public Optional<String> eatingEffect()
     {
         if(traitsMap.containsKey(EATING_EFFECT) && traitsMap.get(EATING_EFFECT) != null)

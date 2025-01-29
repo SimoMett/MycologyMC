@@ -61,7 +61,7 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().spreading())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().spreadboost())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().area())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().effect())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, menu.fungusGenoma.getDominantTraits().effectGene().translatableComponent(), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
     }
 
     @Override
