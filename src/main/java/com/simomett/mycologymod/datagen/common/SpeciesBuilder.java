@@ -68,10 +68,12 @@ public class SpeciesBuilder
     public SpeciesBuilder createSpecies(@NonNull String speciesName)
     {
         this.speciesName = speciesName;
+        this.areaEffect = FungusEffects.NO_EFFECT;
+        this.areaRadius = DEFAULT_AREA_RADIUS;
         return this;
     }
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     public SpeciesBuilder createDefaultSpecies(String speciesName)
     {
         this.createSpecies(speciesName);
