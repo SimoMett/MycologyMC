@@ -130,6 +130,7 @@ public class MutationsProvider implements DataProvider
         // Magic branch
         addMutation(UNDEAD_FUNGUS, KNOWLEDGE_FUNGUS, CURING_FUNGUS, cachedOutput);
         addMutation(BONEBLOCK_FUNGUS, UNDEAD_FUNGUS, SKELETONS_FUNGUS, cachedOutput);
+        addMutation(POLYPORUS_LIGNEUS, UNDEAD_FUNGUS, ZOMBIES_FUNGUS, cachedOutput);
         addMutation(BOLETUS_SALUBRIUM, CURING_FUNGUS, LIFE_UP_FUNGUS, cachedOutput);
 
         // Not yet identified branch

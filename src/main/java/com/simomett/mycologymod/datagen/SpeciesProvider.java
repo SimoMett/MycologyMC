@@ -729,6 +729,17 @@ public class SpeciesProvider implements DataProvider
                 .eatingEffect(ModEffects.LAST_CHANCE)
                 .build();
 
+        speciesBuilder.createSpecies(ZOMBIES_FUNGUS)
+                .warpedType(0xc0725a, 0xfff8eb,0x745691, 0xdfc6ff)
+                .spreading(4)
+                .spreadBoost(1f)
+                .light(14)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.PLAINS)
+                .areaRadius(5)
+                .areaEffect(FungusEffects.ZOMBIES_EFFECT)
+                .build();
+
         ///////////////////////////
         //    Phase Two fungi    //
         ///////////////////////////

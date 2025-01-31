@@ -182,6 +182,9 @@ public class FungusEffects
         return itemEntity;
     });
 
+
+    public static final FungusEffect ZOMBIES_EFFECT = new ZombiesEffect("zombies");
+
     public static FungusEffect getEffectByName(String effectName)
     {
         return effectsHashMap.get(effectName);

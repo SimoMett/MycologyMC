@@ -122,6 +122,7 @@ public class SpeciesDictionary
     // Mutant branch
     public static final String DYEING_FUNGUS = GALERINA+" colorata";
     public static final String UNDEAD_FUNGUS = "Cordyceps malignus";
+    public static final String ZOMBIES_FUNGUS = "Pleurotus carnivorus";
 
     // Energetic branch
     public static final String GLOWSTONE_FUNGUS = GALERINA+" luminosa";
