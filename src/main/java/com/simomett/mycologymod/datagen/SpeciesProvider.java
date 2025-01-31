@@ -77,7 +77,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createSpecies(BOLETUS_EDULIS)
-                .crimsonType(0xecd7ae, 0xa5887d, 0xa5887d, 0xffe6dd)
+                .crimsonType(0xb3a384, 0x62514a, 0x8f7c75, 0xd0c6c6)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING)
                 .spreadBoost(1.1f)
                 .light(15)
@@ -215,7 +215,7 @@ public class SpeciesProvider implements DataProvider
                 .build();
 
         speciesBuilder.createSpecies(BLAZE_FUNGUS)
-                .crimsonType(0xFF7B00, 0xFF9900, 0xFFDD36, 0xFFFF73)
+                .crimsonType(0xcb6c13, 0xe49a2b, 0xFFDD36, 0xFFFF73)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
                 .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(13)
@@ -399,12 +399,13 @@ public class SpeciesProvider implements DataProvider
         speciesBuilder.createDefaultSpecies(CRATERELLUS_CORNUCOPIOIDES)
                 .warpedType(0x382b30, 0x211c31, 0x141220, 0x0d0a1c)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-3)
+                .biomesSpecs(BiomesSpecs.PLAINS)
                 .areaEffect(FungusEffects.DEFENSE_EFFECT)
                 .areaRadius(6)
                 .build();
 
         speciesBuilder.createSpecies(NOBLE_BOLETUS_SQUISITUS)
-                .crimsonType(0xFFE6D8, 0x907068, 0xBE8C85, 0xFFE4E2)
+                .crimsonType(0xcdb9ae, 0x7b615b, 0xa27771, 0xbfaaa9)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
                 .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
