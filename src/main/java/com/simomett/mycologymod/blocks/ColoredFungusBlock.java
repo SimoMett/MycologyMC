@@ -178,8 +178,9 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(originalPos));
         FungusGenoma thisGenoma = originBlockEntity.getFungusGenoma();
 
-        float spreadBoost = thisGenoma.matchesEnvironment(level, originalPos)
-                && level.getBlockState(originalPos.below()).is(Blocks.MYCELIUM)? thisGenoma.getDominantTraits().spreadboost() : 1f;
+        boolean hasMutagen = hasMutagen(blockState);
+        float spreadBoost = (thisGenoma.matchesEnvironment(level, originalPos)
+                && level.getBlockState(originalPos.below()).is(Blocks.MYCELIUM)) || hasMutagen? thisGenoma.getDominantTraits().spreadboost() : 1f;
         int spreading = Math.round(thisGenoma.getDominantTraits().spreading() / spreadBoost);
         if(spreading==0)
             spreading=1;
@@ -202,7 +203,6 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 }
             }
 
-            boolean hasMutagen = hasMutagen(blockState);
             removeMutagen(originalPos, blockState, level);
 
             BlockPos blockpos1 = findSuitableBlockPos(pos, level, blockState);
