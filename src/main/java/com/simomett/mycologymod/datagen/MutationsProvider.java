@@ -118,7 +118,7 @@ public class MutationsProvider implements DataProvider
         addMutation(LACTARIUS_PROLEFERENS, CRATERELLUS_CORNUCOPIOIDES, UNDEAD_FUNGUS, cachedOutput);
 
         // Energetic branch
-        addMutation(BLAZE_FUNGUS, CHALCIPORUS_INFERNALIS, LIGHTNING_FUNGUS, cachedOutput);
+        addMutation(BLAZE_FUNGUS, CHALCIPORUS_INFERNALIS, GLOWSTONE_FUNGUS, cachedOutput);
         addMutation(LACTARIUS_PROLEFERENS, GLOWSTONE_FUNGUS, LIGHTNING_FUNGUS, cachedOutput);
 
         // Existential branch
