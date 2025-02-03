@@ -44,8 +44,9 @@ public class FungusShapelessRecipesProvider extends RecipeProvider
 
         // Items
         addCraftingRecipe(SLIME_FUNGUS, Items.SLIME_BALL);
-        addCraftingRecipe(XEROCOMUS_FERRUGINEUS, Items.BONE_MEAL);
-        addCraftingRecipe(BLAZE_FUNGUS, Items.BLAZE_POWDER);
+        addCraftingRecipe(XEROCOMUS_FERRUGINEUS, Items.BONE_MEAL, 2);
+        addCraftingRecipe(BLAZE_FUNGUS, Items.BLAZE_POWDER, 2);
+        addCraftingRecipe(GLOWSTONE_FUNGUS, Items.GLOWSTONE, 2);
     }
 
     private void addCraftingRecipe(String ingredientSpecies, Item resultItem, int stackSize)
