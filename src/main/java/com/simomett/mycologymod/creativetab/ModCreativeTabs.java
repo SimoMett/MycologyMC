@@ -22,7 +22,8 @@ public class ModCreativeTabs
                 populator.accept(ModItems.COOKED_WARPED_FUNGUS);
                 populator.accept(ModItems.COOKED_POISONOUS_CRIMSON_FUNGUS);
                 populator.accept(ModItems.COOKED_POISONOUS_WARPED_FUNGUS);
-                populator.accept(ModItems.MAGNIFYING_GLASS.get());
+                populator.accept(ModItems.MAGNIFYING_GLASS);
+                populator.accept(ModItems.FUNGUS_ANALYSING_STATION);
                 populator.accept(ModItems.TEST_TUBE);
                 populator.accept(ModItems.CHROMIUM_ORE);
                 populator.accept(ModItems.CHROMITE_POWDER);

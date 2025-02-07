@@ -25,6 +25,10 @@ public class ModBlocks
                     .setId(ResourceKey.create(Registries.BLOCK, r)))
     );
 
+    public static final DeferredBlock<FungusAnalysingStationBlock> FUNGUS_ANALYSING_STATION = BLOCKS.register("fungus_analysing_station", r ->
+            new FungusAnalysingStationBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)
+                    .setId(ResourceKey.create(Registries.BLOCK, r))));
+
     public static final DeferredBlock<Block> CHROMIUM_ORE = BLOCKS.registerSimpleBlock("chromium_ore",
             BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE).requiresCorrectToolForDrops());
     public static final DeferredBlock<Block> CHROMIUM_BLOCK = BLOCKS.registerSimpleBlock("chromium_block",

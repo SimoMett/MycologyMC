@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mycologymod:block/fungus_analysing_station"
+  }
+}
