@@ -38,7 +38,7 @@ public class MutationsProvider implements DataProvider
         addMutation(AGARICUS_CAMPESTRIS, BOLETUS_EDULIS, GREY_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, LACTARIUS_VIRENS, LIME_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, GREY_FUNGUS, LIGHTGREY_FUNGUS, cachedOutput);
-        addMutation(WHITE_FUNGUS, BLACK_FUNGUS, GREY_FUNGUS, cachedOutput);
+        addMutation(LIGHTGREY_FUNGUS, GREY_FUNGUS, BLACK_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, BLUE_FUNGUS, LIGHTBLUE_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, AMANITA_RUBRA, PINK_FUNGUS, cachedOutput);
         addMutation(BLUE_FUNGUS, AMANITA_RUBRA, OVULUS_VIOLACEUS, cachedOutput);
