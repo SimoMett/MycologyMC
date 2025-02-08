@@ -13,7 +13,7 @@ public class FungusAnalysingStationMenuProvider implements MenuProvider
     @Override
     public Component getDisplayName()
     {
-        return Component.literal("FungusAnalysingStationMenuProvider test");
+        return Component.translatable("gui.fungus_analysing_station");
     }
 
     @Override

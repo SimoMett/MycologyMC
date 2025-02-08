@@ -62,6 +62,8 @@
   "gui.magnifyingglass.effect": "Effect:",
   "gui.magnifyingglass.dominant": "Dominant",
 
+  "gui.fungus_analysing_station": "Fungus analysing station",
+
   "gui.fungus_effect.none": "None",
   "gui.fungus_effect.poison": "Poison",
   "gui.fungus_effect.drunkness": "Drunkness",

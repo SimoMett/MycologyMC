@@ -19,8 +19,10 @@ public class FungusAnalysingStationScreen extends AbstractContainerScreen<Fungus
     public FungusAnalysingStationScreen(FungusAnalysingStationMenu menu, Inventory playerInventory, Component title)
     {
         super(menu, playerInventory, title);
-        this.imageWidth = 256;
+        this.imageWidth = 176;
         this.imageHeight = 256;
+        this.inventoryLabelY = 118;
+        this.titleLabelY = -38;
     }
 
     @Override
