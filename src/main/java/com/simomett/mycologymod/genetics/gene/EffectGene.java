@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.genetics.gene;
 
+import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.effects.FungusEffects;
 import net.minecraft.network.chat.Component;
 
@@ -18,6 +19,6 @@ public class EffectGene extends Gene<String>
 
     public Component translatableComponent()
     {
-        return Component.translatable("gui.fungus_effect."+this.value);
+        return Component.translatable("gui."+ MycologyMod.MODID+".fungus_effect."+this.value);
     }
 }

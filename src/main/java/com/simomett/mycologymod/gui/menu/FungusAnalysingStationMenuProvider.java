@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.gui.menu;
 
+import com.simomett.mycologymod.MycologyMod;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,7 +14,7 @@ public class FungusAnalysingStationMenuProvider implements MenuProvider
     @Override
     public Component getDisplayName()
     {
-        return Component.translatable("gui.fungus_analysing_station");
+        return Component.translatable("gui."+ MycologyMod.MODID+".fungus_analysing_station");
     }
 
     @Override
