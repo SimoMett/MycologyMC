@@ -14,5 +14,6 @@ public class ModScreens
 	public static void registerScreen(RegisterMenuScreensEvent event)
 	{
 		event.register(ModMenus.MAGNIFYING_GLASS_MENU.get(), MagnifyingGlassScreen::new);
+		event.register(ModMenus.FUNGUS_ANALYSING_STATION_MENU.get(), FungusAnalysingStationScreen::new);
 	}
 }
