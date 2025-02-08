@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.gui.menu;
 
 import com.simomett.mycologymod.gui.menu.slot.FungusSlot;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -45,9 +46,25 @@ public class FungusAnalysingStationMenu extends AbstractContainerMenu
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int i)
+    public ItemStack quickMoveStack(Player player, int slotId)
     {
-        return null;
+        ItemStack movedStack = ItemStack.EMPTY;
+        if(player instanceof ServerPlayer)
+        {
+            Slot slot = this.slots.get(slotId);
+            movedStack = slot.getItem().copy();
+            if(slotId==0)
+            {
+                if(!this.moveItemStackTo(slot.getItem(),1, 36, true))
+                    return ItemStack.EMPTY;
+            }
+            else
+            {
+                if(!this.moveItemStackTo(slot.getItem(),0, 1, true))
+                    return ItemStack.EMPTY;
+            }
+        }
+        return movedStack;
     }
 
     @Override
