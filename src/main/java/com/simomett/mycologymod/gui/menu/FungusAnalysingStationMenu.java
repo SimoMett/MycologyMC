@@ -1,26 +1,22 @@
 package com.simomett.mycologymod.gui.menu;
 
-import com.simomett.mycologymod.genetics.FungusGenoma;
-import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 public class FungusAnalysingStationMenu extends AbstractContainerMenu
 {
-    private final FungusGenoma fungusGenoma;
+    private final Container container = new SimpleContainer(1);
 
-    public FungusAnalysingStationMenu(int containerId, Inventory inventory, FungusGenoma fungusGenoma)
-    {
-        super(ModMenus.MAGNIFYING_GLASS_MENU.get(), containerId);
-        this.fungusGenoma = fungusGenoma;
-    }
-
-    public FungusAnalysingStationMenu(int containerId, Inventory inventory, RegistryFriendlyByteBuf registryFriendlyByteBuf)
+    public FungusAnalysingStationMenu(int containerId, Inventory inv)
     {
         super(ModMenus.FUNGUS_ANALYSING_STATION_MENU.get(), containerId);
-        fungusGenoma = new FungusGenoma(registryFriendlyByteBuf);
+        inv.startOpen(inv.player);
+        addSlot(new Slot(container, 0, 0, 0));
     }
 
     @Override

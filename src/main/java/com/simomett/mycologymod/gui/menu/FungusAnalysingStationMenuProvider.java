@@ -1,6 +1,5 @@
 package com.simomett.mycologymod.gui.menu;
 
-import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -20,6 +19,6 @@ public class FungusAnalysingStationMenuProvider implements MenuProvider
     @Override
     public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player)
     {
-        return new FungusAnalysingStationMenu(i, inventory, (FungusGenoma) null);
+        return new FungusAnalysingStationMenu(i, inventory);
     }
 }

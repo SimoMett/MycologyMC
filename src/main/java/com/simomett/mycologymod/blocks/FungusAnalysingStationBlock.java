@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.blocks;
 
+import com.simomett.mycologymod.gui.menu.FungusAnalysingStationMenuProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
@@ -21,7 +22,7 @@ public class FungusAnalysingStationBlock extends Block
     @Override
     protected @Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos)
     {
-        return super.getMenuProvider(state, level, pos);
+        return new FungusAnalysingStationMenuProvider();
     }
 
     @Override
