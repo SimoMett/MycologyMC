@@ -29,9 +29,7 @@ public class FungusAnalysingStationBlock extends Block
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult)
     {
         if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
-        {
             serverPlayer.openMenu(state.getMenuProvider(level, pos));
-        }
-        return super.useWithoutItem(state, level, pos, player, hitResult);
+        return InteractionResult.SUCCESS;
     }
 }
