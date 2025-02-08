@@ -5,6 +5,7 @@ import com.simomett.mycologymod.blocks.ModBlocks;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -38,4 +39,9 @@ public class ModItems
     public static final DeferredItem<Item> CHROMIUM_INGOT = ITEMS.registerSimpleItem("chromium_ingot");
     public static final DeferredItem<Item> CHROMIUM_NUGGET = ITEMS.registerSimpleItem("chromium_nugget");
     public static final DeferredItem<BlockItem> CHROMIUM_BLOCK = ITEMS.registerSimpleBlockItem("chromium_block", ModBlocks.CHROMIUM_BLOCK);
+
+    public static boolean isFungus(ItemStack itemStack)
+    {
+        return itemStack.is(COLORED_WARPED_FUNGUS) || itemStack.is(COLORED_CRIMSON_FUNGUS);
+    }
 }

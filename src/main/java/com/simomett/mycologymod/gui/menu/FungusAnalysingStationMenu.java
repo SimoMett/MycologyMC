@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.gui.menu;
 
+import com.simomett.mycologymod.gui.menu.slot.FungusSlot;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -16,7 +17,7 @@ public class FungusAnalysingStationMenu extends AbstractContainerMenu
     {
         super(ModMenus.FUNGUS_ANALYSING_STATION_MENU.get(), containerId);
         inv.startOpen(inv.player);
-        addSlot(new Slot(container, 0, 16, -12));
+        addSlot(new FungusSlot(container, 0, 16, -12));
 
         int pInventoryX = 8;
         int pInventoryY = 129;
