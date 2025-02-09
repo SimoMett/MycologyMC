@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import org.jline.utils.Log;
 
 public class FungusAnalysingStationMenu extends AbstractContainerMenu
 {
@@ -77,11 +76,11 @@ public class FungusAnalysingStationMenu extends AbstractContainerMenu
     public void removed(Player player)
     {
         super.removed(player);
-        if(!container.isEmpty())
+        if(player instanceof ServerPlayer)
         {
-            //TODO
-            Log.warn("item deleted");
+            if (!container.isEmpty())
+                clearContainer(player, container);
+            container.stopOpen(player);
         }
-        container.stopOpen(player);
     }
 }

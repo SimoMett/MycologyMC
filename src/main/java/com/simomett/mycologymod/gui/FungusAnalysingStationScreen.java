@@ -113,9 +113,5 @@ public class FungusAnalysingStationScreen extends AbstractContainerScreen<Fungus
     {
         guiGraphics.blit(RenderType::guiTextured, TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
         drawWidgets(guiGraphics, this.leftPos+6, this.topPos+30);
-        //FIXME
-        guiGraphics.drawString(this.font, "WARNING: ITEM WILL BE DELETED ", this.leftPos+6, this.topPos+140, 0, false);
-        guiGraphics.drawString(this.font, "IF YOU CLOSE THIS GUI WITHOUT", this.leftPos+6, this.topPos+150, 0, false);
-        guiGraphics.drawString(this.font, "PICKING IT UP", this.leftPos+100, this.topPos+160, 0, false);
     }
 }
