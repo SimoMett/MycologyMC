@@ -67,7 +67,7 @@ public class FungusAnalysingStationScreen extends AbstractContainerScreen<Fungus
         final int o = 10;
         int b = 0;
 
-        DecimalFormat df = new DecimalFormat("#.#");
+        DecimalFormat df = new DecimalFormat("#.##");
         guiGraphics.drawString(font, ModBlockTags.getTranslatableComponent(currentGenoma.getDominantTraits().terrain()), xOrigin, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().light())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(font, Component.literal(df.format(currentGenoma.getDominantTraits().humidity())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
