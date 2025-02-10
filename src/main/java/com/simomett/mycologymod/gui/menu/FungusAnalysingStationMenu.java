@@ -22,10 +22,10 @@ public class FungusAnalysingStationMenu extends AbstractContainerMenu
     {
         super(ModMenus.FUNGUS_ANALYSING_STATION_MENU.get(), containerId);
         inv.startOpen(inv.player);
-        addSlot(new FungusSlot(container, 0, 16, -12));
+        addSlot(new FungusSlot(container, 0, 16, 33));
 
         int pInventoryX = 8;
-        int pInventoryY = 129;
+        int pInventoryY = 174;
         for(int i = 0; i < 3; i++)
         {
             for(int j = 0; j < 9; j++)
@@ -36,7 +36,7 @@ public class FungusAnalysingStationMenu extends AbstractContainerMenu
             }
         }
 
-        int pHotbarY = 187;
+        int pHotbarY = 232;
         for(int i1 = 0; i1 < 9; ++i1) {
             this.addSlot(
                     new Slot(inv, i1, pInventoryX + i1 * 18, pHotbarY)

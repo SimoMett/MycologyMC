@@ -14,8 +14,6 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class FungusAnalysingStationScreen extends AbstractContainerScreen<FungusAnalysingStationMenu>
 {
-    private final int imageWidth;
-    private final int imageHeight;
     private int leftPos;
     private int topPos;
     private final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "textures/screens/fungus_analysing_station.png");
@@ -24,8 +22,7 @@ public class FungusAnalysingStationScreen extends AbstractContainerScreen<Fungus
         super(menu, playerInventory, title);
         this.imageWidth = 176;
         this.imageHeight = 256;
-        this.inventoryLabelY = 118;
-        this.titleLabelY = -38;
+        this.inventoryLabelY = imageHeight -94;
     }
 
     @Override
