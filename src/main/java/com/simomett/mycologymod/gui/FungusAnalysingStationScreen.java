@@ -1,21 +1,16 @@
 package com.simomett.mycologymod.gui;
 
 import com.simomett.mycologymod.MycologyMod;
-import com.simomett.mycologymod.datacomponents.ModDataComponentTypes;
 import com.simomett.mycologymod.genetics.FungusGenoma;
-import com.simomett.mycologymod.genetics.FungusTraits;
 import com.simomett.mycologymod.gui.menu.FungusAnalysingStationMenu;
 import com.simomett.mycologymod.gui.menu.slot.FungusSlot;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.ItemSlotMouseAction;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.ClickType;
-import net.minecraft.world.inventory.Slot;
 
 public class FungusAnalysingStationScreen extends AbstractContainerScreen<FungusAnalysingStationMenu>
 {
@@ -52,6 +47,7 @@ public class FungusAnalysingStationScreen extends AbstractContainerScreen<Fungus
     {
         //FIXME too expensive get genoma from slot in each 'render' call
         super.render(guiGraphics, mouseX, mouseY, partialTick);
+        renderTooltip(guiGraphics, mouseX, mouseY);
         FungusGenoma currentGenoma = ((FungusSlot) (menu.getSlot(0))).getGenoma();
         if(currentGenoma!=null)
             drawGenomaInfo(guiGraphics, currentGenoma);
