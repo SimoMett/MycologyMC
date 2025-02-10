@@ -5,12 +5,17 @@ import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.gui.menu.FungusAnalysingStationMenu;
 import com.simomett.mycologymod.gui.menu.slot.FungusSlot;
 import com.simomett.mycologymod.tags.ModBlockTags;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.font.FontManager;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+
+import java.text.DecimalFormat;
 
 public class FungusAnalysingStationScreen extends AbstractContainerScreen<FungusAnalysingStationMenu>
 {
@@ -61,27 +66,29 @@ public class FungusAnalysingStationScreen extends AbstractContainerScreen<Fungus
         int a = 3;
         final int o = 10;
         int b = 0;
-        guiGraphics.drawString(this.font, ModBlockTags.getTranslatableComponent(currentGenoma.getDominantTraits().terrain()), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().light())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().humidity())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().temp())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().spreading())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().spreadboost())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().area())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, currentGenoma.getDominantTraits().effectGene().translatableComponent(), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+
+        DecimalFormat df = new DecimalFormat("#.#");
+        guiGraphics.drawString(font, ModBlockTags.getTranslatableComponent(currentGenoma.getDominantTraits().terrain()), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().light())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(df.format(currentGenoma.getDominantTraits().humidity())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(df.format(currentGenoma.getDominantTraits().temp())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().spreading())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(df.format(currentGenoma.getDominantTraits().spreadboost())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(String.valueOf(currentGenoma.getDominantTraits().area())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, currentGenoma.getDominantTraits().effectGene().translatableComponent(), xOrigin, yOrigin+a+(b+=o), -12829636, false);
 
         b=0;
         xOrigin+=100;
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.recessive"), xOrigin, yOrigin-12, -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(currentGenoma.getDominantTraits().species()), xOrigin, yOrigin, -12829636, false);
-        guiGraphics.drawString(this.font, ModBlockTags.getTranslatableComponent(currentGenoma.getRecessiveTraits().terrain()), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getRecessiveTraits().light())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getRecessiveTraits().humidity())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getRecessiveTraits().temp())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getRecessiveTraits().spreading())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getRecessiveTraits().spreadboost())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(currentGenoma.getRecessiveTraits().area())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, currentGenoma.getRecessiveTraits().effectGene().translatableComponent(), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.recessive"), xOrigin, yOrigin-12, -12829636, false);
+        guiGraphics.drawString(font, Component.literal(currentGenoma.getDominantTraits().species()), xOrigin, yOrigin, -12829636, false);
+        guiGraphics.drawString(font, ModBlockTags.getTranslatableComponent(currentGenoma.getRecessiveTraits().terrain()), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(String.valueOf(currentGenoma.getRecessiveTraits().light())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(df.format(currentGenoma.getRecessiveTraits().humidity())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(df.format(currentGenoma.getRecessiveTraits().temp())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(String.valueOf(currentGenoma.getRecessiveTraits().spreading())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(df.format(currentGenoma.getRecessiveTraits().spreadboost())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, Component.literal(String.valueOf(currentGenoma.getRecessiveTraits().area())), xOrigin, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(font, currentGenoma.getRecessiveTraits().effectGene().translatableComponent(), xOrigin, yOrigin+a+(b+=o), -12829636, false);
     }
 
     private void drawWidgets(GuiGraphics guiGraphics, int xOrigin, int yOrigin)
