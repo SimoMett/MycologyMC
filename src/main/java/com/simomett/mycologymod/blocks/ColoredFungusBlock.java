@@ -241,6 +241,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         boolean crossBreeding = rand.nextFloat(1.0f) < ModCommonConfigs.BREEDING_CHANCE.get();
 
         ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, pos, areaRadius);
+        nearbyFungi.removeIf((e) -> e.getFungusGenoma()==genoma); //Remove self
 
         if (crossBreeding && !nearbyFungi.isEmpty())
         {
