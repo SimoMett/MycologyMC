@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "down": "minecraft:block/oak_planks",
-    "east": "minecraft:block/crafting_table_side",
-    "north": "minecraft:block/crafting_table_front",
-    "particle": "minecraft:block/crafting_table_front",
-    "south": "minecraft:block/crafting_table_side",
-    "up": "mycologymod:block/fungus_analysing_station",
-    "west": "minecraft:block/crafting_table_front"
+    "down": "mycologymod:block/analysing_station_bottom",
+    "east": "mycologymod:block/analysing_station_side",
+    "north": "mycologymod:block/analysing_station_side",
+    "particle": "mycologymod:block/analysing_station_side",
+    "south": "mycologymod:block/analysing_station_side",
+    "up": "mycologymod:block/analysing_station_top",
+    "west": "mycologymod:block/analysing_station_side"
   }
 }
