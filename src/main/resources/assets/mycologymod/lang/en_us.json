@@ -21,6 +21,11 @@
   "effect.mycologymod.knowledge": "Knowledge",
   "effect.mycologymod.last_chance": "Another chance",
 
+  "item.minecraft.potion.effect.haste": "Haste Potion",
+  "item.minecraft.splash_potion.effect.haste": "Splash Haste Potion",
+  "item.minecraft.lingering_potion.effect.haste": "Lingering Haste Potion",
+  "item.minecraft.tipped_arrow.effect.haste": "Haste Arrow",
+
   "effect.mycologymod.anesthetic": "Anesthetic",
   "item.minecraft.potion.effect.anesthetic": "Pain Killing Potion",
   "item.minecraft.splash_potion.effect.anesthetic": "Splash Pain Killing Potion",

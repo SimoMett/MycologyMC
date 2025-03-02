@@ -29,6 +29,7 @@ public class BrewingRecipesProvider implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput)
     {
+        addBrewingRecipe(STRENGTH_FUNGUS, ModPotions.HASTE, cachedOutput);
         addBrewingRecipe(ANESTHETIC_FUNGUS, ModPotions.ANESTHETIC, cachedOutput);
         addBrewingRecipe(ILLUCINATING_FUNGUS, ModPotions.ILLUCINATING, cachedOutput);
         addBrewingRecipe(BLINDING_FUNGUS, ModPotions.BLINDING, cachedOutput);
