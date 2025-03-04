@@ -422,7 +422,7 @@ public class SpeciesProvider implements DataProvider
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-2)
                 .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST*2)
                 .light(15)
-                //.areaEffect(FungusEffects.FERMENTING_EFFECT)
+                .areaEffect(FungusEffects.FERMENTING_EFFECT)
                 .build();
 
         speciesBuilder.createDefaultSpecies(DRUNK_FUNGUS)

@@ -182,6 +182,8 @@ public class FungusEffects
         return itemEntity;
     });
 
+    public static final FungusEffect FERMENTING_EFFECT = new FermentingEffect("fermenting");
+
 
     public static final FungusEffect ZOMBIES_EFFECT = new ZombiesEffect("zombies");
 
