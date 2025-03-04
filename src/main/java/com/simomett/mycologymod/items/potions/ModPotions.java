@@ -15,8 +15,15 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModPotions
 {
-    public static final int DEFAULT_DURATION = 20*180;
+    public static final int DEFAULT_DURATION = 20*60*3;
+    public static final int LONG_DURATION = 20*60*8;
+    public static final int STRONG_DURATION = 20*90;
+
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(BuiltInRegistries.POTION, MycologyMod.MODID);
+
+    public static final DeferredHolder<Potion, Potion> HASTE = register("haste", MobEffects.DIG_SPEED);
+    public static final DeferredHolder<Potion, Potion> LONG_HASTE = POTIONS.register("long_haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.DIG_SPEED, LONG_DURATION)));
+    public static final DeferredHolder<Potion, Potion> STRONG_HASTE = POTIONS.register("strong_haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.DIG_SPEED, STRONG_DURATION, 1)));
 
     public static final DeferredHolder<Potion, Potion> ANESTHETIC = register(FungusEffects.ANESTHETIC_EFFECT, ModEffects.ANESTHETIC);
     public static final DeferredHolder<Potion, Potion> ILLUCINATING = register(FungusEffects.ILLUCINATING_EFFECT, ModEffects.ILLUCINATIONS);
@@ -30,6 +37,11 @@ public class ModPotions
     private static DeferredHolder<Potion, Potion> register(FungusEffect effect, Holder<MobEffect> mobEffect)
     {
         return POTIONS.register(effect.getEffectName(), () -> new Potion(effect.getEffectName(), new MobEffectInstance(mobEffect, DEFAULT_DURATION)));
+    }
+
+    private static DeferredHolder<Potion, Potion> register(String effect, Holder<MobEffect> mobEffect)
+    {
+        return POTIONS.register(effect, () -> new Potion(effect, new MobEffectInstance(mobEffect, DEFAULT_DURATION)));
     }
 
 }

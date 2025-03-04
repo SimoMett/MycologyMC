@@ -12,4 +12,6 @@ public class ModMenus
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = DeferredRegister.create(BuiltInRegistries.MENU, MycologyMod.MODID);
 
     public static final DeferredHolder<MenuType<?>, MenuType<MagnifyingGlassMenu>> MAGNIFYING_GLASS_MENU = MENU_TYPES.register("magnifying_glass_menu", () -> IMenuTypeExtension.create(MagnifyingGlassMenu::new));
+    public static final DeferredHolder<MenuType<?>, MenuType<FungusAnalysingStationMenu>> FUNGUS_ANALYSING_STATION_MENU = MENU_TYPES.register("fungus_analysing_station",
+            () -> IMenuTypeExtension.create((containerId, inv, c) -> new FungusAnalysingStationMenu(containerId, inv)));
 }

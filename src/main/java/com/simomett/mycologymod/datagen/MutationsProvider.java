@@ -38,7 +38,7 @@ public class MutationsProvider implements DataProvider
         addMutation(AGARICUS_CAMPESTRIS, BOLETUS_EDULIS, GREY_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, LACTARIUS_VIRENS, LIME_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, GREY_FUNGUS, LIGHTGREY_FUNGUS, cachedOutput);
-        addMutation(WHITE_FUNGUS, BLACK_FUNGUS, GREY_FUNGUS, cachedOutput);
+        addMutation(LIGHTGREY_FUNGUS, GREY_FUNGUS, BLACK_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, BLUE_FUNGUS, LIGHTBLUE_FUNGUS, cachedOutput);
         addMutation(WHITE_FUNGUS, AMANITA_RUBRA, PINK_FUNGUS, cachedOutput);
         addMutation(BLUE_FUNGUS, AMANITA_RUBRA, OVULUS_VIOLACEUS, cachedOutput);
@@ -93,7 +93,7 @@ public class MutationsProvider implements DataProvider
         addMutation(ANESTHETIC_FUNGUS, FERMENTER_FUNGUS, ILLUCINATING_FUNGUS, cachedOutput);
         addMutation(ILLUCINATING_FUNGUS, DRUNK_FUNGUS, HALLUCINATING_FUNGUS, cachedOutput);
         addMutation(BLINDING_FUNGUS, KNOWLEDGE_FUNGUS, SENSING_FUNGUS, cachedOutput);
-        //addMutation(BLINDING_FUNGUS, "???", NIGHTLY_FUNGUS, cachedOutput);
+        //addMutation(BLINDING_FUNGUS, FERMENTER_FUNGUS, NIGHTLY_FUNGUS, cachedOutput);
 
         // Environmental branch
         addMutation(HYGROPHORUS_NIVEUS, NOBLE_BOLETUS_SQUISITUS, FREEZING_FUNGUS, cachedOutput);
@@ -118,7 +118,7 @@ public class MutationsProvider implements DataProvider
         addMutation(LACTARIUS_PROLEFERENS, CRATERELLUS_CORNUCOPIOIDES, UNDEAD_FUNGUS, cachedOutput);
 
         // Energetic branch
-        addMutation(BLAZE_FUNGUS, CHALCIPORUS_INFERNALIS, LIGHTNING_FUNGUS, cachedOutput);
+        addMutation(BLAZE_FUNGUS, CHALCIPORUS_INFERNALIS, GLOWSTONE_FUNGUS, cachedOutput);
         addMutation(LACTARIUS_PROLEFERENS, GLOWSTONE_FUNGUS, LIGHTNING_FUNGUS, cachedOutput);
 
         // Existential branch
@@ -130,6 +130,7 @@ public class MutationsProvider implements DataProvider
         // Magic branch
         addMutation(UNDEAD_FUNGUS, KNOWLEDGE_FUNGUS, CURING_FUNGUS, cachedOutput);
         addMutation(BONEBLOCK_FUNGUS, UNDEAD_FUNGUS, SKELETONS_FUNGUS, cachedOutput);
+        addMutation(POLYPORUS_LIGNEUS, UNDEAD_FUNGUS, ZOMBIES_FUNGUS, cachedOutput);
         addMutation(BOLETUS_SALUBRIUM, CURING_FUNGUS, LIFE_UP_FUNGUS, cachedOutput);
 
         // Not yet identified branch

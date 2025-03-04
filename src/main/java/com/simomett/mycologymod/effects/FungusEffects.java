@@ -22,6 +22,7 @@ import net.minecraft.world.entity.projectile.EyeOfEnder;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 
@@ -51,7 +52,7 @@ public class FungusEffects
     public static final SingleEffect SHINING_EFFECT = new SingleEffect("shining", MobEffects.GLOWING);
     public static final SingleEffect SCHIZO_EFFECT = new SingleEffect("schizo");
     public static final SingleEffect SPARKLING_EFFECT = new SingleEffect("sparkling");
-    public static final SingleEffect WITHERING_EFFECT = new SingleEffect("wither", MobEffects.WITHER);
+    public static final FungusEffect WITHERING_EFFECT = new WitheringEffect("wither");
     public static final RaptingEffect RAPTING_EFFECT = new RaptingEffect("rapting");
     public static final SingleEffect TELEPORTING_EFFECT = new SingleEffect("teleporting");
     public static final SingleEffect LIGHTFUL_EFFECT = new SingleEffect("lightful", MobEffects.SLOW_FALLING);
@@ -163,18 +164,28 @@ public class FungusEffects
         }
     });
     //dev
-    public static final FungusEffect DEV_TEST_EFFECT = new TransmuteBlockEffect("testing", Blocks.GRASS_BLOCK, Blocks.DIAMOND_ORE);
-    public static final FungusEffect TNT_EFFECT = new SpawnEntityEffect("tnt", (lvl) -> {
+    /*public static final FungusEffect TNT_EFFECT = new SpawnEntityEffect("tnt", (lvl) -> {
         PrimedTnt tnt = new PrimedTnt(EntityType.TNT, lvl);
         tnt.setFuse(100);//five seconds
         return tnt;
-    });
+    });*/
     public static final FungusEffect PLANT_EFFECT = new PlantEffect("planting");
     public static final FungusEffect ANTHESIS_EFFECT = new AnthesisEffect("anthesis");
 
     public static final FungusEffect DEFENSE_EFFECT = new LevelOnlyEffect("defense", (lvl, origin, box) -> {
         lvl.getEntitiesOfClass(Monster.class, box).forEach(monster -> monster.hurtServer(lvl, monster.damageSources().generic(), 3));
     });
+
+    public static final FungusEffect CRYING_EFFECT = new SpawnEntityEffect("crying", (lvl) -> {
+        ItemEntity itemEntity = new ItemEntity(EntityType.ITEM, lvl);
+        itemEntity.setItem(new ItemStack(Items.GHAST_TEAR));
+        return itemEntity;
+    });
+
+    public static final FungusEffect FERMENTING_EFFECT = new FermentingEffect("fermenting");
+
+
+    public static final FungusEffect ZOMBIES_EFFECT = new ZombiesEffect("zombies");
 
     public static FungusEffect getEffectByName(String effectName)
     {

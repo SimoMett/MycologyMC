@@ -24,9 +24,8 @@ public class GainXPEffect extends MobEffect
     public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier)
     {
         if(entity instanceof Player player)
-        {
             player.giveExperiencePoints(amplifier+1);
-        }
+
         return true;
     }
 
@@ -39,6 +38,6 @@ public class GainXPEffect extends MobEffect
     @Override
     public boolean shouldApplyEffectTickThisTick(int remainingTicks, int level)
     {
-        return true;
+        return remainingTicks % 3 == 0;
     }
 }

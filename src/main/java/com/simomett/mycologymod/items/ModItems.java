@@ -5,6 +5,7 @@ import com.simomett.mycologymod.blocks.ModBlocks;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -30,6 +31,7 @@ public class ModItems
     public static final DeferredItem<Item> COOKED_POISONOUS_WARPED_FUNGUS = ITEMS.registerSimpleItem("cooked_poisonous_warped_fungus",
             new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()));
     public static final DeferredItem<MagnifyingGlassItem> MAGNIFYING_GLASS = ITEMS.register("magnifying_glass", MagnifyingGlassItem::new);
+    public static final DeferredItem<BlockItem> FUNGUS_ANALYSING_STATION = ITEMS.registerSimpleBlockItem("fungus_analysing_station", ModBlocks.FUNGUS_ANALYSING_STATION);
     public static final DeferredItem<Item> TEST_TUBE = ITEMS.registerSimpleItem("test_tube");
     public static final DeferredItem<BlockItem> CHROMIUM_ORE = ITEMS.registerSimpleBlockItem("chromium_ore", ModBlocks.CHROMIUM_ORE);
     public static final DeferredItem<Item> CHROMITE_POWDER = ITEMS.registerSimpleItem("chromite_powder");
@@ -37,4 +39,9 @@ public class ModItems
     public static final DeferredItem<Item> CHROMIUM_INGOT = ITEMS.registerSimpleItem("chromium_ingot");
     public static final DeferredItem<Item> CHROMIUM_NUGGET = ITEMS.registerSimpleItem("chromium_nugget");
     public static final DeferredItem<BlockItem> CHROMIUM_BLOCK = ITEMS.registerSimpleBlockItem("chromium_block", ModBlocks.CHROMIUM_BLOCK);
+
+    public static boolean isFungus(ItemStack itemStack)
+    {
+        return itemStack.is(COLORED_WARPED_FUNGUS) || itemStack.is(COLORED_CRIMSON_FUNGUS);
+    }
 }

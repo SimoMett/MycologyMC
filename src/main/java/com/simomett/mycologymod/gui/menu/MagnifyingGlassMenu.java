@@ -24,8 +24,9 @@ public class MagnifyingGlassMenu extends AbstractContainerMenu
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int i) {
-        return null;
+    public ItemStack quickMoveStack(Player player, int i)
+    {
+        return ItemStack.EMPTY;
     }
 
     @Override

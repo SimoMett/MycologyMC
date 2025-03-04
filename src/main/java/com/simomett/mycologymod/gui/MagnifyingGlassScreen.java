@@ -41,19 +41,19 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
         final int o = 10;
         int b = o;
         int d = 0; // X alignment
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.terrain"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.light"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.humidity"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.temp"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.spreading"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.spreadboost"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.area"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.effect"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.terrain"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.light"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.humidity"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.temp"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.spreading"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.spreadboost"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.area"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.effect"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
 
         //Dominant column
         b = 0;
         d = 83; // X alignment
-        guiGraphics.drawString(this.font, Component.translatable("gui.magnifyingglass.dominant"), xOrigin+d, yOrigin-2+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.dominant"), xOrigin+d, yOrigin-2+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, ModBlockTags.getTranslatableComponent(menu.fungusGenoma.getDominantTraits().terrain()), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().light())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().humidity())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
@@ -61,7 +61,7 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().spreading())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().spreadboost())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().area())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().effect())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, menu.fungusGenoma.getDominantTraits().effectGene().translatableComponent(), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
     }
 
     @Override
