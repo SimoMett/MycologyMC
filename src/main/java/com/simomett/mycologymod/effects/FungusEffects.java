@@ -52,7 +52,7 @@ public class FungusEffects
     public static final SingleEffect SHINING_EFFECT = new SingleEffect("shining", MobEffects.GLOWING);
     public static final SingleEffect SCHIZO_EFFECT = new SingleEffect("schizo");
     public static final SingleEffect SPARKLING_EFFECT = new SingleEffect("sparkling");
-    public static final SingleEffect WITHERING_EFFECT = new SingleEffect("wither", MobEffects.WITHER);
+    public static final FungusEffect WITHERING_EFFECT = new WitheringEffect("wither");
     public static final RaptingEffect RAPTING_EFFECT = new RaptingEffect("rapting");
     public static final SingleEffect TELEPORTING_EFFECT = new SingleEffect("teleporting");
     public static final SingleEffect LIGHTFUL_EFFECT = new SingleEffect("lightful", MobEffects.SLOW_FALLING);
