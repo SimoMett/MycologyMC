@@ -26,6 +26,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -35,6 +37,8 @@ import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import static com.simomett.mycologymod.config.ModClientConfigs.SPORE_PARTICLES_FREQ;
@@ -92,21 +96,12 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     }
 
     @Override
-    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player)
+    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params)
     {
-        if (level.getBlockEntity(pos) instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
-        {
-            if (!level.isClientSide && !player.isCreative())
-            {
-                ItemStack itemStack = new ItemStack(this.asItem());
-                storeFungusDataIntoItemStack(coloredFungusBlockEntity.getFungusGenoma(), itemStack);
-
-                ItemEntity stackEntity = new ItemEntity(level, (double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5, itemStack);
-                stackEntity.setDefaultPickUpDelay();
-                level.addFreshEntity(stackEntity);
-            }
-        }
-        return super.playerWillDestroy(level, pos, state, player);
+        ColoredFungusBlockEntity coloredFungusBlockEntity = (ColoredFungusBlockEntity) params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+        ItemStack itemStack = new ItemStack(this);
+        storeFungusDataIntoItemStack(coloredFungusBlockEntity.getFungusGenoma(), itemStack);
+        return Collections.singletonList(itemStack);
     }
 
     private static void storeFungusDataIntoItemStack(FungusGenoma fungusGenoma, ItemStack itemStack)
