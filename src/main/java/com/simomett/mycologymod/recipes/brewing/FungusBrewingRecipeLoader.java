@@ -9,7 +9,9 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
+import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
@@ -19,11 +21,9 @@ import java.util.*;
 @EventBusSubscriber(modid = MycologyMod.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener<JsonElement>
 {
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-
     public static final FungusBrewingRecipeLoader INSTANCE = new FungusBrewingRecipeLoader();
 
-    private Stack<FungusBrewingRecipe> recipeQueue = new Stack<>();
+    private final ArrayList<FungusBrewingRecipe> recipeQueue = new ArrayList<>();
 
     private FungusBrewingRecipeLoader()
     {
@@ -39,30 +39,25 @@ public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener<
             String species = e.getAsJsonObject().get("species").getAsString();
             String resultPotion = e.getAsJsonObject().get("result").getAsString();
 
-            FungusBrewingRecipe recipe = new FungusBrewingRecipe(species,resultPotion);
-            recipeQueue.push(recipe);
+            recipeQueue.add(new FungusBrewingRecipe(Potions.AWKWARD, Items.POTION, species, resultPotion));
+            recipeQueue.add(new FungusBrewingRecipe(Potions.AWKWARD, Items.SPLASH_POTION, species, resultPotion));
+            recipeQueue.add(new FungusBrewingRecipe(Potions.AWKWARD, Items.LINGERING_POTION, species, resultPotion));
         }
     }
 
-    public FungusBrewingRecipe popFromQueue()
+    public ArrayList<FungusBrewingRecipe> getQueue()
     {
-        return recipeQueue.empty()? null : recipeQueue.pop();
+        return recipeQueue;
     }
 
     @SubscribeEvent
     public static void registerBrewingRecipes(RegisterBrewingRecipesEvent evt)
     {
         PotionBrewing.Builder builder = evt.getBuilder();
-        FungusBrewingRecipe poppedRecipe = null;
-        do
+        for(FungusBrewingRecipe r : INSTANCE.recipeQueue)
         {
-            poppedRecipe=INSTANCE.popFromQueue();
-            if(poppedRecipe!=null)
-            {
-                builder.addRecipe(poppedRecipe);
-                //do the recipes need to be removed from BrewingRecipeRegistry when all the resources reload?
-            }
+            builder.addRecipe(r);
+            //do the recipes need to be removed from BrewingRecipeRegistry when all the resources reload?
         }
-        while (poppedRecipe!=null);
     }
 }
