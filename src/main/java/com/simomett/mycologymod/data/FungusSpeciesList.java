@@ -4,12 +4,14 @@ import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.genetics.FungusTraits;
-import com.simomett.mycologymod.items.ModItems;
 import com.simomett.mycologymod.network.serializable.IModSerializable;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -24,7 +26,6 @@ import java.util.*;
 import static com.simomett.mycologymod.blocks.ModBlocks.COLORED_CRIMSON_STRING;
 import static com.simomett.mycologymod.blocks.ModBlocks.COLORED_WARPED_STRING;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
-import static com.simomett.mycologymod.items.ModItems.COLORED_CRIMSON_FUNGUS;
 
 @EventBusSubscriber(modid = MycologyMod.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
@@ -80,13 +81,7 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
         List<FungusSpecies> sortedSpecies = speciesHashMap.values().stream().sorted(Comparator.comparing(a -> a.defaultTraits.species())).toList();
         for(FungusSpecies species : sortedSpecies)
         {
-            ItemStack e;
-            if(species.fungusType.equals(COLORED_CRIMSON_STRING))
-                e = new ItemStack(COLORED_CRIMSON_FUNGUS.get());
-            else
-                e = new ItemStack(ModItems.COLORED_WARPED_FUNGUS.get());
-            e.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, new FungusGenoma(new FungusTraits(species.defaultTraits), new FungusTraits(species.defaultTraits))).build());
-            collection.add(e);
+            collection.add(species.defaultItemStack());
         }
         return collection;
     }
@@ -94,9 +89,7 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
     public ItemStack getCreativeTabIcon()
     {
         FungusSpecies species = new FungusSpecies(FungusTraits.CREATIVE_TAB_ICON, COLORED_CRIMSON_STRING, FungusSpawn.NO_SPAWN);
-        ItemStack e = new ItemStack(COLORED_CRIMSON_FUNGUS.get());
-        e.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, new FungusGenoma(new FungusTraits(species.defaultTraits), new FungusTraits(species.defaultTraits))).build());
-        return e;
+        return species.defaultItemStack();
     }
 
     @Override
@@ -116,6 +109,14 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
             defaultTraits = traits;
             fungusType = type;
             this.spawnInfo = spawnInfo;
+        }
+
+        public ItemStack defaultItemStack()
+        {
+            Optional<Holder.Reference<Item>> item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, fungusType));
+            ItemStack itemStack = new ItemStack(item.get());
+            itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, new FungusGenoma(new FungusTraits(defaultTraits), new FungusTraits(defaultTraits))).build());
+            return itemStack;
         }
     }
 

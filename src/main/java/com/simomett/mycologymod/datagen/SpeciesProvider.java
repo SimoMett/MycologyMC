@@ -240,6 +240,7 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
                 .terrain(ModBlockTags.NETHER)
                 .areaEffect(FungusEffects.WITHERING_EFFECT)
+                .areaRadius(4)
                 .build();
 
         ////////////////////

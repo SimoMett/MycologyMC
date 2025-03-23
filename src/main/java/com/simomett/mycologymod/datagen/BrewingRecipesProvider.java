@@ -9,6 +9,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class BrewingRecipesProvider implements DataProvider
         addBrewingRecipe(SENSING_FUNGUS, ModPotions.SENSING, cachedOutput);
         addBrewingRecipe(WITHERING_FUNGUS, ModPotions.WITHERING, cachedOutput);
         addBrewingRecipe(TELEPORTING_FUNGUS, ModPotions.TELEPORTING, cachedOutput);
+        addBrewingRecipe(SPEED_FUNGUS, Potions.SWIFTNESS, cachedOutput);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
