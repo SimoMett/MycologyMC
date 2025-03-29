@@ -21,7 +21,11 @@ public class ReiPlugin implements REIClientPlugin
     public void registerDisplays(DisplayRegistry registry)
     {
         for(FungusBrewingRecipe r : FungusBrewingRecipeLoader.INSTANCE.getQueue())
+        {
             registry.add(new PotionsDisplay(r));
+        }
+
+        //registry.registerFillerWithReason(DisplayAdditionReason.RECIPE_MANAGER,)
     }
 
     @Override
