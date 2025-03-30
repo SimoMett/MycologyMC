@@ -2,35 +2,24 @@ package com.simomett.mycologymod.compatibility.rei;
 
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipe;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
-import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
-import me.shedaniel.rei.api.client.registry.category.CategoryRegistry;
-import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
-import me.shedaniel.rei.api.client.registry.screen.ScreenRegistry;
-import me.shedaniel.rei.forge.REIPluginClient;
+import com.simomett.mycologymod.recipes.cooking.FungusBlastingRecipe;
+import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipe;
+import me.shedaniel.rei.api.common.plugins.REICommonPlugin;
+import me.shedaniel.rei.api.common.registry.display.ServerDisplayRegistry;
+import me.shedaniel.rei.forge.REIPluginCommon;
 
-@REIPluginClient
-public class ReiPlugin implements REIClientPlugin
+@REIPluginCommon
+public class ReiPlugin implements REICommonPlugin
 {
     @Override
-    public void registerCategories(CategoryRegistry registry)
+    public void registerDisplays(ServerDisplayRegistry registry)
     {
-        REIClientPlugin.super.registerCategories(registry);
-    }
-
-    @Override
-    public void registerDisplays(DisplayRegistry registry)
-    {
+        // FIXME refactoring
         for(FungusBrewingRecipe r : FungusBrewingRecipeLoader.INSTANCE.getQueue())
-        {
             registry.add(new PotionsDisplay(r));
-        }
+        //
 
-        //registry.registerFillerWithReason(DisplayAdditionReason.RECIPE_MANAGER,)
-    }
-
-    @Override
-    public void registerScreens(ScreenRegistry registry)
-    {
-        REIClientPlugin.super.registerScreens(registry);
+        registry.beginRecipeFiller(FungusShapelessRecipe.class)
+                .fill(r -> new ShapelessRecipesDisplay(r.value()));
     }
 }
