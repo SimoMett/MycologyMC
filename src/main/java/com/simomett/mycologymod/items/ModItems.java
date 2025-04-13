@@ -45,4 +45,7 @@ public class ModItems
     {
         return itemStack.is(COLORED_WARPED_FUNGUS) || itemStack.is(COLORED_CRIMSON_FUNGUS);
     }
+
+    //TESTING ONLY
+    public static final DeferredItem<BlockItem> COLORED_BY_STATE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(ModBlocks.COLORED_BY_STATE_BLOCK);
 }

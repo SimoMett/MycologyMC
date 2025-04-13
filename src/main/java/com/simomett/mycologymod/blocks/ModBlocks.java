@@ -43,4 +43,7 @@ public class ModBlocks
             blockState = ModBlocks.COLORED_WARPED_FUNGUS.get().defaultBlockState();
         return blockState;
     }
+
+    //TESTING ONLY
+    public static final DeferredBlock<Block> COLORED_BY_STATE_BLOCK = BLOCKS.registerBlock("colored_by_state_block", ColoredByStateBlock::new);
 }
