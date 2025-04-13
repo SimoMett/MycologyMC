@@ -38,6 +38,7 @@ public class BrewingRecipesProvider implements DataProvider
         addBrewingRecipe(WITHERING_FUNGUS, ModPotions.WITHERING, cachedOutput);
         addBrewingRecipe(TELEPORTING_FUNGUS, ModPotions.TELEPORTING, cachedOutput);
         addBrewingRecipe(SPEED_FUNGUS, Potions.SWIFTNESS, cachedOutput);
+        addBrewingRecipe(GOODCHANCE_FUNGUS, Potions.LUCK, cachedOutput);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
