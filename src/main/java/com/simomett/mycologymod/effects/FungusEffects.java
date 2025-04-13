@@ -176,7 +176,7 @@ public class FungusEffects
         lvl.getEntitiesOfClass(Monster.class, box).forEach(monster -> monster.hurtServer(lvl, monster.damageSources().generic(), 3));
     });
 
-    public static final FungusEffect CRYING_EFFECT = new SpawnEntityEffect("crying", (lvl) -> {
+    public static final FungusEffect CRYING_EFFECT = new SpawnEntityEffect("crying", .5f, (lvl) -> {
         ItemEntity itemEntity = new ItemEntity(EntityType.ITEM, lvl);
         itemEntity.setItem(new ItemStack(Items.GHAST_TEAR));
         return itemEntity;
