@@ -36,7 +36,8 @@ public class SpawnEntityEffect extends FungusEffect
             Entity entity = entitySupplier.apply(level);
             if(entity!=null)
             {
-                entity.setPos(p.getX(), p.getY(), p.getZ());
+                Random rand = new Random();
+                entity.setPos(p.getX()+rand.nextFloat(.5f), p.getY(), p.getZ()+rand.nextFloat(.5f));
                 level.addFreshEntity(entity);
             }
         }
