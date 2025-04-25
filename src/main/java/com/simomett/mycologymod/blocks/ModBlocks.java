@@ -29,6 +29,18 @@ public class ModBlocks
             new FungusAnalysingStationBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)
                     .setId(ResourceKey.create(Registries.BLOCK, r))));
 
+    public static final DeferredBlock<FungusPotBlock> FUNGUS_POT = BLOCKS.register("fungus_pot",
+            (r) -> new FungusPotBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                    .setId(ResourceKey.create(Registries.BLOCK, r))));
+
+    public static final DeferredBlock<FungusPotBlock> POTTED_COLORED_CRIMSON = BLOCKS.register("potted_colored_crimson",
+            (r) -> new FungusPotBlock(ModBlocks.COLORED_CRIMSON_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                    .setId(ResourceKey.create(Registries.BLOCK, r))));
+
+    public static final DeferredBlock<FungusPotBlock> POTTED_COLORED_WARPED = BLOCKS.register("potted_colored_warped",
+            (r) -> new FungusPotBlock(ModBlocks.COLORED_WARPED_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                    .setId(ResourceKey.create(Registries.BLOCK, r))));
+
     public static final DeferredBlock<Block> CHROMIUM_ORE = BLOCKS.registerSimpleBlock("chromium_ore",
             BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE).requiresCorrectToolForDrops());
     public static final DeferredBlock<Block> CHROMIUM_BLOCK = BLOCKS.registerSimpleBlock("chromium_block",

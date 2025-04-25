@@ -5,11 +5,12 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "mycologymod.refmap.json",
   "mixins": [
+    "IFlowerPotBlockMixin",
     "GameRendererMixin",
+    "IZombieVillagerMixin",
     "LivingEntityMixin",
     "MinecraftMixin",
-    "ServerPlayerMixin",
-    "IZombieVillagerMixin"
+    "ServerPlayerMixin"
   ],
   "client": [
   ],
