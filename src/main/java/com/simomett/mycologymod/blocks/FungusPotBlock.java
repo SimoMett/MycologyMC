@@ -1,12 +1,12 @@
 package com.simomett.mycologymod.blocks;
 
-import com.simomett.mycologymod.datacomponents.ModDataAttachmentTypes;
 import com.simomett.mycologymod.datacomponents.ModDataComponentTypes;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.mixins.IFlowerPotBlockMixin;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,7 +39,7 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
 
     public FungusPotBlock(Properties properties)
     {
-        this(() -> Blocks.AIR, properties);
+        super(null, ()-> Blocks.AIR, properties);
     }
 
     @Override
@@ -70,7 +71,22 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult)
     {
-        return super.useWithoutItem(state, level, pos, player, hitResult);
+        if (this.isEmpty())
+            return InteractionResult.CONSUME;
+        else
+        {
+            ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(pos));
+            ItemStack itemstack = new ItemStack(this.getPotted());
+            originBlockEntity.getFungusGenoma().storeIntoItemStack(itemstack);
+
+            if (!player.addItem(itemstack)){
+                player.drop(itemstack, false);
+            }
+
+            level.setBlock(pos, this.getEmptyPot().defaultBlockState(), 3);
+            level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+            return InteractionResult.SUCCESS;
+        }
     }
 
     @Override

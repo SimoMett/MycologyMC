@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.blocks;
 
 import com.simomett.mycologymod.MycologyMod;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.*;
@@ -34,12 +35,20 @@ public class ModBlocks
                     .setId(ResourceKey.create(Registries.BLOCK, r))));
 
     public static final DeferredBlock<FungusPotBlock> POTTED_COLORED_CRIMSON = BLOCKS.register("potted_colored_crimson",
-            (r) -> new FungusPotBlock(ModBlocks.COLORED_CRIMSON_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
-                    .setId(ResourceKey.create(Registries.BLOCK, r))));
+            (r) -> {
+                    FungusPotBlock b = new FungusPotBlock(ModBlocks.COLORED_CRIMSON_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                                    .setId(ResourceKey.create(Registries.BLOCK, r)));
+                    FUNGUS_POT.get().addPlant(r, ModBlocks.COLORED_CRIMSON_FUNGUS);
+                    return b;
+    });
 
     public static final DeferredBlock<FungusPotBlock> POTTED_COLORED_WARPED = BLOCKS.register("potted_colored_warped",
-            (r) -> new FungusPotBlock(ModBlocks.COLORED_WARPED_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
-                    .setId(ResourceKey.create(Registries.BLOCK, r))));
+            (r) -> {
+                FungusPotBlock b = new FungusPotBlock(ModBlocks.COLORED_WARPED_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                        .setId(ResourceKey.create(Registries.BLOCK, r)));
+                FUNGUS_POT.get().addPlant(r, ModBlocks.COLORED_WARPED_FUNGUS);
+                return b;
+            });
 
     public static final DeferredBlock<Block> CHROMIUM_ORE = BLOCKS.registerSimpleBlock("chromium_ore",
             BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE).requiresCorrectToolForDrops());
