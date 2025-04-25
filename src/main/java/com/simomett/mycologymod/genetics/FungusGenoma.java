@@ -7,6 +7,7 @@ import com.simomett.mycologymod.recipes.breeding.MutationRecipe;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipesList;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -14,6 +15,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
@@ -24,6 +26,7 @@ import java.io.*;
 import java.util.*;
 
 import static com.simomett.mycologymod.config.ModCommonConfigs.MUTAGEN_EFFECTIVENESS;
+import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
@@ -213,6 +216,11 @@ public class FungusGenoma implements IModSerializable
         FungusTraits traits = random.nextBoolean()? dominantTraits : recessiveTraits;
         String randomTrait = traitsPool[random.nextInt(traitsPool.length)];
         traits.get(randomTrait).randomMutate();
+    }
+
+    public void storeIntoItemStack(ItemStack itemStack)
+    {
+        itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, this).build());
     }
 
     @Override
