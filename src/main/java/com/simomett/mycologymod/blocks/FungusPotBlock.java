@@ -114,6 +114,18 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
         return flowerPotBlockMixin.invokeIsEmpty();
     }
 
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type)
+    {
+        return level.isClientSide()? null : ($0, pos, $1, blockEntity) ->{
+            if(blockEntity instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
+            {
+                coloredFungusBlockEntity.tick();
+            }
+        };
+    }
+
     @Override
     protected void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)
     {
