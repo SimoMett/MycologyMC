@@ -58,11 +58,11 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
 
         if(stack.has(ModDataComponentTypes.FUNGUS_GENOMA))
         {
+            FungusGenoma fungusGenoma = stack.get(ModDataComponentTypes.FUNGUS_GENOMA);
             InteractionResult result = super.useItemOn(stack, state, level, pos, player, hand, hitResult);
 
             if(result == InteractionResult.SUCCESS)
             {
-                FungusGenoma fungusGenoma = stack.get(ModDataComponentTypes.FUNGUS_GENOMA);
                 ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity) level.getBlockEntity(pos);
                 blockEntity.applyGenoma(fungusGenoma);
                 return InteractionResult.SUCCESS;
