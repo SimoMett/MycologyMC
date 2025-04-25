@@ -31,6 +31,7 @@ public class ModCreativeTabs
                 populator.accept(ModItems.CHROMIUM_INGOT);
                 populator.accept(ModItems.CHROMIUM_NUGGET);
                 populator.accept(ModItems.CHROMIUM_BLOCK);
+                populator.accept(ModItems.FUNGUS_POT);
             })
             .build()
     );
