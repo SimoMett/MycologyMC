@@ -33,7 +33,7 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
 
     public FungusPotBlock(Supplier<? extends Block> potted, Properties properties)
     {
-        super(potted.get(), properties);
+        super(ModBlocks.FUNGUS_POT::get, potted, properties);
     }
 
     public FungusPotBlock(Properties properties)
@@ -77,14 +77,14 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state)
     {
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(pos));
-        if(originBlockEntity.hasData(ModDataAttachmentTypes.FUNGUS_GENOMA_ATTACHMENT.get()))
+        if(getPotted()==Blocks.AIR)
+            return super.getCloneItemStack(level, pos, state);
+        else
         {
             ItemStack stack = new ItemStack(this.getPotted().asItem());
             originBlockEntity.getFungusGenoma().storeIntoItemStack(stack);
             return stack;
         }
-        else
-            return super.getCloneItemStack(level, pos, state);
     }
 
     private boolean isEmpty()
