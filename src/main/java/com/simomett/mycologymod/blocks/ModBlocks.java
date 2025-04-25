@@ -38,7 +38,7 @@ public class ModBlocks
             (r) -> {
                     FungusPotBlock b = new FungusPotBlock(ModBlocks.COLORED_CRIMSON_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
                                     .setId(ResourceKey.create(Registries.BLOCK, r)));
-                    FUNGUS_POT.get().addPlant(r, ModBlocks.COLORED_CRIMSON_FUNGUS);
+                    FUNGUS_POT.get().addPlant(COLORED_CRIMSON_FUNGUS.getId(), ()->b);
                     return b;
     });
 
@@ -46,7 +46,7 @@ public class ModBlocks
             (r) -> {
                 FungusPotBlock b = new FungusPotBlock(ModBlocks.COLORED_WARPED_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
                         .setId(ResourceKey.create(Registries.BLOCK, r)));
-                FUNGUS_POT.get().addPlant(r, ModBlocks.COLORED_WARPED_FUNGUS);
+                FUNGUS_POT.get().addPlant(COLORED_WARPED_FUNGUS.getId(), ()->b);
                 return b;
             });
 
