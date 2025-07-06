@@ -250,16 +250,20 @@ public class SpeciesProvider implements DataProvider
         ////////////////////
         //   End branch   //
         ////////////////////
-        speciesBuilder.createDefaultSpecies(END_FUNGUS)
+        speciesBuilder.createSpecies(END_FUNGUS)
                 .crimsonType(0xe7f1b1, 0x3c0581, 0xa058ae, 0x490a61)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+1)
+                .spreadBoost(1.4f)
                 .light(10)
                 .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
                 .spawnType(FungusSpawn.END)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(CHORUS_FUNGUS)
+        speciesBuilder.createSpecies(CHORUS_FUNGUS)
                 .crimsonType(0xe1dab6, 0xa078db, 0xeee9ff, 0xbea9b8)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+1)
+                .spreadBoost(1.4f)
                 .light(10)
                 .terrain(Blocks.END_STONE)
                 .biomesSpecs(BiomesSpecs.END)
@@ -267,27 +271,42 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(3)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(TRICHOLOMOPSIS_EVANESCENS)
+        speciesBuilder.createSpecies(TRICHOLOMOPSIS_EVANESCENS)
                 .crimsonType(0x87cfec, 0x06d192, 0x69d0af, 0x068054)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+2)
+                .spreadBoost(1.3f)
                 .light(10)
                 .terrain(Blocks.END_STONE)
+                .biomesSpecs(BiomesSpecs.END)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(ENDER_EYE_FUNGUS)
+        speciesBuilder.createSpecies(ENDER_EYE_FUNGUS)
                 .crimsonType(0x90c074, 0x06d192, 0x72ac49, 0xb4e45b)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+3)
+                .spreadBoost(1.3f)
                 .light(10)
+                .terrain(Blocks.END_STONE)
+                .biomesSpecs(BiomesSpecs.END)
                 .areaEffect(FungusEffects.EYE_OF_ENDER_EFFECT)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(RAPTING_FUNGUS)
+        speciesBuilder.createSpecies(RAPTING_FUNGUS)
                 .crimsonType(0x71ecad, 0xc575ff, 0xb8dce5, 0x157865)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+3)
+                .spreadBoost(1.3f)
                 .light(10)
+                .terrain(Blocks.END_STONE)
+                .biomesSpecs(BiomesSpecs.END)
                 .areaEffect(FungusEffects.RAPTING_EFFECT)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(TELEPORTING_FUNGUS)
+        speciesBuilder.createSpecies(TELEPORTING_FUNGUS)
                 .crimsonType(0x4b6ae5, 0x2bd9a1, 0x37e3bd, 0x5ef9e2)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+4)
+                .spreadBoost(1.3f)
                 .light(10)
+                .terrain(Blocks.END_STONE)
+                .biomesSpecs(BiomesSpecs.END)
                 .areaEffect(FungusEffects.TELEPORTING_EFFECT)
                 .build();
 
