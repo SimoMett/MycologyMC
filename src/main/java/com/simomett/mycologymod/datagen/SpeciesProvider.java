@@ -719,23 +719,31 @@ public class SpeciesProvider implements DataProvider
         //////////////////////
         //   Nature fungi   //
         //////////////////////
-        speciesBuilder.createDefaultSpecies(FERTILIZING_FUNGUS)
+        speciesBuilder.createSpecies(FERTILIZING_FUNGUS)
                 .warpedType(0xFFE3BF, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+4)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.MEADOW)
                 .areaEffect(FungusEffects.FERTILIZING_EFFECT)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(PLANTING_FUNGUS)
+        speciesBuilder.createSpecies(PLANTING_FUNGUS)
                 .crimsonType(0xffd0a3, 0xe76542, 0xfde5cd, 0xa7492f)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+4)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.MEADOW)
                 .areaEffect(FungusEffects.PLANT_EFFECT)
                 .areaRadius(10)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(COCOA_FUNGUS)
+        speciesBuilder.createSpecies(COCOA_FUNGUS)
                 .crimsonType(0xeeaa3c, 0x8c4614, 0x64330b, 0x4e2407)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+3)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
                 .biomesSpecs(BiomesSpecs.JUNGLE)
@@ -743,10 +751,13 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(10)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(FLOWERS_FUNGUS)
+        speciesBuilder.createSpecies(FLOWERS_FUNGUS)
                 .warpedType(0xbc8364, 0x51beff, 0xffdf7f, 0xff8f4c)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+2)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.PLAINS)
                 .build();
 
         /////////////////////////
