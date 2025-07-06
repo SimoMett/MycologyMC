@@ -236,13 +236,13 @@ public class SpeciesProvider implements DataProvider
                 .areaRadius(2)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(WITHERING_FUNGUS)
+        speciesBuilder.createSpecies(WITHERING_FUNGUS)
                 .crimsonType(0x9E928F, 0x3e3e3e, 0x585858, 0xe1e1e1)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING+2)
                 .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(8)
                 .terrain(ModBlockTags.NETHER)
-                //.biomesSpecs()
+                .biomesSpecs(BiomesSpecs.NETHER)
                 .areaEffect(FungusEffects.WITHERING_EFFECT)
                 .areaRadius(4)
                 .build();
@@ -562,6 +562,7 @@ public class SpeciesProvider implements DataProvider
                 .warpedType(0xfff6ea, 0xFFF8DC, 0xDBDAD7, 0xC8C1B5)
                 .light(14)
                 .terrain(Blocks.BONE_BLOCK)
+                .biomesSpecs(BiomesSpecs.PLAINS)
                 .build();
 
         speciesBuilder.createDefaultSpecies(SLIME_FUNGUS)
