@@ -484,23 +484,33 @@ public class SpeciesProvider implements DataProvider
         ///////////////////////////
         //    Alcoholic fungi    //
         ///////////////////////////
-        speciesBuilder.createDefaultSpecies(FERMENTER_FUNGUS)
+        speciesBuilder.createSpecies(FERMENTER_FUNGUS)
                 .warpedType(0xa98565, 0xf9bcc1, 0xc7bdce, 0x6d719a)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-2)
                 .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST*2)
                 .light(13)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.SWAMP)
                 .areaEffect(FungusEffects.FERMENTING_EFFECT)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(DRUNK_FUNGUS)
+        speciesBuilder.createSpecies(DRUNK_FUNGUS)
                 .crimsonType(0x663321, 0x4d9268, 0x2aa65a, 0xf9af46)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST+0.2f)
                 .light(13)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.SWAMP)
                 .areaEffect(FungusEffects.DRUNK_EFFECT)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(TOXIC_METILIC_FUNGUS)
+        speciesBuilder.createSpecies(TOXIC_METILIC_FUNGUS)
                 .warpedType(0x9b8ac5, 0xf3dbec, 0x883674, 0xc797ab)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-2)
+                .spreadBoost(1.4f)
                 .light(12)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.SWAMP)
                 .build();
 
         /////////////////////////////
