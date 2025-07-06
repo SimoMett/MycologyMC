@@ -769,15 +769,22 @@ public class SpeciesProvider implements DataProvider
         ////////////////////////////
         //    Energetic branch    //
         ////////////////////////////
-        speciesBuilder.createDefaultSpecies(GLOWSTONE_FUNGUS)
+        speciesBuilder.createSpecies(GLOWSTONE_FUNGUS)
                 .crimsonType(0xff4d45, 0xffdb4a, 0xdcc677, 0xfff3cd)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.NETHER)
+                .biomesSpecs(BiomesSpecs.NETHER)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(LIGHTNING_FUNGUS)
+        speciesBuilder.createSpecies(LIGHTNING_FUNGUS)
                 .warpedType(0xfeffcc, 0xffcf42, 0xffffff, 0xb2ffff)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING+4)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST-0.3f)
                 .light(15)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.FOREST)
                 .areaEffect(FungusEffects.LIGHTNING_EFFECT)
                 .build();
 
