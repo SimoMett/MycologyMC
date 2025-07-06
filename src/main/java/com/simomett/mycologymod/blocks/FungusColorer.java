@@ -52,7 +52,11 @@ public class FungusColorer implements BlockColor, ItemColor
     @SubscribeEvent
     public static void registerBlockColorsEvent(RegisterColorHandlersEvent.Block evt)
     {
-        evt.register(new FungusColorer(), ModBlocks.COLORED_CRIMSON_FUNGUS.get(), ModBlocks.COLORED_WARPED_FUNGUS.get());
+        evt.register(new FungusColorer(),
+                ModBlocks.COLORED_CRIMSON_FUNGUS.get(),
+                ModBlocks.COLORED_WARPED_FUNGUS.get(),
+                ModBlocks.POTTED_COLORED_CRIMSON.get(),
+                ModBlocks.POTTED_COLORED_WARPED.get());
     }
 
     @SubscribeEvent

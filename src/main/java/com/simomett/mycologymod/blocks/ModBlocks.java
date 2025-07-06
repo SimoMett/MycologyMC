@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.blocks;
 
 import com.simomett.mycologymod.MycologyMod;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.*;
@@ -28,6 +29,26 @@ public class ModBlocks
     public static final DeferredBlock<FungusAnalysingStationBlock> FUNGUS_ANALYSING_STATION = BLOCKS.register("fungus_analysing_station", r ->
             new FungusAnalysingStationBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)
                     .setId(ResourceKey.create(Registries.BLOCK, r))));
+
+    public static final DeferredBlock<FungusPotBlock> FUNGUS_POT = BLOCKS.register("fungus_pot",
+            (r) -> new FungusPotBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                    .setId(ResourceKey.create(Registries.BLOCK, r))));
+
+    public static final DeferredBlock<FungusPotBlock> POTTED_COLORED_CRIMSON = BLOCKS.register("potted_colored_crimson",
+            (r) -> {
+                    FungusPotBlock b = new FungusPotBlock(ModBlocks.COLORED_CRIMSON_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                                    .setId(ResourceKey.create(Registries.BLOCK, r)));
+                    FUNGUS_POT.get().addPlant(COLORED_CRIMSON_FUNGUS.getId(), ()->b);
+                    return b;
+    });
+
+    public static final DeferredBlock<FungusPotBlock> POTTED_COLORED_WARPED = BLOCKS.register("potted_colored_warped",
+            (r) -> {
+                FungusPotBlock b = new FungusPotBlock(ModBlocks.COLORED_WARPED_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
+                        .setId(ResourceKey.create(Registries.BLOCK, r)));
+                FUNGUS_POT.get().addPlant(COLORED_WARPED_FUNGUS.getId(), ()->b);
+                return b;
+            });
 
     public static final DeferredBlock<Block> CHROMIUM_ORE = BLOCKS.registerSimpleBlock("chromium_ore",
             BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE).requiresCorrectToolForDrops());

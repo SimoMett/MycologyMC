@@ -8,10 +8,8 @@ import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.particles.ModParticles;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -100,13 +98,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     {
         ColoredFungusBlockEntity coloredFungusBlockEntity = (ColoredFungusBlockEntity) params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
         ItemStack itemStack = new ItemStack(this);
-        storeFungusDataIntoItemStack(coloredFungusBlockEntity.getFungusGenoma(), itemStack);
+        coloredFungusBlockEntity.getFungusGenoma().storeIntoItemStack(itemStack);
         return Collections.singletonList(itemStack);
-    }
-
-    private static void storeFungusDataIntoItemStack(FungusGenoma fungusGenoma, ItemStack itemStack)
-    {
-        itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, fungusGenoma).build());
     }
 
     @Override
@@ -114,7 +107,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     {
         ItemStack stack = super.getCloneItemStack(state, target, world, pos, player);
         FungusGenoma fungusData = world.getBlockEntity(pos, COLORED_FUNGUS.get()).orElseThrow().getFungusGenoma();
-        storeFungusDataIntoItemStack(fungusData, stack);
+        fungusData.storeIntoItemStack(stack);
         return stack;
     }
 
