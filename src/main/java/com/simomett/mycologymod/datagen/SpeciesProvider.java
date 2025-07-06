@@ -294,90 +294,112 @@ public class SpeciesProvider implements DataProvider
         /////////////////////////////
         //      Colors fungi       //
         /////////////////////////////
-        speciesBuilder.createDefaultSpecies(ORANGE_FUNGUS)
+        speciesBuilder.createSpecies(ORANGE_FUNGUS)
                 .warpedType(0xffe0bd, 0xfc9646, 0xc98d6a, 0x844432)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
-                .light(15)
-                .terrain(ModBlockTags.GRASS)
-                .build();
-
-        speciesBuilder.createDefaultSpecies(LIME_FUNGUS)
-                .warpedType(0x9e885f, 0xdd6544, 0x20b482, 0x50ec6c)
-                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
-                .light(15)
-                .terrain(ModBlockTags.GRASS)
-                .build();
-
-        speciesBuilder.createDefaultSpecies(CYAN_FUNGUS)
-                .warpedType(0xdcab8a, 0x45af9c, 0xd3907c, 0x0c6c91)
-                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
-                .light(15)
-                .terrain(ModBlockTags.GRASS)
-                .build();
-
-        speciesBuilder.createDefaultSpecies(LIGHTBLUE_FUNGUS)
-                .warpedType(0xc9f38e, 0x87cfec, 0xcaeef9, 0x8ad4f1)
-                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
-                .light(15)
-                .terrain(ModBlockTags.GRASS)
-                .build();
-
-        speciesBuilder.createSpecies(OVULUS_VIOLACEUS)
-                .crimsonType(0xAA48FB, 0x9c133f, 0xA23F19, 0xE105EF)
-                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
-                .spreadBoost(1.0f)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
                 .biomesSpecs(BiomesSpecs.TAIGA)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(MAGENTA_FUNGUS)
+        speciesBuilder.createSpecies(LIME_FUNGUS)
+                .warpedType(0x9e885f, 0xdd6544, 0x20b482, 0x50ec6c)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
+                .light(15)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.PLAINS)
+                .build();
+
+        speciesBuilder.createSpecies(CYAN_FUNGUS)
+                .warpedType(0xdcab8a, 0x45af9c, 0xd3907c, 0x0c6c91)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
+                .light(15)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.FOREST)
+                .build();
+
+        speciesBuilder.createSpecies(LIGHTBLUE_FUNGUS)
+                .warpedType(0xc9f38e, 0x87cfec, 0xcaeef9, 0x8ad4f1)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
+                .light(15)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
+                .build();
+
+        speciesBuilder.createSpecies(OVULUS_VIOLACEUS)
+                .crimsonType(0xAA48FB, 0x9c133f, 0xA23F19, 0xE105EF)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
+                .light(15)
+                .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.TAIGA)
+                .build();
+
+        speciesBuilder.createSpecies(MAGENTA_FUNGUS)
                 .crimsonType(0xffb2cf, 0xef459d, 0x981c33, 0xffffff)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.TAIGA)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(PINK_FUNGUS)
+        speciesBuilder.createSpecies(PINK_FUNGUS)
                 .crimsonType(0xf6dfb5, 0xffc0cb, 0xffc0cb, 0xffeef0)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.PLAINS)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(BROWN_FUNGUS)
+        speciesBuilder.createSpecies(BROWN_FUNGUS)
                 .warpedType(0xeeaa3c, 0xae5913, 0x64330b, 0x4e2407)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.JUNGLE)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(BLACK_FUNGUS)
+        speciesBuilder.createSpecies(BLACK_FUNGUS)
                 .crimsonType(0xffdcc7, 0xffffff, 0xe4d6cd, 0x262626)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.FOREST)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(GREY_FUNGUS)
+        speciesBuilder.createSpecies(GREY_FUNGUS)
                 .crimsonType(0xffe0bd, 0x949494, 0x938b7f, 0xaa988e)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.FOREST)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(LIGHTGREY_FUNGUS)
+        speciesBuilder.createSpecies(LIGHTGREY_FUNGUS)
                 .warpedType(0xffdfcc, 0xf8feff, 0xdcdcdc, 0xbfbfbf)
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
                 .build();
 
-        speciesBuilder.createDefaultSpecies(WHITE_FUNGUS)
+        speciesBuilder.createSpecies(WHITE_FUNGUS)
                 .warpedType(0xfbf4e1, 0xfffdf6, 0xf3f3f3, 0xf3edd5) //FIXME I don't like it too much
                 .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(SpeciesBuilder.DEFAULT_SPREADBOOST)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.BIRCH_FOREST)
                 .build();
 
         /////////////////////////////
@@ -686,6 +708,7 @@ public class SpeciesProvider implements DataProvider
                 .crimsonType(0xeeaa3c, 0x8c4614, 0x64330b, 0x4e2407)
                 .light(15)
                 .terrain(ModBlockTags.GRASS)
+                .biomesSpecs(BiomesSpecs.JUNGLE)
                 .areaEffect(FungusEffects.ANTHESIS_EFFECT)
                 .areaRadius(10)
                 .build();
