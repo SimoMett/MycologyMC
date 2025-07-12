@@ -1,5 +1,6 @@
 package com.simomett.mycologymod;
 
+import com.simomett.mycologymod.creativetab.ModItemGroup;
 import net.fabricmc.api.ModInitializer;
 
 public class MycologyMod implements ModInitializer {
@@ -14,5 +15,6 @@ public class MycologyMod implements ModInitializer {
         // Use Fabric to bootstrap the Common mod.
         Constants.LOG.info("Hello Fabric world!");
         CommonClass.init();
+        ModItemGroup.initialize();
     }
 }
