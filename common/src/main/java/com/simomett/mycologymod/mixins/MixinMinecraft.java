@@ -1,4 +1,4 @@
-package com.simomett.mycologymod.mixin;
+package com.simomett.mycologymod.mixins;
 
 import com.simomett.mycologymod.Constants;
 import net.minecraft.client.Minecraft;
@@ -13,6 +13,5 @@ public class MixinMinecraft {
     @Inject(at = @At("TAIL"), method = "<init>")
     private void init(CallbackInfo info) {
         Constants.LOG.info("This line is printed by the Mycology common mixin!");
-        Constants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
     }
 }

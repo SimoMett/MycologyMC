@@ -1,7 +1,6 @@
-package com.simomett.mycologymod.mixin;
+package com.simomett.mycologymod.mixins;
 
 import com.simomett.mycologymod.Constants;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,6 +13,5 @@ public class MixinTitleScreen {
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info) {
         Constants.LOG.info("This line is printed by the Mycology mixin from Fabric!");
-        Constants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
     }
 }
