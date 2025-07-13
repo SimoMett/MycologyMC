@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.creativetab;
 
 import com.simomett.mycologymod.Constants;
+import com.simomett.mycologymod.items.ModItems;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -11,19 +12,16 @@ import net.minecraft.world.item.Items;
 
 public final class ModItemGroup
 {
-    public static final CreativeModeTab TEST_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
-            ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "test_group"),
+    public static final CreativeModeTab MAIN_CREATIVE_TAB = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
+            ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "main_item_group"),
             FabricItemGroup.builder()
                 .icon(Items.GOLD_ORE::getDefaultInstance)
-                .title(Component.literal("itemGroup.mycologymod.test_group"))
+                .title(Component.translatable("itemGroup.mycologymod.main"))
                 .displayItems((enabledFlags, populator) -> {
-                    populator.accept(Items.DIAMOND_AXE);
+                    populator.accept(ModItems.TEST_ITEM);
                 })
                 .build()
     );
 
-    public static void initialize()
-    {
-
-    }
+    public static void initialize() {}
 }
