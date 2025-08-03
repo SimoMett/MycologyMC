@@ -26,11 +26,9 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(MycologyMod.MODID)
+@Mod(Constants.MOD_ID)
 public class MycologyMod
 {
-    public static final String MODID = "mycologymod";
-
     public MycologyMod(IEventBus evtBus, ModContainer modContainer)
     {
         modContainer.registerConfig(ModConfig.Type.COMMON, ModCommonConfigs.SPEC);

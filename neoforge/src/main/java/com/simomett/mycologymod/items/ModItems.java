@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.items;
 
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
+import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.blocks.ModBlocks;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -16,12 +17,12 @@ import static com.simomett.mycologymod.items.ColoredFungusBlockItem.EFFECTS_WHEN
 
 public class ModItems
 {
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MycologyMod.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Constants.MOD_ID);
 
-    public static final DeferredItem<ColoredFungusBlockItem> COLORED_CRIMSON_FUNGUS = ITEMS.register(ModBlocks.COLORED_CRIMSON_STRING, r ->
-            new ColoredFungusBlockItem(ModBlocks.COLORED_CRIMSON_FUNGUS.get(), r));
-    public static final DeferredItem<ColoredFungusBlockItem> COLORED_WARPED_FUNGUS = ITEMS.register(ModBlocks.COLORED_WARPED_STRING, r ->
-            new ColoredFungusBlockItem(ModBlocks.COLORED_WARPED_FUNGUS.get(), r));
+    public static final DeferredItem<ColoredFungusBlockItem> COLORED_CRIMSON_FUNGUS = ITEMS.register(BlocksDefinitions.COLORED_CRIMSON_STRING, r ->
+            ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get());
+    public static final DeferredItem<ColoredFungusBlockItem> COLORED_WARPED_FUNGUS = ITEMS.register(BlocksDefinitions.COLORED_WARPED_STRING, r ->
+            ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
 
     //all the items below...
     public static final DeferredItem<Item> COOKED_CRIMSON_FUNGUS = ITEMS.registerSimpleItem("cooked_crimson_fungus", new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
@@ -31,7 +32,7 @@ public class ModItems
     public static final DeferredItem<Item> COOKED_POISONOUS_WARPED_FUNGUS = ITEMS.registerSimpleItem("cooked_poisonous_warped_fungus",
             new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()));
     public static final DeferredItem<MagnifyingGlassItem> MAGNIFYING_GLASS = ITEMS.register("magnifying_glass", MagnifyingGlassItem::new);
-    public static final DeferredItem<BlockItem> FUNGUS_ANALYSING_STATION = ITEMS.registerSimpleBlockItem("fungus_analysing_station", ModBlocks.FUNGUS_ANALYSING_STATION);
+    //public static final DeferredItem<BlockItem> FUNGUS_ANALYSING_STATION = ITEMS.registerSimpleBlockItem("fungus_analysing_station", ModBlocks.FUNGUS_ANALYSING_STATION);
     public static final DeferredItem<Item> TEST_TUBE = ITEMS.registerSimpleItem("test_tube");
     public static final DeferredItem<BlockItem> CHROMIUM_ORE = ITEMS.registerSimpleBlockItem("chromium_ore", ModBlocks.CHROMIUM_ORE);
     public static final DeferredItem<Item> CHROMITE_POWDER = ITEMS.registerSimpleItem("chromite_powder");
@@ -41,9 +42,9 @@ public class ModItems
     public static final DeferredItem<BlockItem> CHROMIUM_BLOCK = ITEMS.registerSimpleBlockItem("chromium_block", ModBlocks.CHROMIUM_BLOCK);
     public static final DeferredItem<Item> SPEEDYZER = ITEMS.registerItem("speedyzer", SpeedyzerItem::new);
 
-    public static final DeferredItem<BlockItem> FUNGUS_POT = ITEMS.registerSimpleBlockItem(ModBlocks.FUNGUS_POT);
+    /*public static final DeferredItem<BlockItem> FUNGUS_POT = ITEMS.registerSimpleBlockItem(ModBlocks.FUNGUS_POT);
     public static final DeferredItem<BlockItem> POTTED_COLORED_CRIMSON = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_CRIMSON);
-    public static final DeferredItem<BlockItem> POTTED_COLORED_WARPED = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_WARPED);
+    public static final DeferredItem<BlockItem> POTTED_COLORED_WARPED = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_WARPED);*/
 
     public static boolean isFungus(ItemStack itemStack)
     {

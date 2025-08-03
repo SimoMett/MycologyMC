@@ -19,8 +19,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +47,7 @@ public class ColoredFungusBlockItem extends BlockItem
             String eatEff = stack.get(FUNGUS_GENOMA).getDominantTraits().eatingEffect().get();
             Optional<Holder.Reference<MobEffect>> mobEffect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(eatEff));
             if(mobEffect.isPresent())
-                livingEntity.addEffect(new MobEffectInstance(mobEffect.get().getDelegate(), -1));
+                livingEntity.addEffect(new MobEffectInstance(mobEffect.get(), -1));
             else
             {
                 for(MobEffectInstance i : EFFECTS_WHEN_EATEN_RAW)
@@ -67,7 +65,6 @@ public class ColoredFungusBlockItem extends BlockItem
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> components, TooltipFlag p_41424_)
     {
         super.appendHoverText(itemStack, tooltipContext, components, p_41424_);

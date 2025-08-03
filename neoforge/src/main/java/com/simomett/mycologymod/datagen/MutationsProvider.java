@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.datagen;
 
 import com.google.gson.JsonObject;
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -12,7 +12,7 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
-import static com.simomett.mycologymod.config.ModCommonConfigs.DEFAULT_MUTATION_CHANCE;
+import static com.simomett.mycologymod.config.IModCommonConfigs.DEFAULT_MUTATION_CHANCE;
 import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.*;
 
 public class MutationsProvider implements DataProvider
@@ -159,7 +159,7 @@ public class MutationsProvider implements DataProvider
 
         Path path = generator.getPackOutput().getOutputFolder();
         String jsonFileName = result.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "mutations", jsonFileName));
+        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), Constants.MOD_ID, "mutations", jsonFileName));
 
         list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }

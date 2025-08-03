@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.items.potions;
 
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.effects.FungusEffect;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
@@ -19,7 +19,7 @@ public class ModPotions
     public static final int LONG_DURATION = 20*60*8;
     public static final int STRONG_DURATION = 20*90;
 
-    public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(BuiltInRegistries.POTION, MycologyMod.MODID);
+    public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(BuiltInRegistries.POTION, Constants.MOD_ID);
 
     public static final DeferredHolder<Potion, Potion> HASTE = register("haste", MobEffects.DIG_SPEED);
     public static final DeferredHolder<Potion, Potion> LONG_HASTE = POTIONS.register("long_haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.DIG_SPEED, LONG_DURATION)));

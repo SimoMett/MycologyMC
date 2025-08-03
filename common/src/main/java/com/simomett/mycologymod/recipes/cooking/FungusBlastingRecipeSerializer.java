@@ -3,7 +3,6 @@ package com.simomett.mycologymod.recipes.cooking;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;

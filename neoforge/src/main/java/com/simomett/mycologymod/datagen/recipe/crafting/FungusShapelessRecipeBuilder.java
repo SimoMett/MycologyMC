@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.datagen.recipe.crafting;
 
 import com.simomett.mycologymod.MycologyMod;
-import com.simomett.mycologymod.recipes.cooking.FungusCookingRecipe;
 import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipe;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.core.registries.Registries;

@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.network;
 
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
 import com.simomett.mycologymod.effects.PlayerEffects.TeleportingEffect;
@@ -23,7 +24,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.network.handling.MainThreadPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
-@EventBusSubscriber(modid = MycologyMod.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class PlayerRightClickTeleportPacket implements CustomPacketPayload
 {
     public static final PlayerRightClickTeleportPacket INSTANCE = new PlayerRightClickTeleportPacket();

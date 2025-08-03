@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.entities;
 
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.genetics.FungusTraits;
@@ -41,8 +41,8 @@ public class ColoredFungusBlockEntity extends BlockEntity
     {
         super.onLoad();
         //components() are null only in client. is this the problem?
-        if(components().has(FUNGUS_GENOMA.get()))
-            fungusGenoma = components().get(FUNGUS_GENOMA.get());
+        if(components().has(ModDataComponentTypes.FUNGUS_GENOMA.get()))
+            fungusGenoma = components().get(ModDataComponentTypes.FUNGUS_GENOMA.get());
     }
 
     @Override
@@ -50,7 +50,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
     {
         // FIXME awful work-around
         super.loadAdditional(tag, registries);
-        CompoundTag genomaTag = tag.getCompound("components").getCompound(ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID,GENOMA_DATA_COMPONENT_NAME).toString());
+        CompoundTag genomaTag = tag.getCompound("components").getCompound(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ModDataComponentTypes.GENOMA_DATA_COMPONENT_NAME).toString());
         fungusGenoma = new FungusGenoma(genomaTag);
     }
 
@@ -100,7 +100,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
         if(genoma!=null)
         {
             this.fungusGenoma = genoma;
-            this.setComponents(DataComponentMap.builder().set(FUNGUS_GENOMA.get(), fungusGenoma).build());
+            this.setComponents(DataComponentMap.builder().set(ModDataComponentTypes.FUNGUS_GENOMA.get(), fungusGenoma).build());
         }
         else
             throw new NullPointerException("Cannot apply null genoma");
@@ -119,8 +119,8 @@ public class ColoredFungusBlockEntity extends BlockEntity
     {
         // FIXME awful work-around: part-2
         CompoundTag fungusData = new CompoundTag();
-        fungusData.put(ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, GENOMA_DATA_COMPONENT_NAME).toString(),
-                FUNGUS_GENOMA_CODEC.encodeStart(NbtOps.INSTANCE, fungusGenoma).getOrThrow());
+        fungusData.put(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ModDataComponentTypes.GENOMA_DATA_COMPONENT_NAME).toString(),
+                ModDataComponentTypes.FUNGUS_GENOMA_CODEC.encodeStart(NbtOps.INSTANCE, fungusGenoma).getOrThrow());
         CompoundTag components = new CompoundTag();
         components.put("components", fungusData);
         return components;

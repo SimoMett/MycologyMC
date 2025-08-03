@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.datagen;
 
 import com.google.gson.JsonObject;
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.items.potions.ModPotions;
 import net.minecraft.core.Holder;
 import net.minecraft.data.CachedOutput;
@@ -51,7 +51,7 @@ public class BrewingRecipesProvider implements DataProvider
 
         Path path = generator.getPackOutput().getOutputFolder();
         String jsonFileName = ingredientSpecies.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi_brewing", jsonFileName));
+        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), Constants.MOD_ID, "fungi_brewing", jsonFileName));
 
         list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }

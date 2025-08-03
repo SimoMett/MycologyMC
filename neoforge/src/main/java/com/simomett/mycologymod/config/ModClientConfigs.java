@@ -2,7 +2,7 @@ package com.simomett.mycologymod.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class ModClientConfigs
+public class ModClientConfigs implements IModClientConfigs
 {
     public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     public static final ModConfigSpec SPEC;

@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.particles;
 
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.MycologyMod;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -9,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModParticles
 {
-    public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, MycologyMod.MODID);
+    public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, Constants.MOD_ID);
 
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SPORE_PARTICLES = PARTICLES.register("spore", () -> new SimpleParticleType(true));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> MUTANT_SPORE_PARTICLES = PARTICLES.register("mutant_spore", () -> new SimpleParticleType(true));

@@ -1,12 +1,12 @@
 package com.simomett.mycologymod.blocks;
 
 import com.mojang.serialization.MapCodec;
-import com.simomett.mycologymod.config.ModCommonConfigs;
+/*import com.simomett.mycologymod.config.ModCommonConfigs;
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
-import com.simomett.mycologymod.particles.ModParticles;
+import com.simomett.mycologymod.particles.ModParticles;*/
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -39,13 +39,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import static com.simomett.mycologymod.config.ModClientConfigs.SPORE_PARTICLES_FREQ;
+/*import static com.simomett.mycologymod.config.ModClientConfigs.SPORE_PARTICLES_FREQ;
 import static com.simomett.mycologymod.config.ModCommonConfigs.*;
-import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;
+import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;*/
 import static com.simomett.mycologymod.tags.ModBlockTags.CAN_PLANT_ON;
 
 
-public class ColoredFungusBlock extends BushBlock implements EntityBlock
+public class ColoredFungusBlock extends BushBlock //implements EntityBlock
 {
     protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
     public static final BooleanProperty MUTAGEN_APPLIED = BlockStateProperties.LIT;
@@ -68,7 +68,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     }
 
     @Override
-    public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos)
+    protected int getLightBlock(BlockState state)
     {
         return hasMutagen(state) ? 5 : 0;
     }
@@ -85,14 +85,14 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         return true;
     }
 
-    @Nullable
+    /*@Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        return COLORED_FUNGUS.get().create(blockPos, blockState);
-    }
+        return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
+    }*/
 
-    @Override
+    /*@Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params)
     {
         ColoredFungusBlockEntity coloredFungusBlockEntity = (ColoredFungusBlockEntity) params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
@@ -105,7 +105,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader world, BlockPos pos, Player player)
     {
         ItemStack stack = super.getCloneItemStack(state, target, world, pos, player);
-        FungusGenoma fungusData = world.getBlockEntity(pos, COLORED_FUNGUS.get()).orElseThrow().getFungusGenoma();
+        FungusGenoma fungusData = world.getBlockEntity(pos, ModEntities.COLORED_FUNGUS.get()).orElseThrow().getFungusGenoma();
         fungusData.storeIntoItemStack(stack);
         return stack;
     }
@@ -126,8 +126,8 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     private static void addSporeParticle(int radius, BlockState blockState, BlockPos blockPos, Level level, RandomSource randomSource)
     {
         Random random = new Random();
-        int density = SPORE_PARTICLES_FREQ.get()*radius;
-        radius *= RADIUS_MULTIPLIER.get();
+        int density = ModClientConfigs.SPORE_PARTICLES_FREQ.get()*radius;
+        radius *= ModCommonConfigs.RADIUS_MULTIPLIER.get();
         for (int i = 0; i < density; i++)
         {
             //get random BlockPos
@@ -179,7 +179,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         {
             //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
-            int i = MAX_MUSHROOMS_IN_AREA.get();
+            int i = ModCommonConfigs.MAX_MUSHROOMS_IN_AREA.get();
             for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4)))
             {
                 if (level.getBlockState(blockpos).is(this))
@@ -200,7 +200,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         // area effect
         String fungusEffect = thisGenoma.getDominantTraits().effect();
         FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
-    }
+    }*/
 
     private static BlockPos findSuitableBlockPos(BlockPos searchStartPos, ServerLevel level, BlockState blockState)
     {
@@ -220,7 +220,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         return blockpos1;
     }
 
-    private static void breedAndSpread(BlockState blockState, ServerLevel level, BlockPos pos, int areaRadius, FungusGenoma genoma, boolean hasMutagen)
+    /*private static void breedAndSpread(BlockState blockState, ServerLevel level, BlockPos pos, int areaRadius, FungusGenoma genoma, boolean hasMutagen)
     {
         //WARNING
         // if whatever mod/datapack changes default temperature and humidity of a biome, the fungus cannot spread.
@@ -247,7 +247,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         else if (blockState.canSurvive(level, pos))
         {
             // ... otherwise proceed with normal spreading
-            if(hasMutagen && rand.nextFloat(0f,1f) < MUTAGEN_EFFECTIVENESS.get())
+            if(hasMutagen && rand.nextFloat(0f,1f) < ModCommonConfigs.MUTAGEN_EFFECTIVENESS.get())
             {
                 for(int i = 0; i<rand.nextInt(1, 3); i++)
                     genoma.changeRandomTraitByMutagen();
@@ -318,7 +318,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         if(!canSurvive)
             originBlockEntity.setRemoved();
         return canSurvive;
-    }
+    }*/
 
     public static void applyMutagen(BlockPos pos, BlockState blockState, ServerLevel level)
     {

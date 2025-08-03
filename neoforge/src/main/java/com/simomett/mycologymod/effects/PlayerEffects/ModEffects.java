@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.effects.PlayerEffects;
 
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModEffects
 {
-    public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, MycologyMod.MODID);
+    public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, Constants.MOD_ID);
 
     //Experience effects
     public static DeferredHolder<MobEffect, GainXPEffect> GAIN_XP = EFFECTS.register("gain_xp", GainXPEffect::instance);

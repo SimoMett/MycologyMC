@@ -2,7 +2,7 @@ package com.simomett.mycologymod.datagen.common;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.MycologyMod;
-import com.simomett.mycologymod.blocks.ModBlocks;
+import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.effects.FungusEffect;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.tags.ModBlockTags;
@@ -23,12 +23,10 @@ import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static com.simomett.mycologymod.genetics.FungusGenoma.*;
-
 public class SpeciesBuilder
 {
-    public static final String CRIMSON_TYPE = ModBlocks.COLORED_CRIMSON_STRING;
-    public static final String WARPED_TYPE = ModBlocks.COLORED_WARPED_STRING;
+    public static final String CRIMSON_TYPE = BlocksDefinitions.COLORED_CRIMSON_STRING;
+    public static final String WARPED_TYPE = BlocksDefinitions.COLORED_WARPED_STRING;
 
     //some spreading default values
     public static final int DEFAULT_SPREADING = 24;

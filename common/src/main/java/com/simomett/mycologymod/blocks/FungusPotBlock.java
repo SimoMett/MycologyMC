@@ -36,7 +36,7 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
 
     public FungusPotBlock(Supplier<? extends Block> potted, Properties properties)
     {
-        super(ModBlocks.FUNGUS_POT::get, potted, properties);
+        super(BlocksDefinitions.FUNGUS_POT::get, potted, properties);
     }
 
     public FungusPotBlock(Properties properties)
@@ -47,7 +47,7 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        return COLORED_FUNGUS.get().create(blockPos, blockState);
+        return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.datagen;
 
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.datagen.recipe.blasting.BlastingRecipesProvider;
 import com.simomett.mycologymod.datagen.recipe.cooking.CookingRecipesProvider;
 import com.simomett.mycologymod.datagen.recipe.crafting.FungusShapelessRecipesProvider;
@@ -9,7 +9,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-@EventBusSubscriber(modid = MycologyMod.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators
 {
     private DataGenerators() {}

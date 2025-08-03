@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.world.features;
 
-import com.simomett.mycologymod.blocks.ModBlocks;
-import com.simomett.mycologymod.data.FungusSpeciesList;
+import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
@@ -35,13 +34,13 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
         BlockPos origin = placeContext.origin();
         WorldGenLevel level = placeContext.level();
 
-        List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.INSTANCE.getSpeciesList();
+        List<AbstractFungusSpeciesList.FungusSpecies> speciesList = AbstractFungusSpeciesList.INSTANCE.getSpeciesList();
         speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && s.spawnInfo.equals(FungusSpawn.CAVES)).toList();
         if(!speciesList.isEmpty())
         {
             //get random species
             Random random = new Random();
-            FungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
+            AbstractFungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
 
             if (random.nextFloat(0f, 1f) < randomSpecies.spawnInfo.chance)
             {
@@ -55,7 +54,7 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
                 if(blockMatchesTerrain && level.getBlockState(origin.above()).isAir())
                 {
                     BlockPos pos = origin.above();
-                    BlockState blockState = ModBlocks.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
+                    BlockState blockState = BlockNames.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
                     level.setBlock(pos, blockState, 0);
 
                     //edit its block entity

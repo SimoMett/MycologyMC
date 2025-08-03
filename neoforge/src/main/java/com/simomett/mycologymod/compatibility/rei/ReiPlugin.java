@@ -2,7 +2,6 @@ package com.simomett.mycologymod.compatibility.rei;
 
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipe;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
-import com.simomett.mycologymod.recipes.cooking.FungusBlastingRecipe;
 import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipe;
 import me.shedaniel.rei.api.common.plugins.REICommonPlugin;
 import me.shedaniel.rei.api.common.registry.display.ServerDisplayRegistry;
