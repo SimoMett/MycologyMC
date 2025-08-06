@@ -47,9 +47,9 @@ public class AnthesisEffect extends FungusEffect
         {
             BlockState cocoaBlockState = Blocks.COCOA.defaultBlockState();
             if (zOffset == -1)
-                cocoaBlockState = cocoaBlockState.rotate(level, randomPos, Rotation.CLOCKWISE_180);
+                cocoaBlockState = cocoaBlockState.rotate(Rotation.CLOCKWISE_180);
             if(xOffset != 0)
-                cocoaBlockState = cocoaBlockState.rotate(level, randomPos, xOffset==-1? Rotation.CLOCKWISE_90 : Rotation.COUNTERCLOCKWISE_90);
+                cocoaBlockState = cocoaBlockState.rotate(xOffset==-1? Rotation.CLOCKWISE_90 : Rotation.COUNTERCLOCKWISE_90);
             level.setBlock(randomPos, cocoaBlockState, 2);
 
         }
