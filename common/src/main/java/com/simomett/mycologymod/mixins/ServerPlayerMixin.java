@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.mixins;
 
 import com.mojang.authlib.GameProfile;
-import com.simomett.mycologymod.effects.PlayerEffects.KnowledgeEffect;
+import com.simomett.mycologymod.effects.player.KnowledgeEffect;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;

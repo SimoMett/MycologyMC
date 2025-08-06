@@ -1,5 +1,6 @@
-package com.simomett.mycologymod.effects.PlayerEffects;
+package com.simomett.mycologymod.effects.player;
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.player.Player;
@@ -14,6 +15,6 @@ public class TeleportingEffect extends MobEffect
 
     public static boolean shouldTeleport(Player player)
     {
-        return player.getMainHandItem().isEmpty() && player.hasEffect(ModEffects.TELEPORTING);
+        return player.getMainHandItem().isEmpty() && player.hasEffect(Holder.direct(EffectsDefinitions.TELEPORTING.get()));
     }
 }

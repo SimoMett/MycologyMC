@@ -1,6 +1,8 @@
 package com.simomett.mycologymod.effects.PlayerEffects;
 
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.effects.player.TeleportingEffect;
 import com.simomett.mycologymod.network.PlayerRightClickTeleportPacket;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -9,7 +11,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
-@EventBusSubscriber(modid = MycologyMod.MODID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class PlayerEffectsEventsHandler
 {
     @SubscribeEvent

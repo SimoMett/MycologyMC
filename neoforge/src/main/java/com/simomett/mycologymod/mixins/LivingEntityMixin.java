@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.mixins;
 
-import com.simomett.mycologymod.effects.PlayerEffects.KnowledgeEffect;
+import com.simomett.mycologymod.effects.player.KnowledgeEffect;
 import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Holder;

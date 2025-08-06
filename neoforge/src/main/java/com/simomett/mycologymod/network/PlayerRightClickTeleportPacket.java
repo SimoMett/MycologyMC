@@ -3,7 +3,7 @@ package com.simomett.mycologymod.network;
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
-import com.simomett.mycologymod.effects.PlayerEffects.TeleportingEffect;
+import com.simomett.mycologymod.effects.player.TeleportingEffect;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.codec.StreamCodec;
@@ -28,7 +28,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 public class PlayerRightClickTeleportPacket implements CustomPacketPayload
 {
     public static final PlayerRightClickTeleportPacket INSTANCE = new PlayerRightClickTeleportPacket();
-    public static final CustomPacketPayload.Type<PlayerRightClickTeleportPacket> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "rightclick_teleport"));
+    public static final CustomPacketPayload.Type<PlayerRightClickTeleportPacket> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "rightclick_teleport"));
     public static final StreamCodec<ByteBuf, PlayerRightClickTeleportPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
 
     public PlayerRightClickTeleportPacket() {}

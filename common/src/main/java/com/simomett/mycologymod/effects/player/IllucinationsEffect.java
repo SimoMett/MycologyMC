@@ -1,4 +1,4 @@
-package com.simomett.mycologymod.effects.PlayerEffects;
+package com.simomett.mycologymod.effects.player;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

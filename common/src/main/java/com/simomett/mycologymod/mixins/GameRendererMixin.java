@@ -2,9 +2,10 @@ package com.simomett.mycologymod.mixins;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
+import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,7 +24,7 @@ public abstract class GameRendererMixin implements AutoCloseable{
         Entity $$3 = this.minecraft.getCameraEntity();
         if ($$3 instanceof LivingEntity livingentity)
         {
-            if (livingentity.hasEffect(ModEffects.ANESTHETIC))
+            if (livingentity.hasEffect(Holder.direct(EffectsDefinitions.ANESTHETIC.get())))
                 return;
             float f2 = (float)livingentity.hurtTime - p_109119_;
             float f3;
