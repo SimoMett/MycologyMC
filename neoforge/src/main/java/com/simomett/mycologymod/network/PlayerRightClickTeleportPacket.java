@@ -1,8 +1,7 @@
 package com.simomett.mycologymod.network;
 
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.MycologyMod;
-import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
+import com.simomett.mycologymod.effects.player.ModEffects;
 import com.simomett.mycologymod.effects.player.TeleportingEffect;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;

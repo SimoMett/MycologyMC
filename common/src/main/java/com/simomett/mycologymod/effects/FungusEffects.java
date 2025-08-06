@@ -1,8 +1,9 @@
 package com.simomett.mycologymod.effects;
 
-import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
+import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.sounds.SoundEvents;
@@ -41,7 +42,7 @@ public class FungusEffects
     public static final SingleEffect HEALING_EFFECT = new SingleEffect("regeneration", MobEffects.REGENERATION);
     public static final SingleEffect STRENGTH_EFFECT = new SingleEffect("strengthening", MobEffects.DAMAGE_BOOST);
     public static final SingleEffect ANESTHETIC_EFFECT = new SingleEffect("anesthetic");
-    public static final SingleEffect ILLUCINATING_EFFECT = new SingleEffect("illucinating", ModEffects.ILLUCINATIONS);
+    public static final SingleEffect ILLUCINATING_EFFECT = new SingleEffect("illucinating", Holder.direct(EffectsDefinitions.ILLUCINATIONS.get()));
     public static final SingleEffect HALLUCINATING_EFFECT = new SingleEffect("hallucinating");
     public static final SingleEffect RADIOACTIVE_EFFECT = new SingleEffect("radioactive");
     public static final SingleEffect BLINDING_EFFECT = new SingleEffect("blinding", MobEffects.BLINDNESS);
@@ -56,8 +57,8 @@ public class FungusEffects
     public static final SingleEffect TELEPORTING_EFFECT = new SingleEffect("teleporting");
     public static final SingleEffect LIGHTFUL_EFFECT = new SingleEffect("lightful", MobEffects.SLOW_FALLING);
     public static final SingleEffect GOODCHANCE_EFFECT = new SingleEffect("goodchance", MobEffects.LUCK);
-    public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", ModEffects.GAIN_XP);
-    public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", ModEffects.KNOWLEDGE);
+    public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", Holder.direct(EffectsDefinitions.GAIN_XP.get()));
+    public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", Holder.direct(EffectsDefinitions.KNOWLEDGE.get()));
     public static final FungusEffect SPORING_EFFECT = new TransmuteBlockEffect("sporing", ModBlockTags.SPORING_REPLACEABLES, Blocks.MYCELIUM);
     public static final FungusEffect FREEZING_EFFECT = new TransmuteBlockEffect("freezing", Blocks.WATER, Blocks.ICE);
     public static final LevelOnlyEffect DYEING_EFFECT = new LevelOnlyEffect("dyeing", (level, pos, box) -> {
@@ -148,11 +149,7 @@ public class FungusEffects
     public static final FungusEffect SKELETONS_EFFECT = new SkeletonsEffect("skeletons");
     public static final FungusEffect BLAZING_EFFECT = new BlazingEffect("blazing");
     public static final FungusEffect LIGHTNING_EFFECT = new LightningEffect("lightning");
-    public static final FungusEffect EXPORBS_EFFECT = new SpawnEntityEffect("exporbs", (lvl) -> {
-        ExperienceOrb orb = new ExperienceOrb(EntityType.EXPERIENCE_ORB, lvl);
-        orb.value = 1;
-        return orb;
-    });
+    public static final FungusEffect EXPORBS_EFFECT = new SpawnExperienceEffect("exporbs");
     public static final FungusEffect EYE_OF_ENDER_EFFECT = new LevelOnlyEffect("eye_of_ender", (level, origin, box) -> {
         BlockPos strongholdPos = level.findNearestMapStructure(StructureTags.EYE_OF_ENDER_LOCATED, origin, 100, false);
         if(strongholdPos!= null)

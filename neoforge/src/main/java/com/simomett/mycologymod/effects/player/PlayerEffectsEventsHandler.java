@@ -1,8 +1,6 @@
-package com.simomett.mycologymod.effects.PlayerEffects;
+package com.simomett.mycologymod.effects.player;
 
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.MycologyMod;
-import com.simomett.mycologymod.effects.player.TeleportingEffect;
 import com.simomett.mycologymod.network.PlayerRightClickTeleportPacket;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;

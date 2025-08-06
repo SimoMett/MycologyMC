@@ -5,6 +5,7 @@ import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.genetics.FungusTraits;
 import com.simomett.mycologymod.network.serializable.IModSerializable;
+import com.simomett.mycologymod.platform.Services;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -28,7 +29,14 @@ public abstract class AbstractFungusSpeciesList implements CustomPacketPayload, 
     private final HashMap<String, FungusSpecies> speciesHashMap = new HashMap<>();
     private final AbstractFungusSpeciesColorsMap colorsMap = AbstractFungusSpeciesColorsMap.INSTANCE;
 
-    //public static AbstractFungusSpeciesList INSTANCE = new AbstractFungusSpeciesList();
+    private static AbstractFungusSpeciesList INSTANCE = Services.PLATFORM.initFungusSpeciesList();
+
+    public static AbstractFungusSpeciesList getInstance()
+    {
+        if(INSTANCE == null)
+            throw new NullPointerException();
+        return INSTANCE;
+    }
 
     public static final CustomPacketPayload.Type<AbstractFungusSpeciesList> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_species_list_sync"));
     public static AbstractFungusSpeciesList fromByteBuf(FriendlyByteBuf byteBuf)

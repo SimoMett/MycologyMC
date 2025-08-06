@@ -1,5 +1,9 @@
 package com.simomett.mycologymod.platform.services;
 
+import com.simomett.mycologymod.config.IModCommonConfigs;
+import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
+import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+
 public interface IPlatformHelper {
 
     /**
@@ -32,4 +36,10 @@ public interface IPlatformHelper {
     default String getEnvironmentName() {
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    // Mod specific stuff
+    AbstractFungusSpeciesList initFungusSpeciesList();
+    AbstractFungusSpeciesColorsMap initFungusSpeciesColorsMap();
+
+    IModCommonConfigs getCommonConfigs();
 }

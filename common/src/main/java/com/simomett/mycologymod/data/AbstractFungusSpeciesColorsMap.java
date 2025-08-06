@@ -18,6 +18,13 @@ public abstract class AbstractFungusSpeciesColorsMap implements CustomPacketPayl
 
     protected static AbstractFungusSpeciesColorsMap INSTANCE;
 
+    public static AbstractFungusSpeciesColorsMap getInstance()
+    {
+        if(INSTANCE == null)
+            throw new NullPointerException();
+        return INSTANCE;
+    }
+
     public static AbstractFungusSpeciesColorsMap fromByteBuf(FriendlyByteBuf byteBuf)
     {
         try

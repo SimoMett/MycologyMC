@@ -14,7 +14,7 @@ import java.util.function.Function;
 public class SpawnEntityEffect extends FungusEffect
 {
     private final Function<ServerLevel, Entity> entitySupplier;
-    private final float chance;
+    protected final float chance;
 
     protected SpawnEntityEffect(String effectName, float chance, Function<ServerLevel, Entity> entitySupplier)
     {

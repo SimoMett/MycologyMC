@@ -3,7 +3,7 @@ package com.simomett.mycologymod.items.potions;
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.effects.FungusEffect;
 import com.simomett.mycologymod.effects.FungusEffects;
-import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
+import com.simomett.mycologymod.effects.player.ModEffects;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;

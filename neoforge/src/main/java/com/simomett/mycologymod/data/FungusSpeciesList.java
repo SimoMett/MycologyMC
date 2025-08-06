@@ -13,8 +13,8 @@ public class FungusSpeciesList extends AbstractFungusSpeciesList
     public static void syncEvent(OnDatapackSyncEvent evt)
     {
         if(null != evt.getPlayer())
-            PacketDistributor.sendToPlayer(evt.getPlayer(), AbstractFungusSpeciesList.INSTANCE);
+            PacketDistributor.sendToPlayer(evt.getPlayer(), AbstractFungusSpeciesList.getInstance());
         else
-            PacketDistributor.sendToAllPlayers(AbstractFungusSpeciesList.INSTANCE);
+            PacketDistributor.sendToAllPlayers(AbstractFungusSpeciesList.getInstance());
     }
 }

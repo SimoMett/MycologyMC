@@ -9,13 +9,6 @@ import net.neoforged.neoforge.network.PacketDistributor;
 @EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class FungusSpeciesColorsMap extends AbstractFungusSpeciesColorsMap
 {
-    static
-    {
-        AbstractFungusSpeciesColorsMap.INSTANCE = new FungusSpeciesColorsMap();
-    }
-
-    private FungusSpeciesColorsMap(){}
-
     @SubscribeEvent
     public static void syncEvent(OnDatapackSyncEvent evt)
     {

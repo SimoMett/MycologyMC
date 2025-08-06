@@ -1,7 +1,6 @@
-package com.simomett.mycologymod.effects.PlayerEffects;
+package com.simomett.mycologymod.effects.player;
 
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.effects.player.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.neoforged.neoforge.registries.DeferredHolder;

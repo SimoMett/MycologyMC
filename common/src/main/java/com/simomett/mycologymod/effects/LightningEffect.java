@@ -41,7 +41,7 @@ public class LightningEffect extends FungusEffect
         }
         else
         {
-            List<BlockPos> pList = getPositionsForSpawningEntity(level, origin, radius);
+            List<BlockPos> pList = SpawnEntityEffect.getPositionsForSpawningEntity(level, origin, radius);
             if(!pList.isEmpty())
                 lightningBolt.setPos(pList.get(rand.nextInt(pList.size())).getCenter());
         }

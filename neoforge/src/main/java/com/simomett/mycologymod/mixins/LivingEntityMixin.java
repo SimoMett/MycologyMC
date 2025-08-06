@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.mixins;
 
 import com.simomett.mycologymod.effects.player.KnowledgeEffect;
-import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
+import com.simomett.mycologymod.effects.player.ModEffects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;

@@ -15,9 +15,9 @@ public class ModCreativeTabs
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_CREATIVE_TAB = CREATIVE_TABS.register("", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup." + Constants.MOD_ID))
-            .icon(() -> AbstractFungusSpeciesList.INSTANCE.getCreativeTabIcon())
+            .icon(() -> AbstractFungusSpeciesList.getInstance().getCreativeTabIcon())
             .displayItems((enabledFlags, populator) -> {
-                populator.acceptAll(AbstractFungusSpeciesList.INSTANCE.getAllSpeciesCollection());
+                populator.acceptAll(AbstractFungusSpeciesList.getInstance().getAllSpeciesCollection());
                 populator.accept(ModItems.COOKED_CRIMSON_FUNGUS);
                 populator.accept(ModItems.COOKED_WARPED_FUNGUS);
                 populator.accept(ModItems.COOKED_POISONOUS_CRIMSON_FUNGUS);

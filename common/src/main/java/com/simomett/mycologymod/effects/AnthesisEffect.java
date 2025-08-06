@@ -25,9 +25,9 @@ public class AnthesisEffect extends FungusEffect
     @Override
     public void applyEffectToLevel(ServerLevel level, BlockPos origin, int radius)
     {
-        AABB box = getAABB(origin, radius);
+        AABB box = FungusEffect.getAABB(origin, radius);
 
-        final List<BlockPos> jungleLogsPos = getBlocksInAABBMatchingType(box, level, Blocks.JUNGLE_LOG);
+        final List<BlockPos> jungleLogsPos = FungusEffect.getBlocksInAABBMatchingType(box, level, Blocks.JUNGLE_LOG);
 
         if (!jungleLogsPos.isEmpty())
             plantRandomCocoaBean(level, jungleLogsPos);

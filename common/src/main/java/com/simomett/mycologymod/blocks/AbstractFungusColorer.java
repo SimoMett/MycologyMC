@@ -25,7 +25,7 @@ public class AbstractFungusColorer implements BlockColor, ItemColor
         if(blockAndTint.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity fungusEntity)
         {
             String speciesName = fungusEntity.getFungusGenoma().getDominantTraits().species();
-            int[] colors = AbstractFungusSpeciesColorsMap.INSTANCE.get(speciesName);
+            int[] colors = AbstractFungusSpeciesColorsMap.getInstance().get(speciesName);
             return colors[tintIndex];
         }
         return 0;
@@ -35,7 +35,7 @@ public class AbstractFungusColorer implements BlockColor, ItemColor
     public int getColor(ItemStack itemStack, int tintIndex)
     {
         if(itemStack.has(FUNGUS_GENOMA))
-            return FungusSpeciesColorsMap.INSTANCE.get(itemStack.get(FUNGUS_GENOMA).getDominantTraits().species())[tintIndex];
+            return AbstractFungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA).getDominantTraits().species())[tintIndex];
         else
             return 0;
     }

@@ -4,7 +4,7 @@ import com.simomett.mycologymod.datagen.common.BiomesSpecs;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.datagen.common.SpeciesBuilder;
 import com.simomett.mycologymod.effects.FungusEffects;
-import com.simomett.mycologymod.effects.PlayerEffects.ModEffects;
+import com.simomett.mycologymod.effects.player.ModEffects;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
