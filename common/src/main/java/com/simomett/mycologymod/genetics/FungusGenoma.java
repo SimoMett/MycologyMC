@@ -15,7 +15,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelReader;
@@ -27,8 +26,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.io.*;
 import java.util.*;
 
-import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
-import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA_CODEC;
+import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
 

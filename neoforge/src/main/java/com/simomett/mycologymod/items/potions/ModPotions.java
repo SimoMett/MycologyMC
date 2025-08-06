@@ -13,12 +13,10 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import static com.simomett.mycologymod.items.potions.Potions.*;
+
 public class ModPotions
 {
-    public static final int DEFAULT_DURATION = 20*60*3;
-    public static final int LONG_DURATION = 20*60*8;
-    public static final int STRONG_DURATION = 20*90;
-
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(BuiltInRegistries.POTION, Constants.MOD_ID);
 
     public static final DeferredHolder<Potion, Potion> HASTE = register("haste", MobEffects.DIG_SPEED);

@@ -5,7 +5,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
-import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.items.ModItems.isFungus;
 
 public class FungusSlot extends Slot

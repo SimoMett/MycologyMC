@@ -11,7 +11,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
 
-import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 
 public class FungusBrewingRecipe implements IBrewingRecipe
 {
@@ -40,7 +40,7 @@ public class FungusBrewingRecipe implements IBrewingRecipe
     {
         if (ingredient.is(ModItemTags.COLORED_FUNGUS_ITEMS))
         {
-            String species = ingredient.get(FUNGUS_GENOMA).getDominantTraits().species();
+            String species = ingredient.get(FUNGUS_GENOMA.get()).getDominantTraits().species();
             return species.equals(this.speciesName);
         }
         return false;

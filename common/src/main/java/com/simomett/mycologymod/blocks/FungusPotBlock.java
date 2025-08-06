@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.blocks;
 
-import com.simomett.mycologymod.datacomponents.ModDataComponentTypes;
+import com.simomett.mycologymod.datacomponents.DataComponentTypes;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
@@ -56,9 +56,9 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
         if(stack.is(Items.AIR))
             return InteractionResult.TRY_WITH_EMPTY_HAND;
 
-        if(stack.has(ModDataComponentTypes.FUNGUS_GENOMA))
+        if(stack.has(DataComponentTypes.FUNGUS_GENOMA))
         {
-            FungusGenoma fungusGenoma = stack.get(ModDataComponentTypes.FUNGUS_GENOMA);
+            FungusGenoma fungusGenoma = stack.get(DataComponentTypes.FUNGUS_GENOMA);
             InteractionResult result = super.useItemOn(stack, state, level, pos, player, hand, hitResult);
 
             if(result == InteractionResult.SUCCESS)

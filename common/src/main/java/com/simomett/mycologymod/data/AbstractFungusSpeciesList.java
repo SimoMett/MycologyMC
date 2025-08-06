@@ -22,7 +22,7 @@ import java.util.*;
 
 import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_CRIMSON_STRING;
 import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_WARPED_STRING;
-import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 
 public abstract class AbstractFungusSpeciesList implements CustomPacketPayload, IModSerializable
 {

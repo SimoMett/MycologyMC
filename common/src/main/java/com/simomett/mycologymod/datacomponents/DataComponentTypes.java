@@ -19,7 +19,7 @@ import static com.simomett.mycologymod.genetics.FungusGenoma.LIGHT;
 import static com.simomett.mycologymod.genetics.FungusGenoma.TEMP;
 import static com.simomett.mycologymod.genetics.FungusGenoma.TERRAIN;
 
-public class ModDataComponentTypes
+public class DataComponentTypes
 {
     public static final Codec<FungusTraits> FUNGUS_DATA_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(

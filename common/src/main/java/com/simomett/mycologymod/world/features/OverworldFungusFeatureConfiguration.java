@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.world.features;
 
+import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
@@ -40,7 +41,7 @@ public class OverworldFungusFeatureConfiguration extends Feature<SimpleBlockConf
     @Override
     public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> placeContext)
     {
-        List<AbstractFungusSpeciesList.FungusSpecies> speciesList = AbstractFungusSpeciesList.INSTANCE.getSpeciesList();
+        List<AbstractFungusSpeciesList.FungusSpecies> speciesList = AbstractFungusSpeciesList.getInstance().getSpeciesList();
         BlockPos origin = placeContext.origin();
         final Holder<Biome> biome = placeContext.level().getBiome(origin);
         speciesList = speciesList.stream().filter(s -> s.spawnInfo != null
@@ -55,7 +56,7 @@ public class OverworldFungusFeatureConfiguration extends Feature<SimpleBlockConf
             if (random.nextFloat(0f, 1f) <= randomSpecies.spawnInfo.chance)
             {
                 //spawn fungus with the correct type
-                BlockState blockState = BlockNames.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
+                BlockState blockState = BlocksDefinitions.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
 
                 //edit its block entity
                 if(placeContext.level().setBlock(origin, blockState, Block.UPDATE_CLIENTS))

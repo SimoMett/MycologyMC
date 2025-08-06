@@ -25,8 +25,6 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 
-import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.*;
-
 public class ColoredFungusBlockEntity extends BlockEntity
 {
     private @NonNull FungusGenoma fungusGenoma = new FungusGenoma(FungusTraits.EMPTY, FungusTraits.EMPTY);

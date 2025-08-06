@@ -2,14 +2,13 @@ package com.simomett.mycologymod.datagen;
 
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.items.potions.ModPotions;
+import com.simomett.mycologymod.items.potions.Potions;
 import net.minecraft.core.Holder;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.Potions;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -30,15 +29,15 @@ public class BrewingRecipesProvider implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput)
     {
-        addBrewingRecipe(STRENGTH_FUNGUS, ModPotions.HASTE, cachedOutput);
-        addBrewingRecipe(ANESTHETIC_FUNGUS, ModPotions.ANESTHETIC, cachedOutput);
-        addBrewingRecipe(ILLUCINATING_FUNGUS, ModPotions.ILLUCINATING, cachedOutput);
-        addBrewingRecipe(BLINDING_FUNGUS, ModPotions.BLINDING, cachedOutput);
-        addBrewingRecipe(SENSING_FUNGUS, ModPotions.SENSING, cachedOutput);
-        addBrewingRecipe(WITHERING_FUNGUS, ModPotions.WITHERING, cachedOutput);
-        addBrewingRecipe(TELEPORTING_FUNGUS, ModPotions.TELEPORTING, cachedOutput);
-        addBrewingRecipe(SPEED_FUNGUS, Potions.SWIFTNESS, cachedOutput);
-        addBrewingRecipe(GOODCHANCE_FUNGUS, Potions.LUCK, cachedOutput);
+        addBrewingRecipe(STRENGTH_FUNGUS, Potions.HASTE, cachedOutput);
+        addBrewingRecipe(ANESTHETIC_FUNGUS, Potions.ANESTHETIC, cachedOutput);
+        addBrewingRecipe(ILLUCINATING_FUNGUS, Potions.ILLUCINATING, cachedOutput);
+        addBrewingRecipe(BLINDING_FUNGUS, Potions.BLINDING, cachedOutput);
+        addBrewingRecipe(SENSING_FUNGUS, Potions.SENSING, cachedOutput);
+        addBrewingRecipe(WITHERING_FUNGUS, Potions.WITHERING, cachedOutput);
+        addBrewingRecipe(TELEPORTING_FUNGUS, Potions.TELEPORTING, cachedOutput);
+        addBrewingRecipe(SPEED_FUNGUS, net.minecraft.world.item.alchemy.Potions.SWIFTNESS, cachedOutput);
+        addBrewingRecipe(GOODCHANCE_FUNGUS, net.minecraft.world.item.alchemy.Potions.LUCK, cachedOutput);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }

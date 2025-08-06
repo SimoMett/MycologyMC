@@ -1,6 +1,5 @@
 package com.simomett.mycologymod.recipes.crafting;
 
-import com.simomett.mycologymod.items.ModItems;
 import com.simomett.mycologymod.recipes.ModRecipes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
@@ -8,7 +7,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 
-import static com.simomett.mycologymod.datacomponents.ModDataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 
 public class FungusShapelessRecipe implements CraftingRecipe
 {
