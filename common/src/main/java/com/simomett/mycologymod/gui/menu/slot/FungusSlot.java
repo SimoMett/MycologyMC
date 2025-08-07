@@ -6,7 +6,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
-import static com.simomett.mycologymod.items.ModItems.isFungus;
+import static com.simomett.mycologymod.items.ItemsDefinitions.isFungus;
 
 public class FungusSlot extends Slot
 {
@@ -23,6 +23,6 @@ public class FungusSlot extends Slot
 
     public FungusGenoma getGenoma()
     {
-        return getItem().has(FUNGUS_GENOMA)? getItem().get(FUNGUS_GENOMA) : null;
+        return getItem().has(FUNGUS_GENOMA.get())? getItem().get(FUNGUS_GENOMA.get()) : null;
     }
 }

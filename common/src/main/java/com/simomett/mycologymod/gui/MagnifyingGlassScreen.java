@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.gui;
 
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.gui.menu.MagnifyingGlassMenu;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.client.gui.GuiGraphics;
@@ -16,7 +16,7 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
     private final int imageHeight;
     private int leftPos;
     private int topPos;
-    private final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MycologyMod.MODID, "textures/screens/magnifying_glass.png");
+    private final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/screens/magnifying_glass.png");
 
     public MagnifyingGlassScreen(MagnifyingGlassMenu magnifyingGlassMenu, Inventory inventory, Component component)
     {
@@ -41,19 +41,19 @@ public class MagnifyingGlassScreen extends AbstractContainerScreen<MagnifyingGla
         final int o = 10;
         int b = o;
         int d = 0; // X alignment
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.terrain"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.light"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.humidity"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.temp"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.spreading"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.spreadboost"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.area"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.effect"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+Constants.MOD_ID+".magnifyingglass.terrain"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+Constants.MOD_ID+".magnifyingglass.light"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+Constants.MOD_ID+".magnifyingglass.humidity"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+Constants.MOD_ID+".magnifyingglass.temp"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+Constants.MOD_ID+".magnifyingglass.spreading"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+Constants.MOD_ID+".magnifyingglass.spreadboost"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+Constants.MOD_ID+".magnifyingglass.area"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+Constants.MOD_ID+".magnifyingglass.effect"), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
 
         //Dominant column
         b = 0;
         d = 83; // X alignment
-        guiGraphics.drawString(this.font, Component.translatable("gui."+MycologyMod.MODID+".magnifyingglass.dominant"), xOrigin+d, yOrigin-2+a+(b+=o), -12829636, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui."+Constants.MOD_ID+".magnifyingglass.dominant"), xOrigin+d, yOrigin-2+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, ModBlockTags.getTranslatableComponent(menu.fungusGenoma.getDominantTraits().terrain()), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().light())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);
         guiGraphics.drawString(this.font, Component.literal(String.valueOf(menu.fungusGenoma.getDominantTraits().humidity())), xOrigin+d, yOrigin+a+(b+=o), -12829636, false);

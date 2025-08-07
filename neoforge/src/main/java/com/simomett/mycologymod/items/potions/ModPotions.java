@@ -22,7 +22,6 @@ public class ModPotions
     public static final DeferredHolder<Potion, Potion> HASTE = register("haste", MobEffects.DIG_SPEED);
     public static final DeferredHolder<Potion, Potion> LONG_HASTE = POTIONS.register("long_haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.DIG_SPEED, LONG_DURATION)));
     public static final DeferredHolder<Potion, Potion> STRONG_HASTE = POTIONS.register("strong_haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.DIG_SPEED, STRONG_DURATION, 1)));
-
     public static final DeferredHolder<Potion, Potion> ANESTHETIC = register(FungusEffects.ANESTHETIC_EFFECT, ModEffects.ANESTHETIC);
     public static final DeferredHolder<Potion, Potion> ILLUCINATING = register(FungusEffects.ILLUCINATING_EFFECT, ModEffects.ILLUCINATIONS);
     //public static final DeferredHolder<Potion, Potion> HALLUCINATING = POTIONS.register("", () -> new Potion("", new MobEffectInstance(ModEffects.)));

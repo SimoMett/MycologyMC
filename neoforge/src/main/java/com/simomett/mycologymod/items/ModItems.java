@@ -45,9 +45,4 @@ public class ModItems
     /*public static final DeferredItem<BlockItem> FUNGUS_POT = ITEMS.registerSimpleBlockItem(ModBlocks.FUNGUS_POT);
     public static final DeferredItem<BlockItem> POTTED_COLORED_CRIMSON = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_CRIMSON);
     public static final DeferredItem<BlockItem> POTTED_COLORED_WARPED = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_WARPED);*/
-
-    public static boolean isFungus(ItemStack itemStack)
-    {
-        return itemStack.is(COLORED_WARPED_FUNGUS) || itemStack.is(COLORED_CRIMSON_FUNGUS);
-    }
 }

@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.datagen.recipe.blasting;
 
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.datagen.recipe.cooking.FungusCookingRecipeBuilder;
 import com.simomett.mycologymod.recipes.cooking.FungusBlastingRecipe;
 import net.minecraft.core.registries.Registries;
@@ -28,10 +28,9 @@ public class FungusBlastingRecipeBuilder extends FungusCookingRecipeBuilder
     public void save(RecipeOutput output, ResourceKey<Recipe<?>> resKey)
     {
         output.accept(
-                ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(
-                        MycologyMod.MODID,
-                        "blasting_"+speciesIngredient.toLowerCase().replace(" ", "_"))),
-                new FungusBlastingRecipe(speciesIngredient, result, exp, cookingTime),
+                ResourceKey.create(Registries.RECIPE,
+                        ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "blasting_"+speciesIngredient.toLowerCase().replace(" ", "_"))),
+                        new FungusBlastingRecipe(speciesIngredient, result, exp, cookingTime),
                 null);
     }
 }

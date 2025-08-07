@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.datagen.common;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.effects.FungusEffect;
@@ -22,6 +23,8 @@ import java.nio.file.Path;
 import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+
+import static com.simomett.mycologymod.genetics.FungusGenoma.*;
 
 public class SpeciesBuilder
 {
@@ -214,7 +217,7 @@ public class SpeciesBuilder
         fungusJson.add("spawn", spawnJson);
         Path path = this.generator.getPackOutput().getOutputFolder();
         String jsonFileName = speciesName.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), MycologyMod.MODID, "fungi", jsonFileName));
+        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), Constants.MOD_ID, "fungi", jsonFileName));
 
         this.completableFutureList.add(DataProvider.saveStable(this.hashCache,fungusJson,jsonLocation));
 
