@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.network;
 
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.effects.player.ModEffects;
+import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import com.simomett.mycologymod.effects.player.TeleportingEffect;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
@@ -22,6 +22,8 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.network.handling.MainThreadPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+
+import static com.simomett.mycologymod.effects.player.EffectsDefinitions.TELEPORTING;
 
 @EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class PlayerRightClickTeleportPacket implements CustomPacketPayload
@@ -51,7 +53,7 @@ public class PlayerRightClickTeleportPacket implements CustomPacketPayload
 
         if (TeleportingEffect.shouldTeleport(player))
         {
-            int ampl = player.getEffect(ModEffects.TELEPORTING).getAmplifier();
+            int ampl = player.getEffect(EffectsDefinitions.holderOf(TELEPORTING)).getAmplifier();
             double reachDistance = 20*(ampl+1);
             BlockHitResult hitResult = getTarget(player, ClipContext.Fluid.ANY, reachDistance);
             if (hitResult.getType() == HitResult.Type.BLOCK)

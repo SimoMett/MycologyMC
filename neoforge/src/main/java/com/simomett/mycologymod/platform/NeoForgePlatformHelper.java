@@ -5,9 +5,16 @@ import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.FungusSpeciesList;
+import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
+import com.simomett.mycologymod.items.potions.NeoForgePotions;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.item.alchemy.Potion;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
+
+import java.util.function.Supplier;
 
 public class NeoForgePlatformHelper implements IPlatformHelper {
 
@@ -27,7 +34,20 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     }
 
     @Override
-    public AbstractFungusSpeciesList initFungusSpeciesList() {
+    public Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier)
+    {
+        return NeoForgeModEffects.EFFECTS.register(name, mobEffectSupplier);
+    }
+
+    @Override
+    public Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier)
+    {
+        return NeoForgePotions.POTIONS.register(name, potionSupplier);
+    }
+
+    @Override
+    public AbstractFungusSpeciesList initFungusSpeciesList()
+    {
         return new FungusSpeciesList();
     }
 

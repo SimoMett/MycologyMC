@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.mixins;
 
+import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import com.simomett.mycologymod.effects.player.KnowledgeEffect;
-import com.simomett.mycologymod.effects.player.ModEffects;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,6 +26,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import static com.simomett.mycologymod.effects.player.EffectsDefinitions.LAST_CHANCE;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity
@@ -67,7 +69,7 @@ public abstract class LivingEntityMixin extends Entity
                 this.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
             }
 
-            boolean hasLastChanceEffect = this.hasEffect(ModEffects.LAST_CHANCE);
+            boolean hasLastChanceEffect = this.hasEffect(EffectsDefinitions.holderOf(LAST_CHANCE));
             if(itemstack != null || hasLastChanceEffect)
             {
                 this.setHealth(1.0F);

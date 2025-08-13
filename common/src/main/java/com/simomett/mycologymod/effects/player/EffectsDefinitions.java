@@ -1,6 +1,9 @@
 package com.simomett.mycologymod.effects.player;
 
 
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
+
 import java.util.function.Supplier;
 
 public class EffectsDefinitions
@@ -14,4 +17,9 @@ public class EffectsDefinitions
     public static final Supplier<XPMultiplierEffect> XP_MULTIPLIER = XPMultiplierEffect::create;
     public static final Supplier<TeleportingEffect> TELEPORTING = TeleportingEffect::instance;
     public static final Supplier<SampleEffect> SAMPLE = SampleEffect::create;
+
+    public static Holder<MobEffect> holderOf(Supplier<? extends MobEffect> mobEffectSupplier)
+    {
+        return Holder.direct(mobEffectSupplier.get());
+    }
 }

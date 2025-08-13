@@ -3,6 +3,11 @@ package com.simomett.mycologymod.platform.services;
 import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.item.alchemy.Potion;
+
+import java.util.function.Supplier;
 
 public interface IPlatformHelper {
 
@@ -38,6 +43,8 @@ public interface IPlatformHelper {
     }
 
     // Mod specific stuff
+    Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier);
+    Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier);
     AbstractFungusSpeciesList initFungusSpeciesList();
     AbstractFungusSpeciesColorsMap initFungusSpeciesColorsMap();
 

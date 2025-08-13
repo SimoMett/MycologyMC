@@ -2,12 +2,16 @@ package com.simomett.mycologymod.effects.player;
 
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.network.PlayerRightClickTeleportPacket;
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+
+import static com.simomett.mycologymod.effects.player.EffectsDefinitions.XP_MULTIPLIER;
 
 @EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class PlayerEffectsEventsHandler
@@ -16,9 +20,10 @@ public class PlayerEffectsEventsHandler
     public static void onPlayerPickupXP(PlayerXpEvent.PickupXp evt)
     {
         Player player = evt.getEntity();
-        if(player.hasEffect(ModEffects.XP_MULTIPLIER))
+        Holder<MobEffect> xpMultiplierEffect = EffectsDefinitions.holderOf(XP_MULTIPLIER);
+        if(player.hasEffect(xpMultiplierEffect))
         {
-            float multiplier = 1+0.5f*(player.getEffect(ModEffects.XP_MULTIPLIER).getAmplifier()+1);
+            float multiplier = 1+0.5f*(player.getEffect(xpMultiplierEffect).getAmplifier()+1);
             evt.getOrb().value*=(int)multiplier;
         }
     }
