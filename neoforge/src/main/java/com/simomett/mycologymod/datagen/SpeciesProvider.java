@@ -4,7 +4,7 @@ import com.simomett.mycologymod.datagen.common.BiomesSpecs;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.datagen.common.SpeciesBuilder;
 import com.simomett.mycologymod.effects.FungusEffects;
-import com.simomett.mycologymod.effects.player.ModEffects;
+import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
@@ -863,7 +863,7 @@ public class SpeciesProvider implements DataProvider
                 .light(14)
                 .areaEffect(FungusEffects.NO_EFFECT)
                 .areaRadius(0)
-                .eatingEffect(ModEffects.LAST_CHANCE)
+                .eatingEffect(NeoForgeModEffects.LAST_CHANCE)
                 .build();
 
         speciesBuilder.createSpecies(ZOMBIES_FUNGUS)

@@ -4,11 +4,8 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.genetics.FungusTraits;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-
-import java.util.function.Supplier;
 
 import static com.simomett.mycologymod.genetics.FungusGenoma.*;
 import static com.simomett.mycologymod.genetics.FungusGenoma.AREA;
@@ -46,12 +43,5 @@ public class DataComponentTypes
     public static StreamCodec<FriendlyByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::new);
 
     public static final String GENOMA_DATA_COMPONENT_NAME = "fungus_data";
-    public static final Supplier<DataComponentType<FungusGenoma>> FUNGUS_GENOMA = DATA_COMPONENTS.registerComponentType(
-            GENOMA_DATA_COMPONENT_NAME,
-            builder -> builder.
-                    // The codec to read/write the data to disk
-                    .persistent(FUNGUS_GENOMA_CODEC)
-                    // The codec to read/write the data across the network
-                    .networkSynchronized(FUNGUS_GENOMA_STREAM_CODEC)
-    );
+
 }

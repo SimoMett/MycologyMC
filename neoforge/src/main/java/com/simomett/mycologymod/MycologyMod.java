@@ -36,9 +36,9 @@ public class MycologyMod
         ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
-        DataComponentTypes.DATA_COMPONENTS.register(evtBus);
+        //DataComponentTypes.DATA_COMPONENTS.register(evtBus);
         ModEntities.ENTITIES.register(evtBus);
-        DataComponentTypes.ATTACHMENT_TYPES.register(evtBus);
+        //DataComponentTypes.ATTACHMENT_TYPES.register(evtBus);
         ModParticles.PARTICLES.register(evtBus);
         NeoForgePotions.POTIONS.register(evtBus);
         ModRecipes.RECIPE_SERIALIZERS.register(evtBus);
