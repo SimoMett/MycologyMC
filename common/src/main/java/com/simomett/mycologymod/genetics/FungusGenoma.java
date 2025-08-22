@@ -26,7 +26,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.io.*;
 import java.util.*;
 
-import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA_CODEC;
 import static com.simomett.mycologymod.genetics.FungusTraits.traitsDictionary;
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
@@ -193,7 +192,7 @@ public class FungusGenoma implements IModSerializable
                 shouldPerformMutation = random.nextFloat(0f, 1f) < randomMutation.getChance();
 
             if (shouldPerformMutation)
-                return new FungusGenoma(AbstractFungusSpeciesList.INSTANCE.get(randomMutation.getResultSpecies()));
+                return new FungusGenoma(AbstractFungusSpeciesList.getInstance().get(randomMutation.getResultSpecies()));
         }
 
         offspring = this.normalCrossBreedWith(species2);

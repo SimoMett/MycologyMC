@@ -29,28 +29,27 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
-import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;
-
 public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
 {
 
-    public FungusPotBlock(Supplier<? extends Block> potted, Properties properties)
+    /*public FungusPotBlock(Supplier<? extends Block> potted, Properties properties)
     {
         super(BlocksDefinitions.FUNGUS_POT::get, potted, properties);
-    }
+    }*/
 
     public FungusPotBlock(Properties properties)
     {
-        super(null, ()-> Blocks.AIR, properties);
+        super(null, properties);
     }
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
+        //return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
+        return null;
     }
 
-    @Override
+    /*@Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
         if(stack.is(Items.AIR))
@@ -92,7 +91,7 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
             level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             return InteractionResult.SUCCESS;
         }
-    }
+    }*/
 
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state)

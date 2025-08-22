@@ -68,11 +68,6 @@ public class FungusTraits implements Serializable
                 fungusTraits.eatingEffect());
     }
 
-    public FungusTraits(String s, Integer integer, Float aFloat, Integer integer1, String s1, Float aFloat1, Float aFloat2, Integer integer2, String s2, Optional<String> s3)
-    {
-
-    }
-
     public String species() {
         return (String) traitsMap.get(SPECIES).value();
     }

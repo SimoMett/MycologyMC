@@ -17,6 +17,9 @@ public class ItemsDefinitions
             new ColoredFungusBlockItem(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(),
                     ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, BlocksDefinitions.COLORED_WARPED_STRING));
 
+    public static final Supplier<MagnifyingGlassItem> MAGNIFYING_GLASS = () ->
+            new MagnifyingGlassItem(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "magnifying_glass"));
+
     public static boolean isFungus(ItemStack itemStack)
     {
         return itemStack.is(COLORED_WARPED_FUNGUS.get()) || itemStack.is(COLORED_CRIMSON_FUNGUS.get());

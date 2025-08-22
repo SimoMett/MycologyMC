@@ -3,7 +3,9 @@ package com.simomett.mycologymod.platform.services;
 import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.alchemy.Potion;
 
@@ -49,4 +51,6 @@ public interface IPlatformHelper {
     AbstractFungusSpeciesColorsMap initFungusSpeciesColorsMap();
 
     IModCommonConfigs getCommonConfigs();
+
+    Supplier<DataComponentType<FungusGenoma>> registerDataComponentType();
 }

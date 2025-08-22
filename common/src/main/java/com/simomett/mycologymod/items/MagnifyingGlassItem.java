@@ -27,7 +27,7 @@ public class MagnifyingGlassItem extends Item
             if (context.getLevel().getBlockEntity(pos) instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
             {
                 FungusGenoma fungusGenoma = coloredFungusBlockEntity.getFungusGenoma();
-                context.getPlayer().openMenu(new MagnifyingGlassMenuProvider(fungusGenoma), fungusGenoma::encode);
+                context.getPlayer().openMenu(new MagnifyingGlassMenuProvider(fungusGenoma));
             }
         }
         return InteractionResult.SUCCESS;
