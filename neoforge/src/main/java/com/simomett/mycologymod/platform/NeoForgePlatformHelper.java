@@ -13,6 +13,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
 
@@ -21,6 +22,7 @@ import java.util.function.Supplier;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA_BUILDER;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.GENOMA_DATA_COMPONENT_NAME;
 import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DATA_COMPONENTS;
+import static com.simomett.mycologymod.recipes.ModRecipes.RECIPE_SERIALIZERS;
 
 public class NeoForgePlatformHelper implements IPlatformHelper
 {
@@ -72,5 +74,11 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     public Supplier<DataComponentType<FungusGenoma>> registerDataComponentType()
     {
         return DATA_COMPONENTS.registerComponentType(GENOMA_DATA_COMPONENT_NAME, FUNGUS_GENOMA_BUILDER);
+    }
+
+    @Override
+    public <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier)
+    {
+        return RECIPE_SERIALIZERS.register(recipeSerializerName, supplier);
     }
 }

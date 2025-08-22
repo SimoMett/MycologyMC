@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.recipes.cooking;
 
 import com.simomett.mycologymod.items.ItemsDefinitions;
-import com.simomett.mycologymod.recipes.ModRecipes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -9,6 +8,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.recipes.RecipesSerializers.FUNGUS_BLASTING_RECIPE_SERIALIZER;
 
 public class FungusBlastingRecipe extends AbstractCookingRecipe
 {
@@ -57,7 +57,7 @@ public class FungusBlastingRecipe extends AbstractCookingRecipe
     @Override
     public RecipeSerializer<? extends AbstractCookingRecipe> getSerializer()
     {
-        return ModRecipes.FUNGUS_BLASTING_RECIPE_SERIALIZER.get();
+        return FUNGUS_BLASTING_RECIPE_SERIALIZER.get();
     }
 
     @Override

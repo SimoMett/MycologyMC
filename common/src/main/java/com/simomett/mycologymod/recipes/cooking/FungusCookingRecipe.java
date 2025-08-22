@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.recipes.cooking;
 
-import com.simomett.mycologymod.items.ModItems;
-import com.simomett.mycologymod.recipes.ModRecipes;
+import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -9,6 +8,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.recipes.RecipesSerializers.FUNGUS_COOKING_RECIPE_SERIALIZER;
 
 public class FungusCookingRecipe extends AbstractCookingRecipe
 {
@@ -16,7 +16,7 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
 
     public FungusCookingRecipe(String speciesIngredient, ItemStack result, float exp, int cookingTime)
     {
-        super("fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS, ModItems.COLORED_WARPED_FUNGUS), result, exp, cookingTime);
+        super("fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()), result, exp, cookingTime);
         this.speciesIngredient = speciesIngredient;
     }
 
@@ -45,9 +45,9 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     public boolean matches(SingleRecipeInput container, Level level)
     {
         ItemStack input = container.getItem(0);
-        if(input.has(FUNGUS_GENOMA)) // of course 'input' can be 'air'
+        if(input.has(FUNGUS_GENOMA.get())) // of course 'input' can be 'air'
         {
-            String inputSpecies = input.get(FUNGUS_GENOMA).getDominantTraits().species();
+            String inputSpecies = input.get(FUNGUS_GENOMA.get()).getDominantTraits().species();
             return inputSpecies.equals(speciesIngredient);
         }
         return false;
@@ -56,7 +56,7 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
     @Override
     public RecipeSerializer<? extends AbstractCookingRecipe> getSerializer()
     {
-        return ModRecipes.FUNGUS_COOKING_RECIPE_SERIALIZER.get();
+        return FUNGUS_COOKING_RECIPE_SERIALIZER.get();
     }
 
     @Override

@@ -8,6 +8,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 
 import java.util.function.Supplier;
 
@@ -53,4 +54,6 @@ public interface IPlatformHelper {
     IModCommonConfigs getCommonConfigs();
 
     Supplier<DataComponentType<FungusGenoma>> registerDataComponentType();
+
+    <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier);
 }

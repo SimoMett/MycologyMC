@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.recipes.crafting;
 
-import com.simomett.mycologymod.recipes.ModRecipes;
+import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -8,6 +8,7 @@ import net.minecraft.world.level.Level;
 
 
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.recipes.RecipesSerializers.FUNGUS_SHAPELESS_RECIPE_SERIALIZER;
 
 public class FungusShapelessRecipe implements CraftingRecipe
 {
@@ -43,9 +44,9 @@ public class FungusShapelessRecipe implements CraftingRecipe
     public boolean matches(CraftingInput container, Level level)
     {
         ItemStack input = container.getItem(0);
-        if(input.has(FUNGUS_GENOMA)) // of course 'input' can be 'air'
+        if(input.has(FUNGUS_GENOMA.get())) // of course 'input' can be 'air'
         {
-            String inputSpecies = input.get(FUNGUS_GENOMA).getDominantTraits().species();
+            String inputSpecies = input.get(FUNGUS_GENOMA.get()).getDominantTraits().species();
             return inputSpecies.equals(speciesIngredient);
         }
         return false;
@@ -61,7 +62,7 @@ public class FungusShapelessRecipe implements CraftingRecipe
     public PlacementInfo placementInfo()
     {
         if (this.placementInfo == null) {
-            this.placementInfo = PlacementInfo.create(Ingredient.of(ModItems.COLORED_CRIMSON_FUNGUS, ModItems.COLORED_WARPED_FUNGUS));
+            this.placementInfo = PlacementInfo.create(Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()));
         }
 
         return this.placementInfo;
@@ -70,7 +71,7 @@ public class FungusShapelessRecipe implements CraftingRecipe
     @Override
     public RecipeSerializer<? extends CraftingRecipe> getSerializer()
     {
-        return ModRecipes.FUNGUS_SHAPELESS_RECIPE_SERIALIZER.get();
+        return FUNGUS_SHAPELESS_RECIPE_SERIALIZER.get();
     }
 
     @Override

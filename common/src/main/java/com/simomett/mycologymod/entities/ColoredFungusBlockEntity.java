@@ -18,37 +18,38 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 
+import static com.simomett.mycologymod.datacomponents.DataComponentTypes.*;
+
 public class ColoredFungusBlockEntity extends BlockEntity
 {
-    private @NonNull FungusGenoma fungusGenoma = new FungusGenoma(FungusTraits.EMPTY, FungusTraits.EMPTY);
+    private FungusGenoma fungusGenoma = new FungusGenoma(FungusTraits.EMPTY, FungusTraits.EMPTY);
 
     public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
         super(ModEntities.COLORED_FUNGUS.get(), blockPos, blockState);
     }
 
-    @Override
+    /*@Override
     public void onLoad()
     {
         super.onLoad();
         //components() are null only in client. is this the problem?
-        if(components().has(ModDataComponentTypes.FUNGUS_GENOMA.get()))
-            fungusGenoma = components().get(ModDataComponentTypes.FUNGUS_GENOMA.get());
-    }
+        if(components().has(FUNGUS_GENOMA.get()))
+            fungusGenoma = components().get(FUNGUS_GENOMA.get());
+    }*/
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries)
     {
         // FIXME awful work-around
         super.loadAdditional(tag, registries);
-        CompoundTag genomaTag = tag.getCompound("components").getCompound(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ModDataComponentTypes.GENOMA_DATA_COMPONENT_NAME).toString());
+        CompoundTag genomaTag = tag.getCompound("components").getCompound(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, GENOMA_DATA_COMPONENT_NAME).toString());
         fungusGenoma = new FungusGenoma(genomaTag);
     }
 
@@ -98,7 +99,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
         if(genoma!=null)
         {
             this.fungusGenoma = genoma;
-            this.setComponents(DataComponentMap.builder().set(ModDataComponentTypes.FUNGUS_GENOMA.get(), fungusGenoma).build());
+            this.setComponents(DataComponentMap.builder().set(FUNGUS_GENOMA.get(), fungusGenoma).build());
         }
         else
             throw new NullPointerException("Cannot apply null genoma");
@@ -117,8 +118,8 @@ public class ColoredFungusBlockEntity extends BlockEntity
     {
         // FIXME awful work-around: part-2
         CompoundTag fungusData = new CompoundTag();
-        fungusData.put(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, ModDataComponentTypes.GENOMA_DATA_COMPONENT_NAME).toString(),
-                ModDataComponentTypes.FUNGUS_GENOMA_CODEC.encodeStart(NbtOps.INSTANCE, fungusGenoma).getOrThrow());
+        fungusData.put(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, GENOMA_DATA_COMPONENT_NAME).toString(),
+                FUNGUS_GENOMA_CODEC.encodeStart(NbtOps.INSTANCE, fungusGenoma).getOrThrow());
         CompoundTag components = new CompoundTag();
         components.put("components", fungusData);
         return components;
