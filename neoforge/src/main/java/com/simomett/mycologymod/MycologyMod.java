@@ -2,12 +2,11 @@ package com.simomett.mycologymod;
 
 import com.simomett.mycologymod.blocks.ModBlocks;
 import com.simomett.mycologymod.config.ModClientConfigs;
-import com.simomett.mycologymod.datacomponents.DataComponentTypes;
 import com.simomett.mycologymod.config.ModCommonConfigs;
 import com.simomett.mycologymod.creativetab.ModCreativeTabs;
 import com.simomett.mycologymod.data.FungusSpeciesLoader;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
-import com.simomett.mycologymod.entities.ModEntities;
+import com.simomett.mycologymod.entities.NeoForgeBlockEntities;
 import com.simomett.mycologymod.items.ModItems;
 import com.simomett.mycologymod.items.potions.NeoForgePotions;
 import com.simomett.mycologymod.gui.menu.ModMenus;
@@ -37,7 +36,7 @@ public class MycologyMod
         ModBlocks.BLOCKS.register(evtBus);
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         //DataComponentTypes.DATA_COMPONENTS.register(evtBus);
-        ModEntities.ENTITIES.register(evtBus);
+        NeoForgeBlockEntities.ENTITIES.register(evtBus);
         //DataComponentTypes.ATTACHMENT_TYPES.register(evtBus);
         ModParticles.PARTICLES.register(evtBus);
         NeoForgePotions.POTIONS.register(evtBus);

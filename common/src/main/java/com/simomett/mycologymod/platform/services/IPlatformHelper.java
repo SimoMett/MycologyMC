@@ -4,11 +4,16 @@ import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
 import com.simomett.mycologymod.genetics.FungusGenoma;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Supplier;
 
@@ -56,4 +61,10 @@ public interface IPlatformHelper {
     Supplier<DataComponentType<FungusGenoma>> registerDataComponentType();
 
     <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier);
+
+    interface BlockEntitySupplier<T extends BlockEntity> {
+        T create(BlockPos blockPos, BlockState blockState);
+    }
+
+    BlockEntityType<? extends BlockEntity> registerBlockEntityType(String name, BlockEntitySupplier<? extends BlockEntity> supplier, Block... blocks);
 }

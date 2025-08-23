@@ -6,6 +6,7 @@ import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -15,6 +16,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
 
@@ -76,5 +81,19 @@ public class FabricPlatformHelper implements IPlatformHelper
                 FUNGUS_GENOMA_BUILDER.apply(DataComponentType.builder()).build()
         );
         return null;
+    }
+
+    @Override
+    public <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier)
+    {
+        return null;
+    }
+
+    @Override
+    public BlockEntityType<? extends BlockEntity> registerBlockEntityType(String name, BlockEntitySupplier<? extends BlockEntity> supplier, Block... blocks)
+    {
+        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
+                FabricBlockEntityTypeBuilder.create(supplier::create, blocks).build()
+        );
     }
 }

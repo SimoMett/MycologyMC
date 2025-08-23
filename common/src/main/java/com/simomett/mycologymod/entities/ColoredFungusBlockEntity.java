@@ -25,6 +25,7 @@ import java.time.Instant;
 import java.util.List;
 
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.*;
+import static com.simomett.mycologymod.entities.BlockEntitiesDefinitions.COLORED_FUNGUS_BLOCK_ENTITY;
 
 public class ColoredFungusBlockEntity extends BlockEntity
 {
@@ -32,7 +33,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
 
     public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        super(ModEntities.COLORED_FUNGUS.get(), blockPos, blockState);
+        super(COLORED_FUNGUS_BLOCK_ENTITY, blockPos, blockState);
     }
 
     /*@Override
