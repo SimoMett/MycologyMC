@@ -54,7 +54,7 @@ public class FungusTraits implements Serializable
         this(species, spreading, spreadboost, light, terrain, humidity, temp, area, effect, eatingEffect.orElse(null));
     }
 
-    public FungusTraits(FungusTraits fungusTraits, IModCommonConfigs configsProvider)
+    public FungusTraits(FungusTraits fungusTraits)
     {
         this(fungusTraits.species(),
                 fungusTraits.spreading(),

@@ -9,30 +9,13 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import static com.simomett.mycologymod.creativetab.MycologyCreativeTab.CREATIVE_TAB_BUILDER;
+
 public class ModCreativeTabs
 {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_CREATIVE_TAB = CREATIVE_TABS.register("", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup." + Constants.MOD_ID))
-            .icon(() -> AbstractFungusSpeciesList.getInstance().getCreativeTabIcon())
-            .displayItems((enabledFlags, populator) -> {
-                populator.acceptAll(AbstractFungusSpeciesList.getInstance().getAllSpeciesCollection());
-                populator.accept(ModItems.COOKED_CRIMSON_FUNGUS);
-                populator.accept(ModItems.COOKED_WARPED_FUNGUS);
-                populator.accept(ModItems.COOKED_POISONOUS_CRIMSON_FUNGUS);
-                populator.accept(ModItems.COOKED_POISONOUS_WARPED_FUNGUS);
-                populator.accept(ModItems.MAGNIFYING_GLASS);
-                //populator.accept(ModItems.FUNGUS_ANALYSING_STATION);
-                populator.accept(ModItems.TEST_TUBE);
-                populator.accept(ModItems.CHROMIUM_ORE);
-                populator.accept(ModItems.CHROMITE_POWDER);
-                populator.accept(ModItems.CHROMIUM_MUTAGEN);
-                populator.accept(ModItems.CHROMIUM_INGOT);
-                populator.accept(ModItems.CHROMIUM_NUGGET);
-                populator.accept(ModItems.CHROMIUM_BLOCK);
-                //populator.accept(ModItems.FUNGUS_POT);
-            })
-            .build()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_CREATIVE_TAB =
+            CREATIVE_TABS.register("", () -> CREATIVE_TAB_BUILDER.apply(CreativeModeTab.builder()).build()
     );
 }

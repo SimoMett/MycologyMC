@@ -118,7 +118,7 @@ public abstract class AbstractFungusSpeciesList implements CustomPacketPayload, 
         {
             Optional<Holder.Reference<Item>> item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, fungusType));
             ItemStack itemStack = new ItemStack(item.get());
-            itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA.get(), new FungusGenoma(new FungusTraits(defaultTraits, Services.PLATFORM.getCommonConfigs()), new FungusTraits(defaultTraits, Services.PLATFORM.getCommonConfigs()))).build());
+            itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA.get(), new FungusGenoma(new FungusTraits(defaultTraits), new FungusTraits(defaultTraits))).build());
             return itemStack;
         }
     }

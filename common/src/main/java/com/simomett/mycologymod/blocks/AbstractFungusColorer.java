@@ -10,6 +10,8 @@ import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
+
 public class AbstractFungusColorer implements BlockColor, ItemColor
 {
     //overlay indexes
@@ -34,8 +36,8 @@ public class AbstractFungusColorer implements BlockColor, ItemColor
     @Override
     public int getColor(ItemStack itemStack, int tintIndex)
     {
-        if(itemStack.has(FUNGUS_GENOMA))
-            return AbstractFungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA).getDominantTraits().species())[tintIndex];
+        if(itemStack.has(FUNGUS_GENOMA.get()))
+            return AbstractFungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA.get()).getDominantTraits().species())[tintIndex];
         else
             return 0;
     }
