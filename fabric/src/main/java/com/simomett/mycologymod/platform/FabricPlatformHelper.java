@@ -12,9 +12,11 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
@@ -94,6 +96,14 @@ public class FabricPlatformHelper implements IPlatformHelper
     {
         return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
                 FabricBlockEntityTypeBuilder.create(supplier::create, blocks).build()
+        );
+    }
+
+    @Override
+    public MenuType<? extends AbstractContainerMenu> registerMenu(String name, MenuSupplier<? extends AbstractContainerMenu> menuSupplier) {
+        return Registry.register(BuiltInRegistries.MENU,
+                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
+                new MenuType<>(menuSupplier::create, FeatureFlags.DEFAULT_FLAGS)
         );
     }
 }

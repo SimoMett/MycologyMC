@@ -14,6 +14,8 @@ import com.simomett.mycologymod.platform.services.IPlatformHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
@@ -28,6 +30,7 @@ import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.GENOMA_DATA_COMPONENT_NAME;
 import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DATA_COMPONENTS;
 import static com.simomett.mycologymod.entities.NeoForgeBlockEntities.ENTITIES;
+import static com.simomett.mycologymod.gui.menu.ModMenus.MENU_TYPES;
 import static com.simomett.mycologymod.recipes.ModRecipes.RECIPE_SERIALIZERS;
 
 public class NeoForgePlatformHelper implements IPlatformHelper
@@ -98,5 +101,11 @@ public class NeoForgePlatformHelper implements IPlatformHelper
             BlockNames.POTTED_COLORED_CRIMSON.get(),
             BlockNames.POTTED_COLORED_WARPED.get()*/)
         ).get();
+    }
+
+    @Override
+    public MenuType<? extends AbstractContainerMenu> registerMenu(String name, MenuSupplier<? extends AbstractContainerMenu> menuSupplier)
+    {
+        return null;//MENU_TYPES.register(name, menuSupplier).get();
     }
 }

@@ -2,7 +2,6 @@ package com.simomett.mycologymod.items;
 
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
-import com.simomett.mycologymod.gui.menu.MagnifyingGlassMenuProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -27,7 +26,7 @@ public class MagnifyingGlassItem extends Item
             if (context.getLevel().getBlockEntity(pos) instanceof ColoredFungusBlockEntity coloredFungusBlockEntity)
             {
                 FungusGenoma fungusGenoma = coloredFungusBlockEntity.getFungusGenoma();
-                context.getPlayer().openMenu(new MagnifyingGlassMenuProvider(fungusGenoma));
+                //context.getPlayer().openMenu(new MagnifyingGlassMenuProvider(fungusGenoma));
             }
         }
         return InteractionResult.SUCCESS;
