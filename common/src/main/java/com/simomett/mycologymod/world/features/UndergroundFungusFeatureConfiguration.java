@@ -10,6 +10,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -50,7 +51,8 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
                 String terrain = randomSpecies.defaultTraits.terrain();
 
                 ResourceLocation res = parseStringOrTag(terrain);
-                boolean blockMatchesTerrain = terrainBlockState.is(ResourceKey.create(Registries.BLOCK, res)) || terrainBlockState.is(BlockTags.create(res));
+                boolean blockMatchesTerrain = terrainBlockState.is(ResourceKey.create(Registries.BLOCK, res))
+                        || terrainBlockState.is(TagKey.create(Registries.BLOCK, res));
 
                 if(blockMatchesTerrain && level.getBlockState(origin.above()).isAir())
                 {
