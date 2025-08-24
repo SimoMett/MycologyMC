@@ -2,7 +2,6 @@ package com.simomett.mycologymod.platform;
 
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.config.IModCommonConfigs;
-import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -11,11 +10,14 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
@@ -24,6 +26,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
 
+import static com.simomett.mycologymod.Constants.MOD_ID;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA_BUILDER;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.GENOMA_DATA_COMPONENT_NAME;
 
@@ -42,6 +45,13 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public boolean isDevelopmentEnvironment() {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
+    }
+
+    @Override
+    public <T extends Item> T registerItem(String name, Supplier<T> supplier)
+    {
+        ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
+        return Registry.register(BuiltInRegistries.ITEM, key, supplier.get());
     }
 
     @Override

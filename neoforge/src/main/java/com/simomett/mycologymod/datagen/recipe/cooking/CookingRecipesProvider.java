@@ -11,6 +11,8 @@ import net.minecraft.world.item.Items;
 import java.util.concurrent.CompletableFuture;
 
 import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.*;
+import static com.simomett.mycologymod.items.ItemsDefinitions.COOKED_CRIMSON_FUNGUS;
+import static com.simomett.mycologymod.items.ItemsDefinitions.COOKED_WARPED_FUNGUS;
 import static com.simomett.mycologymod.items.ModItems.*;
 
 public class CookingRecipesProvider extends RecipeProvider
@@ -24,16 +26,16 @@ public class CookingRecipesProvider extends RecipeProvider
     protected void buildRecipes()
     {
         // Default recipes
-        addDefaultSmeltingRecipe(BOLETUS_EDULIS, COOKED_CRIMSON_FUNGUS.get());
-        addDefaultSmeltingRecipe(AGARICUS_CAMPESTRIS, COOKED_WARPED_FUNGUS.get());
+        addDefaultSmeltingRecipe(BOLETUS_EDULIS, COOKED_CRIMSON_FUNGUS);
+        addDefaultSmeltingRecipe(AGARICUS_CAMPESTRIS, COOKED_WARPED_FUNGUS);
         addDefaultSmeltingRecipe(AMANITA_MUSCARIA, COOKED_POISONOUS_WARPED_FUNGUS.get());
-        addDefaultSmeltingRecipe(LACTARIUS_PROLEFERENS, COOKED_WARPED_FUNGUS.get());
-        addDefaultSmeltingRecipe(LECCINUM_VERSIPELLE, COOKED_WARPED_FUNGUS.get());
-        addDefaultSmeltingRecipe(SUILLUS_GRANULATUS, COOKED_WARPED_FUNGUS.get());
-        addDefaultSmeltingRecipe(FERTILIZING_FUNGUS, COOKED_WARPED_FUNGUS.get());
-        addDefaultSmeltingRecipe(CHALCIPORUS_PIPERATUS, COOKED_CRIMSON_FUNGUS.get());
+        addDefaultSmeltingRecipe(LACTARIUS_PROLEFERENS, COOKED_WARPED_FUNGUS);
+        addDefaultSmeltingRecipe(LECCINUM_VERSIPELLE, COOKED_WARPED_FUNGUS);
+        addDefaultSmeltingRecipe(SUILLUS_GRANULATUS, COOKED_WARPED_FUNGUS);
+        addDefaultSmeltingRecipe(FERTILIZING_FUNGUS, COOKED_WARPED_FUNGUS);
+        addDefaultSmeltingRecipe(CHALCIPORUS_PIPERATUS, COOKED_CRIMSON_FUNGUS);
         addDefaultSmeltingRecipe(AMANITA_PHALLOIDES, COOKED_POISONOUS_CRIMSON_FUNGUS.get());
-        addDefaultSmeltingRecipe(HYGROPHORUS_NIVEUS, COOKED_CRIMSON_FUNGUS.get());
+        addDefaultSmeltingRecipe(HYGROPHORUS_NIVEUS, COOKED_CRIMSON_FUNGUS);
 
         // Materials
         addDefaultSmeltingRecipe(POLYPORUS_LIGNEUS, Items.CHARCOAL);

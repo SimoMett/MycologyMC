@@ -22,8 +22,8 @@ public class MycologyCreativeTab
     {
         ArrayList<ItemStack> displayItems = new ArrayList<>(FungusSpeciesList.getInstance().getAllSpeciesCollection());
         //displayItems.add(new ItemStack(ItemsDefinitions.MAGNIFYING_GLASS.get()));
-        //displayItems.add(ItemsDefinitions.COOKED_CRIMSON_FUNGUS);
-        //displayItems.add(ItemsDefinitions.COOKED_WARPED_FUNGUS);
+        displayItems.add(ItemsDefinitions.COOKED_CRIMSON_FUNGUS.getDefaultInstance());
+        displayItems.add(ItemsDefinitions.COOKED_WARPED_FUNGUS.getDefaultInstance());
         //displayItems.add(ItemsDefinitions.COOKED_POISONOUS_CRIMSON_FUNGUS);
         //displayItems.add(ItemsDefinitions.COOKED_POISONOUS_WARPED_FUNGUS);
         //displayItems.add(ItemsDefinitions.MAGNIFYING_GLASS.get().getDefaultInstance());

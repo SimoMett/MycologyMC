@@ -6,7 +6,6 @@ import com.simomett.mycologymod.blocks.ModBlocks;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -25,8 +24,8 @@ public class ModItems
             ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
 
     //all the items below...
-    public static final DeferredItem<Item> COOKED_CRIMSON_FUNGUS = ITEMS.registerSimpleItem("cooked_crimson_fungus", new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
-    public static final DeferredItem<Item> COOKED_WARPED_FUNGUS = ITEMS.registerSimpleItem("cooked_warped_fungus", new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
+    //public static final DeferredItem<Item> COOKED_CRIMSON_FUNGUS = ITEMS.registerSimpleItem("cooked_crimson_fungus", new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
+    //public static final DeferredItem<Item> COOKED_WARPED_FUNGUS = ITEMS.registerSimpleItem("cooked_warped_fungus", new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
     public static final DeferredItem<Item> COOKED_POISONOUS_CRIMSON_FUNGUS = ITEMS.registerSimpleItem("cooked_poisonous_crimson_fungus",
             new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()));
     public static final DeferredItem<Item> COOKED_POISONOUS_WARPED_FUNGUS = ITEMS.registerSimpleItem("cooked_poisonous_warped_fungus",

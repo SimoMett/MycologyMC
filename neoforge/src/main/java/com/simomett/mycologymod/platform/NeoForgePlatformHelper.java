@@ -14,6 +14,8 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
@@ -28,6 +30,7 @@ import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.GENOMA_DATA_COMPONENT_NAME;
 import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DATA_COMPONENTS;
 import static com.simomett.mycologymod.entities.NeoForgeBlockEntities.ENTITIES;
+import static com.simomett.mycologymod.items.ModItems.ITEMS;
 import static com.simomett.mycologymod.recipes.ModRecipes.RECIPE_SERIALIZERS;
 
 public class NeoForgePlatformHelper implements IPlatformHelper
@@ -45,6 +48,12 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     @Override
     public boolean isDevelopmentEnvironment() {
         return !FMLLoader.isProduction();
+    }
+
+    @Override
+    public <T extends Item> T registerItem(String name, Supplier<T> supplier)
+    {
+        return ITEMS.register(name, supplier).get();
     }
 
     @Override

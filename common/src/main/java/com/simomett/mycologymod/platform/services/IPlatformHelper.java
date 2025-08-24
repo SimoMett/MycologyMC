@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.platform.services;
 
 import com.simomett.mycologymod.config.IModCommonConfigs;
-import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -10,6 +9,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
@@ -53,6 +53,7 @@ public interface IPlatformHelper {
     }
 
     // Mod specific stuff
+    <T extends Item> T registerItem(String name, Supplier<T> supplier);
     Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier);
     Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier);
 

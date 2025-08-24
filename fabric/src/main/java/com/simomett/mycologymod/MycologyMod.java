@@ -2,13 +2,14 @@ package com.simomett.mycologymod;
 
 import com.simomett.mycologymod.creativetab.ModItemGroup;
 import com.simomett.mycologymod.data.FungusSpeciesSync;
-import com.simomett.mycologymod.items.ModItems;
+import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.fabricmc.api.ModInitializer;
 
 public class MycologyMod implements ModInitializer {
 
     @Override
-    public void onInitialize() {
+    public void onInitialize()
+    {
 
         // This method is invoked by the Fabric mod loader when it is ready
         // to load your mod. You can access Fabric and Common code in this
@@ -18,7 +19,7 @@ public class MycologyMod implements ModInitializer {
         Constants.LOG.info("Hello Fabric world!");
         CommonClass.init();
         FungusSpeciesSync.registerPayloads();
-        ModItems.initialize();
+        ItemsDefinitions.init();
         ModItemGroup.initialize();
     }
 }

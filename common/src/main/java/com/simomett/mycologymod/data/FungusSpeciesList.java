@@ -4,6 +4,7 @@ import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.genetics.FungusTraits;
+import com.simomett.mycologymod.items.ItemsDefinitions;
 import com.simomett.mycologymod.network.serializable.IModSerializable;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
@@ -92,8 +93,9 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
 
     public ItemStack getCreativeTabIcon()
     {
-        FungusSpecies species = new FungusSpecies(FungusTraits.CREATIVE_TAB_ICON, COLORED_CRIMSON_STRING, FungusSpawn.NO_SPAWN);
-        return species.defaultItemStack();
+        //FungusSpecies species = new FungusSpecies(FungusTraits.CREATIVE_TAB_ICON, COLORED_CRIMSON_STRING, FungusSpawn.NO_SPAWN);
+        //return species.defaultItemStack();
+        return ItemsDefinitions.COOKED_CRIMSON_FUNGUS.getDefaultInstance();
     }
 
     @Override

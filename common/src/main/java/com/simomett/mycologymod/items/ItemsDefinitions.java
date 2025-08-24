@@ -2,6 +2,7 @@ package com.simomett.mycologymod.items;
 
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
+import com.simomett.mycologymod.platform.Services;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -24,17 +25,19 @@ public class ItemsDefinitions
     public static final Supplier<MagnifyingGlassItem> MAGNIFYING_GLASS = () ->
             new MagnifyingGlassItem(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "magnifying_glass"));
 
-    public static final Supplier<Item> COOKED_CRIMSON_FUNGUS = () ->
+    public static final Item COOKED_CRIMSON_FUNGUS = Services.PLATFORM.registerItem("cooked_crimson_fungus", () ->
             new Item(new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_crimson_fungus")))
-                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
-    public static final Supplier<Item> COOKED_WARPED_FUNGUS = () ->
+                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build())));
+    public static final Item COOKED_WARPED_FUNGUS = Services.PLATFORM.registerItem("cooked_warped_fungus", () ->
             new Item(new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_warped_fungus")))
-                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
+                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build())));
 
     public static boolean isFungus(ItemStack itemStack)
     {
         return itemStack.is(COLORED_WARPED_FUNGUS.get()) || itemStack.is(COLORED_CRIMSON_FUNGUS.get());
     }
+
+    public static void init(){}
 }
