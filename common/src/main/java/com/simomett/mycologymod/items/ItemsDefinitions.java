@@ -22,6 +22,9 @@ public class ItemsDefinitions
             new ColoredFungusBlockItem(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(),
                     ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, BlocksDefinitions.COLORED_WARPED_STRING));
 
+    public static final Item CHROMIUM_MUTAGEN = Services.PLATFORM.registerItem("chromium_mutagen", () ->
+            new MutagenItem(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_mutagen"))))); // Ammonium dichromate
+
     public static final Supplier<MagnifyingGlassItem> MAGNIFYING_GLASS = () ->
             new MagnifyingGlassItem(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "magnifying_glass"));
 

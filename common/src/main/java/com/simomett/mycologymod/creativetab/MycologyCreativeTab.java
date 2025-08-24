@@ -31,7 +31,7 @@ public class MycologyCreativeTab
         displayItems.add(ItemsDefinitions.TEST_TUBE.getDefaultInstance());
         //displayItems.add(ItemsDefinitions.CHROMIUM_ORE.get().getDefaultInstance());
         displayItems.add(ItemsDefinitions.CHROMITE_POWDER.getDefaultInstance());
-        //displayItems.add(ItemsDefinitions.CHROMIUM_MUTAGEN.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.CHROMIUM_MUTAGEN.getDefaultInstance());
         displayItems.add(ItemsDefinitions.CHROMIUM_INGOT.getDefaultInstance());
         displayItems.add(ItemsDefinitions.CHROMIUM_NUGGET.getDefaultInstance());
         //displayItems.add(ItemsDefinitions.CHROMIUM_BLOCK.get().getDefaultInstance());
