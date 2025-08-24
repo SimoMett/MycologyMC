@@ -80,13 +80,12 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public Supplier<DataComponentType<FungusGenoma>> registerDataComponentType()
+    public DataComponentType<FungusGenoma> registerDataComponentType()
     {
-        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE,
+        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE,
                 ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, GENOMA_DATA_COMPONENT_NAME),
                 FUNGUS_GENOMA_BUILDER.apply(DataComponentType.builder()).build()
         );
-        return null;
     }
 
     @Override

@@ -23,6 +23,6 @@ public class FungusSlot extends Slot
 
     public FungusGenoma getGenoma()
     {
-        return getItem().has(FUNGUS_GENOMA.get())? getItem().get(FUNGUS_GENOMA.get()) : null;
+        return getItem().has(FUNGUS_GENOMA)? getItem().get(FUNGUS_GENOMA) : null;
     }
 }

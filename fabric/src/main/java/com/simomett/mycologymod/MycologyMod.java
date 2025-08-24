@@ -2,6 +2,7 @@ package com.simomett.mycologymod;
 
 import com.simomett.mycologymod.creativetab.ModItemGroup;
 import com.simomett.mycologymod.data.FungusSpeciesSync;
+import com.simomett.mycologymod.datacomponents.DataComponentTypes;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.fabricmc.api.ModInitializer;
 
@@ -18,6 +19,7 @@ public class MycologyMod implements ModInitializer {
         // Use Fabric to bootstrap the Common mod.
         Constants.LOG.info("Hello Fabric world!");
         CommonClass.init();
+        DataComponentTypes.init();
         FungusSpeciesSync.registerPayloads();
         ItemsDefinitions.init();
         ModItemGroup.initialize();

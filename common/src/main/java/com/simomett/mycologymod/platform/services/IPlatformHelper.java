@@ -60,11 +60,9 @@ public interface IPlatformHelper {
 
     IModCommonConfigs getCommonConfigs();
 
-    Supplier<DataComponentType<FungusGenoma>> registerDataComponentType();
+    DataComponentType<FungusGenoma> registerDataComponentType();
 
     <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier);
-
-
 
     interface BlockEntitySupplier<T extends BlockEntity> {
         T create(BlockPos blockPos, BlockState blockState);

@@ -46,9 +46,9 @@ public class FungusBlastingRecipe extends AbstractCookingRecipe
     public boolean matches(SingleRecipeInput container, Level level)
     {
         ItemStack input = container.getItem(0);
-        if(input.has(FUNGUS_GENOMA.get())) // of course 'input' can be 'air'
+        if(input.has(FUNGUS_GENOMA)) // of course 'input' can be 'air'
         {
-            String inputSpecies = input.get(FUNGUS_GENOMA.get()).getDominantTraits().species();
+            String inputSpecies = input.get(FUNGUS_GENOMA).getDominantTraits().species();
             return inputSpecies.equals(speciesIngredient);
         }
         return false;
