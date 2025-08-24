@@ -9,8 +9,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 
 import java.util.function.Supplier;
+
+import static com.simomett.mycologymod.items.ColoredFungusBlockItem.EFFECTS_WHEN_EATEN_RAW;
 
 public class ItemsDefinitions
 {
@@ -37,8 +41,19 @@ public class ItemsDefinitions
     public static final Item COOKED_WARPED_FUNGUS = Services.PLATFORM.registerItem("cooked_warped_fungus", () ->
             new Item(new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_warped_fungus")))
-                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build())));
+                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()))
+    );
 
+    public static final Item COOKED_POISONOUS_CRIMSON_FUNGUS = Services.PLATFORM.registerItem("cooked_poisonous_crimson_fungus", () ->
+            new Item(new Item.Properties()
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_poisonous_crimson_fungus")))
+                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()))
+    );
+    public static final Item COOKED_POISONOUS_WARPED_FUNGUS = Services.PLATFORM.registerItem("cooked_poisonous_warped_fungus", () ->
+            new Item(new Item.Properties()
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_poisonous_warped_fungus")))
+                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()))
+    );
     public static final Item TEST_TUBE = Services.PLATFORM.registerItem("test_tube", () ->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "test_tube")))));
     public static final Item CHROMITE_POWDER = Services.PLATFORM.registerItem("chromite_powder", ()->

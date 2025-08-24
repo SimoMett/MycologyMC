@@ -24,8 +24,8 @@ public class MycologyCreativeTab
         //displayItems.add(new ItemStack(ItemsDefinitions.MAGNIFYING_GLASS.get()));
         displayItems.add(ItemsDefinitions.COOKED_CRIMSON_FUNGUS.getDefaultInstance());
         displayItems.add(ItemsDefinitions.COOKED_WARPED_FUNGUS.getDefaultInstance());
-        //displayItems.add(ItemsDefinitions.COOKED_POISONOUS_CRIMSON_FUNGUS);
-        //displayItems.add(ItemsDefinitions.COOKED_POISONOUS_WARPED_FUNGUS);
+        displayItems.add(ItemsDefinitions.COOKED_POISONOUS_CRIMSON_FUNGUS.getDefaultInstance());
+        displayItems.add(ItemsDefinitions.COOKED_POISONOUS_WARPED_FUNGUS.getDefaultInstance());
         //displayItems.add(ItemsDefinitions.MAGNIFYING_GLASS.get().getDefaultInstance());
         //populator.accept(ModItems.FUNGUS_ANALYSING_STATION);
         displayItems.add(ItemsDefinitions.TEST_TUBE.getDefaultInstance());
