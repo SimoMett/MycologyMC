@@ -39,7 +39,7 @@ public class ModItems
     //public static final DeferredItem<Item> CHROMIUM_INGOT = ITEMS.registerSimpleItem("chromium_ingot");
     //public static final DeferredItem<Item> CHROMIUM_NUGGET = ITEMS.registerSimpleItem("chromium_nugget");
     //public static final DeferredItem<BlockItem> CHROMIUM_BLOCK = ITEMS.registerSimpleBlockItem("chromium_block", ModBlocks.CHROMIUM_BLOCK);
-    public static final DeferredItem<Item> SPEEDYZER = ITEMS.registerItem("speedyzer", SpeedyzerItem::new);
+    //public static final DeferredItem<Item> SPEEDYZER = ITEMS.registerItem("speedyzer", SpeedyzerItem::new);
 
     /*public static final DeferredItem<BlockItem> FUNGUS_POT = ITEMS.registerSimpleBlockItem(ModBlocks.FUNGUS_POT);
     public static final DeferredItem<BlockItem> POTTED_COLORED_CRIMSON = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_CRIMSON);

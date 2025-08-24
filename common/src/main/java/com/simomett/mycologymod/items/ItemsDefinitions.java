@@ -72,6 +72,10 @@ public class ItemsDefinitions
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block"))))
     );
 
+    // Debug item
+    public static final Item SPEEDYZER = Services.PLATFORM.registerItem("speedyzer", ()->
+            new SpeedyzerItem(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "speedyzer")))));
+
     public static boolean isFungus(ItemStack itemStack)
     {
         return itemStack.is(COLORED_WARPED_FUNGUS.get()) || itemStack.is(COLORED_CRIMSON_FUNGUS.get());
