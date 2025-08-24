@@ -62,7 +62,7 @@ public class FungusShapelessRecipe implements CraftingRecipe
     public PlacementInfo placementInfo()
     {
         if (this.placementInfo == null) {
-            this.placementInfo = PlacementInfo.create(Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()));
+            this.placementInfo = PlacementInfo.create(Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS, ItemsDefinitions.COLORED_WARPED_FUNGUS));
         }
 
         return this.placementInfo;

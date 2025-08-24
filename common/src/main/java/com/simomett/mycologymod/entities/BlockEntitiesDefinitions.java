@@ -10,8 +10,8 @@ public class BlockEntitiesDefinitions
     public static final BlockEntityType<? extends BlockEntity> COLORED_FUNGUS_BLOCK_ENTITY = Services.PLATFORM.registerBlockEntityType(
             "colored_fungus",
             ColoredFungusBlockEntity::new,
-            BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
-            BlocksDefinitions.COLORED_WARPED_FUNGUS.get()
+            BlocksDefinitions.COLORED_CRIMSON_FUNGUS,
+            BlocksDefinitions.COLORED_WARPED_FUNGUS
             /*BlockNames.FUNGUS_POT.get(),
             BlockNames.POTTED_COLORED_CRIMSON.get(),
             BlockNames.POTTED_COLORED_WARPED.get()*/

@@ -17,13 +17,13 @@ public class FungusBlastingRecipe extends AbstractCookingRecipe
 
     public FungusBlastingRecipe(String speciesIngredient, ItemStack result, float exp, int cookingTime)
     {
-        super(NAME, CookingBookCategory.MISC, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()), result, exp, cookingTime);
+        super(NAME, CookingBookCategory.MISC, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS, ItemsDefinitions.COLORED_WARPED_FUNGUS), result, exp, cookingTime);
         this.speciesIngredient = speciesIngredient;
     }
 
     public FungusBlastingRecipe(String speciesIngredient, ItemStack result, Integer stackSize, float exp, int cookingTime)
     {
-        super(NAME, CookingBookCategory.MISC, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()), new ItemStack(result.getItem(), stackSize), exp, cookingTime);
+        super(NAME, CookingBookCategory.MISC, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS, ItemsDefinitions.COLORED_WARPED_FUNGUS), new ItemStack(result.getItem(), stackSize), exp, cookingTime);
         this.speciesIngredient = speciesIngredient;
     }
 

@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.blocks;
 
-import com.simomett.mycologymod.items.ModItems;
+import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -13,8 +13,8 @@ public class FungusColorer extends AbstractFungusColorer
     public static void registerBlockColorsEvent(RegisterColorHandlersEvent.Block evt)
     {
         evt.register(new AbstractFungusColorer(),
-                BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
-                BlocksDefinitions.COLORED_WARPED_FUNGUS.get()
+                BlocksDefinitions.COLORED_CRIMSON_FUNGUS,
+                BlocksDefinitions.COLORED_WARPED_FUNGUS
                 /*BlockNames.POTTED_COLORED_CRIMSON.get(),
                 BlockNames.POTTED_COLORED_WARPED.get()*/);
     }
@@ -22,6 +22,6 @@ public class FungusColorer extends AbstractFungusColorer
     @SubscribeEvent
     public static void registerItemColorsEvent(RegisterColorHandlersEvent.Item evt)
     {
-        evt.register(new AbstractFungusColorer(), ModItems.COLORED_CRIMSON_FUNGUS.get(), ModItems.COLORED_WARPED_FUNGUS.get());
+        evt.register(new AbstractFungusColorer(), ItemsDefinitions.COLORED_CRIMSON_FUNGUS, ItemsDefinitions.COLORED_WARPED_FUNGUS);
     }
 }

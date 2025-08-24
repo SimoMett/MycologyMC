@@ -10,23 +10,21 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.function.Supplier;
-
 public class BlocksDefinitions
 {
     public static final String COLORED_CRIMSON_STRING = "colored_crimson_fungus";
     public static final String COLORED_WARPED_STRING = "colored_warped_fungus";
 
-    public static final Supplier<ColoredFungusBlock> COLORED_CRIMSON_FUNGUS = () ->
+    public static final ColoredFungusBlock COLORED_CRIMSON_FUNGUS = Services.PLATFORM.registerBlock(COLORED_CRIMSON_STRING, () ->
             new ColoredFungusBlock(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.BROWN_MUSHROOM)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_CRIMSON_STRING)))
+                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_CRIMSON_STRING))))
     );
 
-    public static final Supplier<ColoredFungusBlock> COLORED_WARPED_FUNGUS = () ->
+    public static final ColoredFungusBlock COLORED_WARPED_FUNGUS = Services.PLATFORM.registerBlock(COLORED_WARPED_STRING, () ->
             new ColoredFungusBlock(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.BROWN_MUSHROOM)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_WARPED_STRING)))
+                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_WARPED_STRING))))
     );
 
     /*public static final DeferredBlock<FungusAnalysingStationBlock> FUNGUS_ANALYSING_STATION = BLOCKS.register("fungus_analysing_station", r ->
@@ -71,9 +69,9 @@ public class BlocksDefinitions
     {
         BlockState blockState;
         if(fungusType.equals(COLORED_CRIMSON_STRING))
-            blockState = COLORED_CRIMSON_FUNGUS.get().defaultBlockState();
+            blockState = COLORED_CRIMSON_FUNGUS.defaultBlockState();
         else
-            blockState = COLORED_WARPED_FUNGUS.get().defaultBlockState();
+            blockState = COLORED_WARPED_FUNGUS.defaultBlockState();
         return blockState;
     }
 }

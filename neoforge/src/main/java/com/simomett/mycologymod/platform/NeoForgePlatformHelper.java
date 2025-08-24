@@ -57,6 +57,12 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
+    public <T extends Block> T registerBlock(String name, Supplier<T> supplier)
+    {
+        return null;
+    }
+
+    @Override
     public Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier)
     {
         return NeoForgeModEffects.EFFECTS.register(name, mobEffectSupplier);
@@ -90,8 +96,8 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     public BlockEntityType<? extends BlockEntity> registerBlockEntityType(String name, BlockEntitySupplier<? extends BlockEntity> supplier, Block... blocks)
     {
         return ENTITIES.register(name, ()-> new BlockEntityType<>(ColoredFungusBlockEntity::new,
-                BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
-                BlocksDefinitions.COLORED_WARPED_FUNGUS.get()
+                BlocksDefinitions.COLORED_CRIMSON_FUNGUS,
+                BlocksDefinitions.COLORED_WARPED_FUNGUS
             /*BlockNames.FUNGUS_POT.get(),
             BlockNames.POTTED_COLORED_CRIMSON.get(),
             BlockNames.POTTED_COLORED_WARPED.get()*/)

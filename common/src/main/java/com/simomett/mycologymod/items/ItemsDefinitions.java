@@ -13,19 +13,21 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 
-import java.util.function.Supplier;
-
+import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_CRIMSON_STRING;
+import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_WARPED_STRING;
 import static com.simomett.mycologymod.items.ColoredFungusBlockItem.EFFECTS_WHEN_EATEN_RAW;
 
 public class ItemsDefinitions
 {
-    public static final Supplier<ColoredFungusBlockItem> COLORED_CRIMSON_FUNGUS = () ->
-            new ColoredFungusBlockItem(BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
-                    ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, BlocksDefinitions.COLORED_CRIMSON_STRING));
+    public static final ColoredFungusBlockItem COLORED_CRIMSON_FUNGUS = Services.PLATFORM.registerItem(COLORED_CRIMSON_STRING, () ->
+            new ColoredFungusBlockItem(BlocksDefinitions.COLORED_CRIMSON_FUNGUS,
+                    ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_CRIMSON_STRING))
+    );
 
-    public static final Supplier<ColoredFungusBlockItem> COLORED_WARPED_FUNGUS = () ->
-            new ColoredFungusBlockItem(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(),
-                    ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, BlocksDefinitions.COLORED_WARPED_STRING));
+    public static final ColoredFungusBlockItem COLORED_WARPED_FUNGUS = Services.PLATFORM.registerItem(COLORED_WARPED_STRING, () ->
+            new ColoredFungusBlockItem(BlocksDefinitions.COLORED_WARPED_FUNGUS,
+                    ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_WARPED_STRING))
+    );
 
     public static final Item CHROMIUM_MUTAGEN = Services.PLATFORM.registerItem("chromium_mutagen", () ->
             new MutagenItem(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_mutagen"))))); // Ammonium dichromate
@@ -78,7 +80,7 @@ public class ItemsDefinitions
 
     public static boolean isFungus(ItemStack itemStack)
     {
-        return itemStack.is(COLORED_WARPED_FUNGUS.get()) || itemStack.is(COLORED_CRIMSON_FUNGUS.get());
+        return itemStack.is(COLORED_WARPED_FUNGUS) || itemStack.is(COLORED_CRIMSON_FUNGUS);
     }
 
     public static void init(){}
