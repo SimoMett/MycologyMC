@@ -2,7 +2,11 @@ package com.simomett.mycologymod.items;
 
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Supplier;
@@ -19,6 +23,15 @@ public class ItemsDefinitions
 
     public static final Supplier<MagnifyingGlassItem> MAGNIFYING_GLASS = () ->
             new MagnifyingGlassItem(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "magnifying_glass"));
+
+    public static final Supplier<Item> COOKED_CRIMSON_FUNGUS = () ->
+            new Item(new Item.Properties()
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_crimson_fungus")))
+                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
+    public static final Supplier<Item> COOKED_WARPED_FUNGUS = () ->
+            new Item(new Item.Properties()
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_warped_fungus")))
+                    .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()));
 
     public static boolean isFungus(ItemStack itemStack)
     {
