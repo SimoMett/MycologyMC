@@ -30,8 +30,8 @@ public class ItemsDefinitions
     public static final Item CHROMIUM_MUTAGEN = Services.PLATFORM.registerItem("chromium_mutagen", () ->
             new MutagenItem(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_mutagen"))))); // Ammonium dichromate
 
-    public static final Supplier<MagnifyingGlassItem> MAGNIFYING_GLASS = () ->
-            new MagnifyingGlassItem(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "magnifying_glass"));
+    public static final MagnifyingGlassItem MAGNIFYING_GLASS = Services.PLATFORM.registerItem("magnifying_glass", () ->
+            new MagnifyingGlassItem(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "magnifying_glass")));
 
     // Simple items
     public static final Item COOKED_CRIMSON_FUNGUS = Services.PLATFORM.registerItem("cooked_crimson_fungus", () ->
