@@ -55,6 +55,13 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
+    public <T extends Block> T registerBlock(String name, Supplier<T> supplier)
+    {
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
+        return Registry.register(BuiltInRegistries.BLOCK, key, supplier.get());
+    }
+
+    @Override
     public Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier)
     {
         return Holder.direct(Registry.register(BuiltInRegistries.MOB_EFFECT, name, mobEffectSupplier.get()));

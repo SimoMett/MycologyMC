@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.blocks;
 
 import com.simomett.mycologymod.Constants;
+import com.simomett.mycologymod.platform.Services;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -52,17 +53,17 @@ public class BlocksDefinitions
                 return b;
             });
 */
-    public static final Supplier<Block> CHROMIUM_ORE = () ->
+    public static final Block CHROMIUM_ORE = Services.PLATFORM.registerBlock("chromium_ore", () ->
             new Block(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE)
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ore")))
-                    .requiresCorrectToolForDrops()
+                    .requiresCorrectToolForDrops())
     );
-    public static final Supplier<Block> CHROMIUM_BLOCK = () ->
+    public static final Block CHROMIUM_BLOCK = Services.PLATFORM.registerBlock("chromium_block", () ->
             new Block(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE)
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block")))
-                    .requiresCorrectToolForDrops()
+                    .requiresCorrectToolForDrops())
     );
 
 

@@ -54,6 +54,7 @@ public interface IPlatformHelper {
 
     // Mod specific stuff
     <T extends Item> T registerItem(String name, Supplier<T> supplier);
+    <T extends Block> T registerBlock(String name, Supplier<T> supplier);
     Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier);
     Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier);
 
@@ -62,6 +63,8 @@ public interface IPlatformHelper {
     Supplier<DataComponentType<FungusGenoma>> registerDataComponentType();
 
     <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier);
+
+
 
     interface BlockEntitySupplier<T extends BlockEntity> {
         T create(BlockPos blockPos, BlockState blockState);

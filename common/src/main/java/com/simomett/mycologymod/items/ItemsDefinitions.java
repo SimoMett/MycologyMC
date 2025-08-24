@@ -7,6 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
@@ -56,13 +57,20 @@ public class ItemsDefinitions
     );
     public static final Item TEST_TUBE = Services.PLATFORM.registerItem("test_tube", () ->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "test_tube")))));
+    public static final BlockItem CHROMIUM_ORE = Services.PLATFORM.registerItem("chromium_ore", () ->
+            new BlockItem(BlocksDefinitions.CHROMIUM_ORE, new Item.Properties()
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ore"))))
+    );
     public static final Item CHROMITE_POWDER = Services.PLATFORM.registerItem("chromite_powder", ()->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromite_powder")))));
     public static final Item CHROMIUM_INGOT = Services.PLATFORM.registerItem("chromium_ingot", ()->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ingot")))));
     public static final Item CHROMIUM_NUGGET = Services.PLATFORM.registerItem("chromium_nugget", ()->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_nugget")))));
-
+    public static final BlockItem CHROMIUM_BLOCK = Services.PLATFORM.registerItem("chromium_block", () ->
+            new BlockItem(BlocksDefinitions.CHROMIUM_BLOCK, new Item.Properties()
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block"))))
+    );
 
     public static boolean isFungus(ItemStack itemStack)
     {
