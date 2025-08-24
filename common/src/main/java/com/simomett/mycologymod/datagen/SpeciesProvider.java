@@ -5,11 +5,10 @@ import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.datagen.common.SpeciesBuilder;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.effects.player.EffectsDefinitions;
-import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
@@ -23,17 +22,17 @@ import static com.simomett.mycologymod.effects.player.EffectsDefinitions.holderO
 
 public class SpeciesProvider implements DataProvider
 {
-    private final DataGenerator generator;
-    public SpeciesProvider(DataGenerator generator)
+    private final PackOutput.PathProvider pathProvider;
+    public SpeciesProvider(PackOutput packOutput)
     {
-        this.generator = generator;
+        this.pathProvider = packOutput.createPathProvider(PackOutput.Target.DATA_PACK, "fungi");
     }
 
     @Override
     public CompletableFuture<?> run(CachedOutput hashCache)
     {
         List<CompletableFuture<?>> list = new ArrayList<>();
-        SpeciesBuilder speciesBuilder = new SpeciesBuilder(this.generator, hashCache, list);
+        SpeciesBuilder speciesBuilder = new SpeciesBuilder(pathProvider, hashCache, list);
 
         //////////////////////////////
         //     Overworld branch     //

@@ -19,7 +19,7 @@ public class DataGenerators
     {
         DataGenerator dataGentor = evt.getGenerator();
 
-        dataGentor.addProvider(true, new SpeciesProvider(dataGentor));
+        dataGentor.addProvider(true, new SpeciesProvider(dataGentor.getPackOutput()));
         dataGentor.addProvider(true, new MutationsProvider(dataGentor));
         dataGentor.addProvider(evt.includeServer(), new CookingRecipesProvider.Runner(dataGentor.getPackOutput(), evt.getLookupProvider()));
         dataGentor.addProvider(evt.includeServer(), new BlastingRecipesProvider.Runner(dataGentor.getPackOutput(), evt.getLookupProvider()));

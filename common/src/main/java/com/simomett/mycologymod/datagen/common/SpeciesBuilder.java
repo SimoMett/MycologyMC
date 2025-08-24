@@ -2,7 +2,6 @@ package com.simomett.mycologymod.datagen.common;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.MycologyMod;
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.effects.FungusEffect;
 import com.simomett.mycologymod.effects.FungusEffects;
@@ -10,14 +9,12 @@ import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import net.minecraft.server.packs.PackType;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.block.Block;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.jline.utils.Log;
 
 import java.nio.file.Path;
 import java.security.InvalidParameterException;
@@ -39,9 +36,9 @@ public class SpeciesBuilder
 
     public static final int DEFAULT_AREA_RADIUS = 3;
 
-    public SpeciesBuilder(DataGenerator generator, CachedOutput hashCache, List<CompletableFuture<?>> completableFutureList)
+    public SpeciesBuilder(PackOutput.PathProvider pathProvider, CachedOutput hashCache, List<CompletableFuture<?>> completableFutureList)
     {
-        this.generator = generator;
+        this.pathProvider = pathProvider;
         this.hashCache = hashCache;
         this.completableFutureList = completableFutureList;
     }
@@ -61,12 +58,12 @@ public class SpeciesBuilder
     private FungusSpawn spawnInfo;
 
     //building attributes
-    private final DataGenerator generator;
+    private final PackOutput.PathProvider pathProvider;
     private final CachedOutput hashCache;
     private final List<CompletableFuture<?>> completableFutureList;
 
     //Methods chaining
-    public SpeciesBuilder createSpecies(@NonNull String speciesName)
+    public SpeciesBuilder createSpecies(String speciesName)
     {
         this.speciesName = speciesName;
         this.areaEffect = FungusEffects.NO_EFFECT;
@@ -163,7 +160,7 @@ public class SpeciesBuilder
     private static void manageException(String message)
     {
         //throw new NullPointerException(message);
-        Log.error(message);
+        //Log.error(message);
     }
 
     private static final int MAX_NAME_LEN = 34;
@@ -215,9 +212,8 @@ public class SpeciesBuilder
             spawnJson.addProperty("chance", spawnInfo.chance);
         }
         fungusJson.add("spawn", spawnJson);
-        Path path = this.generator.getPackOutput().getOutputFolder();
         String jsonFileName = speciesName.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), Constants.MOD_ID, "fungi", jsonFileName));
+        Path jsonLocation = this.pathProvider.json(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
 
         this.completableFutureList.add(DataProvider.saveStable(this.hashCache,fungusJson,jsonLocation));
 
@@ -238,7 +234,7 @@ public class SpeciesBuilder
 
     public SpeciesBuilder eatingEffect(Holder<MobEffect> mobEffect)
     {
-        eatingEffect = mobEffect.getKey().location().toString();
+        eatingEffect = mobEffect.getRegisteredName();
         return this;
     }
 }

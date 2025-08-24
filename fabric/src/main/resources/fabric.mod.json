@@ -17,6 +17,10 @@
   "entrypoints": {
     "main": [
       "com.simomett.mycologymod.MycologyMod"
+    ],
+    "client": [],
+    "fabric-datagen": [
+      "com.simomett.mycologymod.client.datagen.DataGenerator"
     ]
   },
   "mixins": [
