@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.world.features;
 
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
@@ -41,7 +41,7 @@ public class OverworldFungusFeatureConfiguration extends Feature<SimpleBlockConf
     @Override
     public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> placeContext)
     {
-        List<AbstractFungusSpeciesList.FungusSpecies> speciesList = AbstractFungusSpeciesList.getInstance().getSpeciesList();
+        List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.getInstance().getSpeciesList();
         BlockPos origin = placeContext.origin();
         final Holder<Biome> biome = placeContext.level().getBiome(origin);
         speciesList = speciesList.stream().filter(s -> s.spawnInfo != null
@@ -51,7 +51,7 @@ public class OverworldFungusFeatureConfiguration extends Feature<SimpleBlockConf
         {
             //get random species
             Random random = new Random();
-            AbstractFungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
+            FungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
 
             if (random.nextFloat(0f, 1f) <= randomSpecies.spawnInfo.chance)
             {

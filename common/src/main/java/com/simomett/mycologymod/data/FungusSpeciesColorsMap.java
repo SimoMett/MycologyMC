@@ -4,6 +4,7 @@ import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.genetics.FungusTraits;
 import com.simomett.mycologymod.network.serializable.IModSerializable;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 
@@ -11,21 +12,21 @@ import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
 
-public abstract class AbstractFungusSpeciesColorsMap implements CustomPacketPayload, IModSerializable
+public class FungusSpeciesColorsMap implements CustomPacketPayload, IModSerializable
 {
-    public static final CustomPacketPayload.Type<AbstractFungusSpeciesColorsMap> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_colors_sync"));
+    public static final CustomPacketPayload.Type<FungusSpeciesColorsMap> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_colors_sync"));
     private final HashMap<String, int[]> colorsMap = new HashMap<>();
 
-    protected static AbstractFungusSpeciesColorsMap INSTANCE;
+    protected static FungusSpeciesColorsMap INSTANCE = new FungusSpeciesColorsMap();
 
-    public static AbstractFungusSpeciesColorsMap getInstance()
+    public static FungusSpeciesColorsMap getInstance()
     {
         if(INSTANCE == null)
             throw new NullPointerException();
         return INSTANCE;
     }
 
-    public static AbstractFungusSpeciesColorsMap fromByteBuf(FriendlyByteBuf byteBuf)
+    public static FungusSpeciesColorsMap fromByteBuf(FriendlyByteBuf byteBuf)
     {
         try
         {
@@ -33,13 +34,14 @@ public abstract class AbstractFungusSpeciesColorsMap implements CustomPacketPayl
             byteBuf.readBytes(dst);
             ByteArrayInputStream i = new ByteArrayInputStream(dst);
             ObjectInputStream inputStream = new ObjectInputStream(i);
-            return INSTANCE = (AbstractFungusSpeciesColorsMap) inputStream.readObject();
+            return INSTANCE = (FungusSpeciesColorsMap) inputStream.readObject();
         }
         catch (Exception e)
         {
             throw new RuntimeException(e);
         }
     }
+    public static final StreamCodec<FriendlyByteBuf, FungusSpeciesColorsMap> COLORS_STREAM_CODEC = StreamCodec.ofMember(FungusSpeciesColorsMap::encode, FungusSpeciesColorsMap::fromByteBuf);
 
     public final void put(FungusTraits defaultTraits, int[] colors)
     {

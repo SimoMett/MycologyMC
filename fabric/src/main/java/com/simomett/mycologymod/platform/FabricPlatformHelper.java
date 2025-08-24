@@ -2,8 +2,7 @@ package com.simomett.mycologymod.platform;
 
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.config.IModCommonConfigs;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -55,18 +54,6 @@ public class FabricPlatformHelper implements IPlatformHelper
     public Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier)
     {
         return Holder.direct(Registry.register(BuiltInRegistries.POTION, name, potionSupplier.get()));
-    }
-
-    @Override
-    public AbstractFungusSpeciesList initFungusSpeciesList()
-    {
-        return null;
-    }
-
-    @Override
-    public AbstractFungusSpeciesColorsMap initFungusSpeciesColorsMap()
-    {
-        return null;
     }
 
     @Override

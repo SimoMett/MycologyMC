@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.world.features;
 
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
@@ -9,7 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
@@ -36,13 +35,13 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
         BlockPos origin = placeContext.origin();
         WorldGenLevel level = placeContext.level();
 
-        List<AbstractFungusSpeciesList.FungusSpecies> speciesList = AbstractFungusSpeciesList.getInstance().getSpeciesList();
+        List<FungusSpeciesList.FungusSpecies> speciesList = FungusSpeciesList.getInstance().getSpeciesList();
         speciesList = speciesList.stream().filter(s -> s.spawnInfo != null && s.spawnInfo.equals(FungusSpawn.CAVES)).toList();
         if(!speciesList.isEmpty())
         {
             //get random species
             Random random = new Random();
-            AbstractFungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
+            FungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
 
             if (random.nextFloat(0f, 1f) < randomSpecies.spawnInfo.chance)
             {

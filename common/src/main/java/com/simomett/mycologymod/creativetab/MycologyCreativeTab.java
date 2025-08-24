@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.creativetab;
 
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -15,13 +15,13 @@ public class MycologyCreativeTab
 {
     public static UnaryOperator<CreativeModeTab.Builder> CREATIVE_TAB_BUILDER = builder -> builder
             .title(Component.translatable("itemGroup." + Constants.MOD_ID))
-            .icon(() -> AbstractFungusSpeciesList.getInstance().getCreativeTabIcon())
+            .icon(() -> FungusSpeciesList.getInstance().getCreativeTabIcon())
             .displayItems((e, p) -> p.acceptAll(getItemsToDisplay()));
 
     public static Collection<ItemStack> getItemsToDisplay()
     {
-        ArrayList<ItemStack> displayItems = new ArrayList<>(AbstractFungusSpeciesList.getInstance().getAllSpeciesCollection());
-        displayItems.add(new ItemStack(ItemsDefinitions.MAGNIFYING_GLASS.get()));
+        ArrayList<ItemStack> displayItems = new ArrayList<>(FungusSpeciesList.getInstance().getAllSpeciesCollection());
+        //displayItems.add(new ItemStack(ItemsDefinitions.MAGNIFYING_GLASS.get()));
         //displayItems.add(ItemsDefinitions.COOKED_CRIMSON_FUNGUS);
         //displayItems.add(ItemsDefinitions.COOKED_WARPED_FUNGUS);
         //displayItems.add(ItemsDefinitions.COOKED_POISONOUS_CRIMSON_FUNGUS);

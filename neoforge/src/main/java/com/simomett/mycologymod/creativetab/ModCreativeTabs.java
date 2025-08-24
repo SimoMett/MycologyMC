@@ -1,10 +1,7 @@
 package com.simomett.mycologymod.creativetab;
 
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
-import com.simomett.mycologymod.items.ModItems;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;

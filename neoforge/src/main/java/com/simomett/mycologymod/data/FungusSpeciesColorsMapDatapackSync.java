@@ -7,14 +7,14 @@ import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 @EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
-public class FungusSpeciesColorsMap extends AbstractFungusSpeciesColorsMap
+public class FungusSpeciesColorsMapDatapackSync
 {
     @SubscribeEvent
     public static void syncEvent(OnDatapackSyncEvent evt)
     {
         if(null != evt.getPlayer())
-            PacketDistributor.sendToPlayer(evt.getPlayer(), AbstractFungusSpeciesColorsMap.INSTANCE);
+            PacketDistributor.sendToPlayer(evt.getPlayer(), FungusSpeciesColorsMap.INSTANCE);
         else
-            PacketDistributor.sendToAllPlayers(AbstractFungusSpeciesColorsMap.INSTANCE);
+            PacketDistributor.sendToAllPlayers(FungusSpeciesColorsMap.INSTANCE);
     }
 }

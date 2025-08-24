@@ -2,10 +2,8 @@ package com.simomett.mycologymod.platform;
 
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.config.IModCommonConfigs;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
-import com.simomett.mycologymod.data.FungusSpeciesList;
+import com.simomett.mycologymod.data.FungusSpeciesColorsMapDatapackSync;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
@@ -30,7 +28,6 @@ import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.GENOMA_DATA_COMPONENT_NAME;
 import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DATA_COMPONENTS;
 import static com.simomett.mycologymod.entities.NeoForgeBlockEntities.ENTITIES;
-import static com.simomett.mycologymod.gui.menu.ModMenus.MENU_TYPES;
 import static com.simomett.mycologymod.recipes.ModRecipes.RECIPE_SERIALIZERS;
 
 public class NeoForgePlatformHelper implements IPlatformHelper
@@ -60,17 +57,6 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     public Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier)
     {
         return NeoForgePotions.POTIONS.register(name, potionSupplier);
-    }
-
-    @Override
-    public AbstractFungusSpeciesList initFungusSpeciesList()
-    {
-        return new FungusSpeciesList();
-    }
-
-    @Override
-    public AbstractFungusSpeciesColorsMap initFungusSpeciesColorsMap() {
-        return new FungusSpeciesColorsMap();
     }
 
     @Override

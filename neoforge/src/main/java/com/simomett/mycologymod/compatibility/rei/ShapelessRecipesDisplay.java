@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.compatibility.rei;
 
-import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipe;
 import me.shedaniel.rei.api.common.display.Display;
 import me.shedaniel.rei.api.common.display.DisplaySerializer;
@@ -16,7 +16,7 @@ public class ShapelessRecipesDisplay extends DefaultCraftingDisplay
 {
     public ShapelessRecipesDisplay(FungusShapelessRecipe fungusShapelessRecipe)
     {
-        super(Collections.singletonList(EntryIngredients.of(AbstractFungusSpeciesList.INSTANCE.get(fungusShapelessRecipe.getSpeciesIngredient()).defaultItemStack())),
+        super(Collections.singletonList(EntryIngredients.of(FungusSpeciesList.INSTANCE.get(fungusShapelessRecipe.getSpeciesIngredient()).defaultItemStack())),
                 Collections.singletonList(EntryIngredients.of(fungusShapelessRecipe.getResult())),
                 Optional.empty());
     }

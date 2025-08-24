@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.blocks;
 
-import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
+import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
@@ -27,7 +27,7 @@ public class AbstractFungusColorer implements BlockColor, ItemColor
         if(blockAndTint.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity fungusEntity)
         {
             String speciesName = fungusEntity.getFungusGenoma().getDominantTraits().species();
-            int[] colors = AbstractFungusSpeciesColorsMap.getInstance().get(speciesName);
+            int[] colors = FungusSpeciesColorsMap.getInstance().get(speciesName);
             return colors[tintIndex];
         }
         return 0;
@@ -37,7 +37,7 @@ public class AbstractFungusColorer implements BlockColor, ItemColor
     public int getColor(ItemStack itemStack, int tintIndex)
     {
         if(itemStack.has(FUNGUS_GENOMA.get()))
-            return AbstractFungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA.get()).getDominantTraits().species())[tintIndex];
+            return FungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA.get()).getDominantTraits().species())[tintIndex];
         else
             return 0;
     }

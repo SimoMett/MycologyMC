@@ -11,7 +11,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
 
-import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.FUNGUS_GENOMA;
+import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 
 public class FungusBrewingRecipe implements IBrewingRecipe
 {

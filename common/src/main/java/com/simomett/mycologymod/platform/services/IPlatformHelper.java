@@ -1,8 +1,7 @@
 package com.simomett.mycologymod.platform.services;
 
 import com.simomett.mycologymod.config.IModCommonConfigs;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesColorsMap;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -56,8 +55,6 @@ public interface IPlatformHelper {
     // Mod specific stuff
     Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier);
     Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier);
-    AbstractFungusSpeciesList initFungusSpeciesList();
-    AbstractFungusSpeciesColorsMap initFungusSpeciesColorsMap();
 
     IModCommonConfigs getCommonConfigs();
 

@@ -5,11 +5,11 @@ import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.genetics.FungusTraits;
 import com.simomett.mycologymod.network.serializable.IModSerializable;
-import com.simomett.mycologymod.platform.Services;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -24,22 +24,22 @@ import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_CRIMSON_
 import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_WARPED_STRING;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 
-public abstract class AbstractFungusSpeciesList implements CustomPacketPayload, IModSerializable
+public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
 {
     private final HashMap<String, FungusSpecies> speciesHashMap = new HashMap<>();
-    private final AbstractFungusSpeciesColorsMap colorsMap = AbstractFungusSpeciesColorsMap.INSTANCE;
+    private final FungusSpeciesColorsMap colorsMap = FungusSpeciesColorsMap.INSTANCE;
 
-    private static AbstractFungusSpeciesList INSTANCE = Services.PLATFORM.initFungusSpeciesList();
+    private static FungusSpeciesList INSTANCE = new FungusSpeciesList();
 
-    public static AbstractFungusSpeciesList getInstance()
+    public static FungusSpeciesList getInstance()
     {
         if(INSTANCE == null)
             throw new NullPointerException();
         return INSTANCE;
     }
 
-    public static final CustomPacketPayload.Type<AbstractFungusSpeciesList> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_species_list_sync"));
-    public static AbstractFungusSpeciesList fromByteBuf(FriendlyByteBuf byteBuf)
+    public static final CustomPacketPayload.Type<FungusSpeciesList> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_species_list_sync"));
+    public static FungusSpeciesList fromByteBuf(FriendlyByteBuf byteBuf)
     {
         try
         {
@@ -47,13 +47,14 @@ public abstract class AbstractFungusSpeciesList implements CustomPacketPayload, 
             byteBuf.readBytes(dst);
             ByteArrayInputStream i = new ByteArrayInputStream(dst);
             ObjectInputStream inputStream = new ObjectInputStream(i);
-            return INSTANCE = (AbstractFungusSpeciesList) inputStream.readObject();
+            return INSTANCE = (FungusSpeciesList) inputStream.readObject();
         }
         catch (Exception e)
         {
             throw new RuntimeException(e);
         }
     }
+    public static final StreamCodec<FriendlyByteBuf, FungusSpeciesList> SPECIES_STREAMS_CODEC = StreamCodec.ofMember(FungusSpeciesList::encode, FungusSpeciesList::fromByteBuf);
 
     public void put(FungusTraits defaultTraits, int[] colors, String fungusType, FungusSpawn spawnType)
     {

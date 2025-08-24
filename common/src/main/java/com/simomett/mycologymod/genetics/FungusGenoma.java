@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.genetics;
 
 import com.simomett.mycologymod.config.IModCommonConfigs;
-import com.simomett.mycologymod.data.AbstractFungusSpeciesList;
+import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.genetics.gene.Gene;
 import com.simomett.mycologymod.network.serializable.IModSerializable;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipe;
@@ -54,7 +54,7 @@ public class FungusGenoma implements IModSerializable
         recessiveTraits = new FungusTraits(recessive);
     }
 
-    public FungusGenoma(AbstractFungusSpeciesList.FungusSpecies species)
+    public FungusGenoma(FungusSpeciesList.FungusSpecies species)
     {
         this(species.defaultTraits, species.defaultTraits);
     }
@@ -193,7 +193,7 @@ public class FungusGenoma implements IModSerializable
                 shouldPerformMutation = random.nextFloat(0f, 1f) < randomMutation.getChance();
 
             if (shouldPerformMutation)
-                return new FungusGenoma(AbstractFungusSpeciesList.getInstance().get(randomMutation.getResultSpecies()));
+                return new FungusGenoma(FungusSpeciesList.getInstance().get(randomMutation.getResultSpecies()));
         }
 
         offspring = this.normalCrossBreedWith(species2);
