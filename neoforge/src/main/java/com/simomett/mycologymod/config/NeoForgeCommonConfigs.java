@@ -5,7 +5,7 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 import static com.simomett.mycologymod.datagen.common.SpeciesBuilder.DEFAULT_SPREADBOOST;
 
-public final class ModCommonConfigs implements IModCommonConfigs
+public final class NeoForgeCommonConfigs implements IModCommonConfigs
 {
     public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     public static final ModConfigSpec SPEC;

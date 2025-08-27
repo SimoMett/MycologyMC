@@ -1,8 +1,8 @@
 package com.simomett.mycologymod;
 
 import com.simomett.mycologymod.blocks.ModBlocks;
-import com.simomett.mycologymod.config.ModClientConfigs;
-import com.simomett.mycologymod.config.ModCommonConfigs;
+import com.simomett.mycologymod.config.NeoForgeClientConfigs;
+import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
 import com.simomett.mycologymod.creativetab.ModCreativeTabs;
 import com.simomett.mycologymod.data.FungusSpeciesLoader;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
@@ -28,8 +28,8 @@ public class MycologyMod
 {
     public MycologyMod(IEventBus evtBus, ModContainer modContainer)
     {
-        modContainer.registerConfig(ModConfig.Type.COMMON, ModCommonConfigs.SPEC);
-        modContainer.registerConfig(ModConfig.Type.CLIENT, ModClientConfigs.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeCommonConfigs.SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, NeoForgeClientConfigs.SPEC);
 
         ModItems.ITEMS.register(evtBus);
         ModBlocks.BLOCKS.register(evtBus);

@@ -212,7 +212,7 @@ public class SpeciesBuilder
             spawnJson.addProperty("chance", spawnInfo.chance);
         }
         fungusJson.add("spawn", spawnJson);
-        String jsonFileName = speciesName.toLowerCase().replace(' ', '_')+".json";
+        String jsonFileName = speciesName.toLowerCase().replace(' ', '_');
         Path jsonLocation = this.pathProvider.json(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
 
         this.completableFutureList.add(DataProvider.saveStable(this.hashCache,fungusJson,jsonLocation));

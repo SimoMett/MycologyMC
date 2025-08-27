@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.platform;
 
 import com.simomett.mycologymod.Constants;
+import com.simomett.mycologymod.config.FabricCommonConfigs;
 import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
@@ -76,7 +77,8 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public IModCommonConfigs getCommonConfigs()
     {
-        return null;
+        // TODO
+        return new FabricCommonConfigs();
     }
 
     @Override

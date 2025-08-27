@@ -1,7 +1,5 @@
 package com.simomett.mycologymod.data;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
@@ -17,10 +15,8 @@ import java.util.Map;
 
 import static com.simomett.mycologymod.genetics.FungusGenoma.*;
 
-public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener<JsonElement>
+public final class FungusSpeciesLoader extends SimpleJsonResourceReloadListener<JsonElement>
 {
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-
     public static final FungusSpeciesLoader INSTANCE = new FungusSpeciesLoader();
 
     private FungusSpeciesLoader()
@@ -39,7 +35,7 @@ public class FungusSpeciesLoader extends SimpleJsonResourceReloadListener<JsonEl
         }
     }
 
-    private void loadFungusSpecies(JsonObject obj)
+    public void loadFungusSpecies(JsonObject obj)
     {
         FungusTraits defaultTraits = new FungusTraits(
         obj.get(SPECIES).getAsString(),
