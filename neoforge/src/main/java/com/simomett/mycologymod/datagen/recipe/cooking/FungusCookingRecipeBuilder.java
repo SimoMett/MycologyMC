@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.datagen.recipe.cooking;
 
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.recipes.cooking.FungusCookingRecipe;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.core.registries.Registries;
@@ -51,7 +51,7 @@ public class FungusCookingRecipeBuilder implements RecipeBuilder
     {
         output.accept(
                 ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(
-                        MycologyMod.MODID,
+                        Constants.MOD_ID,
                         "cooked_"+speciesIngredient.toLowerCase().replace(" ", "_"))),
                 new FungusCookingRecipe(speciesIngredient, result, exp, cookingTime),
                 null);

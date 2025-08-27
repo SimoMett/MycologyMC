@@ -16,7 +16,7 @@ public class ShapelessRecipesDisplay extends DefaultCraftingDisplay
 {
     public ShapelessRecipesDisplay(FungusShapelessRecipe fungusShapelessRecipe)
     {
-        super(Collections.singletonList(EntryIngredients.of(FungusSpeciesList.INSTANCE.get(fungusShapelessRecipe.getSpeciesIngredient()).defaultItemStack())),
+        super(Collections.singletonList(EntryIngredients.of(FungusSpeciesList.getInstance().get(fungusShapelessRecipe.getSpeciesIngredient()).defaultItemStack())),
                 Collections.singletonList(EntryIngredients.of(fungusShapelessRecipe.getResult())),
                 Optional.empty());
     }

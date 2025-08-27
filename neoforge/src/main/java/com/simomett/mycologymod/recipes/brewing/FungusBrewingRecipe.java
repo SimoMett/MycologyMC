@@ -40,7 +40,7 @@ public class FungusBrewingRecipe implements IBrewingRecipe
     {
         if (ingredient.is(ModItemTags.COLORED_FUNGUS_ITEMS))
         {
-            String species = ingredient.get(FUNGUS_GENOMA.get()).getDominantTraits().species();
+            String species = ingredient.get(FUNGUS_GENOMA).getDominantTraits().species();
             return species.equals(this.speciesName);
         }
         return false;

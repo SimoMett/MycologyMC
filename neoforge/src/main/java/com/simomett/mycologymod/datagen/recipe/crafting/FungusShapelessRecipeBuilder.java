@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.datagen.recipe.crafting;
 
-import com.simomett.mycologymod.MycologyMod;
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipe;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.core.registries.Registries;
@@ -46,7 +46,7 @@ public class FungusShapelessRecipeBuilder implements RecipeBuilder
     {
         output.accept(
                 ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(
-                        MycologyMod.MODID,
+                        Constants.MOD_ID,
                         "shapeless_"+speciesIngredient.toLowerCase().replace(" ", "_"))),
                 new FungusShapelessRecipe(speciesIngredient, result),
                 null);

@@ -7,6 +7,7 @@ import com.simomett.mycologymod.creativetab.ModCreativeTabs;
 import com.simomett.mycologymod.data.FungusSpeciesLoader;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
 import com.simomett.mycologymod.entities.NeoForgeBlockEntities;
+import com.simomett.mycologymod.items.ItemsDefinitions;
 import com.simomett.mycologymod.items.ModItems;
 import com.simomett.mycologymod.items.potions.NeoForgePotions;
 import com.simomett.mycologymod.particles.ModParticles;
@@ -32,6 +33,7 @@ public class MycologyMod
         modContainer.registerConfig(ModConfig.Type.CLIENT, NeoForgeClientConfigs.SPEC);
 
         ModItems.ITEMS.register(evtBus);
+        ItemsDefinitions.init();
         ModBlocks.BLOCKS.register(evtBus);
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         //DataComponentTypes.DATA_COMPONENTS.register(evtBus);

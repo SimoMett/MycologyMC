@@ -1,12 +1,13 @@
 package com.simomett.mycologymod.blocks;
 
+import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
-@EventBusSubscriber(value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class FungusColorer extends AbstractFungusColorer
 {
     @SubscribeEvent

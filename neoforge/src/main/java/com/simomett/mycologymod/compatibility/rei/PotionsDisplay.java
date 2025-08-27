@@ -20,7 +20,7 @@ public class PotionsDisplay extends DefaultBrewingDisplay
 
     private static EntryIngredient getReactant(FungusBrewingRecipe recipe)
     {
-        return EntryIngredients.of(FungusSpeciesList.INSTANCE.get(recipe.speciesName).defaultItemStack());
+        return EntryIngredients.of(FungusSpeciesList.getInstance().get(recipe.speciesName).defaultItemStack());
     }
 
     private static EntryIngredient getInput(FungusBrewingRecipe recipe)

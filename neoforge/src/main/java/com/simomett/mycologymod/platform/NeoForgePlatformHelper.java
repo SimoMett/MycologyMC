@@ -81,9 +81,9 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public Supplier<DataComponentType<FungusGenoma>> registerDataComponentType()
+    public DataComponentType<FungusGenoma> registerDataComponentType()
     {
-        return DATA_COMPONENTS.registerComponentType(GENOMA_DATA_COMPONENT_NAME, FUNGUS_GENOMA_BUILDER);
+        return DATA_COMPONENTS.registerComponentType(GENOMA_DATA_COMPONENT_NAME, FUNGUS_GENOMA_BUILDER).get();
     }
 
     @Override

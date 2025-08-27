@@ -1,6 +1,7 @@
 package com.simomett.mycologymod;
 
 import com.simomett.mycologymod.blocks.AbstractFungusColorer;
+import com.simomett.mycologymod.blocks.FungusColorer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -10,6 +11,6 @@ public class MycologyModClient
 {
     public MycologyModClient(IEventBus evtBus)
     {
-        evtBus.register(AbstractFungusColorer.class);
+        evtBus.register(FungusColorer.class);
     }
 }
