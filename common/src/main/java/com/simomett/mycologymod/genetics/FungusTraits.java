@@ -1,6 +1,5 @@
 package com.simomett.mycologymod.genetics;
 
-import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.datagen.common.SpeciesDictionary;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.genetics.gene.*;
@@ -32,13 +31,11 @@ public class FungusTraits implements Serializable
     public static final FungusTraits UNINIT = new FungusTraits("UNINITIALIZED", 15, 0f, 0, "none", 0f, 0f, 0, FungusEffects.NO_EFFECT.getEffectName(), Optional.empty());
     public static final FungusTraits CREATIVE_TAB_ICON = new FungusTraits(SpeciesDictionary.BOLETUS_SALUBRIUM, 15, 0f, 0, "none", 0f, 0f, 0, FungusEffects.NO_EFFECT.getEffectName(), Optional.empty());
 
-    private final IModCommonConfigs commonConfigs = Services.PLATFORM.getCommonConfigs();
-
     public FungusTraits(String species, int spreading, float spreadboost, int light, String terrain, float humidity, float temp, int area, String effect, String eatingEffect)
     {
         traitsMap.put(SPECIES, new StringGene(species));
-        traitsMap.put(SPREADING, new IntGene(spreading, 1, commonConfigs.getMinSpreadingSpeed()));
-        traitsMap.put(SPREAD_BOOST, new FloatGene(spreadboost, 1f, commonConfigs.getMaxSpreadBoost()));
+        traitsMap.put(SPREADING, new IntGene(spreading, 1, Services.PLATFORM.getCommonConfigs().getMinSpreadingSpeed()));
+        traitsMap.put(SPREAD_BOOST, new FloatGene(spreadboost, 1f, Services.PLATFORM.getCommonConfigs().getMaxSpreadBoost()));
         traitsMap.put(LIGHT, new IntGene(light, 1, 15));
         traitsMap.put(TERRAIN, new StringGene(terrain));
         traitsMap.put(HUMIDITY, new FloatGene(humidity, 0f, 1f));
