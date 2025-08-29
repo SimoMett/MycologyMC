@@ -21,19 +21,19 @@ public class MycologyCreativeTab
     public static Collection<ItemStack> getItemsToDisplay()
     {
         ArrayList<ItemStack> displayItems = new ArrayList<>(FungusSpeciesList.getInstance().getAllSpeciesCollection());
-        displayItems.add(ItemsDefinitions.COOKED_CRIMSON_FUNGUS.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.COOKED_WARPED_FUNGUS.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.COOKED_POISONOUS_CRIMSON_FUNGUS.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.COOKED_POISONOUS_WARPED_FUNGUS.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.MAGNIFYING_GLASS.getDefaultInstance());
+        displayItems.add(ItemsDefinitions.COOKED_CRIMSON_FUNGUS.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.COOKED_WARPED_FUNGUS.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.COOKED_POISONOUS_CRIMSON_FUNGUS.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.COOKED_POISONOUS_WARPED_FUNGUS.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.MAGNIFYING_GLASS.get().getDefaultInstance());
         //populator.accept(ModItems.FUNGUS_ANALYSING_STATION);
-        displayItems.add(ItemsDefinitions.TEST_TUBE.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.CHROMIUM_ORE.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.CHROMITE_POWDER.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.CHROMIUM_MUTAGEN.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.CHROMIUM_INGOT.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.CHROMIUM_NUGGET.getDefaultInstance());
-        displayItems.add(ItemsDefinitions.CHROMIUM_BLOCK.getDefaultInstance());
+        displayItems.add(ItemsDefinitions.TEST_TUBE.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.CHROMIUM_ORE.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.CHROMITE_POWDER.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.CHROMIUM_MUTAGEN.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.CHROMIUM_INGOT.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.CHROMIUM_NUGGET.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.CHROMIUM_BLOCK.get().getDefaultInstance());
         //populator.accept(ModItems.FUNGUS_POT);
         return displayItems;
     }

@@ -95,7 +95,7 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
     {
         //FungusSpecies species = new FungusSpecies(FungusTraits.CREATIVE_TAB_ICON, COLORED_CRIMSON_STRING, FungusSpawn.NO_SPAWN);
         //return species.defaultItemStack();
-        return ItemsDefinitions.COOKED_CRIMSON_FUNGUS.getDefaultInstance();
+        return ItemsDefinitions.COOKED_CRIMSON_FUNGUS.get().getDefaultInstance();
     }
 
     @Override

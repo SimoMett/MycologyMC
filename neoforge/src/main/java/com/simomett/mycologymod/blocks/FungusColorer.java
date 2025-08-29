@@ -23,6 +23,6 @@ public class FungusColorer extends AbstractFungusColorer
     @SubscribeEvent
     public static void registerItemColorsEvent(RegisterColorHandlersEvent.Item evt)
     {
-        evt.register(new AbstractFungusColorer(), ItemsDefinitions.COLORED_CRIMSON_FUNGUS, ItemsDefinitions.COLORED_WARPED_FUNGUS);
+        evt.register(new AbstractFungusColorer(), ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
     }
 }

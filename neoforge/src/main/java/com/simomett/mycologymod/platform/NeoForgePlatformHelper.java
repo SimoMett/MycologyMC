@@ -51,9 +51,9 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Item> T registerItem(String name, Supplier<T> supplier)
+    public <T extends Item> Supplier<T> registerItem(String name, Supplier<T> supplier)
     {
-        return ITEMS.register(name, supplier).get();
+        return ITEMS.register(name, supplier);
     }
 
     @Override
