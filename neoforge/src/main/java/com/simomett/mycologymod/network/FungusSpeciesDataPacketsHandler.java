@@ -14,7 +14,7 @@ import static com.simomett.mycologymod.data.FungusSpeciesColorsMap.COLORS_STREAM
 import static com.simomett.mycologymod.data.FungusSpeciesList.SPECIES_STREAMS_CODEC;
 
 @EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-public class FungusSpeciesListPacketHandler
+public class FungusSpeciesDataPacketsHandler
 {
     @SubscribeEvent
     public static void register(final RegisterPayloadHandlersEvent evt)
