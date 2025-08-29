@@ -26,6 +26,7 @@ import net.neoforged.fml.loading.FMLLoader;
 
 import java.util.function.Supplier;
 
+import static com.simomett.mycologymod.blocks.ModBlocks.BLOCKS;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA_BUILDER;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.GENOMA_DATA_COMPONENT_NAME;
 import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DATA_COMPONENTS;
@@ -57,9 +58,9 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Block> T registerBlock(String name, Supplier<T> supplier)
+    public <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> supplier)
     {
-        return null;
+        return BLOCKS.register(name, supplier);
     }
 
     @Override
@@ -96,8 +97,8 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     public BlockEntityType<? extends BlockEntity> registerBlockEntityType(String name, BlockEntitySupplier<? extends BlockEntity> supplier, Block... blocks)
     {
         return ENTITIES.register(name, ()-> new BlockEntityType<>(ColoredFungusBlockEntity::new,
-                BlocksDefinitions.COLORED_CRIMSON_FUNGUS,
-                BlocksDefinitions.COLORED_WARPED_FUNGUS
+                BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
+                BlocksDefinitions.COLORED_WARPED_FUNGUS.get()
             /*BlockNames.FUNGUS_POT.get(),
             BlockNames.POTTED_COLORED_CRIMSON.get(),
             BlockNames.POTTED_COLORED_WARPED.get()*/)

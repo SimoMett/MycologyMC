@@ -14,8 +14,8 @@ public class FungusColorer extends AbstractFungusColorer
     public static void registerBlockColorsEvent(RegisterColorHandlersEvent.Block evt)
     {
         evt.register(new AbstractFungusColorer(),
-                BlocksDefinitions.COLORED_CRIMSON_FUNGUS,
-                BlocksDefinitions.COLORED_WARPED_FUNGUS
+                BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
+                BlocksDefinitions.COLORED_WARPED_FUNGUS.get()
                 /*BlockNames.POTTED_COLORED_CRIMSON.get(),
                 BlockNames.POTTED_COLORED_WARPED.get()*/);
     }

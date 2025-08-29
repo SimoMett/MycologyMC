@@ -57,10 +57,11 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Block> T registerBlock(String name, Supplier<T> supplier)
+    public <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> supplier)
     {
         ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
-        return Registry.register(BuiltInRegistries.BLOCK, key, supplier.get());
+        Registry.register(BuiltInRegistries.BLOCK, key, supplier.get());
+        return supplier;
     }
 
     @Override

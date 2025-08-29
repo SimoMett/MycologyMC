@@ -22,12 +22,12 @@ import static com.simomett.mycologymod.items.ColoredFungusBlockItem.EFFECTS_WHEN
 public class ItemsDefinitions
 {
     public static final Supplier<ColoredFungusBlockItem> COLORED_CRIMSON_FUNGUS = Services.PLATFORM.registerItem(COLORED_CRIMSON_STRING, () ->
-            new ColoredFungusBlockItem(BlocksDefinitions.COLORED_CRIMSON_FUNGUS,
+            new ColoredFungusBlockItem(BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
                     ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_CRIMSON_STRING))
     );
 
     public static final Supplier<ColoredFungusBlockItem> COLORED_WARPED_FUNGUS = Services.PLATFORM.registerItem(COLORED_WARPED_STRING, () ->
-            new ColoredFungusBlockItem(BlocksDefinitions.COLORED_WARPED_FUNGUS,
+            new ColoredFungusBlockItem(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(),
                     ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_WARPED_STRING))
     );
 
@@ -62,7 +62,7 @@ public class ItemsDefinitions
     public static final Supplier<Item> TEST_TUBE = Services.PLATFORM.registerItem("test_tube", () ->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "test_tube")))));
     public static final Supplier<BlockItem> CHROMIUM_ORE = Services.PLATFORM.registerItem("chromium_ore", () ->
-            new BlockItem(BlocksDefinitions.CHROMIUM_ORE, new Item.Properties()
+            new BlockItem(BlocksDefinitions.CHROMIUM_ORE.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ore"))))
     );
     public static final Supplier<Item> CHROMITE_POWDER = Services.PLATFORM.registerItem("chromite_powder", ()->
@@ -72,7 +72,7 @@ public class ItemsDefinitions
     public static final Supplier<Item> CHROMIUM_NUGGET = Services.PLATFORM.registerItem("chromium_nugget", ()->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_nugget")))));
     public static final Supplier<BlockItem> CHROMIUM_BLOCK = Services.PLATFORM.registerItem("chromium_block", () ->
-            new BlockItem(BlocksDefinitions.CHROMIUM_BLOCK, new Item.Properties()
+            new BlockItem(BlocksDefinitions.CHROMIUM_BLOCK.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block"))))
     );
 

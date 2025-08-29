@@ -1,5 +1,6 @@
 package com.simomett.mycologymod;
 
+import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.blocks.ModBlocks;
 import com.simomett.mycologymod.config.NeoForgeClientConfigs;
 import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
@@ -35,7 +36,9 @@ public class MycologyMod
         ItemsDefinitions.init();
         ModItems.ITEMS.register(evtBus);
 
+        BlocksDefinitions.init();
         ModBlocks.BLOCKS.register(evtBus);
+        
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         //DataComponentTypes.DATA_COMPONENTS.register(evtBus);
         NeoForgeBlockEntities.ENTITIES.register(evtBus);
