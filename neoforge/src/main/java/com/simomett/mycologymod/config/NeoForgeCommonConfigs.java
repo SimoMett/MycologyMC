@@ -7,21 +7,23 @@ import static com.simomett.mycologymod.datagen.common.SpeciesBuilder.DEFAULT_SPR
 
 public final class NeoForgeCommonConfigs implements IModCommonConfigs
 {
-    public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
-    public static final ModConfigSpec SPEC;
+    public static final NeoForgeCommonConfigs INSTANCE = new NeoForgeCommonConfigs();
 
-    private static final ModConfigSpec.ConfigValue<Integer> MAX_MUSHROOMS_IN_AREA;
-    private static final ModConfigSpec.ConfigValue<Float> BREEDING_CHANCE;
+    public final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    public final ModConfigSpec SPEC;
+
+    private final ModConfigSpec.ConfigValue<Integer> MAX_MUSHROOMS_IN_AREA;
+    private final ModConfigSpec.ConfigValue<Float> BREEDING_CHANCE;
     private static final float DEFAULT_MUTATION_CHANCE = .6f;
-    private static final ModConfigSpec.ConfigValue<Float> DEFAULT_MUTATION_CHANCE_CONFIG;
-    private static final ModConfigSpec.DoubleValue MUTAGEN_EFFECTIVENESS;
-    private static final ModConfigSpec.IntValue MIN_SPREADING_SPEED;
-    private static final ModConfigSpec.ConfigValue<Float> MAX_SPREAD_BOOST;
-    private static final ModConfigSpec.ConfigValue<Integer> RADIUS_MULTIPLIER;
-    private static final ModConfigSpec.ConfigValue<Integer> EFFECT_BLAZING_HIT_ENTITY_CHANCE;
-    private static final ModConfigSpec.ConfigValue<Integer> EFFECT_LIGHTNING_HIT_CREEPER_CHANCE;
+    private final ModConfigSpec.ConfigValue<Float> DEFAULT_MUTATION_CHANCE_CONFIG;
+    private final ModConfigSpec.DoubleValue MUTAGEN_EFFECTIVENESS;
+    private final ModConfigSpec.IntValue MIN_SPREADING_SPEED;
+    private final ModConfigSpec.ConfigValue<Float> MAX_SPREAD_BOOST;
+    private final ModConfigSpec.ConfigValue<Integer> RADIUS_MULTIPLIER;
+    private final ModConfigSpec.ConfigValue<Integer> EFFECT_BLAZING_HIT_ENTITY_CHANCE;
+    private final ModConfigSpec.ConfigValue<Integer> EFFECT_LIGHTNING_HIT_CREEPER_CHANCE;
 
-    static
+    private NeoForgeCommonConfigs()
     {
         MAX_MUSHROOMS_IN_AREA = BUILDER.define("Max spread count of mushrooms", 4); // I don't want mushrooms spamming all over the biomes
         BREEDING_CHANCE = BUILDER.define("Cross-breeding chance", .6f);

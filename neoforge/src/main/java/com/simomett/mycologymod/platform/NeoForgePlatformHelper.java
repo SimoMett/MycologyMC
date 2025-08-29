@@ -2,6 +2,7 @@ package com.simomett.mycologymod.platform;
 
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.config.IModCommonConfigs;
+import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMapDatapackSync;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
@@ -78,7 +79,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     @Override
     public IModCommonConfigs getCommonConfigs()
     {
-        return null;
+        return NeoForgeCommonConfigs.INSTANCE;
     }
 
     @Override

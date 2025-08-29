@@ -30,7 +30,7 @@ public class MycologyMod
 {
     public MycologyMod(IEventBus evtBus, ModContainer modContainer)
     {
-        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeCommonConfigs.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeCommonConfigs.INSTANCE.SPEC);
         modContainer.registerConfig(ModConfig.Type.CLIENT, NeoForgeClientConfigs.SPEC);
 
         ItemsDefinitions.init();
@@ -38,7 +38,7 @@ public class MycologyMod
 
         BlocksDefinitions.init();
         ModBlocks.BLOCKS.register(evtBus);
-        
+
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         //DataComponentTypes.DATA_COMPONENTS.register(evtBus);
         NeoForgeBlockEntities.ENTITIES.register(evtBus);
