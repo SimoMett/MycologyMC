@@ -4,12 +4,14 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class NeoForgeClientConfigs implements IModClientConfigs
 {
-    public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
-    public static final ModConfigSpec SPEC;
+    public static final NeoForgeClientConfigs INSTANCE = new NeoForgeClientConfigs();
 
-    public static final ModConfigSpec.ConfigValue<Integer> SPORE_PARTICLES_FREQ;
+    public final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    public final ModConfigSpec SPEC;
 
-    static
+    public final ModConfigSpec.ConfigValue<Integer> SPORE_PARTICLES_FREQ;
+
+    private NeoForgeClientConfigs()
     {
         SPORE_PARTICLES_FREQ = BUILDER.define("Spore particles spawn frequency", 1);
         SPEC = BUILDER.build();
