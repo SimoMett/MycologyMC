@@ -33,7 +33,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
 
     public ColoredFungusBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        super(COLORED_FUNGUS_BLOCK_ENTITY, blockPos, blockState);
+        super(COLORED_FUNGUS_BLOCK_ENTITY.type(), blockPos, blockState);
     }
 
     /*@Override

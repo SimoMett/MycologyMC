@@ -13,77 +13,80 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 
-import java.util.function.Supplier;
-
 import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_CRIMSON_STRING;
 import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_WARPED_STRING;
 import static com.simomett.mycologymod.items.ColoredFungusBlockItem.EFFECTS_WHEN_EATEN_RAW;
 
 public class ItemsDefinitions
 {
-    public static final Supplier<ColoredFungusBlockItem> COLORED_CRIMSON_FUNGUS = Services.PLATFORM.registerItem(COLORED_CRIMSON_STRING, () ->
+    public static final IRegisteredItem<ColoredFungusBlockItem> COLORED_CRIMSON_FUNGUS = Services.PLATFORM.registerItem(COLORED_CRIMSON_STRING, (p) ->
             new ColoredFungusBlockItem(BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
                     ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_CRIMSON_STRING))
     );
 
-    public static final Supplier<ColoredFungusBlockItem> COLORED_WARPED_FUNGUS = Services.PLATFORM.registerItem(COLORED_WARPED_STRING, () ->
+    public static final IRegisteredItem<ColoredFungusBlockItem> COLORED_WARPED_FUNGUS = Services.PLATFORM.registerItem(COLORED_WARPED_STRING, (p) ->
             new ColoredFungusBlockItem(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(),
                     ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_WARPED_STRING))
     );
 
-    public static final Supplier<Item> CHROMIUM_MUTAGEN = Services.PLATFORM.registerItem("chromium_mutagen", () ->
+    public static final IRegisteredItem<Item> CHROMIUM_MUTAGEN = Services.PLATFORM.registerItem("chromium_mutagen", (p) ->
             new MutagenItem(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_mutagen"))))); // Ammonium dichromate
 
-    public static final Supplier<MagnifyingGlassItem> MAGNIFYING_GLASS = Services.PLATFORM.registerItem("magnifying_glass", () ->
+    public static final IRegisteredItem<MagnifyingGlassItem> MAGNIFYING_GLASS = Services.PLATFORM.registerItem("magnifying_glass", (p) ->
             new MagnifyingGlassItem(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "magnifying_glass")));
 
     // Simple items
-    public static final Supplier<Item> COOKED_CRIMSON_FUNGUS = Services.PLATFORM.registerItem("cooked_crimson_fungus", () ->
+    public static final IRegisteredItem<Item> COOKED_CRIMSON_FUNGUS = Services.PLATFORM.registerItem("cooked_crimson_fungus", (p) ->
             new Item(new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_crimson_fungus")))
                     .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build())));
 
-    public static final Supplier<Item> COOKED_WARPED_FUNGUS = Services.PLATFORM.registerItem("cooked_warped_fungus", () ->
+    public static final IRegisteredItem<Item> COOKED_WARPED_FUNGUS = Services.PLATFORM.registerItem("cooked_warped_fungus", (p) ->
             new Item(new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_warped_fungus")))
                     .food(new FoodProperties.Builder().alwaysEdible().nutrition(2).build()))
     );
 
-    public static final Supplier<Item> COOKED_POISONOUS_CRIMSON_FUNGUS = Services.PLATFORM.registerItem("cooked_poisonous_crimson_fungus", () ->
+    public static final IRegisteredItem<Item> COOKED_POISONOUS_CRIMSON_FUNGUS = Services.PLATFORM.registerItem("cooked_poisonous_crimson_fungus", (p) ->
             new Item(new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_poisonous_crimson_fungus")))
                     .food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()))
     );
-    public static final Supplier<Item> COOKED_POISONOUS_WARPED_FUNGUS = Services.PLATFORM.registerItem("cooked_poisonous_warped_fungus", () ->
+    public static final IRegisteredItem<Item> COOKED_POISONOUS_WARPED_FUNGUS = Services.PLATFORM.registerItem("cooked_poisonous_warped_fungus", (p) ->
             new Item(new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_poisonous_warped_fungus")))
                     .food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()))
     );
-    public static final Supplier<Item> TEST_TUBE = Services.PLATFORM.registerItem("test_tube", () ->
+    public static final IRegisteredItem<Item> TEST_TUBE = Services.PLATFORM.registerItem("test_tube", (p) ->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "test_tube")))));
-    public static final Supplier<BlockItem> CHROMIUM_ORE = Services.PLATFORM.registerItem("chromium_ore", () ->
+    public static final IRegisteredItem<BlockItem> CHROMIUM_ORE = Services.PLATFORM.registerItem("chromium_ore", (p) ->
             new BlockItem(BlocksDefinitions.CHROMIUM_ORE.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ore"))))
     );
-    public static final Supplier<Item> CHROMITE_POWDER = Services.PLATFORM.registerItem("chromite_powder", ()->
+    public static final IRegisteredItem<Item> CHROMITE_POWDER = Services.PLATFORM.registerItem("chromite_powder", (p)->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromite_powder")))));
-    public static final Supplier<Item> CHROMIUM_INGOT = Services.PLATFORM.registerItem("chromium_ingot", ()->
+    public static final IRegisteredItem<Item> CHROMIUM_INGOT = Services.PLATFORM.registerItem("chromium_ingot", (p)->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ingot")))));
-    public static final Supplier<Item> CHROMIUM_NUGGET = Services.PLATFORM.registerItem("chromium_nugget", ()->
+    public static final IRegisteredItem<Item> CHROMIUM_NUGGET = Services.PLATFORM.registerItem("chromium_nugget", (p)->
             new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_nugget")))));
-    public static final Supplier<BlockItem> CHROMIUM_BLOCK = Services.PLATFORM.registerItem("chromium_block", () ->
+    public static final IRegisteredItem<BlockItem> CHROMIUM_BLOCK = Services.PLATFORM.registerItem("chromium_block", (p) ->
             new BlockItem(BlocksDefinitions.CHROMIUM_BLOCK.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block"))))
     );
 
     // Debug item
-    public static final Supplier<Item> SPEEDYZER = Services.PLATFORM.registerItem("speedyzer", ()->
+    public static final IRegisteredItem<Item> SPEEDYZER = Services.PLATFORM.registerItem("speedyzer", (p)->
             new SpeedyzerItem(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "speedyzer")))));
 
     public static boolean isFungus(ItemStack itemStack)
     {
         return itemStack.is(COLORED_WARPED_FUNGUS.get()) || itemStack.is(COLORED_CRIMSON_FUNGUS.get());
     }
+
+    //public static final DeferredItem<BlockItem> FUNGUS_ANALYSING_STATION = ITEMS.registerSimpleBlockItem("fungus_analysing_station", ModBlocks.FUNGUS_ANALYSING_STATION);
+    /*public static final DeferredItem<BlockItem> FUNGUS_POT = ITEMS.registerSimpleBlockItem(ModBlocks.FUNGUS_POT);
+    public static final DeferredItem<BlockItem> POTTED_COLORED_CRIMSON = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_CRIMSON);
+    public static final DeferredItem<BlockItem> POTTED_COLORED_WARPED = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_WARPED);*/
 
     public static void init(){}
 }

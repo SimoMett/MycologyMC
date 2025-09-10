@@ -1,7 +1,11 @@
 package com.simomett.mycologymod.platform.services;
 
+import com.simomett.mycologymod.blocks.IRegisteredBlock;
 import com.simomett.mycologymod.config.IModCommonConfigs;
+import com.simomett.mycologymod.entities.IBlockEntityConstructor;
+import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
 import com.simomett.mycologymod.genetics.FungusGenoma;
+import com.simomett.mycologymod.items.IRegisteredItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
@@ -15,8 +19,10 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public interface IPlatformHelper {
@@ -53,8 +59,8 @@ public interface IPlatformHelper {
     }
 
     // Mod specific stuff
-    <T extends Item> Supplier<T> registerItem(String name, Supplier<T> supplier);
-    <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> supplier);
+    <T extends Item> IRegisteredItem<T> registerItem(String name, Function<Item.Properties, Item> factory);
+    <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, Block> factory);
     Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier);
     Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier);
 
@@ -64,10 +70,8 @@ public interface IPlatformHelper {
 
     <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier);
 
-    interface BlockEntitySupplier<T extends BlockEntity> {
-        T create(BlockPos blockPos, BlockState blockState);
-    }
-    BlockEntityType<? extends BlockEntity> registerBlockEntityType(String name, BlockEntitySupplier<? extends BlockEntity> supplier, Block... blocks);
+    //<T extends BlockEntity> BlockEntityType<T> registerBlockEntityType(String name, Supplier<T> supplier, Block... blocks);
+    <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, Block... blocks);
 
     interface MenuSupplier<T extends AbstractContainerMenu> {
         T create(int var1, Inventory var2);

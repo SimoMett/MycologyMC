@@ -1,15 +1,23 @@
 package com.simomett.mycologymod.platform;
 
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
+import com.simomett.mycologymod.blocks.IRegisteredBlock;
+import com.simomett.mycologymod.blocks.NeoForgeRegisteredBlock;
 import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMapDatapackSync;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
+import com.simomett.mycologymod.entities.IBlockEntityConstructor;
+import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
+import com.simomett.mycologymod.entities.NeoForgeRegisteredBlockEntityType;
 import com.simomett.mycologymod.genetics.FungusGenoma;
+import com.simomett.mycologymod.items.IRegisteredItem;
+import com.simomett.mycologymod.items.NeoForgeRegisteredItem;
 import com.simomett.mycologymod.items.potions.NeoForgePotions;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.effect.MobEffect;
@@ -22,9 +30,13 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.simomett.mycologymod.blocks.ModBlocks.BLOCKS;
@@ -53,15 +65,15 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Item> Supplier<T> registerItem(String name, Supplier<T> supplier)
+    public <T extends Item> IRegisteredItem<T> registerItem(String name, Function<Item.Properties, Item> factory)
     {
-        return ITEMS.register(name, supplier);
+        return new NeoForgeRegisteredItem(ITEMS.registerItem(name, factory));
     }
 
     @Override
-    public <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> supplier)
+    public <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, Block> factory)
     {
-        return BLOCKS.register(name, supplier);
+        return new NeoForgeRegisteredBlock<>(BLOCKS.registerBlock(name, factory));
     }
 
     @Override
@@ -95,15 +107,14 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public BlockEntityType<? extends BlockEntity> registerBlockEntityType(String name, BlockEntitySupplier<? extends BlockEntity> supplier, Block... blocks)
+    public <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, Block... blocks)
     {
-        return ENTITIES.register(name, ()-> new BlockEntityType<>(ColoredFungusBlockEntity::new,
-                BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
-                BlocksDefinitions.COLORED_WARPED_FUNGUS.get()
-            /*BlockNames.FUNGUS_POT.get(),
-            BlockNames.POTTED_COLORED_CRIMSON.get(),
-            BlockNames.POTTED_COLORED_WARPED.get()*/)
-        ).get();
+        DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> tt =
+            ENTITIES.register(name, (resLoc)-> new BlockEntityType<>(
+                    factory::apply,
+                    blocks
+            ));
+        return new NeoForgeRegisteredBlockEntityType<>(tt);
     }
 
     @Override

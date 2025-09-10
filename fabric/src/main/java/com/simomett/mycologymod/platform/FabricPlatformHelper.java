@@ -1,12 +1,20 @@
 package com.simomett.mycologymod.platform;
 
 import com.simomett.mycologymod.Constants;
+import com.simomett.mycologymod.blocks.FabricRegisteredBlock;
+import com.simomett.mycologymod.blocks.IRegisteredBlock;
 import com.simomett.mycologymod.config.FabricCommonConfigs;
 import com.simomett.mycologymod.config.IModCommonConfigs;
+import com.simomett.mycologymod.entities.FabricRegisteredBlockEntityType;
+import com.simomett.mycologymod.entities.IBlockEntityConstructor;
+import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
 import com.simomett.mycologymod.genetics.FungusGenoma;
+import com.simomett.mycologymod.items.IRegisteredItem;
+import com.simomett.mycologymod.items.FabricRegisteredItem;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
@@ -19,12 +27,17 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.simomett.mycologymod.Constants.MOD_ID;
@@ -49,19 +62,20 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Item> Supplier<T> registerItem(String name, Supplier<T> supplier)
+    public <T extends Item> IRegisteredItem<T> registerItem(String name, Function<Item.Properties, Item> factory)
     {
         ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
-        Registry.register(BuiltInRegistries.ITEM, key, supplier.get());
-        return supplier;
+
+        return new FabricRegisteredItem(Items.registerItem(key, factory));
     }
 
     @Override
-    public <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> supplier)
+    public <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, Block> factory)
     {
         ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
-        Registry.register(BuiltInRegistries.BLOCK, key, supplier.get());
-        return supplier;
+        return new FabricRegisteredBlock<>(Blocks.register(key,
+                factory,
+                BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES)));
     }
 
     @Override
@@ -99,11 +113,13 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public BlockEntityType<? extends BlockEntity> registerBlockEntityType(String name, BlockEntitySupplier<? extends BlockEntity> supplier, Block... blocks)
+    public <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, Block... blocks)
     {
-        return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
-                FabricBlockEntityTypeBuilder.create(supplier::create, blocks).build()
-        );
+        BlockEntityType<T> blockEntityType = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE,
+                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
+                FabricBlockEntityTypeBuilder.create(factory::apply, blocks).build());
+
+        return new FabricRegisteredBlockEntityType<>(blockEntityType);
     }
 
     @Override

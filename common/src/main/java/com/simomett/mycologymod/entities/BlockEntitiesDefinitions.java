@@ -2,13 +2,10 @@ package com.simomett.mycologymod.entities;
 
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.platform.Services;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class BlockEntitiesDefinitions
 {
-    public static final BlockEntityType<? extends BlockEntity> COLORED_FUNGUS_BLOCK_ENTITY = Services.PLATFORM.registerBlockEntityType(
-            "colored_fungus",
+    public static final IRegisteredBlockEntityType<ColoredFungusBlockEntity> COLORED_FUNGUS_BLOCK_ENTITY = Services.PLATFORM.registerBlockEntityType("colored_fungus",
             ColoredFungusBlockEntity::new,
             BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
             BlocksDefinitions.COLORED_WARPED_FUNGUS.get()

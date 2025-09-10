@@ -17,13 +17,12 @@ public class BlocksDefinitions
     public static final String COLORED_CRIMSON_STRING = "colored_crimson_fungus";
     public static final String COLORED_WARPED_STRING = "colored_warped_fungus";
 
-    public static final Supplier<ColoredFungusBlock> COLORED_CRIMSON_FUNGUS = Services.PLATFORM.registerBlock(COLORED_CRIMSON_STRING, () ->
-            new ColoredFungusBlock(BlockBehaviour.Properties
-                    .ofFullCopy(Blocks.BROWN_MUSHROOM)
+    public static final IRegisteredBlock<ColoredFungusBlock> COLORED_CRIMSON_FUNGUS = Services.PLATFORM.registerBlock(COLORED_CRIMSON_STRING, (p) ->
+            new ColoredFungusBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_MUSHROOM)
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_CRIMSON_STRING))))
     );
 
-    public static final Supplier<ColoredFungusBlock> COLORED_WARPED_FUNGUS = Services.PLATFORM.registerBlock(COLORED_WARPED_STRING, () ->
+    public static final IRegisteredBlock<ColoredFungusBlock> COLORED_WARPED_FUNGUS = Services.PLATFORM.registerBlock(COLORED_WARPED_STRING, (p) ->
             new ColoredFungusBlock(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.BROWN_MUSHROOM)
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_WARPED_STRING))))
@@ -53,13 +52,13 @@ public class BlocksDefinitions
                 return b;
             });
 */
-    public static final Supplier<Block> CHROMIUM_ORE = Services.PLATFORM.registerBlock("chromium_ore", () ->
+    public static final IRegisteredBlock<Block> CHROMIUM_ORE = Services.PLATFORM.registerBlock("chromium_ore", (p) ->
             new Block(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE)
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ore")))
                     .requiresCorrectToolForDrops())
     );
-    public static final Supplier<Block> CHROMIUM_BLOCK = Services.PLATFORM.registerBlock("chromium_block", () ->
+    public static final IRegisteredBlock<Block> CHROMIUM_BLOCK = Services.PLATFORM.registerBlock("chromium_block", (p) ->
             new Block(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE)
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block")))
