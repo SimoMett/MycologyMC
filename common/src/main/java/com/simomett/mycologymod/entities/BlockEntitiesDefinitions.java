@@ -13,4 +13,6 @@ public class BlockEntitiesDefinitions
             BlockNames.POTTED_COLORED_CRIMSON.get(),
             BlockNames.POTTED_COLORED_WARPED.get()*/
     );
+
+    public static void init(){}
 }

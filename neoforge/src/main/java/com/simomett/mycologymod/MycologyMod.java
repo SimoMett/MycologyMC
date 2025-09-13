@@ -1,12 +1,12 @@
 package com.simomett.mycologymod;
 
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
-import com.simomett.mycologymod.blocks.ModBlocks;
 import com.simomett.mycologymod.config.NeoForgeClientConfigs;
 import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
 import com.simomett.mycologymod.creativetab.ModCreativeTabs;
 import com.simomett.mycologymod.data.FungusSpeciesLoader;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
+import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
 import com.simomett.mycologymod.entities.NeoForgeBlockEntities;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import com.simomett.mycologymod.items.ModItems;
@@ -24,6 +24,8 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 
+import static com.simomett.mycologymod.blocks.NeoForgeRegisteredBlock.BLOCKS;
+
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Constants.MOD_ID)
 public class MycologyMod
@@ -37,10 +39,12 @@ public class MycologyMod
         ModItems.ITEMS.register(evtBus);
 
         BlocksDefinitions.init();
-        ModBlocks.BLOCKS.register(evtBus);
+        BLOCKS.register(evtBus);
 
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
         //DataComponentTypes.DATA_COMPONENTS.register(evtBus);
+
+        BlockEntitiesDefinitions.init();
         NeoForgeBlockEntities.ENTITIES.register(evtBus);
         //DataComponentTypes.ATTACHMENT_TYPES.register(evtBus);
         ModParticles.PARTICLES.register(evtBus);

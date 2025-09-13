@@ -39,7 +39,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static com.simomett.mycologymod.blocks.ModBlocks.BLOCKS;
+import static com.simomett.mycologymod.blocks.NeoForgeRegisteredBlock.BLOCKS;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA_BUILDER;
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.GENOMA_DATA_COMPONENT_NAME;
 import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DATA_COMPONENTS;
