@@ -1,5 +1,6 @@
 package com.simomett.mycologymod;
 
+import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.creativetab.ModItemGroup;
 import com.simomett.mycologymod.data.FabricFungusSpeciesLoader;
 import com.simomett.mycologymod.data.FungusSpeciesSync;
@@ -24,8 +25,9 @@ public class MycologyMod implements ModInitializer {
         CommonClass.init();
         DataComponentTypes.init();
         FungusSpeciesSync.registerPayloads();
-        ItemsDefinitions.init();
         ModItemGroup.initialize();
+        BlocksDefinitions.init();
+        ItemsDefinitions.init();
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new FabricFungusSpeciesLoader());
     }
 }

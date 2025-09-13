@@ -13,6 +13,6 @@ public class FabricRegisteredBlock<T extends Block> implements IRegisteredBlock<
     @Override
     public Block get()
     {
-        return null;
+        return block;
     }
 }
