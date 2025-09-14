@@ -57,11 +57,6 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public boolean isDevelopmentEnvironment() {
-        return FabricLoader.getInstance().isDevelopmentEnvironment();
-    }
-
-    @Override
     public <T extends Item> IRegisteredItem<T> registerItem(String name, Function<Item.Properties, Item> factory)
     {
         ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
