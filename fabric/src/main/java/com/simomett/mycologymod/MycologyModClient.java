@@ -6,7 +6,9 @@ import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.client.renderer.RenderType;
 
 @Environment(EnvType.CLIENT)
 public class MycologyModClient implements ClientModInitializer
@@ -23,6 +25,9 @@ public class MycologyModClient implements ClientModInitializer
     @Override
     public void onInitializeClient()
     {
+        BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(), RenderType.cutout());
+
         ColorProviderRegistry.BLOCK.register(fungusColorer,
                 BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
                 BlocksDefinitions.COLORED_WARPED_FUNGUS.get());
