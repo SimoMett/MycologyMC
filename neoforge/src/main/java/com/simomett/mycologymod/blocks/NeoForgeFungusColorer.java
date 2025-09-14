@@ -8,12 +8,12 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
 @EventBusSubscriber(modid = Constants.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
-public class FungusColorer extends AbstractFungusColorer
+public class NeoForgeFungusColorer extends FungusColorer
 {
     @SubscribeEvent
     public static void registerBlockColorsEvent(RegisterColorHandlersEvent.Block evt)
     {
-        evt.register(new AbstractFungusColorer(),
+        evt.register(new FungusColorer(),
                 BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
                 BlocksDefinitions.COLORED_WARPED_FUNGUS.get()
                 /*BlockNames.POTTED_COLORED_CRIMSON.get(),
@@ -23,6 +23,6 @@ public class FungusColorer extends AbstractFungusColorer
     @SubscribeEvent
     public static void registerItemColorsEvent(RegisterColorHandlersEvent.Item evt)
     {
-        evt.register(new AbstractFungusColorer(), ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
+        evt.register(new FungusColorer(), ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
     }
 }

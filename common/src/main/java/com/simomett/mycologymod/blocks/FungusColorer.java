@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 
-public class AbstractFungusColorer implements BlockColor, ItemColor
+public class FungusColorer implements BlockColor, ItemColor
 {
     //overlay indexes
     public static final int OVERLAY_STELUM = 0;

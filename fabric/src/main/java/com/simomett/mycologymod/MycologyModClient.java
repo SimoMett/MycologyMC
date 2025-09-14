@@ -1,5 +1,8 @@
 package com.simomett.mycologymod;
 
+import com.simomett.mycologymod.blocks.BlocksDefinitions;
+import com.simomett.mycologymod.blocks.FungusColorer;
+import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,9 +18,17 @@ public class MycologyModClient implements ClientModInitializer
     public static final int OVERLAY_DETAILS2 = 3;
     //
 
+    public static final FungusColorer fungusColorer = new FungusColorer();
+
     @Override
     public void onInitializeClient()
     {
-        //ColorProviderRegistry.BLOCK.register()
+        ColorProviderRegistry.BLOCK.register(fungusColorer,
+                BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
+                BlocksDefinitions.COLORED_WARPED_FUNGUS.get());
+
+        ColorProviderRegistry.ITEM.register(fungusColorer,
+                ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(),
+                ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
     }
 }

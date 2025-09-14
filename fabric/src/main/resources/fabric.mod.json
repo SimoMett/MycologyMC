@@ -18,7 +18,9 @@
     "main": [
       "com.simomett.mycologymod.MycologyMod"
     ],
-    "client": [],
+    "client": [
+      "com.simomett.mycologymod.MycologyModClient"
+    ],
     "fabric-datagen": [
       "com.simomett.mycologymod.client.datagen.DataGenerator"
     ]
