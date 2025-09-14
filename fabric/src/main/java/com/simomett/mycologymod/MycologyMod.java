@@ -5,6 +5,7 @@ import com.simomett.mycologymod.creativetab.ModItemGroup;
 import com.simomett.mycologymod.data.FabricFungusSpeciesLoader;
 import com.simomett.mycologymod.data.FungusSpeciesSync;
 import com.simomett.mycologymod.datacomponents.DataComponentTypes;
+import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -28,6 +29,7 @@ public class MycologyMod implements ModInitializer {
         ModItemGroup.initialize();
         BlocksDefinitions.init();
         ItemsDefinitions.init();
+        BlockEntitiesDefinitions.init();
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new FabricFungusSpeciesLoader());
     }
 }
