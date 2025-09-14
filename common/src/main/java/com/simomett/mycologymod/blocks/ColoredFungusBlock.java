@@ -1,12 +1,12 @@
 package com.simomett.mycologymod.blocks;
 
 import com.mojang.serialization.MapCodec;
-/*import com.simomett.mycologymod.config.ModCommonConfigs;
-import com.simomett.mycologymod.data.FungusSpeciesList;
+/*import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.particles.ModParticles;*/
+import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -43,7 +43,7 @@ import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;*/
 import static com.simomett.mycologymod.tags.ModBlockTags.CAN_PLANT_ON;
 
 
-public class ColoredFungusBlock extends BushBlock //implements EntityBlock
+public class ColoredFungusBlock extends BushBlock implements EntityBlock
 {
     protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
     public static final BooleanProperty MUTAGEN_APPLIED = BlockStateProperties.LIT;
@@ -83,12 +83,11 @@ public class ColoredFungusBlock extends BushBlock //implements EntityBlock
         return true;
     }
 
-    /*@Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
-    }*/
+        return BlockEntitiesDefinitions.COLORED_FUNGUS_BLOCK_ENTITY.type().create(blockPos, blockState);
+    }
 
     /*@Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params)
