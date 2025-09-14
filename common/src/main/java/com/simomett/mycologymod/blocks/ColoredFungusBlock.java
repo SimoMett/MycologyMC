@@ -3,10 +3,10 @@ package com.simomett.mycologymod.blocks;
 import com.mojang.serialization.MapCodec;
 /*import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.effects.FungusEffects;
-import com.simomett.mycologymod.genetics.FungusGenoma;
-import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.particles.ModParticles;*/
 import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
+import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
+import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -38,8 +38,7 @@ import java.util.List;
 import java.util.Random;
 
 /*import static com.simomett.mycologymod.config.ModClientConfigs.SPORE_PARTICLES_FREQ;
-import static com.simomett.mycologymod.config.ModCommonConfigs.*;
-import static com.simomett.mycologymod.entities.ModEntities.COLORED_FUNGUS;*/
+import static com.simomett.mycologymod.config.ModCommonConfigs.*;*/
 import static com.simomett.mycologymod.tags.ModBlockTags.CAN_PLANT_ON;
 
 
@@ -96,13 +95,13 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         ItemStack itemStack = new ItemStack(this);
         coloredFungusBlockEntity.getFungusGenoma().storeIntoItemStack(itemStack);
         return Collections.singletonList(itemStack);
-    }
+    }*/
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader world, BlockPos pos, Player player)
+    public ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state)
     {
-        ItemStack stack = super.getCloneItemStack(state, target, world, pos, player);
-        FungusGenoma fungusData = world.getBlockEntity(pos, ModEntities.COLORED_FUNGUS.get()).orElseThrow().getFungusGenoma();
+        ItemStack stack = super.getCloneItemStack(world, pos, state);
+        FungusGenoma fungusData = world.getBlockEntity(pos, BlockEntitiesDefinitions.COLORED_FUNGUS_BLOCK_ENTITY.type()).orElseThrow().getFungusGenoma();
         fungusData.storeIntoItemStack(stack);
         return stack;
     }
@@ -119,7 +118,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         };
     }
 
-    @OnlyIn(Dist.CLIENT)
+    /*@OnlyIn(Dist.CLIENT)
     private static void addSporeParticle(int radius, BlockState blockState, BlockPos blockPos, Level level, RandomSource randomSource)
     {
         Random random = new Random();
