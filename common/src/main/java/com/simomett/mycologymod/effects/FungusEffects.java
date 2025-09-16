@@ -31,6 +31,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import static com.simomett.mycologymod.effects.player.EffectsDefinitions.ILLUCINATIONS;
+
 public class FungusEffects
 {
     private static final HashMap<String, FungusEffect> effectsHashMap = new HashMap<>();
@@ -42,7 +44,7 @@ public class FungusEffects
     public static final SingleEffect HEALING_EFFECT = new SingleEffect("regeneration", MobEffects.REGENERATION);
     public static final SingleEffect STRENGTH_EFFECT = new SingleEffect("strengthening", MobEffects.DAMAGE_BOOST);
     public static final SingleEffect ANESTHETIC_EFFECT = new SingleEffect("anesthetic");
-    public static final SingleEffect ILLUCINATING_EFFECT = new SingleEffect("illucinating", Holder.direct(EffectsDefinitions.ILLUCINATIONS.get()));
+    public static final SingleEffect ILLUCINATING_EFFECT = new SingleEffect("illucinating", ILLUCINATIONS.holder());
     public static final SingleEffect HALLUCINATING_EFFECT = new SingleEffect("hallucinating");
     public static final SingleEffect RADIOACTIVE_EFFECT = new SingleEffect("radioactive");
     public static final SingleEffect BLINDING_EFFECT = new SingleEffect("blinding", MobEffects.BLINDNESS);
@@ -57,8 +59,8 @@ public class FungusEffects
     public static final SingleEffect TELEPORTING_EFFECT = new SingleEffect("teleporting");
     public static final SingleEffect LIGHTFUL_EFFECT = new SingleEffect("lightful", MobEffects.SLOW_FALLING);
     public static final SingleEffect GOODCHANCE_EFFECT = new SingleEffect("goodchance", MobEffects.LUCK);
-    public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", Holder.direct(EffectsDefinitions.GAIN_XP.get()));
-    public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", Holder.direct(EffectsDefinitions.KNOWLEDGE.get()));
+    public static final SingleEffect LEARNING_EFFECT = new SingleEffect("learning", EffectsDefinitions.GAIN_XP.holder());
+    public static final SingleEffect KNOWLEDGE_EFFECT = new SingleEffect("knowledge", EffectsDefinitions.KNOWLEDGE.holder());
     public static final FungusEffect SPORING_EFFECT = new TransmuteBlockEffect("sporing", ModBlockTags.SPORING_REPLACEABLES, Blocks.MYCELIUM);
     public static final FungusEffect FREEZING_EFFECT = new TransmuteBlockEffect("freezing", Blocks.WATER, Blocks.ICE);
     public static final LevelOnlyEffect DYEING_EFFECT = new LevelOnlyEffect("dyeing", (level, pos, box) -> {

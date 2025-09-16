@@ -69,7 +69,7 @@ public abstract class LivingEntityMixin extends Entity
                 this.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
             }
 
-            boolean hasLastChanceEffect = this.hasEffect(EffectsDefinitions.holderOf(LAST_CHANCE));
+            boolean hasLastChanceEffect = this.hasEffect(LAST_CHANCE.holder());
             if(itemstack != null || hasLastChanceEffect)
             {
                 this.setHealth(1.0F);

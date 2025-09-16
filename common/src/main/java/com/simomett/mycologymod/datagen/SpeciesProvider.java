@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.*;
-import static com.simomett.mycologymod.effects.player.EffectsDefinitions.holderOf;
 
 public class SpeciesProvider implements DataProvider
 {
@@ -864,7 +863,7 @@ public class SpeciesProvider implements DataProvider
                 .light(14)
                 .areaEffect(FungusEffects.NO_EFFECT)
                 .areaRadius(0)
-                .eatingEffect(holderOf(EffectsDefinitions.LAST_CHANCE))
+                .eatingEffect(EffectsDefinitions.LAST_CHANCE.holder())
                 .build();
 
         speciesBuilder.createSpecies(ZOMBIES_FUNGUS)

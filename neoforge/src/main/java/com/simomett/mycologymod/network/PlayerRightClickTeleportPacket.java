@@ -53,7 +53,7 @@ public class PlayerRightClickTeleportPacket implements CustomPacketPayload
 
         if (TeleportingEffect.shouldTeleport(player))
         {
-            int ampl = player.getEffect(EffectsDefinitions.holderOf(TELEPORTING)).getAmplifier();
+            int ampl = player.getEffect(TELEPORTING.holder()).getAmplifier();
             double reachDistance = 20*(ampl+1);
             BlockHitResult hitResult = getTarget(player, ClipContext.Fluid.ANY, reachDistance);
             if (hitResult.getType() == HitResult.Type.BLOCK)

@@ -7,6 +7,8 @@ import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMapDatapackSync;
+import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
+import com.simomett.mycologymod.effects.player.NeoForgeMobEffect;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
@@ -71,9 +73,9 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier)
+    public <T extends MobEffect> IRegisteredMobEffect<T> registerMobEffect(String name, Supplier<T> mobEffectSupplier)
     {
-        return NeoForgeModEffects.EFFECTS.register(name, mobEffectSupplier);
+        return new NeoForgeMobEffect<>(NeoForgeModEffects.EFFECTS.register(name, mobEffectSupplier));
     }
 
     @Override

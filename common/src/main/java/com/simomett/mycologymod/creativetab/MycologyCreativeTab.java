@@ -3,6 +3,7 @@ package com.simomett.mycologymod.creativetab;
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.items.ItemsDefinitions;
+import com.simomett.mycologymod.items.potions.Potions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -35,6 +36,7 @@ public class MycologyCreativeTab
         displayItems.add(ItemsDefinitions.CHROMIUM_NUGGET.get().getDefaultInstance());
         displayItems.add(ItemsDefinitions.CHROMIUM_BLOCK.get().getDefaultInstance());
         //populator.accept(ModItems.FUNGUS_POT);
+        displayItems.addAll(Potions.getModPotions());
         return displayItems;
     }
 }

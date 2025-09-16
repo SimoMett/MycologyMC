@@ -1,25 +1,19 @@
 package com.simomett.mycologymod.effects.player;
 
 
-import net.minecraft.core.Holder;
-import net.minecraft.world.effect.MobEffect;
-
-import java.util.function.Supplier;
+import com.simomett.mycologymod.platform.Services;
 
 public class EffectsDefinitions
 {
-    public static final Supplier<AnestheticEffect> ANESTHETIC = AnestheticEffect::instance;
-    public static final Supplier<GainXPEffect> GAIN_XP = GainXPEffect::instance;
-    public static final Supplier<IllucinationsEffect> ILLUCINATIONS = IllucinationsEffect::instance;
-    public static final Supplier<KnowledgeEffect> KNOWLEDGE = KnowledgeEffect::instance;
-    public static final Supplier<LastChanceEffect> LAST_CHANCE = LastChanceEffect::instance;
-    public static final Supplier<SensingEffect> SENSING = SensingEffect::create;
-    public static final Supplier<XPMultiplierEffect> XP_MULTIPLIER = XPMultiplierEffect::create;
-    public static final Supplier<TeleportingEffect> TELEPORTING = TeleportingEffect::instance;
-    public static final Supplier<SampleEffect> SAMPLE = SampleEffect::create;
+    public static final IRegisteredMobEffect<AnestheticEffect> ANESTHETIC = Services.PLATFORM.registerMobEffect("anesthetic", AnestheticEffect::instance);
+    public static final IRegisteredMobEffect<GainXPEffect> GAIN_XP = Services.PLATFORM.registerMobEffect("gain_xp", GainXPEffect::instance);
+    public static final IRegisteredMobEffect<IllucinationsEffect> ILLUCINATIONS = Services.PLATFORM.registerMobEffect("illucinations", IllucinationsEffect::instance);
+    public static final IRegisteredMobEffect<KnowledgeEffect> KNOWLEDGE = Services.PLATFORM.registerMobEffect("knowledge", KnowledgeEffect::instance);
+    public static final IRegisteredMobEffect<LastChanceEffect> LAST_CHANCE = Services.PLATFORM.registerMobEffect("last_chance", LastChanceEffect::instance);
+    public static final IRegisteredMobEffect<SensingEffect> SENSING = Services.PLATFORM.registerMobEffect("sensing", SensingEffect::create);
+    public static final IRegisteredMobEffect<XPMultiplierEffect> XP_MULTIPLIER = Services.PLATFORM.registerMobEffect("xp_multiplier", XPMultiplierEffect::create);
+    public static final IRegisteredMobEffect<TeleportingEffect> TELEPORTING = Services.PLATFORM.registerMobEffect("teleporting", TeleportingEffect::instance);
+    public static final IRegisteredMobEffect<SampleEffect> SAMPLE = Services.PLATFORM.registerMobEffect("sample", SampleEffect::create);
 
-    public static Holder<MobEffect> holderOf(Supplier<? extends MobEffect> mobEffectSupplier)
-    {
-        return Holder.direct(mobEffectSupplier.get());
-    }
+    public static void init(){}
 }

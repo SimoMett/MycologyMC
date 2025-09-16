@@ -20,7 +20,7 @@ public class PlayerEffectsEventsHandler
     public static void onPlayerPickupXP(PlayerXpEvent.PickupXp evt)
     {
         Player player = evt.getEntity();
-        Holder<MobEffect> xpMultiplierEffect = EffectsDefinitions.holderOf(XP_MULTIPLIER);
+        Holder<MobEffect> xpMultiplierEffect = XP_MULTIPLIER.holder();
         if(player.hasEffect(xpMultiplierEffect))
         {
             float multiplier = 1+0.5f*(player.getEffect(xpMultiplierEffect).getAmplifier()+1);

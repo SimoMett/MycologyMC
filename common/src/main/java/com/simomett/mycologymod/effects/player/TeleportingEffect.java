@@ -15,6 +15,6 @@ public class TeleportingEffect extends MobEffect
 
     public static boolean shouldTeleport(Player player)
     {
-        return player.getMainHandItem().isEmpty() && player.hasEffect(Holder.direct(EffectsDefinitions.TELEPORTING.get()));
+        return player.getMainHandItem().isEmpty() && player.hasEffect(EffectsDefinitions.TELEPORTING.holder());
     }
 }

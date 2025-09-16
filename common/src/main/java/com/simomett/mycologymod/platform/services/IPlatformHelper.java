@@ -2,6 +2,7 @@ package com.simomett.mycologymod.platform.services;
 
 import com.simomett.mycologymod.blocks.IRegisteredBlock;
 import com.simomett.mycologymod.config.IModCommonConfigs;
+import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
 import com.simomett.mycologymod.genetics.FungusGenoma;
@@ -45,7 +46,7 @@ public interface IPlatformHelper {
     // Mod specific stuff
     <T extends Item> IRegisteredItem<T> registerItem(String name, Function<Item.Properties, Item> factory);
     <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, Block> factory);
-    Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier);
+    <T extends MobEffect> IRegisteredMobEffect<T> registerMobEffect(String name, Supplier<T> mobEffectSupplier);
     Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier);
 
     IModCommonConfigs getCommonConfigs();

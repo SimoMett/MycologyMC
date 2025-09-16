@@ -24,7 +24,7 @@ public abstract class MinecraftMixin implements ResourceManagerReloadListener, A
     {
         if(this.player != null)
         {
-            return entity.isCurrentlyGlowing() || this.player.hasEffect(Holder.direct(EffectsDefinitions.SENSING.get())) || this.player.isSpectator() && this.options.keySpectatorOutlines.isDown() && entity.getType() == EntityType.PLAYER;
+            return entity.isCurrentlyGlowing() || this.player.hasEffect(EffectsDefinitions.SENSING.holder()) || this.player.isSpectator() && this.options.keySpectatorOutlines.isDown() && entity.getType() == EntityType.PLAYER;
         }
         return entity.isCurrentlyGlowing();
     }

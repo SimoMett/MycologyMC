@@ -30,10 +30,10 @@ public class BrewingRecipesProvider implements DataProvider
     public CompletableFuture<?> run(CachedOutput cachedOutput)
     {
         addBrewingRecipe(STRENGTH_FUNGUS, Potions.HASTE, cachedOutput);
-        addBrewingRecipe(ANESTHETIC_FUNGUS, Potions.ANESTHETIC, cachedOutput);
-        addBrewingRecipe(ILLUCINATING_FUNGUS, Potions.ILLUCINATING, cachedOutput);
+        //addBrewingRecipe(ANESTHETIC_FUNGUS, Potions.ANESTHETIC, cachedOutput);
+        //addBrewingRecipe(ILLUCINATING_FUNGUS, Potions.ILLUCINATING, cachedOutput);
         addBrewingRecipe(BLINDING_FUNGUS, Potions.BLINDING, cachedOutput);
-        addBrewingRecipe(SENSING_FUNGUS, Potions.SENSING, cachedOutput);
+        //addBrewingRecipe(SENSING_FUNGUS, Potions.SENSING, cachedOutput);
         addBrewingRecipe(WITHERING_FUNGUS, Potions.WITHERING, cachedOutput);
         addBrewingRecipe(TELEPORTING_FUNGUS, Potions.TELEPORTING, cachedOutput);
         addBrewingRecipe(SPEED_FUNGUS, net.minecraft.world.item.alchemy.Potions.SWIFTNESS, cachedOutput);

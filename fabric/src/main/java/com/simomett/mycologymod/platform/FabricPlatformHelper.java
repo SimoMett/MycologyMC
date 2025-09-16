@@ -5,6 +5,8 @@ import com.simomett.mycologymod.blocks.FabricRegisteredBlock;
 import com.simomett.mycologymod.blocks.IRegisteredBlock;
 import com.simomett.mycologymod.config.FabricCommonConfigs;
 import com.simomett.mycologymod.config.IModCommonConfigs;
+import com.simomett.mycologymod.effects.player.FabricMobEffect;
+import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.entities.FabricRegisteredBlockEntityType;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
@@ -74,9 +76,10 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public Holder<MobEffect> registerMobEffect(String name, Supplier<MobEffect> mobEffectSupplier)
+    public <T extends MobEffect> IRegisteredMobEffect<T> registerMobEffect(String name, Supplier<T> mobEffectSupplier)
     {
-        return Holder.direct(Registry.register(BuiltInRegistries.MOB_EFFECT, name, mobEffectSupplier.get()));
+        ResourceKey<MobEffect> key = ResourceKey.create(Registries.MOB_EFFECT, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
+        return new FabricMobEffect<>(Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, key, mobEffectSupplier.get()));
     }
 
     @Override

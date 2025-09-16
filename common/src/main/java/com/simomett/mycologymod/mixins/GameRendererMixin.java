@@ -24,7 +24,7 @@ public abstract class GameRendererMixin implements AutoCloseable{
         Entity $$3 = this.minecraft.getCameraEntity();
         if ($$3 instanceof LivingEntity livingentity)
         {
-            if (livingentity.hasEffect(Holder.direct(EffectsDefinitions.ANESTHETIC.get())))
+            if (livingentity.hasEffect(EffectsDefinitions.ANESTHETIC.holder()))
                 return;
             float f2 = (float)livingentity.hurtTime - p_109119_;
             float f3;
