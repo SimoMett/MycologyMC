@@ -5,7 +5,6 @@ import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
-import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -19,12 +18,12 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 public interface IPlatformHelper {
 
@@ -51,7 +50,7 @@ public interface IPlatformHelper {
 
     IModCommonConfigs getCommonConfigs();
 
-    DataComponentType<FungusGenoma> registerDataComponentType();
+    <T> DataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder);
 
     <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier);
 

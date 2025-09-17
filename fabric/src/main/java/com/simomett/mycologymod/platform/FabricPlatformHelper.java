@@ -10,7 +10,6 @@ import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.entities.FabricRegisteredBlockEntityType;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
-import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.FabricRegisteredItem;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
@@ -41,10 +40,9 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 import static com.simomett.mycologymod.Constants.MOD_ID;
-import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA_BUILDER;
-import static com.simomett.mycologymod.datacomponents.DataComponentTypes.GENOMA_DATA_COMPONENT_NAME;
 
 public class FabricPlatformHelper implements IPlatformHelper
 {
@@ -96,11 +94,12 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public DataComponentType<FungusGenoma> registerDataComponentType()
+    public <T> DataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder)
     {
-        return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE,
-                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, GENOMA_DATA_COMPONENT_NAME),
-                FUNGUS_GENOMA_BUILDER.apply(DataComponentType.builder()).build()
+        return Registry.register(
+                BuiltInRegistries.DATA_COMPONENT_TYPE,
+                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
+                builder.apply(DataComponentType.builder()).build()
         );
     }
 

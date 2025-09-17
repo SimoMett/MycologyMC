@@ -54,7 +54,7 @@ public class DataComponentTypes
                     .persistent(FUNGUS_GENOMA_CODEC)
                     .networkSynchronized(FUNGUS_GENOMA_STREAM_CODEC);
 
-    public static DataComponentType<FungusGenoma> FUNGUS_GENOMA = Services.PLATFORM.registerDataComponentType();
+    public static DataComponentType<FungusGenoma> FUNGUS_GENOMA = Services.PLATFORM.registerDataComponentType(GENOMA_DATA_COMPONENT_NAME, FUNGUS_GENOMA_BUILDER);
 
     public static void init(){}
 

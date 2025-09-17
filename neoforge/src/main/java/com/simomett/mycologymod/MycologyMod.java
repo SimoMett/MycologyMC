@@ -35,6 +35,9 @@ public class MycologyMod
         modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeCommonConfigs.INSTANCE.SPEC);
         modContainer.registerConfig(ModConfig.Type.CLIENT, NeoForgeClientConfigs.INSTANCE.SPEC);
 
+        DataComponentTypes.init();
+        NeoForgeDataComponents.DATA_COMPONENTS.register(evtBus);
+
         ItemsDefinitions.init();
         ModItems.ITEMS.register(evtBus);
 

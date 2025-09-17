@@ -1,20 +1,15 @@
 package com.simomett.mycologymod.platform;
 
-import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.blocks.IRegisteredBlock;
 import com.simomett.mycologymod.blocks.NeoForgeRegisteredBlock;
 import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
-import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
-import com.simomett.mycologymod.data.FungusSpeciesColorsMapDatapackSync;
 import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.effects.player.NeoForgeMobEffect;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
-import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
 import com.simomett.mycologymod.entities.NeoForgeRegisteredBlockEntityType;
-import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.NeoForgeRegisteredItem;
 import com.simomett.mycologymod.items.potions.NeoForgePotions;
@@ -26,7 +21,6 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
@@ -39,10 +33,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 import static com.simomett.mycologymod.blocks.NeoForgeRegisteredBlock.BLOCKS;
-import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA_BUILDER;
-import static com.simomett.mycologymod.datacomponents.DataComponentTypes.GENOMA_DATA_COMPONENT_NAME;
 import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DATA_COMPONENTS;
 import static com.simomett.mycologymod.entities.NeoForgeBlockEntities.ENTITIES;
 import static com.simomett.mycologymod.items.ModItems.ITEMS;
@@ -91,9 +84,9 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public DataComponentType<FungusGenoma> registerDataComponentType()
+    public <T> DataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder)
     {
-        return DATA_COMPONENTS.registerComponentType(GENOMA_DATA_COMPONENT_NAME, FUNGUS_GENOMA_BUILDER).get();
+        return DATA_COMPONENTS.registerComponentType(name, builder).get();
     }
 
     @Override
