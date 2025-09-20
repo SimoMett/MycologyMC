@@ -5,6 +5,8 @@ import com.simomett.mycologymod.blocks.FabricRegisteredBlock;
 import com.simomett.mycologymod.blocks.IRegisteredBlock;
 import com.simomett.mycologymod.config.FabricCommonConfigs;
 import com.simomett.mycologymod.config.IModCommonConfigs;
+import com.simomett.mycologymod.datacomponents.FabricDataComponent;
+import com.simomett.mycologymod.datacomponents.IRegisteredDataComponentType;
 import com.simomett.mycologymod.effects.player.FabricMobEffect;
 import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.entities.FabricRegisteredBlockEntityType;
@@ -38,9 +40,12 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.Arrays;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 import static com.simomett.mycologymod.Constants.MOD_ID;
 
@@ -94,13 +99,15 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T> DataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder)
+    public <T> IRegisteredDataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder)
     {
-        return Registry.register(
+        DataComponentType<T> dataComponentType = Registry.register(
                 BuiltInRegistries.DATA_COMPONENT_TYPE,
                 ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
                 builder.apply(DataComponentType.builder()).build()
         );
+
+        return new FabricDataComponent<>(dataComponentType);
     }
 
     @Override
@@ -110,11 +117,20 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, Block... blocks)
+    public <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, IRegisteredBlock<?>... blocks)
     {
+        // Junk to avoid cast-related crash
+        Set<Block> bb = Arrays.stream(blocks).map(IRegisteredBlock::get).collect(Collectors.toSet());
+        Block [] actualBlocks = new Block[bb.size()];
+        bb.toArray(actualBlocks);
+        //
+
         BlockEntityType<T> blockEntityType = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE,
                 ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
-                FabricBlockEntityTypeBuilder.create(factory::apply, blocks).build());
+                FabricBlockEntityTypeBuilder.create(
+                        factory::apply,
+                        actualBlocks
+                ).build());
 
         return new FabricRegisteredBlockEntityType<>(blockEntityType);
     }
