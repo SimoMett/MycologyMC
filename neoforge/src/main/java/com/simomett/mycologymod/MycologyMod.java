@@ -50,7 +50,7 @@ public class MycologyMod
 
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
 
-        //BlockEntitiesDefinitions.init();
+        BlockEntitiesDefinitions.init();
         NeoForgeBlockEntities.ENTITIES.register(evtBus);
 
         //DataComponentTypes.ATTACHMENT_TYPES.register(evtBus);

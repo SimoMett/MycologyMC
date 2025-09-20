@@ -56,7 +56,7 @@ public interface IPlatformHelper {
     <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier);
 
     //<T extends BlockEntity> BlockEntityType<T> registerBlockEntityType(String name, Supplier<T> supplier, Block... blocks);
-    <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, Block... blocks);
+    <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, IRegisteredBlock<?>... blocks);
 
     interface MenuSupplier<T extends AbstractContainerMenu> {
         T create(int var1, Inventory var2);

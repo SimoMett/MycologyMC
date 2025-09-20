@@ -33,9 +33,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+import java.util.Arrays;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 import static com.simomett.mycologymod.blocks.NeoForgeRegisteredBlock.BLOCKS;
 import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DATA_COMPONENTS;
@@ -98,12 +100,12 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, Block... blocks)
+    public <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, IRegisteredBlock<?>... blocks)
     {
         DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> tt =
-            ENTITIES.register(name, (resLoc)-> new BlockEntityType<>(
+            ENTITIES.register(name, ()-> new BlockEntityType<>(
                     factory::apply,
-                    blocks
+                    Arrays.stream(blocks).map(IRegisteredBlock::get).collect(Collectors.toSet())
             ));
         return new NeoForgeRegisteredBlockEntityType<>(tt);
     }
