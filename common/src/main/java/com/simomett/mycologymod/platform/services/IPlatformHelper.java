@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.Feature;
 
 import java.util.function.Function;
@@ -65,5 +66,12 @@ public interface IPlatformHelper {
     }
     MenuType<? extends AbstractContainerMenu> registerMenu(String name, MenuSupplier<? extends AbstractContainerMenu> menuSupplier);
 
-    <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier);
+    enum Dimension
+    {
+        OVERWORLD,
+        NETHER,
+        END
+    }
+
+    <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier, Dimension dimension, GenerationStep.Decoration genStepDecoration);
 }

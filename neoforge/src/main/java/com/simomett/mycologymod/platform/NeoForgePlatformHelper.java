@@ -32,6 +32,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -47,7 +48,7 @@ import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DAT
 import static com.simomett.mycologymod.entities.NeoForgeBlockEntities.ENTITIES;
 import static com.simomett.mycologymod.items.ModItems.ITEMS;
 import static com.simomett.mycologymod.recipes.ModRecipes.RECIPE_SERIALIZERS;
-import static com.simomett.mycologymod.world.features.ModFeatures.FEATURES;
+import static com.simomett.mycologymod.world.features.NeoForgeFeatures.FEATURES;
 
 public class NeoForgePlatformHelper implements IPlatformHelper
 {
@@ -121,7 +122,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier)
+    public <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier, Dimension d, GenerationStep.Decoration genStepDecoration)
     {
         return new NeoForgeFeature<>(FEATURES.register(name, supplier));
     }

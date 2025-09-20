@@ -18,6 +18,7 @@ import com.simomett.mycologymod.platform.services.IPlatformHelper;
 import com.simomett.mycologymod.world.FabricFeature;
 import com.simomett.mycologymod.world.IRegisteredFeature;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.loader.api.FabricLoader;
@@ -49,6 +50,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
@@ -150,16 +152,26 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier)
+    public <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier, Dimension dimension, GenerationStep.Decoration genStepDecoration)
     {
         ResourceLocation resLoc = ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
         var tt = Registry.register(BuiltInRegistries.FEATURE,
                 resLoc,
                 supplier.get());
 
+        Predicate<BiomeSelectionContext> biomeSelector;
+
+        switch (dimension)
+        {
+            case OVERWORLD -> biomeSelector = BiomeSelectors.foundInOverworld();
+            case NETHER -> biomeSelector = BiomeSelectors.foundInTheNether();
+            case END -> biomeSelector = BiomeSelectors.foundInTheEnd();
+            default -> biomeSelector = BiomeSelectors.all();
+        }
+
         BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Decoration.UNDERGROUND_ORES,
+                biomeSelector,
+                genStepDecoration,
                 ResourceKey.create(Registries.PLACED_FEATURE, resLoc)
         );
         return new FabricFeature<>(tt);
