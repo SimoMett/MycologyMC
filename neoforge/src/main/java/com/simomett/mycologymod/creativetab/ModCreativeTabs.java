@@ -13,6 +13,6 @@ public class ModCreativeTabs
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_CREATIVE_TAB =
-            CREATIVE_TABS.register("", () -> CREATIVE_TAB_BUILDER.apply(CreativeModeTab.builder()).build()
+            CREATIVE_TABS.register("creativetab", () -> CREATIVE_TAB_BUILDER.apply(CreativeModeTab.builder()).build()
     );
 }

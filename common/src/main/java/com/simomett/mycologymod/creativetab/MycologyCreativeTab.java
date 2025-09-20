@@ -39,4 +39,6 @@ public class MycologyCreativeTab
         displayItems.addAll(Potions.getModPotions());
         return displayItems;
     }
+
+    public static void init(){}
 }
