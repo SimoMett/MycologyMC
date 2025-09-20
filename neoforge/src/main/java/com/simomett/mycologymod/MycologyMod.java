@@ -5,12 +5,16 @@ import com.simomett.mycologymod.config.NeoForgeClientConfigs;
 import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
 import com.simomett.mycologymod.creativetab.ModCreativeTabs;
 import com.simomett.mycologymod.data.FungusSpeciesLoader;
+import com.simomett.mycologymod.datacomponents.DataComponentTypes;
+import com.simomett.mycologymod.datacomponents.NeoForgeDataComponents;
+import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
 import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
 import com.simomett.mycologymod.entities.NeoForgeBlockEntities;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import com.simomett.mycologymod.items.ModItems;
 import com.simomett.mycologymod.items.potions.NeoForgePotions;
+import com.simomett.mycologymod.items.potions.Potions;
 import com.simomett.mycologymod.particles.ModParticles;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipeLoader;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
@@ -45,15 +49,20 @@ public class MycologyMod
         BLOCKS.register(evtBus);
 
         ModCreativeTabs.CREATIVE_TABS.register(evtBus);
-        //DataComponentTypes.DATA_COMPONENTS.register(evtBus);
 
-        BlockEntitiesDefinitions.init();
+        //BlockEntitiesDefinitions.init();
         NeoForgeBlockEntities.ENTITIES.register(evtBus);
+
         //DataComponentTypes.ATTACHMENT_TYPES.register(evtBus);
         ModParticles.PARTICLES.register(evtBus);
-        NeoForgePotions.POTIONS.register(evtBus);
-        ModRecipes.RECIPE_SERIALIZERS.register(evtBus);
+        //ModRecipes.RECIPE_SERIALIZERS.register(evtBus);
+
+        EffectsDefinitions.init();
         NeoForgeModEffects.EFFECTS.register(evtBus);
+
+        Potions.init();
+        NeoForgePotions.POTIONS.register(evtBus);
+
         //ModMenus.MENU_TYPES.register(evtBus);
         ModFeatures.FEATURES.register(evtBus);
 
