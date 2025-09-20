@@ -10,10 +10,14 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA_CODEC;
 
-public class ModDataAttachmentTypes
+public class NeoForgeAttachmentTypes
 {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Constants.MOD_ID);
 
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<FungusGenoma>> FUNGUS_GENOMA_ATTACHMENT = ATTACHMENT_TYPES.register("fungus_genoma", () ->
-            AttachmentType.builder( () -> new FungusGenoma(FungusTraits.UNINIT, FungusTraits.UNINIT)).serialize(FUNGUS_GENOMA_CODEC).build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<FungusGenoma>> FUNGUS_GENOMA_ATTACHMENT = ATTACHMENT_TYPES.register("fungus_genoma",
+            () ->
+                AttachmentType.builder( () -> new FungusGenoma(FungusTraits.UNINIT, FungusTraits.UNINIT))
+                    .serialize(FUNGUS_GENOMA_CODEC)
+                    .build()
+    );
 }
