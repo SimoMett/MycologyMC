@@ -19,6 +19,7 @@ import com.simomett.mycologymod.particles.ModParticles;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipeLoader;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
 import com.simomett.mycologymod.recipes.ModRecipes;
+import com.simomett.mycologymod.world.FeaturesDefinitions;
 import com.simomett.mycologymod.world.features.ModFeatures;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -64,6 +65,8 @@ public class MycologyMod
         NeoForgePotions.POTIONS.register(evtBus);
 
         //ModMenus.MENU_TYPES.register(evtBus);
+
+        FeaturesDefinitions.init();
         ModFeatures.FEATURES.register(evtBus);
 
         NeoForge.EVENT_BUS.register(this);

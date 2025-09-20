@@ -15,6 +15,10 @@ import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.FabricRegisteredItem;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
+import com.simomett.mycologymod.world.FabricFeature;
+import com.simomett.mycologymod.world.IRegisteredFeature;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.BlockPos;
@@ -39,6 +43,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.feature.Feature;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -141,5 +147,21 @@ public class FabricPlatformHelper implements IPlatformHelper
                 ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
                 new MenuType<>(menuSupplier::create, FeatureFlags.DEFAULT_FLAGS)
         );
+    }
+
+    @Override
+    public <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier)
+    {
+        ResourceLocation resLoc = ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+        var tt = Registry.register(BuiltInRegistries.FEATURE,
+                resLoc,
+                supplier.get());
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.UNDERGROUND_ORES,
+                ResourceKey.create(Registries.PLACED_FEATURE, resLoc)
+        );
+        return new FabricFeature<>(tt);
     }
 }

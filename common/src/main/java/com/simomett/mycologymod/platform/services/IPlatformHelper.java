@@ -7,6 +7,7 @@ import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
 import com.simomett.mycologymod.items.IRegisteredItem;
+import com.simomett.mycologymod.world.IRegisteredFeature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -62,4 +64,6 @@ public interface IPlatformHelper {
         T create(int var1, Inventory var2);
     }
     MenuType<? extends AbstractContainerMenu> registerMenu(String name, MenuSupplier<? extends AbstractContainerMenu> menuSupplier);
+
+    <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier);
 }

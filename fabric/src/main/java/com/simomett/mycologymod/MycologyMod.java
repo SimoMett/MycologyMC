@@ -9,6 +9,7 @@ import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import com.simomett.mycologymod.items.potions.Potions;
+import com.simomett.mycologymod.world.FeaturesDefinitions;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.server.packs.PackType;
@@ -34,6 +35,7 @@ public class MycologyMod implements ModInitializer {
         BlocksDefinitions.init();
         ItemsDefinitions.init();
         BlockEntitiesDefinitions.init();
+        FeaturesDefinitions.init();
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new FabricFungusSpeciesLoader());
     }
 }

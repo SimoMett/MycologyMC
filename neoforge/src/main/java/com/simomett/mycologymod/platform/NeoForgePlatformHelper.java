@@ -16,6 +16,8 @@ import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.NeoForgeRegisteredItem;
 import com.simomett.mycologymod.items.potions.NeoForgePotions;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
+import com.simomett.mycologymod.world.IRegisteredFeature;
+import com.simomett.mycologymod.world.features.NeoForgeFeature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
@@ -30,6 +32,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -44,6 +47,7 @@ import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DAT
 import static com.simomett.mycologymod.entities.NeoForgeBlockEntities.ENTITIES;
 import static com.simomett.mycologymod.items.ModItems.ITEMS;
 import static com.simomett.mycologymod.recipes.ModRecipes.RECIPE_SERIALIZERS;
+import static com.simomett.mycologymod.world.features.ModFeatures.FEATURES;
 
 public class NeoForgePlatformHelper implements IPlatformHelper
 {
@@ -114,5 +118,11 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     public MenuType<? extends AbstractContainerMenu> registerMenu(String name, MenuSupplier<? extends AbstractContainerMenu> menuSupplier)
     {
         return null;//MENU_TYPES.register(name, menuSupplier).get();
+    }
+
+    @Override
+    public <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier)
+    {
+        return new NeoForgeFeature<>(FEATURES.register(name, supplier));
     }
 }
