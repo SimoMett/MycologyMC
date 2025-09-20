@@ -121,7 +121,7 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
         {
             Optional<Holder.Reference<Item>> item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, fungusType));
             ItemStack itemStack = new ItemStack(item.get());
-            itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, new FungusGenoma(new FungusTraits(defaultTraits), new FungusTraits(defaultTraits))).build());
+            itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA.dataComponentType(), new FungusGenoma(new FungusTraits(defaultTraits), new FungusTraits(defaultTraits))).build());
             return itemStack;
         }
     }

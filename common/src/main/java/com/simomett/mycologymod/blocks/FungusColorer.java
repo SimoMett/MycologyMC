@@ -36,8 +36,8 @@ public class FungusColorer implements BlockColor, ItemColor
     @Override
     public int getColor(ItemStack itemStack, int tintIndex)
     {
-        if(itemStack.has(FUNGUS_GENOMA))
-            return FungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA).getDominantTraits().species())[tintIndex];
+        if(itemStack.has(FUNGUS_GENOMA.dataComponentType()))
+            return FungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species())[tintIndex];
         else
             return 0;
     }

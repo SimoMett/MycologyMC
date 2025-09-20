@@ -100,7 +100,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
         if(genoma!=null)
         {
             this.fungusGenoma = genoma;
-            this.setComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, fungusGenoma).build());
+            this.setComponents(DataComponentMap.builder().set(FUNGUS_GENOMA.dataComponentType(), fungusGenoma).build());
         }
         else
             throw new NullPointerException("Cannot apply null genoma");

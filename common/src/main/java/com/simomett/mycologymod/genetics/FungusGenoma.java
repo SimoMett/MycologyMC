@@ -220,7 +220,7 @@ public class FungusGenoma implements IModSerializable
 
     public void storeIntoItemStack(ItemStack itemStack)
     {
-        itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA, this).build());
+        itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA.dataComponentType(), this).build());
     }
 
     @Override

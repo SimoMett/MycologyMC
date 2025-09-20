@@ -9,7 +9,6 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 
-import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 import static com.simomett.mycologymod.genetics.FungusGenoma.*;
@@ -47,14 +46,13 @@ public class DataComponentTypes
 
     public static StreamCodec<FriendlyByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::new);
 
-    public static final String GENOMA_DATA_COMPONENT_NAME = "fungus_data";
-
     public static final UnaryOperator<DataComponentType.Builder<FungusGenoma>> FUNGUS_GENOMA_BUILDER =
             b -> b
                     .persistent(FUNGUS_GENOMA_CODEC)
                     .networkSynchronized(FUNGUS_GENOMA_STREAM_CODEC);
 
-    public static DataComponentType<FungusGenoma> FUNGUS_GENOMA = Services.PLATFORM.registerDataComponentType(GENOMA_DATA_COMPONENT_NAME, FUNGUS_GENOMA_BUILDER);
+    public static final String GENOMA_DATA_COMPONENT_NAME = "fungus_data";
+    public static IRegisteredDataComponentType<FungusGenoma> FUNGUS_GENOMA = Services.PLATFORM.registerDataComponentType(GENOMA_DATA_COMPONENT_NAME, FUNGUS_GENOMA_BUILDER);
 
     public static void init(){}
 

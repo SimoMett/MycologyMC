@@ -4,6 +4,8 @@ import com.simomett.mycologymod.blocks.IRegisteredBlock;
 import com.simomett.mycologymod.blocks.NeoForgeRegisteredBlock;
 import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
+import com.simomett.mycologymod.datacomponents.IRegisteredDataComponentType;
+import com.simomett.mycologymod.datacomponents.NeoForgeDataComponentType;
 import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.effects.player.NeoForgeMobEffect;
 import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
@@ -84,9 +86,9 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T> DataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder)
+    public <T> IRegisteredDataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder)
     {
-        return DATA_COMPONENTS.registerComponentType(name, builder).get();
+        return new NeoForgeDataComponentType<>(DATA_COMPONENTS.registerComponentType(name, builder));
     }
 
     @Override

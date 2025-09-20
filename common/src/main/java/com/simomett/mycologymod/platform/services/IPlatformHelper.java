@@ -2,6 +2,7 @@ package com.simomett.mycologymod.platform.services;
 
 import com.simomett.mycologymod.blocks.IRegisteredBlock;
 import com.simomett.mycologymod.config.IModCommonConfigs;
+import com.simomett.mycologymod.datacomponents.IRegisteredDataComponentType;
 import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
@@ -50,7 +51,7 @@ public interface IPlatformHelper {
 
     IModCommonConfigs getCommonConfigs();
 
-    <T> DataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder);
+    <T> IRegisteredDataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder);
 
     <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier);
 

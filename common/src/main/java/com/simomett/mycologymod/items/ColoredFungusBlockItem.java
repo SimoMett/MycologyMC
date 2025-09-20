@@ -42,9 +42,9 @@ public class ColoredFungusBlockItem extends BlockItem
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity)
     {
-        if(stack.get(FUNGUS_GENOMA).getDominantTraits().eatingEffect().isPresent())
+        if(stack.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().eatingEffect().isPresent())
         {
-            String eatEff = stack.get(FUNGUS_GENOMA).getDominantTraits().eatingEffect().get();
+            String eatEff = stack.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().eatingEffect().get();
             Optional<Holder.Reference<MobEffect>> mobEffect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(eatEff));
             if(mobEffect.isPresent())
                 livingEntity.addEffect(new MobEffectInstance(mobEffect.get(), -1));
@@ -60,7 +60,7 @@ public class ColoredFungusBlockItem extends BlockItem
     @Override
     public Component getName(ItemStack itemStack)
     {
-        String speciesName = itemStack.has(FUNGUS_GENOMA) ? itemStack.get(FUNGUS_GENOMA).getDominantTraits().species() : "Fungus impossibilis";
+        String speciesName = itemStack.has(FUNGUS_GENOMA.dataComponentType()) ? itemStack.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species() : "Fungus impossibilis";
         return Component.literal(speciesName);
     }
 
@@ -77,7 +77,7 @@ public class ColoredFungusBlockItem extends BlockItem
         boolean result = super.placeBlock(context, blockState);
         ColoredFungusBlockEntity entity = (ColoredFungusBlockEntity)context.getLevel().getBlockEntity(context.getClickedPos());
 
-        entity.applyGenoma(context.getItemInHand().get(FUNGUS_GENOMA));
+        entity.applyGenoma(context.getItemInHand().get(FUNGUS_GENOMA.dataComponentType()));
         return result;
     }
 
