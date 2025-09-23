@@ -83,11 +83,4 @@ public abstract class LivingEntityMixin extends Entity
             return itemstack != null || hasLastChanceEffect;
         }
     }
-
-    @Inject(method = "dropExperience", at = @At(value = "HEAD"), cancellable = true)
-    public void cancelDropExperience(CallbackInfo ci)
-    {
-        if(KnowledgeEffect.shouldRestoreXp((LivingEntity) (Object) this))
-            ci.cancel();
-    }
 }
