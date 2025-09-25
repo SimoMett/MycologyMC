@@ -88,14 +88,14 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         return BlockEntitiesDefinitions.COLORED_FUNGUS_BLOCK_ENTITY.type().create(blockPos, blockState);
     }
 
-    /*@Override
+    @Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params)
     {
         ColoredFungusBlockEntity coloredFungusBlockEntity = (ColoredFungusBlockEntity) params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
         ItemStack itemStack = new ItemStack(this);
         coloredFungusBlockEntity.getFungusGenoma().storeIntoItemStack(itemStack);
         return Collections.singletonList(itemStack);
-    }*/
+    }
 
     @Override
     public ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state)
@@ -286,7 +286,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 .filter(blockPos -> level.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity)
                 .forEach(blockPos -> fungusBlockEntities.add((ColoredFungusBlockEntity) level.getBlockEntity(blockPos)));
         return fungusBlockEntities;
-    }
+    }*/
 
     @Override
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos origin)
@@ -314,7 +314,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         if(!canSurvive)
             originBlockEntity.setRemoved();
         return canSurvive;
-    }*/
+    }
 
     public static void applyMutagen(BlockPos pos, BlockState blockState, ServerLevel level)
     {
