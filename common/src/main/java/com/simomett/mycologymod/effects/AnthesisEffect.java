@@ -3,6 +3,7 @@ package com.simomett.mycologymod.effects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
@@ -50,7 +51,7 @@ public class AnthesisEffect extends FungusEffect
                 cocoaBlockState = cocoaBlockState.rotate(Rotation.CLOCKWISE_180);
             if(xOffset != 0)
                 cocoaBlockState = cocoaBlockState.rotate(xOffset==-1? Rotation.CLOCKWISE_90 : Rotation.COUNTERCLOCKWISE_90);
-            level.setBlock(randomPos, cocoaBlockState, 2);
+            level.setBlock(randomPos, cocoaBlockState, Block.UPDATE_CLIENTS);
 
         }
     }

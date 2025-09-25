@@ -23,6 +23,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 
@@ -101,9 +102,9 @@ public class FungusEffects
         if (!logBlocksList.isEmpty())
         {
             BlockPos randomPos = logBlocksList.get(new Random().nextInt(logBlocksList.size()));
-            lvl.setBlock(randomPos, Blocks.AIR.defaultBlockState(), 2);
+            lvl.setBlock(randomPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
             if(lvl.getBlockState(randomPos.below()).is(BlockTags.DIRT))
-                lvl.setBlock(randomPos.below(), Blocks.PODZOL.defaultBlockState(), 2);
+                lvl.setBlock(randomPos.below(), Blocks.PODZOL.defaultBlockState(), Block.UPDATE_CLIENTS);
         }
     });
     public static final FungusEffect DECOMPOSING_EFFECT = new SingleEffect("decomposing", null, (lvl, pos, box) -> {
@@ -122,10 +123,10 @@ public class FungusEffects
             Item blockItem = lvl.getBlockState(randomPos).getBlock().asItem();
             ItemStack itemStack = new ItemStack(blockItem);
             lvl.addFreshEntity(new ItemEntity(lvl, randomPos.getX(), randomPos.getY(), randomPos.getZ(), itemStack));
-            lvl.setBlock(randomPos, Blocks.AIR.defaultBlockState(), 2);
+            lvl.setBlock(randomPos, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
             lvl.playLocalSound(randomPos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 1f, 1f, false);
             if(lvl.getBlockState(randomPos.below()).is(BlockTags.DIRT))
-                lvl.setBlock(randomPos.below(), Blocks.PODZOL.defaultBlockState(), 2);
+                lvl.setBlock(randomPos.below(), Blocks.PODZOL.defaultBlockState(), Block.UPDATE_CLIENTS);
         }
     });
     public static final FungusEffect BUDDING_EFFECT = new TransmuteBlockEffect("budding", Blocks.AMETHYST_BLOCK, Blocks.BUDDING_AMETHYST);

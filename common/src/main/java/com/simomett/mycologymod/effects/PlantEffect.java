@@ -54,7 +54,7 @@ public class PlantEffect extends FungusEffect
             BlockState randomPlant = plants.get().get(rand.nextInt(plants.get().size())).value().defaultBlockState();
             if(randomPlant.hasProperty(CropBlock.AGE))
                 randomPlant.setValue(CropBlock.AGE, 0);
-            level.setBlock(randomPos, randomPlant, 2);
+            level.setBlock(randomPos, randomPlant, Block.UPDATE_CLIENTS);
         }
     }
 }

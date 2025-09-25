@@ -83,7 +83,7 @@ public class TransmuteBlockEffect extends FungusEffect
         if (!pList2.isEmpty())
         {
             BlockPos randomPos = pList2.get(new Random().nextInt(pList2.size()));
-            level.setBlock(randomPos, targetBlock.defaultBlockState(), 2);
+            level.setBlock(randomPos, targetBlock.defaultBlockState(), Block.UPDATE_CLIENTS);
         }
     }
 }
