@@ -1,5 +1,5 @@
 {
-  "feature": "mycologymod:surface_fungi",
+  "feature": "mycologymod:underground_fungus",
   "placement": [
     {
       "type": "minecraft:count_on_every_layer",

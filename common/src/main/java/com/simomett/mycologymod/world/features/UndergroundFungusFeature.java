@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -21,10 +22,10 @@ import java.util.Random;
 
 import static com.simomett.mycologymod.utils.Utils.parseStringOrTag;
 
-public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockConfiguration>
+public class UndergroundFungusFeature extends Feature<SimpleBlockConfiguration>
 {
 
-    public UndergroundFungusFeatureConfiguration()
+    public UndergroundFungusFeature()
     {
         super(SimpleBlockConfiguration.CODEC);
     }
@@ -46,21 +47,20 @@ public class UndergroundFungusFeatureConfiguration extends Feature<SimpleBlockCo
             if (random.nextFloat(0f, 1f) < randomSpecies.spawnInfo.chance)
             {
                 //spawn fungus with the correct type
-                BlockState terrainBlockState = level.getBlockState(origin);
+                BlockState terrainBlockState = level.getBlockState(origin.below());
                 String terrain = randomSpecies.defaultTraits.terrain();
 
                 ResourceLocation res = parseStringOrTag(terrain);
                 boolean blockMatchesTerrain = terrainBlockState.is(ResourceKey.create(Registries.BLOCK, res))
                         || terrainBlockState.is(TagKey.create(Registries.BLOCK, res));
 
-                if(blockMatchesTerrain && level.getBlockState(origin.above()).isAir())
+                if(blockMatchesTerrain && level.getBlockState(origin).isAir())
                 {
-                    BlockPos pos = origin.above();
                     BlockState blockState = BlocksDefinitions.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);
-                    level.setBlock(pos, blockState, 0);
+                    level.setBlock(origin, blockState, Block.UPDATE_CLIENTS);
 
                     //edit its block entity
-                    ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity) level.getBlockEntity(pos);
+                    ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity) level.getBlockEntity(origin);
                     blockEntity.applyGenoma(new FungusGenoma(randomSpecies));
                 }
             }

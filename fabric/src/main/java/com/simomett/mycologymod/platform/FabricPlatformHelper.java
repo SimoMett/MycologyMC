@@ -152,7 +152,7 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier, Dimension dimension, GenerationStep.Decoration genStepDecoration)
+    public <T extends Feature<?>> IRegisteredFeature<T> registerFeatureConfig(String name, Supplier<T> supplier, Dimension dimension, GenerationStep.Decoration genStepDecoration)
     {
         ResourceLocation resLoc = ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
         var tt = Registry.register(BuiltInRegistries.FEATURE,

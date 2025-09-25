@@ -73,5 +73,5 @@ public interface IPlatformHelper {
         END
     }
 
-    <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier, Dimension dimension, GenerationStep.Decoration genStepDecoration);
+    <T extends Feature<?>> IRegisteredFeature<T> registerFeatureConfig(String name, Supplier<T> supplier, Dimension dimension, GenerationStep.Decoration genStepDecoration);
 }

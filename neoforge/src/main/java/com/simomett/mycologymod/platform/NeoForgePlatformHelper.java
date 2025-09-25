@@ -122,7 +122,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Feature<?>> IRegisteredFeature<T> registerFeature(String name, Supplier<T> supplier, Dimension d, GenerationStep.Decoration genStepDecoration)
+    public <T extends Feature<?>> IRegisteredFeature<T> registerFeatureConfig(String name, Supplier<T> supplier, Dimension d, GenerationStep.Decoration genStepDecoration)
     {
         return new NeoForgeFeature<>(FEATURES.register(name, supplier));
     }
