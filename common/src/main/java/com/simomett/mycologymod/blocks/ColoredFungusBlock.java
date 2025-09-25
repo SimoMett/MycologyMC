@@ -1,12 +1,13 @@
 package com.simomett.mycologymod.blocks;
 
 import com.mojang.serialization.MapCodec;
-/*import com.simomett.mycologymod.data.FungusSpeciesList;
+import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.effects.FungusEffects;
-import com.simomett.mycologymod.particles.ModParticles;*/
+//import com.simomett.mycologymod.particles.ModParticles;
 import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
+import com.simomett.mycologymod.platform.Services;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -152,7 +153,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
         int radius = originBlockEntity.getFungusGenoma().getDominantTraits().area();
         addSporeParticle(radius, blockState, blockPos, level, randomSource);
-    }
+    }*/
 
     @Override // copied from MushroomBlock.randomTick
     protected void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)
@@ -175,7 +176,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         {
             //check if there are 'i' mushrooms in area
             //if it does then prevent spreading
-            int i = ModCommonConfigs.MAX_MUSHROOMS_IN_AREA.get();
+            int i = Services.PLATFORM.getCommonConfigs().getMaxMushroomInArea();
             for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, -1, -4), pos.offset(4, 1, 4)))
             {
                 if (level.getBlockState(blockpos).is(this))
@@ -196,7 +197,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         // area effect
         String fungusEffect = thisGenoma.getDominantTraits().effect();
         FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
-    }*/
+    }
 
     private static BlockPos findSuitableBlockPos(BlockPos searchStartPos, ServerLevel level, BlockState blockState)
     {
@@ -216,12 +217,12 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         return blockpos1;
     }
 
-    /*private static void breedAndSpread(BlockState blockState, ServerLevel level, BlockPos pos, int areaRadius, FungusGenoma genoma, boolean hasMutagen)
+    private static void breedAndSpread(BlockState blockState, ServerLevel level, BlockPos pos, int areaRadius, FungusGenoma genoma, boolean hasMutagen)
     {
         //WARNING
         // if whatever mod/datapack changes default temperature and humidity of a biome, the fungus cannot spread.
         Random rand = new Random();
-        boolean crossBreeding = rand.nextFloat(1.0f) < ModCommonConfigs.BREEDING_CHANCE.get();
+        boolean crossBreeding = rand.nextFloat(1.0f) < Services.PLATFORM.getCommonConfigs().getBreedingChance();
 
         ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, pos, areaRadius);
         nearbyFungi.removeIf((e) -> e.getFungusGenoma()==genoma); //Remove self
@@ -235,29 +236,20 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             if (offspringGenoma.matchesTerrain(level.getBlockState(pos.below())))
             {
                 // ... then place it
-                String fungusType = FungusSpeciesList.INSTANCE.get(offspringGenoma.getDominantTraits().species()).fungusType;
-                blockState = ModBlocks.getDefaultBlockStateFromFungusType(fungusType);
+                String fungusType = FungusSpeciesList.getInstance().get(offspringGenoma.getDominantTraits().species()).fungusType;
+                blockState = BlocksDefinitions.getDefaultBlockStateFromFungusType(fungusType);
                 placeFungusBlock(blockState, level, pos, offspringGenoma);
             }
         }
         else if (blockState.canSurvive(level, pos))
         {
             // ... otherwise proceed with normal spreading
-            if(hasMutagen && rand.nextFloat(0f,1f) < ModCommonConfigs.MUTAGEN_EFFECTIVENESS.get())
+            if(hasMutagen && rand.nextFloat(0f,1f) < Services.PLATFORM.getCommonConfigs().getMutagenEffectiveness())
             {
                 for(int i = 0; i<rand.nextInt(1, 3); i++)
                     genoma.changeRandomTraitByMutagen();
             }
             placeFungusBlock(blockState, level, pos, genoma);
-        }
-    }
-
-    private static void breedAndSpread2(BlockState blockState, ServerLevel level, BlockPos pos, int areaRadius, FungusGenoma genoma, boolean hasMutagen)
-    {
-        ArrayList<ColoredFungusBlockEntity> nearbyFungi = getFungiInArea(level, pos, areaRadius);
-        if(!nearbyFungi.isEmpty())
-        {
-
         }
     }
 
@@ -286,7 +278,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
                 .filter(blockPos -> level.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity)
                 .forEach(blockPos -> fungusBlockEntities.add((ColoredFungusBlockEntity) level.getBlockEntity(blockPos)));
         return fungusBlockEntities;
-    }*/
+    }
 
     @Override
     public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos origin)

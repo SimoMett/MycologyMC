@@ -12,11 +12,13 @@ import com.simomett.mycologymod.effects.player.NeoForgeModEffects;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
 import com.simomett.mycologymod.entities.NeoForgeRegisteredBlockEntityType;
+import com.simomett.mycologymod.genetics.IBiomeDownfallProvider;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.NeoForgeRegisteredItem;
 import com.simomett.mycologymod.items.potions.NeoForgePotions;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
 import com.simomett.mycologymod.world.IRegisteredFeature;
+import com.simomett.mycologymod.world.NeoForgeBiomeDownfallProvider;
 import com.simomett.mycologymod.world.features.NeoForgeFeature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -125,5 +127,11 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     public <T extends Feature<?>> IRegisteredFeature<T> registerFeatureConfig(String name, Supplier<T> supplier, Dimension d, GenerationStep.Decoration genStepDecoration)
     {
         return new NeoForgeFeature<>(FEATURES.register(name, supplier));
+    }
+
+    @Override
+    public IBiomeDownfallProvider getBiomeDownfallProvider()
+    {
+        return new NeoForgeBiomeDownfallProvider();
     }
 }

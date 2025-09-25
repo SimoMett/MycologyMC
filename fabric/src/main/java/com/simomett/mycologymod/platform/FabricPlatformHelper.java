@@ -12,9 +12,11 @@ import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.entities.FabricRegisteredBlockEntityType;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
+import com.simomett.mycologymod.genetics.IBiomeDownfallProvider;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.FabricRegisteredItem;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
+import com.simomett.mycologymod.world.FabricBiomeDownfallProvider;
 import com.simomett.mycologymod.world.FabricFeature;
 import com.simomett.mycologymod.world.IRegisteredFeature;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -175,5 +177,11 @@ public class FabricPlatformHelper implements IPlatformHelper
                 ResourceKey.create(Registries.PLACED_FEATURE, resLoc)
         );
         return new FabricFeature<>(tt);
+    }
+
+    @Override
+    public IBiomeDownfallProvider getBiomeDownfallProvider()
+    {
+        return new FabricBiomeDownfallProvider();
     }
 }

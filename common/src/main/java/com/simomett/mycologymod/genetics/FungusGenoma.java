@@ -1,9 +1,9 @@
 package com.simomett.mycologymod.genetics;
 
-import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.genetics.gene.Gene;
 import com.simomett.mycologymod.network.serializable.IModSerializable;
+import com.simomett.mycologymod.platform.Services;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipe;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipesList;
 import com.simomett.mycologymod.tags.ModBlockTags;
@@ -114,17 +114,15 @@ public class FungusGenoma implements IModSerializable
         return recessiveTraits;
     }
 
-    public boolean matchesEnvironment(LevelReader level, BlockPos origin, IBiomeInfoGetter biomeInfoGetter)
+    public boolean matchesEnvironment(LevelReader level, BlockPos origin)
     {
         //LightLayer.SKY is the light level of a block due to other blocks obstructing skylight. 0 is in complete darkness, 15 is in plain air.
         //LightLayer.BLOCK is the light level of a block due to other sources of light (Glowstone, torches..).
         boolean matchesLight = level.getBrightness(LightLayer.SKY, origin) <= dominantTraits.light() &&
                 level.getBrightness(LightLayer.BLOCK, origin) < dominantTraits.light(); // mushrooms prefer sporing in darker areas
 
-        // getBaseTemperature() or getModifiedClimateSettings().temperature() ?
-        // they seems to be the same...
-        float temperature = biomeInfoGetter.getBaseTemperature(level.getBiome(origin).value());
-        float humidity = biomeInfoGetter.getDownfall(level.getBiome(origin).value());
+        float temperature = level.getBiome(origin).value().getBaseTemperature();
+        float humidity = Services.PLATFORM.getBiomeDownfallProvider().get(level.getBiome(origin).value());
         boolean matchesAmbient = dominantTraits.temp().equals(temperature) && dominantTraits.humidity().equals(humidity);
 
         return matchesLight && matchesAmbient;
@@ -144,9 +142,9 @@ public class FungusGenoma implements IModSerializable
                 || terrainBlock.is(ModBlockTags.CAN_PLANT_ON);
     }
 
-    public final boolean matchesEnvironmentAndTerrain(LevelReader level, BlockPos blockPos, BlockState terrainBlock, IBiomeInfoGetter biomeInfoGetter)
+    public final boolean matchesEnvironmentAndTerrain(LevelReader level, BlockPos blockPos, BlockState terrainBlock)
     {
-        return (matchesEnvironment(level, blockPos, biomeInfoGetter) && matchesTerrain(terrainBlock)) || terrainBlock.is(Blocks.MYCELIUM);
+        return (matchesEnvironment(level, blockPos) && matchesTerrain(terrainBlock)) || terrainBlock.is(Blocks.MYCELIUM);
     }
 
     public FungusGenoma normalCrossBreedWith(FungusGenoma that)
@@ -164,7 +162,7 @@ public class FungusGenoma implements IModSerializable
         return offspring;
     }
 
-    public FungusGenoma crossBreedWith(FungusGenoma species2, boolean mutagen, IModCommonConfigs configsProvider)
+    public FungusGenoma crossBreedWith(FungusGenoma species2, boolean mutagen)
     {
         FungusGenoma offspring;
         Random random = new Random();
@@ -187,7 +185,7 @@ public class FungusGenoma implements IModSerializable
                 //Triangular distribution
                 float a = random.nextFloat(0f, 1f);
                 float b = random.nextFloat(0f, 1f);
-                shouldPerformMutation = (a + b) < (randomMutation.getChance() + configsProvider.getMutagenEffectiveness());
+                shouldPerformMutation = (a + b) < (randomMutation.getChance() + Services.PLATFORM.getCommonConfigs().getMutagenEffectiveness());
             }
             else
                 shouldPerformMutation = random.nextFloat(0f, 1f) < randomMutation.getChance();

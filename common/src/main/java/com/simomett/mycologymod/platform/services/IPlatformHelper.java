@@ -6,6 +6,7 @@ import com.simomett.mycologymod.datacomponents.IRegisteredDataComponentType;
 import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
 import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
+import com.simomett.mycologymod.genetics.IBiomeDownfallProvider;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.world.IRegisteredFeature;
 import net.minecraft.core.BlockPos;
@@ -74,4 +75,5 @@ public interface IPlatformHelper {
     }
 
     <T extends Feature<?>> IRegisteredFeature<T> registerFeatureConfig(String name, Supplier<T> supplier, Dimension dimension, GenerationStep.Decoration genStepDecoration);
+    IBiomeDownfallProvider getBiomeDownfallProvider();
 }
