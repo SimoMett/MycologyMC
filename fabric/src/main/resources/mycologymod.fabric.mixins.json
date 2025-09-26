@@ -4,7 +4,9 @@
   "package": "com.simomett.mycologymod.mixins",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "BiomeMixin"
+  ],
   "client": [
   ],
   "server": [],
