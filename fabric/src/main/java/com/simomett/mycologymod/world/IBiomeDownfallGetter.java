@@ -1,4 +1,4 @@
-package com.simomett.mycologymod.mixins;
+package com.simomett.mycologymod.world;
 
 public interface IBiomeDownfallGetter
 {

@@ -16,7 +16,6 @@ import com.simomett.mycologymod.genetics.IBiomeDownfallProvider;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.FabricRegisteredItem;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
-import com.simomett.mycologymod.world.FabricBiomeDownfallProvider;
 import com.simomett.mycologymod.world.FabricFeature;
 import com.simomett.mycologymod.world.IRegisteredFeature;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -40,6 +39,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -182,6 +182,13 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public IBiomeDownfallProvider getBiomeDownfallProvider()
     {
-        return new FabricBiomeDownfallProvider();
+        return new IBiomeDownfallProvider() {
+            @Override
+            public float get(Biome biome)
+            {
+                //float v = ((IBiomeDownfallGetter) (Object) (biome)).getDownfall();
+                return 0;
+            }
+        };
     }
 }

@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.mixins;
 
+import com.simomett.mycologymod.world.IBiomeDownfallGetter;
 import net.minecraft.world.level.biome.Biome;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
