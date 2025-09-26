@@ -73,6 +73,10 @@ public class ItemsDefinitions
             new BlockItem(BlocksDefinitions.CHROMIUM_BLOCK.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block"))))
     );
+    public static final IRegisteredItem<BlockItem> FUNGUS_POT = Services.PLATFORM.registerItem("fungus_pot", (p)->
+            new BlockItem(BlocksDefinitions.FUNGUS_POT.get(), new Item.Properties()
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_pot"))))
+    );
 
     // Debug item
     public static final IRegisteredItem<Item> SPEEDYZER = Services.PLATFORM.registerItem("speedyzer", (p)->
@@ -84,8 +88,7 @@ public class ItemsDefinitions
     }
 
     //public static final DeferredItem<BlockItem> FUNGUS_ANALYSING_STATION = ITEMS.registerSimpleBlockItem("fungus_analysing_station", ModBlocks.FUNGUS_ANALYSING_STATION);
-    /*public static final DeferredItem<BlockItem> FUNGUS_POT = ITEMS.registerSimpleBlockItem(ModBlocks.FUNGUS_POT);
-    public static final DeferredItem<BlockItem> POTTED_COLORED_CRIMSON = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_CRIMSON);
+    /*public static final DeferredItem<BlockItem> POTTED_COLORED_CRIMSON = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_CRIMSON);
     public static final DeferredItem<BlockItem> POTTED_COLORED_WARPED = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_WARPED);*/
 
     public static void init(){}

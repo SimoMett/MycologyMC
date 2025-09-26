@@ -31,15 +31,14 @@ import java.util.function.Supplier;
 
 public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
 {
-
-    /*public FungusPotBlock(Supplier<? extends Block> potted, Properties properties)
+    public FungusPotBlock(Supplier<? extends Block> potted, Properties properties)
     {
-        super(BlocksDefinitions.FUNGUS_POT::get, potted, properties);
-    }*/
+        super(potted.get(), properties);
+    }
 
     public FungusPotBlock(Properties properties)
     {
-        super(null, properties);
+        super(Blocks.AIR, properties);
     }
 
     @Override
