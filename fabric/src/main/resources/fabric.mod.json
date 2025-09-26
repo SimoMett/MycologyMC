@@ -28,6 +28,7 @@
   "mixins": [
     "mycologymod.fabric.mixins.json"
   ],
+  "accessWidener" : "mycologymod.accesswidener",
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "fabric-api": "*",
