@@ -2,7 +2,9 @@ package com.simomett.mycologymod.platform;
 
 import com.simomett.mycologymod.blocks.IRegisteredBlock;
 import com.simomett.mycologymod.blocks.NeoForgeRegisteredBlock;
+import com.simomett.mycologymod.config.IModClientConfigs;
 import com.simomett.mycologymod.config.IModCommonConfigs;
+import com.simomett.mycologymod.config.NeoForgeClientConfigs;
 import com.simomett.mycologymod.config.NeoForgeCommonConfigs;
 import com.simomett.mycologymod.datacomponents.IRegisteredDataComponentType;
 import com.simomett.mycologymod.datacomponents.NeoForgeDataComponentType;
@@ -92,6 +94,12 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     public IModCommonConfigs getCommonConfigs()
     {
         return NeoForgeCommonConfigs.INSTANCE;
+    }
+
+    @Override
+    public IModClientConfigs getClientConfigs()
+    {
+        return NeoForgeClientConfigs.INSTANCE;
     }
 
     @Override

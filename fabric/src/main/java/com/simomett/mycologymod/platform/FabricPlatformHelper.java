@@ -3,7 +3,9 @@ package com.simomett.mycologymod.platform;
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.blocks.FabricRegisteredBlock;
 import com.simomett.mycologymod.blocks.IRegisteredBlock;
+import com.simomett.mycologymod.config.FabricClientConfigs;
 import com.simomett.mycologymod.config.FabricCommonConfigs;
+import com.simomett.mycologymod.config.IModClientConfigs;
 import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.datacomponents.FabricDataComponent;
 import com.simomett.mycologymod.datacomponents.IRegisteredDataComponentType;
@@ -107,6 +109,13 @@ public class FabricPlatformHelper implements IPlatformHelper
     {
         // TODO
         return new FabricCommonConfigs();
+    }
+
+    @Override
+    public IModClientConfigs getClientConfigs()
+    {
+        // TODO
+        return new FabricClientConfigs();
     }
 
     @Override

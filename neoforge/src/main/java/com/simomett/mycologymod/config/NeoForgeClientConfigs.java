@@ -16,4 +16,10 @@ public class NeoForgeClientConfigs implements IModClientConfigs
         SPORE_PARTICLES_FREQ = BUILDER.define("Spore particles spawn frequency", 1);
         SPEC = BUILDER.build();
     }
+
+    @Override
+    public int getSporeParticlesFreq()
+    {
+        return SPORE_PARTICLES_FREQ.get();
+    }
 }

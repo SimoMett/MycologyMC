@@ -119,12 +119,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         };
     }
 
-    /*@OnlyIn(Dist.CLIENT)
     private static void addSporeParticle(int radius, BlockState blockState, BlockPos blockPos, Level level, RandomSource randomSource)
     {
         Random random = new Random();
-        int density = ModClientConfigs.SPORE_PARTICLES_FREQ.get()*radius;
-        radius *= ModCommonConfigs.RADIUS_MULTIPLIER.get();
+        int density = Services.PLATFORM.getClientConfigs().getSporeParticlesFreq()*radius;
+        radius *= Services.PLATFORM.getCommonConfigs().getRadiusMultiplier();
         for (int i = 0; i < density; i++)
         {
             //get random BlockPos
@@ -138,22 +137,24 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             double velY = 0;
             double velZ = 0;
 
-            if(hasMutagen(blockState))
+            /*if(hasMutagen(blockState))
                 level.addParticle(ModParticles.MUTANT_SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
             else
-                level.addParticle(ModParticles.SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);
+                level.addParticle(ModParticles.SPORE_PARTICLES.get(), randomPos.getX() + randomSource.nextDouble(), randomPos.getY() + randomSource.nextDouble(), randomPos.getZ() + randomSource.nextDouble(), velX, velY, velZ);*/
         }
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource)
     {
         super.animateTick(blockState, level, blockPos, randomSource);
-        ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity)(level.getBlockEntity(blockPos));
-        int radius = originBlockEntity.getFungusGenoma().getDominantTraits().area();
-        addSporeParticle(radius, blockState, blockPos, level, randomSource);
-    }*/
+        if(level.isClientSide())
+        {
+            ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockPos));
+            int radius = originBlockEntity.getFungusGenoma().getDominantTraits().area();
+            addSporeParticle(radius, blockState, blockPos, level, randomSource);
+        }
+    }
 
     @Override // copied from MushroomBlock.randomTick
     protected void randomTick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource rand)

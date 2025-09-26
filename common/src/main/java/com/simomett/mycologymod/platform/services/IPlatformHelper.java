@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.platform.services;
 
 import com.simomett.mycologymod.blocks.IRegisteredBlock;
+import com.simomett.mycologymod.config.IModClientConfigs;
 import com.simomett.mycologymod.config.IModCommonConfigs;
 import com.simomett.mycologymod.datacomponents.IRegisteredDataComponentType;
 import com.simomett.mycologymod.effects.player.IRegisteredMobEffect;
@@ -12,6 +13,7 @@ import com.simomett.mycologymod.world.IRegisteredFeature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -54,6 +56,7 @@ public interface IPlatformHelper {
     Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier);
 
     IModCommonConfigs getCommonConfigs();
+    IModClientConfigs getClientConfigs();
 
     <T> IRegisteredDataComponentType<T> registerDataComponentType(String name, UnaryOperator<DataComponentType.Builder<T>> builder);
 
