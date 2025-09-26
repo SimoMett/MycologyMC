@@ -34,7 +34,7 @@ public class FabricCommonConfigs implements IModCommonConfigs
 
     @Override
     public int getRadiusMultiplier() {
-        return 0;
+        return 2;
     }
 
     @Override
