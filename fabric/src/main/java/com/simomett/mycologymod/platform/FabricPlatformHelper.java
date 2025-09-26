@@ -17,6 +17,7 @@ import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.FabricRegisteredItem;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
 import com.simomett.mycologymod.world.FabricFeature;
+import com.simomett.mycologymod.world.IBiomeDownfallGetter;
 import com.simomett.mycologymod.world.IRegisteredFeature;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
@@ -182,13 +183,6 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public IBiomeDownfallProvider getBiomeDownfallProvider()
     {
-        return new IBiomeDownfallProvider() {
-            @Override
-            public float get(Biome biome)
-            {
-                //float v = ((IBiomeDownfallGetter) (Object) (biome)).getDownfall();
-                return 0;
-            }
-        };
+        return biome -> ((IBiomeDownfallGetter) (Object) (biome)).getDownfall();
     }
 }
