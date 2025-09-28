@@ -83,12 +83,12 @@ public class FabricPlatformHelper implements IPlatformHelper
     }
 
     @Override
-    public <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, Block> factory)
+    public <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> factory)
     {
         ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
-        return new FabricRegisteredBlock<>(Blocks.register(key,
-                factory,
-                BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES)));
+        Function<BlockBehaviour.Properties, Block> castFactory = factory::apply;
+        return new FabricRegisteredBlock(
+                Blocks.register(key, castFactory, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES)));
     }
 
     @Override

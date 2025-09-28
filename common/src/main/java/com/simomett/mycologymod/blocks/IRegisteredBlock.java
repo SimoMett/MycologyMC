@@ -4,5 +4,5 @@ import net.minecraft.world.level.block.Block;
 
 public interface IRegisteredBlock<T extends Block>
 {
-    Block get();
+    T get();
 }

@@ -10,9 +10,9 @@ public class NeoForgeRegisteredBlock<T extends Block> implements IRegisteredBloc
 {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Constants.MOD_ID);
 
-    private final DeferredBlock<Block> deferredBlock;
+    private final DeferredBlock<T> deferredBlock;
 
-    public NeoForgeRegisteredBlock(DeferredBlock<Block> deferredBlock)
+    public NeoForgeRegisteredBlock(DeferredBlock<T> deferredBlock)
     {
         this.deferredBlock = deferredBlock;
     }
@@ -23,7 +23,7 @@ public class NeoForgeRegisteredBlock<T extends Block> implements IRegisteredBloc
     }
 
     @Override
-    public Block get()
+    public T get()
     {
         return deferredBlock.get();
     }

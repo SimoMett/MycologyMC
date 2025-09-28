@@ -51,7 +51,7 @@ public interface IPlatformHelper {
 
     // Mod specific stuff
     <T extends Item> IRegisteredItem<T> registerItem(String name, Function<Item.Properties, Item> factory);
-    <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, Block> factory);
+    <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> factory);
     <T extends MobEffect> IRegisteredMobEffect<T> registerMobEffect(String name, Supplier<T> mobEffectSupplier);
     Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier);
 

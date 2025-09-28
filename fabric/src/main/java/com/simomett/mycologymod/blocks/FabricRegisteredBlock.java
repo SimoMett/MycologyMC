@@ -4,14 +4,14 @@ import net.minecraft.world.level.block.Block;
 
 public class FabricRegisteredBlock<T extends Block> implements IRegisteredBlock<T>
 {
-    private final Block block;
-    public FabricRegisteredBlock(Block block)
+    private final T block;
+    public FabricRegisteredBlock(T block)
     {
         this.block = block;
     }
 
     @Override
-    public Block get()
+    public T get()
     {
         return block;
     }
