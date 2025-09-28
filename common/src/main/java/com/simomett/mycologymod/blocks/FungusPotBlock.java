@@ -2,6 +2,7 @@ package com.simomett.mycologymod.blocks;
 
 import com.simomett.mycologymod.datacomponents.DataComponentTypes;
 import com.simomett.mycologymod.effects.FungusEffects;
+import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.mixins.IFlowerPotBlockMixin;
@@ -44,19 +45,18 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState)
     {
-        //return ModEntities.COLORED_FUNGUS.get().create(blockPos, blockState);
-        return null;
+        return BlockEntitiesDefinitions.COLORED_FUNGUS_BLOCK_ENTITY.type().create(blockPos, blockState);
     }
 
-    /*@Override
+    @Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
     {
         if(stack.is(Items.AIR))
             return InteractionResult.TRY_WITH_EMPTY_HAND;
 
-        if(stack.has(DataComponentTypes.FUNGUS_GENOMA))
+        if(stack.has(DataComponentTypes.FUNGUS_GENOMA.dataComponentType()))
         {
-            FungusGenoma fungusGenoma = stack.get(DataComponentTypes.FUNGUS_GENOMA);
+            FungusGenoma fungusGenoma = stack.get(DataComponentTypes.FUNGUS_GENOMA.dataComponentType());
             InteractionResult result = super.useItemOn(stack, state, level, pos, player, hand, hitResult);
 
             if(result == InteractionResult.SUCCESS)
@@ -86,11 +86,11 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
                 player.drop(itemstack, false);
             }
 
-            level.setBlock(pos, this.getEmptyPot().defaultBlockState(), 3);
+            level.setBlock(pos, BlocksDefinitions.FUNGUS_POT.get().defaultBlockState(), 3);
             level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             return InteractionResult.SUCCESS;
         }
-    }*/
+    }
 
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state)
