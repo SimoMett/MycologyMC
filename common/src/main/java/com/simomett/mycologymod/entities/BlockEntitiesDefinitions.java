@@ -9,9 +9,9 @@ public class BlockEntitiesDefinitions
             ColoredFungusBlockEntity::new,
             BlocksDefinitions.COLORED_CRIMSON_FUNGUS,
             BlocksDefinitions.COLORED_WARPED_FUNGUS,
-            BlocksDefinitions.FUNGUS_POT
-            //BlocksDefinitions.POTTED_COLORED_CRIMSON,
-            //BlocksDefinitions.POTTED_COLORED_WARPED
+            BlocksDefinitions.FUNGUS_POT,
+            BlocksDefinitions.POTTED_COLORED_CRIMSON,
+            BlocksDefinitions.POTTED_COLORED_WARPED
     );
 
     public static void init(){}

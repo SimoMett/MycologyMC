@@ -27,10 +27,14 @@ public class MycologyModClient implements ClientModInitializer
     {
         BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.POTTED_COLORED_CRIMSON.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.POTTED_COLORED_WARPED.get(), RenderType.cutout());
 
         ColorProviderRegistry.BLOCK.register(fungusColorer,
                 BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
-                BlocksDefinitions.COLORED_WARPED_FUNGUS.get());
+                BlocksDefinitions.COLORED_WARPED_FUNGUS.get(),
+                BlocksDefinitions.POTTED_COLORED_CRIMSON.get(),
+                BlocksDefinitions.POTTED_COLORED_WARPED.get());
 
         ColorProviderRegistry.ITEM.register(fungusColorer,
                 ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(),

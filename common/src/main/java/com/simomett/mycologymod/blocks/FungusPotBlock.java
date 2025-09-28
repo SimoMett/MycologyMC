@@ -16,7 +16,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -28,11 +27,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.function.Supplier;
-
 public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
 {
-    public FungusPotBlock(Supplier<? extends Block> potted, Properties properties)
+    public FungusPotBlock(IRegisteredBlock<ColoredFungusBlock> potted, Properties properties)
     {
         super(potted.get(), properties);
     }

@@ -15,14 +15,16 @@ public class NeoForgeFungusColorer extends FungusColorer
     {
         evt.register(new FungusColorer(),
                 BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
-                BlocksDefinitions.COLORED_WARPED_FUNGUS.get()
-                /*BlockNames.POTTED_COLORED_CRIMSON.get(),
-                BlockNames.POTTED_COLORED_WARPED.get()*/);
+                BlocksDefinitions.COLORED_WARPED_FUNGUS.get(),
+                BlocksDefinitions.POTTED_COLORED_CRIMSON.get(),
+                BlocksDefinitions.POTTED_COLORED_WARPED.get());
     }
 
     @SubscribeEvent
     public static void registerItemColorsEvent(RegisterColorHandlersEvent.Item evt)
     {
-        evt.register(new FungusColorer(), ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
+        evt.register(new FungusColorer(),
+                ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(),
+                ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
     }
 }

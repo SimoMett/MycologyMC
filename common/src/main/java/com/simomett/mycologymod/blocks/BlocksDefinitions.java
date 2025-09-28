@@ -38,21 +38,19 @@ public class BlocksDefinitions
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_pot"))))
     );
 
-    /*public static final IRegisteredBlock<FungusPotBlock> POTTED_COLORED_CRIMSON = Services.PLATFORM.registerBlock("potted_colored_crimson",
+    public static final IRegisteredBlock<FungusPotBlock> POTTED_COLORED_CRIMSON = Services.PLATFORM.registerBlock("potted_colored_crimson",
             (p) -> {
                 FungusPotBlock b = new FungusPotBlock(COLORED_CRIMSON_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
                         .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "potted_colored_crimson"))));
-                FUNGUS_POT.get().addPlant(COLORED_CRIMSON_FUNGUS.getId(), ()->b);
                 return b;
             });
 
-    public static final DeferredBlock<FungusPotBlock> POTTED_COLORED_WARPED = BLOCKS.register("potted_colored_warped",
-            (r) -> {
+    public static final IRegisteredBlock<FungusPotBlock> POTTED_COLORED_WARPED = Services.PLATFORM.registerBlock("potted_colored_warped",
+            (p) -> {
                 FungusPotBlock b = new FungusPotBlock(COLORED_WARPED_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
-                        .setId(ResourceKey.create(Registries.BLOCK, r)));
-                FUNGUS_POT.get().addPlant(COLORED_WARPED_FUNGUS.getId(), ()->b);
+                        .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "potted_colored_warped"))));
                 return b;
-            });*/
+            });
 
     public static final IRegisteredBlock<Block> CHROMIUM_ORE = Services.PLATFORM.registerBlock("chromium_ore", (p) ->
             new Block(BlockBehaviour.Properties
