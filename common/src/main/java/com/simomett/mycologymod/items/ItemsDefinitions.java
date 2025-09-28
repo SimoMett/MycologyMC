@@ -87,9 +87,10 @@ public class ItemsDefinitions
         return itemStack.is(COLORED_WARPED_FUNGUS.get()) || itemStack.is(COLORED_CRIMSON_FUNGUS.get());
     }
 
-    //public static final DeferredItem<BlockItem> FUNGUS_ANALYSING_STATION = ITEMS.registerSimpleBlockItem("fungus_analysing_station", ModBlocks.FUNGUS_ANALYSING_STATION);
-    /*public static final DeferredItem<BlockItem> POTTED_COLORED_CRIMSON = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_CRIMSON);
-    public static final DeferredItem<BlockItem> POTTED_COLORED_WARPED = ITEMS.registerSimpleBlockItem(ModBlocks.POTTED_COLORED_WARPED);*/
+    public static final IRegisteredItem<BlockItem> FUNGUS_ANALYSING_STATION = Services.PLATFORM.registerItem("fungus_analysing_station", p->
+            new BlockItem(BlocksDefinitions.FUNGUS_ANALYSING_STATION.get(), new Item.Properties()
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_analysing_station"))))
+    );
 
     public static void init(){}
 }

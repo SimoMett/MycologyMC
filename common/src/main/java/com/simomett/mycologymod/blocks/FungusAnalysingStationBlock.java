@@ -18,11 +18,12 @@ public class FungusAnalysingStationBlock extends Block
         super(properties);
     }
 
-    /*@Override
+    @Override
     protected @Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos)
     {
-        return new FungusAnalysingStationMenuProvider();
-    }*/
+        //return new FungusAnalysingStationMenuProvider();
+        return null;
+    }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult)
