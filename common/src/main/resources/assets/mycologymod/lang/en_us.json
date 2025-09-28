@@ -8,15 +8,26 @@
   "item.mycologymod.cooked_poisonous_warped_fungus": "Cooked fungus",
 
   "item.mycologymod.magnifying_glass": "Magnifying glass",
+
   "item.mycologymod.fungus_analysing_station": "Fungus analysing station",
+  "block.mycologymod.fungus_analysing_station": "Fungus analysing station",
+
   "item.mycologymod.test_tube": "Test tube",
+
   "item.mycologymod.chromium_ore": "Chromite ore",
+  "block.mycologymod.chromium_ore": "Chromite ore",
+
   "item.mycologymod.chromite_powder": "Chromite powder",
   "item.mycologymod.chromium_mutagen": "Chromite mutagen",
   "item.mycologymod.chromium_ingot": "Chromium ingot",
   "item.mycologymod.chromium_nugget": "Chromium nugget",
+
   "item.mycologymod.chromium_block": "Chromium block",
+  "block.mycologymod.chromium_block": "Chromium block",
+
   "item.mycologymod.fungus_pot": "Fungus Pot",
+  "block.mycologymod.fungus_pot": "Fungus Pot",
+
   "effect.mycologymod.sample": "Sampleness",
   "effect.mycologymod.gain_xp": "Learning",
   "effect.mycologymod.knowledge": "Knowledge",
