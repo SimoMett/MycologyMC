@@ -17,6 +17,8 @@ import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
 import com.simomett.mycologymod.genetics.IBiomeDownfallProvider;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.FabricRegisteredItem;
+import com.simomett.mycologymod.particles.FabricParticleType;
+import com.simomett.mycologymod.particles.IRegisteredParticleType;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
 import com.simomett.mycologymod.world.FabricFeature;
 import com.simomett.mycologymod.world.IBiomeDownfallGetter;
@@ -42,7 +44,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -153,6 +154,14 @@ public class FabricPlatformHelper implements IPlatformHelper
                 ).build());
 
         return new FabricRegisteredBlockEntityType<>(blockEntityType);
+    }
+
+    @Override
+    public IRegisteredParticleType registerSimpleParticleType(String name)
+    {
+        IRegisteredParticleType tt = new FabricParticleType();
+        Registry.register(BuiltInRegistries.PARTICLE_TYPE, ResourceLocation.fromNamespaceAndPath(MOD_ID, name), tt.particleType());
+        return tt;
     }
 
     @Override

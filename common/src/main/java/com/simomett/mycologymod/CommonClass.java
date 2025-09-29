@@ -6,6 +6,7 @@ import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import com.simomett.mycologymod.items.potions.Potions;
+import com.simomett.mycologymod.particles.ParticlesDefinitions;
 import com.simomett.mycologymod.world.FeaturesDefinitions;
 
 // This class is part of the common project meaning it is shared between all supported loaders. Code written here can only
@@ -27,5 +28,6 @@ public class CommonClass
         ItemsDefinitions.init();
         BlockEntitiesDefinitions.init();
         FeaturesDefinitions.init();
+        ParticlesDefinitions.init();
     }
 }

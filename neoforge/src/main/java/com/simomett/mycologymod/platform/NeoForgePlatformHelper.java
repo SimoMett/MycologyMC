@@ -18,6 +18,8 @@ import com.simomett.mycologymod.genetics.IBiomeDownfallProvider;
 import com.simomett.mycologymod.items.IRegisteredItem;
 import com.simomett.mycologymod.items.NeoForgeRegisteredItem;
 import com.simomett.mycologymod.items.potions.NeoForgePotions;
+import com.simomett.mycologymod.particles.IRegisteredParticleType;
+import com.simomett.mycologymod.particles.NeoForgeParticleType;
 import com.simomett.mycologymod.platform.services.IPlatformHelper;
 import com.simomett.mycologymod.world.IRegisteredFeature;
 import com.simomett.mycologymod.world.NeoForgeBiomeDownfallProvider;
@@ -25,6 +27,7 @@ import com.simomett.mycologymod.world.features.NeoForgeFeature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -51,6 +54,7 @@ import static com.simomett.mycologymod.blocks.NeoForgeRegisteredBlock.BLOCKS;
 import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DATA_COMPONENTS;
 import static com.simomett.mycologymod.entities.NeoForgeBlockEntities.ENTITIES;
 import static com.simomett.mycologymod.items.ModItems.ITEMS;
+import static com.simomett.mycologymod.particles.NeoForgeParticles.PARTICLES;
 import static com.simomett.mycologymod.recipes.ModRecipes.RECIPE_SERIALIZERS;
 import static com.simomett.mycologymod.world.features.NeoForgeFeatures.FEATURES;
 
@@ -123,6 +127,12 @@ public class NeoForgePlatformHelper implements IPlatformHelper
                     Arrays.stream(blocks).map(IRegisteredBlock::get).collect(Collectors.toSet())
             ));
         return new NeoForgeRegisteredBlockEntityType<>(tt);
+    }
+
+    @Override
+    public IRegisteredParticleType registerSimpleParticleType(String name)
+    {
+        return new NeoForgeParticleType(PARTICLES.register(name, () -> new SimpleParticleType(false)));
     }
 
     @Override

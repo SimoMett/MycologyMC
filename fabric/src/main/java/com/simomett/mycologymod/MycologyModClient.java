@@ -3,10 +3,14 @@ package com.simomett.mycologymod;
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.blocks.FungusColorer;
 import com.simomett.mycologymod.items.ItemsDefinitions;
+import com.simomett.mycologymod.particles.MutantSporeParticles;
+import com.simomett.mycologymod.particles.ParticlesDefinitions;
+import com.simomett.mycologymod.particles.SporeParticles;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.renderer.RenderType;
 
@@ -39,5 +43,8 @@ public class MycologyModClient implements ClientModInitializer
         ColorProviderRegistry.ITEM.register(fungusColorer,
                 ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(),
                 ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
+
+        ParticleFactoryRegistry.getInstance().register(ParticlesDefinitions.SPORE_PARTICLES.particleType(), SporeParticles.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticlesDefinitions.MUTANT_SPORE_PARTICLES.particleType(), MutantSporeParticles.Provider::new);
     }
 }

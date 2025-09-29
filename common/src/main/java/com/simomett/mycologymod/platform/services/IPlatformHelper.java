@@ -9,11 +9,11 @@ import com.simomett.mycologymod.entities.IBlockEntityConstructor;
 import com.simomett.mycologymod.entities.IRegisteredBlockEntityType;
 import com.simomett.mycologymod.genetics.IBiomeDownfallProvider;
 import com.simomett.mycologymod.items.IRegisteredItem;
+import com.simomett.mycologymod.particles.IRegisteredParticleType;
 import com.simomett.mycologymod.world.IRegisteredFeature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -64,6 +64,8 @@ public interface IPlatformHelper {
 
     //<T extends BlockEntity> BlockEntityType<T> registerBlockEntityType(String name, Supplier<T> supplier, Block... blocks);
     <T extends BlockEntity> IRegisteredBlockEntityType<T> registerBlockEntityType(String name, IBlockEntityConstructor<BlockPos, BlockState, T> factory, IRegisteredBlock<?>... blocks);
+
+    IRegisteredParticleType registerSimpleParticleType(String name);
 
     interface MenuSupplier<T extends AbstractContainerMenu> {
         T create(int var1, Inventory var2);
