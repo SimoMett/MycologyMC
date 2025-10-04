@@ -15,6 +15,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 
@@ -65,10 +67,10 @@ public class ColoredFungusBlockItem extends BlockItem
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> components, TooltipFlag p_41424_)
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> tooltipAdder, TooltipFlag flag)
     {
-        super.appendHoverText(itemStack, tooltipContext, components, p_41424_);
-        components.add(Component.literal("\u00a77Mycology WIP build"));
+        super.appendHoverText(stack, context, tooltipDisplay, tooltipAdder, flag);
+        tooltipAdder.accept(Component.literal("\u00a77Mycology WIP build"));
     }
 
     @Override

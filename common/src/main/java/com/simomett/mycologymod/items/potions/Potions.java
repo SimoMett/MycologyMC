@@ -22,9 +22,9 @@ public class Potions
     public static final int LONG_DURATION = 20*60*8;
     public static final int STRONG_DURATION = 20*90;
 
-    public static final Holder<Potion> HASTE = Services.PLATFORM.registerPotion("haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.DIG_SPEED)));
-    public static final Holder<Potion> LONG_HASTE = Services.PLATFORM.registerPotion("long_haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.DIG_SPEED, LONG_DURATION)));
-    public static final Holder<Potion> STRONG_HASTE = Services.PLATFORM.registerPotion("strong_haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.DIG_SPEED, STRONG_DURATION, 1)));
+    public static final Holder<Potion> HASTE = Services.PLATFORM.registerPotion("haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.HASTE)));
+    public static final Holder<Potion> LONG_HASTE = Services.PLATFORM.registerPotion("long_haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.HASTE, LONG_DURATION)));
+    public static final Holder<Potion> STRONG_HASTE = Services.PLATFORM.registerPotion("strong_haste", () -> new Potion("haste", new MobEffectInstance(MobEffects.HASTE, STRONG_DURATION, 1)));
     public static final Holder<Potion> ANESTHETIC = register(FungusEffects.ANESTHETIC_EFFECT, EffectsDefinitions.ANESTHETIC.holder());
     //public static final Holder<Potion> ILLUCINATING = Services.PLATFORM.registerPotion(FungusEffects.ILLUCINATING_EFFECT.getEffectName(), () -> new Potion(FungusEffects.ILLUCINATING_EFFECT.getEffectName(), new MobEffectInstance(EffectsDefinitions.holderOf(EffectsDefinitions.ILLUCINATIONS))));
     //public static final Holder<Potion> HALLUCINATING = register("", EffectsDefinitions.HALL);

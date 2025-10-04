@@ -13,7 +13,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 import static com.simomett.mycologymod.effects.player.EffectsDefinitions.XP_MULTIPLIER;
 
-@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = Constants.MOD_ID)
 public class PlayerEffectsEventsHandler
 {
     @SubscribeEvent
@@ -24,7 +24,7 @@ public class PlayerEffectsEventsHandler
         if(player.hasEffect(xpMultiplierEffect))
         {
             float multiplier = 1+0.5f*(player.getEffect(xpMultiplierEffect).getAmplifier()+1);
-            evt.getOrb().value*=(int)multiplier;
+            evt.getOrb().setValue((int) (evt.getOrb().getValue()*multiplier));
         }
     }
 

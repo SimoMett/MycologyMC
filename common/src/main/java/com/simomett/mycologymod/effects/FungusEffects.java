@@ -14,7 +14,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.animal.sheep.Sheep;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.npc.Villager;
@@ -39,11 +39,11 @@ public class FungusEffects
     private static final HashMap<String, FungusEffect> effectsHashMap = new HashMap<>();
 
     public static final SingleEffect NO_EFFECT = new SingleEffect("none");
-    public static final MultipleEffect POISON_EFFECT = new MultipleEffect("poison", List.of(MobEffects.POISON, MobEffects.CONFUSION));
+    public static final MultipleEffect POISON_EFFECT = new MultipleEffect("poison", List.of(MobEffects.POISON, MobEffects.NAUSEA));
     public static final SingleEffect DRUNK_EFFECT = new SingleEffect("drunkenness");
-    public static final MultipleEffect FATIGUE_EFFECT = new MultipleEffect("mining_fatigue", List.of(MobEffects.MOVEMENT_SLOWDOWN, MobEffects.DIG_SLOWDOWN));
+    public static final MultipleEffect FATIGUE_EFFECT = new MultipleEffect("mining_fatigue", List.of(MobEffects.SLOWNESS, MobEffects.MINING_FATIGUE));
     public static final SingleEffect HEALING_EFFECT = new SingleEffect("regeneration", MobEffects.REGENERATION);
-    public static final SingleEffect STRENGTH_EFFECT = new SingleEffect("strengthening", MobEffects.DAMAGE_BOOST);
+    public static final SingleEffect STRENGTH_EFFECT = new SingleEffect("strengthening", MobEffects.STRENGTH);
     public static final SingleEffect ANESTHETIC_EFFECT = new SingleEffect("anesthetic");
     public static final SingleEffect ILLUCINATING_EFFECT = new SingleEffect("illucinating", ILLUCINATIONS.holder());
     public static final SingleEffect HALLUCINATING_EFFECT = new SingleEffect("hallucinating");
@@ -65,7 +65,7 @@ public class FungusEffects
     public static final FungusEffect SPORING_EFFECT = new TransmuteBlockEffect("sporing", ModBlockTags.SPORING_REPLACEABLES, Blocks.MYCELIUM);
     public static final FungusEffect FREEZING_EFFECT = new TransmuteBlockEffect("freezing", Blocks.WATER, Blocks.ICE);
     public static final LevelOnlyEffect DYEING_EFFECT = new LevelOnlyEffect("dyeing", (level, pos, box) -> {
-        level.getEntitiesOfClass(Sheep.class, box).forEach( sheep -> {
+        level.getEntitiesOfClass(Sheep.class, box).forEach(sheep -> {
             sheep.setColor(DyeColor.byId(new Random().nextInt(16)));
         });
     });
@@ -137,11 +137,11 @@ public class FungusEffects
         {
             Villager villager = nearbyVillagers.get(new Random().nextInt(nearbyVillagers.size()));
 
-            ZombieVillager zombievillager = villager.convertTo(EntityType.ZOMBIE_VILLAGER, ConversionParams.single(villager, true, true), m -> m.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 300)));
+            ZombieVillager zombievillager = villager.convertTo(EntityType.ZOMBIE_VILLAGER, ConversionParams.single(villager, true, true), m -> m.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 300)));
             if (zombievillager != null) {
                 zombievillager.finalizeSpawn(level, level.getCurrentDifficultyAt(zombievillager.blockPosition()), EntitySpawnReason.CONVERSION, new Zombie.ZombieGroupData(false, true));
                 zombievillager.setVillagerData(villager.getVillagerData());
-                zombievillager.setGossips(villager.getGossips().store(NbtOps.INSTANCE));
+                zombievillager.setGossips(villager.getGossips());
                 zombievillager.setTradeOffers(villager.getOffers());
                 zombievillager.setVillagerXp(villager.getVillagerXp());
             }

@@ -50,7 +50,7 @@ public class ColoredFungusBlockEntity extends BlockEntity
     {
         // FIXME awful work-around
         super.loadAdditional(tag, registries);
-        CompoundTag genomaTag = tag.getCompound("components").getCompound(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, GENOMA_DATA_COMPONENT_NAME).toString());
+        CompoundTag genomaTag = tag.getCompound("components").get().getCompound(GENOMA_DATA_COMPONENT_NAME).get();
         fungusGenoma = new FungusGenoma(genomaTag);
     }
 
