@@ -3,16 +3,12 @@ package com.simomett.mycologymod.blocks;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import net.minecraft.client.color.block.BlockColor;
-import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
-
-public class FungusColorer implements BlockColor, ItemColor
+public class FungusColorer implements BlockColor
 {
     //overlay indexes
     public static final int OVERLAY_STELUM = 0;
@@ -31,14 +27,5 @@ public class FungusColorer implements BlockColor, ItemColor
             return colors[tintIndex];
         }
         return 0;
-    }
-
-    @Override
-    public int getColor(ItemStack itemStack, int tintIndex)
-    {
-        if(itemStack.has(FUNGUS_GENOMA.dataComponentType()))
-            return FungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species())[tintIndex];
-        else
-            return 0;
     }
 }

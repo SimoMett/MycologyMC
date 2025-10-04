@@ -90,11 +90,11 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state)
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData)
     {
         ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(pos));
         if(getPotted()==Blocks.AIR)
-            return super.getCloneItemStack(level, pos, state);
+            return super.getCloneItemStack(level, pos, state, includeData);
         else
         {
             ItemStack stack = new ItemStack(this.getPotted().asItem());

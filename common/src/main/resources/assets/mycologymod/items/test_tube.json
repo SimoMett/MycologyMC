@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "mycologymod:item/test_tube"
+  }
+}

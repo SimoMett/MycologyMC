@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.genetics.FungusTraits;
+import net.minecraft.resources.FileToIdConverter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -21,7 +22,7 @@ public final class FungusSpeciesLoader extends SimpleJsonResourceReloadListener<
 
     private FungusSpeciesLoader()
     {
-        super(ExtraCodecs.JSON, "fungi");
+        super(ExtraCodecs.JSON, FileToIdConverter.json("fungi"));
     }
 
     @Override

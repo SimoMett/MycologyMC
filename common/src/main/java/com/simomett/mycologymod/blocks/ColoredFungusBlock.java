@@ -95,9 +95,9 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     }
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state)
+    public ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state, boolean includeData)
     {
-        ItemStack stack = super.getCloneItemStack(world, pos, state);
+        ItemStack stack = super.getCloneItemStack(world, pos, state, includeData);
         FungusGenoma fungusData = world.getBlockEntity(pos, BlockEntitiesDefinitions.COLORED_FUNGUS_BLOCK_ENTITY.type()).orElseThrow().getFungusGenoma();
         fungusData.storeIntoItemStack(stack);
         return stack;

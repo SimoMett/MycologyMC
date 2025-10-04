@@ -2,6 +2,7 @@ package com.simomett.mycologymod;
 
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.blocks.FungusColorer;
+import com.simomett.mycologymod.items.FungusTintSource;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import com.simomett.mycologymod.particles.MutantSporeParticles;
 import com.simomett.mycologymod.particles.ParticlesDefinitions;
@@ -12,7 +13,9 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.client.color.item.ItemTintSources;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
 
 @Environment(EnvType.CLIENT)
 public class MycologyModClient implements ClientModInitializer
@@ -40,9 +43,10 @@ public class MycologyModClient implements ClientModInitializer
                 BlocksDefinitions.POTTED_COLORED_CRIMSON.get(),
                 BlocksDefinitions.POTTED_COLORED_WARPED.get());
 
-        ColorProviderRegistry.ITEM.register(fungusColorer,
-                ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(),
-                ItemsDefinitions.COLORED_WARPED_FUNGUS.get());
+        ItemTintSources.ID_MAPPER.put(
+                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_color"),
+                FungusTintSource.MAP_CODEC
+        );
 
         ParticleFactoryRegistry.getInstance().register(ParticlesDefinitions.SPORE_PARTICLES.particleType(), SporeParticles.Provider::new);
         ParticleFactoryRegistry.getInstance().register(ParticlesDefinitions.MUTANT_SPORE_PARTICLES.particleType(), MutantSporeParticles.Provider::new);
