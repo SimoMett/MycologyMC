@@ -52,9 +52,9 @@ neoForge {
 
 dependencies {
     // WTHIT integration
-    compileOnly "mcp.mobius.waila:wthit-api:neo-13.1.1"
-    runtimeOnly "mcp.mobius.waila:wthit:neo-13.1.1"
-    runtimeOnly "lol.bai:badpackets:neo-0.8.1"
+    // compileOnly "mcp.mobius.waila:wthit-api:neo-13.1.1"
+    // runtimeOnly "mcp.mobius.waila:wthit:neo-13.1.1"
+    // runtimeOnly "lol.bai:badpackets:neo-0.8.1"
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -79,9 +79,9 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
     // REI
-    runtimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:17.0.794"
-    compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:17.0.794"
-    compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:17.0.794"
+    // runtimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:17.0.794"
+    // compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:17.0.794"
+    // compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:17.0.794"
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
