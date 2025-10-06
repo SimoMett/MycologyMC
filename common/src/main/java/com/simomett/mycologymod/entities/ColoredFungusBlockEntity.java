@@ -12,7 +12,6 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -36,22 +35,17 @@ public class ColoredFungusBlockEntity extends BlockEntity
         super(COLORED_FUNGUS_BLOCK_ENTITY.type(), blockPos, blockState);
     }
 
-    /*@Override
-    public void onLoad()
-    {
-        super.onLoad();
-        //components() are null only in client. is this the problem?
-        if(components().has(FUNGUS_GENOMA.get()))
-            fungusGenoma = components().get(FUNGUS_GENOMA.get());
-    }*/
-
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries)
     {
-        // FIXME awful work-around
         super.loadAdditional(tag, registries);
-        CompoundTag genomaTag = tag.getCompound("components").get().getCompound(GENOMA_DATA_COMPONENT_NAME).get();
-        fungusGenoma = new FungusGenoma(genomaTag);
+        if (tag.getCompound("components").isPresent())
+        {
+            // FIXME awful work-around
+            CompoundTag genomaTag = tag.getCompound("components").get().getCompound(Constants.MOD_ID+":"+GENOMA_DATA_COMPONENT_NAME).get();
+            //
+            fungusGenoma = new FungusGenoma(genomaTag);
+        }
     }
 
     private Instant lastInstant = Instant.now();
@@ -117,10 +111,10 @@ public class ColoredFungusBlockEntity extends BlockEntity
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries)
     {
-        // FIXME awful work-around: part-2
         CompoundTag fungusData = new CompoundTag();
-        fungusData.put(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, GENOMA_DATA_COMPONENT_NAME).toString(),
-                FUNGUS_GENOMA_CODEC.encodeStart(NbtOps.INSTANCE, fungusGenoma).getOrThrow());
+        // FIXME awful work-around: part-2
+        fungusData.put(Constants.MOD_ID+":"+GENOMA_DATA_COMPONENT_NAME, FUNGUS_GENOMA_CODEC.encodeStart(NbtOps.INSTANCE, fungusGenoma).getOrThrow());
+        //
         CompoundTag components = new CompoundTag();
         components.put("components", fungusData);
         return components;
