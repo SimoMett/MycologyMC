@@ -10,6 +10,7 @@ import com.simomett.mycologymod.entities.NeoForgeBlockEntities;
 import com.simomett.mycologymod.items.ModItems;
 import com.simomett.mycologymod.items.potions.NeoForgePotions;
 import com.simomett.mycologymod.particles.NeoForgeParticles;
+import com.simomett.mycologymod.recipes.NeoForgeRecipeSerializers;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipeLoader;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
 import com.simomett.mycologymod.world.features.NeoForgeFeatures;
@@ -47,7 +48,8 @@ public class MycologyMod
 
         //DataComponentTypes.ATTACHMENT_TYPES.register(evtBus);
         NeoForgeParticles.PARTICLES.register(evtBus);
-        //ModRecipes.RECIPE_SERIALIZERS.register(evtBus);
+
+        NeoForgeRecipeSerializers.RECIPE_SERIALIZERS.register(evtBus);
 
         NeoForgeModEffects.EFFECTS.register(evtBus);
 

@@ -14,4 +14,6 @@ public class RecipesSerializers
     public static final Supplier<FungusCookingRecipeSerializer> FUNGUS_COOKING_RECIPE_SERIALIZER = Services.PLATFORM.registerRecipeSerializer("fungus_cooking", FungusCookingRecipeSerializer::new);
     public static final Supplier<FungusBlastingRecipeSerializer> FUNGUS_BLASTING_RECIPE_SERIALIZER = Services.PLATFORM.registerRecipeSerializer(FungusBlastingRecipe.NAME, FungusBlastingRecipeSerializer::new);
     public static final Supplier<FungusShapelessRecipeSerializer> FUNGUS_SHAPELESS_RECIPE_SERIALIZER = Services.PLATFORM.registerRecipeSerializer(FungusShapelessRecipe.NAME, FungusShapelessRecipeSerializer::new);
+
+    public static void init(){}
 }

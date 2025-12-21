@@ -134,7 +134,12 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String recipeSerializerName, Supplier<T> supplier)
     {
-        return null;
+        var tt = Registry.register(
+                BuiltInRegistries.RECIPE_SERIALIZER,
+                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, recipeSerializerName),
+                supplier.get());
+
+        return () -> tt;
     }
 
     @Override

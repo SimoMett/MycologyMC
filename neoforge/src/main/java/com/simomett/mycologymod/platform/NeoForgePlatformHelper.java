@@ -55,7 +55,7 @@ import static com.simomett.mycologymod.datacomponents.NeoForgeDataComponents.DAT
 import static com.simomett.mycologymod.entities.NeoForgeBlockEntities.ENTITIES;
 import static com.simomett.mycologymod.items.ModItems.ITEMS;
 import static com.simomett.mycologymod.particles.NeoForgeParticles.PARTICLES;
-import static com.simomett.mycologymod.recipes.ModRecipes.RECIPE_SERIALIZERS;
+import static com.simomett.mycologymod.recipes.NeoForgeRecipeSerializers.RECIPE_SERIALIZERS;
 import static com.simomett.mycologymod.world.features.NeoForgeFeatures.FEATURES;
 
 public class NeoForgePlatformHelper implements IPlatformHelper

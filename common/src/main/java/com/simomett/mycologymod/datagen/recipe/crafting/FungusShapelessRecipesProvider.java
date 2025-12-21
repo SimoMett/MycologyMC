@@ -14,14 +14,13 @@ import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.*;
 
 public class FungusShapelessRecipesProvider extends RecipeProvider
 {
-
-    protected FungusShapelessRecipesProvider(HolderLookup.Provider registries, RecipeOutput output)
+    public FungusShapelessRecipesProvider(HolderLookup.Provider registries, RecipeOutput output)
     {
         super(registries, output);
     }
 
     @Override
-    protected void buildRecipes()
+    public void buildRecipes()
     {
         // Dyes
         addCraftingRecipe(YELLOW_FUNGUS, Items.YELLOW_DYE, 2);
@@ -72,7 +71,6 @@ public class FungusShapelessRecipesProvider extends RecipeProvider
         {
             return new FungusShapelessRecipesProvider(provider, recipeOutput);
         }
-
 
         @Override
         public String getName()

@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.recipes.brewing;
 
 import com.google.gson.JsonElement;
-import com.simomett.mycologymod.Constants;
 import net.minecraft.resources.FileToIdConverter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -9,15 +8,12 @@ import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
 
-@EventBusSubscriber(modid = Constants.MOD_ID)
 public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener<JsonElement>
 {
     public static final FungusBrewingRecipeLoader INSTANCE = new FungusBrewingRecipeLoader();
@@ -47,16 +43,5 @@ public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener<
     public ArrayList<FungusBrewingRecipe> getQueue()
     {
         return recipeQueue;
-    }
-
-    @SubscribeEvent
-    public static void registerBrewingRecipes(RegisterBrewingRecipesEvent evt)
-    {
-        PotionBrewing.Builder builder = evt.getBuilder();
-        for(FungusBrewingRecipe r : INSTANCE.recipeQueue)
-        {
-            builder.addRecipe(r);
-            //do the recipes need to be removed from BrewingRecipeRegistry when all the resources reload?
-        }
     }
 }

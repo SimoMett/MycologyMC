@@ -9,11 +9,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
-import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
 
 import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_GENOMA;
 
-public class FungusBrewingRecipe implements IBrewingRecipe
+public class FungusBrewingRecipe
 {
     private final Holder<Potion> inputPotion;
     public final ItemStack inputItem;
@@ -52,5 +51,10 @@ public class FungusBrewingRecipe implements IBrewingRecipe
             return result;
 
         return ItemStack.EMPTY;
+    }
+
+    public Holder<Potion> getInputPotion()
+    {
+        return inputPotion;
     }
 }

@@ -5,9 +5,9 @@ import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.items.potions.Potions;
 import net.minecraft.core.Holder;
 import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import net.minecraft.server.packs.PackType;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.alchemy.Potion;
 
 import java.nio.file.Path;
@@ -19,11 +19,12 @@ import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.*;
 
 public class BrewingRecipesProvider implements DataProvider
 {
-    private final DataGenerator generator;
+    private final PackOutput.PathProvider pathProvider;
     private final ArrayList<CompletableFuture<?>> list = new ArrayList<>();
 
-    public BrewingRecipesProvider(DataGenerator generator) {
-        this.generator = generator;
+    public BrewingRecipesProvider(PackOutput packOutput)
+    {
+        this.pathProvider = packOutput.createPathProvider(PackOutput.Target.DATA_PACK, "fungi_brewing");
     }
 
     @Override
@@ -33,7 +34,7 @@ public class BrewingRecipesProvider implements DataProvider
         //addBrewingRecipe(ANESTHETIC_FUNGUS, Potions.ANESTHETIC, cachedOutput);
         //addBrewingRecipe(ILLUCINATING_FUNGUS, Potions.ILLUCINATING, cachedOutput);
         addBrewingRecipe(BLINDING_FUNGUS, Potions.BLINDING, cachedOutput);
-        //addBrewingRecipe(SENSING_FUNGUS, Potions.SENSING, cachedOutput);
+        addBrewingRecipe(SENSING_FUNGUS, Potions.SENSING, cachedOutput);
         addBrewingRecipe(WITHERING_FUNGUS, Potions.WITHERING, cachedOutput);
         addBrewingRecipe(TELEPORTING_FUNGUS, Potions.TELEPORTING, cachedOutput);
         addBrewingRecipe(SPEED_FUNGUS, net.minecraft.world.item.alchemy.Potions.SWIFTNESS, cachedOutput);
@@ -46,11 +47,10 @@ public class BrewingRecipesProvider implements DataProvider
     {
         JsonObject mutationJson = new JsonObject();
         mutationJson.addProperty("species", ingredientSpecies);
-        mutationJson.addProperty("result", potion.getKey().location().toString());
+        mutationJson.addProperty("result", potion.getRegisteredName());
 
-        Path path = generator.getPackOutput().getOutputFolder();
-        String jsonFileName = ingredientSpecies.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), Constants.MOD_ID, "fungi_brewing", jsonFileName));
+        String jsonFileName = ingredientSpecies.toLowerCase().replace(' ', '_');
+        Path jsonLocation = this.pathProvider.json(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
 
         list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }
