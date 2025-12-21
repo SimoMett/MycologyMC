@@ -3,9 +3,9 @@ package com.simomett.mycologymod.datagen;
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.Constants;
 import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import net.minecraft.server.packs.PackType;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 
 import java.nio.file.Path;
 import java.security.InvalidParameterException;
@@ -17,11 +17,11 @@ import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.*;
 
 public class MutationsProvider implements DataProvider
 {
-    private final DataGenerator generator;
+    private final PackOutput.PathProvider pathProvider;
     private final ArrayList<CompletableFuture<?>> list = new ArrayList<>();
-    public MutationsProvider(DataGenerator dataGenerator)
+    public MutationsProvider(PackOutput packOutput)
     {
-        this.generator = dataGenerator;
+        this.pathProvider = packOutput.createPathProvider(PackOutput.Target.DATA_PACK, "mutations");
     }
 
     @Override
@@ -157,9 +157,8 @@ public class MutationsProvider implements DataProvider
         mutationJson.addProperty("result", result);
         mutationJson.addProperty("chance", chance);
 
-        Path path = generator.getPackOutput().getOutputFolder();
-        String jsonFileName = result.toLowerCase().replace(' ', '_')+".json";
-        Path jsonLocation = path.resolve(String.join("/", PackType.SERVER_DATA.getDirectory(), Constants.MOD_ID, "mutations", jsonFileName));
+        String jsonFileName = result.toLowerCase().replace(' ', '_');
+        Path jsonLocation = this.pathProvider.json(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
 
         list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }
