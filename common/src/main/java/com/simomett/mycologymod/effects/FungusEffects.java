@@ -51,7 +51,7 @@ public class FungusEffects
     public static final SingleEffect BLINDING_EFFECT = new SingleEffect("blinding", MobEffects.BLINDNESS);
     public static final SingleEffect PHANTOM_EFFECT = new SingleEffect("phantom", MobEffects.INVISIBILITY);
     public static final SingleEffect NIGHTLY_EFFECT = new SingleEffect("nightly", MobEffects.NIGHT_VISION);
-    public static final SingleEffect SENSING_EFFECT = new SingleEffect("sensing");
+    public static final SingleEffect SENSING_EFFECT = new SingleEffect("sensing", EffectsDefinitions.SENSING.holder());
     public static final SingleEffect SHINING_EFFECT = new SingleEffect("shining", MobEffects.GLOWING);
     public static final SingleEffect SCHIZO_EFFECT = new SingleEffect("schizo");
     public static final SingleEffect SPARKLING_EFFECT = new SingleEffect("sparkling");

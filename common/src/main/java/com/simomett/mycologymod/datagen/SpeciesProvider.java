@@ -197,8 +197,8 @@ public class SpeciesProvider implements DataProvider
                 .spreadBoost(1.1f)
                 .light(15)
                 .terrain(Blocks.PALE_MOSS_BLOCK)
-                //.areaEffect(FungusEffects.BLINDING_EFFECT)
-                //.areaRadius(10)
+                .areaEffect(FungusEffects.SENSING_EFFECT)
+                .areaRadius(SpeciesBuilder.DEFAULT_AREA_RADIUS+2)
                 .spawnType(FungusSpawn.PALE_GARDEN)
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .build();
@@ -726,6 +726,7 @@ public class SpeciesProvider implements DataProvider
                 .warpedType(0xcec2c5, 0xffcf42, 0xffffff, 0x1984a1)
                 .light(12)
                 .areaEffect(FungusEffects.SENSING_EFFECT)
+                .areaRadius(SpeciesBuilder.DEFAULT_AREA_RADIUS+3)
                 .build();
 
         //////////////////////

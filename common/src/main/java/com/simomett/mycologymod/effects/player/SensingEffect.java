@@ -1,11 +1,7 @@
 package com.simomett.mycologymod.effects.player;
 
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 
 import java.awt.*;
 
@@ -25,25 +21,5 @@ public class SensingEffect extends MobEffect
     public boolean isInstantenous()
     {
         return false;
-    }
-
-    @Override
-    public boolean applyEffectTick(ServerLevel lvl, LivingEntity entity, int amplifier)
-    {
-        if(lvl.isClientSide)
-        {
-            double radius = 10;
-            Vec3 pos = entity.position();
-            entity.setGlowingTag(true);
-            AABB aabb = new AABB(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius));
-            // what now?
-        }
-        return true;
-    }
-
-    @Override
-    public boolean shouldApplyEffectTickThisTick(int remaningTicks, int level)
-    {
-        return false;//FIXME
     }
 }
