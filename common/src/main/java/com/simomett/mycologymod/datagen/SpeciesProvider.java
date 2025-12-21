@@ -191,6 +191,18 @@ public class SpeciesProvider implements DataProvider
                 .biomesSpecs(BiomesSpecs.FOREST)
                 .build();
 
+        speciesBuilder.createSpecies(PALE_GARDEN_FUNGUS)
+                .warpedType(0x58503e, 0xbdb3ba, 0x494548, 0xebe3e6)
+                .spreading(SpeciesBuilder.DEFAULT_SPREADING-1)
+                .spreadBoost(1.1f)
+                .light(15)
+                .terrain(Blocks.PALE_MOSS_BLOCK)
+                //.areaEffect(FungusEffects.BLINDING_EFFECT)
+                //.areaRadius(10)
+                .spawnType(FungusSpawn.PALE_GARDEN)
+                .biomesSpecs(BiomesSpecs.FOREST)
+                .build();
+
         ///////////////////////
         //   Nether branch   //
         ///////////////////////

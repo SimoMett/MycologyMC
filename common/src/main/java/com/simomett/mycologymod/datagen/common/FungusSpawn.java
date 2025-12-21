@@ -33,7 +33,8 @@ public class FungusSpawn implements Serializable
     public static final FungusSpawn END = new FungusSpawn(Biomes.THE_END, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn END_MIDLANDS = new FungusSpawn(Biomes.END_HIGHLANDS, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn END_HIGHLANDS = new FungusSpawn(Biomes.END_HIGHLANDS, DEFAULT_SPAWN_CHANCE);
-    public static final FungusSpawn VERY_RARE = new FungusSpawn("#any",.1f);//FIXME to adjust
+    public static final FungusSpawn VERY_RARE = new FungusSpawn("#any",.1f); //FIXME to adjust
+    public static final FungusSpawn PALE_GARDEN = new FungusSpawn(Biomes.PALE_GARDEN, 1f);
 
     private String biomes;
     public final float chance;
