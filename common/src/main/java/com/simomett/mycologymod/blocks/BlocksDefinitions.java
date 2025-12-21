@@ -28,9 +28,9 @@ public class BlocksDefinitions
                     .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_WARPED_STRING))))
     );
 
-    public static final IRegisteredBlock<FungusAnalysingStationBlock> FUNGUS_ANALYSING_STATION = Services.PLATFORM.registerBlock("fungus_analysing_station", p ->
+    /*public static final IRegisteredBlock<FungusAnalysingStationBlock> FUNGUS_ANALYSING_STATION = Services.PLATFORM.registerBlock("fungus_analysing_station", p ->
             new FungusAnalysingStationBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_analysing_station")))));
+                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_analysing_station")))));*/
 
     public static final IRegisteredBlock<FungusPotBlock> FUNGUS_POT = Services.PLATFORM.registerBlock("fungus_pot", (p) ->
             new FungusPotBlock(BlockBehaviour.Properties

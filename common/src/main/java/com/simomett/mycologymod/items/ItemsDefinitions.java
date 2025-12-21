@@ -32,8 +32,8 @@ public class ItemsDefinitions
     public static final IRegisteredItem<Item> CHROMIUM_MUTAGEN = Services.PLATFORM.registerItem("chromium_mutagen", (p) ->
             new MutagenItem(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_mutagen"))))); // Ammonium dichromate
 
-    public static final IRegisteredItem<MagnifyingGlassItem> MAGNIFYING_GLASS = Services.PLATFORM.registerItem("magnifying_glass", (p) ->
-            new MagnifyingGlassItem(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "magnifying_glass")));
+    /*public static final IRegisteredItem<MagnifyingGlassItem> MAGNIFYING_GLASS = Services.PLATFORM.registerItem("magnifying_glass", (p) ->
+            new MagnifyingGlassItem(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "magnifying_glass")));*/
 
     // Simple items
     public static final IRegisteredItem<Item> COOKED_CRIMSON_FUNGUS = Services.PLATFORM.registerItem("cooked_crimson_fungus", (p) ->
@@ -57,8 +57,8 @@ public class ItemsDefinitions
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "cooked_poisonous_warped_fungus")))
                     .food(new FoodProperties.Builder().alwaysEdible().nutrition(1).build(), Consumable.builder().onConsume(new ApplyStatusEffectsConsumeEffect(EFFECTS_WHEN_EATEN_RAW)).build()))
     );
-    public static final IRegisteredItem<Item> TEST_TUBE = Services.PLATFORM.registerItem("test_tube", (p) ->
-            new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "test_tube")))));
+    /*public static final IRegisteredItem<Item> TEST_TUBE = Services.PLATFORM.registerItem("test_tube", (p) ->
+            new Item(new Item.Properties().setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "test_tube")))));*/
     public static final IRegisteredItem<BlockItem> CHROMIUM_ORE = Services.PLATFORM.registerItem("chromium_ore", (p) ->
             new BlockItem(BlocksDefinitions.CHROMIUM_ORE.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ore"))))
@@ -87,10 +87,10 @@ public class ItemsDefinitions
         return itemStack.is(COLORED_WARPED_FUNGUS.get()) || itemStack.is(COLORED_CRIMSON_FUNGUS.get());
     }
 
-    public static final IRegisteredItem<BlockItem> FUNGUS_ANALYSING_STATION = Services.PLATFORM.registerItem("fungus_analysing_station", p->
+    /*public static final IRegisteredItem<BlockItem> FUNGUS_ANALYSING_STATION = Services.PLATFORM.registerItem("fungus_analysing_station", p->
             new BlockItem(BlocksDefinitions.FUNGUS_ANALYSING_STATION.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_analysing_station"))))
-    );
+    );*/
 
     public static void init(){}
 }
