@@ -1,4 +1,4 @@
-package com.simomett.mycologymod.recipes.brewing;
+package com.simomett.mycologymod.items.potions;
 
 import com.simomett.mycologymod.datacomponents.DataComponentTypes;
 import com.simomett.mycologymod.items.ItemsDefinitions;
@@ -31,11 +31,15 @@ public final class FungusIngredient extends Ingredient
     @Override
     public boolean test(ItemStack stack)
     {
-        boolean sameSpecies = false;
         if(stack.getComponents().has(DataComponentTypes.FUNGUS_GENOMA.dataComponentType()))
-            sameSpecies = stack.getComponents().get(DataComponentTypes.FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species().equals(speciesName);
-
-        return super.test(stack) || sameSpecies;
+        {
+            boolean sameSpecies = stack.getComponents().get(DataComponentTypes.FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species().equals(speciesName);
+            return sameSpecies;
+        }
+        else
+        {
+            return super.test(stack);
+        }
     }
 
     @Override

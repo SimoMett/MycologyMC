@@ -102,7 +102,7 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier)
     {
-        return Holder.direct(Registry.register(BuiltInRegistries.POTION, name, potionSupplier.get()));
+        return BuiltInRegistries.POTION.wrapAsHolder(Registry.register(BuiltInRegistries.POTION, name, potionSupplier.get()));
     }
 
     @Override

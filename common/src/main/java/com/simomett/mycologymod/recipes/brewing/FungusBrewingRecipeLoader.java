@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.recipes.brewing;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import net.minecraft.resources.FileToIdConverter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -31,13 +32,18 @@ public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener<
         Collection<JsonElement> collection = map.values();
         for(JsonElement e : collection)
         {
-            String species = e.getAsJsonObject().get("species").getAsString();
-            String resultPotion = e.getAsJsonObject().get("result").getAsString();
-
-            recipeQueue.add(new FungusBrewingRecipe(Potions.AWKWARD, Items.POTION, species, resultPotion));
-            recipeQueue.add(new FungusBrewingRecipe(Potions.AWKWARD, Items.SPLASH_POTION, species, resultPotion));
-            recipeQueue.add(new FungusBrewingRecipe(Potions.AWKWARD, Items.LINGERING_POTION, species, resultPotion));
+            loadBrewingRecipe(e.getAsJsonObject());
         }
+    }
+
+    public void loadBrewingRecipe(JsonObject e)
+    {
+        String species = e.getAsJsonObject().get("species").getAsString();
+        String resultPotion = e.getAsJsonObject().get("result").getAsString();
+
+        recipeQueue.add(new FungusBrewingRecipe(Potions.AWKWARD, Items.POTION, species, resultPotion));
+        recipeQueue.add(new FungusBrewingRecipe(Potions.AWKWARD, Items.SPLASH_POTION, species, resultPotion));
+        recipeQueue.add(new FungusBrewingRecipe(Potions.AWKWARD, Items.LINGERING_POTION, species, resultPotion));
     }
 
     public ArrayList<FungusBrewingRecipe> getQueue()
