@@ -9,7 +9,7 @@ import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 
 @EventBusSubscriber(modid = Constants.MOD_ID)
-public class FungusBrewingRecipesRegister
+public class NeoForgeFungusBrewingRecipesRegister
 {
     @SubscribeEvent
     public static void registerBrewingRecipes(RegisterBrewingRecipesEvent evt)
