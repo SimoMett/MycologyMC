@@ -5,7 +5,7 @@ import com.simomett.mycologymod.datacomponents.DataComponentTypes;
 import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import com.simomett.mycologymod.entities.BlockEntitiesDefinitions;
 import com.simomett.mycologymod.items.ItemsDefinitions;
-import com.simomett.mycologymod.items.potions.Potions;
+import com.simomett.mycologymod.items.potions.PotionsDefinitions;
 import com.simomett.mycologymod.particles.ParticlesDefinitions;
 import com.simomett.mycologymod.recipes.RecipesSerializers;
 import com.simomett.mycologymod.world.FeaturesDefinitions;
@@ -23,7 +23,7 @@ public class CommonClass
     public static void init()
     {
         EffectsDefinitions.init();
-        Potions.init();
+        PotionsDefinitions.init();
         DataComponentTypes.init();
         BlocksDefinitions.init();
         ItemsDefinitions.init();

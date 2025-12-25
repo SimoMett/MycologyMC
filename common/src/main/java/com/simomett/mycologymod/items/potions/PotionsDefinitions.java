@@ -16,7 +16,7 @@ import net.minecraft.world.item.alchemy.PotionContents;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Potions
+public class PotionsDefinitions
 {
     public static final int DEFAULT_DURATION = 20*60*3;
     public static final int LONG_DURATION = 20*60*8;

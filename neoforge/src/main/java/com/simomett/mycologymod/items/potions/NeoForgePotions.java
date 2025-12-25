@@ -10,7 +10,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import static com.simomett.mycologymod.items.potions.Potions.*;
+import static com.simomett.mycologymod.items.potions.PotionsDefinitions.*;
 
 public class NeoForgePotions
 {

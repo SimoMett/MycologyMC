@@ -2,13 +2,14 @@ package com.simomett.mycologymod.datagen;
 
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.items.potions.Potions;
+import com.simomett.mycologymod.items.potions.PotionsDefinitions;
 import net.minecraft.core.Holder;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -30,15 +31,15 @@ public class BrewingRecipesProvider implements DataProvider
     @Override
     public CompletableFuture<?> run(CachedOutput cachedOutput)
     {
-        addBrewingRecipe(STRENGTH_FUNGUS, Potions.HASTE, cachedOutput);
+        addBrewingRecipe(STRENGTH_FUNGUS, PotionsDefinitions.HASTE, cachedOutput);
         //addBrewingRecipe(ANESTHETIC_FUNGUS, Potions.ANESTHETIC, cachedOutput);
         //addBrewingRecipe(ILLUCINATING_FUNGUS, Potions.ILLUCINATING, cachedOutput);
-        addBrewingRecipe(BLINDING_FUNGUS, Potions.BLINDING, cachedOutput);
-        addBrewingRecipe(SENSING_FUNGUS, Potions.SENSING, cachedOutput);
-        addBrewingRecipe(WITHERING_FUNGUS, Potions.WITHERING, cachedOutput);
-        addBrewingRecipe(TELEPORTING_FUNGUS, Potions.TELEPORTING, cachedOutput);
-        addBrewingRecipe(SPEED_FUNGUS, net.minecraft.world.item.alchemy.Potions.SWIFTNESS, cachedOutput);
-        addBrewingRecipe(GOODCHANCE_FUNGUS, net.minecraft.world.item.alchemy.Potions.LUCK, cachedOutput);
+        addBrewingRecipe(BLINDING_FUNGUS, PotionsDefinitions.BLINDING, cachedOutput);
+        addBrewingRecipe(SENSING_FUNGUS, PotionsDefinitions.SENSING, cachedOutput);
+        addBrewingRecipe(WITHERING_FUNGUS, PotionsDefinitions.WITHERING, cachedOutput);
+        addBrewingRecipe(TELEPORTING_FUNGUS, PotionsDefinitions.TELEPORTING, cachedOutput);
+        addBrewingRecipe(SPEED_FUNGUS, Potions.SWIFTNESS, cachedOutput);
+        addBrewingRecipe(GOODCHANCE_FUNGUS, Potions.LUCK, cachedOutput);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
