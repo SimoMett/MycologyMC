@@ -3,6 +3,7 @@ package com.simomett.mycologymod;
 import com.simomett.mycologymod.creativetab.ModItemGroup;
 import com.simomett.mycologymod.data.FabricFungusBrewingRecipesLoader;
 import com.simomett.mycologymod.data.FabricFungusSpeciesLoader;
+import com.simomett.mycologymod.data.FabricMutationRecipesLoader;
 import com.simomett.mycologymod.data.FungusSpeciesSync;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -22,5 +23,6 @@ public class MycologyMod implements ModInitializer
         CommonClass.init();
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new FabricFungusSpeciesLoader());
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new FabricFungusBrewingRecipesLoader());
+        ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new FabricMutationRecipesLoader());
     }
 }
