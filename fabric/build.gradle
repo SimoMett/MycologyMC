@@ -10,6 +10,10 @@ dependencies {
     }
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+
+    //compileOnly "mcp.mobius.waila:wthit-api:fabric-15.0.3"
+    //runtimeOnly "mcp.mobius.waila:wthit:fabric-15.0.3"
+    //runtimeOnly "lol.bai:badpackets:fabric-0.8.2"
 }
 fabricApi {
     configureDataGeneration(){
@@ -20,6 +24,13 @@ repositories {
     mavenCentral()
     maven {
         url = uri('https://maven.fabricmc.net')
+    }
+    maven {
+        url "https://maven2.bai.lol"
+        content {
+            includeGroup "lol.bai"
+            includeGroup "mcp.mobius.waila"
+        }
     }
 }
 loom {
