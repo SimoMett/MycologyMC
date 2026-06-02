@@ -1,0 +1,63 @@
+package com.simomett.mycologymod.datagen;
+
+import com.google.gson.JsonObject;
+import com.simomett.mycologymod.Constants;
+import com.simomett.mycologymod.items.potions.PotionsDefinitions;
+import net.minecraft.core.Holder;
+import net.minecraft.data.CachedOutput;
+import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.concurrent.CompletableFuture;
+
+import static com.simomett.mycologymod.datagen.common.SpeciesDictionary.*;
+
+
+public class BrewingRecipesProvider implements DataProvider
+{
+    private final PackOutput.PathProvider pathProvider;
+    private final ArrayList<CompletableFuture<?>> list = new ArrayList<>();
+
+    public BrewingRecipesProvider(PackOutput packOutput)
+    {
+        this.pathProvider = packOutput.createPathProvider(PackOutput.Target.DATA_PACK, "fungi_brewing");
+    }
+
+    @Override
+    public CompletableFuture<?> run(CachedOutput cachedOutput)
+    {
+        addBrewingRecipe(STRENGTH_FUNGUS, PotionsDefinitions.HASTE, cachedOutput);
+        //addBrewingRecipe(ANESTHETIC_FUNGUS, Potions.ANESTHETIC, cachedOutput);
+        //addBrewingRecipe(ILLUCINATING_FUNGUS, Potions.ILLUCINATING, cachedOutput);
+        addBrewingRecipe(BLINDING_FUNGUS, PotionsDefinitions.BLINDING, cachedOutput);
+        addBrewingRecipe(SENSING_FUNGUS, PotionsDefinitions.SENSING, cachedOutput);
+        addBrewingRecipe(WITHERING_FUNGUS, PotionsDefinitions.WITHERING, cachedOutput);
+        addBrewingRecipe(TELEPORTING_FUNGUS, PotionsDefinitions.TELEPORTING, cachedOutput);
+        addBrewingRecipe(SPEED_FUNGUS, Potions.SWIFTNESS, cachedOutput);
+        addBrewingRecipe(GOODCHANCE_FUNGUS, Potions.LUCK, cachedOutput);
+
+        return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
+    }
+
+    private void addBrewingRecipe(String ingredientSpecies, Holder<Potion> potion, CachedOutput cache)
+    {
+        JsonObject mutationJson = new JsonObject();
+        mutationJson.addProperty("species", ingredientSpecies);
+        mutationJson.addProperty("result", potion.getRegisteredName());
+
+        String jsonFileName = ingredientSpecies.toLowerCase().replace(' ', '_');
+        Path jsonLocation = this.pathProvider.json(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
+
+        list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
+    }
+
+    @Override
+    public String getName() {
+        return "Mycology Brewing recipes";
+    }
+}

@@ -1,0 +1,5 @@
+accessWidener	v2	named
+
+accessible class net/minecraft/world/level/biome/Biome$ClimateSettings
+extendable class net/minecraft/world/item/crafting/Ingredient
+accessible method net/minecraft/world/item/crafting/Ingredient <init> (Lnet/minecraft/core/HolderSet;)V

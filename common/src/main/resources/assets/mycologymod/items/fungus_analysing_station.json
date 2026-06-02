@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "mycologymod:block/fungus_analysing_station"
+  }
+}

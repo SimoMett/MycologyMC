@@ -1,0 +1,39 @@
+package com.simomett.mycologymod.particles;
+
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.particle.*;
+import net.minecraft.core.particles.SimpleParticleType;
+
+import java.util.Random;
+
+public class MutantSporeParticles extends SporeParticles
+{
+    protected MutantSporeParticles(ClientLevel level, SpriteSet spriteSet, double x, double y, double z, double vX, double vY, double vZ)
+    {
+        super(level, spriteSet, x, y, z, vX, vY, vZ);
+        int [] colors = {0x55453c, 0x6e5a4d, 0x55453c, 0x6e5a4d, 0x55453c, 0xfff100};
+        int color = colors[new Random().nextInt(colors.length)];
+        this.setColor((color >> 16)/255f, (color >> 8 & 255)/255f, (color & 255)/255f);
+    }
+
+    @Override
+    public ParticleRenderType getRenderType()
+    {
+        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    }
+
+    public static class Provider implements ParticleProvider<SimpleParticleType>
+    {
+        private final SpriteSet spriteSet;
+
+        public Provider(SpriteSet spriteSet)
+        {
+            this.spriteSet = spriteSet;
+        }
+
+        public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double vX, double vY, double vZ)
+        {
+            return new MutantSporeParticles(level, this.spriteSet, x, y, z, vX, vY, vZ);
+        }
+    }
+}

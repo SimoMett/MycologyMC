@@ -1,0 +1,31 @@
+package com.simomett.mycologymod.blocks;
+
+import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
+import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
+
+public class FungusColorer implements BlockColor
+{
+    //overlay indexes
+    public static final int OVERLAY_STELUM = 0;
+    public static final int OVERLAY_HEAD = 1;
+    public static final int OVERLAY_DETAILS = 2;
+    public static final int OVERLAY_DETAILS2 = 3;
+    //
+
+    @Override
+    public int getColor(BlockState blockState, @Nullable BlockAndTintGetter blockAndTint, @Nullable BlockPos blockPos, int tintIndex)
+    {
+        if(blockAndTint.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity fungusEntity)
+        {
+            String speciesName = fungusEntity.getFungusGenoma().getDominantTraits().species();
+            int[] colors = FungusSpeciesColorsMap.getInstance().get(speciesName);
+            return colors[tintIndex];
+        }
+        return 0;
+    }
+}
