@@ -36,7 +36,7 @@ public class FungusSpawn implements Serializable
     public static final FungusSpawn VERY_RARE = new FungusSpawn("#any",.1f); //FIXME to adjust
     public static final FungusSpawn PALE_GARDEN = new FungusSpawn(Biomes.PALE_GARDEN, 1f);
 
-    private String biomes;
+    private final String biomes;
     public final float chance;
 
     public FungusSpawn(String biomes, float chance)
