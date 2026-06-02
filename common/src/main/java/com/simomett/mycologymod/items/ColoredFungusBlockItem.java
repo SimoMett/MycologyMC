@@ -89,6 +89,7 @@ public class ColoredFungusBlockItem extends BlockItem
         //fungi can be placed from hand only on mycelium or podzol blocks by default (see can_plant_on block tag)
         BlockPos clickedPos = context.getClickedPos();
         BlockState belowBlock = context.getLevel().getBlockState(clickedPos.below());
-        return context.getLevel().getBlockState(clickedPos).isAir() && belowBlock.is(ModBlockTags.CAN_PLANT_ON);
+        return (context.getLevel().getBlockState(clickedPos).isAir() && belowBlock.is(ModBlockTags.CAN_PLANT_ON))
+                || context.getPlayer().isCreative(); //or is in creative mode
     }
 }
