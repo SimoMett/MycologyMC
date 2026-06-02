@@ -35,6 +35,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -80,6 +81,12 @@ public class NeoForgePlatformHelper implements IPlatformHelper
     public <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> factory)
     {
         return new NeoForgeRegisteredBlock<>(BLOCKS.registerBlock(name, factory));
+    }
+
+    @Override
+    public StairBlock createStairBlock(BlockState baseState, BlockBehaviour.Properties properties)
+    {
+        return new StairBlock(baseState, properties);
     }
 
     @Override

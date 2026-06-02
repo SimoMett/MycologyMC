@@ -46,6 +46,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -90,6 +91,12 @@ public class FabricPlatformHelper implements IPlatformHelper
         Function<BlockBehaviour.Properties, Block> castFactory = factory::apply;
         return new FabricRegisteredBlock(
                 Blocks.register(key, castFactory, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES)));
+    }
+
+    @Override
+    public StairBlock createStairBlock(BlockState baseState, BlockBehaviour.Properties properties)
+    {
+        return new StairBlock(baseState, properties);
     }
 
     @Override

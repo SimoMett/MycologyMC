@@ -73,6 +73,10 @@ public class ItemsDefinitions
             new BlockItem(BlocksDefinitions.CHROMIUM_BLOCK.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block"))))
     );
+    public static final IRegisteredItem<BlockItem> CHROMIUM_STAIRS = Services.PLATFORM.registerItem("chromium_stairs", (p) ->
+            new BlockItem(BlocksDefinitions.CHROMIUM_STAIRS.get(), new Item.Properties()
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_stairs"))))
+    );
     public static final IRegisteredItem<BlockItem> FUNGUS_POT = Services.PLATFORM.registerItem("fungus_pot", (p)->
             new BlockItem(BlocksDefinitions.FUNGUS_POT.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_pot"))))

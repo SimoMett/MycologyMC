@@ -20,7 +20,7 @@ public class SpeciesDictionary
     public static final String HYGROPHORUS_NIVEUS = FungusGeni.HYGROPHORUS+" niveus";         //(snowy taiga)
     public static final String BOLBITIUS_PROFONDORUM = FungusGeni.BOLBITIUS+" profundorum";   //(caves)
     public static final String BLINDING_FUNGUS = FungusGeni.COPRINUS+" caecans";              //(overworld, very rare)
-    public static final String PALE_GARDEN_FUNGUS = "PALE GARDEN";
+    public static final String PALE_GARDEN_FUNGUS = FungusGeni.CANTHARELLUS + " latens";
 
     // Native Nether
     public static final String AGARICUS_ANIMI = FungusGeni.AGARICUS+" animi";

@@ -22,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -52,6 +53,7 @@ public interface IPlatformHelper {
     // Mod specific stuff
     <T extends Item> IRegisteredItem<T> registerItem(String name, Function<Item.Properties, Item> factory);
     <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> factory);
+    StairBlock createStairBlock(BlockState baseState, BlockBehaviour.Properties properties);
     <T extends MobEffect> IRegisteredMobEffect<T> registerMobEffect(String name, Supplier<T> mobEffectSupplier);
     Holder<Potion> registerPotion(String name, Supplier<Potion> potionSupplier);
 

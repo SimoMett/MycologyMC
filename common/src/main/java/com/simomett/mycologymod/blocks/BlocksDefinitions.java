@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -65,6 +66,11 @@ public class BlocksDefinitions
                     .requiresCorrectToolForDrops())
     );
 
+    public static final IRegisteredBlock<StairBlock> CHROMIUM_STAIRS = Services.PLATFORM.registerBlock("chromium_stairs", (p) ->
+            Services.PLATFORM.createStairBlock(CHROMIUM_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties
+                    .ofFullCopy(Blocks.CUT_COPPER_STAIRS)
+                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_stairs"))))
+    );
 
     public static BlockState getDefaultBlockStateFromFungusType(String fungusType)
     {
