@@ -37,6 +37,7 @@ public class MycologyCreativeTab
         displayItems.add(ItemsDefinitions.CHROMIUM_BLOCK.get().getDefaultInstance());
         displayItems.add(ItemsDefinitions.CHROMIUM_STAIRS.get().getDefaultInstance());
         displayItems.add(ItemsDefinitions.FUNGUS_POT.get().getDefaultInstance());
+        displayItems.add(ItemsDefinitions.SPORE_MASK.get().getDefaultInstance());
         displayItems.addAll(PotionsDefinitions.getModPotions());
         return displayItems;
     }

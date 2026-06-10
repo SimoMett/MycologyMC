@@ -12,6 +12,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.item.equipment.ArmorMaterials;
+import net.minecraft.world.item.equipment.ArmorType;
 
 import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_CRIMSON_STRING;
 import static com.simomett.mycologymod.blocks.BlocksDefinitions.COLORED_WARPED_STRING;
@@ -80,6 +82,12 @@ public class ItemsDefinitions
     public static final IRegisteredItem<BlockItem> FUNGUS_POT = Services.PLATFORM.registerItem("fungus_pot", (p)->
             new BlockItem(BlocksDefinitions.FUNGUS_POT.get(), new Item.Properties()
                     .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_pot"))))
+    );
+
+    public static final IRegisteredItem<Item> SPORE_MASK = Services.PLATFORM.registerItem("spore_mask", (p) ->
+            new Item(new Item.Properties()
+                    .humanoidArmor(ArmorMaterials.TURTLE_SCUTE, ArmorType.HELMET)
+                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "spore_mask"))))
     );
 
     // Debug item
