@@ -4,6 +4,7 @@ import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.genetics.FungusGenoma;
 import com.simomett.mycologymod.effects.FungusEffects;
 import com.simomett.mycologymod.genetics.FungusTraits;
+import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentMap;
@@ -12,6 +13,8 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -81,7 +84,10 @@ public class ColoredFungusBlockEntity extends BlockEntity
                 pos.getZ() + radius
         );
         assert level != null;
-        return level.getEntitiesOfClass(LivingEntity.class, boxArea);
+        List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, boxArea);
+        entities.removeIf( (livingEntity ->
+                livingEntity instanceof ServerPlayer player && player.getItemBySlot(EquipmentSlot.HEAD).is(ItemsDefinitions.SPORE_MASK.get())));
+        return entities;
     }
 
     public final FungusGenoma getFungusGenoma()
