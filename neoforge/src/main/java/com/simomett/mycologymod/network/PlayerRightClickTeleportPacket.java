@@ -25,7 +25,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 import static com.simomett.mycologymod.effects.player.EffectsDefinitions.TELEPORTING;
 
-@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID)
 public class PlayerRightClickTeleportPacket implements CustomPacketPayload
 {
     public static final PlayerRightClickTeleportPacket INSTANCE = new PlayerRightClickTeleportPacket();

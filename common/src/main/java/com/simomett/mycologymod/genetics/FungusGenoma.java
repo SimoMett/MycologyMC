@@ -48,6 +48,11 @@ public class FungusGenoma implements IModSerializable
     private final FungusTraits dominantTraits;
     private final FungusTraits recessiveTraits;
 
+    public FungusGenoma(FungusGenoma fungusGenoma)
+    {
+        this(fungusGenoma.dominantTraits, fungusGenoma.recessiveTraits);
+    }
+
     public FungusGenoma(FungusTraits dominant, FungusTraits recessive)
     {
         dominantTraits = new FungusTraits(dominant);

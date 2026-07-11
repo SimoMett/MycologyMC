@@ -17,7 +17,7 @@ public class NeoForgeAttachmentTypes
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<FungusGenoma>> FUNGUS_GENOMA_ATTACHMENT = ATTACHMENT_TYPES.register("fungus_genoma",
             () ->
                 AttachmentType.builder( () -> new FungusGenoma(FungusTraits.UNINIT, FungusTraits.UNINIT))
-                    .serialize(FUNGUS_GENOMA_CODEC)
-                    .build()
+                        .serialize(FUNGUS_GENOMA_CODEC)
+                        .build()
     );
 }

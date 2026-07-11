@@ -13,7 +13,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import static com.simomett.mycologymod.data.FungusSpeciesColorsMap.COLORS_STREAM_CODEC;
 import static com.simomett.mycologymod.data.FungusSpeciesList.SPECIES_STREAMS_CODEC;
 
-@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID)
 public class FungusSpeciesDataPacketsHandler
 {
     @SubscribeEvent

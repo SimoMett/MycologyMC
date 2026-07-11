@@ -52,8 +52,8 @@ neoForge {
 
 dependencies {
     // WTHIT integration
-    compileOnly "mcp.mobius.waila:wthit-api:neo-15.0.3"
-    runtimeOnly "mcp.mobius.waila:wthit:neo-15.0.3"
+    //compileOnly "mcp.mobius.waila:wthit-api:neo-16.0.4"
+    //runtimeOnly "mcp.mobius.waila:wthit:neo-16.0.4"
     // runtimeOnly "lol.bai:badpackets:neo-0.8.1"
 
     // Example mod dependency with JEI

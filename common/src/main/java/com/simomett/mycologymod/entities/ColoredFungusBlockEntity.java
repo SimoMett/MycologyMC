@@ -19,6 +19,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,15 +40,13 @@ public class ColoredFungusBlockEntity extends BlockEntity
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries)
+    protected void loadAdditional(ValueInput input)
     {
-        super.loadAdditional(tag, registries);
-        if (tag.getCompound("components").isPresent())
+        super.loadAdditional(input);
+        if (input.child("components").isPresent())
         {
-            // FIXME awful work-around
-            CompoundTag genomaTag = tag.getCompound("components").get().getCompound(Constants.MOD_ID+":"+GENOMA_DATA_COMPONENT_NAME).get();
-            //
-            fungusGenoma = new FungusGenoma(genomaTag);
+            fungusGenoma = new FungusGenoma(input.child("components").get()
+                    .read(Constants.MOD_ID+":"+GENOMA_DATA_COMPONENT_NAME, FUNGUS_GENOMA_CODEC).get());
         }
     }
 
