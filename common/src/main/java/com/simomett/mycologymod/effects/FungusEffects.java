@@ -158,7 +158,7 @@ public class FungusEffects
         if(strongholdPos!= null)
         {
             EyeOfEnder eyeOfEnder = new EyeOfEnder(level, origin.getX(), origin.getY()+0.5, origin.getZ());
-            eyeOfEnder.signalTo(strongholdPos);
+            eyeOfEnder.signalTo(strongholdPos.getCenter());
             level.addFreshEntity(eyeOfEnder);
         }
     });

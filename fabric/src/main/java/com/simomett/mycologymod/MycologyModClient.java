@@ -10,11 +10,11 @@ import com.simomett.mycologymod.particles.SporeParticles;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.item.ItemTintSources;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.resources.ResourceLocation;
 
 @Environment(EnvType.CLIENT)
@@ -32,10 +32,10 @@ public class MycologyModClient implements ClientModInitializer
     @Override
     public void onInitializeClient()
     {
-        BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.POTTED_COLORED_CRIMSON.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BlocksDefinitions.POTTED_COLORED_WARPED.get(), RenderType.cutout());
+        BlockRenderLayerMap.putBlock(BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(BlocksDefinitions.POTTED_COLORED_CRIMSON.get(), ChunkSectionLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(BlocksDefinitions.POTTED_COLORED_WARPED.get(), ChunkSectionLayer.CUTOUT);
 
         ColorProviderRegistry.BLOCK.register(fungusColorer,
                 BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
