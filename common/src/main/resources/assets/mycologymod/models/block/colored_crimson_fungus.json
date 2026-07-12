@@ -2,10 +2,10 @@
   "ambientocclusion": false,
   "textures": {
     "particle": "block/dirt",
-    "layer0": "mycologymod:item/crimson_fungus_stelum",
-    "layer1": "mycologymod:item/crimson_fungus_head",
-    "layer2": "mycologymod:item/crimson_fungus_details",
-    "layer3": "mycologymod:item/crimson_fungus_details2"
+    "layer0": "mycologymod:block/crimson_fungus_stelum",
+    "layer1": "mycologymod:block/crimson_fungus_head",
+    "layer2": "mycologymod:block/crimson_fungus_details",
+    "layer3": "mycologymod:block/crimson_fungus_details2"
   },
   "elements": [
     {   "from": [ 0.8, 0, 8 ],

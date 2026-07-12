@@ -6,7 +6,7 @@ import com.simomett.mycologymod.network.serializable.IModSerializable;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 public class FungusSpeciesColorsMap implements CustomPacketPayload, IModSerializable
 {
-    public static final CustomPacketPayload.Type<FungusSpeciesColorsMap> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_colors_sync"));
+    public static final CustomPacketPayload.Type<FungusSpeciesColorsMap> TYPE = new CustomPacketPayload.Type<>(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungus_colors_sync"));
     private final HashMap<String, int[]> colorsMap = new HashMap<>();
 
     protected static FungusSpeciesColorsMap INSTANCE = new FungusSpeciesColorsMap();

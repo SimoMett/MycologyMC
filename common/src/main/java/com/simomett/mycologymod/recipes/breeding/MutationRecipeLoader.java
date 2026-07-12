@@ -2,7 +2,7 @@ package com.simomett.mycologymod.recipes.breeding;
 
 import com.google.gson.JsonElement;
 import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.ExtraCodecs;
@@ -21,7 +21,7 @@ public class MutationRecipeLoader extends SimpleJsonResourceReloadListener<JsonE
     }
 
     @Override
-    protected void apply(Map<ResourceLocation, JsonElement> map, ResourceManager p_10794_, ProfilerFiller p_10795_)
+    protected void apply(Map<Identifier, JsonElement> map, ResourceManager p_10794_, ProfilerFiller p_10795_)
     {
         Collection<JsonElement> collection = map.values();
         for(JsonElement e : collection)

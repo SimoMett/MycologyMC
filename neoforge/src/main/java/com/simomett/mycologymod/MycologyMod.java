@@ -14,7 +14,7 @@ import com.simomett.mycologymod.recipes.NeoForgeRecipeSerializers;
 import com.simomett.mycologymod.recipes.breeding.MutationRecipeLoader;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
 import com.simomett.mycologymod.world.features.NeoForgeFeatures;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -65,8 +65,8 @@ public class MycologyMod
     @SubscribeEvent
     private void reloadListener(AddServerReloadListenersEvent evt)
     {
-        evt.addListener(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_species_loader"), FungusSpeciesLoader.INSTANCE);
-        evt.addListener(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_brew_recipes_loader"), FungusBrewingRecipeLoader.INSTANCE);
-        evt.addListener(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "mutation_recipes_loader"), MutationRecipeLoader.INSTANCE);
+        evt.addListener(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungus_species_loader"), FungusSpeciesLoader.INSTANCE);
+        evt.addListener(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungus_brew_recipes_loader"), FungusBrewingRecipeLoader.INSTANCE);
+        evt.addListener(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "mutation_recipes_loader"), MutationRecipeLoader.INSTANCE);
     }
 }

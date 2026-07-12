@@ -1,6 +1,6 @@
 package com.simomett.mycologymod.mixins;
 
-import net.minecraft.world.entity.monster.ZombieVillager;
+import net.minecraft.world.entity.monster.zombie.ZombieVillager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 

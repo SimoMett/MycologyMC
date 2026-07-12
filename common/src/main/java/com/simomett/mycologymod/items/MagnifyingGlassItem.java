@@ -5,14 +5,14 @@ import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 
 public class MagnifyingGlassItem extends Item
 {
-    public MagnifyingGlassItem(ResourceLocation resourceLocation)
+    public MagnifyingGlassItem(Identifier resourceLocation)
     {
         super(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, resourceLocation)).stacksTo(1));
     }

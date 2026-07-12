@@ -7,7 +7,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 
@@ -51,7 +51,7 @@ public class BrewingRecipesProvider implements DataProvider
         mutationJson.addProperty("result", potion.getRegisteredName());
 
         String jsonFileName = ingredientSpecies.toLowerCase().replace(' ', '_');
-        Path jsonLocation = this.pathProvider.json(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
+        Path jsonLocation = this.pathProvider.json(Identifier.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
 
         list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }

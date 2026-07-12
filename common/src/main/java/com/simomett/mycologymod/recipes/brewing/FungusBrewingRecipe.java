@@ -4,7 +4,7 @@ import com.simomett.mycologymod.tags.ModItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
@@ -26,7 +26,7 @@ public class FungusBrewingRecipe
         this.inputPotion = inputPotion;
         this.inputItem = PotionContents.createItemStack(inputItem, inputPotion);
         this.speciesName = species;
-        this.resultPotion = BuiltInRegistries.POTION.get(ResourceLocation.parse(resultPotion)).get();
+        this.resultPotion = BuiltInRegistries.POTION.get(Identifier.parse(resultPotion)).get();
         this.result = PotionContents.createItemStack(this.inputItem.getItem(), this.resultPotion);
     }
 

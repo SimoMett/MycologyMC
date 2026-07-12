@@ -8,7 +8,7 @@ import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
@@ -50,7 +50,7 @@ public class UndergroundFungusFeature extends Feature<SimpleBlockConfiguration>
                 BlockState terrainBlockState = level.getBlockState(origin.below());
                 String terrain = randomSpecies.defaultTraits.terrain();
 
-                ResourceLocation res = parseStringOrTag(terrain);
+                Identifier res = parseStringOrTag(terrain);
                 boolean blockMatchesTerrain = terrainBlockState.is(ResourceKey.create(Registries.BLOCK, res))
                         || terrainBlockState.is(TagKey.create(Registries.BLOCK, res));
 

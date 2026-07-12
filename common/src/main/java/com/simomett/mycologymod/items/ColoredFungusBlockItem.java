@@ -7,8 +7,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -33,7 +33,7 @@ public class ColoredFungusBlockItem extends BlockItem
             new MobEffectInstance(MobEffects.POISON, 80),
             new MobEffectInstance(MobEffects.HUNGER, 140));
 
-    public ColoredFungusBlockItem(Block block, ResourceLocation resourceLocation)
+    public ColoredFungusBlockItem(Block block, Identifier resourceLocation)
     {
         super(block, new Item.Properties()
                 .setId(ResourceKey.create(Registries.ITEM, resourceLocation))
@@ -47,7 +47,7 @@ public class ColoredFungusBlockItem extends BlockItem
         if(stack.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().eatingEffect().isPresent())
         {
             String eatEff = stack.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().eatingEffect().get();
-            Optional<Holder.Reference<MobEffect>> mobEffect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.parse(eatEff));
+            Optional<Holder.Reference<MobEffect>> mobEffect = BuiltInRegistries.MOB_EFFECT.get(Identifier.parse(eatEff));
             if(mobEffect.isPresent())
                 livingEntity.addEffect(new MobEffectInstance(mobEffect.get(), -1));
             else

@@ -2,8 +2,7 @@ package com.simomett.mycologymod.blocks;
 
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.items.FungusTintSource;
-import com.simomett.mycologymod.items.ItemsDefinitions;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -25,6 +24,6 @@ public class NeoForgeFungusColorer extends FungusColorer
     @SubscribeEvent
     public static void registerItemColorsEvent(RegisterColorHandlersEvent.ItemTintSources evt)
     {
-        evt.register(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_color"), FungusTintSource.MAP_CODEC);
+        evt.register(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungus_color"), FungusTintSource.MAP_CODEC);
     }
 }

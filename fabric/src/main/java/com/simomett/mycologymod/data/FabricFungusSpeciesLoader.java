@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.Constants;
 import net.fabricmc.fabric.api.resource.SimpleResourceReloadListener;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 public class FabricFungusSpeciesLoader implements SimpleResourceReloadListener<Object>
 {
-    private static final ResourceLocation fabricId = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungi");
+    private static final Identifier fabricId = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungi");
     private static final Gson GSON = new Gson();
     @Override
     public CompletableFuture<Object> load(ResourceManager manager, Executor executor)
@@ -33,9 +33,9 @@ public class FabricFungusSpeciesLoader implements SimpleResourceReloadListener<O
     private Object loadFungusSpecies(ResourceManager manager)
     {
         final String json = ".json";
-        for(Map.Entry<ResourceLocation, Resource> e : manager.listResources(fabricId.getPath(), r -> r.getPath().endsWith(json)).entrySet())
+        for(Map.Entry<Identifier, Resource> e : manager.listResources(fabricId.getPath(), r -> r.getPath().endsWith(json)).entrySet())
         {
-            ResourceLocation id = e.getKey();
+            Identifier id = e.getKey();
             String[] parts = id.getPath().split("/");
             String name = parts[parts.length - 1];
             name = name.substring(0, name.length() - json.length());
@@ -53,7 +53,7 @@ public class FabricFungusSpeciesLoader implements SimpleResourceReloadListener<O
     }
 
     @Override
-    public ResourceLocation getFabricId()
+    public Identifier getFabricId()
     {
         return fabricId;
     }

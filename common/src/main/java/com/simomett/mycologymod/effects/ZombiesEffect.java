@@ -3,7 +3,7 @@ package com.simomett.mycologymod.effects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.zombie.Zombie;
 
 import java.util.List;
 import java.util.Random;

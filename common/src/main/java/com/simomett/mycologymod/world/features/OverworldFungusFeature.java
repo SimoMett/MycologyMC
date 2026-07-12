@@ -8,7 +8,7 @@ import com.simomett.mycologymod.genetics.FungusGenoma;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -33,7 +33,7 @@ public class OverworldFungusFeature extends Feature<SimpleBlockConfiguration>
 
     private static boolean matchesBiome(String biomeTag, Holder<Biome> biome)
     {
-        ResourceLocation a = parseStringOrTag(biomeTag);
+        Identifier a = parseStringOrTag(biomeTag);
         TagKey<Biome> t = TagKey.create(Registries.BIOME, a);
         return biome.is(t) || biome.is(a) || biomeTag.equals(FungusSpawn.ANY_BIOME.getBiomes());
     }

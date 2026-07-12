@@ -12,7 +12,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -39,7 +39,7 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
         return INSTANCE;
     }
 
-    public static final CustomPacketPayload.Type<FungusSpeciesList> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_species_list_sync"));
+    public static final CustomPacketPayload.Type<FungusSpeciesList> TYPE = new CustomPacketPayload.Type<>(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungus_species_list_sync"));
     public static FungusSpeciesList fromByteBuf(FriendlyByteBuf byteBuf)
     {
         try
@@ -119,7 +119,7 @@ public class FungusSpeciesList implements CustomPacketPayload, IModSerializable
 
         public ItemStack defaultItemStack()
         {
-            Optional<Holder.Reference<Item>> item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, fungusType));
+            Optional<Holder.Reference<Item>> item = BuiltInRegistries.ITEM.get(Identifier.fromNamespaceAndPath(Constants.MOD_ID, fungusType));
             ItemStack itemStack = new ItemStack(item.get());
             itemStack.applyComponents(DataComponentMap.builder().set(FUNGUS_GENOMA.dataComponentType(), new FungusGenoma(new FungusTraits(defaultTraits), new FungusTraits(defaultTraits))).build());
             return itemStack;

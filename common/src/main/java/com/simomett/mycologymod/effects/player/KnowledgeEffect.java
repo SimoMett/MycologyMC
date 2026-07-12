@@ -1,10 +1,9 @@
 package com.simomett.mycologymod.effects.player;
 
-import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.gamerules.GameRules;
 
 import static com.simomett.mycologymod.effects.player.EffectsDefinitions.KNOWLEDGE;
 
@@ -17,6 +16,7 @@ public class KnowledgeEffect extends MobEffect
 
     public static boolean shouldRestoreXp(LivingEntity e)
     {
-        return e.hasEffect(KNOWLEDGE.holder()) && !e.level().getServer().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY);
+        return e.hasEffect(KNOWLEDGE.holder())
+                && !e.level().getServer().getLevel(e.level().dimension()).getGameRules().get(GameRules.KEEP_INVENTORY);
     }
 }

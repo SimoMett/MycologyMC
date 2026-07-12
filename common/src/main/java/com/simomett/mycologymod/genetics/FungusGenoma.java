@@ -14,7 +14,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelReader;
@@ -140,7 +140,7 @@ public class FungusGenoma implements IModSerializable
 
     public static boolean matchesTerrain(String terrain, BlockState terrainBlock)
     {
-        ResourceLocation a = parseStringOrTag(terrain);
+        Identifier a = parseStringOrTag(terrain);
         TagKey<Block> t = TagKey.create(Registries.BLOCK, a);
         return (BuiltInRegistries.BLOCK.get(a).isPresent() && terrainBlock.is(BuiltInRegistries.BLOCK.get(a).get()))
                 || terrainBlock.is(t)

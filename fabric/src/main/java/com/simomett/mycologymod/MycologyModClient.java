@@ -15,7 +15,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.item.ItemTintSources;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class MycologyModClient implements ClientModInitializer
@@ -44,7 +44,7 @@ public class MycologyModClient implements ClientModInitializer
                 BlocksDefinitions.POTTED_COLORED_WARPED.get());
 
         ItemTintSources.ID_MAPPER.put(
-                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_color"),
+                Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungus_color"),
                 FungusTintSource.MAP_CODEC
         );
 

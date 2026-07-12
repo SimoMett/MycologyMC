@@ -5,7 +5,7 @@ import com.simomett.mycologymod.Constants;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.nio.file.Path;
 import java.security.InvalidParameterException;
@@ -158,7 +158,7 @@ public class MutationsProvider implements DataProvider
         mutationJson.addProperty("chance", chance);
 
         String jsonFileName = result.toLowerCase().replace(' ', '_');
-        Path jsonLocation = this.pathProvider.json(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
+        Path jsonLocation = this.pathProvider.json(Identifier.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
 
         list.add(DataProvider.saveStable(cache, mutationJson, jsonLocation));
     }

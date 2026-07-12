@@ -1,11 +1,11 @@
 package com.simomett.mycologymod.utils;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class Utils
 {
-    public static ResourceLocation parseStringOrTag(String s)
+    public static Identifier parseStringOrTag(String s)
     {
-        return s.startsWith("#") ? ResourceLocation.tryParse(s.substring(1)) : ResourceLocation.tryParse(s);
+        return s.startsWith("#") ? Identifier.tryParse(s.substring(1)) : Identifier.tryParse(s);
     }
 }

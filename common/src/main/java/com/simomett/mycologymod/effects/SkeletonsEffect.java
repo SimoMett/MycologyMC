@@ -5,7 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.skeleton.Skeleton;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 

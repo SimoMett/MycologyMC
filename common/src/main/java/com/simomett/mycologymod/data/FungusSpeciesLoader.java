@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.simomett.mycologymod.datagen.common.FungusSpawn;
 import com.simomett.mycologymod.genetics.FungusTraits;
 import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.ExtraCodecs;
@@ -26,7 +26,7 @@ public final class FungusSpeciesLoader extends SimpleJsonResourceReloadListener<
     }
 
     @Override
-    protected void apply(Map<ResourceLocation, JsonElement> map, ResourceManager resourceManager, ProfilerFiller p_10795_)
+    protected void apply(Map<Identifier, JsonElement> map, ResourceManager resourceManager, ProfilerFiller p_10795_)
     {
         FungusSpeciesList.getInstance().clearList();
         Collection<JsonElement> collection = map.values();

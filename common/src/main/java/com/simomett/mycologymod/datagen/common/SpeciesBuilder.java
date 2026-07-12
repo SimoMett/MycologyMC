@@ -11,7 +11,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.block.Block;
@@ -213,7 +213,7 @@ public class SpeciesBuilder
         }
         fungusJson.add("spawn", spawnJson);
         String jsonFileName = speciesName.toLowerCase().replace(' ', '_');
-        Path jsonLocation = this.pathProvider.json(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
+        Path jsonLocation = this.pathProvider.json(Identifier.fromNamespaceAndPath(Constants.MOD_ID, jsonFileName));
 
         this.completableFutureList.add(DataProvider.saveStable(this.hashCache,fungusJson,jsonLocation));
 

@@ -47,7 +47,7 @@ public class FungusSpawn implements Serializable
 
     public FungusSpawn(ResourceKey<Biome> biomeResourceKey, float chance)
     {
-        this(biomeResourceKey.location().toString(), chance);
+        this(biomeResourceKey.identifier().toString(), chance);
     }
 
     public FungusSpawn(TagKey<Biome> biomeTag, float chance)

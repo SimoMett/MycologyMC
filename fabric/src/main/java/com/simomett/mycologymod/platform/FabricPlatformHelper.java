@@ -35,7 +35,7 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -79,7 +79,7 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public <T extends Item> IRegisteredItem<T> registerItem(String name, Function<Item.Properties, Item> factory)
     {
-        ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
+        ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, name));
 
         return new FabricRegisteredItem(Items.registerItem(key, factory));
     }
@@ -87,7 +87,7 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public <T extends Block> IRegisteredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> factory)
     {
-        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
+        ResourceKey<Block> key = ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(MOD_ID, name));
         Function<BlockBehaviour.Properties, Block> castFactory = factory::apply;
         return new FabricRegisteredBlock(
                 Blocks.register(key, castFactory, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES)));
@@ -102,7 +102,7 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public <T extends MobEffect> IRegisteredMobEffect<T> registerMobEffect(String name, Supplier<T> mobEffectSupplier)
     {
-        ResourceKey<MobEffect> key = ResourceKey.create(Registries.MOB_EFFECT, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
+        ResourceKey<MobEffect> key = ResourceKey.create(Registries.MOB_EFFECT, Identifier.fromNamespaceAndPath(MOD_ID, name));
         return new FabricMobEffect<>(Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, key, mobEffectSupplier.get()));
     }
 
@@ -131,7 +131,7 @@ public class FabricPlatformHelper implements IPlatformHelper
     {
         DataComponentType<T> dataComponentType = Registry.register(
                 BuiltInRegistries.DATA_COMPONENT_TYPE,
-                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
+                Identifier.fromNamespaceAndPath(Constants.MOD_ID, name),
                 builder.apply(DataComponentType.builder()).build()
         );
 
@@ -143,7 +143,7 @@ public class FabricPlatformHelper implements IPlatformHelper
     {
         var tt = Registry.register(
                 BuiltInRegistries.RECIPE_SERIALIZER,
-                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, recipeSerializerName),
+                Identifier.fromNamespaceAndPath(Constants.MOD_ID, recipeSerializerName),
                 supplier.get());
 
         return () -> tt;
@@ -159,7 +159,7 @@ public class FabricPlatformHelper implements IPlatformHelper
         //
 
         BlockEntityType<T> blockEntityType = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE,
-                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
+                Identifier.fromNamespaceAndPath(Constants.MOD_ID, name),
                 FabricBlockEntityTypeBuilder.create(
                         factory::apply,
                         actualBlocks
@@ -172,14 +172,14 @@ public class FabricPlatformHelper implements IPlatformHelper
     public IRegisteredParticleType registerSimpleParticleType(String name)
     {
         IRegisteredParticleType tt = new FabricParticleType();
-        Registry.register(BuiltInRegistries.PARTICLE_TYPE, ResourceLocation.fromNamespaceAndPath(MOD_ID, name), tt.particleType());
+        Registry.register(BuiltInRegistries.PARTICLE_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, name), tt.particleType());
         return tt;
     }
 
     @Override
     public MenuType<? extends AbstractContainerMenu> registerMenu(String name, MenuSupplier<? extends AbstractContainerMenu> menuSupplier) {
         return Registry.register(BuiltInRegistries.MENU,
-                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
+                Identifier.fromNamespaceAndPath(Constants.MOD_ID, name),
                 new MenuType<>(menuSupplier::create, FeatureFlags.DEFAULT_FLAGS)
         );
     }
@@ -187,7 +187,7 @@ public class FabricPlatformHelper implements IPlatformHelper
     @Override
     public <T extends Feature<?>> IRegisteredFeature<T> registerFeatureConfig(String name, Supplier<T> supplier, Dimension dimension, GenerationStep.Decoration genStepDecoration)
     {
-        ResourceLocation resLoc = ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+        Identifier resLoc = Identifier.fromNamespaceAndPath(MOD_ID, name);
         var tt = Registry.register(BuiltInRegistries.FEATURE,
                 resLoc,
                 supplier.get());

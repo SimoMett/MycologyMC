@@ -7,7 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
@@ -50,7 +50,7 @@ public class FungusCookingRecipeBuilder implements RecipeBuilder
     public void save(RecipeOutput output, ResourceKey<Recipe<?>> resKey)
     {
         output.accept(
-                ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(
+                ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(
                         Constants.MOD_ID,
                         "cooked_"+speciesIngredient.toLowerCase().replace(" ", "_"))),
                 new FungusCookingRecipe(speciesIngredient, result, exp, cookingTime),

@@ -3,8 +3,8 @@ package com.simomett.mycologymod.blocks;
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.platform.Services;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StairBlock;
@@ -19,14 +19,15 @@ public class BlocksDefinitions
     public static final String COLORED_WARPED_STRING = "colored_warped_fungus";
 
     public static final IRegisteredBlock<ColoredFungusBlock> COLORED_CRIMSON_FUNGUS = Services.PLATFORM.registerBlock(COLORED_CRIMSON_STRING, (p) ->
-            new ColoredFungusBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_MUSHROOM)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_CRIMSON_STRING))))
+            new ColoredFungusBlock(BlockBehaviour.Properties
+                    .ofFullCopy(Blocks.BROWN_MUSHROOM)
+                    .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, COLORED_CRIMSON_STRING))))
     );
 
     public static final IRegisteredBlock<ColoredFungusBlock> COLORED_WARPED_FUNGUS = Services.PLATFORM.registerBlock(COLORED_WARPED_STRING, (p) ->
             new ColoredFungusBlock(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.BROWN_MUSHROOM)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, COLORED_WARPED_STRING))))
+                    .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, COLORED_WARPED_STRING))))
     );
 
     /*public static final IRegisteredBlock<FungusAnalysingStationBlock> FUNGUS_ANALYSING_STATION = Services.PLATFORM.registerBlock("fungus_analysing_station", p ->
@@ -36,40 +37,40 @@ public class BlocksDefinitions
     public static final IRegisteredBlock<FungusPotBlock> FUNGUS_POT = Services.PLATFORM.registerBlock("fungus_pot", (p) ->
             new FungusPotBlock(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.FLOWER_POT)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_pot"))))
+                    .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungus_pot"))))
     );
 
     public static final IRegisteredBlock<FungusPotBlock> POTTED_COLORED_CRIMSON = Services.PLATFORM.registerBlock("potted_colored_crimson",
             (p) -> {
                 FungusPotBlock b = new FungusPotBlock(COLORED_CRIMSON_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
-                        .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "potted_colored_crimson"))));
+                        .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, "potted_colored_crimson"))));
                 return b;
             });
 
     public static final IRegisteredBlock<FungusPotBlock> POTTED_COLORED_WARPED = Services.PLATFORM.registerBlock("potted_colored_warped",
             (p) -> {
                 FungusPotBlock b = new FungusPotBlock(COLORED_WARPED_FUNGUS, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)
-                        .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "potted_colored_warped"))));
+                        .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, "potted_colored_warped"))));
                 return b;
             });
 
     public static final IRegisteredBlock<Block> CHROMIUM_ORE = Services.PLATFORM.registerBlock("chromium_ore", (p) ->
             new Block(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ore")))
+                    .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, "chromium_ore")))
                     .requiresCorrectToolForDrops())
     );
     public static final IRegisteredBlock<Block> CHROMIUM_BLOCK = Services.PLATFORM.registerBlock("chromium_block", (p) ->
             new Block(BlockBehaviour.Properties
                     .ofFullCopy(Blocks.DEEPSLATE_LAPIS_ORE)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block")))
+                    .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, "chromium_block")))
                     .requiresCorrectToolForDrops())
     );
 
     public static final IRegisteredBlock<StairBlock> CHROMIUM_STAIRS = Services.PLATFORM.registerBlock("chromium_stairs", (p) ->
             Services.PLATFORM.createStairBlock(CHROMIUM_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties
                     .ofFullCopy(Blocks.CUT_COPPER_STAIRS)
-                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "chromium_stairs"))))
+                    .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Constants.MOD_ID, "chromium_stairs"))))
     );
 
     public static BlockState getDefaultBlockStateFromFungusType(String fungusType)

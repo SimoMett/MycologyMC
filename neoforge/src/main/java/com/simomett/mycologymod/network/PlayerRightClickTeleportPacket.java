@@ -1,13 +1,12 @@
 package com.simomett.mycologymod.network;
 
 import com.simomett.mycologymod.Constants;
-import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import com.simomett.mycologymod.effects.player.TeleportingEffect;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -29,7 +28,7 @@ import static com.simomett.mycologymod.effects.player.EffectsDefinitions.TELEPOR
 public class PlayerRightClickTeleportPacket implements CustomPacketPayload
 {
     public static final PlayerRightClickTeleportPacket INSTANCE = new PlayerRightClickTeleportPacket();
-    public static final CustomPacketPayload.Type<PlayerRightClickTeleportPacket> TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "rightclick_teleport"));
+    public static final CustomPacketPayload.Type<PlayerRightClickTeleportPacket> TYPE = new CustomPacketPayload.Type<>(Identifier.fromNamespaceAndPath(Constants.MOD_ID, "rightclick_teleport"));
     public static final StreamCodec<ByteBuf, PlayerRightClickTeleportPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
 
     public PlayerRightClickTeleportPacket() {}
