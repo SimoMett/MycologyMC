@@ -3,14 +3,16 @@ package com.simomett.mycologymod.particles;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.RandomSource;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class SporeParticles extends TextureSheetParticle
+public class SporeParticles extends SingleQuadParticle
 {
     protected SporeParticles(ClientLevel level, SpriteSet spriteSet, double x, double y, double z, double vX, double vY, double vZ)
     {
-        super(level, x, y, z, vX, vY, vZ);
+        super(level, x, y, z, spriteSet.first());
         this.friction = .8f;
         this.xd = vX;
         this.yd = vY;
@@ -25,9 +27,8 @@ public class SporeParticles extends TextureSheetParticle
     }
 
     @Override
-    public ParticleRenderType getRenderType()
-    {
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    protected Layer getLayer() {
+        return Layer.TRANSLUCENT;
     }
 
     public static class Provider implements ParticleProvider<SimpleParticleType>
@@ -39,9 +40,10 @@ public class SporeParticles extends TextureSheetParticle
             this.spriteSet = spriteSet;
         }
 
-        public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double vX, double vY, double vZ)
+        @Override
+        public @Nullable Particle createParticle(SimpleParticleType simpleParticleType, ClientLevel clientLevel, double x, double y, double z, double vX, double vY, double vZ, RandomSource randomSource)
         {
-            return new SporeParticles(level, this.spriteSet, x, y, z, vX, vY, vZ);
+            return new SporeParticles(clientLevel, this.spriteSet, x, y, z, vX, vY, vZ);
         }
     }
 }

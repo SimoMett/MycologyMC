@@ -28,7 +28,7 @@ public class FungusAnalysingStationBlock extends Block
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult)
     {
-        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer)
+        if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer)
             serverPlayer.openMenu(state.getMenuProvider(level, pos));
         return InteractionResult.SUCCESS;
     }

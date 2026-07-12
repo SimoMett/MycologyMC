@@ -3,9 +3,7 @@ package com.simomett.mycologymod.effects;
 import com.simomett.mycologymod.effects.player.EffectsDefinitions;
 import com.simomett.mycologymod.tags.ModBlockTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -23,14 +21,14 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.SimpleExplosionDamageCalculator;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static com.simomett.mycologymod.effects.player.EffectsDefinitions.ILLUCINATIONS;
 
@@ -168,6 +166,13 @@ public class FungusEffects
         tnt.setFuse(100);//five seconds
         return tnt;
     });*/
+    public static final FungusEffect TNT_EFFECT = new LevelOnlyEffect("tnt", (lvl, origin, box) -> {
+        Random rand = new Random();
+        lvl.explode(null, Explosion.getDefaultDamageSource(lvl, null),
+                new SimpleExplosionDamageCalculator(false, true, Optional.of(1.0f), Optional.empty()),
+                origin.offset(rand.nextInt(2), rand.nextInt(2), rand.nextInt(2)).getCenter(),
+                10, false, Level.ExplosionInteraction.BLOCK);
+    });
     public static final FungusEffect PLANT_EFFECT = new PlantEffect("planting");
     public static final FungusEffect ANTHESIS_EFFECT = new AnthesisEffect("anthesis");
 

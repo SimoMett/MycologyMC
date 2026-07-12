@@ -940,11 +940,11 @@ public class SpeciesProvider implements DataProvider
                 .areaEffect(FungusEffects.DEV_TEST_EFFECT)
                 .areaRadius(2)
                 .build();*/
-        /*speciesBuilder.createDefaultSpecies("TNT_FUNGUS")
-                .crimsonType(0xc72e25, 0xc72e25, 0xe8e8e8, 0x303030)
+        speciesBuilder.createDefaultSpecies("TNT_FUNGUS")
+                .warpedType(0xc72e25, 0xc72e25, 0xe8e8e8, 0x303030)
                 .areaEffect(FungusEffects.TNT_EFFECT)
                 .areaRadius(4)
-                .build();*/
+                .build();
 
         //some colors
         //(0x9c2b17, 0x9cd424, 0xb6e6be, 0x860a18)

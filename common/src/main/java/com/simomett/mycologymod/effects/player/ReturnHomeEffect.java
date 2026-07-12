@@ -26,8 +26,8 @@ public class ReturnHomeEffect extends InstantenousMobEffect
             if(spawn != null && player.getSleepingPos().isPresent())
             {
                 teleportTransition = new TeleportTransition(
-                        player.getServer().getLevel(spawn.dimension()),
-                        spawn.pos().getCenter(),
+                        player.level(),
+                        spawn.respawnData().pos().getCenter(),
                         Vec3.ZERO,
                         player.getYRot(),
                         player.getXRot(),
@@ -37,8 +37,8 @@ public class ReturnHomeEffect extends InstantenousMobEffect
             else
             {
                 teleportTransition = new TeleportTransition(
-                        player.getServer().overworld(),
-                        player.getServer().overworld().getSharedSpawnPos().getCenter(),
+                        player.level().getLevel().getServer().overworld(),
+                        player.level().getLevel().getServer().overworld().getRespawnData().pos().getCenter(),
                         Vec3.ZERO,
                         player.getYRot(),
                         player.getXRot(),

@@ -7,9 +7,9 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
 
 import static com.simomett.mycologymod.effects.player.EffectsDefinitions.XP_MULTIPLIER;
 
@@ -33,6 +33,6 @@ public class PlayerEffectsEventsHandler
     {
         Player player = evt.getEntity();
         if(TeleportingEffect.shouldTeleport(player))
-            PacketDistributor.sendToServer(PlayerRightClickTeleportPacket.INSTANCE);
+            ClientPacketDistributor.sendToServer(PlayerRightClickTeleportPacket.INSTANCE);
     }
 }
