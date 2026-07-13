@@ -81,7 +81,9 @@ public class FabricPlatformHelper implements IPlatformHelper
     {
         ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, name));
 
-        return new FabricRegisteredItem(Items.registerItem(key, factory));
+        Item item = factory.apply(new Item.Properties());
+
+        return new FabricRegisteredItem(Registry.register(BuiltInRegistries.ITEM, key, item));
     }
 
     @Override

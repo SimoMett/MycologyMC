@@ -8,6 +8,8 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Recipe;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,7 +32,7 @@ public class FungusBlastingRecipeBuilder extends FungusCookingRecipeBuilder
         output.accept(
                 ResourceKey.create(Registries.RECIPE,
                         Identifier.fromNamespaceAndPath(Constants.MOD_ID, "blasting_"+speciesIngredient.toLowerCase().replace(" ", "_"))),
-                        new FungusBlastingRecipe(speciesIngredient, result, exp, cookingTime),
+                        new FungusBlastingRecipe(speciesIngredient, new Recipe.CommonInfo(true), new AbstractCookingRecipe.CookingBookInfo(CookingBookCategory.MISC, ""), result, exp, cookingTime),
                 null);
     }
 }

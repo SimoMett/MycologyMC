@@ -39,8 +39,8 @@ public class DataComponentTypes
 
     public static final Codec<FungusGenoma> FUNGUS_GENOMA_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
-                    FUNGUS_DATA_CODEC.fieldOf("dominant").forGetter(FungusGenoma::getDominantTraits),
-                    FUNGUS_DATA_CODEC.fieldOf("recessive").forGetter(FungusGenoma::getRecessiveTraits)
+                    FUNGUS_DATA_CODEC.fieldOf("dominant").forGetter(FungusGenoma::dominantTraits),
+                    FUNGUS_DATA_CODEC.fieldOf("recessive").forGetter(FungusGenoma::recessiveTraits)
             ).apply(instance, FungusGenoma::new)
     );
 

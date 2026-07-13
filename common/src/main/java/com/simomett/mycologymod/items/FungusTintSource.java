@@ -41,7 +41,7 @@ public record FungusTintSource(String fungusPart) implements ItemTintSource
         }
 
         if(itemStack.has(FUNGUS_GENOMA.dataComponentType()))
-            return FungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species())[tintIndex] | 0xff000000;
+            return FungusSpeciesColorsMap.getInstance().get(itemStack.get(FUNGUS_GENOMA.dataComponentType()).dominantTraits().species())[tintIndex] | 0xff000000;
         else
             return 0;
     }

@@ -30,15 +30,15 @@ public class SpeedyzerItem extends Item
             {
                 ColoredFungusBlockEntity blockEntity = (ColoredFungusBlockEntity) serverLevel.getBlockEntity(context.getClickedPos());
                 FungusGenoma genoma = blockEntity.getFungusGenoma();
-                FungusTraits t = new FungusTraits(genoma.getDominantTraits().species(),
+                FungusTraits t = new FungusTraits(genoma.dominantTraits().species(),
                         1,
-                        genoma.getDominantTraits().spreadboost(),
-                        genoma.getDominantTraits().light(),
-                        genoma.getDominantTraits().terrain(),
-                        genoma.getDominantTraits().humidity(),
-                        genoma.getDominantTraits().temp(),
-                        genoma.getDominantTraits().area(),
-                        genoma.getDominantTraits().effect(), Optional.empty());
+                        genoma.dominantTraits().spreadboost(),
+                        genoma.dominantTraits().light(),
+                        genoma.dominantTraits().terrain(),
+                        genoma.dominantTraits().humidity(),
+                        genoma.dominantTraits().temp(),
+                        genoma.dominantTraits().area(),
+                        genoma.dominantTraits().effect(), Optional.empty());
                 blockEntity.applyGenoma(new FungusGenoma(t, t));
                 return InteractionResult.SUCCESS;
             }

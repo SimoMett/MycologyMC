@@ -41,7 +41,7 @@ public abstract class GameRendererMixin implements AutoCloseable{
             f2 = Mth.sin(f2 * f2 * f2 * f2 * 3.1415927F);
             f3 = livingentity.getHurtDir();
             p_109118_.mulPose(Axis.YP.rotationDegrees(-f3));
-            float f1 = (float)((double)(-f2) * 14.0 * (Double)this.minecraft.options.damageTiltStrength().get());
+            float f1 = (float)((double)(-f2) * 14.0 * this.minecraft.options.damageTiltStrength().get());
             p_109118_.mulPose(Axis.ZP.rotationDegrees(f1));
             p_109118_.mulPose(Axis.YP.rotationDegrees(f3));
         }

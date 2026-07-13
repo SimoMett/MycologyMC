@@ -6,7 +6,7 @@ import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipe;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
 import com.simomett.mycologymod.items.potions.FungusIngredient;
-import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
+import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
 import net.fabricmc.fabric.api.resource.SimpleResourceReloadListener;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -68,7 +68,7 @@ public class FabricFungusBrewingRecipesLoader implements SimpleResourceReloadLis
 
     private void registerPotionsRecipes()
     {
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
+        FabricPotionBrewingBuilder.BUILD.register(builder -> {
             for(FungusBrewingRecipe r : FungusBrewingRecipeLoader.INSTANCE.getQueue())
             {
                 builder.registerPotionRecipe(r.getInputPotion(), FungusIngredient.of(r.speciesName), BuiltInRegistries.POTION.wrapAsHolder(r.resultPotion.value()));

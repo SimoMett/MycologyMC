@@ -10,6 +10,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Recipe;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,6 +43,10 @@ public class FungusCookingRecipeBuilder implements RecipeBuilder
     }
 
     @Override
+    public ResourceKey<Recipe<?>> defaultId() {
+        return null;
+    }
+
     public Item getResult()
     {
         return result.getItem();
@@ -53,7 +59,7 @@ public class FungusCookingRecipeBuilder implements RecipeBuilder
                 ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(
                         Constants.MOD_ID,
                         "cooked_"+speciesIngredient.toLowerCase().replace(" ", "_"))),
-                new FungusCookingRecipe(speciesIngredient, result, exp, cookingTime),
+                new FungusCookingRecipe(speciesIngredient, new Recipe.CommonInfo(true), new AbstractCookingRecipe.CookingBookInfo(CookingBookCategory.MISC, ""),  result, exp, cookingTime),
                 null);
     }
 }

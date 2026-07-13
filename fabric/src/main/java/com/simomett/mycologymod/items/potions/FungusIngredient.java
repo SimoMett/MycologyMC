@@ -33,7 +33,7 @@ public final class FungusIngredient extends Ingredient
     {
         if(stack.getComponents().has(DataComponentTypes.FUNGUS_GENOMA.dataComponentType()))
         {
-            boolean sameSpecies = stack.getComponents().get(DataComponentTypes.FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species().equals(speciesName);
+            boolean sameSpecies = stack.getComponents().get(DataComponentTypes.FUNGUS_GENOMA.dataComponentType()).dominantTraits().species().equals(speciesName);
             return sameSpecies;
         }
         else

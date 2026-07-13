@@ -13,7 +13,7 @@ public class IllucinationsEffect extends MobEffect
 {
     public static IllucinationsEffect instance() { return new IllucinationsEffect(); }
 
-    private static List<Consumer<LivingEntity>> fakeEffects = List.of(
+    private static final List<Consumer<LivingEntity>> fakeEffects = List.of(
             //Not so aggressive sounds
             (e)->e.hurt(e.damageSources().generic(), 0.01f),
             (e)->e.playSound(SoundEvents.ARROW_HIT),

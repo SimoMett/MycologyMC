@@ -208,8 +208,8 @@ public class SpeciesBuilder
         JsonObject spawnJson = new JsonObject();
         if(spawnInfo !=null)
         {
-            spawnJson.addProperty("biomes", spawnInfo.getBiomes());
-            spawnJson.addProperty("chance", spawnInfo.chance);
+            spawnJson.addProperty("biomes", spawnInfo.biomes());
+            spawnJson.addProperty("chance", spawnInfo.chance());
         }
         fungusJson.add("spawn", spawnJson);
         String jsonFileName = speciesName.toLowerCase().replace(' ', '_');

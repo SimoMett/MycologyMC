@@ -26,7 +26,7 @@
     ]
   },
   "mixins": [
-    "mycologymod.fabric.mixins.json"
+    "${mod_id}.fabric.mixins.json"
   ],
   "accessWidener" : "mycologymod.accesswidener",
   "depends": {

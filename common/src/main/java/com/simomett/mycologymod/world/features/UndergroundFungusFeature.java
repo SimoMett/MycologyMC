@@ -44,7 +44,7 @@ public class UndergroundFungusFeature extends Feature<SimpleBlockConfiguration>
             Random random = new Random();
             FungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
 
-            if (random.nextFloat(0f, 1f) < randomSpecies.spawnInfo.chance)
+            if (random.nextFloat(0f, 1f) < randomSpecies.spawnInfo.chance())
             {
                 //spawn fungus with the correct type
                 BlockState terrainBlockState = level.getBlockState(origin.below());

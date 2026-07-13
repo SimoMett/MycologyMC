@@ -17,7 +17,8 @@ public class MycologyCreativeTab
     public static UnaryOperator<CreativeModeTab.Builder> CREATIVE_TAB_BUILDER = builder -> builder
             .title(Component.translatable("itemGroup." + Constants.MOD_ID))
             .icon(() -> FungusSpeciesList.getInstance().getCreativeTabIcon())
-            .displayItems((e, p) -> p.acceptAll(getItemsToDisplay()));
+            //.displayItems((e, p) -> p.acceptAll(getItemsToDisplay()))
+    ;
 
     public static Collection<ItemStack> getItemsToDisplay()
     {

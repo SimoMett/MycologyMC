@@ -129,8 +129,8 @@ public class FungusPotBlock extends FlowerPotBlock implements EntityBlock
         {
             ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(pos));
             FungusGenoma thisGenoma = originBlockEntity.getFungusGenoma();
-            int areaRadius = thisGenoma.getDominantTraits().area();
-            String fungusEffect = thisGenoma.getDominantTraits().effect();
+            int areaRadius = thisGenoma.dominantTraits().area();
+            String fungusEffect = thisGenoma.dominantTraits().effect();
             FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
         }
     }

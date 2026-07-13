@@ -1,7 +1,6 @@
 package com.simomett.mycologymod.recipes.crafting;
 
 import com.simomett.mycologymod.items.ItemsDefinitions;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -46,16 +45,26 @@ public class FungusShapelessRecipe implements CraftingRecipe
         ItemStack input = container.getItem(0);
         if(input.has(FUNGUS_GENOMA.dataComponentType())) // of course 'input' can be 'air'
         {
-            String inputSpecies = input.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species();
+            String inputSpecies = input.get(FUNGUS_GENOMA.dataComponentType()).dominantTraits().species();
             return inputSpecies.equals(speciesIngredient);
         }
         return false;
     }
 
     @Override
-    public ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider)
+    public ItemStack assemble(CraftingInput craftingInput)
     {
-        return getResult();
+        return this.result.copy();
+    }
+
+    @Override
+    public boolean showNotification() {
+        return false;
+    }
+
+    @Override
+    public String group() {
+        return "";
     }
 
     @Override

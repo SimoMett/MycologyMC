@@ -62,7 +62,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
     }
 
     @Override
-    protected int getLightBlock(BlockState state)
+    protected int getLightDampening(BlockState state)
     {
         return hasMutagen(state) ? 5 : 0;
     }
@@ -147,7 +147,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         if(level.isClientSide())
         {
             ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockPos));
-            int radius = originBlockEntity.getFungusGenoma().getDominantTraits().area();
+            int radius = originBlockEntity.getFungusGenoma().dominantTraits().area();
             addSporeParticle(radius, blockState, blockPos, level, randomSource);
         }
     }
@@ -161,13 +161,13 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
 
         boolean hasMutagen = hasMutagen(blockState);
         float spreadBoost = (thisGenoma.matchesEnvironment(level, originalPos)
-                && level.getBlockState(originalPos.below()).is(Blocks.MYCELIUM)) || hasMutagen? thisGenoma.getDominantTraits().spreadboost() : 1f;
-        int spreading = Math.round(thisGenoma.getDominantTraits().spreading() / spreadBoost);
+                && level.getBlockState(originalPos.below()).is(Blocks.MYCELIUM)) || hasMutagen? thisGenoma.dominantTraits().spreadboost() : 1f;
+        int spreading = Math.round(thisGenoma.dominantTraits().spreading() / spreadBoost);
         if(spreading==0)
             spreading=1;
         boolean canSpread = thisGenoma.matchesEnvironmentAndTerrain(level, pos, level.getBlockState(pos.below()));
 
-        int areaRadius = thisGenoma.getDominantTraits().area();
+        int areaRadius = thisGenoma.dominantTraits().area();
 
         if (canSpread && rand.nextInt(spreading) == 0)
         {
@@ -192,7 +192,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         }
 
         // area effect
-        String fungusEffect = thisGenoma.getDominantTraits().effect();
+        String fungusEffect = thisGenoma.dominantTraits().effect();
         FungusEffects.getEffectByName(fungusEffect).applyEffectToLevel(level, pos, areaRadius);
     }
 
@@ -233,7 +233,7 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
             if (offspringGenoma.matchesTerrain(level.getBlockState(pos.below())))
             {
                 // ... then place it
-                String fungusType = FungusSpeciesList.getInstance().get(offspringGenoma.getDominantTraits().species()).fungusType;
+                String fungusType = FungusSpeciesList.getInstance().get(offspringGenoma.dominantTraits().species()).fungusType;
                 blockState = BlocksDefinitions.getDefaultBlockStateFromFungusType(fungusType);
                 placeFungusBlock(blockState, level, pos, offspringGenoma);
             }

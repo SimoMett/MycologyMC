@@ -8,8 +8,7 @@ import net.minecraft.world.level.biome.Biomes;
 
 import java.io.Serializable;
 
-public class FungusSpawn implements Serializable
-{
+public record FungusSpawn(String biomes, float chance) implements Serializable {
     private static final float DEFAULT_SPAWN_CHANCE = .4f;
     public static final FungusSpawn NO_SPAWN = null;
     public static final FungusSpawn ANY_BIOME = new FungusSpawn("#any", DEFAULT_SPAWN_CHANCE);
@@ -33,45 +32,26 @@ public class FungusSpawn implements Serializable
     public static final FungusSpawn END = new FungusSpawn(Biomes.THE_END, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn END_MIDLANDS = new FungusSpawn(Biomes.END_HIGHLANDS, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn END_HIGHLANDS = new FungusSpawn(Biomes.END_HIGHLANDS, DEFAULT_SPAWN_CHANCE);
-    public static final FungusSpawn VERY_RARE = new FungusSpawn("#any",.1f); //FIXME to adjust
+    public static final FungusSpawn VERY_RARE = new FungusSpawn("#any", .1f); //FIXME to adjust
     public static final FungusSpawn PALE_GARDEN = new FungusSpawn(Biomes.PALE_GARDEN, 1f);
 
-    private final String biomes;
-    public final float chance;
-
-    public FungusSpawn(String biomes, float chance)
-    {
-        this.biomes = biomes;
-        this.chance = chance;
-    }
-
-    public FungusSpawn(ResourceKey<Biome> biomeResourceKey, float chance)
-    {
+    public FungusSpawn(ResourceKey<Biome> biomeResourceKey, float chance) {
         this(biomeResourceKey.identifier().toString(), chance);
     }
 
-    public FungusSpawn(TagKey<Biome> biomeTag, float chance)
-    {
-        this("#"+biomeTag.location(), chance);
+    public FungusSpawn(TagKey<Biome> biomeTag, float chance) {
+        this("#" + biomeTag.location(), chance);
     }
 
-    public String getBiomes()
-    {
-        return this.biomes;
-    }
-
-    public FungusSpawn withBiomes(ResourceKey<Biome> biomeResourceKey)
-    {
+    public FungusSpawn withBiomes(ResourceKey<Biome> biomeResourceKey) {
         return new FungusSpawn(biomeResourceKey, this.chance);
     }
 
-    public FungusSpawn chance(float chance)
-    {
+    public FungusSpawn chance(float chance) {
         return new FungusSpawn(this.biomes, chance);
     }
 
-    public boolean equals(FungusSpawn obj)
-    {
+    public boolean equals(FungusSpawn obj) {
         return biomes.equals(obj.biomes) && chance == obj.chance;
     }
 }

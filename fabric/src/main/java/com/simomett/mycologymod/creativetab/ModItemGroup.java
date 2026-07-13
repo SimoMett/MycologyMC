@@ -1,7 +1,7 @@
 package com.simomett.mycologymod.creativetab;
 
 import com.simomett.mycologymod.Constants;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -11,7 +11,7 @@ import static com.simomett.mycologymod.creativetab.MycologyCreativeTab.CREATIVE_
 
 public final class ModItemGroup
 {
-    public static final CreativeModeTab FABRIC_CREATIVE_TAB = CREATIVE_TAB_BUILDER.apply(FabricItemGroup.builder()).build();
+    public static final CreativeModeTab FABRIC_CREATIVE_TAB = CREATIVE_TAB_BUILDER.apply(FabricCreativeModeTab.builder()).build();
 
     public static void initialize()
     {

@@ -3,6 +3,7 @@ package com.simomett.mycologymod.recipes.cooking;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -12,18 +13,26 @@ import static com.simomett.mycologymod.recipes.RecipesSerializers.FUNGUS_COOKING
 
 public class FungusCookingRecipe extends AbstractCookingRecipe
 {
+    private final Recipe.CommonInfo commonInfo;
+    private final CookingBookInfo cookingBookInfo;
     private final String speciesIngredient;
 
-    public FungusCookingRecipe(String speciesIngredient, ItemStack result, float exp, int cookingTime)
+    public FungusCookingRecipe(String speciesIngredient, Recipe.CommonInfo commonInfo, CookingBookInfo cookingBookInfo, ItemStack result, float exp, int cookingTime)
     {
-        super("fungus_cooking", CookingBookCategory.FOOD, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()), result, exp, cookingTime);
+        super(commonInfo, cookingBookInfo, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()), ItemStackTemplate.fromNonEmptyStack(result), exp, cookingTime);
+        this.commonInfo = commonInfo;
+        this.cookingBookInfo = cookingBookInfo;
         this.speciesIngredient = speciesIngredient;
     }
 
-    public FungusCookingRecipe(String speciesIngredient, ItemStack result, int stackSize, float exp, int cookingTime)
+    public Recipe.CommonInfo commonInfo()
     {
-        this(speciesIngredient, result, exp, cookingTime);
-        this.result().setCount(stackSize);
+        return this.commonInfo;
+    }
+
+    public CookingBookInfo cookingBookInfo()
+    {
+        return this.cookingBookInfo;
     }
 
     public String getSpeciesIngredient()
@@ -33,12 +42,12 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
 
     public ItemStack getResult()
     {
-        return this.result().copy();
+        return this.result().create();
     }
 
     public int getCount()
     {
-        return this.result().getCount();
+        return this.getResult().getCount();
     }
 
     @Override
@@ -47,7 +56,7 @@ public class FungusCookingRecipe extends AbstractCookingRecipe
         ItemStack input = container.getItem(0);
         if(input.has(FUNGUS_GENOMA.dataComponentType())) // of course 'input' can be 'air'
         {
-            String inputSpecies = input.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species();
+            String inputSpecies = input.get(FUNGUS_GENOMA.dataComponentType()).dominantTraits().species();
             return inputSpecies.equals(speciesIngredient);
         }
         return false;

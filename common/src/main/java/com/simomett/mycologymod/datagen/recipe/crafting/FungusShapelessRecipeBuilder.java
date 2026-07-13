@@ -37,8 +37,9 @@ public class FungusShapelessRecipeBuilder implements RecipeBuilder
     }
 
     @Override
-    public Item getResult() {
-        return result.getItem();
+    public ResourceKey<Recipe<?>> defaultId()
+    {
+        return null;
     }
 
     @Override

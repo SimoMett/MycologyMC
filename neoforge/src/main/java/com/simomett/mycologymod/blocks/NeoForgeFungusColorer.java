@@ -8,13 +8,24 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
+import java.util.List;
+
 @EventBusSubscriber(modid = Constants.MOD_ID, value = Dist.CLIENT)
 public class NeoForgeFungusColorer extends FungusColorer
 {
+    public NeoForgeFungusColorer(int tintIndex) {
+        super(tintIndex);
+    }
+
     @SubscribeEvent
-    public static void registerBlockColorsEvent(RegisterColorHandlersEvent.Block evt)
+    public static void registerBlockColorsEvent(RegisterColorHandlersEvent.BlockTintSources evt)
     {
-        evt.register(new FungusColorer(),
+        evt.register(List.of(
+                        new NeoForgeFungusColorer(OVERLAY_STELUM),
+                        new NeoForgeFungusColorer(OVERLAY_HEAD),
+                        new NeoForgeFungusColorer(OVERLAY_DETAILS),
+                        new NeoForgeFungusColorer(OVERLAY_DETAILS2)
+                        ),
                 BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(),
                 BlocksDefinitions.COLORED_WARPED_FUNGUS.get(),
                 BlocksDefinitions.POTTED_COLORED_CRIMSON.get(),

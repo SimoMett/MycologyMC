@@ -39,7 +39,7 @@ public class FungusBrewingRecipe
     {
         if (ingredient.is(ModItemTags.COLORED_FUNGUS_ITEMS))
         {
-            String species = ingredient.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species();
+            String species = ingredient.get(FUNGUS_GENOMA.dataComponentType()).dominantTraits().species();
             return species.equals(this.speciesName);
         }
         return false;

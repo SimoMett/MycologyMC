@@ -3,6 +3,7 @@ package com.simomett.mycologymod.recipes.cooking;
 import com.simomett.mycologymod.items.ItemsDefinitions;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -12,19 +13,17 @@ import static com.simomett.mycologymod.recipes.RecipesSerializers.FUNGUS_BLASTIN
 
 public class FungusBlastingRecipe extends AbstractCookingRecipe
 {
+    private final Recipe.CommonInfo commonInfo;
+    private final CookingBookInfo cookingBookInfo;
     public static final String NAME = "fungus_blasting";
     private final String speciesIngredient;
 
-    public FungusBlastingRecipe(String speciesIngredient, ItemStack result, float exp, int cookingTime)
+    public FungusBlastingRecipe(String speciesIngredient, Recipe.CommonInfo commonInfo, CookingBookInfo cookingBookInfo, ItemStack result, float exp, int cookingTime)
     {
-        super(NAME, CookingBookCategory.MISC, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()), result, exp, cookingTime);
+        super(commonInfo, cookingBookInfo, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()), ItemStackTemplate.fromNonEmptyStack(result), exp, cookingTime);
         this.speciesIngredient = speciesIngredient;
-    }
-
-    public FungusBlastingRecipe(String speciesIngredient, ItemStack result, Integer stackSize, float exp, int cookingTime)
-    {
-        super(NAME, CookingBookCategory.MISC, Ingredient.of(ItemsDefinitions.COLORED_CRIMSON_FUNGUS.get(), ItemsDefinitions.COLORED_WARPED_FUNGUS.get()), new ItemStack(result.getItem(), stackSize), exp, cookingTime);
-        this.speciesIngredient = speciesIngredient;
+        this.commonInfo = commonInfo;
+        this.cookingBookInfo = cookingBookInfo;
     }
 
     public String getSpeciesIngredient()
@@ -32,14 +31,24 @@ public class FungusBlastingRecipe extends AbstractCookingRecipe
         return speciesIngredient;
     }
 
+    public Recipe.CommonInfo commonInfo()
+    {
+        return this.commonInfo;
+    }
+
+    public CookingBookInfo cookingBookInfo()
+    {
+        return this.cookingBookInfo;
+    }
+
     public ItemStack getResult()
     {
-        return this.result().copy();
+        return this.result().create();
     }
 
     public int getCount()
     {
-        return this.result().getCount();
+        return this.result().count();
     }
 
     @Override
@@ -48,7 +57,7 @@ public class FungusBlastingRecipe extends AbstractCookingRecipe
         ItemStack input = container.getItem(0);
         if(input.has(FUNGUS_GENOMA.dataComponentType())) // of course 'input' can be 'air'
         {
-            String inputSpecies = input.get(FUNGUS_GENOMA.dataComponentType()).getDominantTraits().species();
+            String inputSpecies = input.get(FUNGUS_GENOMA.dataComponentType()).dominantTraits().species();
             return inputSpecies.equals(speciesIngredient);
         }
         return false;

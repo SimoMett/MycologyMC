@@ -53,14 +53,14 @@ public class ColoredFungusBlockEntity extends BlockEntity
     private Instant lastInstant = Instant.now();
     public void tick()
     {
-        String fungusEffect = getFungusGenoma().getDominantTraits().effect();
+        String fungusEffect = getFungusGenoma().dominantTraits().effect();
         if (FungusEffects.getEffectByName(fungusEffect).equals(FungusEffects.NO_EFFECT))
             return;
 
         if (Duration.between(lastInstant, Instant.now()).getSeconds() > 1)
         {
             BlockPos pos = this.getBlockPos();
-            int areaRadius = getFungusGenoma().getDominantTraits().area();
+            int areaRadius = getFungusGenoma().dominantTraits().area();
             List<LivingEntity> entityList = getEntityListInAreaRadius(areaRadius);
             for (LivingEntity entity : entityList) {
                 if (entity.distanceToSqr(pos.getCenter()) < (areaRadius * areaRadius))

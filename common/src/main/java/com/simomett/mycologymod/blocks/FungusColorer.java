@@ -2,13 +2,12 @@ package com.simomett.mycologymod.blocks;
 
 import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.entities.ColoredFungusBlockEntity;
-import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.block.BlockTintSource;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 
-public class FungusColorer implements BlockColor
+public class FungusColorer implements BlockTintSource
 {
     //overlay indexes
     public static final int OVERLAY_STELUM = 0;
@@ -17,15 +16,28 @@ public class FungusColorer implements BlockColor
     public static final int OVERLAY_DETAILS2 = 3;
     //
 
+    private final int tintIndex;
+
+    public FungusColorer(int tintIndex)
+    {
+        this.tintIndex = tintIndex;
+    }
+
     @Override
-    public int getColor(BlockState blockState, @Nullable BlockAndTintGetter blockAndTint, @Nullable BlockPos blockPos, int tintIndex)
+    public int colorInWorld(BlockState state, BlockAndTintGetter blockAndTint, BlockPos blockPos)
     {
         if(blockAndTint.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity fungusEntity)
         {
-            String speciesName = fungusEntity.getFungusGenoma().getDominantTraits().species();
+            String speciesName = fungusEntity.getFungusGenoma().dominantTraits().species();
             int[] colors = FungusSpeciesColorsMap.getInstance().get(speciesName);
             return colors[tintIndex];
         }
+        return 0;
+    }
+
+    @Override
+    public int color(BlockState blockState)
+    {
         return 0;
     }
 }

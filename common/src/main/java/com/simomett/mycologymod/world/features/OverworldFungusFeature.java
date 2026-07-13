@@ -35,7 +35,7 @@ public class OverworldFungusFeature extends Feature<SimpleBlockConfiguration>
     {
         Identifier a = parseStringOrTag(biomeTag);
         TagKey<Biome> t = TagKey.create(Registries.BIOME, a);
-        return biome.is(t) || biome.is(a) || biomeTag.equals(FungusSpawn.ANY_BIOME.getBiomes());
+        return biome.is(t) || biome.is(a) || biomeTag.equals(FungusSpawn.ANY_BIOME.biomes());
     }
 
     @Override
@@ -46,14 +46,14 @@ public class OverworldFungusFeature extends Feature<SimpleBlockConfiguration>
         final Holder<Biome> biome = placeContext.level().getBiome(origin);
         speciesList = speciesList.stream().filter(s -> s.spawnInfo != null
                 && matchesTerrain(s.defaultTraits.terrain(), placeContext.level().getBlockState(origin.below()))
-                && matchesBiome(s.spawnInfo.getBiomes(), biome)).toList();
+                && matchesBiome(s.spawnInfo.biomes(), biome)).toList();
         if(!speciesList.isEmpty())
         {
             //get random species
             Random random = new Random();
             FungusSpeciesList.FungusSpecies randomSpecies = speciesList.get(random.nextInt(speciesList.size()));
 
-            if (random.nextFloat(0f, 1f) <= randomSpecies.spawnInfo.chance)
+            if (random.nextFloat(0f, 1f) <= randomSpecies.spawnInfo.chance())
             {
                 //spawn fungus with the correct type
                 BlockState blockState = BlocksDefinitions.getDefaultBlockStateFromFungusType(randomSpecies.fungusType);

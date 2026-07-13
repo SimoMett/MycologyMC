@@ -8,8 +8,8 @@ public class FungusSpeciesSync
 {
     public static void registerPayloads()
     {
-        PayloadTypeRegistry.playS2C().register(FungusSpeciesList.TYPE, FungusSpeciesList.SPECIES_STREAMS_CODEC);
-        PayloadTypeRegistry.playS2C().register(FungusSpeciesColorsMap.TYPE, FungusSpeciesColorsMap.COLORS_STREAM_CODEC);
+        PayloadTypeRegistry.serverboundPlay().register(FungusSpeciesList.TYPE, FungusSpeciesList.SPECIES_STREAMS_CODEC);
+        PayloadTypeRegistry.serverboundPlay().register(FungusSpeciesColorsMap.TYPE, FungusSpeciesColorsMap.COLORS_STREAM_CODEC);
 
         ServerLifecycleEvents.SYNC_DATA_PACK_CONTENTS.register((p,b)->
             {

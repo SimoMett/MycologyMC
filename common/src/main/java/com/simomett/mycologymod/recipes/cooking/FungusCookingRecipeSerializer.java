@@ -5,29 +5,32 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.Recipe;
 
-public class FungusCookingRecipeSerializer implements RecipeSerializer<FungusCookingRecipe>
+public class FungusCookingRecipeSerializer
 {
-    @Override
-    public MapCodec<FungusCookingRecipe> codec()
-    {
-        // It's not necessary to call for each field "orElse()", because every field is always initialized
-        return RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<FungusCookingRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Codec.STRING.fieldOf("ingredient").forGetter(FungusCookingRecipe::getSpeciesIngredient),
+                    Recipe.CommonInfo.MAP_CODEC.forGetter(FungusCookingRecipe::commonInfo),
+                    AbstractCookingRecipe.CookingBookInfo.MAP_CODEC.forGetter(FungusCookingRecipe::cookingBookInfo),
                     BuiltInRegistries.ITEM.byNameCodec().xmap(ItemStack::new, ItemStack::getItem).fieldOf("result").forGetter(FungusCookingRecipe::getResult),
-                    Codec.INT.fieldOf("count").forGetter(FungusCookingRecipe::getCount),
                     Codec.FLOAT.fieldOf("experience").forGetter(FungusCookingRecipe::experience),
                     Codec.INT.fieldOf("cookingtime").forGetter(FungusCookingRecipe::cookingTime)
             ).apply(instance, FungusCookingRecipe::new)
-        );
-    }
+    );
 
-    @Override
-    public StreamCodec<RegistryFriendlyByteBuf, FungusCookingRecipe> streamCodec() {
-        return null;
-    }
+    public static final StreamCodec<RegistryFriendlyByteBuf, FungusCookingRecipe> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.STRING_UTF8, FungusCookingRecipe::getSpeciesIngredient,
+            Recipe.CommonInfo.STREAM_CODEC, FungusCookingRecipe::commonInfo,
+            AbstractCookingRecipe.CookingBookInfo.STREAM_CODEC, FungusCookingRecipe::cookingBookInfo,
+            ItemStack.STREAM_CODEC, FungusCookingRecipe::getResult,
+            ByteBufCodecs.FLOAT, FungusCookingRecipe::experience,
+            ByteBufCodecs.INT, FungusCookingRecipe::cookingTime,
+            FungusCookingRecipe::new
+    );
 }
