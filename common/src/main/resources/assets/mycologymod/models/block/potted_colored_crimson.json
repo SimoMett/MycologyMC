@@ -1,9 +1,0 @@
-{
-  "parent": "mycologymod:block/fungus_pot_cross",
-  "textures": {
-    "layer0": "mycologymod:block/crimson_fungus_stelum",
-    "layer1": "mycologymod:block/crimson_fungus_head",
-    "layer2": "mycologymod:block/crimson_fungus_details",
-    "layer3": "mycologymod:block/crimson_fungus_details2"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "mycologymod:block/chromium_block",
-    "side": "mycologymod:block/chromium_block",
-    "top": "mycologymod:block/chromium_block"
-  }
-}
