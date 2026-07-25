@@ -2,6 +2,8 @@ package com.simomett.mycologymod;
 
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.blocks.FungusColorer;
+import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
+import com.simomett.mycologymod.data.FungusSpeciesList;
 import com.simomett.mycologymod.items.FungusTintSource;
 import com.simomett.mycologymod.particles.MutantSporeParticles;
 import com.simomett.mycologymod.particles.ParticlesDefinitions;
@@ -11,8 +13,8 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.client.color.item.ItemTintSources;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.resources.Identifier;
 
 import java.util.List;
@@ -30,6 +32,9 @@ public class MycologyModClient implements ClientModInitializer
     @Override
     public void onInitializeClient()
     {
+        PayloadTypeRegistry.clientboundPlay().register(FungusSpeciesList.TYPE, FungusSpeciesList.SPECIES_STREAMS_CODEC);
+        PayloadTypeRegistry.clientboundPlay().register(FungusSpeciesColorsMap.TYPE, FungusSpeciesColorsMap.COLORS_STREAM_CODEC);
+
         /*BlockRenderLayerMap.putBlock(BlocksDefinitions.COLORED_CRIMSON_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
         BlockRenderLayerMap.putBlock(BlocksDefinitions.COLORED_WARPED_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
         BlockRenderLayerMap.putBlock(BlocksDefinitions.POTTED_COLORED_CRIMSON.get(), ChunkSectionLayer.CUTOUT);
