@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.simomett.mycologymod.mixins",
+  "refmap": "${mod_id}.refmap.json",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "BiomeMixin",
+    "IFlowerPotBlockMixin",
+    "IZombieVillagerMixin",
+    "LivingEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

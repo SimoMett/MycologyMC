@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.simomett.mycologymod.client.mixins",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "GameRendererMixin",
+    "MinecraftMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
