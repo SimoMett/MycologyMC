@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:brick",
+    "M": "minecraft:mycelium"
+  },
+  "pattern": [
+    "#M#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mycologymod:fungus_pot"
+  }
+}

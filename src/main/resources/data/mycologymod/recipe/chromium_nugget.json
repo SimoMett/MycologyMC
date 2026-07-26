@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mycologymod:chromium_ingot"
+  ],
+  "result": {
+    "count": 9,
+    "id": "mycologymod:chromium_nugget"
+  }
+}

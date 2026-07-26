@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "mycologymod:block/analysing_station_bottom",
+    "east": "mycologymod:block/analysing_station_side",
+    "north": "mycologymod:block/analysing_station_side",
+    "particle": "mycologymod:block/analysing_station_side",
+    "south": "mycologymod:block/analysing_station_side",
+    "up": "mycologymod:block/analysing_station_top",
+    "west": "mycologymod:block/analysing_station_side"
+  }
+}
