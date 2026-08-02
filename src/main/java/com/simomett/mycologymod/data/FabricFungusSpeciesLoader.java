@@ -3,7 +3,7 @@ package com.simomett.mycologymod.data;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.Constants;
-import net.fabricmc.fabric.api.resource.SimpleResourceReloadListener;
+import net.fabricmc.fabric.api.resource.v1.reloader.SimpleReloadListener;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -14,11 +14,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.logging.Logger;
 
-public class FabricFungusSpeciesLoader implements SimpleResourceReloadListener<Object>
+public class FabricFungusSpeciesLoader extends SimpleReloadListener<Object>
 {
     private static final Identifier fabricId = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungi");
     private static final Gson GSON = new Gson();
-    @Override
+    /*@Override
     public CompletableFuture<Object> load(ResourceManager manager, Executor executor)
     {
         return CompletableFuture.supplyAsync(() -> loadFungusSpecies(manager));
@@ -28,6 +28,23 @@ public class FabricFungusSpeciesLoader implements SimpleResourceReloadListener<O
     public CompletableFuture<Void> apply(Object data, ResourceManager manager, Executor executor)
     {
         return CompletableFuture.completedFuture(null);
+    }*/
+
+    @Override
+    protected Object prepare(SharedState state)
+    {
+        return loadFungusSpecies(state.resourceManager());
+    }
+
+    @Override
+    protected void apply(Object data, SharedState state)
+    {
+
+    }
+
+    public static Identifier getFabricId()
+    {
+        return fabricId;
     }
 
     private Object loadFungusSpecies(ResourceManager manager)
@@ -50,11 +67,5 @@ public class FabricFungusSpeciesLoader implements SimpleResourceReloadListener<O
             }
         }
         return null;
-    }
-
-    @Override
-    public Identifier getFabricId()
-    {
-        return fabricId;
     }
 }

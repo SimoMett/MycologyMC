@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.data;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipe;
@@ -19,19 +20,19 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.logging.Logger;
 
-public class FabricFungusBrewingRecipesLoader implements SimpleResourceReloadListener<Object>
+public class FabricFungusBrewingRecipesLoader implements SimpleResourceReloadListener<JsonElement>
 {
     private static final Identifier fabricId = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungi_brewing");
     private static final Gson GSON = new Gson();
 
     @Override
-    public CompletableFuture<Object> load(ResourceManager resourceManager, Executor executor)
+    public CompletableFuture<JsonElement> load(ResourceManager resourceManager, Executor executor)
     {
         return CompletableFuture.supplyAsync(() -> loadBrewingRecipe(resourceManager));
     }
 
     @Override
-    public CompletableFuture<Void> apply(Object o, ResourceManager resourceManager, Executor executor)
+    public CompletableFuture<Void> apply(JsonElement o, ResourceManager resourceManager, Executor executor)
     {
         return CompletableFuture.completedFuture(null);
     }
@@ -42,19 +43,21 @@ public class FabricFungusBrewingRecipesLoader implements SimpleResourceReloadLis
         return fabricId;
     }
 
-    private Object loadBrewingRecipe(ResourceManager manager)
+    private JsonElement loadBrewingRecipe(ResourceManager manager)
     {
-        final String json = ".json";
-        for(Map.Entry<Identifier, Resource> e : manager.listResources(fabricId.getPath(), r -> r.getPath().endsWith(json)).entrySet())
+        final int json_length = ".json".length();
+        for(Map.Entry<Identifier, Resource> e : manager.listResources(fabricId.getPath(), r -> r.getPath().endsWith(".json")).entrySet())
         {
             Identifier id = e.getKey();
             String[] parts = id.getPath().split("/");
             String name = parts[parts.length - 1];
-            name = name.substring(0, name.length() - json.length());
+            name = name.substring(0, name.length() - json_length);
 
             try (var reader = new InputStreamReader(e.getValue().open()))
             {
-                FungusBrewingRecipeLoader.INSTANCE.loadBrewingRecipe(GSON.fromJson(reader, JsonObject.class));
+                JsonObject g = GSON.fromJson(reader, JsonObject.class);
+                FungusBrewingRecipeLoader.INSTANCE.loadBrewingRecipe(g);
+                return g;
             }
             catch (Exception ignored)
             {
