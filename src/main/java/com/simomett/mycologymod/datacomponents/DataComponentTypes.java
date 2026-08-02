@@ -57,7 +57,7 @@ public class DataComponentTypes
             ).apply(instance, FungusGenoma::new)
     );
 
-    public static StreamCodec<FriendlyByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::new);
+    public static StreamCodec<FriendlyByteBuf, FungusGenoma> FUNGUS_GENOMA_STREAM_CODEC = StreamCodec.ofMember(FungusGenoma::encode, FungusGenoma::decode);
 
     public static final UnaryOperator<DataComponentType.Builder<FungusGenoma>> FUNGUS_GENOMA_BUILDER =
             b -> b

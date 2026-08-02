@@ -67,9 +67,21 @@ public record FungusGenoma(FungusTraits dominantTraits, FungusTraits recessiveTr
         this(new FungusTraits(FungusTraits.UNINIT), new FungusTraits(FungusTraits.UNINIT));
     }
 
-    public FungusGenoma(FriendlyByteBuf byteBuf)
+    public static FungusGenoma decode(FriendlyByteBuf byteBuf)
     {
-        this(FUNGUS_GENOMA_STREAM_CODEC.decode(byteBuf));
+        try
+        {
+            byte [] dst = new byte[byteBuf.readInt()];
+            byteBuf.readBytes(dst);
+            ByteArrayInputStream i = new ByteArrayInputStream(dst);
+            ObjectInputStream inputStream = new ObjectInputStream(i);
+            FungusGenoma genoma = (FungusGenoma) inputStream.readObject();
+            return new FungusGenoma(genoma.dominantTraits, genoma.recessiveTraits);
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     public void encode(FriendlyByteBuf byteBuf) {
