@@ -8,7 +8,7 @@ import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipe;
 import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
 import com.simomett.mycologymod.items.potions.FungusIngredient;
 import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
-import net.fabricmc.fabric.api.resource.SimpleResourceReloadListener;
+import net.fabricmc.fabric.api.resource.v1.reloader.SimpleReloadListener;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.Resource;
@@ -16,37 +16,26 @@ import net.minecraft.server.packs.resources.ResourceManager;
 
 import java.io.InputStreamReader;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import java.util.logging.Logger;
 
-public class FabricFungusBrewingRecipesLoader implements SimpleResourceReloadListener<JsonElement>
+public class FabricFungusBrewingRecipesLoader extends SimpleReloadListener<JsonElement>
 {
-    private static final Identifier fabricId = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungi_brewing");
+    public static final Identifier FABRIC_ID = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungi_brewing");
     private static final Gson GSON = new Gson();
 
     @Override
-    public CompletableFuture<JsonElement> load(ResourceManager resourceManager, Executor executor)
+    protected JsonElement prepare(SharedState state)
     {
-        return CompletableFuture.supplyAsync(() -> loadBrewingRecipe(resourceManager));
+        return loadBrewingRecipe(state.resourceManager());
     }
 
     @Override
-    public CompletableFuture<Void> apply(JsonElement o, ResourceManager resourceManager, Executor executor)
-    {
-        return CompletableFuture.completedFuture(null);
-    }
-
-    @Override
-    public Identifier getFabricId()
-    {
-        return fabricId;
-    }
+    protected void apply(JsonElement prepared, SharedState state) {}
 
     private JsonElement loadBrewingRecipe(ResourceManager manager)
     {
         final int json_length = ".json".length();
-        for(Map.Entry<Identifier, Resource> e : manager.listResources(fabricId.getPath(), r -> r.getPath().endsWith(".json")).entrySet())
+        for(Map.Entry<Identifier, Resource> e : manager.listResources(FABRIC_ID.getPath(), r -> r.getPath().endsWith(".json")).entrySet())
         {
             Identifier id = e.getKey();
             String[] parts = id.getPath().split("/");

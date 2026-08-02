@@ -10,25 +10,12 @@ import net.minecraft.server.packs.resources.ResourceManager;
 
 import java.io.InputStreamReader;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import java.util.logging.Logger;
 
 public class FabricFungusSpeciesLoader extends SimpleReloadListener<Object>
 {
-    private static final Identifier fabricId = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungi");
+    public static final Identifier FABRIC_ID = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungi");
     private static final Gson GSON = new Gson();
-    /*@Override
-    public CompletableFuture<Object> load(ResourceManager manager, Executor executor)
-    {
-        return CompletableFuture.supplyAsync(() -> loadFungusSpecies(manager));
-    }
-
-    @Override
-    public CompletableFuture<Void> apply(Object data, ResourceManager manager, Executor executor)
-    {
-        return CompletableFuture.completedFuture(null);
-    }*/
 
     @Override
     protected Object prepare(SharedState state)
@@ -42,15 +29,10 @@ public class FabricFungusSpeciesLoader extends SimpleReloadListener<Object>
 
     }
 
-    public static Identifier getFabricId()
-    {
-        return fabricId;
-    }
-
     private Object loadFungusSpecies(ResourceManager manager)
     {
         final String json = ".json";
-        for(Map.Entry<Identifier, Resource> e : manager.listResources(fabricId.getPath(), r -> r.getPath().endsWith(json)).entrySet())
+        for(Map.Entry<Identifier, Resource> e : manager.listResources(FABRIC_ID.getPath(), r -> r.getPath().endsWith(json)).entrySet())
         {
             Identifier id = e.getKey();
             String[] parts = id.getPath().split("/");
