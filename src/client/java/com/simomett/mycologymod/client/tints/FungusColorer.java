@@ -25,13 +25,14 @@ public class FungusColorer implements BlockTintSource {
         if (blockAndTint.getBlockEntity(blockPos) instanceof ColoredFungusBlockEntity fungusEntity) {
             String speciesName = fungusEntity.getFungusGenoma().dominantTraits().species();
             int[] colors = FungusSpeciesColorsMap.getInstance().get(speciesName);
-            return colors[tintIndex];
+            return 0xff000000 + colors[tintIndex];
         }
         return 0;
     }
 
     @Override
-    public int color(BlockState blockState) {
+    public int color(BlockState blockState)
+    {
         return 0;
     }
 }
