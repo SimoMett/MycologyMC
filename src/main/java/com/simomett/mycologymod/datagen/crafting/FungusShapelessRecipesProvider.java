@@ -1,11 +1,10 @@
-package com.simomett.mycologymod.datagen.recipe.crafting;
+package com.simomett.mycologymod.datagen.crafting;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import java.util.concurrent.CompletableFuture;
@@ -50,7 +49,7 @@ public class FungusShapelessRecipesProvider extends RecipeProvider
 
     private void addCraftingRecipe(String ingredientSpecies, Item resultItem, int stackSize)
     {
-        new FungusShapelessRecipeBuilder(ingredientSpecies, new ItemStack(resultItem, stackSize))
+        new FungusShapelessRecipeBuilder(ingredientSpecies, resultItem, stackSize)
                 .save(this.output);
     }
 

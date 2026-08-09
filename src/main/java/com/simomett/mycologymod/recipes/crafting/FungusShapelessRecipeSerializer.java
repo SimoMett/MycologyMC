@@ -14,7 +14,7 @@ public class FungusShapelessRecipeSerializer
     public static final MapCodec<FungusShapelessRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(instance ->
                 instance.group(
                         Codec.STRING.fieldOf("ingredient").forGetter(FungusShapelessRecipe::getSpeciesIngredient),
-                        BuiltInRegistries.ITEM.byNameCodec().xmap(ItemStack::new, ItemStack::getItem).fieldOf("result").forGetter(FungusShapelessRecipe::getResult),
+                        BuiltInRegistries.ITEM.byNameCodec().fieldOf("result").forGetter(FungusShapelessRecipe::getResultingItem),
                         Codec.INT.fieldOf("count").forGetter(FungusShapelessRecipe::getCount)
                 ).apply(instance, FungusShapelessRecipe::new)
         );

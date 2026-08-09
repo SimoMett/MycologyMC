@@ -54,7 +54,7 @@ public class FabricFungusBrewingRecipesLoader extends SimpleReloadListener<JsonE
             }
         }
 
-        this.registerPotionsRecipes();
+        //this.registerPotionsRecipes();
         return null;
     }
 

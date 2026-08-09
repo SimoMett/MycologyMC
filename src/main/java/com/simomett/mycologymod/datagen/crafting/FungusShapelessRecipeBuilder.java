@@ -1,4 +1,4 @@
-package com.simomett.mycologymod.datagen.recipe.crafting;
+package com.simomett.mycologymod.datagen.crafting;
 
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipe;
@@ -8,6 +8,7 @@ import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import org.jetbrains.annotations.Nullable;
@@ -15,12 +16,14 @@ import org.jetbrains.annotations.Nullable;
 public class FungusShapelessRecipeBuilder implements RecipeBuilder
 {
     protected final String speciesIngredient;
-    protected final ItemStack result;
+    protected final Item result;
+    protected final int stackSize;
 
-    public FungusShapelessRecipeBuilder(String speciesIngredient, ItemStack result)
+    public FungusShapelessRecipeBuilder(String speciesIngredient, Item result, int count)
     {
         this.speciesIngredient = speciesIngredient;
         this.result = result;
+        this.stackSize = count;
     }
 
     @Override
@@ -48,7 +51,7 @@ public class FungusShapelessRecipeBuilder implements RecipeBuilder
                 ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(
                         Constants.MOD_ID,
                         "shapeless_"+speciesIngredient.toLowerCase().replace(" ", "_"))),
-                new FungusShapelessRecipe(speciesIngredient, result),
+                new FungusShapelessRecipe(speciesIngredient, result, stackSize),
                 null);
     }
 }

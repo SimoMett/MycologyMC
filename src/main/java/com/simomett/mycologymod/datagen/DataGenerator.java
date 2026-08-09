@@ -1,9 +1,6 @@
-package com.simomett.mycologymod.client.datagen;
+package com.simomett.mycologymod.datagen;
 
-import com.simomett.mycologymod.datagen.BrewingRecipesProvider;
-import com.simomett.mycologymod.datagen.MutationsProvider;
-import com.simomett.mycologymod.datagen.SpeciesProvider;
-import com.simomett.mycologymod.datagen.recipe.crafting.FungusShapelessRecipesProvider;
+import com.simomett.mycologymod.datagen.crafting.FungusShapelessRecipesProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 

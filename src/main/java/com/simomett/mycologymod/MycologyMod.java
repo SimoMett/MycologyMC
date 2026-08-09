@@ -19,7 +19,7 @@ public class MycologyMod implements ModInitializer
         FungusSpeciesSync.registerPayloads();
 
         ResourceLoader.get(PackType.SERVER_DATA).registerReloadListener(FabricFungusSpeciesLoader.FABRIC_ID, new FabricFungusSpeciesLoader());
-        ResourceLoader.get(PackType.SERVER_DATA).registerReloadListener(FabricFungusBrewingRecipesLoader.FABRIC_ID, new FabricFungusBrewingRecipesLoader());
+        //ResourceLoader.get(PackType.SERVER_DATA).registerReloadListener(FabricFungusBrewingRecipesLoader.FABRIC_ID, new FabricFungusBrewingRecipesLoader());
 
         FabricMutationRecipesLoader mutationRecipesLoader = new FabricMutationRecipesLoader();
         ResourceLoader.get(PackType.SERVER_DATA).registerReloadListener(mutationRecipesLoader.getFabricId(), mutationRecipesLoader);

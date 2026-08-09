@@ -22,7 +22,7 @@
       "com.simomett.mycologymod.client.MycologyModClient"
     ],
     "fabric-datagen": [
-      "com.simomett.mycologymod.client.datagen.DataGenerator"
+      "com.simomett.mycologymod.datagen.DataGenerator"
     ]
   },
   "mixins": [

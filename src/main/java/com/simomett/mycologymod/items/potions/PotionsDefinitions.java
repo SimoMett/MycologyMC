@@ -3,6 +3,9 @@ package com.simomett.mycologymod.items.potions;
 import com.simomett.mycologymod.effects.fungus.FungusEffect;
 import com.simomett.mycologymod.effects.fungus.FungusEffects;
 import com.simomett.mycologymod.effects.player.EffectsDefinitions;
+import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipe;
+import com.simomett.mycologymod.recipes.brewing.FungusBrewingRecipeLoader;
+import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -67,6 +70,14 @@ public class PotionsDefinitions
         return potions;
     }
 
-    public static void init(){}
+    public static void init()
+    {
+        /*FabricPotionBrewingBuilder.BUILD.register(builder -> {
+            for(FungusBrewingRecipe r : FungusBrewingRecipeLoader.INSTANCE.getQueue())
+            {
+                //builder.registerPotionRecipe(r.getInputPotion(), FungusIngredient.of(r.speciesName), BuiltInRegistries.POTION.wrapAsHolder(r.resultPotion.value()));
+            }
+        });*/
+    }
 
 }
