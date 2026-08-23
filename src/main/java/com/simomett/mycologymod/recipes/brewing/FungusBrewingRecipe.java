@@ -15,24 +15,24 @@ import static com.simomett.mycologymod.datacomponents.DataComponentTypes.FUNGUS_
 public class FungusBrewingRecipe
 {
     private final Holder<Potion> inputPotion;
-    public final ItemStack inputItem;
 
     public final Holder.Reference<Potion> resultPotion;
     public final String speciesName;
-    public final ItemStack result;
+    private final Item inputItem;
 
     public FungusBrewingRecipe(Holder<Potion> inputPotion, Item inputItem, String species, String resultPotion)
     {
         this.inputPotion = inputPotion;
-        this.inputItem = PotionContents.createItemStack(inputItem, inputPotion);
+        this.inputItem = inputItem;
         this.speciesName = species;
         this.resultPotion = BuiltInRegistries.POTION.get(Identifier.parse(resultPotion)).get();
-        this.result = PotionContents.createItemStack(this.inputItem.getItem(), this.resultPotion);
     }
 
-    public boolean isInput(ItemStack stack)
+    // Methods required by neoforge
+    /*public boolean isInput(ItemStack stack)
     {
-        return stack.is(inputItem.getItem()) && stack.has(DataComponents.POTION_CONTENTS) && stack.get(DataComponents.POTION_CONTENTS).is(inputPotion);
+        ItemStack inputPotionItem = PotionContents.createItemStack(inputItem, inputPotion);
+        return stack.is(inputPotionItem.getItem()) && stack.has(DataComponents.POTION_CONTENTS) && stack.get(DataComponents.POTION_CONTENTS).is(inputPotion);
     }
 
     public boolean isIngredient(ItemStack ingredient)
@@ -45,13 +45,14 @@ public class FungusBrewingRecipe
         return false;
     }
 
+
     public ItemStack getOutput(ItemStack input, ItemStack ingredient)
     {
         if (!input.isEmpty() && !ingredient.isEmpty() && isIngredient(ingredient) && isInput(input))
-            return result;
+            return ItemStack.EMPTY;
 
         return ItemStack.EMPTY;
-    }
+    }*/
 
     public Holder<Potion> getInputPotion()
     {

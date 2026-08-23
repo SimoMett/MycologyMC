@@ -17,11 +17,9 @@ import java.util.Map;
 
 public class FungusBrewingRecipeLoader extends SimpleJsonResourceReloadListener<JsonElement>
 {
-    public static final FungusBrewingRecipeLoader INSTANCE = new FungusBrewingRecipeLoader();
-
     private final ArrayList<FungusBrewingRecipe> recipeQueue = new ArrayList<>();
 
-    private FungusBrewingRecipeLoader()
+    public FungusBrewingRecipeLoader()
     {
         super(ExtraCodecs.JSON, FileToIdConverter.json("fungi_brewing"));
     }
