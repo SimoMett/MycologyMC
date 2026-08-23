@@ -50,7 +50,7 @@ public class FungusShapelessRecipesProvider extends RecipeProvider
 
     private void addCraftingRecipe(String ingredientSpecies, Item resultItem, int stackSize)
     {
-        new FungusShapelessRecipeBuilder(ingredientSpecies, new ItemStack(resultItem, stackSize))
+        new FungusShapelessRecipeBuilder(ingredientSpecies, resultItem, stackSize)
                 .save(this.output);
     }
 

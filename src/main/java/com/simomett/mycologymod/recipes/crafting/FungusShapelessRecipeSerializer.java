@@ -7,21 +7,21 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
 
 public class FungusShapelessRecipeSerializer
 {
     public static final MapCodec<FungusShapelessRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(instance ->
                 instance.group(
                         Codec.STRING.fieldOf("ingredient").forGetter(FungusShapelessRecipe::getSpeciesIngredient),
-                        BuiltInRegistries.ITEM.byNameCodec().xmap(ItemStack::new, ItemStack::getItem).fieldOf("result").forGetter(FungusShapelessRecipe::getResult),
+                        BuiltInRegistries.ITEM.byNameCodec().fieldOf("result").forGetter(FungusShapelessRecipe::getResultItem),
                         Codec.INT.fieldOf("count").forGetter(FungusShapelessRecipe::getCount)
                 ).apply(instance, FungusShapelessRecipe::new)
         );
 
     public static final StreamCodec<RegistryFriendlyByteBuf, FungusShapelessRecipe> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.STRING_UTF8, FungusShapelessRecipe::getSpeciesIngredient,
-            ItemStack.STREAM_CODEC, FungusShapelessRecipe::getResult,
+            Item.STREAM_CODEC, FungusShapelessRecipe::getResultItemHolder,
             ByteBufCodecs.INT, FungusShapelessRecipe::getCount,
             FungusShapelessRecipe::new
     );
