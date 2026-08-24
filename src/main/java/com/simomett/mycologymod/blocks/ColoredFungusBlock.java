@@ -148,8 +148,11 @@ public class ColoredFungusBlock extends BushBlock implements EntityBlock
         if(level.isClientSide())
         {
             ColoredFungusBlockEntity originBlockEntity = (ColoredFungusBlockEntity) (level.getBlockEntity(blockPos));
-            int radius = originBlockEntity.getFungusGenoma().dominantTraits().area();
-            addSporeParticle(radius, blockState, blockPos, level, randomSource);
+            if(null != originBlockEntity)
+            {
+                int radius = originBlockEntity.getFungusGenoma().dominantTraits().area();
+                addSporeParticle(radius, blockState, blockPos, level, randomSource);
+            }
         }
     }
 

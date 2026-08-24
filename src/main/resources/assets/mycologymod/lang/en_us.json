@@ -10,8 +10,8 @@
   "item.mycologymod.magnifying_glass": "Magnifying glass",
   "item.mycologymod.spore_mask": "Spore mask",
 
-  "item.mycologymod.fungus_analysing_station": "Fungus analysing station",
-  "block.mycologymod.fungus_analysing_station": "Fungus analysing station",
+  "item.mycologymod.analysing_station": "Analysing station",
+  "block.mycologymod.analysing_station": "Analysing station",
 
   "item.mycologymod.test_tube": "Test tube",
 
