@@ -12,8 +12,7 @@ import org.jspecify.annotations.Nullable;
 
 public class AnalysingStationMenu extends AbstractContainerMenu
 {
-    private static final int CONTAINER_START_X = 62;
-    private static final int CONTAINER_START_Y = 17;
+    private static final int SLOTS_Y = 47;
     private static final int INVENTORY_START_X = 8;
     private static final int INVENTORY_START_Y = 84;
 
@@ -27,9 +26,9 @@ public class AnalysingStationMenu extends AbstractContainerMenu
 
         container.startOpen(inventory.player);
 
-        this.addSlot(new Slot(this.container, 0, 27, 47));
-        this.addSlot(new Slot(this.container, 1, 76, 47));
-        this.addSlot(new Slot(this.container, 2, 134, 47));
+        this.addSlot(new FungusSlot(this.container, 0, 27, SLOTS_Y));
+        this.addSlot(new BookAndQuillOnlySlot(this.container, 1, 76, SLOTS_Y));
+        this.addSlot(new Slot(this.container, 2, 134, SLOTS_Y));
 
         this.addStandardInventorySlots(inventory, INVENTORY_START_X, INVENTORY_START_Y);
     }
@@ -57,9 +56,14 @@ public class AnalysingStationMenu extends AbstractContainerMenu
         super.removed(player);
         if(player instanceof ServerPlayer serverPlayer)
         {
-            serverPlayer.addItem(this.container.getItem(0));
-            serverPlayer.addItem(this.container.getItem(1));
-            serverPlayer.addItem(this.container.getItem(2));
+            //FIXME book and quill can duplicate
+            ItemStack itemStack0 = this.container.getItem(0);
+            ItemStack itemStack1 = this.container.getItem(1);
+            ItemStack itemStack2 = this.container.getItem(2);
+
+            serverPlayer.addItem(itemStack0);
+            serverPlayer.addItem(itemStack1);
+            serverPlayer.addItem(itemStack2);
         }
         this.container.stopOpen(player);
     }
