@@ -6,9 +6,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
 
 public class AnalysingStationMenu extends AbstractContainerMenu
 {
@@ -26,9 +24,16 @@ public class AnalysingStationMenu extends AbstractContainerMenu
 
         container.startOpen(inventory.player);
 
-        this.addSlot(new FungusSlot(this.container, 0, 27, SLOTS_Y));
-        this.addSlot(new BookAndQuillOnlySlot(this.container, 1, 76, SLOTS_Y));
-        this.addSlot(new Slot(this.container, 2, 134, SLOTS_Y));
+        FungusSlot fungusSlot = new FungusSlot(this.container, 0, 27, SLOTS_Y);
+        this.addSlot(fungusSlot);
+
+        BookAndQuillOnlySlot bookAndQuillOnlySlot = new BookAndQuillOnlySlot(this.container, 1, 76, SLOTS_Y);
+        this.addSlot(bookAndQuillOnlySlot);
+
+        AnalysingStationResultSlot analysingStationResultSlot = new AnalysingStationResultSlot(fungusSlot, bookAndQuillOnlySlot, this.container, 2, 134, SLOTS_Y);
+        this.addSlot(analysingStationResultSlot);
+
+        this.addSlotListener(new AnalysingStationSlotListener(analysingStationResultSlot));
 
         this.addStandardInventorySlots(inventory, INVENTORY_START_X, INVENTORY_START_Y);
     }
@@ -41,7 +46,7 @@ public class AnalysingStationMenu extends AbstractContainerMenu
     @Override
     public ItemStack quickMoveStack(Player player, int slotIndex)
     {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override
