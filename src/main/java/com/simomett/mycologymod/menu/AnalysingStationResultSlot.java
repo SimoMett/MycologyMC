@@ -42,11 +42,22 @@ public class AnalysingStationResultSlot extends Slot
     {
         if(null != fungusSlot.getGenoma() && bookAndQuillOnlySlot.hasItem())
         {
-            //Log.info(LogCategory.GENERAL, fungusSlot.getGenoma().dominantTraits().species());
+            //TODO prettify
             List<Filterable<String>> originalPages = bookAndQuillOnlySlot.getItem().getComponents().get(DataComponents.WRITABLE_BOOK_CONTENT).pages();
 
             List<Filterable<String>> newPages = new ArrayList<>(originalPages);
-            newPages.addLast(new Filterable<>(fungusSlot.getGenoma().dominantTraits().species(), Optional.empty()));
+            String newPage = "Dominant traits: " +
+            "\n" + fungusSlot.getGenoma().dominantTraits().species() + "\n" +
+            "\nSpreading: "+ fungusSlot.getGenoma().dominantTraits().spreading() +
+            "\nSpread boost: "+ fungusSlot.getGenoma().dominantTraits().spreadboost() +
+            "\nLight: "+ fungusSlot.getGenoma().dominantTraits().light() +
+            "\nTerrain: "+ fungusSlot.getGenoma().dominantTraits().terrain() +
+            "\nHumidity: "+ fungusSlot.getGenoma().dominantTraits().humidity() +
+            "\nTemperature: "+ fungusSlot.getGenoma().dominantTraits().temp() +
+            "\nSpores radius: "+ fungusSlot.getGenoma().dominantTraits().area() +
+            "\nSpores effect: "+ fungusSlot.getGenoma().dominantTraits().effect() +
+            "\nEating effect: "+ fungusSlot.getGenoma().dominantTraits().eatingEffect().orElse("none");
+            newPages.addLast(new Filterable<>(newPage, Optional.empty()));
             WritableBookContent newBookContent = new WritableBookContent(newPages);
 
             ItemStack newBook = new ItemStack(Items.WRITABLE_BOOK);

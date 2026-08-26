@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.menu;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -15,6 +16,6 @@ public class BookAndQuillOnlySlot extends Slot
     @Override
     public boolean mayPlace(ItemStack itemStack)
     {
-        return itemStack.is(Items.WRITABLE_BOOK);
+        return itemStack.is(Items.WRITABLE_BOOK) && itemStack.getComponents().get(DataComponents.WRITABLE_BOOK_CONTENT).pages().isEmpty();
     }
 }
