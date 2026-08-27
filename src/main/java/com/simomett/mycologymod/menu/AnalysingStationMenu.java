@@ -46,7 +46,12 @@ public class AnalysingStationMenu extends AbstractContainerMenu
     @Override
     public ItemStack quickMoveStack(Player player, int slotIndex)
     {
-        return ItemStack.EMPTY;
+        ItemStack movedStack;
+        if(slotIndex == 0 || slotIndex == 1)
+            movedStack = this.moveItemStackTo(this.slots.get(slotIndex).getItem(), 3, 39, false)? this.slots.get(slotIndex).getItem(): ItemStack.EMPTY;
+        else
+            movedStack = this.moveItemStackTo(this.slots.get(slotIndex).getItem(), 0, 2, false)? this.slots.get(slotIndex).getItem(): ItemStack.EMPTY;
+        return movedStack;
     }
 
     @Override
