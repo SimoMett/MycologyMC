@@ -26,7 +26,7 @@ public record FungusSpawn(String biomes, float chance) implements Serializable {
     public static final FungusSpawn SWAMP = new FungusSpawn(Biomes.SWAMP, 1f);
     public static final FungusSpawn JUNGLES = new FungusSpawn(BiomeTags.IS_JUNGLE, .7f);
     public static final FungusSpawn MUSHROOM_FIELDS = new FungusSpawn(Biomes.MUSHROOM_FIELDS, 1f);
-    public static final FungusSpawn CAVES = new FungusSpawn("#caves", DEFAULT_SPAWN_CHANCE);
+    public static final FungusSpawn CAVES = new FungusSpawn("#caves", DEFAULT_SPAWN_CHANCE+0.05f);
     public static final FungusSpawn NETHER_WASTES = new FungusSpawn(Biomes.NETHER_WASTES, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn SOUL_SAND_VALLEY = new FungusSpawn(Biomes.SOUL_SAND_VALLEY, DEFAULT_SPAWN_CHANCE);
     public static final FungusSpawn END = new FungusSpawn(Biomes.THE_END, DEFAULT_SPAWN_CHANCE);
