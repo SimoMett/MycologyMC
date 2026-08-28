@@ -1,4 +1,4 @@
-package com.simomett.mycologymod.datagen.recipe.crafting;
+package com.simomett.mycologymod.datagen.crafting;
 
 import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.recipes.crafting.FungusShapelessRecipe;
@@ -16,9 +16,9 @@ public class FungusShapelessRecipeBuilder implements RecipeBuilder
 {
     protected final String speciesIngredient;
     protected final Item result;
-    protected final Integer stackSize;
+    protected final int stackSize;
 
-    public FungusShapelessRecipeBuilder(String speciesIngredient, Item result, Integer count)
+    public FungusShapelessRecipeBuilder(String speciesIngredient, Item result, int count)
     {
         this.speciesIngredient = speciesIngredient;
         this.result = result;
