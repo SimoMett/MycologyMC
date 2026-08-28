@@ -30,6 +30,6 @@ public class FungusAnalysingStationBlock extends Block
     @Override
     protected @org.jspecify.annotations.Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos)
     {
-        return new AnalysingStationMenuProvider();
+        return new AnalysingStationMenuProvider(pos);
     }
 }

@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.menu;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -9,6 +10,12 @@ import org.jetbrains.annotations.Nullable;
 
 public class AnalysingStationMenuProvider implements MenuProvider
 {
+    private BlockPos blockPos;
+    public AnalysingStationMenuProvider(BlockPos pos)
+    {
+        this.blockPos = pos;
+    }
+
     @Override
     public Component getDisplayName()
     {
@@ -18,6 +25,8 @@ public class AnalysingStationMenuProvider implements MenuProvider
     @Override
     public @Nullable AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player)
     {
-        return new AnalysingStationMenu(containerId, inventory);
+        AnalysingStationMenu analysingStationMenu = new AnalysingStationMenu(containerId, inventory);
+        analysingStationMenu.setOrigin(blockPos);
+        return analysingStationMenu;
     }
 }

@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.menu;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -15,6 +16,8 @@ public class AnalysingStationMenu extends AbstractContainerMenu
     private static final int INVENTORY_START_Y = 84;
 
     private final Container container;
+
+    private BlockPos originPos;
 
     protected AnalysingStationMenu(int containerId, Inventory inventory, Container container)
     {
@@ -54,10 +57,16 @@ public class AnalysingStationMenu extends AbstractContainerMenu
         return movedStack;
     }
 
+    public void setOrigin(BlockPos pos)
+    {
+        originPos = pos;
+    }
+
     @Override
     public boolean stillValid(Player player)
     {
-        return this.container.stillValid(player);
+        //Fixme get proper way to get player reach distance
+        return player.distanceToSqr(this.originPos.getCenter()) < 24.5;
     }
 
     @Override
