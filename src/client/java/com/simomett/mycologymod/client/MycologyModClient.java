@@ -4,10 +4,12 @@ import com.simomett.mycologymod.Constants;
 import com.simomett.mycologymod.blocks.BlocksDefinitions;
 import com.simomett.mycologymod.client.particles.MutantSporeParticles;
 import com.simomett.mycologymod.client.particles.SporeParticles;
+import com.simomett.mycologymod.client.screen.AnalysingStationScreen;
 import com.simomett.mycologymod.client.tints.FungusColorer;
 import com.simomett.mycologymod.client.tints.FungusTintSource;
 import com.simomett.mycologymod.data.FungusSpeciesColorsMap;
 import com.simomett.mycologymod.data.FungusSpeciesList;
+import com.simomett.mycologymod.menu.MenuTypesDefinitions;
 import com.simomett.mycologymod.particles.ParticlesDefinitions;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -16,6 +18,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.client.color.item.ItemTintSources;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.resources.Identifier;
 
 import java.util.List;
@@ -47,5 +50,7 @@ public class MycologyModClient implements ClientModInitializer
 
         ParticleProviderRegistry.getInstance().register(ParticlesDefinitions.SPORE_PARTICLES.particleType(), SporeParticles.Provider::new);
         ParticleProviderRegistry.getInstance().register(ParticlesDefinitions.MUTANT_SPORE_PARTICLES.particleType(), MutantSporeParticles.Provider::new);
+
+        MenuScreens.register(MenuTypesDefinitions.ANALYSING_STATION_MENU_TYPE, AnalysingStationScreen::new);
     }
 }

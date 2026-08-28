@@ -2,18 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "X": "minecraft:crafter",
+    "X": "minecraft:crafting_table",
     "C": "mycologymod:chromium_ingot",
-    "N": "minecraft:iron_nugget",
-    "M": "mycologymod:magnifying_glass"
+    "S": "minecraft:shears",
+    "P": "minecraft:spyglass",
+    "F": "mycologymod:flint_and_steel"
   },
   "pattern": [
-    "NMN",
+    "SPF",
     "CXC",
     "CCC"
   ],
   "result": {
     "count": 1,
-    "id": "mycologymod:fungus_analysing_station"
+    "id": "mycologymod:analysing_station"
   }
 }

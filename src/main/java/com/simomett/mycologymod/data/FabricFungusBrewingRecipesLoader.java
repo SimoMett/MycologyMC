@@ -18,23 +18,32 @@ import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public class FabricFungusBrewingRecipesLoader extends SimpleReloadListener<JsonElement>
+public class FabricFungusBrewingRecipesLoader extends SimpleReloadListener<FungusBrewingRecipeLoader>
 {
     public static final Identifier FABRIC_ID = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "fungi_brewing");
     private static final Gson GSON = new Gson();
 
     @Override
-    protected JsonElement prepare(SharedState state)
+    protected FungusBrewingRecipeLoader prepare(SharedState state)
     {
         return loadBrewingRecipe(state.resourceManager());
     }
 
     @Override
-    protected void apply(JsonElement prepared, SharedState state) {}
+    protected void apply(FungusBrewingRecipeLoader fungusBrewingRecipeLoader, SharedState state)
+    {
+        FabricPotionBrewingBuilder.BUILD.register(builder -> {
+            for(FungusBrewingRecipe r : fungusBrewingRecipeLoader.getQueue())
+            {
+                builder.registerPotionRecipe(r.getInputPotion(), FungusIngredient.of(r.speciesName), BuiltInRegistries.POTION.wrapAsHolder(r.resultPotion.value()));
+            }
+        });
+    }
 
-    private JsonElement loadBrewingRecipe(ResourceManager manager)
+    private FungusBrewingRecipeLoader loadBrewingRecipe(ResourceManager manager)
     {
         final int json_length = ".json".length();
+        FungusBrewingRecipeLoader fungusBrewingRecipeLoader = new FungusBrewingRecipeLoader();
         for(Map.Entry<Identifier, Resource> e : manager.listResources(FABRIC_ID.getPath(), r -> r.getPath().endsWith(".json")).entrySet())
         {
             Identifier id = e.getKey();
@@ -45,8 +54,7 @@ public class FabricFungusBrewingRecipesLoader extends SimpleReloadListener<JsonE
             try (var reader = new InputStreamReader(e.getValue().open()))
             {
                 JsonObject g = GSON.fromJson(reader, JsonObject.class);
-                FungusBrewingRecipeLoader.INSTANCE.loadBrewingRecipe(g);
-                return g;
+                fungusBrewingRecipeLoader.loadBrewingRecipe(g);
             }
             catch (Exception ignored)
             {
@@ -54,17 +62,6 @@ public class FabricFungusBrewingRecipesLoader extends SimpleReloadListener<JsonE
             }
         }
 
-        //this.registerPotionsRecipes();
-        return null;
-    }
-
-    private void registerPotionsRecipes()
-    {
-        FabricPotionBrewingBuilder.BUILD.register(builder -> {
-            for(FungusBrewingRecipe r : FungusBrewingRecipeLoader.INSTANCE.getQueue())
-            {
-                builder.registerPotionRecipe(r.getInputPotion(), FungusIngredient.of(r.speciesName), BuiltInRegistries.POTION.wrapAsHolder(r.resultPotion.value()));
-            }
-        });
+        return fungusBrewingRecipeLoader;
     }
 }

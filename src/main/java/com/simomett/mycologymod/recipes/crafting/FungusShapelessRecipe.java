@@ -1,6 +1,7 @@
 package com.simomett.mycologymod.recipes.crafting;
 
 import com.simomett.mycologymod.items.ItemsDefinitions;
+import net.minecraft.core.Holder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
@@ -14,26 +15,26 @@ public class FungusShapelessRecipe implements CraftingRecipe
 {
     public static final String NAME = "fungus_crafting_shapeless";
     private final String speciesIngredient;
-    private final Item resultItem;
-    private final int stackSize;
+    private final Item result;
+    private final Integer stackSize;
 
     private PlacementInfo placementInfo;
 
-    public FungusShapelessRecipe(String speciesIngredient, Item resultItem)
-    {
-        this(speciesIngredient, resultItem, 1);
-    }
-
-    public FungusShapelessRecipe(String speciesIngredient, Item resultItem, Integer count)
+    public FungusShapelessRecipe(String speciesIngredient, Item result, Integer count)
     {
         this.speciesIngredient = speciesIngredient;
-        this.resultItem = resultItem;
+        this.result = result;
         this.stackSize = count;
     }
 
-    public FungusShapelessRecipe(String speciesIngredient, ItemStack itemStack, Integer count)
+    public FungusShapelessRecipe(String speciesIngredient, Item result)
     {
-        this(speciesIngredient, itemStack.getItem(), count);
+        this(speciesIngredient, result, 1);
+    }
+
+    public FungusShapelessRecipe(String speciesIngredient, Holder<Item> itemHolder, Integer count)
+    {
+        this(speciesIngredient, itemHolder.value(), count);
     }
 
     public String getSpeciesIngredient()
@@ -41,14 +42,14 @@ public class FungusShapelessRecipe implements CraftingRecipe
         return speciesIngredient;
     }
 
-    public ItemStack getResult()
+    public Item getResultItem()
     {
-        return this.resultItem.getDefaultInstance();
+        return result;
     }
 
-    public Item getResultingItem()
+    public Holder<Item> getResultItemHolder()
     {
-        return this.resultItem;
+        return Holder.direct(result);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class FungusShapelessRecipe implements CraftingRecipe
     @Override
     public ItemStack assemble(CraftingInput craftingInput)
     {
-        return this.resultItem.getDefaultInstance();
+        return new ItemStack(result, stackSize);
     }
 
     @Override
@@ -103,6 +104,6 @@ public class FungusShapelessRecipe implements CraftingRecipe
 
     public Integer getCount()
     {
-        return this.stackSize;
+        return stackSize;
     }
 }

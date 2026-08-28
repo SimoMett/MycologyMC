@@ -1,5 +1,5 @@
 # Mycology
-Mycology is a Minecraft 1.21.5 mod for NeoForge and Fabric that provides a breeding system for mushrooms. You can find new fungi all of the world (and dimensions), each with it's unique characteristics.
+Mycology is a Minecraft 26.1.2 mod for Fabric that provides a breeding system for mushrooms. You can find new fungi all of the world (and dimensions), each with it's unique characteristics.
 
 Some of them can be cooked in a furnace or distilled in a brewing stand, but the fun part (at user discretion) is combining between them to hopefully get an interesting and usefull (or very bad and toxic) mutation.
 

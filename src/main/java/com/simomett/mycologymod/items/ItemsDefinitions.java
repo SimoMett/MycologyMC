@@ -120,6 +120,11 @@ public class ItemsDefinitions
             new Item.Properties().humanoidArmor(ArmorMaterials.CHAINMAIL, ArmorType.HELMET)
     );
 
+    public static final IRegisteredItem<BlockItem> ANALYSING_STATION = registerItem("analysing_station",
+            p-> new BlockItem(BlocksDefinitions.ANALYSING_STATION.get(), p),
+            new Item.Properties()
+    );
+
     // Debug item
     public static final IRegisteredItem<Item> SPEEDYZER = registerItem(
             "speedyzer",
@@ -131,11 +136,6 @@ public class ItemsDefinitions
     {
         return itemStack.is(COLORED_WARPED_FUNGUS.get()) || itemStack.is(COLORED_CRIMSON_FUNGUS.get());
     }
-
-    /*public static final IRegisteredItem<BlockItem> FUNGUS_ANALYSING_STATION = Services.PLATFORM.registerItem("fungus_analysing_station", p->
-            new BlockItem(BlocksDefinitions.FUNGUS_ANALYSING_STATION.get(), new Item.Properties()
-                    .setId(ResourceKey.create(BuiltInRegistries.ITEM.key(), ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "fungus_analysing_station"))))
-    );*/
 
     public static void init(){}
 }

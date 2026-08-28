@@ -1,5 +1,6 @@
 package com.simomett.mycologymod.blocks;
 
+import com.simomett.mycologymod.menu.AnalysingStationMenuProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
@@ -19,17 +20,16 @@ public class FungusAnalysingStationBlock extends Block
     }
 
     @Override
-    protected @Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos)
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult)
     {
-        //return new FungusAnalysingStationMenuProvider();
-        return null;
+        if (player instanceof ServerPlayer serverPlayer)
+            serverPlayer.openMenu(state.getMenuProvider(level, pos));
+        return InteractionResult.SUCCESS;
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult)
+    protected @org.jspecify.annotations.Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos)
     {
-        if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer)
-            serverPlayer.openMenu(state.getMenuProvider(level, pos));
-        return InteractionResult.SUCCESS;
+        return new AnalysingStationMenuProvider();
     }
 }

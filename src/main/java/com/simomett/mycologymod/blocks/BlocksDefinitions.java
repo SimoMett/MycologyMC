@@ -59,6 +59,10 @@ public class BlocksDefinitions
             BlockBehaviour.Properties.ofFullCopy(Blocks.CUT_COPPER_STAIRS)
     );
 
+    public static final IRegisteredBlock<FungusAnalysingStationBlock> ANALYSING_STATION = registerBlock("analysing_station",
+            FungusAnalysingStationBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(BlocksDefinitions.CHROMIUM_BLOCK.get()));
+
     public static BlockState getDefaultBlockStateFromFungusType(String fungusType)
     {
         BlockState blockState;
